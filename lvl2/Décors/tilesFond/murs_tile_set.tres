@@ -1,0 +1,32 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://bdlsfsw2hywfm"]
+
+[ext_resource type="Texture2D" uid="uid://dr6oxdxxvok0o" path="res://lvl2/Décors/tilesFond/sans_symbole.png" id="1_r3myk"]
+[ext_resource type="Texture2D" uid="uid://ckmdoaw6vbf04" path="res://lvl2/Décors/tilesFond/symbole_diperse.png" id="2_onkx3"]
+[ext_resource type="Texture2D" uid="uid://bin4kgvqo0lmp" path="res://lvl2/Décors/tilesFond/symbole_plein.png" id="3_s5or1"]
+[ext_resource type="Texture2D" uid="uid://du8i3mdb0fmnd" path="res://lvl2/Décors/tilesFond/colone.png" id="5_x8kpv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x2iwm"]
+texture = ExtResource("5_x8kpv")
+texture_region_size = Vector2i(341, 511)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gcdyl"]
+texture = ExtResource("1_r3myk")
+texture_region_size = Vector2i(341, 341)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r3myk"]
+texture = ExtResource("2_onkx3")
+texture_region_size = Vector2i(341, 341)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onkx3"]
+texture = ExtResource("3_s5or1")
+texture_region_size = Vector2i(341, 341)
+0:0/0 = 0
+
+[resource]
+sources/16 = SubResource("TileSetAtlasSource_x2iwm")
+sources/17 = SubResource("TileSetAtlasSource_gcdyl")
+sources/18 = SubResource("TileSetAtlasSource_r3myk")
+sources/19 = SubResource("TileSetAtlasSource_onkx3")

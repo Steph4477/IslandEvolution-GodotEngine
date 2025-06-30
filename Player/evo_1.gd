@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var jump_force = -1200
 @export var gravity = 1200
 @export var pv = max_hp # Pour l'utilisation de la healt barre
-@onready var health_bar = $HealthBar/ProgressBar
 @onready var banane_label = get_node("../Hud/HBoxContainerBanane/BananeCountLabel")
 @onready var coco_label = get_node("../Hud/HBoxContainerCoco/CocoCountLabel")
 @onready var seed_label = get_node("../Hud/HBoxContainerSeed/SeedCountLabel")
@@ -44,8 +43,11 @@ func _ready():
 	await get_tree().process_frame  # attendre que tout soit bien en place
 	game_state = get_node_or_null("/root/GameManagement/SceneContainer/GameState")
 	set_game_state(game_state)
-	health_bar.max_value = max_hp
-	health_bar.value = pv
+
+	game_state.health_bar.set_max_value(max_hp)
+	game_state.health_bar.set_value(pv)
+
+
 
 func set_game_state(gs):
 	# comptabilisation dans le game state
@@ -169,11 +171,9 @@ func update_animation() -> void:
 func on_hit(damage: int) -> void:
 	pv -= damage
 	pv = clamp(pv, 0, max_hp)
-	print("HealthBar joueur trouvée ? ", health_bar)
-	if health_bar:
-		health_bar.value = pv
-	print("PV restants : ", pv)
+	game_state.health_bar.set_value(pv)
 	show_damage_popup(damage)
+
 
 func show_damage_popup(amount: int) -> void:
 	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()

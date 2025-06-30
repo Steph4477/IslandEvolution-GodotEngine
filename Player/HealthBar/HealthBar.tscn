@@ -20,6 +20,9 @@ func set_green_fill() -> void:
 	var green_fill := StyleBoxFlat.new()
 	green_fill.bg_color = Color(0.0, 1.0, 0.0)  # Vert vif
 	bar.add_theme_stylebox_override(\"fill\", green_fill)
+func set_max_value(v: int):
+	max_value = v
+	bar.max_value = max_value
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol2up"]

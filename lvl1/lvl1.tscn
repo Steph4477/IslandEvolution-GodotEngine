@@ -254,7 +254,7 @@ scale = Vector2(-1, 1)
 stream = ExtResource("16_kgp0u")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(309, 1409)
+position = Vector2(6981, 1374)
 
 [node name="MobilePlatForm" parent="." instance=ExtResource("16_f0kof")]
 position = Vector2(2825, 337)
@@ -270,4 +270,4 @@ position = Vector2(2803, 569)
 position = Vector2(2155, 702)
 
 [node name="Moustique" parent="." instance=ExtResource("16_cvxqb")]
-position = Vector2(1588, 1459)
+position = Vector2(6311, 1408)

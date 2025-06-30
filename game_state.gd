@@ -10,6 +10,8 @@ var fade
 
 var player_scene = preload("res://Player/evo1.tscn")
 var player: Node = null
+var health_bar: Node = null
+
 
 signal player_updated(new_player)
 

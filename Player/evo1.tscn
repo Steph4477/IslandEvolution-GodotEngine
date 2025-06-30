@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=25 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/evo_1.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://crjpji6bcfj0b" path="res://Player/2idle.png" id="2_j3qaj"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://c0r3hdd7j6beq" path="res://Player/dos2.png" id="7_p7kcq"]
 [ext_resource type="AudioStream" uid="uid://dttjlu8e8c2o1" path="res://sounds/walk.wav" id="11_leyao"]
 [ext_resource type="AudioStream" uid="uid://cwm8ik73bpjog" path="res://sounds/jump.wav" id="12_5vkkw"]
-[ext_resource type="PackedScene" uid="uid://healthbar" path="res://Player/HealthBar/HealthBar.tscn" id="19_rbgwy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
 size = Vector2(608.331, 684.397)
@@ -197,10 +196,6 @@ shape = SubResource("RectangleShape2D_j3qaj")
 libraries = {
 &"": SubResource("AnimationLibrary_p7kcq")
 }
-
-[node name="HealthBar" parent="." instance=ExtResource("19_rbgwy")]
-position = Vector2(120, 22)
-scale = Vector2(0.1, 0.094)
 
 [node name="TurnAxis" type="Marker2D" parent="."]
 position = Vector2(170, 48)
