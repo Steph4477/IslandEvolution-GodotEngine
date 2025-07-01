@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=29 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/evo_1.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://crjpji6bcfj0b" path="res://Player/2idle.png" id="2_j3qaj"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://c0r3hdd7j6beq" path="res://Player/dos2.png" id="7_p7kcq"]
 [ext_resource type="AudioStream" uid="uid://dttjlu8e8c2o1" path="res://sounds/walk.wav" id="11_leyao"]
 [ext_resource type="AudioStream" uid="uid://cwm8ik73bpjog" path="res://sounds/jump.wav" id="12_5vkkw"]
+[ext_resource type="Texture2D" uid="uid://b3bxgb0ale8ya" path="res://Player/walk_gaz1.png" id="13_p7kcq"]
+[ext_resource type="Texture2D" uid="uid://dg8v5tari0fuc" path="res://Player/walk_gaz3.png" id="14_vbwkl"]
+[ext_resource type="Texture2D" uid="uid://ckiku25qddi02" path="res://Player/walk_gaz2.png" id="15_rbgwy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
 size = Vector2(608.331, 684.397)
@@ -163,6 +166,23 @@ tracks/0/keys = {
 "values": [ExtResource("6_tj6lq"), ExtResource("7_maao0"), ExtResource("6_tj6lq"), ExtResource("7_maao0"), ExtResource("6_tj6lq"), ExtResource("7_maao0")]
 }
 
+[sub_resource type="Animation" id="Animation_efgfv"]
+resource_name = "walk_gaz"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("13_p7kcq"), ExtResource("14_vbwkl"), ExtResource("15_rbgwy")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
 &"RESET": SubResource("Animation_m3p76"),
@@ -172,7 +192,8 @@ _data = {
 &"idle": SubResource("Animation_i1uru"),
 &"jump_down": SubResource("Animation_typba"),
 &"jump_up": SubResource("Animation_rbgwy"),
-&"walk": SubResource("Animation_vbwkl")
+&"walk": SubResource("Animation_vbwkl"),
+&"walk_gaz": SubResource("Animation_efgfv")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]

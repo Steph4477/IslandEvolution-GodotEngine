@@ -100,8 +100,6 @@ shape = SubResource("CircleShape2D_g1fhx")
 position = Vector2(-20, -32)
 scale = Vector2(0.6, 0.636)
 sprite_frames = SubResource("1")
-animation = &"attaque"
-frame = 1
-frame_progress = 0.381436
+animation = &"idle"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

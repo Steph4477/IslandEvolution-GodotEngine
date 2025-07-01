@@ -105,7 +105,10 @@ func show_damage_popup(amount: int) -> void:
 		die()
 
 func die() -> void:
+	if is_dead:
+		return
 	is_dead = true
+
 	await get_tree().process_frame  # Assure que tout est bien chargé
 
 	# 🎬 Joue l'animation "die"

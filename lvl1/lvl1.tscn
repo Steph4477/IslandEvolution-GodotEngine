@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=38 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://lvl1/lvl_1.gd" id="1_vc1ff"]
 [ext_resource type="PackedScene" uid="uid://ct7cfs6fktu4n" path="res://lvl1/Decors/tileForet.tscn" id="2_nklpm"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Moustique/moustique.tscn" id="16_cvxqb"]
 [ext_resource type="PackedScene" uid="uid://c5bug2b6apnq6" path="res://ItemsDecors/MobilePlatform/mobile_plat_form.tscn" id="16_f0kof"]
 [ext_resource type="AudioStream" uid="uid://bqpsj12o61ss0" path="res://sounds/lvl1.mp3" id="16_kgp0u"]
+[ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="17_f0kof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
 size = Vector2(2.23209, 104.915)
@@ -227,7 +228,7 @@ position = Vector2(424, 1433)
 position = Vector2(3978, 1264)
 
 [node name="BananeLoot" parent="." instance=ExtResource("14_e63vn")]
-position = Vector2(4038, 1234)
+position = Vector2(6415, 1484)
 
 [node name="Hud" parent="." instance=ExtResource("15_vc1ff")]
 
@@ -245,7 +246,7 @@ position = Vector2(5366, 1270)
 scale = Vector2(-1, 1)
 
 [node name="CocoLoot2" parent="." instance=ExtResource("14_211dj")]
-position = Vector2(5302, 1036)
+position = Vector2(6231, 1487)
 scale = Vector2(-1, 1)
 
 [node name="Sound" type="Node2D" parent="."]
@@ -269,5 +270,8 @@ position = Vector2(2803, 569)
 [node name="MobilePlatForm2" parent="." instance=ExtResource("16_f0kof")]
 position = Vector2(2155, 702)
 
+[node name="Serpent" parent="." instance=ExtResource("17_f0kof")]
+position = Vector2(5770, 1359)
+
 [node name="Moustique" parent="." instance=ExtResource("16_cvxqb")]
-position = Vector2(6311, 1408)
+position = Vector2(2476, 473)

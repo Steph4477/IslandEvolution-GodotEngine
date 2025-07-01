@@ -36,18 +36,17 @@ var jumping = false
 var moving_down = false
 # passage de porte
 var animation_locked = false
-
+# Effet gaz
+var is_gazed = false
+var initial_speed = speed
 
 func _ready():
 	$Camera2D.make_current()
 	await get_tree().process_frame  # attendre que tout soit bien en place
 	game_state = get_node_or_null("/root/GameManagement/SceneContainer/GameState")
 	set_game_state(game_state)
-
 	game_state.health_bar.set_max_value(max_hp)
 	game_state.health_bar.set_value(pv)
-
-
 
 func set_game_state(gs):
 	# comptabilisation dans le game state
@@ -92,7 +91,6 @@ func _physics_process(delta: float) -> void:
 		$Sprite.scale.x = abs($Sprite.scale.x)
 	elif direction < 0:
 		$Sprite.scale.x = -abs($Sprite.scale.x)
-
 	
 	# Détecte si on est en train de grimper sur bananier
 	if can_climb and Input.is_action_pressed("ui_up"):
@@ -146,25 +144,53 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_cancel") and can_fire_coco:
 		SkillLoop()
 
+func apply_gaz_effect():
+	if is_gazed:
+		return
+
+	is_gazed = true
+
+	# Ralentit le joueur
+	speed = initial_speed * 0.2
+
+	# Timer non bloquant
+	var timer := Timer.new()
+	timer.wait_time = 3.0
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+
+	timer.timeout.connect(func():
+		speed = initial_speed
+		is_gazed = false
+		timer.queue_free()
+	)
+
 func update_animation() -> void:
 	if animation_locked:
 		return
+
 	if is_climbing:
 		$anim.play("climb")
-		return # Empêche de passer aux conditions suivantes !
+		return
 	if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down"):
 		is_climbingCoco = false
-		velocity.y = 0 #Fait tomber du cocotier !
+		velocity.y = 0
 	if is_climbingCoco:
 		$anim.play("climb_coco")
-		return # Empêche de passer aux conditions suivantes !
+		return
+
 	if velocity.y < 0:
 		$anim.play("jump_up")
 		$Sound/Jump.play()
 	elif velocity.y > 0:
 		$anim.play("jump_down")
 	elif velocity.x != 0:
-		$anim.play("walk")
+		# ✅ Si gazé joue "walk_gaz"
+		if is_gazed:
+			$anim.play("walk_gaz")
+		else:
+			$anim.play("walk")
 	else:
 		$anim.play("idle")
 
