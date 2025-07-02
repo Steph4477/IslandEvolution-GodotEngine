@@ -1,10 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=40 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://lvl1/lvl_1.gd" id="1_vc1ff"]
 [ext_resource type="PackedScene" uid="uid://ct7cfs6fktu4n" path="res://lvl1/Decors/tileForet.tscn" id="2_nklpm"]
 [ext_resource type="PackedScene" uid="uid://chd4s1iv4x63r" path="res://lvl1/Decors/platforms.tscn" id="3_dvpsw"]
 [ext_resource type="PackedScene" uid="uid://bi56b8q1a6s16" path="res://ItemsDecors/Pique/pique.tscn" id="5_am3co"]
-[ext_resource type="PackedScene" uid="uid://dujtfl8q5or8" path="res://Loot/abdo.tscn" id="9_yj1qu"]
 [ext_resource type="PackedScene" uid="uid://tagnybpxlmi" path="res://lvl1/Decors/decor.tscn" id="10_nklpm"]
 [ext_resource type="PackedScene" uid="uid://cev5rxsibfue3" path="res://ItemsDecors/Cocotier/cocotier.tscn" id="13_f0kof"]
 [ext_resource type="PackedScene" uid="uid://dg6mgnhckbjhx" path="res://ItemsDecors/Bananier/bananier.tscn" id="13_ofnsq"]
@@ -17,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://c5bug2b6apnq6" path="res://ItemsDecors/MobilePlatform/mobile_plat_form.tscn" id="16_f0kof"]
 [ext_resource type="AudioStream" uid="uid://bqpsj12o61ss0" path="res://sounds/lvl1.mp3" id="16_kgp0u"]
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="17_f0kof"]
+[ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="18_211dj"]
+[ext_resource type="PackedScene" uid="uid://cohmext14ho56" path="res://Enemies/Mygale/mygale.tscn" id="19_cvxqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
 size = Vector2(2.23209, 104.915)
@@ -78,12 +79,27 @@ size = Vector2(15.1071, 68.0162)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0804m"]
 size = Vector2(20, 84.5923)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmo30"]
+size = Vector2(338.527, 81.8064)
+
 [node name="lvl1" type="Node2D"]
 script = ExtResource("1_vc1ff")
 
 [node name="ParalaxeCiel" parent="." instance=ExtResource("10_nklpm")]
-position = Vector2(330, -329)
+position = Vector2(469, -282)
 scale = Vector2(3.28, 1)
+
+[node name="SunLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(1649, 289)
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+color = Color(1, 0.952941, 0.682353, 1)
+energy = 1.6
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
 
 [node name="Foret" parent="." instance=ExtResource("2_nklpm")]
 
@@ -98,8 +114,11 @@ position = Vector2(2643, 1467)
 rotation = -3.14159
 scale = Vector2(0.25289, -0.145842)
 
-[node name="platforms" parent="." instance=ExtResource("3_dvpsw")]
+[node name="Platforms2" parent="." instance=ExtResource("3_dvpsw")]
 position = Vector2(825, 369)
+
+[node name="Tree" type="Node2D" parent="."]
+position = Vector2(6150, 1381)
 
 [node name="Platforms" type="StaticBody2D" parent="."]
 position = Vector2(736, -1804)
@@ -215,20 +234,22 @@ position = Vector2(41593.3, 22340.3)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_0804m")
 
-[node name="abdo" parent="." instance=ExtResource("9_yj1qu")]
-position = Vector2(3190, 588)
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms"]
+position = Vector2(34526.5, 12562.5)
+scale = Vector2(283.803, 14.7983)
+shape = SubResource("RectangleShape2D_pmo30")
 
 [node name="Cocotier" parent="." instance=ExtResource("13_f0kof")]
 position = Vector2(3484, 1282)
 
 [node name="CocoLoot" parent="." instance=ExtResource("14_211dj")]
-position = Vector2(424, 1433)
+position = Vector2(3536, 1054)
 
 [node name="Bananier" parent="." instance=ExtResource("13_ofnsq")]
 position = Vector2(3978, 1264)
 
 [node name="BananeLoot" parent="." instance=ExtResource("14_e63vn")]
-position = Vector2(6415, 1484)
+position = Vector2(4044, 1220)
 
 [node name="Hud" parent="." instance=ExtResource("15_vc1ff")]
 
@@ -237,7 +258,7 @@ position = Vector2(3107, 1254)
 scale = Vector2(-1, 1)
 
 [node name="BananeLoot2" parent="." instance=ExtResource("14_e63vn")]
-position = Vector2(537, 1438)
+position = Vector2(3045, 1205)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
@@ -246,7 +267,7 @@ position = Vector2(5366, 1270)
 scale = Vector2(-1, 1)
 
 [node name="CocoLoot2" parent="." instance=ExtResource("14_211dj")]
-position = Vector2(6231, 1487)
+position = Vector2(5316, 1048)
 scale = Vector2(-1, 1)
 
 [node name="Sound" type="Node2D" parent="."]
@@ -255,23 +276,38 @@ scale = Vector2(-1, 1)
 stream = ExtResource("16_kgp0u")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(6981, 1374)
+position = Vector2(106, 1404)
 
 [node name="MobilePlatForm" parent="." instance=ExtResource("16_f0kof")]
-position = Vector2(2825, 337)
+position = Vector2(6150, 1381)
 direction = 1
 
 [node name="PorteLvl2" parent="." instance=ExtResource("16_211dj")]
-position = Vector2(7268, 1283)
-
-[node name="Seed" parent="." instance=ExtResource("15_kgp0u")]
-position = Vector2(2803, 569)
+position = Vector2(7137, 1319)
 
 [node name="MobilePlatForm2" parent="." instance=ExtResource("16_f0kof")]
-position = Vector2(2155, 702)
+position = Vector2(4745, 830)
 
 [node name="Serpent" parent="." instance=ExtResource("17_f0kof")]
-position = Vector2(5770, 1359)
+position = Vector2(1536, 1389)
 
 [node name="Moustique" parent="." instance=ExtResource("16_cvxqb")]
-position = Vector2(2476, 473)
+position = Vector2(4967, 1431)
+
+[node name="Toucan" parent="." instance=ExtResource("18_211dj")]
+position = Vector2(3356, 1206)
+
+[node name="mygale" parent="." instance=ExtResource("19_cvxqb")]
+position = Vector2(5781, 857)
+
+[node name="Seed" parent="." instance=ExtResource("15_kgp0u")]
+position = Vector2(4404, 923)
+
+[node name="Seed2" parent="." instance=ExtResource("15_kgp0u")]
+position = Vector2(2018, 1204)
+
+[node name="Seed3" parent="." instance=ExtResource("15_kgp0u")]
+position = Vector2(3725, 547)
+
+[node name="Seed4" parent="." instance=ExtResource("15_kgp0u")]
+position = Vector2(2480, 817)

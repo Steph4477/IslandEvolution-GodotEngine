@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/HealthBar.tscn" id="9_kg14j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q0aj"]
-size = Vector2(260.318, 107.911)
+size = Vector2(102.159, 65.9555)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1fhx"]
-radius = 91.2688
+radius = 48.0937
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
@@ -74,32 +74,33 @@ collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, -6)
+position = Vector2(-18, -37)
 shape = SubResource("RectangleShape2D_4q0aj")
 
 [node name="FlipNode" type="Node2D" parent="."]
-position = Vector2(-165, -54)
+position = Vector2(-20, -26)
 
 [node name="Muzzle" type="Marker2D" parent="FlipNode"]
-position = Vector2(2, 2.99998)
+position = Vector2(-51, -18)
 rotation = 0.785398
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[node name="HealthBar" parent="." instance=ExtResource("9_kg14j")]
-position = Vector2(-71, -177)
-scale = Vector2(1.07101, 1.11)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -21)
+position = Vector2(-24, -37)
 shape = SubResource("CircleShape2D_g1fhx")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-20, -32)
-scale = Vector2(0.6, 0.636)
+scale = Vector2(0.2, 0.212)
 sprite_frames = SubResource("1")
-animation = &"idle"
+animation = &"attaque"
+frame = 1
+frame_progress = 0.786881
+
+[node name="HealthBar" parent="." instance=ExtResource("9_kg14j")]
+position = Vector2(-76, -107)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -23,6 +23,10 @@ window/size/initial_position_type=0
 window/stretch/mode="viewport"
 window/handheld/orientation=1
 
+[editor]
+
+movie_writer/movie_file="C:/Users/zozoe/OneDrive/Bureau/video_moko/Island_Evolution.avi"
+
 [input]
 
 ui_accept={
