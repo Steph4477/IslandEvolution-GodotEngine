@@ -1,26 +1,33 @@
 extends CharacterBody2D
 
 @export var speed = 500
-@export var max_hp = 2000
+@export var max_pv = 2000
 @export var jump_force = -1200
 @export var gravity = 1200
-@export var pv = max_hp # Pour l'utilisation de la healt barre
-@onready var banane_label = get_node("../Hud/HBoxContainerBanane/BananeCountLabel")
+@export var pv = max_pv 
+@export var cooldown_popo = 10
+@onready var banane_label = get_node("../Hud/HBoxContainerBanane/Label/BananeCountLabel")
 @onready var coco_label = get_node("../Hud/HBoxContainerCoco/CocoCountLabel")
 @onready var seed_label = get_node("../Hud/HBoxContainerSeed/SeedCountLabel")
 
 # Initialisation des variables du GameState
 var game_state
-var can_fire_banane  # Tir désactivé au début
-var banane_count 
-var can_fire_coco # Tir désactivé au début
+
+# Tir désactivé au début
+var can_fire_coco 
+
+# Potion banane
+var heal_potions: Array[int] = []
+var can_heal = true
+
+# Initialise le compteur
 var coco_count
+var banane_count = 0
 var seed_count = 0
 
 # Double Saut
 var jump_count = 0
 # tir
-var spellBanane = preload ("res://Tir/banane.tscn")
 var spellCoco = preload ("res://Tir/coco.tscn")
 var rate_of_fire = 0.4
 # escalade
@@ -45,27 +52,40 @@ func _ready():
 	await get_tree().process_frame  # attendre que tout soit bien en place
 	game_state = get_node_or_null("/root/GameManagement/SceneContainer/GameState")
 	set_game_state(game_state)
-	game_state.health_bar.set_max_value(max_hp)
+	game_state.health_bar.set_max_value(max_pv)
 	game_state.health_bar.set_value(pv)
 
 func set_game_state(gs):
-	# comptabilisation dans le game state
+	game_state = gs
+
 	banane_count = game_state.banane_count
 	coco_count = game_state.coco_count
 	seed_count = game_state.seed_count
-	can_fire_banane = game_state.can_fire_banane
+
 	can_fire_coco = game_state.can_fire_coco
+
+	# Recharge les potions depuis GameState
+	for i in banane_count:
+		heal_potions.append(20)
+
+	update_banane_display()
+	update_coco_display()
+	update_seed_display()
+
 	game_state.set_player(self)
+
 
 func set_can_climb(value: bool) -> void:
 	can_climb = value
 	if !value:
 		is_climbing = false
 
+
 func set_can_climbCoco(value: bool) -> void:
 	can_climbCoco = value
 	if !value:
 		is_climbingCoco = false
+
 
 func _physics_process(delta: float) -> void:
 	if animation_locked:
@@ -139,15 +159,54 @@ func _physics_process(delta: float) -> void:
 	update_animation()
 	
 	# Tir
-	if Input.is_action_pressed("ui_accept") and can_fire_banane:
-		SkillLoop()
 	if Input.is_action_pressed("ui_cancel") and can_fire_coco:
 		SkillLoop()
+	
+	# Potion banane
+	if Input.is_action_just_pressed("ui_accept"):
+		if pv >= max_pv:
+			show_info_popup("PV au max !")
+			return
+
+		if heal_potions.size() == 0:
+			show_info_popup("Aucune potion !")
+			return
+
+		if not can_heal:
+			show_info_popup("⏳ En recharge...")
+			return
+
+		# Potion activée
+		can_heal = false
+		heal_potions.pop_front()
+
+		var amount = game_state.heal_amount if game_state and "heal_amount" in game_state else 0
+		if amount > 0:
+			heal(amount)
+
+			# Cooldown visuel (cercle vert)
+			if game_state and game_state.health_bar and game_state.health_bar.get_parent():
+				var hud = game_state.health_bar.get_parent()
+				if "start_banane_cooldown" in hud:
+					hud.start_banane_cooldown(cooldown_popo)  # cooldown_popo doit être défini ailleurs
+
+		# Délai de réactivation
+		await get_tree().create_timer(cooldown_popo).timeout
+		can_heal = true
+
+func heal(amount: int) -> void:
+	pv = min(pv + amount, max_pv)
+	if game_state:
+		game_state.health_bar.set_value(pv)
+	banane_count = heal_potions.size()
+	if game_state:
+		game_state.banane_count = banane_count
+	update_banane_display()
+
 
 func apply_gaz_effect():
 	if is_gazed:
 		return
-
 	is_gazed = true
 
 	# Ralentit le joueur
@@ -159,7 +218,6 @@ func apply_gaz_effect():
 	timer.one_shot = true
 	add_child(timer)
 	timer.start()
-
 	timer.timeout.connect(func():
 		speed = initial_speed
 		is_gazed = false
@@ -169,7 +227,6 @@ func apply_gaz_effect():
 func update_animation() -> void:
 	if animation_locked:
 		return
-
 	if is_climbing:
 		$anim.play("climb")
 		return
@@ -179,7 +236,6 @@ func update_animation() -> void:
 	if is_climbingCoco:
 		$anim.play("climb_coco")
 		return
-
 	if velocity.y < 0:
 		$anim.play("jump_up")
 		$Sound/Jump.play()
@@ -194,9 +250,10 @@ func update_animation() -> void:
 	else:
 		$anim.play("idle")
 
+
 func on_hit(damage: int) -> void:
 	pv -= damage
-	pv = clamp(pv, 0, max_hp)
+	pv = clamp(pv, 0, max_pv)
 	game_state.health_bar.set_value(pv)
 	show_damage_popup(damage)
 
@@ -209,39 +266,50 @@ func show_damage_popup(amount: int) -> void:
 	if pv <= 0:
 		die()
 
+
+func show_info_popup(text: String) -> void:
+	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()
+	add_child(popup)
+	popup.position = Vector2(0, -30)
+	popup.show_damage(text)
+
+
 func die() -> void:
 	print("☠️ Le joueur est mort !")
 	get_tree().reload_current_scene()
+
 
 # Mise à jour du HUD
 func update_banane_display():
 	if banane_label:
 		banane_label.text = "x %d" % banane_count
 
+
 func update_coco_display():
 	if coco_label:
 		coco_label.text = "x %d" % coco_count
+
 
 func update_seed_display():
 	if seed_label:
 		seed_label.text = "x %d" % seed_count
 
+
 # loot
-func collect_banane(amount: int = 1, enable_shooting: bool = false) -> void:
-	banane_count += amount
-	# Activation du tir
-	if enable_shooting:
-		can_fire_banane = true
-		print("✅ Tir activé !")
-	# Récuperation des données des variables de GameState
+func collect_banane(amount: int = 1) -> void:
 	if game_state:
-		game_state.can_fire_banane = can_fire_banane
+		for i in amount:
+			heal_potions.append(game_state.heal_amount)
+
+	banane_count = heal_potions.size()
+
+	if game_state:
 		game_state.banane_count = banane_count
-		print("✅ Banane_count = :", game_state.banane_count)
-		print("✅ Can_fire_banane = :", game_state.can_fire_banane)
-	#mise a jour de l'HUD
+
 	update_banane_display()
-	print("🍌 Bananes collectées :", banane_count)
+	print("🍌 Bananes collectées :", amount)
+	print("🍌 Total stock :", banane_count)
+
 
 func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
 	coco_count += amount
@@ -284,30 +352,8 @@ func SkillLoop() -> void:
 	else:
 		direction = 1
 
-
-	# config touche tir de banane (ui_accept)
-	if Input.is_action_just_pressed("ui_accept") and can_fire_banane:
-		if banane_count > 0:
-			banane_count -= 1
-			update_banane_display()
-			# ✅ Met à jour GameState après le tir
-			if game_state:
-				game_state.banane_count = banane_count
-
-			print("🍌 Tir banane ! Restantes :", banane_count)
-			# instancie la scene de munition de banane à l'endroit du joueur
-			var banane_spell = spellBanane.instantiate()
-			#$sounds/box.play()
-			var spawn_pos = get_node("TurnAxis/CastPoint").get_global_position()
-			banane_spell.start(spawn_pos, direction)
-			get_tree().current_scene.add_child(banane_spell)
-			await get_tree().create_timer(rate_of_fire).timeout
-			can_fire_banane = true
-		else:
-			print("❌ Plus de bananes !")
-
 	# config touche tir de coco (ui_cancel)
-	elif Input.is_action_just_pressed("ui_cancel") and can_fire_coco:
+	if Input.is_action_just_pressed("ui_cancel") and can_fire_coco:
 		if coco_count > 0:
 			#can_fire_coco = false
 			coco_count -= 1

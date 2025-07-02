@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cn0x2ue3ec5ba"]
+[gd_scene load_steps=19 format=3 uid="uid://cn0x2ue3ec5ba"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://c6hphiwx7bure" path="res://Interface/cadre.png" id="2_eumbl"]
@@ -12,10 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://b1mh18dnybcdv" path="res://Interface/gamePad/cocoEnfonce.png" id="9_870gb"]
 [ext_resource type="Texture2D" uid="uid://bg4m1iprvl875" path="res://Interface/gamePad/potionSoinsEnfonce.png" id="11_e8y56"]
 [ext_resource type="Texture2D" uid="uid://d4e2mf80r1yjp" path="res://Tir/coco.png" id="12_6yv8p"]
-[ext_resource type="Texture2D" uid="uid://bkxudpd5k4jsf" path="res://Interface/barre de vie/banana_icon.png" id="12_eumbl"]
 [ext_resource type="Texture2D" uid="uid://dr4mpu3ur762x" path="res://Interface/gamePad/lance1.png" id="12_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://k243nqxwbi6" path="res://Interface/gamePad/lance1Enfonce.png" id="13_lwpkd"]
 [ext_resource type="Texture2D" uid="uid://y42suurvkr0t" path="res://Loot/graine/graineHUD.png" id="13_voibu"]
+[ext_resource type="Texture2D" uid="uid://dwe11gmox43tc" path="res://Interface/gamePad/potion.png" id="15_rgqxt"]
+[ext_resource type="Texture2D" uid="uid://btk88tubkllxs" path="res://Interface/gamePad/cooldown_popo2.png" id="16_b0qj5"]
 [ext_resource type="PackedScene" uid="uid://bhhdvnsptm5i6" path="res://Interface/barre de vie/HealthBar.tscn" id="16_rgqxt"]
 
 [node name="Hud" type="CanvasLayer"]
@@ -86,19 +87,41 @@ texture_pressed = ExtResource("13_lwpkd")
 
 [node name="HealthBar" parent="." instance=ExtResource("16_rgqxt")]
 
-[node name="HBoxContainerBanane2" type="HBoxContainer" parent="."]
+[node name="HBoxContainerBanane" type="HBoxContainer" parent="."]
 offset_left = 87.0
 offset_top = 61.0
 offset_right = 181.0
 offset_bottom = 135.0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainerBanane2"]
-layout_mode = 2
-texture = ExtResource("12_eumbl")
+[node name="Label" type="Node2D" parent="HBoxContainerBanane"]
+position = Vector2(82, 19)
 
-[node name="BananeCountLabel" type="Label" parent="HBoxContainerBanane2"]
-layout_mode = 2
+[node name="BananeCountLabel" type="Label" parent="HBoxContainerBanane/Label"]
+offset_top = 25.0
+offset_right = 10.0
+offset_bottom = 48.0
 text = "0"
+
+[node name="Texture" type="Node2D" parent="HBoxContainerBanane"]
+position = Vector2(36, 52)
+scale = Vector2(0.715505, 0.715329)
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainerBanane/Texture"]
+offset_left = -49.0
+offset_top = -55.0
+offset_right = 51.0
+offset_bottom = 47.0
+texture = ExtResource("15_rgqxt")
+
+[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/Texture"]
+offset_left = -68.0
+offset_top = -78.0
+offset_right = 956.0
+offset_bottom = 946.0
+scale = Vector2(0.143016, 0.14321)
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("16_b0qj5")
 
 [node name="HBoxContainerCoco" type="HBoxContainer" parent="."]
 offset_left = 84.0

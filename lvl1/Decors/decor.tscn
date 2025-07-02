@@ -15,7 +15,7 @@ motion_scale = Vector2(0.1, 0.1)
 script = ExtResource("1_skrmj")
 
 [node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_ciel"]
-position = Vector2(428, 10016)
+position = Vector2(462, 10024)
 scale = Vector2(5.22005, 4.46484)
 texture = ExtResource("2_1yjpo")
 

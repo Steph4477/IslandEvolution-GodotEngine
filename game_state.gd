@@ -3,8 +3,11 @@ extends Node
 var banane_count = 0
 var coco_count = 0
 var seed_count = 0
-var can_fire_banane = false
+var heal_amount = 0  
+
+
 var can_fire_coco = false
+
 var fade_scene = preload("res://fade.tscn")
 var fade
 
@@ -83,5 +86,3 @@ func load_level(scene_path: String) -> void:
 	# 🕶️ FADE IN
 	if fade:
 		await fade.fade_in()
-
-	print_tree_pretty()

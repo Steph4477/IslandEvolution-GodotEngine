@@ -86,7 +86,7 @@ size = Vector2(338.527, 81.8064)
 script = ExtResource("1_vc1ff")
 
 [node name="ParalaxeCiel" parent="." instance=ExtResource("10_nklpm")]
-position = Vector2(469, -282)
+position = Vector2(948, -299)
 scale = Vector2(3.28, 1)
 
 [node name="SunLight2D" type="DirectionalLight2D" parent="."]
@@ -243,7 +243,7 @@ shape = SubResource("RectangleShape2D_pmo30")
 position = Vector2(3484, 1282)
 
 [node name="CocoLoot" parent="." instance=ExtResource("14_211dj")]
-position = Vector2(3536, 1054)
+position = Vector2(557, 1472)
 
 [node name="Bananier" parent="." instance=ExtResource("13_ofnsq")]
 position = Vector2(3978, 1264)
@@ -258,7 +258,7 @@ position = Vector2(3107, 1254)
 scale = Vector2(-1, 1)
 
 [node name="BananeLoot2" parent="." instance=ExtResource("14_e63vn")]
-position = Vector2(3045, 1205)
+position = Vector2(400, 1456)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
@@ -276,7 +276,7 @@ scale = Vector2(-1, 1)
 stream = ExtResource("16_kgp0u")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(106, 1404)
+position = Vector2(741, 1434)
 
 [node name="MobilePlatForm" parent="." instance=ExtResource("16_f0kof")]
 position = Vector2(6150, 1381)
@@ -289,7 +289,7 @@ position = Vector2(7137, 1319)
 position = Vector2(4745, 830)
 
 [node name="Serpent" parent="." instance=ExtResource("17_f0kof")]
-position = Vector2(1536, 1389)
+position = Vector2(1577, 1416)
 
 [node name="Moustique" parent="." instance=ExtResource("16_cvxqb")]
 position = Vector2(4967, 1431)

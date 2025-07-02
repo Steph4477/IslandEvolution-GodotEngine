@@ -1,9 +1,24 @@
 extends Node2D
 
-@export var banane_value: int = 1
-@export var activate_shooting: bool = false
+@export var banane_value: int = 5 
+@export var heal_amount: int = 500
+
+var game_state
+var collected := false
+
+func _ready() -> void:
+	game_state = get_node_or_null("/root/GameManagement/SceneContainer/GameState")
+	game_state.heal_amount = heal_amount # Initialise me montant de pv par potion
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and body.has_method("collect_banane"):
-		body.collect_banane(5, true)  # +5 bananes et active le tir
+	if collected:
+		return
+	if body.is_in_group("Player"):
+		collected = true
+		body.collect_banane(banane_value)
+
+		if has_node("Sprite2D"):
+			$Sprite2D.visible = false
+
 		queue_free()

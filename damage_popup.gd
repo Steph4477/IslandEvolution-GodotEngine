@@ -3,10 +3,17 @@ extends Label
 @export var float_distance := 40
 @export var duration := 0.5
 
-func show_damage(amount: int) -> void:
+func show_damage(amount) -> void:
 	print("show_damage appelé avec :", amount)
-	text = "-" + str(amount)
-	modulate = Color.YELLOW
+
+	# Gère le cas d'un nombre
+	if typeof(amount) == TYPE_INT or typeof(amount) == TYPE_FLOAT:
+		text = "-" + str(amount)
+		modulate = Color.YELLOW
+	else:
+		text = str(amount)
+		modulate = Color.LIGHT_GREEN  # ou autre couleur pour message informatif
+
 	position.y = 0
 
 	var tween = create_tween()
