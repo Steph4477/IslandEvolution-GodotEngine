@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=32 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/evo_1.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://crjpji6bcfj0b" path="res://Player/2idle.png" id="2_j3qaj"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://b3bxgb0ale8ya" path="res://Player/walk_gaz1.png" id="13_p7kcq"]
 [ext_resource type="Texture2D" uid="uid://dg8v5tari0fuc" path="res://Player/walk_gaz3.png" id="14_vbwkl"]
 [ext_resource type="Texture2D" uid="uid://ckiku25qddi02" path="res://Player/walk_gaz2.png" id="15_rbgwy"]
+[ext_resource type="Texture2D" uid="uid://drcjqtukgpkwa" path="res://Player/ramp.png" id="16_rbgwy"]
+[ext_resource type="Texture2D" uid="uid://bw7yna4pwwhlr" path="res://Player/ramp1.png" id="17_typba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
 size = Vector2(608.331, 684.397)
@@ -105,21 +107,6 @@ tracks/1/keys = {
 "values": [Vector2(150, 71.6667), Vector2(150, 50.667), Vector2(150, 40.667), Vector2(150, 30.667), Vector2(150, 20.667)]
 }
 
-[sub_resource type="Animation" id="Animation_i1uru"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("2_j3qaj"), ExtResource("2_j3qaj")]
-}
-
 [sub_resource type="Animation" id="Animation_typba"]
 resource_name = "jump_down"
 tracks/0/type = "value"
@@ -183,6 +170,37 @@ tracks/0/keys = {
 "values": [ExtResource("13_p7kcq"), ExtResource("14_vbwkl"), ExtResource("15_rbgwy")]
 }
 
+[sub_resource type="Animation" id="Animation_i1uru"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_j3qaj"), ExtResource("2_j3qaj")]
+}
+
+[sub_resource type="Animation" id="Animation_ms575"]
+resource_name = "ramp"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("17_typba"), ExtResource("16_rbgwy")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
 &"RESET": SubResource("Animation_m3p76"),
@@ -192,6 +210,7 @@ _data = {
 &"idle": SubResource("Animation_i1uru"),
 &"jump_down": SubResource("Animation_typba"),
 &"jump_up": SubResource("Animation_rbgwy"),
+&"ramp": SubResource("Animation_ms575"),
 &"walk": SubResource("Animation_vbwkl"),
 &"walk_gaz": SubResource("Animation_efgfv")
 }

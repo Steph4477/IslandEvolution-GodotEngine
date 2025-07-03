@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var coco_label = get_node("../Hud/HBoxContainerCoco/CocoCountLabel")
 @onready var seed_label = get_node("../Hud/HBoxContainerSeed/SeedCountLabel")
 
+
 # Initialisation des variables du GameState
 var game_state
 
@@ -46,6 +47,10 @@ var animation_locked = false
 # Effet gaz
 var is_gazed = false
 var initial_speed = speed
+# Ramper
+var can_ramp: bool = false
+var is_ramping: bool = false
+
 
 func _ready():
 	$Camera2D.make_current()
@@ -57,21 +62,20 @@ func _ready():
 
 func set_game_state(gs):
 	game_state = gs
-
 	banane_count = game_state.banane_count
 	coco_count = game_state.coco_count
 	seed_count = game_state.seed_count
-
 	can_fire_coco = game_state.can_fire_coco
 
 	# Recharge les potions depuis GameState
-	for i in banane_count:
-		heal_potions.append(20)
-
+	for i in range(banane_count):
+		heal_potions.append(game_state.heal_amount)
+	
+	# Update du Hud
 	update_banane_display()
 	update_coco_display()
 	update_seed_display()
-
+	# Update du game State
 	game_state.set_player(self)
 
 
@@ -90,14 +94,18 @@ func set_can_climbCoco(value: bool) -> void:
 func _physics_process(delta: float) -> void:
 	if animation_locked:
 		return  # Ignore toute physique pendant une animation verrouillée si passage de porte
-	
+		
 	# Gravité
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0
 		jump_count = 0
-	
+		
+	# Ramper
+	if is_ramping:
+		velocity.y = 0  # Pas de saut ni chute quand on rampe
+		
 	# Direction 
 	var direction := Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if moving_left:
@@ -111,19 +119,19 @@ func _physics_process(delta: float) -> void:
 		$Sprite.scale.x = abs($Sprite.scale.x)
 	elif direction < 0:
 		$Sprite.scale.x = -abs($Sprite.scale.x)
-	
+		
 	# Détecte si on est en train de grimper sur bananier
 	if can_climb and Input.is_action_pressed("ui_up"):
 		is_climbing = true
 	elif !can_climb:
 		is_climbing = false
-	
+		
 	# Détecte si on est en train de grimper sur cocotier
 	if can_climbCoco and Input.is_action_pressed("ui_up"):
 		is_climbingCoco = true
 	elif !can_climbCoco:
 		is_climbingCoco = false
-	
+		
 	# Appliquer mouvement vertical(escalade bananier)
 	if is_climbing:
 		# On grimpe
@@ -132,7 +140,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = -climb_speed
 		elif Input.is_action_pressed("ui_down"):
 			velocity.y = climb_speed
-	
+		
 	# Appliquer mouvement vertical(escalade cocotier)
 	if is_climbingCoco:
 		# On grimpe
@@ -151,6 +159,22 @@ func _physics_process(delta: float) -> void:
 		else:
 			# Appliquer gravité si pas de saut
 			velocity.y += gravity * delta
+		
+	# Aplliquer mouvement ramper
+	if can_ramp and Input.is_action_pressed("ramping") and is_on_floor():
+		start_ramping()
+		#appliquer la direction
+		var ramp_dir := Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		velocity.x = ramp_dir * (speed * 0.4)
+		# Flip sprite
+		if ramp_dir > 0:
+			$Sprite.scale.x = abs($Sprite.scale.x)
+		elif ramp_dir < 0:
+			$Sprite.scale.x = -abs($Sprite.scale.x)
+		# Pas de saut / chute
+		velocity.y = 0
+	else:
+		stop_ramping()
 	
 	# Appliquer mouvement
 	move_and_slide()
@@ -164,35 +188,41 @@ func _physics_process(delta: float) -> void:
 	
 	# Potion banane
 	if Input.is_action_just_pressed("ui_accept"):
-		if pv >= max_pv:
-			show_info_popup("PV au max !")
-			return
+		use_banane_potion()
 
-		if heal_potions.size() == 0:
-			show_info_popup("Aucune potion !")
-			return
 
-		if not can_heal:
-			show_info_popup("⏳ En recharge...")
-			return
+func use_banane_potion() -> void:
+	if not can_heal:
+		show_info_popup("⏳ En recharge...")
+		return
+	if pv >= max_pv:
+		show_info_popup("PV au max !")
+		return
+	if heal_potions.is_empty():
+		show_info_popup("Aucune potion !")
+		return
 
-		# Potion activée
-		can_heal = false
-		heal_potions.pop_front()
+	var amount = game_state.heal_amount if game_state and "heal_amount" in game_state else 0
+	if amount <= 0:
+		show_info_popup("Potion invalide !")
+		return
 
-		var amount = game_state.heal_amount if game_state and "heal_amount" in game_state else 0
-		if amount > 0:
-			heal(amount)
+	# 🧪 Active la potion
+	can_heal = false
+	heal_potions.pop_front()
+	heal(amount)
+	update_hud_buttons()
 
-			# Cooldown visuel (cercle vert)
-			if game_state and game_state.health_bar and game_state.health_bar.get_parent():
-				var hud = game_state.health_bar.get_parent()
-				if "start_banane_cooldown" in hud:
-					hud.start_banane_cooldown(cooldown_popo)  # cooldown_popo doit être défini ailleurs
+	# ⏱️ Cooldown visuel (cercle vert)
+	if game_state.health_bar.get_parent():
+		var hud = game_state.health_bar.get_parent()
+		if hud.has_method("start_banane_cooldown"):
+			hud.start_banane_cooldown(cooldown_popo)
 
-		# Délai de réactivation
-		await get_tree().create_timer(cooldown_popo).timeout
-		can_heal = true
+	# ⏳ Délai avant de pouvoir reprendre une potion
+	await get_tree().create_timer(cooldown_popo).timeout
+	can_heal = true
+	update_hud_buttons()
 
 func heal(amount: int) -> void:
 	pv = min(pv + amount, max_pv)
@@ -204,14 +234,29 @@ func heal(amount: int) -> void:
 	update_banane_display()
 
 
+func unlock_ramp():
+	can_ramp = true
+	show_info_popup("Rampement activé !")
+	var hud = game_state.health_bar.get_parent()
+	if hud.has_method("set_button_enabled"):
+		hud.set_button_enabled(hud.get_node("Gamepad/Ramp"), true)
+
+
+func start_ramping():
+	if not is_ramping:
+		is_ramping = true
+
+func stop_ramping():
+	if is_ramping:
+		is_ramping = false
+
+
 func apply_gaz_effect():
 	if is_gazed:
 		return
 	is_gazed = true
-
 	# Ralentit le joueur
 	speed = initial_speed * 0.2
-
 	# Timer non bloquant
 	var timer := Timer.new()
 	timer.wait_time = 3.0
@@ -229,6 +274,13 @@ func update_animation() -> void:
 		return
 	if is_climbing:
 		$anim.play("climb")
+		return
+	# 🐒 Ramper uniquement si on rampe ET qu'on se déplace
+	if is_ramping and abs(velocity.x) > 0.1:
+		$anim.play("ramp")
+		return
+	elif is_ramping:
+		$anim.play("idle")  # anim immobile
 		return
 	if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down"):
 		is_climbingCoco = false
@@ -295,44 +347,55 @@ func update_seed_display():
 		seed_label.text = "x %d" % seed_count
 
 
+# Gestion de l'état des boutons du hud
+func update_hud_buttons() -> void:
+	if game_state.health_bar.get_parent():
+		var hud = game_state.health_bar.get_parent()
+		if hud.has_method("update_hud_buttons"):
+			hud.update_hud_buttons(can_fire_coco, can_heal)
+
+
+
 # loot
 func collect_banane(amount: int = 1) -> void:
 	if game_state:
-		for i in amount:
+		for i in range(amount):
 			heal_potions.append(game_state.heal_amount)
-
 	banane_count = heal_potions.size()
-
 	if game_state:
 		game_state.banane_count = banane_count
-
+		# 🔓 Active le bouton tactile si dispo
+		var hud = game_state.health_bar.get_parent()
+		if hud and hud.has_method("set_button_enabled"):
+			hud.set_button_enabled(hud.get_node("Gamepad/Health"), true)  # ← adapte le chemin si nécessaire
 	update_banane_display()
-	print("🍌 Bananes collectées :", amount)
-	print("🍌 Total stock :", banane_count)
+	show_info_popup("5 jus de bananes récupérés !")
+	update_hud_buttons()
 
 
 func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
 	coco_count += amount
-	# Activation du tir
+
 	if enable_shooting:
 		can_fire_coco = true
-		print("✅ Tir activé !")
-	# Récuperation des données des variables de GameState
+		show_info_popup("Lancé de coco activé !")
+		var hud = game_state.health_bar.get_parent()
+		if hud.has_method("set_button_enabled"):
+			hud.set_button_enabled(hud.get_node("Gamepad/Coco"), true)
+
 	if game_state:
 		game_state.can_fire_coco = can_fire_coco
 		game_state.coco_count = coco_count
-		print("✅ Coco_count = :", game_state.coco_count)
-		print("✅ Can_fire_coco = :", game_state.can_fire_coco)
-	#mise a jour de l'HUD
+
 	update_coco_display()
-	print("🥥 Coco collectées :", coco_count)
+	show_info_popup("Tu peux lancer 3 noix de coco")
+	update_hud_buttons()
 
 func collect_seed(amount: int = 1) -> void:
 	seed_count += amount
 	# Récuperation des données des variables de GameState
 	if game_state:
 		game_state.seed_count = seed_count
-		print("✅ Seed_count = :", game_state.seed_count)
 	#mise a jour de l'HUD
 	update_seed_display()
 	print("Graines collectées :", seed_count)
@@ -351,28 +414,28 @@ func SkillLoop() -> void:
 		direction = -1
 	else:
 		direction = 1
-
 	# config touche tir de coco (ui_cancel)
 	if Input.is_action_just_pressed("ui_cancel") and can_fire_coco:
 		if coco_count > 0:
-			#can_fire_coco = false
 			coco_count -= 1
 			update_coco_display()
-			
-			# ✅ Met à jour GameState après la modification
+
 			if game_state:
 				game_state.coco_count = coco_count
-			print("🥥 Tir coco ! Restantes :", coco_count)
-			
-			# instancie la scene de munition de coco à l'endroit du joueur
+
 			var coco_spell = spellCoco.instantiate()
 			var spawn_pos = get_node("TurnAxis/CastPoint").get_global_position()
 			coco_spell.start(spawn_pos, direction)
 			get_tree().current_scene.add_child(coco_spell)
+
 			await get_tree().create_timer(rate_of_fire).timeout
 			can_fire_coco = true
-		else:
-			print("❌ Plus de cocos !")
+
+			# Si plus de cocos, désactive tir
+			if coco_count == 0:
+				can_fire_coco = false
+			update_hud_buttons() 
+
 
 # reset des animations à chaque changements de lvl (geré dans le GameState)
 func reset_state() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cn0x2ue3ec5ba"]
+[gd_scene load_steps=25 format=3 uid="uid://cn0x2ue3ec5ba"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://c6hphiwx7bure" path="res://Interface/cadre.png" id="2_eumbl"]
@@ -15,9 +15,23 @@
 [ext_resource type="Texture2D" uid="uid://dr4mpu3ur762x" path="res://Interface/gamePad/lance1.png" id="12_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://k243nqxwbi6" path="res://Interface/gamePad/lance1Enfonce.png" id="13_lwpkd"]
 [ext_resource type="Texture2D" uid="uid://y42suurvkr0t" path="res://Loot/graine/graineHUD.png" id="13_voibu"]
+[ext_resource type="Texture2D" uid="uid://bopvb4ul6vu8" path="res://Interface/gamePad/ramp.png" id="14_e8y56"]
 [ext_resource type="Texture2D" uid="uid://dwe11gmox43tc" path="res://Interface/gamePad/potion.png" id="15_rgqxt"]
+[ext_resource type="Texture2D" uid="uid://bgpnp8obchf3s" path="res://Interface/gamePad/ramp_enfonce.png" id="15_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://btk88tubkllxs" path="res://Interface/gamePad/cooldown_popo2.png" id="16_b0qj5"]
 [ext_resource type="PackedScene" uid="uid://bhhdvnsptm5i6" path="res://Interface/barre de vie/HealthBar.tscn" id="16_rgqxt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s8lhr"]
+radius = 43.7379
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwpkd"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xl2wx"]
+radius = 42.0476
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8y56"]
+radius = 41.0122
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_0b1lv")
@@ -57,33 +71,54 @@ texture_normal = ExtResource("7_rgqxt")
 texture_pressed = ExtResource("8_eumbl")
 action = "ui_jump"
 
-[node name="hand" type="TouchScreenButton" parent="Gamepad"]
+[node name="Hand" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(51, 893)
 scale = Vector2(1, 0.998)
 texture_normal = ExtResource("6_rgqxt")
 texture_pressed = ExtResource("7_b0qj5")
 
-[node name="down" type="TouchScreenButton" parent="Gamepad"]
+[node name="Down" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(1815, 1070)
 rotation = 3.14159
 scale = Vector2(1, 0.998)
 texture_normal = ExtResource("7_rgqxt")
 texture_pressed = ExtResource("8_eumbl")
 
-[node name="coco" type="TouchScreenButton" parent="Gamepad"]
+[node name="Coco" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(71, 783)
 texture_normal = ExtResource("8_b0qj5")
 texture_pressed = ExtResource("9_870gb")
 
-[node name="health" type="TouchScreenButton" parent="Gamepad"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Coco"]
+position = Vector2(51, 55)
+shape = SubResource("CircleShape2D_s8lhr")
+
+[node name="Health" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(201, 963)
 texture_normal = ExtResource("8_voibu")
 texture_pressed = ExtResource("11_e8y56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Health"]
+position = Vector2(51, 49)
+shape = SubResource("CircleShape2D_lwpkd")
 
 [node name="Spear" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(195, 838)
 texture_normal = ExtResource("12_s8lhr")
 texture_pressed = ExtResource("13_lwpkd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Spear"]
+position = Vector2(49, 53)
+shape = SubResource("CircleShape2D_xl2wx")
+
+[node name="Ramp" type="TouchScreenButton" parent="Gamepad"]
+position = Vector2(339, 922)
+texture_normal = ExtResource("14_e8y56")
+texture_pressed = ExtResource("15_s8lhr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Ramp"]
+position = Vector2(50, 53)
+shape = SubResource("CircleShape2D_e8y56")
 
 [node name="HealthBar" parent="." instance=ExtResource("16_rgqxt")]
 

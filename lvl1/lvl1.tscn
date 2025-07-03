@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=41 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://lvl1/lvl_1.gd" id="1_vc1ff"]
 [ext_resource type="PackedScene" uid="uid://ct7cfs6fktu4n" path="res://lvl1/Decors/tileForet.tscn" id="2_nklpm"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bqpsj12o61ss0" path="res://sounds/lvl1.mp3" id="16_kgp0u"]
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="17_f0kof"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="18_211dj"]
+[ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="19_26k7p"]
 [ext_resource type="PackedScene" uid="uid://cohmext14ho56" path="res://Enemies/Mygale/mygale.tscn" id="19_cvxqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
@@ -311,3 +312,6 @@ position = Vector2(3725, 547)
 
 [node name="Seed4" parent="." instance=ExtResource("15_kgp0u")]
 position = Vector2(2480, 817)
+
+[node name="Ramp" parent="." instance=ExtResource("19_26k7p")]
+position = Vector2(621, 1452)
