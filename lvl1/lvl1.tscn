@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://tagnybpxlmi" path="res://lvl1/Decors/decor.tscn" id="10_nklpm"]
 [ext_resource type="PackedScene" uid="uid://cev5rxsibfue3" path="res://ItemsDecors/Cocotier/cocotier.tscn" id="13_f0kof"]
 [ext_resource type="PackedScene" uid="uid://dg6mgnhckbjhx" path="res://ItemsDecors/Bananier/bananier.tscn" id="13_ofnsq"]
+[ext_resource type="PackedScene" uid="uid://8dohrfquocyx" path="res://Enemies/Carnivore/carnivore.tscn" id="14_26k7p"]
 [ext_resource type="PackedScene" uid="uid://skt7pf4qgqru" path="res://Loot/Cocotier_loot.tscn" id="14_211dj"]
 [ext_resource type="PackedScene" uid="uid://bufpfyqhh1s65" path="res://Loot/banane_loot.tscn" id="14_e63vn"]
 [ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/graine/seed.tscn" id="15_kgp0u"]
@@ -18,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="17_f0kof"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="18_211dj"]
 [ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="19_26k7p"]
-[ext_resource type="PackedScene" uid="uid://cohmext14ho56" path="res://Enemies/Mygale/mygale.tscn" id="19_cvxqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
 size = Vector2(2.23209, 104.915)
@@ -104,14 +104,8 @@ shadow_filter_smooth = 4.0
 
 [node name="Foret" parent="." instance=ExtResource("2_nklpm")]
 
-[node name="pique" parent="." instance=ExtResource("5_am3co")]
-position = Vector2(2255, 1377)
-rotation = -3.14159
-scale = Vector2(0.740046, -0.473848)
-frame_progress = 0.976109
-
 [node name="pique2" parent="." instance=ExtResource("5_am3co")]
-position = Vector2(2643, 1467)
+position = Vector2(1884, 1448)
 rotation = -3.14159
 scale = Vector2(0.25289, -0.145842)
 
@@ -133,7 +127,7 @@ scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_wajbs")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms"]
-position = Vector2(30729.5, 23630.7)
+position = Vector2(30802.4, 23644.7)
 scale = Vector2(283.803, 14.7983)
 shape = SubResource("RectangleShape2D_dvpsw")
 
@@ -259,7 +253,7 @@ position = Vector2(3107, 1254)
 scale = Vector2(-1, 1)
 
 [node name="BananeLoot2" parent="." instance=ExtResource("14_e63vn")]
-position = Vector2(400, 1456)
+position = Vector2(794, 1443)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
@@ -277,7 +271,7 @@ scale = Vector2(-1, 1)
 stream = ExtResource("16_kgp0u")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(741, 1434)
+position = Vector2(1465, 1423)
 
 [node name="MobilePlatForm" parent="." instance=ExtResource("16_f0kof")]
 position = Vector2(6150, 1381)
@@ -289,17 +283,17 @@ position = Vector2(7137, 1319)
 [node name="MobilePlatForm2" parent="." instance=ExtResource("16_f0kof")]
 position = Vector2(4745, 830)
 
+[node name="Carnivore" parent="." instance=ExtResource("14_26k7p")]
+position = Vector2(2284, 1357)
+
 [node name="Serpent" parent="." instance=ExtResource("17_f0kof")]
-position = Vector2(1577, 1416)
+position = Vector2(3795, 1424)
 
 [node name="Moustique" parent="." instance=ExtResource("16_cvxqb")]
 position = Vector2(4967, 1431)
 
 [node name="Toucan" parent="." instance=ExtResource("18_211dj")]
-position = Vector2(3356, 1206)
-
-[node name="mygale" parent="." instance=ExtResource("19_cvxqb")]
-position = Vector2(5781, 857)
+position = Vector2(1759, 1240)
 
 [node name="Seed" parent="." instance=ExtResource("15_kgp0u")]
 position = Vector2(4404, 923)

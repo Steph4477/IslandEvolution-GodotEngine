@@ -10,6 +10,18 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_l2d7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_l2d7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_l2d7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_l2d7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_l2d7g")
 }],
 "loop": true,
 "name": &"idle",
@@ -18,6 +30,24 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_d6hta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d6hta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d6hta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d6hta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3axfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3axfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3axfj")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_3axfj")
@@ -33,7 +63,7 @@ size = Vector2(599.44, 123.004)
 [node name="pique" type="AnimatedSprite2D" groups=["enemies"]]
 scale = Vector2(0.353535, 0.196148)
 sprite_frames = SubResource("1")
-animation = &"idle"
+animation = &"pique"
 script = ExtResource("4_uqm57")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemies"]]

@@ -1,11 +1,14 @@
 extends AnimatedSprite2D
 
-@export var damage: int = 250
+@export var damage: int = 99999
 @export var damage_interval: float = 1.0  # secondes
 
 var damaging := false
 var target: Node = null
 
+
+func _ready() -> void:
+	play("pique")
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
 		play("pique")

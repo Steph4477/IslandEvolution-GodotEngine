@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://8dohrfquocyx"]
+
+[ext_resource type="Script" uid="uid://bitms1f1gj3xe" path="res://Enemies/Carnivore/carnivore.gd" id="1_0gcrn"]
+[ext_resource type="Texture2D" uid="uid://ce5kmrkklie8s" path="res://Enemies/Carnivore/fermé.png" id="1_7q224"]
+[ext_resource type="Texture2D" uid="uid://bd28sda5grtmr" path="res://Enemies/Carnivore/ouvert.png" id="2_0gcrn"]
+[ext_resource type="Texture2D" uid="uid://c0yna2rt6rynn" path="res://Enemies/Carnivore/tige_petite.png" id="3_fba38"]
+
+[sub_resource type="Animation" id="Animation_vam03"]
+resource_name = "attaque"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Mouth:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("1_7q224"), ExtResource("2_0gcrn")]
+}
+
+[sub_resource type="Animation" id="Animation_fba38"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Mouth:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("1_7q224")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Stem:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_fba38")]
+}
+
+[sub_resource type="Animation" id="Animation_0gcrn"]
+resource_name = "idle"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Stem:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_fba38"), ExtResource("3_fba38")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Mouth:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [ExtResource("1_7q224"), ExtResource("2_0gcrn"), ExtResource("1_7q224")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gywng"]
+_data = {
+&"RESET": SubResource("Animation_fba38"),
+&"attaque": SubResource("Animation_vam03"),
+&"idle": SubResource("Animation_0gcrn")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gcrn"]
+radius = 128.016
+
+[node name="Carnivore" type="CharacterBody2D"]
+script = ExtResource("1_0gcrn")
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="Stem" type="Sprite2D" parent="Rotator"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_fba38")
+
+[node name="Mouth" type="Sprite2D" parent="Rotator"]
+position = Vector2(0, 33)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_7q224")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gywng")
+}
+autoplay = "attaque"
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+position = Vector2(-3, 5)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-13, -17)
+shape = SubResource("CircleShape2D_0gcrn")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-35, -1)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

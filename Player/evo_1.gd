@@ -315,8 +315,9 @@ func show_damage_popup(amount: int) -> void:
 	add_child(popup)
 	popup.position = Vector2(0, -30)  # position flottante au-dessus du joueur
 	popup.show_damage(amount)
-	if pv <= 0:
-		die()
+
+func kill_by_plant() -> void:
+	visible = false
 
 
 func show_info_popup(text: String) -> void:
@@ -351,9 +352,9 @@ func update_seed_display():
 func update_hud_buttons() -> void:
 	if game_state.health_bar.get_parent():
 		var hud = game_state.health_bar.get_parent()
+		can_heal = not heal_potions.is_empty()
 		if hud.has_method("update_hud_buttons"):
 			hud.update_hud_buttons(can_fire_coco, can_heal)
-
 
 
 # loot
