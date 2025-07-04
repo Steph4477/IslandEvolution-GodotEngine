@@ -5,19 +5,16 @@ extends CharacterBody2D
 @export var idle_duration: float = 5.0
 @export var land_interval: float = 10.0
 
-
 @onready var health_bar = $HealthBar/ProgressBar
 @onready var timer = $Timer
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite
 
-
 var is_flying := true
 var is_landing := false
-var landed := false
+var landed := false # Gestion atterissage
 var patrol_direction := Vector2.ZERO
 var player: Node2D
-
 
 func _ready() -> void:
 	start_patrol()
@@ -73,7 +70,7 @@ func _on_land_timer_timeout():
 	landed = false
 	is_flying = true
 	change_patrol_direction()
-#
+
 func wait_until_on_floor():
 	while not is_on_floor():
 		await get_tree().process_frame

@@ -5,6 +5,9 @@ extends CanvasLayer
 @onready var spear_button = $Gamepad/Spear
 @onready var health_button = $Gamepad/Health
 
+@export var float_distance := 40
+@export var duration := 0.5
+
 func _ready():
 	var game_state = get_node_or_null("/root/GameManagement/SceneContainer/GameState")
 	game_state.health_bar = $HealthBar
@@ -34,7 +37,14 @@ func set_button_enabled(button: TouchScreenButton, enabled: bool) -> void:
 			shape.disabled = not enabled
 		button.modulate = Color(1, 1, 1, 1) if enabled else Color(1, 1, 1, 0.4)
 
-# 🔁 Met à jour l'état des boutons selon les flags du joueur
+# 🔁 Met à jour l'état des boutons selon les inputs du joueur
 func update_hud_buttons(can_fire_coco: bool, can_heal: bool) -> void:
 	set_button_enabled(coco_button, can_fire_coco)
 	set_button_enabled(health_button, can_heal)
+
+func set_coco_button_enabled(enabled: bool) -> void:
+	set_button_enabled(coco_button, enabled)
+
+func set_heal_button_enabled(enabled: bool) -> void:
+	set_button_enabled(health_button, enabled)
+	

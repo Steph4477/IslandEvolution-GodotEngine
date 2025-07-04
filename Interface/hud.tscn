@@ -69,7 +69,7 @@ position = Vector2(1724, 809)
 scale = Vector2(1, 0.998)
 texture_normal = ExtResource("7_rgqxt")
 texture_pressed = ExtResource("8_eumbl")
-action = "ui_jump"
+action = "ui_up"
 
 [node name="Hand" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(51, 893)
@@ -88,6 +88,7 @@ texture_pressed = ExtResource("8_eumbl")
 position = Vector2(71, 783)
 texture_normal = ExtResource("8_b0qj5")
 texture_pressed = ExtResource("9_870gb")
+action = "ui_cancel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Coco"]
 position = Vector2(51, 55)
@@ -97,6 +98,7 @@ shape = SubResource("CircleShape2D_s8lhr")
 position = Vector2(201, 963)
 texture_normal = ExtResource("8_voibu")
 texture_pressed = ExtResource("11_e8y56")
+action = "ui_accept"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Health"]
 position = Vector2(51, 49)
@@ -115,6 +117,7 @@ shape = SubResource("CircleShape2D_xl2wx")
 position = Vector2(339, 922)
 texture_normal = ExtResource("14_e8y56")
 texture_pressed = ExtResource("15_s8lhr")
+action = "ramping"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Ramp"]
 position = Vector2(50, 53)
@@ -185,3 +188,7 @@ texture = ExtResource("13_voibu")
 [node name="SeedCountLabel" type="Label" parent="HBoxContainerSeed"]
 layout_mode = 2
 text = "0"
+
+[node name="ShowMessage" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

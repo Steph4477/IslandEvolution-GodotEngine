@@ -274,7 +274,7 @@ position = Vector2(1226, 1228)
 stream = ExtResource("16_kgp0u")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1465, 1423)
+position = Vector2(702, 1437)
 
 [node name="MobilePlatForm" parent="." instance=ExtResource("16_f0kof")]
 position = Vector2(6150, 1381)
@@ -290,13 +290,13 @@ position = Vector2(4745, 830)
 position = Vector2(2284, 1357)
 
 [node name="Serpent" parent="." instance=ExtResource("17_f0kof")]
-position = Vector2(3795, 1424)
+position = Vector2(1615, 1441)
 
 [node name="Moustique" parent="." instance=ExtResource("16_cvxqb")]
 position = Vector2(4967, 1431)
 
 [node name="Toucan" parent="." instance=ExtResource("18_211dj")]
-position = Vector2(1759, 1240)
+position = Vector2(2511, 721)
 
 [node name="Seed" parent="." instance=ExtResource("15_kgp0u")]
 position = Vector2(4404, 923)
@@ -310,10 +310,12 @@ position = Vector2(3725, 547)
 [node name="Seed4" parent="." instance=ExtResource("15_kgp0u")]
 position = Vector2(2480, 817)
 
-[node name="Ramp" parent="." instance=ExtResource("19_26k7p")]
+[node name="ItemRamp" parent="." instance=ExtResource("19_26k7p")]
 position = Vector2(621, 1452)
 
-[node name="Papillon" parent="." instance=ExtResource("20_26k7p")]
+[node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1014, 1265)
 
-[node name="PapillonVarCouleur" parent="Papillon" instance=ExtResource("21_wajbs")]
+[node name="PapillonVarCouleur" parent="Node2D" instance=ExtResource("21_wajbs")]
+
+[node name="Papillon" parent="Node2D" instance=ExtResource("20_26k7p")]
