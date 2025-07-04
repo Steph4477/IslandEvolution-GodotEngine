@@ -352,7 +352,6 @@ func update_seed_display():
 func update_hud_buttons() -> void:
 	if game_state.health_bar.get_parent():
 		var hud = game_state.health_bar.get_parent()
-		can_heal = not heal_potions.is_empty()
 		if hud.has_method("update_hud_buttons"):
 			hud.update_hud_buttons(can_fire_coco, can_heal)
 
@@ -368,7 +367,7 @@ func collect_banane(amount: int = 1) -> void:
 		# 🔓 Active le bouton tactile si dispo
 		var hud = game_state.health_bar.get_parent()
 		if hud and hud.has_method("set_button_enabled"):
-			hud.set_button_enabled(hud.get_node("Gamepad/Health"), true)  # ← adapte le chemin si nécessaire
+			hud.set_button_enabled(hud.get_node("Gamepad/Health"), true) 
 	update_banane_display()
 	show_info_popup("5 jus de bananes récupérés !")
 	update_hud_buttons()

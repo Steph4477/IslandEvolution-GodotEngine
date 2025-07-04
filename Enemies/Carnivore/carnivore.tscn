@@ -5,23 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bd28sda5grtmr" path="res://Enemies/Carnivore/ouvert.png" id="2_0gcrn"]
 [ext_resource type="Texture2D" uid="uid://c0yna2rt6rynn" path="res://Enemies/Carnivore/tige_petite.png" id="3_fba38"]
 
-[sub_resource type="Animation" id="Animation_vam03"]
-resource_name = "attaque"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rotator/Mouth:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [ExtResource("1_7q224"), ExtResource("2_0gcrn")]
-}
-
 [sub_resource type="Animation" id="Animation_fba38"]
 length = 0.001
 tracks/0/type = "value"
@@ -47,6 +30,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("3_fba38")]
+}
+
+[sub_resource type="Animation" id="Animation_vam03"]
+resource_name = "attaque"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Mouth:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("1_7q224"), ExtResource("2_0gcrn")]
 }
 
 [sub_resource type="Animation" id="Animation_0gcrn"]
