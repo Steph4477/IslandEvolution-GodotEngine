@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=43 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://lvl1/lvl_1.gd" id="1_vc1ff"]
 [ext_resource type="PackedScene" uid="uid://ct7cfs6fktu4n" path="res://lvl1/Decors/tileForet.tscn" id="2_nklpm"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="17_f0kof"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="18_211dj"]
 [ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="19_26k7p"]
+[ext_resource type="PackedScene" uid="uid://ekkwdt7bcqfu" path="res://Enemies/Papillon/papillon.tscn" id="20_26k7p"]
+[ext_resource type="PackedScene" uid="uid://h801h73fxdbs" path="res://Enemies/Papillon/papillonVarCouleur.tscn" id="21_wajbs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
 size = Vector2(2.23209, 104.915)
@@ -268,6 +270,7 @@ scale = Vector2(-1, 1)
 [node name="Sound" type="Node2D" parent="."]
 
 [node name="lvl1" type="AudioStreamPlayer2D" parent="Sound"]
+position = Vector2(1226, 1228)
 stream = ExtResource("16_kgp0u")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
@@ -309,3 +312,8 @@ position = Vector2(2480, 817)
 
 [node name="Ramp" parent="." instance=ExtResource("19_26k7p")]
 position = Vector2(621, 1452)
+
+[node name="Papillon" parent="." instance=ExtResource("20_26k7p")]
+position = Vector2(1014, 1265)
+
+[node name="PapillonVarCouleur" parent="Papillon" instance=ExtResource("21_wajbs")]

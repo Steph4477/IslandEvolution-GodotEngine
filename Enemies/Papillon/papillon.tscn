@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://ekkwdt7bcqfu"]
+
+[ext_resource type="Script" uid="uid://clknygbf50kpn" path="res://Enemies/Papillon/papillon.gd" id="1_ca0hv"]
+[ext_resource type="Texture2D" uid="uid://dadhpfnm6vln8" path="res://Enemies/Papillon/papillon0.png" id="2_1toeh"]
+[ext_resource type="Texture2D" uid="uid://py1anrg7kdb" path="res://Enemies/Papillon/papillon1.png" id="3_u7law"]
+[ext_resource type="Texture2D" uid="uid://b1vscvurfbkji" path="res://Enemies/Papillon/papillon2.png" id="4_h0ase"]
+[ext_resource type="Texture2D" uid="uid://coy6rwd3bwngw" path="res://Enemies/Papillon/idle.png" id="5_jfxu4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0nwy"]
+radius = 61.0737
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1fhx"]
+radius = 79.3095
+
+[sub_resource type="Animation" id="Animation_l6bps"]
+resource_name = "flight"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_1toeh"), ExtResource("3_u7law"), ExtResource("4_h0ase"), ExtResource("2_1toeh"), ExtResource("3_u7law"), ExtResource("4_h0ase")]
+}
+
+[sub_resource type="Animation" id="Animation_d1ku1"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_jfxu4"), ExtResource("5_jfxu4")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcxtp"]
+_data = {
+&"flight": SubResource("Animation_l6bps"),
+&"idle": SubResource("Animation_d1ku1")
+}
+
+[node name="Papillon" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_ca0hv")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(30.682, 39.089)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-30.682, -68.089)
+shape = SubResource("CircleShape2D_r0nwy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -29)
+shape = SubResource("CircleShape2D_g1fhx")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-2, -1.90735e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_1toeh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kcxtp")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
