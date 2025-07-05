@@ -89,7 +89,7 @@ size = Vector2(338.527, 81.8064)
 script = ExtResource("1_vc1ff")
 
 [node name="ParalaxeCiel" parent="." instance=ExtResource("10_nklpm")]
-position = Vector2(948, -299)
+position = Vector2(4717, -653)
 scale = Vector2(3.28, 1)
 
 [node name="SunLight2D" type="DirectionalLight2D" parent="."]
