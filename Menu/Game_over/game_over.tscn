@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://k1xqojnucpwg"]
+
+[ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Menu/lancement_lvl1/menu_lvl_1.gd" id="1_qtpel"]
+[ext_resource type="Texture2D" uid="uid://4x75e7ku5u80" path="res://Menu/Game_over/decors.png" id="2_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://com6j074de3mv" path="res://Menu/Game_over/mokoSombre.png" id="4_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://c010oxwq0i74x" path="res://Menu/lancement_lvl1/cadre.png" id="4_luhk1"]
+[ext_resource type="Texture2D" uid="uid://chpyd477d7v0w" path="res://Menu/Game_over/police.png" id="5_rsbxp"]
+[ext_resource type="Texture2D" uid="uid://blqpud5molmg7" path="res://Menu/Boutons/recommencer.png" id="6_877a3"]
+[ext_resource type="Texture2D" uid="uid://cxh7gjju4kswk" path="res://Menu/Boutons/presse/recommencer.png" id="7_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://b77eaywfqp73s" path="res://Menu/Boutons/quitter.png" id="12_6ap2q"]
+[ext_resource type="Texture2D" uid="uid://bi88x75h4cs3x" path="res://Menu/Boutons/presse/quitter.png" id="13_hoxwm"]
+[ext_resource type="AudioStream" uid="uid://bwmq5rwe88mn7" path="res://sounds/dijee.wav" id="16_mut1t"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_qtpel")
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(403, 251)
+scale = Vector2(0.5, 0.521)
+
+[node name="Background" type="Node2D" parent="Background"]
+position = Vector2(1114, 552.783)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
+position = Vector2(-8, -257.198)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_jfwx8")
+
+[node name="Frame" type="Sprite2D" parent="Background/Background"]
+position = Vector2(-1.78814e-06, 1.91948)
+scale = Vector2(2.5, 2.02435)
+texture = ExtResource("4_luhk1")
+
+[node name="Moko" type="Sprite2D" parent="Background/Background"]
+position = Vector2(-102, 485.605)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_jfwx8")
+
+[node name="Police" type="Sprite2D" parent="Background/Background"]
+position = Vector2(-46, -673.704)
+texture = ExtResource("5_rsbxp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1506.0
+offset_top = 759.0
+offset_right = 2478.0
+offset_bottom = 1866.0
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+alignment = 1
+
+[node name="démarrer" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_877a3")
+texture_pressed = ExtResource("7_jfwx8")
+
+[node name="VBoxContainerOptions" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 134.0
+offset_top = 813.0
+offset_right = 1042.0
+offset_bottom = 1920.0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+alignment = 1
+
+[node name="Quitter" type="TextureButton" parent="VBoxContainerOptions"]
+layout_mode = 2
+texture_normal = ExtResource("12_6ap2q")
+texture_pressed = ExtResource("13_hoxwm")
+
+[node name="sound" type="Node2D" parent="."]
+position = Vector2(108, 237)
+scale = Vector2(2.10789, 2.42027)
+
+[node name="dijee" type="AudioStreamPlayer" parent="sound"]
+stream = ExtResource("16_mut1t")
+
+[connection signal="pressed" from="VBoxContainer/démarrer" to="." method="_on_démarrer_pressed"]
