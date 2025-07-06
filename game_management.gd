@@ -8,7 +8,7 @@ func _ready():
 
 func load_main_menu():
 	_clear_container()
-	var menu = preload("res://lvl0/lvl0.tscn").instantiate()
+	var menu = preload("res://Menu/lancement_lvl1/menu_lvl1.tscn").instantiate()
 	container.add_child(menu)
 
 func load_game():

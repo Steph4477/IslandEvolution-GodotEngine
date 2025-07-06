@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=3 uid="uid://bqmvtj8xw8p25"]
+
+[ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Menu/lancement_lvl1/menu_lvl_1.gd" id="1_rv0fi"]
+[ext_resource type="Texture2D" uid="uid://c010oxwq0i74x" path="res://Menu/lancement_lvl1/cadre.png" id="2_oo4jl"]
+[ext_resource type="Texture2D" uid="uid://b0apw11ud66gp" path="res://Enemies/Moustique/patrol1.png" id="3_uawj8"]
+[ext_resource type="Texture2D" uid="uid://deygem7pbieo7" path="res://Menu/lancement_lvl1/image.png" id="3_uw7hi"]
+[ext_resource type="Texture2D" uid="uid://dnlrs7n5ds4di" path="res://Player/2jump1.png" id="4_oo4jl"]
+[ext_resource type="Texture2D" uid="uid://bd28sda5grtmr" path="res://Enemies/Carnivore/ouvert.png" id="4_uw7hi"]
+[ext_resource type="Texture2D" uid="uid://cv1plkmedpd47" path="res://Enemies/Carnivore/tige_grande.png" id="5_1fa01"]
+[ext_resource type="Texture2D" uid="uid://5fn0wsmkcqd1" path="res://Enemies/Serpent/walk3.png" id="6_1fa01"]
+[ext_resource type="Texture2D" uid="uid://edag8b1uu3v1" path="res://Enemies/Toucan/vol1.png" id="7_yk3kc"]
+[ext_resource type="Texture2D" uid="uid://usj7b2bvsgb0" path="res://Menu/Boutons/jouer.png" id="9_ss15l"]
+[ext_resource type="Texture2D" uid="uid://cincmvfbhhfwk" path="res://Menu/Boutons/presse/jouer.png" id="10_dlb7y"]
+[ext_resource type="Texture2D" uid="uid://cgvol5subky3v" path="res://Menu/Boutons/options.png" id="11_bfns0"]
+[ext_resource type="Texture2D" uid="uid://dgbrmqosr4omm" path="res://Menu/Boutons/presse/options.png" id="12_n1ip6"]
+[ext_resource type="Texture2D" uid="uid://b77eaywfqp73s" path="res://Menu/Boutons/quitter.png" id="13_rqobp"]
+[ext_resource type="AudioStream" uid="uid://bwmq5rwe88mn7" path="res://sounds/dijee.wav" id="13_yvok6"]
+[ext_resource type="Texture2D" uid="uid://bi88x75h4cs3x" path="res://Menu/Boutons/presse/quitter.png" id="14_yvok6"]
+
+[node name="MenuLvl1" type="Node2D"]
+script = ExtResource("1_rv0fi")
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(403, 251)
+scale = Vector2(0.5, 0.521)
+
+[node name="Background" type="Node2D" parent="Background"]
+position = Vector2(1114, 552.783)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_uw7hi")
+
+[node name="Snake" type="Sprite2D" parent="Background/Background"]
+position = Vector2(-526, 765.835)
+rotation = -2.98907
+scale = Vector2(0.319684, -0.330488)
+skew = 0.0128528
+texture = ExtResource("6_1fa01")
+
+[node name="Frame" type="Sprite2D" parent="Background/Background"]
+position = Vector2(-1.78814e-06, 1.91948)
+scale = Vector2(2.5, 2.02435)
+texture = ExtResource("2_oo4jl")
+
+[node name="Mousquito" type="Sprite2D" parent="Background"]
+position = Vector2(1603.13, 298)
+scale = Vector2(0.3, 0.277)
+texture = ExtResource("3_uawj8")
+
+[node name="Carnivore" type="Node2D" parent="Background"]
+position = Vector2(1088, 750.48)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+
+[node name="Head" type="Sprite2D" parent="Background/Carnivore"]
+position = Vector2(-16.0004, -153.551)
+rotation = 0.315905
+texture = ExtResource("4_uw7hi")
+
+[node name="Stem" type="Sprite2D" parent="Background/Carnivore"]
+texture = ExtResource("5_1fa01")
+
+[node name="Moko" type="Sprite2D" parent="Background"]
+position = Vector2(1336, 1015.35)
+rotation = 0.237365
+scale = Vector2(1, 0.794)
+texture = ExtResource("4_oo4jl")
+
+[node name="Toucan" type="Sprite2D" parent="Background"]
+position = Vector2(950, 119.002)
+rotation = 0.315905
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_yk3kc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1600.0
+offset_top = 776.0
+offset_right = 2508.0
+offset_bottom = 1883.0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+alignment = 1
+
+[node name="démarrer" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_ss15l")
+texture_pressed = ExtResource("10_dlb7y")
+
+[node name="Quitter" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_rqobp")
+texture_pressed = ExtResource("14_yvok6")
+
+[node name="sound" type="Node2D" parent="."]
+position = Vector2(108, 237)
+scale = Vector2(2.10789, 2.42027)
+
+[node name="dijee" type="AudioStreamPlayer" parent="sound"]
+stream = ExtResource("13_yvok6")
+
+[node name="VBoxContainerOptions" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 134.0
+offset_top = 813.0
+offset_right = 1042.0
+offset_bottom = 1920.0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+alignment = 1
+
+[node name="Options" type="TextureButton" parent="VBoxContainerOptions"]
+layout_mode = 2
+texture_normal = ExtResource("11_bfns0")
+texture_pressed = ExtResource("12_n1ip6")
+
+[connection signal="pressed" from="VBoxContainer/démarrer" to="." method="_on_démarrer_pressed"]
