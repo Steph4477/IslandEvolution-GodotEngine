@@ -48,6 +48,11 @@ var initial_speed = speed
 var can_ramp: bool = false
 var is_ramping: bool = false
 var ramp_toggle_locked := false  #verouillage du bouton
+# Flag pour joystick
+var want_to_jump := false
+var jump_buffer_timer := 0.0
+const JUMP_BUFFER_TIME := 0.1  # 100ms de buffer
+
 
 
 func _ready():
@@ -88,68 +93,75 @@ func set_can_climbCoco(value: bool) -> void:
 
 func _physics_process(delta: float) -> void:
 	if animation_locked:
-		return  # Ignore toute physique pendant une animation verrouillée
-	
-	# Gravité ou sol
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	else:
-		velocity.y = 0
-		jump_count = 0
+		return
 
-	# --- Direction horizontale
+	# --- MAJ buffer saut
+	if jump_buffer_timer > 0.0:
+		jump_buffer_timer -= delta
+		print("⏳ Buffer actif :", jump_buffer_timer)
+
+	var on_floor := is_on_floor()
+
+	# --- Gestion du saut (clavier ou joystick avec buffer)
+	if on_floor:
+		var jump_requested := false
+
+		if Input.is_action_just_pressed("ui_up"):
+			print("⌨️ Touche saut détectée (ui_up)")
+			jump_requested = true
+		elif jump_buffer_timer > 0.0:
+			print("🕹️ Saut via BUFFER (joystick)")
+			jump_requested = true
+
+		if jump_requested:
+			velocity.y = jump_force
+			is_ramping = false
+			jump_buffer_timer = 0.0
+			print("🚀 SAUT déclenché : velocity.y =", velocity.y)
+	elif not is_climbing and not is_climbingCoco and not is_ramping:
+		velocity.y += gravity * delta
+
+	# --- Mouvement horizontal
 	var direction := Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if moving_left:
 		direction = -1
 	elif moving_right:
 		direction = 1
 	velocity.x = direction * speed
-	
-	# Flip sprite
+
+	# --- Flip sprite
 	if direction > 0:
 		$Sprite.scale.x = abs($Sprite.scale.x)
 	elif direction < 0:
 		$Sprite.scale.x = -abs($Sprite.scale.x)
 
-	# --- Détection grimpe bananier
-	if can_climb and Input.is_action_pressed("ui_up"):
-		is_climbing = true
-	elif not can_climb:
+	# --- Grimpe bananier
+	if can_climb:
+		if Input.is_action_pressed("ui_up"):
+			is_climbing = true
+	else:
 		is_climbing = false
 
-	# --- Détection grimpe cocotier
-	if can_climbCoco and Input.is_action_pressed("ui_up"):
-		is_climbingCoco = true
-	elif not can_climbCoco:
+
+	# --- Grimpe cocotier
+	if can_climbCoco:
+		if Input.is_action_pressed("ui_up"):
+			is_climbingCoco = true
+	else:
 		is_climbingCoco = false
 
-	# --- Mouvement vertical grimpe bananier
-	if is_climbing:
-		velocity.y = 0
-		if Input.is_action_pressed("ui_up"):
-			velocity.y = -climb_speed
-		elif Input.is_action_pressed("ui_down"):
-			velocity.y = climb_speed
 
-	# --- Mouvement vertical grimpe cocotier
-	if is_climbingCoco:
+
+	# --- Mouvement vertical grimpe
+	if is_climbing or is_climbingCoco:
 		velocity.y = 0
 		if Input.is_action_pressed("ui_up"):
 			velocity.y = -climb_speed
-		elif Input.is_action_pressed("ui_down"):
-			velocity.y = climb_speed
-	else:
-		# Saut double
-		if Input.is_action_just_pressed("ui_up") and jump_count < 2:
-			velocity.y = jump_force
-			jump_count += 1
-			is_ramping = false  # stop rampe si on saute
-		else:
-			if not is_ramping:
-				velocity.y += gravity * delta
+		#elif Input.is_action_pressed("ui_down"):
+			#velocity.y = climb_speed
 
 	# --- Toggle rampement clavier
-	if can_ramp and Input.is_action_pressed("ramping") and is_on_floor():
+	if can_ramp and Input.is_action_pressed("ramping") and on_floor:
 		toggle_ramping()
 
 	# --- Ramper (mouvement)
@@ -175,6 +187,8 @@ func _physics_process(delta: float) -> void:
 
 	# --- Animation
 	update_animation()
+
+
 	
 func toggle_ramping() -> void:
 	if ramp_toggle_locked or not is_on_floor():
@@ -309,9 +323,6 @@ func update_animation() -> void:
 	elif is_ramping:
 		$anim.play("idle")  # anim immobile
 		return
-	if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down"):
-		is_climbingCoco = false
-		velocity.y = 0
 	if is_climbingCoco:
 		$anim.play("climb_coco")
 		return

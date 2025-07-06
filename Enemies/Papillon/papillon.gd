@@ -62,7 +62,7 @@ func _on_land_timer_timeout():
 	if not is_flying:
 		return
 	is_landing = true
-	await wait_until_on_floor()
+	#await wait_until_on_floor()
 	is_landing = false
 	landed = true
 	is_flying = false
@@ -71,6 +71,6 @@ func _on_land_timer_timeout():
 	is_flying = true
 	change_patrol_direction()
 
-func wait_until_on_floor():
-	while not is_on_floor():
-		await get_tree().process_frame
+#func wait_until_on_floor():
+	#while not is_on_floor():
+		#await get_tree().process_frame

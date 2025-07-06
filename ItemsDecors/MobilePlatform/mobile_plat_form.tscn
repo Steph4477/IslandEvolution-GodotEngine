@@ -19,14 +19,14 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_8dj8e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(32, -50)
+position = Vector2(32, -32)
 shape = SubResource("RectangleShape2D_rfqmu")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(32, -49)
+position = Vector2(33, -32)
 shape = SubResource("RectangleShape2D_8dj8e")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

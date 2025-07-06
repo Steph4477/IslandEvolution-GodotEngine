@@ -86,3 +86,8 @@ func load_level(scene_path: String) -> void:
 	# 🕶️ FADE IN
 	if fade:
 		await fade.fade_in()
+
+func trigger_player_jump():
+	if player and "jump_buffer_timer" in player:
+		if player.jump_buffer_timer <= 0.0:
+			player.jump_buffer_timer = player.JUMP_BUFFER_TIME

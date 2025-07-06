@@ -150,7 +150,7 @@ offset_bottom = 14.0
 text = "0"
 
 [node name="Texture" type="Node2D" parent="HBoxContainerBanane"]
-position = Vector2(358, -16)
+position = Vector2(345, -25)
 scale = Vector2(0.715505, 0.715329)
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainerBanane/Texture"]
@@ -161,10 +161,10 @@ offset_bottom = -282.439
 texture = ExtResource("15_rgqxt")
 
 [node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/Texture"]
-offset_left = -1629.62
-offset_top = 1.39796
-offset_right = -605.618
-offset_bottom = 1025.4
+offset_left = 1013.27
+offset_top = -406.806
+offset_right = 2037.27
+offset_bottom = 617.194
 scale = Vector2(0.143016, 0.14321)
 fill_mode = 5
 nine_patch_stretch = true

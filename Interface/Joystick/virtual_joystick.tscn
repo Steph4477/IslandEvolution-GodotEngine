@@ -4,19 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://dqtcqbmnm1yyn" path="res://Interface/Joystick/base2.png" id="2_ub7ip"]
 [ext_resource type="Texture2D" uid="uid://d1hxr4bbw3eph" path="res://Interface/Joystick/stick2.png" id="3_bf1gu"]
 
-[node name="VirtualJoystick" type="CanvasLayer"]
+[node name="VirtualJoystick" type="Node2D"]
 scale = Vector2(0.3, 0.3)
-transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
 script = ExtResource("1_ub7ip")
 
-[node name="Root" type="Node2D" parent="."]
-
-[node name="Base" type="Sprite2D" parent="Root"]
+[node name="Base" type="Sprite2D" parent="."]
 position = Vector2(5870, 3050)
 scale = Vector2(1.35, 1.35)
 texture = ExtResource("2_ub7ip")
 
-[node name="Stick" type="Sprite2D" parent="Root"]
+[node name="Stick" type="Sprite2D" parent="."]
 position = Vector2(5863.33, 3046.67)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_bf1gu")
