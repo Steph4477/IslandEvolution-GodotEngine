@@ -1,18 +1,18 @@
 [gd_scene load_steps=11 format=3 uid="uid://k1xqojnucpwg"]
 
-[ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Menu/lancement_lvl1/menu_lvl_1.gd" id="1_qtpel"]
+[ext_resource type="Script" uid="uid://dr8albc6i3xav" path="res://Menu/Game_over/game_over.gd" id="1_jfwx8"]
 [ext_resource type="Texture2D" uid="uid://4x75e7ku5u80" path="res://Menu/Game_over/decors.png" id="2_jfwx8"]
 [ext_resource type="Texture2D" uid="uid://com6j074de3mv" path="res://Menu/Game_over/mokoSombre.png" id="4_jfwx8"]
 [ext_resource type="Texture2D" uid="uid://c010oxwq0i74x" path="res://Menu/lancement_lvl1/cadre.png" id="4_luhk1"]
 [ext_resource type="Texture2D" uid="uid://chpyd477d7v0w" path="res://Menu/Game_over/police.png" id="5_rsbxp"]
 [ext_resource type="Texture2D" uid="uid://blqpud5molmg7" path="res://Menu/Boutons/recommencer.png" id="6_877a3"]
 [ext_resource type="Texture2D" uid="uid://cxh7gjju4kswk" path="res://Menu/Boutons/presse/recommencer.png" id="7_jfwx8"]
+[ext_resource type="AudioStream" uid="uid://vykb7ek28pbp" path="res://sounds/gameover.wav" id="10_jfwx8"]
 [ext_resource type="Texture2D" uid="uid://b77eaywfqp73s" path="res://Menu/Boutons/quitter.png" id="12_6ap2q"]
 [ext_resource type="Texture2D" uid="uid://bi88x75h4cs3x" path="res://Menu/Boutons/presse/quitter.png" id="13_hoxwm"]
-[ext_resource type="AudioStream" uid="uid://bwmq5rwe88mn7" path="res://sounds/dijee.wav" id="16_mut1t"]
 
 [node name="GameOver" type="Node2D"]
-script = ExtResource("1_qtpel")
+script = ExtResource("1_jfwx8")
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(403, 251)
@@ -78,7 +78,7 @@ texture_pressed = ExtResource("13_hoxwm")
 position = Vector2(108, 237)
 scale = Vector2(2.10789, 2.42027)
 
-[node name="dijee" type="AudioStreamPlayer" parent="sound"]
-stream = ExtResource("16_mut1t")
+[node name="GameOver" type="AudioStreamPlayer" parent="sound"]
+stream = ExtResource("10_jfwx8")
 
 [connection signal="pressed" from="VBoxContainer/démarrer" to="." method="_on_démarrer_pressed"]

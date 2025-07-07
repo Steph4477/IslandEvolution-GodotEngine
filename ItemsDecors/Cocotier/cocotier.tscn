@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cev5rxsibfue3"]
+[gd_scene load_steps=4 format=3 uid="uid://cev5rxsibfue3"]
 
 [ext_resource type="Script" uid="uid://j7ave7ddv36k" path="res://ItemsDecors/Cocotier/cocotier.gd" id="1_it4j1"]
 [ext_resource type="Texture2D" uid="uid://bmmffv5w53q6y" path="res://ItemsDecors/Cocotier/cocotier.png" id="2_it4j1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
+size = Vector2(143, 540)
 
 [node name="Cocotier" type="Node2D"]
 script = ExtResource("1_it4j1")
@@ -16,10 +19,9 @@ texture = ExtResource("2_it4j1")
 [node name="Marker2D" type="Marker2D" parent="Area2D"]
 position = Vector2(-10, 184)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(83, -20)
-scale = Vector2(1.39151, 1)
-polygon = PackedVector2Array(-48.8678, 262, -19.4034, 218, -7.18644, 197, 5.37289, 119, 3.21695, 86, -0.718643, 69, -3.59322, 60, -3.59322, 50, -9.34237, 41, -14.3729, 24, -22.9966, 4, -32.339, -17, -38.8068, -32, -45.9932, -48, -53, -76, -59, -107, -62, -130, -61, -161, -59.6475, -195, -60.3661, -225, -45, -255, -40, -230, -39, -211, -40, -192, -40.9627, -172, -39.5254, -152, -39.5254, -132, -36.6508, -111, -30.9017, -86, -24.4339, -68, -15.0915, -49, -5.03051, -30, 7.90509, -5, 22.278, 25, 28.7458, 39, 37.3695, 63, 43.1186, 88, 46.7119, 106, 48.8678, 131, 48.8678, 161, 46.7119, 190, 41.6814, 216, 28.7458, 264, -18, 264)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(69.5, -26)
+shape = SubResource("RectangleShape2D_it4j1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=42 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://lvl1/lvl_1.gd" id="1_vc1ff"]
 [ext_resource type="PackedScene" uid="uid://ct7cfs6fktu4n" path="res://lvl1/Decors/tileForet.tscn" id="2_nklpm"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://skt7pf4qgqru" path="res://Loot/Cocotier_loot.tscn" id="14_211dj"]
 [ext_resource type="PackedScene" uid="uid://bufpfyqhh1s65" path="res://Loot/banane_loot.tscn" id="14_e63vn"]
 [ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/graine/seed.tscn" id="15_kgp0u"]
-[ext_resource type="PackedScene" uid="uid://cn0x2ue3ec5ba" path="res://Interface/Hud.tscn" id="15_vc1ff"]
 [ext_resource type="PackedScene" uid="uid://ygnw6ieob3r5" path="res://lvl1/Decors/porte/lvl2/PorteLvl2.tscn" id="16_211dj"]
 [ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Moustique/moustique.tscn" id="16_cvxqb"]
 [ext_resource type="PackedScene" uid="uid://c5bug2b6apnq6" path="res://ItemsDecors/MobilePlatform/mobile_plat_form.tscn" id="16_f0kof"]
@@ -88,12 +87,18 @@ size = Vector2(338.527, 81.8064)
 [node name="lvl1" type="Node2D"]
 script = ExtResource("1_vc1ff")
 
-[node name="ParalaxeCiel" parent="." instance=ExtResource("10_nklpm")]
-position = Vector2(4717, -653)
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1385, 1424)
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(3329, 1040)
+
+[node name="ParalaxeCiel" parent="Background" instance=ExtResource("10_nklpm")]
+position = Vector2(1388, -1693)
 scale = Vector2(3.28, 1)
 
-[node name="SunLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(1649, 289)
+[node name="SunLight2D" type="DirectionalLight2D" parent="Background"]
+position = Vector2(-1680, -751)
 rotation = 0.785398
 scale = Vector2(1.5, 1.5)
 color = Color(1, 0.952941, 0.682353, 1)
@@ -104,163 +109,222 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 4.0
 
-[node name="Foret" parent="." instance=ExtResource("2_nklpm")]
+[node name="Forest" parent="Background" instance=ExtResource("2_nklpm")]
+position = Vector2(-3329, -1040)
 
-[node name="pique3" parent="." instance=ExtResource("5_am3co")]
+[node name="Arrows" type="Node2D" parent="."]
 position = Vector2(3068, 1446)
 scale = Vector2(0.635458, 0.141613)
 
-[node name="pique2" parent="." instance=ExtResource("5_am3co")]
-position = Vector2(1891, 1445)
-rotation = -3.14159
-scale = Vector2(0.25289, -0.145842)
+[node name="Arrow1" parent="Arrows" instance=ExtResource("5_am3co")]
+scale = Vector2(1, 1)
 
-[node name="Platforms2" parent="." instance=ExtResource("3_dvpsw")]
+[node name="Arrow2" parent="Arrows" instance=ExtResource("5_am3co")]
+position = Vector2(-1852.21, -7.06152)
+rotation = -3.14158
+scale = Vector2(0.397965, -1.02986)
+skew = -1.0848e-05
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="PlatformsMobile" parent="Platforms" instance=ExtResource("3_dvpsw")]
 position = Vector2(825, 369)
 
-[node name="Tree" type="Node2D" parent="."]
-position = Vector2(6150, 1381)
-
-[node name="Platforms" type="StaticBody2D" parent="."]
+[node name="Platforms" type="StaticBody2D" parent="Platforms"]
 position = Vector2(736, -1804)
 scale = Vector2(0.089149, 0.144557)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(14393.9, 21967.1)
 rotation = -3.14159
 scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_wajbs")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(29972.3, 23700)
 scale = Vector2(283.803, 14.7983)
 shape = SubResource("RectangleShape2D_dvpsw")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(23148.9, 18165.8)
 scale = Vector2(217.988, 8.30556)
 shape = SubResource("RectangleShape2D_am3co")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(14393.8, 21099.5)
 scale = Vector2(992.862, 8.2334)
 shape = SubResource("RectangleShape2D_ofnsq")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(22916.7, 19646.2)
 scale = Vector2(401.261, 7.01483)
 shape = SubResource("RectangleShape2D_e63vn")
 
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(33617.9, 16747.7)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_vc1ff")
 
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(11326, 21866.8)
 scale = Vector2(300.999, -7.56021)
 shape = SubResource("RectangleShape2D_kgp0u")
 
-[node name="CollisionShape2D20" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(37709, 18227.8)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_lr8k6")
 
-[node name="CollisionShape2D21" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(20090, 20144.3)
 scale = Vector2(282.291, 10.4812)
 shape = SubResource("RectangleShape2D_f0kof")
 
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(43261.6, 38396.5)
 rotation = -3.14159
 scale = Vector2(3830.86, -10.1847)
 shape = SubResource("RectangleShape2D_211dj")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(-9121.61, 17731.5)
 scale = Vector2(123.511, -685.622)
 shape = SubResource("RectangleShape2D_t3xnj")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(78082.8, 17930.6)
 rotation = -3.14159
 scale = Vector2(144.607, 694.703)
 shape = SubResource("RectangleShape2D_t3xnj")
 
-[node name="CollisionShape2D30" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D30" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(27055.8, 16865.3)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_cvxqb")
 
-[node name="CollisionShape2D31" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D31" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(16598.1, 19694.7)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_26k7p")
 
-[node name="CollisionShape2D23" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D23" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(20086.6, 21444.6)
 scale = Vector2(282.291, 10.4812)
 shape = SubResource("RectangleShape2D_myamh")
 
-[node name="CollisionShape2D24" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D24" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(23036.7, 20148.3)
 scale = Vector2(282.291, 10.4812)
 shape = SubResource("RectangleShape2D_0og2l")
 
-[node name="CollisionShape2D26" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D26" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(23023.2, 21655.8)
 scale = Vector2(282.291, 10.4812)
 shape = SubResource("RectangleShape2D_kcd4a")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(19920.1, 18477.1)
 rotation = -3.14159
 scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_uhs03")
 
-[node name="CollisionShape2D25" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D25" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(41526, 19179.3)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_avxqp")
 
-[node name="CollisionShape2D27" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D27" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(41621.3, 21479.4)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_mlm52")
 
-[node name="CollisionShape2D28" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D28" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(41576, 22375.2)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_0804m")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(34526.5, 12562.5)
 scale = Vector2(283.803, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
-[node name="Cocotier" parent="." instance=ExtResource("13_f0kof")]
-position = Vector2(866, 1257)
+[node name="MobilePlatForm1" parent="Platforms" instance=ExtResource("16_f0kof")]
+position = Vector2(5590, 1437)
+speed = 200.0
+direction = 1
 
-[node name="CocoLoot" parent="." instance=ExtResource("14_211dj")]
-position = Vector2(922, 1011)
+[node name="MobilePlatForm2" parent="Platforms" instance=ExtResource("16_f0kof")]
+position = Vector2(4702, 1114)
+speed = 300.0
+distance = 1800.0
 
-[node name="Bananier" parent="." instance=ExtResource("13_ofnsq")]
-position = Vector2(3978, 1264)
+[node name="Trees" type="Node2D" parent="."]
+position = Vector2(6150, 1381)
 
-[node name="BananeLoot" parent="." instance=ExtResource("14_e63vn")]
-position = Vector2(4044, 1220)
+[node name="Coconut1" parent="Trees" instance=ExtResource("13_f0kof")]
+position = Vector2(-5284, -124)
 
-[node name="Hud" parent="." instance=ExtResource("15_vc1ff")]
+[node name="Coconut2" parent="Trees" instance=ExtResource("13_f0kof")]
+position = Vector2(-784, -111)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
-[node name="Cocotier2" parent="." instance=ExtResource("13_f0kof")]
-position = Vector2(5366, 1270)
-scale = Vector2(-1, 1)
+[node name="BananaTree" parent="Trees" instance=ExtResource("13_ofnsq")]
+position = Vector2(-2172, -117)
 
-[node name="CocoLoot2" parent="." instance=ExtResource("14_211dj")]
-position = Vector2(5316, 1048)
-scale = Vector2(-1, 1)
+[node name="Loot" type="Node2D" parent="Trees"]
+
+[node name="CocoLoot1" parent="Trees/Loot" instance=ExtResource("14_211dj")]
+position = Vector2(-4821, 107)
+
+[node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("14_211dj")]
+position = Vector2(-834, -333)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
+position = Vector2(-4942, 117)
+
+[node name="Wildlife" type="Node2D" parent="."]
+position = Vector2(3329, 1040)
+
+[node name="Snake" parent="Wildlife" instance=ExtResource("17_f0kof")]
+position = Vector2(238, 363)
+
+[node name="Mousquito" parent="Wildlife" instance=ExtResource("16_cvxqb")]
+position = Vector2(3068, 349)
+
+[node name="Toucan" parent="Wildlife" instance=ExtResource("18_211dj")]
+position = Vector2(1649, 69)
+
+[node name="ButterflyColor" parent="Wildlife" instance=ExtResource("21_wajbs")]
+position = Vector2(-1753, 190)
+
+[node name="Carnivore" parent="Wildlife" instance=ExtResource("14_26k7p")]
+position = Vector2(-1044, 317)
+
+[node name="Butterfly" parent="Wildlife" instance=ExtResource("20_26k7p")]
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="ItemRamp" parent="Items" instance=ExtResource("19_26k7p")]
+position = Vector2(944, 1464)
+
+[node name="Seeds" type="Node2D" parent="Items"]
+position = Vector2(1014, 1265)
+
+[node name="Seed1" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
+position = Vector2(3390, -342)
+
+[node name="Seed2" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
+position = Vector2(1004, -61)
+
+[node name="Seed3" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
+position = Vector2(61, 210)
+
+[node name="Seed4" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
+position = Vector2(1793, -500)
 
 [node name="Sound" type="Node2D" parent="."]
 
@@ -268,54 +332,5 @@ scale = Vector2(-1, 1)
 position = Vector2(1226, 1228)
 stream = ExtResource("16_kgp0u")
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(702, 1437)
-
-[node name="MobilePlatForm" parent="." instance=ExtResource("16_f0kof")]
-position = Vector2(5590, 1437)
-speed = 200.0
-direction = 1
-
-[node name="PorteLvl2" parent="." instance=ExtResource("16_211dj")]
+[node name="Exit" parent="." instance=ExtResource("16_211dj")]
 position = Vector2(7137, 1319)
-
-[node name="MobilePlatForm2" parent="." instance=ExtResource("16_f0kof")]
-position = Vector2(4702, 1114)
-speed = 300.0
-distance = 1800.0
-
-[node name="Carnivore" parent="." instance=ExtResource("14_26k7p")]
-position = Vector2(2285, 1357)
-
-[node name="Serpent" parent="." instance=ExtResource("17_f0kof")]
-position = Vector2(3762, 1409)
-
-[node name="Moustique" parent="." instance=ExtResource("16_cvxqb")]
-position = Vector2(6397, 1389)
-
-[node name="Toucan" parent="." instance=ExtResource("18_211dj")]
-position = Vector2(4978, 1109)
-
-[node name="Seed" parent="." instance=ExtResource("15_kgp0u")]
-position = Vector2(4404, 923)
-
-[node name="Seed2" parent="." instance=ExtResource("15_kgp0u")]
-position = Vector2(2018, 1204)
-
-[node name="Seed3" parent="." instance=ExtResource("15_kgp0u")]
-position = Vector2(3725, 547)
-
-[node name="Seed4" parent="." instance=ExtResource("15_kgp0u")]
-position = Vector2(2807, 765)
-
-[node name="ItemRamp" parent="." instance=ExtResource("19_26k7p")]
-position = Vector2(6574, 1070)
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(1014, 1265)
-
-[node name="PapillonVarCouleur" parent="Node2D" instance=ExtResource("21_wajbs")]
-position = Vector2(562, -35)
-
-[node name="Papillon" parent="Node2D" instance=ExtResource("20_26k7p")]
-position = Vector2(2315, -225)

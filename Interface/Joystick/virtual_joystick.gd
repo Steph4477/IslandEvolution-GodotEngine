@@ -76,7 +76,6 @@ func _emit_actions(dir: Vector2):
 	# SAUT : seulement si fort vers le haut et pas déjà sauté ni en grimpe
 	if dir.y < -0.8 and not climbing and not jump_triggered:
 		if gs and gs.has_method("trigger_player_jump"):
-			print("📡 joystick vers le haut -> trigger_player_jump()")
 			gs.trigger_player_jump()
 			jump_triggered = true
 	elif dir.y > -0.6:

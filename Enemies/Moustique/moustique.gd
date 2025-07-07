@@ -124,7 +124,7 @@ func die() -> void:
 
 
 func find_and_bind_player():
-	var gs = get_node_or_null("/root/GameManagement/SceneContainer/GameState")
+	var gs = get_node_or_null("/root/GameState")
 	if gs:
 		player = gs.player
 		gs.connect("player_updated", Callable(self, "_on_player_changed"))

@@ -18,6 +18,6 @@ func _on_body_entered(body):
 
 func change_scene():
 	await get_tree().create_timer(0.2).timeout
-	var game_state = get_node_or_null("/root/GameManagement/SceneContainer/GameState")
+	var game_state = get_node_or_null("/root/GameState")
 	if game_state:
 		game_state.load_level(next_scene_path)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Island Evolution"
-run/main_scene="uid://bcaycqs7plt88"
+run/main_scene="uid://dpinh6jd3lvfu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

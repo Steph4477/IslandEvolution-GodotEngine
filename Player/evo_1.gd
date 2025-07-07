@@ -6,11 +6,11 @@ extends CharacterBody2D
 @export var gravity = 1200
 @export var pv = max_pv 
 @export var cooldown_popo = 10
-@onready var banane_label = get_node("../Hud/HBoxContainerBanane/Label/BananeCountLabel")
-@onready var coco_label = get_node("../Hud/HBoxContainerCoco/CocoCountLabel")
-@onready var seed_label = get_node("../Hud/HBoxContainerSeed/SeedCountLabel")
 
-
+# Labels du HUD (assignés dynamiquement dans set_game_state)
+var banane_label: Label
+var coco_label: Label
+var seed_label: Label
 # Initialisation des variables du GameState
 var game_state
 # Tir désactivé au début
@@ -48,20 +48,35 @@ var initial_speed = speed
 var can_ramp: bool = false
 var is_ramping: bool = false
 var ramp_toggle_locked := false  #verouillage du bouton
+# Mort
+var is_dead := false
 # Flag pour joystick
 var want_to_jump := false
 var jump_buffer_timer := 0.0
 const JUMP_BUFFER_TIME := 0.1  # 100ms de buffer
-
+# Invincibilité temporaire après respawn
+var can_be_damaged := true  # Invincibilité temporaire après respawn
 
 
 func _ready():
 	$Camera2D.make_current()
-	await get_tree().process_frame  # attendre que tout soit bien en place
-	game_state = get_node_or_null("/root/GameManagement/SceneContainer/GameState")
+	await get_tree().process_frame
+
+	game_state = get_node_or_null("/root/GameState")
+	if game_state == null:
+		return
+
 	set_game_state(game_state)
-	game_state.health_bar.set_max_value(max_pv)
-	game_state.health_bar.set_value(pv)
+
+	var hud = game_state.health_bar
+	if hud == null:
+		return
+
+	var hp_bar_path := "HealthBar/TextureProgressBar"
+	if hud.has_node(hp_bar_path):
+		var hp_bar = hud.get_node(hp_bar_path)
+		hp_bar.max_value = max_pv
+		hp_bar.value = pv
 
 
 func set_game_state(gs):
@@ -71,11 +86,16 @@ func set_game_state(gs):
 	seed_count = game_state.seed_count
 	can_fire_coco = game_state.can_fire_coco
 	
-	# Update du Hud
+	# 💡 Récupération dynamique des labels du HUD
+	if game_state.hud:
+		var hud = game_state.hud
+		banane_label = hud.get_node("HBoxContainerBanane/Label/BananeCountLabel")
+		coco_label = hud.get_node("HBoxContainerCoco/CocoCountLabel")
+		seed_label = hud.get_node("HBoxContainerSeed/SeedCountLabel")
+
 	update_banane_display()
 	update_coco_display()
 	update_seed_display()
-	# Update du game State
 	game_state.set_player(self)
 
 
@@ -98,7 +118,6 @@ func _physics_process(delta: float) -> void:
 	# --- MAJ buffer saut
 	if jump_buffer_timer > 0.0:
 		jump_buffer_timer -= delta
-		print("⏳ Buffer actif :", jump_buffer_timer)
 
 	var on_floor := is_on_floor()
 
@@ -107,10 +126,8 @@ func _physics_process(delta: float) -> void:
 		var jump_requested := false
 
 		if Input.is_action_just_pressed("ui_up"):
-			print("⌨️ Touche saut détectée (ui_up)")
 			jump_requested = true
 		elif jump_buffer_timer > 0.0:
-			print("🕹️ Saut via BUFFER (joystick)")
 			jump_requested = true
 
 		if jump_requested:
@@ -142,15 +159,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		is_climbing = false
 
-
 	# --- Grimpe cocotier
 	if can_climbCoco:
 		if Input.is_action_pressed("ui_up"):
 			is_climbingCoco = true
 	else:
 		is_climbingCoco = false
-
-
 
 	# --- Mouvement vertical grimpe
 	if is_climbing or is_climbingCoco:
@@ -189,7 +203,6 @@ func _physics_process(delta: float) -> void:
 	update_animation()
 
 
-	
 func toggle_ramping() -> void:
 	if ramp_toggle_locked or not is_on_floor():
 		return
@@ -287,6 +300,7 @@ func start_ramping():
 	if not is_ramping:
 		is_ramping = true
 
+
 func stop_ramping():
 	if is_ramping:
 		is_ramping = false
@@ -309,6 +323,7 @@ func apply_gaz_effect():
 		is_gazed = false
 		timer.queue_free()
 	)
+
 
 func update_animation() -> void:
 	if animation_locked:
@@ -342,16 +357,26 @@ func update_animation() -> void:
 
 
 func on_hit(damage: int) -> void:
+	if is_dead:
+		return
+	if not can_be_damaged:
+		return
+
 	pv -= damage
 	pv = clamp(pv, 0, max_pv)
+
 	game_state.health_bar.set_value(pv)
 	show_damage_popup(damage)
 	update_can_heal()
 
 	var hud = game_state.health_bar.get_parent()
-	if hud and hud.has_method("set_button_enabled"):
+	if hud.has_method("set_button_enabled"):
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
-	print("PV après coup :", pv)
+
+	if pv <= 0:
+		is_dead = true
+		die()
+
 
 func show_damage_popup(amount: int) -> void:
 	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()
@@ -371,8 +396,19 @@ func show_info_popup(text: String) -> void:
 
 
 func die() -> void:
-	print("☠️ Le joueur est mort !")
-	get_tree().reload_current_scene()
+	if game_state:
+		game_state.lose_life()
+
+		if game_state.hud.has_method("update_lives_display"):
+			game_state.hud.update_lives_display(game_state.lives)
+
+		if game_state.is_game_over():
+			game_state.load_level("res://Menu/Game_over/game_over.tscn")
+		else:
+			game_state.load_level(game_state.current_level_path)
+
+	await get_tree().process_frame
+	is_dead = false
 
 
 # Mise à jour du HUD
@@ -437,11 +473,13 @@ func collect_seed(amount: int = 1) -> void:
 	update_seed_display()
 	print("Graines collectées :", seed_count)
 
+
 # ralentissement (toile mygale)
 func apply_web_effect():
 	speed *= 0.5
 	await get_tree().create_timer(10.0).timeout
 	speed *= 2  # ou remets la valeur initiale
+
 
 # Tir
 func Shoot() -> void:
@@ -451,20 +489,18 @@ func Shoot() -> void:
 		direction = -1
 	else:
 		direction = 1
+	
 	# config touche tir de coco (ui_cancel)
 	if Input.is_action_just_pressed("ui_cancel") and can_fire_coco:
 		if coco_count > 0:
 			coco_count -= 1
 			update_coco_display()
-
 			if game_state:
 				game_state.coco_count = coco_count
-
 			var coco_spell = spellCoco.instantiate()
 			var spawn_pos = get_node("TurnAxis/CastPoint").get_global_position()
 			coco_spell.start(spawn_pos, direction)
 			get_tree().current_scene.add_child(coco_spell)
-
 			await get_tree().create_timer(rate_of_fire).timeout
 			can_fire_coco = true
 
@@ -481,8 +517,42 @@ func Shoot() -> void:
 		update_can_heal()
 
 
-# reset des animations à chaque changements de lvl (geré dans le GameState)
 func reset_state() -> void:
 	animation_locked = false
+	is_dead = false
+	can_be_damaged = false
+	visible = true
+	pv = max_pv
 	set_physics_process(true)
-	$anim.stop()
+
+	# Réinitialise les loots
+	heal_potions.clear()
+	banane_count = 0
+	coco_count = 0
+	seed_count = 0
+	can_fire_coco = false
+
+	# Met à jour le GameState
+	if game_state:
+		game_state.banane_count = 0
+		game_state.coco_count = 0
+		game_state.seed_count = 0
+		game_state.can_fire_coco = false
+
+		# ✅ Met à jour la barre de vie si elle existe
+		if game_state.health_bar:
+			game_state.health_bar.set_max_value(max_pv)
+			game_state.health_bar.set_value(pv)
+
+		# ✅ Met à jour le HUD (vies affichées)
+		if game_state.hud and game_state.hud.has_method("update_lives_display"):
+			game_state.hud.update_lives_display(game_state.lives)
+
+	# Met à jour le reste
+	update_banane_display()
+	update_coco_display()
+	update_seed_display()
+	update_can_heal()
+
+	await get_tree().create_timer(0.3).timeout
+	can_be_damaged = true
