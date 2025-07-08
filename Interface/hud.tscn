@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://biso5f1hetash"]
+[gd_scene load_steps=26 format=3 uid="uid://b35r7f8nenxr0"]
 
-[ext_resource type="Script" uid="uid://bklbf0qd883hl" path="res://Interface/hud.gd" id="1_0b1lv"]
+[ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://c6hphiwx7bure" path="res://Interface/Hud/cadre.png" id="2_eumbl"]
 [ext_resource type="PackedScene" uid="uid://dl764ckbcmvqy" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://cjaj0h8pyyckt" path="res://Interface/gamePad/Tir.png" id="6_rgqxt"]
@@ -35,7 +35,7 @@ radius = 42.0476
 radius = 41.0122
 
 [node name="Hud" type="CanvasLayer"]
-script = ExtResource("1_0b1lv")
+script = ExtResource("1_s8lhr")
 
 [node name="VirtualJoystick" parent="." instance=ExtResource("2_s8lhr")]
 
@@ -143,10 +143,10 @@ layout_mode = 2
 text = "0"
 
 [node name="HBoxContainerSeed" type="HBoxContainer" parent="."]
-offset_left = 1711.0
-offset_top = 53.0
-offset_right = 1848.0
-offset_bottom = 159.0
+offset_left = 1667.0
+offset_top = 45.0
+offset_right = 1804.0
+offset_bottom = 151.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainerSeed"]
 layout_mode = 2

@@ -11,17 +11,18 @@ extends CanvasLayer
 
 func _ready():
 	var game_state = get_node_or_null("/root/GameState")
-	if game_state:
-		game_state.hud = self  # référence pour les vies
+	game_state.hud = self
+
 	update_lives_display(game_state.lives)
 
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(coco_button, false)
 	set_button_enabled(spear_button, false)
 	set_button_enabled(health_button, false)
+	
 
 func update_lives_display(lives: int) -> void:
-	if not life_sprites or life_sprites.is_empty():
+	if not life_sprites.is_empty():
 		life_sprites = $HBoxContainerLive.get_children()
 	for i in range(life_sprites.size()):
 		life_sprites[i].visible = i < lives
@@ -51,4 +52,11 @@ func set_coco_button_enabled(enabled: bool) -> void:
 
 func set_heal_button_enabled(enabled: bool) -> void:
 	set_button_enabled(health_button, enabled)
-	
+
+func update_seed_display(collected: int, total: int) -> void:
+	var label = $HBoxContainerSeed/SeedCountLabel
+	if total > 0:
+		var percent = int(round(float(collected) / float(total) * 100))
+		label.text = "%d / %d (%d%%)" % [collected, total, percent]
+	else:
+		label.text = "0 / 0 (0%)"

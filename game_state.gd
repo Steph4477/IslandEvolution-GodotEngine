@@ -32,8 +32,15 @@ var collected_seeds := 0
 signal all_seeds_collected
 signal player_updated(new_player)
 
+# collect de la clés! 
+var has_key = false
+var current_level: Node = null
+
+signal key_collected
+
+
 func _ready():
-	print("🟢 GameState actif")
+	print("📦 [GameState] Initialisé")
 	player = player_scene.instantiate()
 	set_player(player)
 
@@ -41,6 +48,11 @@ func _ready():
 	add_child(fade)
 
 	hud = hud_scene.instantiate()
+
+	# ✅ Vérifie et force le bon script si besoin
+	if not hud.has_method("update_seed_display"):
+		print("⚠️ HUD sans méthode update_seed_display – tentative de réassigner le script manuellement")
+		hud.set_script(load("res://Interface/hud.gd"))
 	add_child(hud)
 
 	# HealthBar séparée dans HUD
@@ -51,7 +63,6 @@ func _ready():
 
 func set_player(p: Node) -> void:
 	player = p
-	print("✅ Joueur enregistré dans GameState :", player)
 	emit_signal("player_updated", p)
 
 func load_level(scene_path: String) -> void:
@@ -81,10 +92,12 @@ func load_level(scene_path: String) -> void:
 			child.queue_free()
 
 	await get_tree().process_frame
-
+	
 	# ✅ Chargement sécurisé
 	var scene_res = load(scene_path)
 	var level = scene_res.instantiate()
+	current_level = level
+
 	add_child(level)
 	await get_tree().process_frame
 
@@ -128,6 +141,7 @@ func restart_game():
 	coco_count = 0
 	seed_count = 0
 	can_fire_coco = false
+	has_key = false
 
 	# ✅ Recharge le dernier niveau valide uniquement
 	if current_level_path == "" or current_level_path.contains("game_over"):

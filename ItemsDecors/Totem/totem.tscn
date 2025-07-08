@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6y25h2tqe3bh"]
+
+[ext_resource type="Script" uid="uid://d3pumlcq6ui8l" path="res://ItemsDecors/Totem/totem.gd" id="1_4w81w"]
+[ext_resource type="Texture2D" uid="uid://c8qju48ej8i17" path="res://ItemsDecors/Totem/totem1.png" id="2_7x43p"]
+[ext_resource type="PackedScene" uid="uid://sl4esxgcnmc2" path="res://Loot/clés/key.tscn" id="2_31wvm"]
+[ext_resource type="Texture2D" uid="uid://doy4if78opan5" path="res://ItemsDecors/Totem/totem2.png" id="3_5qhso"]
+[ext_resource type="Texture2D" uid="uid://bjjkyycqkvdn3" path="res://ItemsDecors/Totem/totem5.png" id="4_5qhso"]
+[ext_resource type="Texture2D" uid="uid://bhc0103e2wldh" path="res://ItemsDecors/Totem/totem3.png" id="4_31wvm"]
+[ext_resource type="Texture2D" uid="uid://brave6rytogsw" path="res://ItemsDecors/Totem/totem4.png" id="5_66g6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3a4u"]
+size = Vector2(2.68996, 11.4054)
+
+[node name="Totem" type="Node2D"]
+script = ExtResource("1_4w81w")
+key_scene = ExtResource("2_31wvm")
+
+[node name="Stage" type="Sprite2D" parent="."]
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_7x43p")
+
+[node name="Stage1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5qhso")
+
+[node name="Stage2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_5qhso")
+
+[node name="Stage3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_31wvm")
+
+[node name="Stage4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_66g6m")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-34, -35)
+rotation = -3.14159
+scale = Vector2(16.1713, -4.03317)
+shape = SubResource("RectangleShape2D_b3a4u")
+
+[node name="KeySpawn" type="Marker2D" parent="."]
+position = Vector2(-38, -35)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

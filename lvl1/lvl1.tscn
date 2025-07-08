@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=44 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://lvl1/lvl_1.gd" id="1_vc1ff"]
 [ext_resource type="PackedScene" uid="uid://ct7cfs6fktu4n" path="res://lvl1/Decors/tileForet.tscn" id="2_nklpm"]
@@ -11,15 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://skt7pf4qgqru" path="res://Loot/Cocotier_loot.tscn" id="14_211dj"]
 [ext_resource type="PackedScene" uid="uid://bufpfyqhh1s65" path="res://Loot/banane_loot.tscn" id="14_e63vn"]
 [ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/graine/seed.tscn" id="15_kgp0u"]
-[ext_resource type="PackedScene" uid="uid://ygnw6ieob3r5" path="res://lvl1/Decors/porte/lvl2/PorteLvl2.tscn" id="16_211dj"]
 [ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Moustique/moustique.tscn" id="16_cvxqb"]
 [ext_resource type="PackedScene" uid="uid://c5bug2b6apnq6" path="res://ItemsDecors/MobilePlatform/mobile_plat_form.tscn" id="16_f0kof"]
 [ext_resource type="AudioStream" uid="uid://bqpsj12o61ss0" path="res://sounds/lvl1.mp3" id="16_kgp0u"]
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="17_f0kof"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="18_211dj"]
+[ext_resource type="Script" uid="uid://o41uset6a6qr" path="res://lvl1/seeds.gd" id="18_myamh"]
 [ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="19_26k7p"]
 [ext_resource type="PackedScene" uid="uid://ekkwdt7bcqfu" path="res://Enemies/Papillon/papillon.tscn" id="20_26k7p"]
+[ext_resource type="PackedScene" uid="uid://b6y25h2tqe3bh" path="res://ItemsDecors/Totem/totem.tscn" id="21_lr8k6"]
 [ext_resource type="PackedScene" uid="uid://h801h73fxdbs" path="res://Enemies/Papillon/papillonVarCouleur.tscn" id="21_wajbs"]
+[ext_resource type="PackedScene" uid="uid://cqgah4py8x2ry" path="res://lvl1/Decors/porte/lvl2/Exit.tscn" id="23_myamh"]
+[ext_resource type="PackedScene" uid="uid://c4ed8cr5fgetb" path="res://Interface/Quetes/quest_box.tscn" id="24_0og2l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
 size = Vector2(2.23209, 104.915)
@@ -28,25 +31,22 @@ size = Vector2(2.23209, 104.915)
 size = Vector2(331.729, 107.527)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am3co"]
-size = Vector2(6.79244, 32.0992)
+size = Vector2(5.66036, 32.0992)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofnsq"]
 size = Vector2(1.5478, 35.4137)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e63vn"]
-size = Vector2(6.66899, 36.4877)
+size = Vector2(5.98233, 36.4877)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vc1ff"]
-size = Vector2(6.01243, 25.4167)
+size = Vector2(5.43134, 25.4167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgp0u"]
 size = Vector2(4.39744, 32.0253)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lr8k6"]
-size = Vector2(5.95995, 21.0509)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0kof"]
-size = Vector2(5.56307, 33.0004)
+size = Vector2(5.39862, 21.0509)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_211dj"]
 size = Vector2(28.035, 77.2322)
@@ -55,13 +55,10 @@ size = Vector2(28.035, 77.2322)
 size = Vector2(5.35557, 67.7681)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvxqb"]
-size = Vector2(6.31568, 26.5216)
+size = Vector2(5.35568, 26.5216)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26k7p"]
-size = Vector2(5.35569, 27.6266)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_myamh"]
-size = Vector2(3.09942, 240.293)
+size = Vector2(5.35569, 21.5524)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0og2l"]
 size = Vector2(7.2582, 97.1215)
@@ -73,7 +70,7 @@ size = Vector2(3.43382, 201.303)
 size = Vector2(5.00002, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avxqp"]
-size = Vector2(11.1156, 20.4457)
+size = Vector2(9.65034, 20.4457)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlm52"]
 size = Vector2(14.3997, 61.8802)
@@ -84,17 +81,20 @@ size = Vector2(20.1556, 79.0103)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmo30"]
 size = Vector2(338.527, 81.8064)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myamh"]
+size = Vector2(5.4567, 20)
+
 [node name="lvl1" type="Node2D"]
 script = ExtResource("1_vc1ff")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1385, 1424)
+position = Vector2(482, 1362)
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
 
 [node name="ParalaxeCiel" parent="Background" instance=ExtResource("10_nklpm")]
-position = Vector2(1388, -1693)
+position = Vector2(1176, -1648)
 scale = Vector2(3.28, 1)
 
 [node name="SunLight2D" type="DirectionalLight2D" parent="Background"]
@@ -147,7 +147,7 @@ scale = Vector2(283.803, 14.7983)
 shape = SubResource("RectangleShape2D_dvpsw")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(23148.9, 18165.8)
+position = Vector2(23129.8, 18165.8)
 scale = Vector2(217.988, 8.30556)
 shape = SubResource("RectangleShape2D_am3co")
 
@@ -157,12 +157,12 @@ scale = Vector2(992.862, 8.2334)
 shape = SubResource("RectangleShape2D_ofnsq")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(22916.7, 19646.2)
+position = Vector2(22961.6, 19646.2)
 scale = Vector2(401.261, 7.01483)
 shape = SubResource("RectangleShape2D_e63vn")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(33617.9, 16747.7)
+position = Vector2(33553.4, 16747.7)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_vc1ff")
 
@@ -172,14 +172,9 @@ scale = Vector2(300.999, -7.56021)
 shape = SubResource("RectangleShape2D_kgp0u")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(37709, 18227.8)
+position = Vector2(37667.3, 18297.3)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_lr8k6")
-
-[node name="CollisionShape2D21" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(20090, 20144.3)
-scale = Vector2(282.291, 10.4812)
-shape = SubResource("RectangleShape2D_f0kof")
 
 [node name="CollisionShape2D22" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(43261.6, 38396.5)
@@ -193,25 +188,20 @@ scale = Vector2(123.511, -685.622)
 shape = SubResource("RectangleShape2D_t3xnj")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(78082.8, 17930.6)
+position = Vector2(77185.4, 17854.5)
 rotation = -3.14159
 scale = Vector2(144.607, 694.703)
 shape = SubResource("RectangleShape2D_t3xnj")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(27055.8, 16865.3)
+position = Vector2(27067, 16865.3)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_cvxqb")
 
 [node name="CollisionShape2D31" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(16598.1, 19694.7)
+position = Vector2(16598.1, 19732.7)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_26k7p")
-
-[node name="CollisionShape2D23" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(20086.6, 21444.6)
-scale = Vector2(282.291, 10.4812)
-shape = SubResource("RectangleShape2D_myamh")
 
 [node name="CollisionShape2D24" type="CollisionShape2D" parent="Platforms/Platforms"]
 position = Vector2(23036.7, 20148.3)
@@ -230,7 +220,7 @@ scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_uhs03")
 
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(41526, 19179.3)
+position = Vector2(41526, 19265.8)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_avxqp")
 
@@ -249,13 +239,18 @@ position = Vector2(34526.5, 12562.5)
 scale = Vector2(283.803, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
+[node name="CollisionShape2D29" type="CollisionShape2D" parent="Platforms/Platforms"]
+position = Vector2(65362.5, 20338)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_myamh")
+
 [node name="MobilePlatForm1" parent="Platforms" instance=ExtResource("16_f0kof")]
-position = Vector2(5590, 1437)
+position = Vector2(6345, 1418)
 speed = 200.0
 direction = 1
 
 [node name="MobilePlatForm2" parent="Platforms" instance=ExtResource("16_f0kof")]
-position = Vector2(4702, 1114)
+position = Vector2(4701, 1104)
 speed = 300.0
 distance = 1800.0
 
@@ -274,57 +269,69 @@ scale = Vector2(1, -1)
 position = Vector2(-2172, -117)
 
 [node name="Loot" type="Node2D" parent="Trees"]
+position = Vector2(-360, -73)
 
 [node name="CocoLoot1" parent="Trees/Loot" instance=ExtResource("14_211dj")]
-position = Vector2(-4821, 107)
+position = Vector2(-4862, -296)
 
 [node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("14_211dj")]
-position = Vector2(-834, -333)
+position = Vector2(-483, -287)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
-position = Vector2(-4942, 117)
+position = Vector2(-1748, -89)
 
 [node name="Wildlife" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
 
 [node name="Snake" parent="Wildlife" instance=ExtResource("17_f0kof")]
-position = Vector2(238, 363)
+position = Vector2(232, 387)
 
 [node name="Mousquito" parent="Wildlife" instance=ExtResource("16_cvxqb")]
-position = Vector2(3068, 349)
+position = Vector2(3004, 284)
 
 [node name="Toucan" parent="Wildlife" instance=ExtResource("18_211dj")]
-position = Vector2(1649, 69)
+position = Vector2(487, -159)
 
 [node name="ButterflyColor" parent="Wildlife" instance=ExtResource("21_wajbs")]
 position = Vector2(-1753, 190)
 
 [node name="Carnivore" parent="Wildlife" instance=ExtResource("14_26k7p")]
-position = Vector2(-1044, 317)
+position = Vector2(-1063, 356)
 
 [node name="Butterfly" parent="Wildlife" instance=ExtResource("20_26k7p")]
+
+[node name="Carnivore2" parent="Wildlife" instance=ExtResource("14_26k7p")]
+position = Vector2(-822, 354)
+scale = Vector2(-1, 1)
+
+[node name="Mousquito2" parent="Wildlife" instance=ExtResource("16_cvxqb")]
+position = Vector2(1768, 259)
+
+[node name="Exit" parent="." instance=ExtResource("23_myamh")]
+position = Vector2(7166, 1327)
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="ItemRamp" parent="Items" instance=ExtResource("19_26k7p")]
-position = Vector2(944, 1464)
+position = Vector2(6905, 1468)
 
 [node name="Seeds" type="Node2D" parent="Items"]
-position = Vector2(1014, 1265)
+position = Vector2(6128, 1255)
+script = ExtResource("18_myamh")
 
 [node name="Seed1" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
-position = Vector2(3390, -342)
+position = Vector2(434, -177)
 
 [node name="Seed2" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
-position = Vector2(1004, -61)
+position = Vector2(-1697, -345)
 
 [node name="Seed3" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
-position = Vector2(61, 210)
+position = Vector2(-2971, -680)
 
 [node name="Seed4" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
-position = Vector2(1793, -500)
+position = Vector2(-3909, -261)
 
 [node name="Sound" type="Node2D" parent="."]
 
@@ -332,5 +339,7 @@ position = Vector2(1793, -500)
 position = Vector2(1226, 1228)
 stream = ExtResource("16_kgp0u")
 
-[node name="Exit" parent="." instance=ExtResource("16_211dj")]
-position = Vector2(7137, 1319)
+[node name="Totem" parent="." instance=ExtResource("21_lr8k6")]
+position = Vector2(3760, 554)
+
+[node name="QuestBox" parent="." instance=ExtResource("24_0og2l")]

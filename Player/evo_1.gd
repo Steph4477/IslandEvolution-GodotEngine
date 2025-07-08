@@ -45,38 +45,59 @@ var animation_locked = false
 var is_gazed = false
 var initial_speed = speed
 # Ramper
-var can_ramp: bool = false
-var is_ramping: bool = false
-var ramp_toggle_locked := false  #verouillage du bouton
+var can_ramp = false
+var is_ramping = false
+var ramp_toggle_locked = false  #verouillage du bouton
 # Mort
-var is_dead := false
+var is_dead = false
 # Flag pour joystick
 var want_to_jump := false
-var jump_buffer_timer := 0.0
-const JUMP_BUFFER_TIME := 0.1  # 100ms de buffer
+var jump_buffer_timer = 0.0
+const JUMP_BUFFER_TIME = 0.1  # 100ms de buffer
 # Invincibilité temporaire après respawn
-var can_be_damaged := true  # Invincibilité temporaire après respawn
+var can_be_damaged = true  # Invincibilité temporaire après respawn
+# Bloque mouvement pendant les focus camera 
+var can_move = true
+
+func disable_controls():
+	can_move = false
+	velocity = Vector2.ZERO
+
+func enable_controls():
+	can_move = true
 
 
 func _ready():
 	$Camera2D.make_current()
 	await get_tree().process_frame
 
+	# 🔍 Récupération du GameState
 	game_state = get_node_or_null("/root/GameState")
 	if game_state == null:
 		return
 
+	# 📦 Application des données du GameState
 	set_game_state(game_state)
 
-	var hud = game_state.health_bar
-	if hud == null:
+	# 🔍 Vérifie la HealthBar
+	var hud_health_bar = game_state.health_bar
+	if hud_health_bar == null:
 		return
 
 	var hp_bar_path := "HealthBar/TextureProgressBar"
-	if hud.has_node(hp_bar_path):
-		var hp_bar = hud.get_node(hp_bar_path)
+	if hud_health_bar.has_node(hp_bar_path):
+		var hp_bar = hud_health_bar.get_node(hp_bar_path)
 		hp_bar.max_value = max_pv
 		hp_bar.value = pv
+
+	# ✅ Laisse une frame à Godot pour finaliser l’instanciation
+	await get_tree().process_frame
+
+	# 🔍 Vérifie la méthode du HUD
+	if game_state.hud:
+		var has_method = game_state.hud.has_method("update_seed_display")
+		if has_method:
+			game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
 
 
 func set_game_state(gs):
@@ -85,8 +106,7 @@ func set_game_state(gs):
 	coco_count = game_state.coco_count
 	seed_count = game_state.seed_count
 	can_fire_coco = game_state.can_fire_coco
-	
-	# 💡 Récupération dynamique des labels du HUD
+
 	if game_state.hud:
 		var hud = game_state.hud
 		banane_label = hud.get_node("HBoxContainerBanane/Label/BananeCountLabel")
@@ -96,7 +116,9 @@ func set_game_state(gs):
 	update_banane_display()
 	update_coco_display()
 	update_seed_display()
+
 	game_state.set_player(self)
+
 
 
 func set_can_climb(value: bool) -> void:
@@ -112,6 +134,9 @@ func set_can_climbCoco(value: bool) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not can_move:
+		return
+
 	if animation_locked:
 		return
 
@@ -124,17 +149,14 @@ func _physics_process(delta: float) -> void:
 	# --- Gestion du saut (clavier ou joystick avec buffer)
 	if on_floor:
 		var jump_requested := false
-
 		if Input.is_action_just_pressed("ui_up"):
 			jump_requested = true
 		elif jump_buffer_timer > 0.0:
 			jump_requested = true
-
 		if jump_requested:
 			velocity.y = jump_force
 			is_ramping = false
 			jump_buffer_timer = 0.0
-			print("🚀 SAUT déclenché : velocity.y =", velocity.y)
 	elif not is_climbing and not is_climbingCoco and not is_ramping:
 		velocity.y += gravity * delta
 
@@ -423,8 +445,14 @@ func update_coco_display():
 
 
 func update_seed_display():
-	if seed_label:
-		seed_label.text = "x %d" % seed_count
+	if not game_state:
+		return
+	if not game_state.hud:
+		return
+	if not game_state.hud.has_method("update_seed_display"):
+		return
+	
+	game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
 
 
 # loot
@@ -451,7 +479,6 @@ func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
 
 	if enable_shooting:
 		can_fire_coco = true
-		show_info_popup("Lancé de coco activé !")
 		var hud = game_state.health_bar.get_parent()
 		if hud.has_method("set_button_enabled"):
 			hud.set_button_enabled(hud.get_node("Gamepad/Coco"), true)
@@ -466,12 +493,21 @@ func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
 
 func collect_seed(amount: int = 1) -> void:
 	seed_count += amount
-	# Récuperation des données des variables de GameState
+
 	if game_state:
 		game_state.seed_count = seed_count
-	#mise a jour de l'HUD
-	update_seed_display()
-	print("Graines collectées :", seed_count)
+		game_state.collected_seeds += amount
+
+		if game_state.hud and game_state.hud.has_method("update_seed_display"):
+			game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
+
+		if game_state.collected_seeds >= game_state.total_seeds_in_level:
+			game_state.emit_signal("all_seeds_collected")
+
+	# 🎥 Focus caméra + anim totem + retour
+	var parent = get_parent()
+	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
+		await parent.focus_camera_on_totem_with_anim(game_state.collected_seeds)
 
 
 # ralentissement (toile mygale)

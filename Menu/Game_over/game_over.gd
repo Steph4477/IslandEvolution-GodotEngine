@@ -12,4 +12,4 @@ func _on_Options_pressed():
 	pass
 
 func _on_Quitter_pressed():
-	get_tree().quit()
+	pass

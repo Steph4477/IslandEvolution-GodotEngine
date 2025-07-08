@@ -13,9 +13,7 @@ func _ready():
 func set_max_value(v: int):
 	if bar:
 		bar.max_value = v
-		print("🩸 set_max_value =", v)
 
 func set_value(v: int):
 	if bar:
 		bar.value = clamp(v, 0, bar.max_value)
-		print("🩸 set_value =", v)
