@@ -10,10 +10,10 @@ script = ExtResource("1_ub7ip")
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(5870, 3050)
-scale = Vector2(1.35, 1.35)
+scale = Vector2(2, 2)
 texture = ExtResource("2_ub7ip")
 
 [node name="Stick" type="Sprite2D" parent="."]
-position = Vector2(5863.33, 3046.67)
+position = Vector2(5856.67, 3043.33)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_bf1gu")

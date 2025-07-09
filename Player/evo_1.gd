@@ -390,6 +390,8 @@ func on_hit(damage: int) -> void:
 	game_state.health_bar.set_value(pv)
 	show_damage_popup(damage)
 	update_can_heal()
+	refresh_hud_buttons()
+
 
 	var hud = game_state.health_bar.get_parent()
 	if hud.has_method("set_button_enabled"):
@@ -434,6 +436,11 @@ func die() -> void:
 
 
 # Mise à jour du HUD
+func refresh_hud_buttons():
+	if not game_state or not game_state.hud:
+		return
+	game_state.hud.update_hud_buttons(can_fire_coco, can_heal, can_ramp)
+
 func update_banane_display():
 	if banane_label:
 		banane_label.text = "x %d" % banane_count
@@ -472,6 +479,8 @@ func collect_banane(amount: int = 1) -> void:
 
 	update_banane_display()
 	show_info_popup("5 jus de bananes récupérés !")
+	refresh_hud_buttons()
+
 
 
 func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
@@ -589,6 +598,7 @@ func reset_state() -> void:
 	update_coco_display()
 	update_seed_display()
 	update_can_heal()
+	refresh_hud_buttons()
 
 	await get_tree().create_timer(0.3).timeout
 	can_be_damaged = true

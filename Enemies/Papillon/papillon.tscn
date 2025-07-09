@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ekkwdt7bcqfu"]
+[gd_scene load_steps=12 format=3 uid="uid://ekkwdt7bcqfu"]
 
 [ext_resource type="Script" uid="uid://clknygbf50kpn" path="res://Enemies/Papillon/papillon.gd" id="1_ca0hv"]
 [ext_resource type="Texture2D" uid="uid://dadhpfnm6vln8" path="res://Enemies/Papillon/papillon0.png" id="2_1toeh"]
@@ -11,6 +11,8 @@ radius = 61.0737
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1fhx"]
 radius = 79.3095
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo6vo"]
 
 [sub_resource type="Animation" id="Animation_l6bps"]
 resource_name = "flight"
@@ -74,6 +76,7 @@ position = Vector2(-2, -29)
 shape = SubResource("CircleShape2D_g1fhx")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qo6vo")
 position = Vector2(-2, -1.90735e-06)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_1toeh")

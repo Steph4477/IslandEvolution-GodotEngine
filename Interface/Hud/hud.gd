@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var coco_button = $Gamepad/Coco
 @onready var spear_button = $Gamepad/Spear
 @onready var health_button = $Gamepad/Health
+
 @onready var life_sprites = $HBoxContainerLive.get_children()
 
 @export var float_distance := 40
@@ -43,9 +44,10 @@ func set_button_enabled(button: TouchScreenButton, enabled: bool) -> void:
 			shape.disabled = not enabled
 		button.modulate = Color(1, 1, 1, 1) if enabled else Color(1, 1, 1, 0.4)
 
-func update_hud_buttons(can_fire_coco: bool, can_heal: bool) -> void:
+func update_hud_buttons(can_fire_coco: bool, can_heal: bool, can_ramp: bool) -> void:
 	set_button_enabled(coco_button, can_fire_coco)
 	set_button_enabled(health_button, can_heal)
+	set_button_enabled(ramp_button, can_ramp)
 
 func set_coco_button_enabled(enabled: bool) -> void:
 	set_button_enabled(coco_button, enabled)

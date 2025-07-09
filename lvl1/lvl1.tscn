@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=43 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://lvl1/lvl_1.gd" id="1_vc1ff"]
 [ext_resource type="PackedScene" uid="uid://ct7cfs6fktu4n" path="res://lvl1/Decors/tileForet.tscn" id="2_nklpm"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="19_26k7p"]
 [ext_resource type="PackedScene" uid="uid://ekkwdt7bcqfu" path="res://Enemies/Papillon/papillon.tscn" id="20_26k7p"]
 [ext_resource type="PackedScene" uid="uid://b6y25h2tqe3bh" path="res://ItemsDecors/Totem/totem.tscn" id="21_lr8k6"]
-[ext_resource type="PackedScene" uid="uid://jau3enovf67m" path="res://Enemies/Papillon/papillonVarCouleur.tscn" id="21_wajbs"]
 [ext_resource type="PackedScene" uid="uid://cqgah4py8x2ry" path="res://lvl1/Decors/porte/lvl2/Exit.tscn" id="23_myamh"]
 [ext_resource type="PackedScene" uid="uid://c4ed8cr5fgetb" path="res://Interface/Quetes/quest_box.tscn" id="24_0og2l"]
 
@@ -111,6 +110,9 @@ shadow_filter_smooth = 4.0
 
 [node name="Forest" parent="Background" instance=ExtResource("2_nklpm")]
 position = Vector2(-3329, -1040)
+
+[node name="Exit" parent="." instance=ExtResource("23_myamh")]
+position = Vector2(7166, 1327)
 
 [node name="Arrows" type="Node2D" parent="."]
 position = Vector2(3068, 1446)
@@ -258,29 +260,29 @@ distance = 1800.0
 position = Vector2(6150, 1381)
 
 [node name="Coconut1" parent="Trees" instance=ExtResource("13_f0kof")]
-position = Vector2(-5284, -124)
+position = Vector2(-5146, 6)
 
 [node name="Coconut2" parent="Trees" instance=ExtResource("13_f0kof")]
-position = Vector2(-784, -111)
+position = Vector2(-635, 0)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="BananaTree" parent="Trees" instance=ExtResource("13_ofnsq")]
-position = Vector2(-2172, -117)
+position = Vector2(-2213, -296)
 
 [node name="Loot" type="Node2D" parent="Trees"]
 position = Vector2(-360, -73)
 
 [node name="CocoLoot1" parent="Trees/Loot" instance=ExtResource("14_211dj")]
-position = Vector2(-4862, -296)
+position = Vector2(-4691, -128)
 
 [node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("14_211dj")]
-position = Vector2(-483, -287)
+position = Vector2(-364, -130)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
-position = Vector2(-1748, -89)
+position = Vector2(-1761, -211)
 
 [node name="Wildlife" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
@@ -294,13 +296,8 @@ position = Vector2(3004, 284)
 [node name="Toucan" parent="Wildlife" instance=ExtResource("18_211dj")]
 position = Vector2(487, -159)
 
-[node name="ButterflyColor" parent="Wildlife" instance=ExtResource("21_wajbs")]
-position = Vector2(-1753, 190)
-
 [node name="Carnivore" parent="Wildlife" instance=ExtResource("14_26k7p")]
 position = Vector2(-1063, 356)
-
-[node name="Butterfly" parent="Wildlife" instance=ExtResource("20_26k7p")]
 
 [node name="Carnivore2" parent="Wildlife" instance=ExtResource("14_26k7p")]
 position = Vector2(-822, 354)
@@ -309,13 +306,35 @@ scale = Vector2(-1, 1)
 [node name="Mousquito2" parent="Wildlife" instance=ExtResource("16_cvxqb")]
 position = Vector2(1768, 259)
 
-[node name="Exit" parent="." instance=ExtResource("23_myamh")]
-position = Vector2(7166, 1327)
+[node name="Butterfly2" type="Node2D" parent="Wildlife"]
+
+[node name="Butterfly" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
+position = Vector2(3516, 215)
+
+[node name="Butterfly2" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
+position = Vector2(2387, 97)
+butterfly_color = Color(0.801714, 0.800346, 1.92523e-06, 1)
+
+[node name="Butterfly3" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
+position = Vector2(1419, 279)
+butterfly_color = Color(1, 0.606896, 0.988799, 1)
+
+[node name="Butterfly4" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
+position = Vector2(386, 83)
+butterfly_color = Color(0.478638, 0.663994, 0.981419, 1)
+
+[node name="Butterfly5" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
+position = Vector2(-629, -97)
+butterfly_color = Color(0.311701, 0.768988, 0.469055, 1)
+
+[node name="Butterfly6" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
+position = Vector2(-1231, -55)
+butterfly_color = Color(0.85355, 0.592829, 0.169727, 1)
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="ItemRamp" parent="Items" instance=ExtResource("19_26k7p")]
-position = Vector2(6905, 1468)
+position = Vector2(785, 1468)
 
 [node name="Seeds" type="Node2D" parent="Items"]
 position = Vector2(6128, 1255)
