@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="19_26k7p"]
 [ext_resource type="PackedScene" uid="uid://ekkwdt7bcqfu" path="res://Enemies/Papillon/papillon.tscn" id="20_26k7p"]
 [ext_resource type="PackedScene" uid="uid://b6y25h2tqe3bh" path="res://ItemsDecors/Totem/totem.tscn" id="21_lr8k6"]
-[ext_resource type="PackedScene" uid="uid://h801h73fxdbs" path="res://Enemies/Papillon/papillonVarCouleur.tscn" id="21_wajbs"]
+[ext_resource type="PackedScene" uid="uid://jau3enovf67m" path="res://Enemies/Papillon/papillonVarCouleur.tscn" id="21_wajbs"]
 [ext_resource type="PackedScene" uid="uid://cqgah4py8x2ry" path="res://lvl1/Decors/porte/lvl2/Exit.tscn" id="23_myamh"]
 [ext_resource type="PackedScene" uid="uid://c4ed8cr5fgetb" path="res://Interface/Quetes/quest_box.tscn" id="24_0og2l"]
 
