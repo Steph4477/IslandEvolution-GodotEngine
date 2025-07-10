@@ -8,8 +8,7 @@ func set_active(active: bool) -> void:
 	can_damage = active
 
 func _ready() -> void:
-	anim.play("Harrow")  # Animation en boucle ou initiale
-
+	anim.play("Harrow")  
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not can_damage:
@@ -22,7 +21,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 
 	if body.has_method("on_hit") and not body.is_dead:
-		var damage = game_state.player.max_pv  # Inflige les PV max
+		can_damage = false  # ⛔ Empêche de redéclencher
+		var damage = game_state.player.max_pv
 		body.on_hit(damage)
-	
+
+		# ⏳ Réactivation après un court délai (ex: 1s)
+		await get_tree().create_timer(1.0).timeout
+		can_damage = true
+
 	

@@ -19,16 +19,12 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("CONTACT avec :", body.name)
-	print("GROUPES :", body.get_groups())
 	queue_free()
 	if body.is_in_group("Player"):
-		print("Le joueur a été touché par le gaz !")
 		has_collided = true
 		
 		# Applique l’effet au joueur
-		print("💨 Appel direct à apply_gaz_effect")
-		body.apply_gaz_effect()
+		body.apply_gaz()
 		
 		# Applique les dégâts 
 		queue_free()

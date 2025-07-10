@@ -6,6 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://b2jkkuekta63s" path="res://ItemsDecors/Cocotier/cocotier3.png" id="4_s44on"]
 [ext_resource type="Texture2D" uid="uid://y52ce007s0tt" path="res://ItemsDecors/Cocotier/cocotier4.png" id="5_65pm0"]
 
+[sub_resource type="Animation" id="Animation_n48c0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_koarn")]
+}
+
 [sub_resource type="Animation" id="Animation_7krt8"]
 resource_name = "wind"
 length = 4.0
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_koarn"), ExtResource("3_ji048"), ExtResource("4_s44on"), ExtResource("5_65pm0"), ExtResource("2_koarn"), ExtResource("3_ji048"), ExtResource("4_s44on"), ExtResource("5_65pm0"), ExtResource("2_koarn"), ExtResource("3_ji048"), ExtResource("4_s44on"), ExtResource("5_65pm0")]
-}
-
-[sub_resource type="Animation" id="Animation_n48c0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_koarn")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h3fuv"]

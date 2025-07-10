@@ -23,10 +23,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bydea"]
-radius = 5.97944
+radius = 13.9161
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xepjl"]
-radius = 15.493
+radius = 30.1034
 
 [node name="Toile" type="CharacterBody2D"]
 collision_layer = 8

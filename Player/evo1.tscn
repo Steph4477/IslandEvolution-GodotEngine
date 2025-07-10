@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=36 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/evo_1.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://crjpji6bcfj0b" path="res://Player/2idle.png" id="2_j3qaj"]
@@ -19,9 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://ckiku25qddi02" path="res://Player/walk_gaz2.png" id="15_rbgwy"]
 [ext_resource type="Texture2D" uid="uid://drcjqtukgpkwa" path="res://Player/ramp.png" id="16_rbgwy"]
 [ext_resource type="Texture2D" uid="uid://bw7yna4pwwhlr" path="res://Player/ramp1.png" id="17_typba"]
+[ext_resource type="Texture2D" uid="uid://cngda15odvyf4" path="res://Player/hang1.png" id="18_p8mbp"]
+[ext_resource type="Texture2D" uid="uid://dnwg1jii1pkaf" path="res://Player/hang2.png" id="19_efgfv"]
+[ext_resource type="Texture2D" uid="uid://dettkgcmj6of" path="res://Player/hang3.png" id="20_ms575"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
-size = Vector2(366.666, 859.929)
+size = Vector2(366.666, 735.816)
 
 [sub_resource type="Animation" id="Animation_m3p76"]
 length = 0.001
@@ -105,6 +108,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(150, 71.6667), Vector2(150, 50.667), Vector2(150, 40.667), Vector2(150, 30.667), Vector2(150, 20.667)]
+}
+
+[sub_resource type="Animation" id="Animation_kse80"]
+resource_name = "hang"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("18_p8mbp"), ExtResource("19_efgfv"), ExtResource("20_ms575")]
 }
 
 [sub_resource type="Animation" id="Animation_i1uru"]
@@ -207,6 +227,7 @@ _data = {
 &"climb": SubResource("Animation_p7kcq"),
 &"climb_coco": SubResource("Animation_p8mbp"),
 &"door": SubResource("Animation_ifp5e"),
+&"hang": SubResource("Animation_kse80"),
 &"idle": SubResource("Animation_i1uru"),
 &"jump_down": SubResource("Animation_typba"),
 &"jump_up": SubResource("Animation_rbgwy"),
@@ -221,8 +242,7 @@ position = Vector2(0, -1)
 scale = Vector2(1.2, 1.2)
 collision_mask = 270
 script = ExtResource("1_5psm4")
-speed = 300
-jump_force = -750
+jump_force = -750.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(150, 71.6667)
@@ -230,7 +250,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("6_m3p76")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(150.833, 77.0833)
+position = Vector2(150.833, 71.25)
 scale = Vector2(0.1, 0.094)
 shape = SubResource("RectangleShape2D_j3qaj")
 
@@ -238,6 +258,7 @@ shape = SubResource("RectangleShape2D_j3qaj")
 libraries = {
 &"": SubResource("AnimationLibrary_p7kcq")
 }
+autoplay = "hang"
 
 [node name="TurnAxis" type="Marker2D" parent="."]
 position = Vector2(170, 48)

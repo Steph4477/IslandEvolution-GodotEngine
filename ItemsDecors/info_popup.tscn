@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvq7m1pq6lbyl"]
+
+[ext_resource type="Script" uid="uid://d0vm0bbvtnc30" path="res://ItemsDecors/info_popup.gd" id="1_70xee"]
+
+[node name="InfoPopup" type="CanvasLayer"]
+script = ExtResource("1_70xee")
+
+[node name="InfoLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

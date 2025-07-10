@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5bug2b6apnq6"]
 
-[ext_resource type="Script" uid="uid://y8ck7rlcpxch" path="res://mobile_plat_form.gd" id="1_8dj8e"]
+[ext_resource type="Script" uid="uid://c2gwqc2veghiu" path="res://ItemsDecors/MobilePlatform/mobile_plat_form.gd" id="1_8dj8e"]
 [ext_resource type="Texture2D" uid="uid://b1g5g5361lb2" path="res://ItemsDecors/MobilePlatform/jungle.png" id="2_8dj8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfqmu"]

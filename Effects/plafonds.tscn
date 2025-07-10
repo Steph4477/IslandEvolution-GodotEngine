@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://3wuwvy2qqjp"]
 
-[ext_resource type="Script" uid="uid://dbajt234m1ers" path="res://plafonds.gd" id="1_pyt7t"]
+[ext_resource type="Script" uid="uid://do6fsiib65a4p" path="res://Effects/plafonds.gd" id="1_pyt7t"]
 [ext_resource type="Texture2D" uid="uid://brajjxi4c44oo" path="res://Effects/ToilePlafond.png" id="2_jjo8r"]
 [ext_resource type="Texture2D" uid="uid://cqc61q83clwj6" path="res://Effects/FiletPlafond.png" id="3_6xf1m"]
 [ext_resource type="Texture2D" uid="uid://4w5ddch6nek6" path="res://Effects/MygalePlafond.png" id="4_im1s2"]
@@ -95,6 +95,7 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("1_pyt7t")
 
 [node name="Pied" type="Sprite2D" parent="."]
+scale = Vector2(2, 1)
 texture = ExtResource("2_jjo8r")
 
 [node name="Filet" type="Sprite2D" parent="."]
@@ -103,6 +104,7 @@ texture = ExtResource("3_6xf1m")
 
 [node name="Corps" type="Sprite2D" parent="."]
 position = Vector2(2, 811)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_im1s2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

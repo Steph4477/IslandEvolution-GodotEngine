@@ -1,16 +1,26 @@
 extends Area2D
 
-@export var next_scene_path: String
+@export var next_scene_path: String = "res://lvl2/lvl2.tscn"
 
 var is_unlocked = false
 var already_faded = false
 
+# --- Ulitilitaire ----
+func show_info_popup(txt: String) -> void:
+	var popup_scene = preload("res://ItemsDecors/info_popup.tscn")
+	var popup = popup_scene.instantiate()
+	get_tree().root.add_child(popup)
+	
+	await get_tree().process_frame  # 💡 Important : attend un frame pour que l'affichage soit prêt
+	popup.show_info(txt)
+
+
 func _ready():
 	$CloseSprite.visible = true
-	$CloseSprite.modulate = Color(1, 1, 1, 1)  # totalement opaque
+	$CloseSprite.modulate = Color(1, 1, 1, 1)
 	$OpenSprite.visible = false
 
-	await get_tree().process_frame  # Attend que GameState soit prêt
+	await get_tree().process_frame
 
 	var gs = get_node_or_null("/root/GameState")
 	if gs:
@@ -27,59 +37,58 @@ func update_visual(unlocked: bool) -> void:
 	if has_node("OpenSprite"):
 		$OpenSprite.visible = unlocked
 
-	monitoring = unlocked
-
 func on_key_collected():
 	is_unlocked = true
 
-	# 🟡 Focus caméra + fade
 	var gs = get_node_or_null("/root/GameState")
 	if gs and gs.current_level and gs.current_level.has_method("focus_camera_on_exit_and_fade"):
 		await gs.current_level.focus_camera_on_exit_and_fade()
 
-	# ✅ Une fois que la caméra est revenue → affiche temple ouvert + active sortie
 	update_visual(true)
 
-func _on_body_entered(body):
-	if not monitoring:
+func _on_body_entered(body: Node2D) -> void:
+	if body.name != "Player":
 		return
 
-	if body.name == "Player" and body.has_node("anim"):
+	if not is_unlocked:
+		show_info_popup("🔑 Il te faut la clé pour ouvrir la porte !")
+		$LockedSound.play()
+		return
+
+	if body.has_node("anim"):
 		var anim_player = body.get_node("anim")
 		if anim_player.has_animation("door"):
 			body.animation_locked = true
 			body.set_physics_process(false)
-
 			anim_player.play("door")
 			await anim_player.animation_finished
-			change_scene()
+			await change_scene()
 
-func change_scene():
+func change_scene() -> void:
+	var gs = get_node_or_null("/root/GameState")
+	if not gs:
+		return
+
+	if gs.fade:
+		await gs.fade.fade_out()
+
 	await get_tree().create_timer(0.2).timeout
-	var game_state = get_node_or_null("/root/GameState")
-	if game_state:
-		game_state.load_level(next_scene_path)
+	gs.change_scene(next_scene_path)
 
 func play_fade():
 	if already_faded:
 		return
 	already_faded = true
 
-	# ⚙️ Préparation des sprites
-	$OpenSprite.visible = true                # déjà visible derrière
-	$OpenSprite.modulate.a = 1.0              # totalement opaque
-	$CloseSprite.visible = true               # au premier plan
-	$CloseSprite.modulate.a = 1.0             # commence opaque
+	$OpenSprite.visible = true
+	$OpenSprite.modulate.a = 1.0
+	$CloseSprite.visible = true
+	$CloseSprite.modulate.a = 1.0
 
-	# 💥 D'abord le tremblement
 	await shake_temple(0.4, 4.0)
-
-	# 🎬 Puis le fondu du CloseSprite
 	await fade_close_sprite()
 
-	# ✅ Fin du fade : le temple ouvert est maintenant visible
 	$CloseSprite.visible = false
-
 
 func shake_temple(duration: float = 0.3, intensity: float = 3.0) -> void:
 	var original_pos := position
@@ -96,7 +105,6 @@ func shake_temple(duration: float = 0.3, intensity: float = 3.0) -> void:
 		time_elapsed += step
 
 	position = original_pos
-
 
 func fade_close_sprite() -> void:
 	var duration := 1.0

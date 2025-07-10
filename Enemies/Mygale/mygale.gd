@@ -32,9 +32,7 @@ func _ready() -> void:
 	while scene_camera == null:
 		await get_tree().process_frame
 		scene_camera = get_viewport().get_camera_2d()
-	
-	print("📷 Caméra détectée :", scene_camera.name)
-	
+		
 	pv = max_hp
 	
 	find_and_bind_player()
@@ -91,13 +89,10 @@ func play_plafond_intro() -> void:
 	# 5. Restituer le contrôle de la caméra au joueur
 	var player_camera := player.get_node_or_null("Camera2D")
 	if player_camera:
-		print("✔ Camera2D trouvé !!! ")
 		player_camera.make_current()
 	# 🧭 Recentrer la caméra manuellement sur le joueur
 		await get_tree().process_frame  # attendre que make_current prenne effet
 		player_camera.global_position = player.global_position
-	else:
-		print("❌ Camera2D du joueur introuvable !")
 
 func attack_and_shoot() -> void:
 	can_shoot = false
@@ -142,7 +137,6 @@ func show_damage_popup(amount: int) -> void:
 		die()
 
 func die() -> void:
-	print("🕷️ L'araignée est morte.")
 	visible = false
 	set_physics_process(false)
 

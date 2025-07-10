@@ -20,7 +20,7 @@ var coco_count
 var jump_count = 0
 
 # Tir
-var spellBanane = preload("res://Tir/banane.tscn")
+
 var spellCoco = preload("res://Tir/coco.tscn")
 var rate_of_fire = 0.4
 
@@ -121,10 +121,7 @@ func _physics_process(delta: float) -> void:
 
 	update_animation()
 
-	if Input.is_action_pressed("ui_accept") and can_fire_banane:
-		SkillLoop()
-	if Input.is_action_pressed("ui_cancel") and can_fire_coco:
-		SkillLoop()
+
 
 func update_animation() -> void:
 	if is_webbed:
@@ -206,41 +203,3 @@ func apply_web_effect():
 
 	speed = original_speed
 	is_webbed = false
-
-func SkillLoop() -> void:
-	var direction: int
-	if $anim.flip_h:
-		direction = -1
-	else:
-		direction = 1
-	if Input.is_action_just_pressed("ui_accept") and can_fire_banane:
-		if banane_count > 0:
-			banane_count -= 1
-			update_banane_display()
-			if game_state:
-				game_state.banane_count = banane_count
-
-			var banane_spell = spellBanane.instantiate()
-			var spawn_pos = get_node("TurnAxis/CastPoint").global_position
-			banane_spell.start(spawn_pos, direction)
-			get_tree().current_scene.add_child(banane_spell)
-			await get_tree().create_timer(rate_of_fire).timeout
-			can_fire_banane = true
-		else:
-			print("❌ Plus de bananes !")
-
-	elif Input.is_action_just_pressed("ui_cancel") and can_fire_coco:
-		if coco_count > 0:
-			coco_count -= 1
-			update_coco_display()
-			if game_state:
-				game_state.coco_count = coco_count
-
-			var coco_spell = spellCoco.instantiate()
-			var spawn_pos = get_node("TurnAxis/CastPoint").global_position
-			coco_spell.start(spawn_pos, direction)
-			get_tree().current_scene.add_child(coco_spell)
-			await get_tree().create_timer(rate_of_fire).timeout
-			can_fire_coco = true
-		else:
-			print("❌ Plus de cocos !")

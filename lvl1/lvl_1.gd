@@ -11,6 +11,7 @@ func start_intro_sequence() -> void:
 	await show_quest()
 	await return_camera_to_player()
 
+
 func show_quest() -> void:
 	var game_state = get_node_or_null("/root/GameState")
 	if not game_state or not game_state.player:
@@ -37,7 +38,6 @@ func focus_camera_on_temple() -> void:
 
 func focus_camera_on_totem(return_to_player := false) -> void:
 	await focus_camera_on_node("Totem", return_to_player)
-
 
 func return_camera_to_player() -> void:
 	var game_state = get_node_or_null("/root/GameState")
@@ -112,7 +112,6 @@ func focus_camera_on_totem_with_anim(seed_index: int) -> void:
 	if totem.has_method("update_sprite"):
 		totem.update_sprite(seed_index)
 
-
 	# ⏸️ 4. Pause après pour bien voir le changement
 	await get_tree().create_timer(0.6).timeout
 
@@ -122,7 +121,6 @@ func focus_camera_on_totem_with_anim(seed_index: int) -> void:
 	await back_tween.finished
 
 	player.enable_controls()
-
 
 func focus_camera_on_exit_and_fade() -> void:
 	var game_state = get_node_or_null("/root/GameState")
@@ -145,8 +143,6 @@ func focus_camera_on_exit_and_fade() -> void:
 	tween.tween_property(cam, "global_position", exit.global_position, 1.2)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
-
-	print("📷 [CAMERA] Positionnée sur le temple")
 
 	await get_tree().create_timer(1.0).timeout
 

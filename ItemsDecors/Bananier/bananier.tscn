@@ -1,10 +1,25 @@
 [gd_scene load_steps=10 format=3 uid="uid://dg6mgnhckbjhx"]
 
-[ext_resource type="Script" uid="uid://cbavpp0y04il3" path="res://bananier.gd" id="1_nm5gv"]
+[ext_resource type="Script" uid="uid://cbavpp0y04il3" path="res://ItemsDecors/Bananier/bananier.gd" id="1_nm5gv"]
 [ext_resource type="Texture2D" uid="uid://d2vw7gja8o2el" path="res://ItemsDecors/Bananier/Bananier1.png" id="2_l2fy6"]
 [ext_resource type="Texture2D" uid="uid://bx68hokt3c77t" path="res://ItemsDecors/Bananier/Bananier2.png" id="3_26dkx"]
 [ext_resource type="Texture2D" uid="uid://qckghr4nncdj" path="res://ItemsDecors/Bananier/Bananier3.png" id="4_8ixgb"]
 [ext_resource type="Texture2D" uid="uid://xnfr5jna57bh" path="res://ItemsDecors/Bananier/Bananier4.png" id="5_7f3ky"]
+
+[sub_resource type="Animation" id="Animation_m5m3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_l2fy6")]
+}
 
 [sub_resource type="Animation" id="Animation_64mfa"]
 resource_name = "wind"
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_l2fy6"), ExtResource("3_26dkx"), ExtResource("4_8ixgb"), ExtResource("5_7f3ky"), ExtResource("2_l2fy6"), ExtResource("3_26dkx"), ExtResource("4_8ixgb"), ExtResource("5_7f3ky"), ExtResource("2_l2fy6"), ExtResource("3_26dkx"), ExtResource("4_8ixgb"), ExtResource("5_7f3ky")]
-}
-
-[sub_resource type="Animation" id="Animation_m5m3d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_l2fy6")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2gwjb"]

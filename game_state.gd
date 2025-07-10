@@ -15,7 +15,7 @@ var hud: Node = null
 var health_bar: Node = null  # séparé !
 
 # Transitions
-var fade_scene = preload("res://fade.tscn")
+var fade_scene = preload("res://Effects/fade.tscn")
 var fade: Node = null
 
 # Vies
@@ -37,7 +37,6 @@ var has_key = false
 var current_level: Node = null
 
 signal key_collected
-
 
 func _ready():
 	print("📦 [GameState] Initialisé")
@@ -115,6 +114,13 @@ func load_level(scene_path: String) -> void:
 	if fade:
 		await fade.fade_in()
 
+func change_scene(scene_path: String) -> void:
+	if scene_path == "":
+		print("❌ [GameState] Chemin de scène vide.")
+		return
+
+	print("➡️ [GameState] Changement de scène demandé :", scene_path)
+	await load_level(scene_path)
 
 func is_menu_scene(scene_path: String) -> bool:
 	return scene_path.contains("menu") or scene_path.contains("Menu")
@@ -142,6 +148,8 @@ func restart_game():
 	seed_count = 0
 	can_fire_coco = false
 	has_key = false
+	
+	get_tree().process_frame # Attend une frame pour repartir propre
 
 	# ✅ Recharge le dernier niveau valide uniquement
 	if current_level_path == "" or current_level_path.contains("game_over"):

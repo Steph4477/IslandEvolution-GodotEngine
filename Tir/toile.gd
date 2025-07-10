@@ -19,11 +19,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("CONTACT avec :", body.name)
-	print("GROUPES :", body.get_groups())
 	queue_free()
 	if body.is_in_group("Player"):
-		print("Le joueur a été touché par la toile !")
 		has_collided = true
 
 		var effet_scene = preload("res://Effects/effet_toile_collée.tscn")
