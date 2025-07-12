@@ -43,6 +43,7 @@ _data = {
 }
 
 [node name="QuestBox" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_i7muu")
 
 [node name="QuestSprite" type="Sprite2D" parent="."]

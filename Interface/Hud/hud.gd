@@ -12,10 +12,15 @@ extends CanvasLayer
 
 func _ready():
 	var game_state = get_node_or_null("/root/GameState")
-	game_state.hud = self
-
+	if game_state:
+		game_state.hud = self
+	
+	var button = $Gamepad/Hand
+	
+	$Gamepad/Hand.pressed.connect(_on_hand_pressed)
+	
 	update_lives_display(game_state.lives)
-
+	
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(coco_button, false)
 	set_button_enabled(spear_button, false)
@@ -62,3 +67,13 @@ func update_seed_display(collected: int, total: int) -> void:
 		label.text = "%d / %d (%d%%)" % [collected, total, percent]
 	else:
 		label.text = "0 / 0 (0%)"
+
+#
+func _on_hand_pressed() -> void:
+	var game_state = get_node_or_null("/root/GameState")
+	if game_state and game_state.player:
+		var player = game_state.player
+		print("player trouvé :", player)
+		
+		if player.has_method("clac_attack"):
+			player.clac_attack()

@@ -103,6 +103,7 @@ frame = 1
 frame_progress = 0.786881
 
 [node name="HealthBar" parent="." instance=ExtResource("9_kg14j")]
-position = Vector2(-76, -107)
+position = Vector2(-107, -185)
+scale = Vector2(1.84, 1)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -8,7 +8,8 @@ const INPUT = {
 	"down": "ui_down",
 	"fire": "ui_cancel",
 	"heal": "ui_accept",
-	"ramp": "ramping"
+	"ramp": "ramping",
+	"clac": "clacing"
 }
 const JUMP_BUFFER_TIME := 0.1
 
@@ -17,7 +18,7 @@ const JUMP_BUFFER_TIME := 0.1
 @export var jump_force: float = -400
 @export var gravity: float = 1200
 @export var climb_speed: float = 100
-
+@export var clac_damage: int = 10
 @export var max_pv: int = 2000
 @export var pv: int = max_pv
 @export var cooldown_potion: float = 10
@@ -29,6 +30,11 @@ const JUMP_BUFFER_TIME := 0.1
 var SpellCoco = preload("res://Tir/coco.tscn")
 
 # --- State ---
+# --- Idle Look ---
+var idle_timer := 0.0
+var next_idle_anim_time := 2.0 + randi() % 3
+var is_idle_blink_enabled := true
+
 var game_state
 var can_move = true
 var can_be_damaged = true
@@ -49,6 +55,9 @@ var is_gazed = false
 
 var can_fire_coco = false
 var rate_of_fire = 0.4
+# --- attaque corps à corps ---
+var is_attacking = false
+# -----
 var coco_count = 0
 var banane_count = 0
 var seed_count = 0
@@ -59,7 +68,7 @@ var can_heal = true
 var is_in_cooldown: bool = false
 # --- Nodes ---
 @onready var sprite = $Sprite
-@onready var anim = $anim
+@onready var anim = $Anim
 @onready var camera = $Camera2D
 
 # --- HUD Labels ---
@@ -112,11 +121,17 @@ func _physics_process(delta):
 	_move_horizontal()
 	_process_ramp()
 	_process_shoot()
+	_process_clac()
 	_process_heal()
-	move_and_slide()
-	update_animation()
 	_process_hang_swing(delta)
 
+	# 🎞️ Animations bonus
+	_process_idle_blink(delta)
+	#_process_battle_idle()
+	#_process_landing()
+
+	move_and_slide()
+	update_animation()
 func _update_jump(delta):
 	if climbing_anim != "":
 		return
@@ -159,6 +174,22 @@ func start_climb(anim_name: String) -> void:
 func stop_climb():
 	climbing_anim = ""
 	is_hanging = false
+
+func _process_idle_blink(delta: float) -> void:
+	if not is_idle_blink_enabled:
+		return
+	if is_dead or animation_locked:
+		return
+	if anim.current_animation != "idle":
+		idle_timer = 0.0  # reset si changement d’anim
+		return
+
+	idle_timer += delta
+	if idle_timer >= next_idle_anim_time:
+		idle_timer = 0.0
+		next_idle_anim_time = 2.0 + randi() % 3
+		anim.play("idle_blink")  # ou "look" selon l’anim que tu veux jouer
+
 
 func _process_climb():
 	if climbing_anim == "":
@@ -286,16 +317,67 @@ func shoot_coco():
 		can_fire_coco = coco_count > 0
 		update_coco_display()
 		game_state.coco_count = coco_count
+
+		# 🔒 On bloque les autres animations pendant le tir
+		animation_locked = true
+		anim.play("shoot")
+
+		# ⏳ Attente de fin d'animation
+		await anim.animation_finished
+
+		# 🥥 Maintenant on lance la noix de coco
 		var spell = SpellCoco.instantiate()
-		
 		var dir = 1
 		if sprite.scale.x < 0:
 			dir = -1
-			
 		spell.start($TurnAxis/CastPoint.global_position, dir)
 		get_tree().current_scene.add_child(spell)
-		await get_tree().create_timer(rate_of_fire).timeout
+
+		animation_locked = false
 		refresh_hud_buttons()
+
+		# (optionnel) attends un petit cooldown de cadence de tir
+		await get_tree().create_timer(rate_of_fire).timeout
+
+func _process_clac():
+	if Input.is_action_just_pressed(INPUT["clac"]):
+		clac_attack()
+
+## --- Lancement de l'animation clac et paf en même temps ---
+func play_anim_on_both(anim_name: String):
+	if $Anim and $Anim.has_animation(anim_name):
+		$Anim.play(anim_name)
+	else:
+		print("❌ Anim ne contient pas :", anim_name)
+
+	if $PafAnim and $PafAnim.has_animation(anim_name):
+		$PafAnim.play(anim_name)
+	else:
+		print("❌ PafAnim ne contient pas :", anim_name)
+
+# --- attaque corps à corps ---
+func clac_attack():
+	if is_attacking or is_dead:
+		return
+	var dir = 1
+	if sprite.scale.x < 0:
+		dir = -1
+
+	$ClacArea.position.x = abs($ClacArea.position.x) * dir
+
+	is_attacking = true
+	animation_locked = true
+	play_anim_on_both("clac")
+	#anim.play("clac")
+
+	# Active la zone d'attaque temporairement
+	$ClacArea.monitoring = true
+
+	await anim.animation_finished
+
+	$ClacArea.monitoring = false
+	is_attacking = false
+	animation_locked = false
 
 # --- Heal ---
 func update_can_heal():
@@ -381,8 +463,6 @@ func kill_by_plant() -> void:
 
 # --- Damage & Death ---
 func on_hit(damage: int) -> void:
-	if is_dead:
-		return
 	if not can_be_damaged:
 		return
 
@@ -399,23 +479,36 @@ func on_hit(damage: int) -> void:
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
 
 	if pv <= 0:
-		is_dead = true
 		die()
 
 func die():
+	if is_dead:
+		return  # ✅ empêche les appels multiples
+
+	is_dead = true
+	animation_locked = true  # 🔒 Verrouille les autres animations
+	anim.play("die")
+
+	# 💀 Perd une vie
 	game_state.lose_life()
+
+	# 🧾 MAJ des vies dans le HUD
 	if game_state.hud.has_method("update_lives_display"):
 		game_state.hud.update_lives_display(game_state.lives)
 
+	# ⏳ Attend la fin de l'animation de mort
+	await anim.animation_finished
+
+	# 🔁 Détermine la suite
 	var next_level = ""
 	if game_state.is_game_over():
 		next_level = "res://Menu/Game_over/game_over.tscn"
 	else:
 		next_level = game_state.current_level_path
 
+	# 🕒 Petit délai optionnel avant le reload
+	await get_tree().create_timer(0.2).timeout
 	game_state.load_level(next_level)
-	await get_tree().process_frame
-	is_dead = false
 
 # --- Animations ---
 func update_animation():
@@ -537,3 +630,8 @@ func reset_state() -> void:
 
 	await get_tree().create_timer(0.3).timeout
 	can_be_damaged = true
+
+func _on_clac_area_body_entered(body: Node2D) -> void:
+	if body and body.has_method("on_hit"):
+		body.on_hit(clac_damage)
+		print("💢 Ennemi touché !")

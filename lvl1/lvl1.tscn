@@ -87,7 +87,7 @@ size = Vector2(5.4567, 20)
 script = ExtResource("1_vc1ff")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(6760, 1442)
+position = Vector2(199, 1378)
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
@@ -270,16 +270,16 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="BananaTree" parent="Trees" instance=ExtResource("13_ofnsq")]
-position = Vector2(-2695, -313)
+position = Vector2(-2699, -320)
 
 [node name="BananaTree2" parent="Trees" instance=ExtResource("13_ofnsq")]
-position = Vector2(-4719, -314)
+position = Vector2(-4718, -321)
 
 [node name="Loot" type="Node2D" parent="Trees"]
 position = Vector2(-360, -73)
 
 [node name="CocoLoot1" parent="Trees/Loot" instance=ExtResource("14_211dj")]
-position = Vector2(-5139, -146)
+position = Vector2(-5098, 191)
 
 [node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("14_211dj")]
 position = Vector2(-380, -138)
@@ -287,16 +287,16 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
-position = Vector2(-2242, -229)
+position = Vector2(-2245, -238)
 
 [node name="BananaLoot2" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
-position = Vector2(-4266, -234)
+position = Vector2(-4265, -241)
 
 [node name="Wildlife" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
 
 [node name="Snake" parent="Wildlife" instance=ExtResource("17_f0kof")]
-position = Vector2(644, 394)
+position = Vector2(636, 374)
 
 [node name="Mousquito" parent="Wildlife" instance=ExtResource("16_cvxqb")]
 position = Vector2(2843, 40)
@@ -305,14 +305,13 @@ position = Vector2(2843, 40)
 position = Vector2(487, -159)
 
 [node name="Carnivore" parent="Wildlife" instance=ExtResource("14_26k7p")]
-position = Vector2(-1072, 346)
+position = Vector2(-1070, 343)
 
 [node name="Carnivore2" parent="Wildlife" instance=ExtResource("14_26k7p")]
-position = Vector2(-826, 348)
-scale = Vector2(-1, 1)
+position = Vector2(-768, 344)
 
 [node name="Mousquito2" parent="Wildlife" instance=ExtResource("16_cvxqb")]
-position = Vector2(-263, 200)
+position = Vector2(980, -356)
 
 [node name="Butterfly2" type="Node2D" parent="Wildlife"]
 
@@ -342,7 +341,7 @@ butterfly_color = Color(0.85355, 0.592829, 0.169727, 1)
 [node name="Items" type="Node2D" parent="."]
 
 [node name="ItemRamp" parent="Items" instance=ExtResource("19_26k7p")]
-position = Vector2(6955, 1461)
+position = Vector2(6954, 1452)
 
 [node name="Seeds" type="Node2D" parent="Items"]
 position = Vector2(6128, 1255)

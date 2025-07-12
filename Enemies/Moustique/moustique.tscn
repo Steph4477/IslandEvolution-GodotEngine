@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://b0apw11ud66gp" path="res://Enemies/Moustique/patrol1.png" id="9_nl3xb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0nwy"]
-radius = 24.0832
+radius = 39.1152
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1fhx"]
 radius = 11.0454
 
-[sub_resource type="Animation" id="Animation_7prnn"]
+[sub_resource type="Animation" id="Animation_27a47"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -28,12 +28,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_2vk4j")]
+"values": [ExtResource("4_27a47")]
 }
 
 [sub_resource type="Animation" id="Animation_b0e3j"]
 resource_name = "attaque"
-length = 0.2
+length = 0.6
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,14 +42,15 @@ tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_27a47"), ExtResource("5_nl3xb")]
+"values": [ExtResource("4_27a47"), ExtResource("5_nl3xb"), ExtResource("4_27a47")]
 }
 
 [sub_resource type="Animation" id="Animation_jin1k"]
 resource_name = "die"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -56,10 +58,22 @@ tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("3_2vk4j"), ExtResource("3_2vk4j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_l6bps"]
@@ -97,7 +111,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kcxtp"]
 _data = {
-&"RESET": SubResource("Animation_7prnn"),
+&"RESET": SubResource("Animation_27a47"),
 &"attaque": SubResource("Animation_b0e3j"),
 &"die": SubResource("Animation_jin1k"),
 &"flight": SubResource("Animation_l6bps"),
@@ -132,7 +146,7 @@ shape = SubResource("CircleShape2D_g1fhx")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-1, -34)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_2vk4j")
+texture = ExtResource("4_27a47")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

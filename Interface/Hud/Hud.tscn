@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cn0x2ue3ec5ba"]
+[gd_scene load_steps=27 format=3 uid="uid://cn0x2ue3ec5ba"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://c6hphiwx7bure" path="res://Interface/Hud/cadre.png" id="2_eumbl"]
@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://ddjbad44u8b0n" path="res://Loot/vie.png" id="22_lwpkd"]
 [ext_resource type="Texture2D" uid="uid://d5xgdldcl762" path="res://Interface/barre de vie/bar_under.png" id="22_xl2wx"]
 [ext_resource type="Texture2D" uid="uid://trsh0urii8ym" path="res://Interface/barre de vie/bar_fill2.png" id="23_u63cs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1hj8m"]
+radius = 64.0078
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8lhr"]
 radius = 43.7379
@@ -51,6 +54,10 @@ position = Vector2(51, 893)
 scale = Vector2(1, 0.998)
 texture_normal = ExtResource("6_rgqxt")
 texture_pressed = ExtResource("7_b0qj5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Hand"]
+position = Vector2(77, 75.1503)
+shape = SubResource("CircleShape2D_1hj8m")
 
 [node name="Coco" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(71, 783)

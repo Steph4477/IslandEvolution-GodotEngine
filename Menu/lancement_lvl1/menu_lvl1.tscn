@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c010oxwq0i74x" path="res://Menu/lancement_lvl1/cadre.png" id="2_oo4jl"]
 [ext_resource type="Texture2D" uid="uid://b0apw11ud66gp" path="res://Enemies/Moustique/patrol1.png" id="3_uawj8"]
 [ext_resource type="Texture2D" uid="uid://deygem7pbieo7" path="res://Menu/lancement_lvl1/image.png" id="3_uw7hi"]
-[ext_resource type="Texture2D" uid="uid://dnlrs7n5ds4di" path="res://Player/2jump1.png" id="4_oo4jl"]
 [ext_resource type="Texture2D" uid="uid://bd28sda5grtmr" path="res://Enemies/Carnivore/ouvert.png" id="4_uw7hi"]
 [ext_resource type="Texture2D" uid="uid://cv1plkmedpd47" path="res://Enemies/Carnivore/tige_grande.png" id="5_1fa01"]
 [ext_resource type="Texture2D" uid="uid://5fn0wsmkcqd1" path="res://Enemies/Serpent/walk3.png" id="6_1fa01"]
 [ext_resource type="Texture2D" uid="uid://edag8b1uu3v1" path="res://Enemies/Toucan/vol1.png" id="7_yk3kc"]
+[ext_resource type="Texture2D" uid="uid://c8lda42j6o74n" path="res://Player/Sprite/jump.png" id="8_oo4jl"]
 [ext_resource type="Texture2D" uid="uid://usj7b2bvsgb0" path="res://Menu/Boutons/jouer.png" id="9_ss15l"]
 [ext_resource type="Texture2D" uid="uid://cincmvfbhhfwk" path="res://Menu/Boutons/presse/jouer.png" id="10_dlb7y"]
 [ext_resource type="Texture2D" uid="uid://cgvol5subky3v" path="res://Menu/Boutons/options.png" id="11_bfns0"]
@@ -27,7 +27,7 @@ scale = Vector2(0.5, 0.521)
 [node name="Background" type="Node2D" parent="Background"]
 position = Vector2(1114, 552.783)
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
+[node name="Background" type="Sprite2D" parent="Background/Background"]
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_uw7hi")
 
@@ -62,10 +62,10 @@ texture = ExtResource("4_uw7hi")
 texture = ExtResource("5_1fa01")
 
 [node name="Moko" type="Sprite2D" parent="Background"]
-position = Vector2(1336, 1015.35)
-rotation = 0.237365
-scale = Vector2(1, 0.794)
-texture = ExtResource("4_oo4jl")
+position = Vector2(1476, 976.967)
+rotation = 0.0631889
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_oo4jl")
 
 [node name="Toucan" type="Sprite2D" parent="Background"]
 position = Vector2(950, 119.002)

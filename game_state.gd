@@ -73,41 +73,52 @@ func load_level(scene_path: String) -> void:
 	if not is_menu:
 		current_level_path = scene_path
 
+	# Gère le HUD
 	if hud:
 		hud.visible = not is_menu
 	if health_bar:
 		health_bar.visible = not is_menu
 
+	# Fade out avant de supprimer les nodes
 	if fade:
 		await fade.fade_out()
 
-	# Nettoyage avant chargement
+	# 🔒 Retire temporairement le player de la scène (évite sa libération)
 	if player and player.get_parent():
 		player.get_parent().remove_child(player)
 
+	# 🔥 Nettoyage du niveau (sans toucher à fade, hud, player)
 	for child in get_children():
 		if child != fade and child != player and child != hud:
-			remove_child(child)
 			child.queue_free()
 
+	# 🔁 Attendre un ou deux frames pour être sûr que la mémoire est libérée
 	await get_tree().process_frame
-	
+	await get_tree().process_frame
+
 	# ✅ Chargement sécurisé
 	var scene_res = load(scene_path)
+	if not scene_res:
+		push_error("Erreur de chargement : %s" % scene_path)
+		return
+
 	var level = scene_res.instantiate()
 	current_level = level
-
 	add_child(level)
+
 	await get_tree().process_frame
 
+	# 🧠 Réintégrer le joueur dans le niveau (si c’est un niveau jouable)
 	if not is_menu:
 		level.add_child(player)
+
 		if "reset_state" in player:
 			player.reset_state()
 
 		var spawn = level.find_child("SpawnPoint", true, false)
 		player.global_position = spawn.global_position if spawn else Vector2.ZERO
 
+		# Caméra
 		if player.has_node("Camera2D"):
 			player.get_node("Camera2D").make_current()
 
@@ -116,10 +127,8 @@ func load_level(scene_path: String) -> void:
 
 func change_scene(scene_path: String) -> void:
 	if scene_path == "":
-		print("❌ [GameState] Chemin de scène vide.")
 		return
 
-	print("➡️ [GameState] Changement de scène demandé :", scene_path)
 	await load_level(scene_path)
 
 func is_menu_scene(scene_path: String) -> bool:

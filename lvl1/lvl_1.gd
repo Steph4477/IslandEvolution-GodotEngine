@@ -1,15 +1,16 @@
 extends Node2D
 
 func _ready():
-	start_intro_sequence()
+	#start_intro_sequence()
 	await get_tree().process_frame
 	$Sound/lvl1.play()
 
 func start_intro_sequence() -> void:
-	await focus_camera_on_temple()
 	await focus_camera_on_totem()
 	await show_quest()
+	await focus_camera_on_temple()
 	await return_camera_to_player()
+	
 
 
 func show_quest() -> void:
