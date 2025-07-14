@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=49 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/evo_1.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://dx2gxtcnb845x" path="res://Player/Sprite/idle2.2.png" id="2_btooi"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bcydrw5q5i16t" path="res://Player/Sprite/walk1.png" id="6_tj6lq"]
 [ext_resource type="Texture2D" uid="uid://xbv2vmtulxbk" path="res://Player/Sprite/walk2.png" id="7_maao0"]
 [ext_resource type="Texture2D" uid="uid://b8s2xl5hptvh0" path="res://Player/Sprite/exit3.png" id="7_p7kcq"]
+[ext_resource type="Texture2D" uid="uid://u7klxmfrmu5" path="res://Player/Sprite/die4.png" id="9_dyo71"]
 [ext_resource type="AudioStream" uid="uid://dttjlu8e8c2o1" path="res://sounds/walk.wav" id="11_leyao"]
 [ext_resource type="AudioStream" uid="uid://cwm8ik73bpjog" path="res://sounds/jump.wav" id="12_5vkkw"]
 [ext_resource type="Texture2D" uid="uid://dq3ybxay307mv" path="res://Player/Sprite/walk_gaz1.png" id="13_p7kcq"]
@@ -30,12 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://c8si2uaejcrop" path="res://Player/Sprite/shoot1.png" id="24_17nxb"]
 [ext_resource type="Texture2D" uid="uid://ur7r3qvdyp6b" path="res://Player/Sprite/shoot2.png" id="25_fnfic"]
 [ext_resource type="Texture2D" uid="uid://n76bibtr5wfo" path="res://Player/Sprite/shoot3.png" id="26_bpa77"]
-[ext_resource type="Texture2D" uid="uid://dqvhvhxlmxv71" path="res://Player/Sprite/die1.png" id="27_dyo71"]
-[ext_resource type="Texture2D" uid="uid://lnch85ipvf6c" path="res://Player/Sprite/die2.png" id="28_occ2r"]
-[ext_resource type="Texture2D" uid="uid://cn7i14vjkgbm0" path="res://Player/Sprite/die3.png" id="29_thqf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
-size = Vector2(450.003, 771.276)
+size = Vector2(441.667, 567.376)
 
 [sub_resource type="Animation" id="Animation_v82sg"]
 length = 0.001
@@ -50,6 +48,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_btooi")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(167.5, 68.3333)]
 }
 
 [sub_resource type="Animation" id="Animation_bpa77"]
@@ -108,10 +130,10 @@ tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("27_dyo71"), ExtResource("28_occ2r"), ExtResource("29_thqf3")]
+"values": [ExtResource("9_dyo71"), ExtResource("9_dyo71")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -120,10 +142,22 @@ tracks/1/path = NodePath("Sprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.8, 1.26667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(0.611765, 0, 0.321569, 1), Color(1, 1, 1, 1), Color(0.611765, 0, 0.321569, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(140, 45.8333)]
 }
 
 [sub_resource type="Animation" id="Animation_ifp5e"]
@@ -303,7 +337,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj58r"]
-radius = 37.6479
+radius = 24.181
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -315,11 +349,11 @@ jump_force = -750.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(167.5, 68.3333)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.07, 0.07)
 texture = ExtResource("2_btooi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(155, 73.75)
+position = Vector2(132.5, 58.3333)
 scale = Vector2(0.1, 0.094)
 shape = SubResource("RectangleShape2D_j3qaj")
 
@@ -359,8 +393,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClacArea"]
-visible = false
-position = Vector2(152.5, 58.3333)
+position = Vector2(143.333, 28.3333)
 shape = SubResource("CircleShape2D_bj58r")
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]
