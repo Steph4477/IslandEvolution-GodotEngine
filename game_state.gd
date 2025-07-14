@@ -66,37 +66,39 @@ func set_player(p: Node) -> void:
 
 func load_level(scene_path: String) -> void:
 	print("🚪 Chargement du niveau :", scene_path)
-
 	var is_menu := is_menu_scene(scene_path)
 
 	# ✅ Mémorise uniquement les niveaux jouables
 	if not is_menu:
 		current_level_path = scene_path
 
-	# Gère le HUD
+	# 🎛 Affiche ou cache le HUD et la barre de vie
 	if hud:
 		hud.visible = not is_menu
 	if health_bar:
 		health_bar.visible = not is_menu
 
-	# Fade out avant de supprimer les nodes
+	# ⬛ Fade out avant de nettoyer la scène
 	if fade:
 		await fade.fade_out()
 
-	# 🔒 Retire temporairement le player de la scène (évite sa libération)
-	if player and player.get_parent():
-		player.get_parent().remove_child(player)
+	# 🔥 Supprime proprement l'ancien joueur
+	if player:
+		if player.get_parent():
+			player.get_parent().remove_child(player)
+		player.queue_free()
+		player = null
 
-	# 🔥 Nettoyage du niveau (sans toucher à fade, hud, player)
+	# 🧹 Nettoie tous les nodes sauf HUD et fade
 	for child in get_children():
-		if child != fade and child != player and child != hud:
+		if child != fade and child != hud:
 			child.queue_free()
 
-	# 🔁 Attendre un ou deux frames pour être sûr que la mémoire est libérée
+	# ⏳ Laisse le moteur souffler
 	await get_tree().process_frame
 	await get_tree().process_frame
 
-	# ✅ Chargement sécurisé
+	# 📦 Charge la nouvelle scène
 	var scene_res = load(scene_path)
 	if not scene_res:
 		push_error("Erreur de chargement : %s" % scene_path)
@@ -106,24 +108,39 @@ func load_level(scene_path: String) -> void:
 	current_level = level
 	add_child(level)
 
-	await get_tree().process_frame
-
-	# 🧠 Réintégrer le joueur dans le niveau (si c’est un niveau jouable)
+	# ✅ Ajoute un joueur neuf uniquement dans les niveaux jouables
 	if not is_menu:
+		player = player_scene.instantiate()
 		level.add_child(player)
 
-		if "reset_state" in player:
+		# 🎯 Positionne le joueur sur un SpawnPoint si présent
+		var spawn_point = level.get_node_or_null("SpawnPoint")
+		if spawn_point:
+			player.global_position = spawn_point.global_position
+		else:
+			push_warning("⚠️ Aucun point de spawn 'SpawnPoint' trouvé dans ce niveau !")
+
+		# 💉 Reset complet du joueur
+		if player.has_method("reset_state"):
 			player.reset_state()
+		else:
+			if player.has_variable("pv") and player.has_variable("max_pv"):
+				player.pv = player.max_pv
 
-		var spawn = level.find_child("SpawnPoint", true, false)
-		player.global_position = spawn.global_position if spawn else Vector2.ZERO
+		# ✅ Forcer la MAJ de la barre de vie à 100%
+		if health_bar and health_bar.has_method("update_health_bar"):
+			health_bar.update_health_bar(player.pv, player.max_pv)
 
-		# Caméra
-		if player.has_node("Camera2D"):
-			player.get_node("Camera2D").make_current()
+		# ✅ Remet l'opacité
+		player.modulate = Color(1, 1, 1, 1)
 
+		# 📢 Optionnel : notifier les autres systèmes
+		emit_signal("player_updated", player)
+
+	# ▶️ Lancer le fade in
 	if fade:
 		await fade.fade_in()
+
 
 func change_scene(scene_path: String) -> void:
 	if scene_path == "":

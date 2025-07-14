@@ -10,6 +10,7 @@ extends CanvasLayer
 @export var float_distance := 40
 @export var duration := 0.5
 
+
 func _ready():
 	var game_state = get_node_or_null("/root/GameState")
 	if game_state:

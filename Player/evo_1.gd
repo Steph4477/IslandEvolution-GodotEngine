@@ -78,6 +78,10 @@ var label_seed: Label
 
 # --- Initialization ---
 func _ready():
+	print("[DEBUG] Moko prêt. Opacité = 1")
+	modulate = Color(1, 1, 1, 1)
+
+	modulate = Color(1, 1, 1, 1)
 	camera.make_current()
 	await get_tree().process_frame
 	setup_game_state()
@@ -114,6 +118,8 @@ func setup_hud():
 
 # --- Physics Process ---
 func _physics_process(delta):
+	if not is_dead:
+		modulate.a = 1.0
 	if not can_move or animation_locked:
 		return
 	_process_climb()
@@ -468,34 +474,34 @@ func on_hit(damage: int) -> void:
 	if pv <= 0:
 		die()
 
+
 func die():
 	if is_dead:
-		return  # ✅ empêche les appels multiples
+		return
 
 	is_dead = true
-	animation_locked = true  # 🔒 Verrouille les autres animations
+	animation_locked = true
 	anim.play("die")
-
-	# 💀 Perd une vie
 	game_state.lose_life()
 
-	# 🧾 MAJ des vies dans le HUD
 	if game_state.hud.has_method("update_lives_display"):
 		game_state.hud.update_lives_display(game_state.lives)
 
-	# ⏳ Attend la fin de l'animation de mort
 	await anim.animation_finished
 
-	# 🔁 Détermine la suite
+	is_dead = false
+	# ✅ Remet l'opacité à fond
+	modulate = Color(1, 1, 1, 1)
+	await  get_tree().process_frame
+
 	var next_level = ""
 	if game_state.is_game_over():
 		next_level = "res://Menu/Game_over/game_over.tscn"
 	else:
 		next_level = game_state.current_level_path
 
-	# 🕒 Petit délai optionnel avant le reload
-	await get_tree().create_timer(0.2).timeout
 	game_state.load_level(next_level)
+
 
 # --- Animations ---
 func update_animation():
@@ -581,13 +587,15 @@ func show_damage_popup(amount: int) -> void:
 	popup.show_damage(amount)
 
 func reset_state() -> void:
-	# 🛠️ Réinitialisation de base
-	animation_locked = false
 	is_dead = false
-	can_be_damaged = false
+	animation_locked = false
+	can_be_damaged = false  # ⛔ Protection immédiate !
 	visible = true
-	pv = max_pv
+	modulate = Color(1, 1, 1, 1)
 	set_physics_process(true)
+
+	# ❤️ PV à fond
+	pv = max_pv
 
 	# 🍌 Réinitialise les loots
 	heal_potions.clear()
@@ -596,27 +604,23 @@ func reset_state() -> void:
 	seed_count = 0
 	can_fire_coco = false
 
-	# 🔁 Synchronise avec le GameState
 	if game_state:
 		game_state.banane_count = 0
 		game_state.coco_count = 0
 		game_state.seed_count = 0
 		game_state.can_fire_coco = false
 
-		if game_state.health_bar:
-			game_state.health_bar.set_max_value(max_pv)
-			game_state.health_bar.set_value(pv)
+		# ✅ MAJ immédiate avant la frame (très important !)
+		if game_state.hud and game_state.hud.has_method("update_health_bar"):
+			game_state.hud.update_health_bar(pv, max_pv)
 
 		if game_state.hud and game_state.hud.has_method("update_lives_display"):
 			game_state.hud.update_lives_display(game_state.lives)
 
-	# 🧼 Met à jour affichage et état
-	update_all_displays()
-	update_can_heal()
-	refresh_hud_buttons()
-
-	await get_tree().create_timer(0.3).timeout
+	# ⏳ Protection temporaire (1s) pour éviter les pièges instantanés
+	await get_tree().create_timer(1.0).timeout
 	can_be_damaged = true
+
 
 func _on_clac_area_body_entered(body: Node2D) -> void:
 	if body and body.has_method("on_hit"):
