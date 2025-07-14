@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cv1plkmedpd47" path="res://Enemies/Carnivore/tige_grande.png" id="5_1fa01"]
 [ext_resource type="Texture2D" uid="uid://5fn0wsmkcqd1" path="res://Enemies/Serpent/walk3.png" id="6_1fa01"]
 [ext_resource type="Texture2D" uid="uid://edag8b1uu3v1" path="res://Enemies/Toucan/vol1.png" id="7_yk3kc"]
-[ext_resource type="Texture2D" uid="uid://c8lda42j6o74n" path="res://Player/Sprite/jump.png" id="8_oo4jl"]
+[ext_resource type="Texture2D" uid="uid://dnupaiboobmet" path="res://Player/Sprite/jump.png" id="8_oo4jl"]
 [ext_resource type="Texture2D" uid="uid://usj7b2bvsgb0" path="res://Menu/Boutons/jouer.png" id="9_ss15l"]
 [ext_resource type="Texture2D" uid="uid://cincmvfbhhfwk" path="res://Menu/Boutons/presse/jouer.png" id="10_dlb7y"]
 [ext_resource type="Texture2D" uid="uid://cgvol5subky3v" path="res://Menu/Boutons/options.png" id="11_bfns0"]

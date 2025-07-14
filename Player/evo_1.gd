@@ -343,18 +343,6 @@ func _process_clac():
 	if Input.is_action_just_pressed(INPUT["clac"]):
 		clac_attack()
 
-## --- Lancement de l'animation clac et paf en même temps ---
-func play_anim_on_both(anim_name: String):
-	if $Anim and $Anim.has_animation(anim_name):
-		$Anim.play(anim_name)
-	else:
-		print("❌ Anim ne contient pas :", anim_name)
-
-	if $PafAnim and $PafAnim.has_animation(anim_name):
-		$PafAnim.play(anim_name)
-	else:
-		print("❌ PafAnim ne contient pas :", anim_name)
-
 # --- attaque corps à corps ---
 func clac_attack():
 	if is_attacking or is_dead:
@@ -367,8 +355,7 @@ func clac_attack():
 
 	is_attacking = true
 	animation_locked = true
-	play_anim_on_both("clac")
-	#anim.play("clac")
+	anim.play("clac")
 
 	# Active la zone d'attaque temporairement
 	$ClacArea.monitoring = true
