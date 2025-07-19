@@ -398,27 +398,47 @@ func heal(amount: int) -> void:
 func use_banane():
 	if pv >= max_pv:
 		show_info_popup("PV au max !")
+		anim.play("empty")
+		animation_locked = true
+		await anim.animation_finished
+		animation_locked = false
 		return
 	if in_cooldown:
 		show_info_popup("⏳ Potion en recharge...")
+		anim.play("empty")
+		animation_locked = true
+		await anim.animation_finished
+		animation_locked = false
 		return
 	if heal_potions.is_empty():
 		show_info_popup("Aucune potion !")
+		anim.play("empty")
+		animation_locked = true
+		await anim.animation_finished
+		animation_locked = false
 		return
-	
-	# ✅ Utilisation normale
+
+
+	# ✅ Joue l’animation de soin et bloque les autres animations
+	anim.play("heal")
+	animation_locked = true
+	await anim.animation_finished
+	animation_locked = false
+
+	# ✅ Applique le soin
 	var amount = game_state.heal_amount
 	heal(amount)
 	heal_potions.pop_front()
-	
+
 	can_heal = false
 	in_cooldown = true
-	
+
 	update_can_heal()
 	update_banane_display()
 	game_state.banane_count = banane_count
 	refresh_hud_buttons()
 	start_potion_cooldown()
+
 
 func start_potion_cooldown():
 	in_cooldown = true
@@ -505,36 +525,43 @@ func die():
 
 # --- Animations ---
 func update_animation():
-	if animation_locked:
+	if animation_locked or is_dead:
 		return
+
+	# 🔒 Ne rien toucher si accroché ou en train de grimper
 	if is_hanging:
-		return 
-	# 🎞️ Si en train de grimper, jouer l'anim (si pas hang)
-	if climbing_anim != "" and not is_hanging and velocity.y != 0:
+		return
+	if climbing_anim != "" and velocity.y != 0:
 		anim.play(climbing_anim)
 		return
-
 	if anim.current_animation == "hang":
-		return  # 🔒 On ne touche pas à l'anim hang
-
-	if is_ramping:
-		if abs(velocity.x) > 0.1:
-			anim.play("ramp")
-		else:
-			anim.play("idle")
 		return
-	if velocity.y < 0:
-		anim.play("jump_up")
-		$Sound/Jump.play()
-	elif velocity.y > 0:
-		anim.play("jump_down")
-	elif velocity.x != 0:
-		if is_gazed:
-			anim.play("walk_gaz")
+
+	# ✅ SOL — forcer idle, walk ou ramp
+	if is_on_floor():
+		if is_ramping:
+			if abs(velocity.x) > 0.1:
+				anim.play("ramp")
+			else:
+				anim.play("idle")
 		else:
-			anim.play("walk")
-	else:
-		anim.play("idle")
+			if abs(velocity.x) > 0.1:
+				if is_gazed:
+					anim.play("walk_gaz")
+				else:
+					anim.play("walk")
+			else:
+				anim.play("idle")
+		return  # 🛑 Ne va pas dans la logique en l'air
+
+	# 🪂 EN L’AIR
+	if velocity.y < 0:
+		if anim.current_animation != "jump_up":
+			anim.play("jump_up")
+			$Sound/Jump.play()
+	elif velocity.y > 0:
+		if anim.current_animation != "jump_down":
+			anim.play("jump_down")
 
 # --- HUD & Popups ---
 func update_banane_display():

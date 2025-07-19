@@ -135,7 +135,7 @@ skew = -1.0848e-05
 position = Vector2(825, 369)
 
 [node name="Platforms" type="StaticBody2D" parent="Platforms"]
-position = Vector2(734, -1797)
+position = Vector2(734, -1811)
 scale = Vector2(0.089149, 0.144557)
 collision_layer = 2
 
@@ -147,37 +147,37 @@ shape = SubResource("RectangleShape2D_wajbs")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms/Platforms"]
 light_mask = 4
-position = Vector2(30095.7, 22883.7)
+position = Vector2(29916.2, 23084.3)
 scale = Vector2(283.803, 14.7983)
 shape = SubResource("RectangleShape2D_dvpsw")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(23185.9, 18034.4)
+position = Vector2(23174.7, 18145.1)
 scale = Vector2(217.988, 8.30556)
 shape = SubResource("RectangleShape2D_am3co")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(14391.6, 20953.7)
+position = Vector2(14358, 21133.5)
 scale = Vector2(992.862, 8.2334)
 shape = SubResource("RectangleShape2D_ofnsq")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(22961.6, 19535.5)
+position = Vector2(22950.3, 19639.3)
 scale = Vector2(401.261, 7.01483)
 shape = SubResource("RectangleShape2D_e63vn")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(33561.8, 16616.3)
+position = Vector2(33561.8, 16796.1)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_vc1ff")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(11318.1, 21790.7)
+position = Vector2(11318.1, 21970.6)
 scale = Vector2(300.999, -7.56021)
 shape = SubResource("RectangleShape2D_kgp0u")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(37745.8, 18200.4)
+position = Vector2(37723.4, 18262.7)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_lr8k6")
 
@@ -199,12 +199,12 @@ scale = Vector2(144.607, 694.703)
 shape = SubResource("RectangleShape2D_t3xnj")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(27145.6, 16733.9)
+position = Vector2(27134.3, 16879.2)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_cvxqb")
 
 [node name="CollisionShape2D31" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(16623.9, 19604.7)
+position = Vector2(16646.3, 19750)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_26k7p")
 
@@ -219,13 +219,13 @@ scale = Vector2(282.291, 10.4812)
 shape = SubResource("RectangleShape2D_kcd4a")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(19932.9, 18373.4)
+position = Vector2(19932.9, 18539.4)
 rotation = -3.14159
 scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_uhs03")
 
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="Platforms/Platforms"]
-position = Vector2(41638.2, 19065.1)
+position = Vector2(41604.5, 19210.4)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_avxqp")
 
@@ -255,7 +255,7 @@ speed = 200.0
 direction = 1
 
 [node name="MobilePlatForm2" parent="Platforms" instance=ExtResource("16_f0kof")]
-position = Vector2(4706, 1091)
+position = Vector2(4708, 1089)
 speed = 300.0
 distance = 1800.0
 
@@ -297,7 +297,7 @@ position = Vector2(-4263, -288)
 position = Vector2(3329, 1040)
 
 [node name="Snake" parent="Wildlife" instance=ExtResource("17_f0kof")]
-position = Vector2(636, 374)
+position = Vector2(637, 414)
 
 [node name="Mousquito" parent="Wildlife" instance=ExtResource("16_cvxqb")]
 position = Vector2(2843, 40)

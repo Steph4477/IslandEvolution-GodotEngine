@@ -45,7 +45,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
-size = Vector2(28.9447, 376.467)
+size = Vector2(13.9183, 376.467)
 
 [node name="Cocotier" type="Node2D"]
 script = ExtResource("1_it4j1")
@@ -67,7 +67,7 @@ autoplay = "wind"
 position = Vector2(-10, 184)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(51.5666, -74.6633)
+position = Vector2(52.9741, -74.7144)
 rotation = -0.0362683
 shape = SubResource("RectangleShape2D_it4j1")
 
