@@ -50,7 +50,6 @@ func _ready():
 
 	# ✅ Vérifie et force le bon script si besoin
 	if not hud.has_method("update_seed_display"):
-		print("⚠️ HUD sans méthode update_seed_display – tentative de réassigner le script manuellement")
 		hud.set_script(load("res://Interface/hud.gd"))
 	add_child(hud)
 
@@ -96,7 +95,6 @@ func load_level(scene_path: String) -> void:
 
 	# ⏳ Laisse le moteur souffler
 	await get_tree().process_frame
-	await get_tree().process_frame
 
 	# 📦 Charge la nouvelle scène
 	var scene_res = load(scene_path)
@@ -113,12 +111,9 @@ func load_level(scene_path: String) -> void:
 		player = player_scene.instantiate()
 		level.add_child(player)
 
-		# 🎯 Positionne le joueur sur un SpawnPoint si présent
+		# 🎯 Positionne le joueur sur le SpawnPoint 
 		var spawn_point = level.get_node_or_null("SpawnPoint")
-		if spawn_point:
-			player.global_position = spawn_point.global_position
-		else:
-			push_warning("⚠️ Aucun point de spawn 'SpawnPoint' trouvé dans ce niveau !")
+		player.global_position = spawn_point.global_position
 
 		# 💉 Reset complet du joueur
 		if player.has_method("reset_state"):
@@ -131,9 +126,6 @@ func load_level(scene_path: String) -> void:
 		if health_bar and health_bar.has_method("update_health_bar"):
 			health_bar.update_health_bar(player.pv, player.max_pv)
 
-		# ✅ Remet l'opacité
-		player.modulate = Color(1, 1, 1, 1)
-
 		# 📢 Optionnel : notifier les autres systèmes
 		emit_signal("player_updated", player)
 
@@ -141,11 +133,9 @@ func load_level(scene_path: String) -> void:
 	if fade:
 		await fade.fade_in()
 
-
 func change_scene(scene_path: String) -> void:
 	if scene_path == "":
 		return
-
 	await load_level(scene_path)
 
 func is_menu_scene(scene_path: String) -> bool:
@@ -153,6 +143,8 @@ func is_menu_scene(scene_path: String) -> bool:
 
 func reset_lives():
 	lives = max_lives
+	if hud and hud.has_method("update_lives_display"):
+		hud.update_lives_display(lives)
 
 func lose_life():
 	if lives > 0:
@@ -175,6 +167,10 @@ func restart_game():
 	can_fire_coco = false
 	has_key = false
 	
+	# ✅ MAJ immédiate du HUD
+	if hud and hud.has_method("update_lives_display"):
+		hud.update_lives_display(lives)
+	
 	get_tree().process_frame # Attend une frame pour repartir propre
 
 	# ✅ Recharge le dernier niveau valide uniquement
@@ -183,14 +179,8 @@ func restart_game():
 	else:
 		load_level(current_level_path)
 
-
 func is_game_over() -> bool:
 	return lives <= 0
-
-func trigger_player_jump():
-	if player and "jump_buffer_timer" in player:
-		if player.jump_buffer_timer <= 0.0:
-			player.jump_buffer_timer = player.JUMP_BUFFER_TIME
 
 func reset_seed_tracking(seed_count: int) -> void:
 	total_seeds_in_level = seed_count

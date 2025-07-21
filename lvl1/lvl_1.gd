@@ -1,17 +1,16 @@
 extends Node2D
 
 func _ready():
-	#start_intro_sequence()
+	start_intro_sequence()
 	await get_tree().process_frame
 	$Sound/lvl1.play()
 
 func start_intro_sequence() -> void:
+	await get_tree().process_frame 
 	await focus_camera_on_totem()
 	await show_quest()
 	await focus_camera_on_temple()
 	await return_camera_to_player()
-	
-
 
 func show_quest() -> void:
 	var game_state = get_node_or_null("/root/GameState")
@@ -98,7 +97,7 @@ func focus_camera_on_totem_with_anim(seed_index: int) -> void:
 	if cam == null or totem == null:
 		return
 
-	player.disable_controls()
+	#player.disable_controls()
 	var original_position = cam.global_position
 
 	# 🎥 1. Focus caméra sur le totem

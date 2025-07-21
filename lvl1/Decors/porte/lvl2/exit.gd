@@ -55,14 +55,15 @@ func _on_body_entered(body: Node2D) -> void:
 		$LockedSound.play()
 		return
 
-	if body.has_node("anim"):
-		var anim_player = body.get_node("anim")
-		if anim_player.has_animation("door"):
-			body.animation_locked = true
-			body.set_physics_process(false)
-			anim_player.play("door")
-			await anim_player.animation_finished
-			await change_scene()
+	var anim_player = body.get_node("Anim")
+	if anim_player.has_animation("door"):
+		print("🎬 Animation 'door' lancée")
+		body.animation_locked = true
+		anim_player.play("door")
+		await anim_player.animation_finished
+		print("✅ Animation 'door' terminée")
+		body.set_physics_process(false)
+		await change_scene()
 
 func change_scene() -> void:
 	var gs = get_node_or_null("/root/GameState")
