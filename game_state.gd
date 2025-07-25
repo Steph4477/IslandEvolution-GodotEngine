@@ -57,8 +57,8 @@ func _ready():
 	health_bar = hud.get_node_or_null("HealthBar")
 
 	await get_tree().process_frame
-	await load_level("res://Menu/lancement_lvl1/menu_lvl1.tscn")
-
+	#await load_level("res://Menu/lancement_lvl1/menu_lvl1.tscn")
+	await load_level("res://lvl2/lvl_2.tscn")
 func set_player(p: Node) -> void:
 	player = p
 	emit_signal("player_updated", p)

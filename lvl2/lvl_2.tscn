@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=9 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
-[ext_resource type="Script" uid="uid://byoucdstp1ysq" path="res://lvl2/parallax_layer_fond.gd" id="2_ekrdk"]
+[ext_resource type="PackedScene" uid="uid://b2f2je0vsn1kk" path="res://Tir/lance_trap.tscn" id="3_ekrdk"]
 [ext_resource type="PackedScene" uid="uid://c2h3f7cwjc1n5" path="res://lvl2/Décors/tileMap.tscn" id="4_djaxt"]
-[ext_resource type="PackedScene" uid="uid://cohmext14ho56" path="res://Enemies/Mygale/mygale.tscn" id="4_wsvun"]
+[ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="4_wsvun"]
+[ext_resource type="PackedScene" uid="uid://dl05w3ab6x8ih" path="res://Tir/lance_trap_head.tscn" id="5_wsvun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(125, 4097)
@@ -17,64 +18,34 @@ size = Vector2(10271, 164.75)
 [node name="lvl2" type="Node2D"]
 script = ExtResource("1_vnrni")
 
-[node name="ParalaxeFond" type="Node2D" parent="."]
-visible = false
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="ParalaxeFond"]
-visible = false
-
-[node name="ParallaxLayer_fond" type="ParallaxLayer" parent="ParalaxeFond/ParallaxBackground"]
-script = ExtResource("2_ekrdk")
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParalaxeFond/ParallaxBackground/ParallaxLayer_fond"]
-z_index = 1
-centered = false
-region_rect = Rect2(-3.557, 262.646, 1024, 200)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParalaxeFond/ParallaxBackground/ParallaxLayer_fond"]
-z_index = 1
-position = Vector2(1024, -1024)
-centered = false
-region_rect = Rect2(-3.557, 262.646, 1024, 200)
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParalaxeFond/ParallaxBackground/ParallaxLayer_fond"]
-z_index = 1
-position = Vector2(1024, 1024)
-centered = false
-region_rect = Rect2(-3.557, 262.646, 1024, 200)
-
-[node name="Sprite2D4" type="Sprite2D" parent="ParalaxeFond/ParallaxBackground/ParallaxLayer_fond"]
-z_index = 1
-position = Vector2(1024, 0)
-centered = false
-region_rect = Rect2(-3.557, 262.646, 1024, 200)
-
-[node name="Sprite2D5" type="Sprite2D" parent="ParalaxeFond/ParallaxBackground/ParallaxLayer_fond"]
-z_index = 1
-position = Vector2(2048, 0)
-centered = false
-region_rect = Rect2(-3.557, 262.646, 1024, 200)
-
-[node name="platform" type="StaticBody2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
-position = Vector2(-61, 604)
-shape = SubResource("RectangleShape2D_ekrdk")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="platform"]
-position = Vector2(6534, 760.125)
-shape = SubResource("RectangleShape2D_djaxt")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="platform"]
-position = Vector2(3466, 1636)
-shape = SubResource("RectangleShape2D_wsvun")
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(239, 1248)
 
 [node name="TileMap" parent="." instance=ExtResource("4_djaxt")]
 position = Vector2(-29, 419)
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(239, 1248)
+[node name="platform" type="StaticBody2D" parent="."]
+collision_layer = 2
 
-[node name="mygale" parent="." instance=ExtResource("4_wsvun")]
-position = Vector2(1883, 902)
+[node name="Border" type="CollisionShape2D" parent="platform"]
+position = Vector2(-61, 604)
+shape = SubResource("RectangleShape2D_ekrdk")
+
+[node name="Border2" type="CollisionShape2D" parent="platform"]
+position = Vector2(6534, 760.125)
+shape = SubResource("RectangleShape2D_djaxt")
+
+[node name="Border3" type="CollisionShape2D" parent="platform"]
+position = Vector2(3464, 1576)
+shape = SubResource("RectangleShape2D_wsvun")
+
+[node name="Ramp" parent="." instance=ExtResource("4_wsvun")]
+position = Vector2(377, 1435)
+
+[node name="LanceTrap" parent="." instance=ExtResource("3_ekrdk")]
+position = Vector2(2401, 1414)
+
+[node name="LanceTrapHead" parent="." instance=ExtResource("5_wsvun")]
+position = Vector2(2387, 1368)
+
+[node name="TrapLance" type="Node2D" parent="."]

@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	print_tree_pretty()
+	#print_tree_pretty()
 	var paralaxe_fond = $ParalaxeFond
 	if paralaxe_fond:
 		var pb = paralaxe_fond.get_node("ParallaxBackground")
