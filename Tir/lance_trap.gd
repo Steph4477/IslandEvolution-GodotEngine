@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed := 800.0
 @export var lifetime := 10.0
-@export var damage := 1000
+@export var damage := 100
 @export var detection_range := 2000.0
 @export var delay_before_fire := 0.5
 @export var tracking_duration := 0.3  # Durée où la lance suit Moko
