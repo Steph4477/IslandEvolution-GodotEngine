@@ -465,16 +465,12 @@ libraries = {
 }
 autoplay = "hang"
 
-[node name="TurnAxisHead" type="Marker2D" parent="."]
-position = Vector2(164.167, 50)
-rotation = 0.785398
-
 [node name="TurnAxis" type="Marker2D" parent="."]
-position = Vector2(163.333, 70)
+position = Vector2(170, 48)
 rotation = 0.785398
 
 [node name="CastPoint" type="Marker2D" parent="TurnAxis"]
-position = Vector2(-11.1958, -32.4091)
+position = Vector2(8.48528, -23.3345)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(151, 61)

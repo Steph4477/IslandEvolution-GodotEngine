@@ -87,7 +87,7 @@ size = Vector2(5.4567, 20)
 script = ExtResource("1_vc1ff")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(203, 1415)
+position = Vector2(6837, 1386)
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
@@ -308,11 +308,11 @@ position = Vector2(487, -159)
 [node name="Carnivore" parent="Wildlife" instance=ExtResource("14_26k7p")]
 position = Vector2(-1070, 343)
 
+[node name="Carnivore2" parent="Wildlife" instance=ExtResource("14_26k7p")]
+position = Vector2(-768, 344)
+
 [node name="Mousquito2" parent="Wildlife" instance=ExtResource("16_cvxqb")]
 position = Vector2(980, -356)
-
-[node name="Carnivore2" parent="Wildlife" instance=ExtResource("14_26k7p")]
-position = Vector2(-791, 342)
 
 [node name="Butterfly2" type="Node2D" parent="Wildlife"]
 
