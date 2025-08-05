@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=9 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
+[ext_resource type="PackedScene" uid="uid://b2f2je0vsn1kk" path="res://Tir/lance_trap.tscn" id="3_ekrdk"]
 [ext_resource type="PackedScene" uid="uid://c2h3f7cwjc1n5" path="res://lvl2/Décors/tileMap.tscn" id="4_djaxt"]
-[ext_resource type="PackedScene" uid="uid://dqktopdb40juo" path="res://Enemies/Pygmée/pygmee.tscn" id="4_rwgjh"]
 [ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="4_wsvun"]
+[ext_resource type="PackedScene" uid="uid://dl05w3ab6x8ih" path="res://Tir/lance_trap_head.tscn" id="5_wsvun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(125, 4097)
@@ -16,6 +17,9 @@ size = Vector2(10271, 164.75)
 
 [node name="lvl2" type="Node2D"]
 script = ExtResource("1_vnrni")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(239, 1248)
 
 [node name="TileMap" parent="." instance=ExtResource("4_djaxt")]
 position = Vector2(-29, 419)
@@ -38,8 +42,10 @@ shape = SubResource("RectangleShape2D_wsvun")
 [node name="Ramp" parent="." instance=ExtResource("4_wsvun")]
 position = Vector2(377, 1435)
 
-[node name="Pygmee" parent="." instance=ExtResource("4_rwgjh")]
-position = Vector2(2313, 1421)
+[node name="LanceTrap" parent="." instance=ExtResource("3_ekrdk")]
+position = Vector2(2401, 1414)
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(239, 1307)
+[node name="LanceTrapHead" parent="." instance=ExtResource("5_wsvun")]
+position = Vector2(2387, 1368)
+
+[node name="TrapLance" type="Node2D" parent="."]
