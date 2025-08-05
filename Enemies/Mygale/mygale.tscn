@@ -74,7 +74,7 @@ collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-16.3808, -15.9666)
+position = Vector2(-16, -35)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_4q0aj")
 
@@ -90,12 +90,12 @@ wait_time = 0.5
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-19, -7)
+position = Vector2(-17, -47)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_g1fhx")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-10, -33)
+position = Vector2(-11, -32)
 scale = Vector2(0.6, 0.636)
 sprite_frames = SubResource("1")
 animation = &"attaque"
