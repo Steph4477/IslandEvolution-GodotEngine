@@ -1,5 +1,15 @@
 extends Node2D
 
+#| Fonction                            | Description                                                                    |
+#| ----------------------------------- | ------------------------------------------------------------------------------ |
+#| `_ready()`                          | Lance l’intro dès le chargement                                                |
+#| `start_intro_sequence()`            | Bloque Moko, fait les focus caméra, affiche la quête, puis redonne le contrôle |
+#| `show_quest()`                      | Affiche le parchemin 5s                                                        |
+#| `focus_camera_on_node()`            | Déplace la caméra en douceur vers un nœud                                      |
+#| `return_camera_to_player()`         | Ramène la caméra sur Moko                                                      |
+#| `focus_camera_on_totem_with_anim()` | Focus totem, met à jour le sprite, puis revient sur Moko                       |
+#| `focus_camera_on_exit_and_fade()`   | Focus sortie, joue le fade, puis revient sur Moko                              |
+
 func _ready():
 	start_intro_sequence()
 	await get_tree().process_frame
