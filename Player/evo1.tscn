@@ -40,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://sq85clg1ubsq" path="res://Player/Sprite/idle/1.png" id="38_7clvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
-size = Vector2(34.7222, 254.136)
+size = Vector2(61.1111, 254.136)
 
 [sub_resource type="Animation" id="Animation_bpa77"]
 resource_name = "clac"
@@ -386,7 +386,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_l6ey7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(143.125, 105)
+position = Vector2(145, 105)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_j3qaj")
 
