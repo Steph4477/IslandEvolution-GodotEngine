@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/graine/seed.tscn" id="15_kgp0u"]
 [ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Moustique/moustique.tscn" id="16_cvxqb"]
 [ext_resource type="PackedScene" uid="uid://c5bug2b6apnq6" path="res://ItemsDecors/MobilePlatform/mobile_plat_form.tscn" id="16_f0kof"]
-[ext_resource type="AudioStream" uid="uid://bqpsj12o61ss0" path="res://sounds/lvl1.mp3" id="16_kgp0u"]
+[ext_resource type="AudioStream" uid="uid://bey7vvkh1a4ru" path="res://sounds/lvl1.mp3" id="16_kgp0u"]
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="17_f0kof"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="18_211dj"]
 [ext_resource type="Script" uid="uid://o41uset6a6qr" path="res://lvl1/seeds.gd" id="18_myamh"]
@@ -87,7 +87,7 @@ size = Vector2(5.4567, 20)
 script = ExtResource("1_vc1ff")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(203, 1415)
+position = Vector2(256, 1180)
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(3329, 1040)

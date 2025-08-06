@@ -519,13 +519,11 @@ func update_animation():
 		return  # 🛑 Ne va pas dans la logique en l'air
 
 	# 🪂 EN L’AIR
-	if velocity.y < -400:
+	if velocity.y < 0:
 		anim.play("jump_up")
 		$Sound/Jump.play()
 	elif velocity.y > 0:
-		anim.play("idle")  # proche du sol : joue idle (pose atterrissage)
-	else:
-		anim.play("jump_down")  # chute normale
+		anim.play("jump_down")  # proche du sol : joue idle (pose atterrissage)
 
 # =============================================================================
 # =                             HUD & Popups                                  =
