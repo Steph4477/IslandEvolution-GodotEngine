@@ -352,7 +352,7 @@ script = ExtResource("18_myamh")
 position = Vector2(-2976, -675)
 
 [node name="Seed3" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
-position = Vector2(430, -174)
+position = Vector2(-1746, -335)
 
 [node name="Seed4" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
 position = Vector2(-1693, -337)

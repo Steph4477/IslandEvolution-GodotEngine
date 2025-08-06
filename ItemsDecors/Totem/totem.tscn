@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6y25h2tqe3bh"]
 
 [ext_resource type="Script" uid="uid://d3pumlcq6ui8l" path="res://ItemsDecors/Totem/totem.gd" id="1_4w81w"]
-[ext_resource type="Texture2D" uid="uid://c8qju48ej8i17" path="res://ItemsDecors/Totem/totem1.png" id="2_7x43p"]
+[ext_resource type="Texture2D" uid="uid://b77f8nd62frti" path="res://ItemsDecors/Totem/totem1.png" id="2_7x43p"]
 [ext_resource type="PackedScene" uid="uid://sl4esxgcnmc2" path="res://Loot/clés/key.tscn" id="2_31wvm"]
-[ext_resource type="Texture2D" uid="uid://doy4if78opan5" path="res://ItemsDecors/Totem/totem2.png" id="3_5qhso"]
-[ext_resource type="Texture2D" uid="uid://bjjkyycqkvdn3" path="res://ItemsDecors/Totem/totem5.png" id="4_5qhso"]
-[ext_resource type="Texture2D" uid="uid://bhc0103e2wldh" path="res://ItemsDecors/Totem/totem3.png" id="4_31wvm"]
-[ext_resource type="Texture2D" uid="uid://brave6rytogsw" path="res://ItemsDecors/Totem/totem4.png" id="5_66g6m"]
+[ext_resource type="Texture2D" uid="uid://drksfdoelgwh0" path="res://ItemsDecors/Totem/totem2.png" id="3_5qhso"]
+[ext_resource type="Texture2D" uid="uid://y4kv5yioo6h8" path="res://ItemsDecors/Totem/totem5.png" id="4_5qhso"]
+[ext_resource type="Texture2D" uid="uid://bahroyed5cgpi" path="res://ItemsDecors/Totem/totem3.png" id="4_31wvm"]
+[ext_resource type="Texture2D" uid="uid://b7q70okdy5bti" path="res://ItemsDecors/Totem/totem4.png" id="5_66g6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3a4u"]
 size = Vector2(2.68996, 11.4054)
