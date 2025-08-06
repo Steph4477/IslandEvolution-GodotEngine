@@ -150,10 +150,10 @@ layout_mode = 2
 text = "0"
 
 [node name="HBoxContainerSeed" type="HBoxContainer" parent="."]
-offset_left = 1711.0
-offset_top = 53.0
-offset_right = 1848.0
-offset_bottom = 159.0
+offset_left = 1731.0
+offset_top = 51.0
+offset_right = 1868.0
+offset_bottom = 157.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainerSeed"]
 layout_mode = 2
