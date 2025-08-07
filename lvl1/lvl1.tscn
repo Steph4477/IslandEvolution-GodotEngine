@@ -262,13 +262,11 @@ distance = 1800.0
 [node name="Trees" type="Node2D" parent="."]
 position = Vector2(6144, 1425)
 
-[node name="Coconut1" parent="Trees" instance=ExtResource("13_f0kof")]
-position = Vector2(-5604, -54)
+[node name="Coconut" parent="Trees" instance=ExtResource("13_f0kof")]
+position = Vector2(-675, 56)
 
 [node name="Coconut2" parent="Trees" instance=ExtResource("13_f0kof")]
-position = Vector2(-644, -6)
-rotation = 3.14159
-scale = Vector2(1, -1)
+position = Vector2(-5550, 85)
 
 [node name="BananaTree" parent="Trees" instance=ExtResource("13_ofnsq")]
 position = Vector2(-2709, -325)
@@ -279,19 +277,17 @@ position = Vector2(-4717, -364)
 [node name="Loot" type="Node2D" parent="Trees"]
 position = Vector2(-341, -91)
 
-[node name="CocoLoot1" parent="Trees/Loot" instance=ExtResource("14_211dj")]
-position = Vector2(-5164, -181)
-
-[node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("14_211dj")]
-position = Vector2(-380, -138)
-rotation = 3.14159
-scale = Vector2(1, -1)
-
 [node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
-position = Vector2(-2245, -238)
+position = Vector2(-2280, -229)
 
 [node name="BananaLoot2" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
 position = Vector2(-4283, -265)
+
+[node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("14_211dj")]
+position = Vector2(-315, -300)
+
+[node name="CocoLoot" parent="Trees/Loot" instance=ExtResource("14_211dj")]
+position = Vector2(-5190, -251)
 
 [node name="Wildlife" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
