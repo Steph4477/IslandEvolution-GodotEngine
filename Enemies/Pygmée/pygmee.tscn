@@ -1,27 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqktopdb40juo"]
+[gd_scene load_steps=17 format=3 uid="uid://dqktopdb40juo"]
 
-[ext_resource type="Script" uid="uid://b2pugvtj0lmct" path="res://Enemies/Pygmée/pygmee.gd" id="1_qlf48"]
-[ext_resource type="Texture2D" uid="uid://b04ot1s3ogptu" path="res://Enemies/Pygmée/idle1.png" id="2_xy3wy"]
-[ext_resource type="Texture2D" uid="uid://by56o57o4gqdv" path="res://Enemies/Pygmée/attack1.png" id="3_x2fpe"]
-[ext_resource type="Texture2D" uid="uid://c70q04k1ixuy7" path="res://Enemies/Pygmée/attack3.png" id="4_jhvfg"]
+[ext_resource type="Script" path="res://Enemies/Pygmée/pygmee.gd" id="1_qlf48"]
+[ext_resource type="Texture2D" uid="uid://4chbj2vbg1i5" path="res://Enemies/Pygmée/idle1.png" id="2_xy3wy"]
+[ext_resource type="Texture2D" uid="uid://deox04gyv2t4s" path="res://Enemies/Pygmée/Attack/1.png" id="3_dixvw"]
+[ext_resource type="Texture2D" uid="uid://del8ovyib8awa" path="res://Enemies/Pygmée/Attack/2.png" id="4_50y7t"]
+[ext_resource type="Texture2D" uid="uid://dfxi5cbyjtw5s" path="res://Enemies/Pygmée/Attack/3.png" id="5_djcmy"]
+[ext_resource type="Texture2D" uid="uid://5kxwrrx3dak1" path="res://Enemies/Pygmée/Attack/4.png" id="6_i08mi"]
+[ext_resource type="Texture2D" uid="uid://bskf44j3x3llk" path="res://Enemies/Pygmée/Idle/1.png" id="7_bu88q"]
+[ext_resource type="Texture2D" uid="uid://bsedrsvn7wa6x" path="res://Enemies/Pygmée/Idle/2.png" id="8_vs8wi"]
+[ext_resource type="Texture2D" uid="uid://2xwf1440hacj" path="res://Enemies/Pygmée/Idle/3.png" id="9_o1xk7"]
+[ext_resource type="Texture2D" uid="uid://cy41o0yj1a4kk" path="res://Enemies/Pygmée/Idle/4.png" id="10_18ivx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(42, 91.5)
-
-[sub_resource type="Animation" id="Animation_4jlfj"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("2_xy3wy"), ExtResource("2_xy3wy")]
-}
+size = Vector2(42, 136.5)
 
 [sub_resource type="Animation" id="Animation_vml3t"]
 length = 0.001
@@ -40,7 +31,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_hk653"]
 resource_name = "attack"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,10 +39,27 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_x2fpe"), ExtResource("4_jhvfg")]
+"values": [ExtResource("3_dixvw"), ExtResource("4_50y7t"), ExtResource("5_djcmy"), ExtResource("6_i08mi")]
+}
+
+[sub_resource type="Animation" id="Animation_4jlfj"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_bu88q"), ExtResource("8_vs8wi"), ExtResource("9_o1xk7"), ExtResource("10_18ivx")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
@@ -71,11 +79,12 @@ script = ExtResource("1_qlf48")
 position = Vector2(-85, -10)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(-0.2, 0.2)
+position = Vector2(33, -16)
+scale = Vector2(-0.25, 0.25)
 texture = ExtResource("2_xy3wy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 27.75)
+position = Vector2(10, 5.25)
 shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
