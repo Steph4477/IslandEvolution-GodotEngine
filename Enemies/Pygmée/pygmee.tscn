@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqktopdb40juo"]
+[gd_scene load_steps=26 format=3 uid="uid://dqktopdb40juo"]
 
-[ext_resource type="Script" path="res://Enemies/Pygmée/pygmee.gd" id="1_qlf48"]
-[ext_resource type="Texture2D" uid="uid://4chbj2vbg1i5" path="res://Enemies/Pygmée/idle1.png" id="2_xy3wy"]
+[ext_resource type="Script" uid="uid://b2pugvtj0lmct" path="res://Enemies/Pygmée/pygmee.gd" id="1_qlf48"]
 [ext_resource type="Texture2D" uid="uid://deox04gyv2t4s" path="res://Enemies/Pygmée/Attack/1.png" id="3_dixvw"]
 [ext_resource type="Texture2D" uid="uid://del8ovyib8awa" path="res://Enemies/Pygmée/Attack/2.png" id="4_50y7t"]
 [ext_resource type="Texture2D" uid="uid://dfxi5cbyjtw5s" path="res://Enemies/Pygmée/Attack/3.png" id="5_djcmy"]
@@ -10,24 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://bsedrsvn7wa6x" path="res://Enemies/Pygmée/Idle/2.png" id="8_vs8wi"]
 [ext_resource type="Texture2D" uid="uid://2xwf1440hacj" path="res://Enemies/Pygmée/Idle/3.png" id="9_o1xk7"]
 [ext_resource type="Texture2D" uid="uid://cy41o0yj1a4kk" path="res://Enemies/Pygmée/Idle/4.png" id="10_18ivx"]
+[ext_resource type="Texture2D" uid="uid://djj4t01pmo1st" path="res://Enemies/Pygmée/Cac/1.png" id="11_bu88q"]
+[ext_resource type="Texture2D" uid="uid://b0wtq1dsnqghv" path="res://Enemies/Pygmée/Cac/2.png" id="12_vs8wi"]
+[ext_resource type="Texture2D" uid="uid://drps308nx1s1i" path="res://Enemies/Pygmée/Cac/3.png" id="13_o1xk7"]
+[ext_resource type="Texture2D" uid="uid://cbnq451iuahgy" path="res://Enemies/Pygmée/Cac/4.png" id="14_18ivx"]
+[ext_resource type="Texture2D" uid="uid://bnug5js1w20al" path="res://Enemies/Pygmée/Walk/1.png" id="15_k3u3t"]
+[ext_resource type="Texture2D" uid="uid://cgbeoi2adh5ty" path="res://Enemies/Pygmée/Walk/2.png" id="16_1ku84"]
+[ext_resource type="Texture2D" uid="uid://0e7d8loh4qab" path="res://Enemies/Pygmée/Walk/3.png" id="17_213ad"]
+[ext_resource type="Texture2D" uid="uid://cbh8egaav6b35" path="res://Enemies/Pygmée/Walk/4.png" id="18_ir6my"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(42, 136.5)
-
-[sub_resource type="Animation" id="Animation_vml3t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_xy3wy")]
-}
+size = Vector2(64, 136.5)
 
 [sub_resource type="Animation" id="Animation_hk653"]
 resource_name = "attack"
@@ -35,7 +27,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,6 +37,23 @@ tracks/0/keys = {
 "values": [ExtResource("3_dixvw"), ExtResource("4_50y7t"), ExtResource("5_djcmy"), ExtResource("6_i08mi")]
 }
 
+[sub_resource type="Animation" id="Animation_k3u3t"]
+resource_name = "cac"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_bu88q"), ExtResource("12_vs8wi"), ExtResource("13_o1xk7"), ExtResource("14_18ivx")]
+}
+
 [sub_resource type="Animation" id="Animation_4jlfj"]
 resource_name = "idle"
 length = 0.8
@@ -52,7 +61,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,45 +71,84 @@ tracks/0/keys = {
 "values": [ExtResource("7_bu88q"), ExtResource("8_vs8wi"), ExtResource("9_o1xk7"), ExtResource("10_18ivx")]
 }
 
+[sub_resource type="Animation" id="Animation_j2nn7"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("15_k3u3t"), ExtResource("16_1ku84"), ExtResource("17_213ad"), ExtResource("18_ir6my")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
 _data = {
-&"RESET": SubResource("Animation_vml3t"),
 &"attack": SubResource("Animation_hk653"),
-&"idle": SubResource("Animation_4jlfj")
+&"cac": SubResource("Animation_k3u3t"),
+&"idle": SubResource("Animation_4jlfj"),
+&"walk": SubResource("Animation_j2nn7")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
-size = Vector2(312, 268)
+size = Vector2(309.5, 268)
 
-[node name="Pygmee" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3u3t"]
+radius = 25.02
+
+[node name="Pygmee" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(-1, 1)
+collision_layer = 8
 script = ExtResource("1_qlf48")
 
-[node name="Lance" type="Marker2D" parent="."]
-position = Vector2(-85, -10)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(33, -16)
-scale = Vector2(-0.25, 0.25)
-texture = ExtResource("2_xy3wy")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 5.25)
+position = Vector2(15, 3)
 shape = SubResource("RectangleShape2D_x2fpe")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="LanceTimer" type="Timer" parent="."]
+
+[node name="CacTimer" type="Timer" parent="."]
+
+[node name="Rig" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_1lwxd")
 }
 
-[node name="MeleeZone" type="Area2D" parent="."]
+[node name="Lance" type="Marker2D" parent="Rig"]
+position = Vector2(10, -95)
+
+[node name="MeleeZone" type="Area2D" parent="Rig" groups=["Enemies"]]
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeZone"]
-position = Vector2(-150, -64)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/MeleeZone"]
+position = Vector2(-190.75, -24)
 shape = SubResource("RectangleShape2D_jhvfg")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="CacZone" type="Area2D" parent="Rig" groups=["Enemies"]]
+collision_layer = 8
 
-[connection signal="body_entered" from="MeleeZone" to="." method="_on_melee_zone_body_entered"]
-[connection signal="body_exited" from="MeleeZone" to="." method="_on_melee_zone_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/CacZone"]
+position = Vector2(-60, 5)
+shape = SubResource("CircleShape2D_k3u3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rig"]
+position = Vector2(33, -16)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("3_dixvw")
+
+[connection signal="timeout" from="LanceTimer" to="." method="_on_lance_timer_timeout"]
+[connection signal="timeout" from="CacTimer" to="." method="_on_cac_timer_timeout"]
+[connection signal="body_entered" from="Rig/MeleeZone" to="." method="_on_melee_zone_body_entered"]
+[connection signal="body_exited" from="Rig/MeleeZone" to="." method="_on_melee_zone_body_exited"]
+[connection signal="body_entered" from="Rig/CacZone" to="." method="_on_cac_zone_body_entered"]
+[connection signal="body_exited" from="Rig/CacZone" to="." method="_on_cac_zone_body_exited"]

@@ -1,101 +1,315 @@
 extends CharacterBody2D
 
-@export var lance_scene: PackedScene = preload("res://Tir/lance_trap.tscn")
-@export var fire_interval := 3.0
-@export var total_shots := 10
-@export var move_speed := 100.0
-@export var melee_damage := 50
+# =========================
+#        EXPORTS
+# =========================
+@export var lance_scene = preload("res://Tir/lance_trap.tscn")
+@export var fire_interval = 3.0
+@export var total_shots = 10
+@export var move_speed = 100.0
+@export var melee_damage = 100
+@export var melee_damage_cooldown = 1.5
+@export var resume_shot_delay_after_melee = 0.25
+@export var sprite_looks_right = true   # FALSE si le sprite source regarde à gauche
+@export var cac_fallback_duration = 0.6
+@export var melee_stop_distance_x := 40.0   # 🆕 distance minimale pour s'arrêter et frapper
 
-var player: Node2D
-var shot_count := 0
-var is_melee_mode := false
-var is_attacking := false
+# =========================
+#     RÉFÉRENCES ($)
+# =========================
+@onready var meleezone = $Rig/MeleeZone
+@onready var caczone = $Rig/CacZone
+@onready var timer = $LanceTimer
+@onready var cac_timer = $CacTimer
+@onready var anim = $Rig/AnimationPlayer
+@onready var spawn_lance = $Rig/Lance
+@onready var rig = $Rig
 
-@onready var timer = $Timer
-@onready var anim = $AnimationPlayer
-@onready var spawn_lance = $Lance
-@onready var melee_zone = $melee_zone
+# =========================
+#        ÉTAT
+# =========================
+var player = null
+var shot_count = 0
+var is_melee_mode = false
+var moko_in_cac_zone = false
+var is_attacking = false
+var facing = 1
+var state = "idle/shoot"
 
+# flip
+var base_scale_x = 1.0
+var visual_sign = 1
+
+# =========================
+#          READY
+# =========================
 func _ready():
-	find_and_bind_player()
-	timer.wait_time = fire_interval
-	timer.start()
+	print("[pyg] ready()")
+	_bind_player()
 
-func find_and_bind_player():
+	# timers
+	if timer:
+		timer.wait_time = fire_interval
+		timer.start()
+		if not timer.is_connected("timeout", Callable(self, "_on_lance_timer_timeout")):
+			timer.connect("timeout", Callable(self, "_on_lance_timer_timeout"))
+		print("[pyg] timer lance start @", fire_interval, "s")
+	else:
+		print("[pyg][warn] LanceTimer manquant")
+
+	if cac_timer:
+		cac_timer.wait_time = melee_damage_cooldown
+		cac_timer.one_shot = true
+		cac_timer.stop()
+		if not cac_timer.is_connected("timeout", Callable(self, "_on_cac_timer_timeout")):
+			cac_timer.connect("timeout", Callable(self, "_on_cac_timer_timeout"))
+		print("[pyg] timer cac one_shot @", melee_damage_cooldown, "s (stoppé)")
+	else:
+		print("[pyg][warn] CacTimer manquant")
+
+	# zones (si non branchées dans l’éditeur)
+	if meleezone:
+		if not meleezone.is_connected("body_entered", Callable(self, "_on_melee_zone_body_entered")):
+			meleezone.connect("body_entered", Callable(self, "_on_melee_zone_body_entered"))
+		if not meleezone.is_connected("body_exited", Callable(self, "_on_melee_zone_body_exited")):
+			meleezone.connect("body_exited", Callable(self, "_on_melee_zone_body_exited"))
+	else:
+		print("[pyg][warn] MeleeZone manquante")
+
+	if caczone:
+		if not caczone.is_connected("body_entered", Callable(self, "_on_cac_zone_body_entered")):
+			caczone.connect("body_entered", Callable(self, "_on_cac_zone_body_entered"))
+		if not caczone.is_connected("body_exited", Callable(self, "_on_cac_zone_body_exited")):
+			caczone.connect("body_exited", Callable(self, "_on_cac_zone_body_exited"))
+	else:
+		print("[pyg][warn] CacZone manquante")
+
+	# flip init (AUCUN recalcul d'offset, les Area2D suivent le Rig)
+	base_scale_x = abs(rig.scale.x)
+	visual_sign = 1
+	if not sprite_looks_right:
+		visual_sign = -1
+	_apply_facing(facing)
+
+	_play("idle")
+	print("[pyg] state →", state)
+
+# =========================
+#      GAMESTATE / PLAYER
+# =========================
+func _bind_player():
 	var gs = get_node_or_null("/root/GameState")
 	if gs:
 		player = gs.player
-		gs.connect("player_updated", Callable(self, "_on_player_changed"))
+		print("[pyg] player bind →", player)
+		if not gs.is_connected("player_updated", Callable(self, "_on_player_changed")):
+			gs.connect("player_updated", Callable(self, "_on_player_changed"))
+	else:
+		print("[pyg][warn] GameState introuvable")
 
-func _on_player_changed(new_player: Node):
-	player = new_player
+func _on_player_changed(p):
+	player = p
+	print("[pyg] player updated →", player)
 
-func _physics_process(delta):
-	if is_melee_mode and is_instance_valid(player):
-		var dir = (player.global_position - global_position).normalized()
-		velocity = dir * move_speed
+# =========================
+#     BOUCLE PRINCIPALE
+# =========================
+func _physics_process(_dt):
+	# 1) FLIP EN PREMIER (débloqué même en CàC)
+	_face_player()
+
+	# 2) RÈGLES
+	if is_attacking:
+		velocity = Vector2.ZERO
 		move_and_slide()
-
-func _on_timer_timeout():
-	if not is_instance_valid(player) or is_melee_mode:
 		return
 
+	if not is_instance_valid(player):
+		_stop_and_idle()
+		return
+
+	# Hors mêlée: immobile, tirs au timer
+	if not is_melee_mode:
+		_stop_and_idle()
+		return
+
+	# En mêlée: si pas encore dans la CacZone → marche
+	if not moko_in_cac_zone:
+		_move_towards_player()
+		return
+
+	# Dans la CacZone: continue d'avancer jusqu'à être VRAIMENT à portée, puis stop
+	var dist_x = _abs_dx_to_player()
+	if dist_x > melee_stop_distance_x and not is_attacking:
+		_move_towards_player()
+	else:
+		_stop_and_idle()
+		# le CàC est déclenché par le cac_timer
+
+# =========================
+#            FLIP
+# =========================
+func _face_player():
+	if not is_instance_valid(player):
+		return
+	var dx = player.global_position.x - global_position.x
+	var want = 1
+	if dx < 0.0:
+		want = -1
+	if want != facing:
+		_apply_facing(want)
+
+func _apply_facing(new_facing):
+	facing = new_facing
+	rig.scale.x = base_scale_x * facing * visual_sign
+	print("[pyg][flip] rig.scale.x →", rig.scale.x)
+
+# =========================
+#     MVT & ANIMATIONS
+# =========================
+func _move_towards_player():
+	var dir_x = 1.0
+	if player.global_position.x < global_position.x:
+		dir_x = -1.0
+	velocity.x = dir_x * move_speed
+	velocity.y = 0.0
+	move_and_slide()
+	_play("walk")
+
+	if state != "walk→moko":
+		print("[pyg][state] ", state, "→ walk→moko")
+		state = "walk→moko"
+
+func _stop_and_idle():
+	if velocity != Vector2.ZERO:
+		print("[pyg][move] stop")
+	velocity = Vector2.ZERO
+	move_and_slide()
+	_play("idle")
+	if state != "idle/shoot":
+		print("[pyg][state] ", state, "→ idle/shoot")
+		state = "idle/shoot"
+
+func _play(name):
+	if anim and anim.current_animation != name:
+		print("[pyg][anim] play →", name)
+		anim.play(name)
+
+# =========================
+#      HELPERS DISTANCE
+# =========================
+func _dx_to_player() -> float:
+	if not is_instance_valid(player):
+		return 0.0
+	return player.global_position.x - global_position.x
+
+func _abs_dx_to_player() -> float:
+	var dx = _dx_to_player()
+	if dx < 0.0:
+		dx = -dx
+	return dx
+
+# =========================
+#             TIRS
+# =========================
+func _on_lance_timer_timeout():
+	if is_melee_mode:
+		return
+	if not is_instance_valid(player):
+		return
 	if shot_count >= total_shots:
-		timer.stop()
+		if timer:
+			timer.stop()
+		print("[pyg][shoot] stop (quota atteint)")
 		return
 
 	shot_count += 1
-	print("🏹 [Pygmee] Lance tirée #", shot_count)
+	print("[pyg][shoot] tir #", shot_count)
+	_play("attack")
+	await get_tree().create_timer(0.20).timeout
+	_spawn_lance()
+	if anim:
+		await anim.animation_finished
+	await get_tree().create_timer(0.50).timeout
+	_play("idle")
 
-	anim.play("attack")
-	await get_tree().create_timer(0.2).timeout
+func _spawn_lance():
+	if not spawn_lance or not lance_scene:
+		print("[pyg][shoot] spawn annulé (réf manquante)")
+		return
 
 	var lance = lance_scene.instantiate()
-	get_tree().current_scene.add_child(lance)
+	var parent = self
+	if get_tree().current_scene:
+		parent = get_tree().current_scene
+	parent.add_child(lance)
+
 	lance.global_position = spawn_lance.global_position
+	var dir = Vector2(facing, 0.0)
 
-	await anim.animation_finished
-	await get_tree().create_timer(0.5).timeout 
-	anim.play("idle")
+	if lance.has_method("setup"):
+		lance.setup(dir)
+	elif "direction" in lance:
+		lance.direction = dir
+	elif "facing" in lance:
+		lance.facing = facing
+	elif "dir" in lance:
+		lance.dir = dir
+	elif "velocity" in lance:
+		if "speed" in lance:
+			lance.velocity = dir * lance.speed
+		else:
+			lance.velocity = dir * 600.0
 
-func _on_melee_zone_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and not is_melee_mode:
-		print("🗡️ [Pygmee] Moko entré dans la zone de mêlée !")
-		is_melee_mode = true
-		timer.stop()
-		await attack_melee_loop()
+	print("[pyg][shoot] spawn | pos:", lance.global_position, " dir:", dir)
 
-func _on_melee_zone_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player") and is_melee_mode:
-		print("🏹 [Pygmee] Moko sorti de la zone de mêlée. Reprise des tirs.")
-		is_melee_mode = false
-		shot_count = 0
-		timer.start()
+# =========================
+#              CÀC
+# =========================
+func _on_cac_timer_timeout():
+	if not is_instance_valid(player): return
+	if not moko_in_cac_zone: return
+	if is_attacking: return
+	_start_cac_attack(player)
 
-func attack_melee_loop() -> void:
-	while is_melee_mode and is_instance_valid(player):
-		if is_attacking:
-			await get_tree().process_frame
-			continue
+func _start_cac_attack(target):
+	if not is_instance_valid(target):
+		return
+	if not target.has_method("on_hit"):
+		print("[pyg][cac] START annulé (target sans on_hit)")
+		return
 
-		is_attacking = true
-		print("💢 [Pygmee] Attaque mêlée déclenchée")
-		#anim.play("attack_melee")
+	is_attacking = true
+	_stop_and_idle()
+	_face_player()  # flip autorisé pendant le CàC
 
-		#await anim.animation_finished
-		print("💢 [Pygmee] Animation attaque mêlée terminée")
+	var dx = target.global_position.x - global_position.x
+	var dist = dx
+	if dist < 0.0:
+		dist = -dist
+	print("[pyg][cac] START | dist:", dist, " (raw:", dx, ") | dmg:", melee_damage)
 
-		# On vérifie si le joueur est dans la zone de collision (Area2D)
-		var bodies = $MeleeZone.get_overlapping_bodies()
-		for body in bodies:
-			if body.is_in_group("Player"):
-				print("💥 [Pygmee] Moko touché via collision !")
-				if "on_hit" in body:
-					body.on_hit(melee_damage)
-				else:
-					print("❌ [Pygmee] Moko n'a pas de méthode on_hit()")
+	target.on_hit(melee_damage)
+	_play("cac")
 
-		anim.play("idle")
-		is_attacking = false
+	var wait_s = cac_fallback_duration
+	if anim and anim.has_animation("cac"):
+		var a = anim.get_animation("cac")
+		if a:
+			wait_s = a.length
+	await get_tree().create_timer(wait_s).timeout
 
-		await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.30).timeout
+	is_attacking = false
+	print("[pyg][cac] END")
+
+	if moko_in_cac_zone and cac_timer and cac_timer.is_stopped():
+		cac_timer.start()
+		print("[pyg][cac] relance timer (encore en zone)")
+
+# =========================
+#            ZONES
+# =========================
+func _on_melee_zone_body_entered(body):
+	if not body.is_in_group("Player"): return
+	is_melee_mode = true

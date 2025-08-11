@@ -40,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://sq85clg1ubsq" path="res://Player/Sprite/idle/1.png" id="38_7clvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
-size = Vector2(61.1111, 254.136)
+size = Vector2(122.222, 254.136)
 
 [sub_resource type="Animation" id="Animation_bpa77"]
 resource_name = "clac"
@@ -381,12 +381,12 @@ script = ExtResource("1_5psm4")
 jump_force = -750.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(162.5, 66.6667)
+position = Vector2(165, 64.1667)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("38_7clvs")
+texture = ExtResource("6_tj6lq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(145, 105)
+position = Vector2(142.5, 105)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_j3qaj")
 
@@ -430,7 +430,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClacArea"]
-position = Vector2(169.167, 21.6667)
+position = Vector2(165, 50.8333)
 shape = SubResource("CircleShape2D_bj58r")
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]
