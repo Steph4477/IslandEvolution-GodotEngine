@@ -8,11 +8,10 @@ extends CharacterBody2D
 @export var total_shots = 10
 @export var move_speed = 100.0
 @export var melee_damage = 100
-@export var melee_damage_cooldown = 1.5
-@export var resume_shot_delay_after_melee = 0.25
-@export var sprite_looks_right = true   # FALSE si le sprite source regarde à gauche
+@export var melee_damage_cooldown = 1
+@export var resume_shot_delay_after_melee = 0.10
+@export var sprite_looks_right = true   # regarde à droite
 @export var cac_fallback_duration = 0.6
-@export var melee_stop_distance_x := 40.0   # 🆕 distance minimale pour s'arrêter et frapper
 
 # =========================
 #     RÉFÉRENCES ($)
@@ -47,7 +46,7 @@ func _ready():
 	print("[pyg] ready()")
 	_bind_player()
 
-	# timers
+	# timers (sécurisé si la scène ne les a pas)
 	if timer:
 		timer.wait_time = fire_interval
 		timer.start()
@@ -128,23 +127,17 @@ func _physics_process(_dt):
 		_stop_and_idle()
 		return
 
-	# Hors mêlée: immobile, tirs au timer
 	if not is_melee_mode:
-		_stop_and_idle()
+		_stop_and_idle()             # hors melee → immobile (tirs via timer)
 		return
 
-	# En mêlée: si pas encore dans la CacZone → marche
-	if not moko_in_cac_zone:
-		_move_towards_player()
+	if is_melee_mode and not moko_in_cac_zone:
+		_move_towards_player()       # marche vers Moko
 		return
 
-	# Dans la CacZone: continue d'avancer jusqu'à être VRAIMENT à portée, puis stop
-	var dist_x = _abs_dx_to_player()
-	if dist_x > melee_stop_distance_x and not is_attacking:
-		_move_towards_player()
-	else:
-		_stop_and_idle()
-		# le CàC est déclenché par le cac_timer
+	if moko_in_cac_zone:
+		_stop_and_idle()             # coups CàC via cac_timer
+		return
 
 # =========================
 #            FLIP
@@ -152,12 +145,19 @@ func _physics_process(_dt):
 func _face_player():
 	if not is_instance_valid(player):
 		return
+
 	var dx = player.global_position.x - global_position.x
 	var want = 1
 	if dx < 0.0:
 		want = -1
+
+	print("[pyg][face] dx:", dx, " want:", want, " facing:", facing, " atk:", is_attacking)
+
 	if want != facing:
+		print("[pyg][face] FLIP →", want)
 		_apply_facing(want)
+	else:
+		print("[pyg][face] KEEP (same)")
 
 func _apply_facing(new_facing):
 	facing = new_facing
@@ -179,6 +179,7 @@ func _move_towards_player():
 	if state != "walk→moko":
 		print("[pyg][state] ", state, "→ walk→moko")
 		state = "walk→moko"
+	print("[pyg][move] towards moko | vel:", velocity)
 
 func _stop_and_idle():
 	if velocity != Vector2.ZERO:
@@ -196,26 +197,15 @@ func _play(name):
 		anim.play(name)
 
 # =========================
-#      HELPERS DISTANCE
-# =========================
-func _dx_to_player() -> float:
-	if not is_instance_valid(player):
-		return 0.0
-	return player.global_position.x - global_position.x
-
-func _abs_dx_to_player() -> float:
-	var dx = _dx_to_player()
-	if dx < 0.0:
-		dx = -dx
-	return dx
-
-# =========================
 #             TIRS
 # =========================
 func _on_lance_timer_timeout():
+	print("[pyg][shoot] timeout")
 	if is_melee_mode:
+		print("[pyg][shoot] annulé (en melee)")
 		return
 	if not is_instance_valid(player):
+		print("[pyg][shoot] annulé (player invalide)")
 		return
 	if shot_count >= total_shots:
 		if timer:
@@ -267,13 +257,16 @@ func _spawn_lance():
 #              CÀC
 # =========================
 func _on_cac_timer_timeout():
-	if not is_instance_valid(player): return
-	if not moko_in_cac_zone: return
-	if is_attacking: return
+	print("[pyg][cac] timeout")
+	if not is_instance_valid(player): print("[pyg][cac] annulé (player invalide)"); return
+	if not moko_in_cac_zone: print("[pyg][cac] annulé (hors CacZone)"); return
+	if is_attacking: print("[pyg][cac] annulé (déjà en attaque)"); return
+
 	_start_cac_attack(player)
 
 func _start_cac_attack(target):
 	if not is_instance_valid(target):
+		print("[pyg][cac] START annulé (target invalide)")
 		return
 	if not target.has_method("on_hit"):
 		print("[pyg][cac] START annulé (target sans on_hit)")
@@ -281,7 +274,7 @@ func _start_cac_attack(target):
 
 	is_attacking = true
 	_stop_and_idle()
-	_face_player()  # flip autorisé pendant le CàC
+	#_face_player()  # flip autorisé pendant le CàC
 
 	var dx = target.global_position.x - global_position.x
 	var dist = dx
@@ -292,6 +285,7 @@ func _start_cac_attack(target):
 	target.on_hit(melee_damage)
 	_play("cac")
 
+	# Attente sûre basée sur la longueur de l'anim "cac" si dispo, sinon fallback
 	var wait_s = cac_fallback_duration
 	if anim and anim.has_animation("cac"):
 		var a = anim.get_animation("cac")
@@ -299,13 +293,16 @@ func _start_cac_attack(target):
 			wait_s = a.length
 	await get_tree().create_timer(wait_s).timeout
 
+	# petite marge après l'impact
 	await get_tree().create_timer(0.30).timeout
 	is_attacking = false
 	print("[pyg][cac] END")
 
+	# si Moko est toujours dans la CacZone, on relance le timer d'attaque
 	if moko_in_cac_zone and cac_timer and cac_timer.is_stopped():
 		cac_timer.start()
 		print("[pyg][cac] relance timer (encore en zone)")
+
 
 # =========================
 #            ZONES
@@ -313,3 +310,44 @@ func _start_cac_attack(target):
 func _on_melee_zone_body_entered(body):
 	if not body.is_in_group("Player"): return
 	is_melee_mode = true
+	if timer: timer.stop()
+	print("[pyg][zone] melee ENTER → stop tirs")
+
+func _on_melee_zone_body_exited(body):
+	if not body.is_in_group("Player"): return
+	is_melee_mode = false
+	moko_in_cac_zone = false
+	shot_count = 0
+	print("[pyg][zone] melee EXIT → reprise tirs après délai")
+	await get_tree().create_timer(resume_shot_delay_after_melee).timeout
+
+	# ✅ Ne relance PAS si on est revenu en melee/cac ou si on attaque
+	if is_melee_mode or moko_in_cac_zone or is_attacking:
+		print("[pyg][zone] reprise annulée (encore en melee/cac/atk)")
+		return
+
+	if timer and timer.is_stopped():
+		timer.start()
+		print("[pyg][zone] tirs repris")
+
+func _on_cac_zone_body_entered(body):
+	if not body.is_in_group("Player"): return
+	moko_in_cac_zone = true
+	_stop_and_idle()
+
+	# ✅ Sécurité : aucune reprise de tir pendant le cac
+	if timer and not timer.is_stopped():
+		timer.stop()
+		print("[pyg][zone] tirs stoppés (cac)")
+
+	if cac_timer and cac_timer.is_stopped():
+		cac_timer.start()
+		print("[pyg][cac] timer démarré")
+	print("[pyg][zone] cac ENTER")
+
+func _on_cac_zone_body_exited(body):
+	if not body.is_in_group("Player"): return
+	moko_in_cac_zone = false
+	print("[pyg][zone] cac EXIT")
+	if is_melee_mode and not is_attacking:
+		_move_towards_player()
