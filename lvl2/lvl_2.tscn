@@ -18,7 +18,7 @@ size = Vector2(125, 4097)
 size = Vector2(143, 3825.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(10271, 164.75)
+size = Vector2(10271, 186.375)
 
 [sub_resource type="Animation" id="Animation_ochkp"]
 resource_name = "Flame"
@@ -150,7 +150,7 @@ position = Vector2(6534, 760.125)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="platform"]
-position = Vector2(3464, 1576)
+position = Vector2(3451, 1567.19)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
@@ -160,7 +160,7 @@ position = Vector2(239, 1248)
 position = Vector2(377, 1435)
 
 [node name="Pygmee" parent="." instance=ExtResource("4_rwgjh")]
-position = Vector2(2419, 1428)
+position = Vector2(1977, 1398)
 
 [node name="TorchGroup" type="Node2D" parent="."]
 

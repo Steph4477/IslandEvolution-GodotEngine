@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cbh8egaav6b35" path="res://Enemies/Pygmée/Walk/4.png" id="18_ir6my"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(64, 136.5)
+size = Vector2(64, 107)
 
 [sub_resource type="Animation" id="Animation_hk653"]
 resource_name = "attack"
@@ -97,10 +97,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
-size = Vector2(309.5, 268)
+size = Vector2(309.5, 214)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k3u3t"]
-radius = 25.02
+radius = 16.4924
 
 [node name="Pygmee" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(-1, 1)
@@ -108,12 +108,10 @@ collision_layer = 8
 script = ExtResource("1_qlf48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(15, 3)
+position = Vector2(15, 7.5)
 shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="LanceTimer" type="Timer" parent="."]
-
-[node name="CacTimer" type="Timer" parent="."]
 
 [node name="Rig" type="Node2D" parent="."]
 
@@ -124,30 +122,30 @@ libraries = {
 }
 
 [node name="Lance" type="Marker2D" parent="Rig"]
-position = Vector2(10, -95)
+position = Vector2(-126, -22)
 
 [node name="MeleeZone" type="Area2D" parent="Rig" groups=["Enemies"]]
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/MeleeZone"]
-position = Vector2(-190.75, -24)
+position = Vector2(-252, -35)
 shape = SubResource("RectangleShape2D_jhvfg")
 
 [node name="CacZone" type="Area2D" parent="Rig" groups=["Enemies"]]
+position = Vector2(-11, 0)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/CacZone"]
-position = Vector2(-60, 5)
+position = Vector2(-37, 7)
 shape = SubResource("CircleShape2D_k3u3t")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rig"]
 position = Vector2(33, -16)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
-texture = ExtResource("3_dixvw")
+texture = ExtResource("5_djcmy")
 
 [connection signal="timeout" from="LanceTimer" to="." method="_on_lance_timer_timeout"]
-[connection signal="timeout" from="CacTimer" to="." method="_on_cac_timer_timeout"]
 [connection signal="body_entered" from="Rig/MeleeZone" to="." method="_on_melee_zone_body_entered"]
 [connection signal="body_exited" from="Rig/MeleeZone" to="." method="_on_melee_zone_body_exited"]
 [connection signal="body_entered" from="Rig/CacZone" to="." method="_on_cac_zone_body_entered"]

@@ -383,7 +383,7 @@ jump_force = -750.0
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(165, 64.1667)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("6_tj6lq")
+texture = ExtResource("26_bpa77")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(142.5, 105)
@@ -425,6 +425,7 @@ stream = ExtResource("11_leyao")
 stream = ExtResource("12_5vkkw")
 
 [node name="ClacArea" type="Area2D" parent="."]
+visible = false
 collision_mask = 8
 monitoring = false
 monitorable = false
