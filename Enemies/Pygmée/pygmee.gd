@@ -141,8 +141,8 @@ func _shoot_lance():
 	can_flip = false
 	_play("attack")
 
-	# léger délai avant spawn (wind-up)
-	await get_tree().create_timer(0.20).timeout
+	# léger délai avant spawn scene lance
+	await get_tree().create_timer(0.40).timeout
 
 	# projectile
 	var lance = lance_scene.instantiate()
@@ -194,7 +194,6 @@ func _start_cac_attack():
 
 	_play("idle")
 	is_attacking = false
-	# Pas besoin d'autre chose : _physics_process relancera si in_cac est toujours vrai
 
 # =========================
 #   ZONES (connectées dans l’inspector)

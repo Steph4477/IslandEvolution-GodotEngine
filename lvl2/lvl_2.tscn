@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=18 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://lvl2/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cxxgitsp1x75c" path="res://ItemsDecors/Torche/Torche.tscn" id="6_ochkp"]
 [ext_resource type="Texture2D" uid="uid://ongwfoy1d66w" path="res://ItemsDecors/Torche/halo.png" id="7_eotvo"]
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="10_ochkp"]
+[ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_2ivwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(125, 4097)
@@ -199,3 +200,6 @@ autoplay = "Flame"
 [node name="lvl2" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("10_ochkp")
 autoplay = true
+
+[node name="BagLoot" parent="." instance=ExtResource("11_2ivwu")]
+position = Vector2(580, 1436)
