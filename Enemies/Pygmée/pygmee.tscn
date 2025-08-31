@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqktopdb40juo"]
+[gd_scene load_steps=42 format=3 uid="uid://dqktopdb40juo"]
 
 [ext_resource type="Script" uid="uid://b2pugvtj0lmct" path="res://Enemies/Pygmée/pygmee.gd" id="1_qlf48"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/HealthBar.tscn" id="2_4ryc8"]
@@ -25,24 +25,13 @@
 [ext_resource type="Texture2D" uid="uid://6v7xg8qwtvqq" path="res://Enemies/Pygmée/Die/2.png" id="22_ctxsx"]
 [ext_resource type="Texture2D" uid="uid://dmq3l1hfnx7a1" path="res://Enemies/Pygmée/Die/3.png" id="23_x8q6o"]
 [ext_resource type="Texture2D" uid="uid://d3w5y565hd851" path="res://Enemies/Pygmée/Die/4.png" id="24_hmbmq"]
+[ext_resource type="Texture2D" uid="uid://wt62tkjo3fgx" path="res://Enemies/Pygmée/Jump/1.png" id="26_x8q6o"]
+[ext_resource type="Texture2D" uid="uid://5cpshn5bwuy6" path="res://Enemies/Pygmée/Jump/2.png" id="27_hmbmq"]
+[ext_resource type="Texture2D" uid="uid://0hr61kosshje" path="res://Enemies/Pygmée/Jump/3.png" id="28_qxyy8"]
+[ext_resource type="Texture2D" uid="uid://cxgbkq0eevtj5" path="res://Enemies/Pygmée/Jump/4.png" id="29_adihp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(64, 107)
-
-[sub_resource type="Animation" id="Animation_adihp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("18_1c4bp")]
-}
 
 [sub_resource type="Animation" id="Animation_hk653"]
 resource_name = "attack"
@@ -143,13 +132,45 @@ tracks/0/keys = {
 "values": [ExtResource("15_k3u3t"), ExtResource("16_1ku84"), ExtResource("17_213ad"), ExtResource("18_ir6my")]
 }
 
+[sub_resource type="Animation" id="Animation_a5xr7"]
+resource_name = "jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("26_x8q6o"), ExtResource("27_hmbmq"), ExtResource("28_qxyy8"), ExtResource("29_adihp")]
+}
+
+[sub_resource type="Animation" id="Animation_iayux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_x8q6o")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
 _data = {
-&"RESET": SubResource("Animation_adihp"),
+&"RESET": SubResource("Animation_iayux"),
 &"attack": SubResource("Animation_hk653"),
 &"cac": SubResource("Animation_k3u3t"),
 &"die": SubResource("Animation_ejmr0"),
 &"idle": SubResource("Animation_4jlfj"),
+&"jump": SubResource("Animation_a5xr7"),
 &"onhit": SubResource("Animation_qxyy8"),
 &"walk": SubResource("Animation_j2nn7")
 }
@@ -163,6 +184,7 @@ radius = 16.4924
 [node name="Pygmee" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(-1, 1)
 collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_qlf48")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_4ryc8")]
@@ -206,7 +228,7 @@ shape = SubResource("CircleShape2D_k3u3t")
 position = Vector2(33, -16)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
-texture = ExtResource("18_1c4bp")
+texture = ExtResource("26_x8q6o")
 
 [connection signal="timeout" from="LanceTimer" to="." method="_on_lance_timer_timeout"]
 [connection signal="body_entered" from="Rig/MeleeZone" to="." method="_on_melee_zone_body_entered"]
