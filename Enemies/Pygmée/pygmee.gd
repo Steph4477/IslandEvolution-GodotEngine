@@ -20,15 +20,13 @@ var player = null
 var in_melee = false
 var in_cac = false
 var is_attacking = false
-var anim_busy = false
+var is_shooting = false
 var can_flip = true
-
 var facing = 1
 var base_scale_x = 1.0
 
 var max_pv = 200
 var pv = 200
-
 var hit_locked = false
 var hit_lock_time = 0.20
 var is_dead = false
@@ -36,11 +34,9 @@ var is_dead = false
 # ============================ READY ===========================
 func _ready():
 	base_scale_x = abs(rig.scale.x)
-
 	var gs = get_node("/root/GameState")
 	player = gs.player
 	gs.connect("player_updated", Callable(self, "_on_player_changed"))
-
 	lance_timer.wait_time = fire_interval
 	lance_timer.start()
 
@@ -52,13 +48,13 @@ func _physics_process(_dt):
 	if is_dead:
 		return
 
-	_face_player()
-
-	if in_cac and player.is_dead:
-		in_cac = false
-		is_attacking = false
-		can_flip = true
+	# Pendant le onhit, on ne joue pas d'autres anims
+	if hit_locked:
+		velocity = Vector2.ZERO
+		move_and_slide()
 		return
+
+	_face_player()
 
 	if in_cac:
 		if not is_attacking:
@@ -71,7 +67,7 @@ func _physics_process(_dt):
 		_walk_towards_player()
 		return
 
-	if anim_busy:
+	if is_shooting:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
@@ -82,9 +78,8 @@ func _physics_process(_dt):
 
 # ========================= ORIENTATION ========================
 func _face_player():
-	if is_attacking or anim_busy or not can_flip or is_dead:
+	if not can_flip or is_attacking or is_dead:
 		return
-
 	var dx = player.global_position.x - global_position.x
 	if dx < 0 and facing != -1:
 		facing = -1
@@ -95,86 +90,75 @@ func _face_player():
 
 # ========================= DÉPLACEMENT ========================
 func _walk_towards_player():
-	if is_attacking or anim_busy or is_dead:
+	if is_attacking or is_dead:
 		return
-
 	var dir_x = sign(player.global_position.x - global_position.x)
-	velocity.x = dir_x * move_speed
-	velocity.y = 0
+	velocity = Vector2(dir_x * move_speed, 0)
 	move_and_slide()
 	anim.play("walk")
 
 # ============================ TIR =============================
 func _on_lance_timer_timeout():
-	if is_dead or in_melee or in_cac or is_attacking or anim_busy:
+	if is_dead or in_melee or in_cac or is_attacking or is_shooting or hit_locked:
 		return
 	_shoot_lance()
 
 func _shoot_lance():
+	is_shooting = true
 	can_flip = false
 	anim.play("attack")
-	anim_busy = true
 
 	await get_tree().create_timer(0.40).timeout
 
 	var lance = lance_scene.instantiate()
 	get_tree().current_scene.add_child(lance)
-
 	lance.global_position = lance_spawn.global_position
 	lance.direction = Vector2(facing, 0)
 
-	var attack_len = anim.get_animation("attack").length
-	var remaining = attack_len - 0.20
+	var remaining = anim.get_animation("attack").length - 0.20
 	if remaining > 0:
 		await get_tree().create_timer(remaining).timeout
 
-	anim_busy = false
+	is_shooting = false
 	can_flip = not (in_melee or in_cac)
-	anim.play("idle")
+	# pas de anim.play("idle") ici
 
 # ========================= CORPS À CORPS ======================
 func _start_cac_attack():
-	if is_attacking or is_dead or player.is_dead:
-		return
-
 	is_attacking = true
 	can_flip = false
 	anim.play("cac")
-	anim_busy = true
 
 	velocity = Vector2.ZERO
 	move_and_slide()
 
-	if not player.is_dead and player.has_method("on_hit"):
-		player.on_hit(melee_damage)
+	player.on_hit(melee_damage)
 
-	var wait_s = anim.get_animation("cac").length
-	await get_tree().create_timer(wait_s).timeout
+	await get_tree().create_timer(anim.get_animation("cac").length).timeout
 
 	is_attacking = false
-	anim_busy = false
 	can_flip = not (in_melee or in_cac)
-	anim.play("idle")
+	# pas de anim.play("idle") ici
 
 # ============================ ZONES ===========================
-func _on_melee_zone_body_entered(body):
+func _on_melee_zone_body_entered(_body):
 	in_melee = true
 	can_flip = false
 
-func _on_melee_zone_body_exited(body):
+func _on_melee_zone_body_exited(_body):
 	in_melee = false
 	if not in_cac:
 		can_flip = true
 
-func _on_cac_zone_body_entered(body):
-	if player.is_dead:
+func _on_cac_zone_body_entered(_body):
+	if in_cac:
 		return
 	in_cac = true
 	can_flip = false
 	if not is_attacking:
 		_start_cac_attack()
 
-func _on_cac_zone_body_exited(body):
+func _on_cac_zone_body_exited(_body):
 	in_cac = false
 	if not in_melee:
 		can_flip = true
@@ -187,24 +171,17 @@ func on_hit(amount):
 	pv -= amount
 	if pv <= 0:
 		_die()
-	else:
-		hit_locked = true
-		anim_busy = true
-		can_flip = false
-		anim.play("onhit")
-		await anim.animation_finished
-		anim_busy = false
-		can_flip = true
-		await get_tree().create_timer(hit_lock_time).timeout
-		hit_locked = false
+		return
+
+	hit_locked = true
+	anim.play("onhit")
+	await get_tree().create_timer(hit_lock_time).timeout
+	hit_locked = false
 
 func _die():
 	if is_dead:
 		return
 	is_dead = true
-
-	anim_busy = true
-
 	anim.play("die")
 	await anim.animation_finished
 	queue_free()
