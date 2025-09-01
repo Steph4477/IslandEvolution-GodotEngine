@@ -33,6 +33,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(64, 107)
 
+[sub_resource type="Animation" id="Animation_iayux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_x8q6o")]
+}
+
 [sub_resource type="Animation" id="Animation_hk653"]
 resource_name = "attack"
 length = 0.6
@@ -99,6 +114,22 @@ tracks/0/keys = {
 "values": [ExtResource("7_bu88q"), ExtResource("8_vs8wi"), ExtResource("9_o1xk7"), ExtResource("10_18ivx")]
 }
 
+[sub_resource type="Animation" id="Animation_a5xr7"]
+resource_name = "jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("26_x8q6o"), ExtResource("27_hmbmq"), ExtResource("28_qxyy8"), ExtResource("29_adihp")]
+}
+
 [sub_resource type="Animation" id="Animation_qxyy8"]
 resource_name = "onhit"
 length = 0.6
@@ -132,37 +163,6 @@ tracks/0/keys = {
 "values": [ExtResource("15_k3u3t"), ExtResource("16_1ku84"), ExtResource("17_213ad"), ExtResource("18_ir6my")]
 }
 
-[sub_resource type="Animation" id="Animation_a5xr7"]
-resource_name = "jump"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("26_x8q6o"), ExtResource("27_hmbmq"), ExtResource("28_qxyy8"), ExtResource("29_adihp")]
-}
-
-[sub_resource type="Animation" id="Animation_iayux"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("26_x8q6o")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
 _data = {
 &"RESET": SubResource("Animation_iayux"),
@@ -178,8 +178,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
 size = Vector2(309.5, 214)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k3u3t"]
-radius = 16.4924
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8q6o"]
 
 [node name="Pygmee" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(-1, 1)
@@ -222,7 +221,7 @@ collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/CacZone"]
 position = Vector2(-37, 7)
-shape = SubResource("CircleShape2D_k3u3t")
+shape = SubResource("RectangleShape2D_x8q6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rig"]
 position = Vector2(33, -16)
