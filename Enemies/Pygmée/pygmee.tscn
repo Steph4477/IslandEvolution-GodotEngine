@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cxgbkq0eevtj5" path="res://Enemies/Pygmée/Jump/4.png" id="29_adihp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(64, 107)
+size = Vector2(97, 133)
 
 [sub_resource type="Animation" id="Animation_iayux"]
 length = 0.001
@@ -176,9 +176,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
-size = Vector2(309.5, 214)
+size = Vector2(446.75, 214)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8q6o"]
+size = Vector2(30, 38)
 
 [node name="Pygmee" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(-1, 1)
@@ -186,14 +187,14 @@ collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_qlf48")
 
-[node name="HealthBar" parent="." instance=ExtResource("2_4ryc8")]
-position = Vector2(34, -92)
-rotation = 3.14159
-scale = Vector2(0.6, -0.6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Pygmees"]]
-position = Vector2(15, 7.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -5.5)
 shape = SubResource("RectangleShape2D_x2fpe")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_4ryc8")]
+position = Vector2(49, -87)
+rotation = 3.14159
+scale = Vector2(1, -1.00374)
 
 [node name="LanceTimer" type="Timer" parent="."]
 
@@ -209,18 +210,17 @@ libraries = {
 position = Vector2(-126, -22)
 
 [node name="MeleeZone" type="Area2D" parent="Rig" groups=["Enemies"]]
-collision_layer = 8
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/MeleeZone"]
-position = Vector2(-252, -35)
+position = Vector2(-275, -47)
 shape = SubResource("RectangleShape2D_jhvfg")
 
 [node name="CacZone" type="Area2D" parent="Rig" groups=["Enemies"]]
-position = Vector2(-11, 0)
-collision_layer = 8
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/CacZone"]
-position = Vector2(-37, 7)
+position = Vector2(-57, 4)
 shape = SubResource("RectangleShape2D_x8q6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rig"]

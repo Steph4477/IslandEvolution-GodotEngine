@@ -383,7 +383,7 @@ jump_force = -750.0
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(165, 64.1667)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("26_bpa77")
+texture = ExtResource("21_bj58r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(142.5, 105)

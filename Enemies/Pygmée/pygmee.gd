@@ -58,7 +58,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Saut synchronisé avec Moko
-	sync_jump_with_player()
+	#sync_jump_with_player()
 
 	# Pendant le onhit : fige et n'écrase pas l'anim
 	if hit_locked:
@@ -116,11 +116,11 @@ func shooting():
 		velocity.x = 0
 		move_and_slide()
 
-
 # ========================= ORIENTATION ========================
 func face_player():
 	if not can_flip or is_attacking or is_dead:
 		return
+	
 	var dx = player.global_position.x - global_position.x
 	if dx < 0 and facing != -1:
 		facing = -1
@@ -224,23 +224,39 @@ func _on_cac_zone_body_entered(_body):
 
 func _on_cac_zone_body_exited(_body):
 	in_cac_active = false
-	if not in_melee_active:
-		can_flip = true
+	# pas de flip tant qu'on est dans la CacZone
+	if in_cac_active:
+		return
 
 # ========================= VIE / DÉGÂTS =======================
 func on_hit(amount):
 	if is_dead or hit_locked:
 		return
-
+	
 	pv -= amount
-	if pv <= 0:
-		die()
-		return
-
+	if health_bar:
+		health_bar.max_value = max_pv
+		health_bar.value = pv
+	show_damage_popup(amount)
+	
 	hit_locked = true
 	anim.play("onhit")
 	await get_tree().create_timer(hit_lock_time).timeout
 	hit_locked = false
+
+func show_damage_popup(amount: int) -> void:
+	var popup_scene := preload("res://ItemsDecors/damage_popup.tscn")
+	var popup: Label = popup_scene.instantiate()
+
+	# enfant de health_bar
+	health_bar.add_child(popup)
+
+	# contenu du label 
+	popup.show_damage(amount)
+
+	# mort 
+	if pv <= 0:
+		die()
 
 func die():
 	if is_dead:
@@ -249,3 +265,6 @@ func die():
 	anim.play("die")
 	await anim.animation_finished
 	queue_free()
+
+
+	pass # Replace with function body.
