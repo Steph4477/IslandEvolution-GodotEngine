@@ -370,7 +370,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj58r"]
-radius = 20.017
+radius = 57.7952
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -425,13 +425,12 @@ stream = ExtResource("11_leyao")
 stream = ExtResource("12_5vkkw")
 
 [node name="ClacArea" type="Area2D" parent="."]
-visible = false
 collision_mask = 8
 monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClacArea"]
-position = Vector2(165, 50.8333)
+position = Vector2(140.833, 107.5)
 shape = SubResource("CircleShape2D_bj58r")
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]

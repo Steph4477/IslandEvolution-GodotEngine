@@ -58,7 +58,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Saut synchronisé avec Moko
-	#sync_jump_with_player()
+	sync_jump_with_player()
 
 	# Pendant le onhit : fige et n'écrase pas l'anim
 	if hit_locked:
@@ -265,6 +265,3 @@ func die():
 	anim.play("die")
 	await anim.animation_finished
 	queue_free()
-
-
-	pass # Replace with function body.
