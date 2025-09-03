@@ -42,7 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://he3v7rq27ktc" path="res://Player/Sprite/onhit/3.png" id="39_r4aas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
-size = Vector2(122.222, 254.136)
+size = Vector2(122.222, 227.541)
 
 [sub_resource type="Animation" id="Animation_bpa77"]
 resource_name = "clac"
@@ -421,7 +421,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_2paov")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(142.5, 105)
+position = Vector2(142.5, 101.25)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_j3qaj")
 
