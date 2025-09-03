@@ -158,7 +158,7 @@ shape = SubResource("RectangleShape2D_wsvun")
 position = Vector2(239, 1248)
 
 [node name="Ramp" parent="." instance=ExtResource("4_wsvun")]
-position = Vector2(377, 1435)
+position = Vector2(699, 1435)
 
 [node name="Pygmee" parent="." instance=ExtResource("4_rwgjh")]
 position = Vector2(1977, 1398)

@@ -94,6 +94,7 @@ func setup_game_state():
 	coco_count = game_state.coco_count
 	seed_count = game_state.seed_count
 	can_fire_coco = game_state.can_fire_coco
+	can_fire_lance = game_state.can_fire_lance
 
 func setup_hud():
 	if not game_state or not game_state.hud:
@@ -205,8 +206,8 @@ func unlock_ramp():
 	if not game_state or not game_state.health_bar:
 		return
 
-	var hud = game_state.health_bar.get_parent()
-	if hud and hud.has_node("Gamepad/Ramp"):
+	var hud = game_state.hud
+	if hud.has_node("Gamepad/Ramp"):
 		hud.set_button_enabled(hud.get_node("Gamepad/Ramp"), true)
 
 func _process_ramp():
@@ -242,8 +243,8 @@ func collect_banane(amount: int = 1) -> void:
 
 	# ✅ Mise à jour heal et bouton
 	update_can_heal()
-	var hud = game_state.health_bar.get_parent()
-	if hud and hud.has_method("set_button_enabled"):
+	var hud = game_state.hud
+	if hud.has_method("set_button_enabled"):
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
 
 	update_banane_display()
@@ -255,7 +256,7 @@ func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
 
 	if enable_shooting:
 		can_fire_coco = true
-		var hud = game_state.health_bar.get_parent()
+		var hud = game_state.hud
 		if hud.has_method("set_button_enabled"):
 			hud.set_button_enabled(hud.get_node("Gamepad/Coco"), true)
 
@@ -266,12 +267,12 @@ func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
 	update_coco_display()
 	show_info_popup("Tu peux lancer 3 noix de coco")
 
-func collect_lance(enable_shooting: bool = false) -> void:
+func collect_lance(enable_shooting = false):
 	if enable_shooting:
 		can_fire_lance = true
-		var hud = game_state.health_bar.get_parent()
-		if hud.has_method("set_button_enabled"):
-			hud.set_button_enabled(hud.get_node("Gamepad/lance"), true)
+		var hud = game_state.hud
+		if hud.has_method("set_lance_button_enabled"):
+			hud.set_button_enabled(hud.get_node("Gamepad/Spear"), true)
 
 	if game_state:
 		game_state.can_fire_lance = can_fire_lance

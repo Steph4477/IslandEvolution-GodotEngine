@@ -79,12 +79,13 @@ action = "ui_accept"
 position = Vector2(51, 49)
 shape = SubResource("CircleShape2D_lwpkd")
 
-[node name="Lance" type="TouchScreenButton" parent="Gamepad"]
+[node name="Spear" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(195, 838)
 texture_normal = ExtResource("12_s8lhr")
 texture_pressed = ExtResource("13_lwpkd")
+action = "shoot"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Lance"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Spear"]
 position = Vector2(49, 53)
 shape = SubResource("CircleShape2D_xl2wx")
 
@@ -97,6 +98,16 @@ action = "ramping"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Ramp"]
 position = Vector2(50, 53)
 shape = SubResource("CircleShape2D_e8y56")
+
+[node name="Coco2" type="TouchScreenButton" parent="Gamepad"]
+position = Vector2(71, 783)
+texture_normal = ExtResource("8_b0qj5")
+texture_pressed = ExtResource("9_870gb")
+action = "ui_cancel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Coco2"]
+position = Vector2(51, 55)
+shape = SubResource("CircleShape2D_s8lhr")
 
 [node name="HBoxContainerBanane" type="HBoxContainer" parent="."]
 offset_left = -1007.0

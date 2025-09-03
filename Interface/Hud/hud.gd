@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var ramp_button = $Gamepad/Ramp
 @onready var coco_button = $Gamepad/Coco
-@onready var lance_button = $Gamepad/Lance
+@onready var lance_button = $Gamepad/Spear
 @onready var health_button = $Gamepad/Health
 
 @onready var life_sprites = $HBoxContainerLive.get_children()
