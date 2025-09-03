@@ -1,6 +1,7 @@
-[gd_scene load_steps=58 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=62 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/evo_1.gd" id="1_5psm4"]
+[ext_resource type="Texture2D" uid="uid://2ymynqarqqhp" path="res://Player/Sprite/onhit/1.png" id="2_2paov"]
 [ext_resource type="Texture2D" uid="uid://cog5nm84y5adc" path="res://Player/Sprite/idle/2.png" id="2_btooi"]
 [ext_resource type="Texture2D" uid="uid://0wje8ce50pa6" path="res://Player/Sprite/jump/3.png" id="2_l6ey7"]
 [ext_resource type="Texture2D" uid="uid://bkb4ah5m1jprh" path="res://Player/Sprite/climb/1.png" id="2_vbwkl"]
@@ -38,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://do3p637lg72w" path="res://Player/Sprite/empty/2.png" id="36_i7max"]
 [ext_resource type="Texture2D" uid="uid://drjtc3ragp743" path="res://Player/Sprite/idle/4.png" id="36_qh0f6"]
 [ext_resource type="Texture2D" uid="uid://sq85clg1ubsq" path="res://Player/Sprite/idle/1.png" id="38_7clvs"]
+[ext_resource type="Texture2D" uid="uid://he3v7rq27ktc" path="res://Player/Sprite/onhit/3.png" id="39_r4aas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
 size = Vector2(122.222, 254.136)
@@ -349,8 +351,40 @@ tracks/0/keys = {
 "values": [ExtResource("13_p7kcq"), ExtResource("35_l6ey7"), ExtResource("14_vbwkl")]
 }
 
+[sub_resource type="Animation" id="Animation_6qokg"]
+resource_name = "onhit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("39_r4aas")]
+}
+
+[sub_resource type="Animation" id="Animation_i7max"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_2paov")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
+&"RESET": SubResource("Animation_i7max"),
 &"clac": SubResource("Animation_bpa77"),
 &"climb": SubResource("Animation_p7kcq"),
 &"climb_coco": SubResource("Animation_p8mbp"),
@@ -362,6 +396,7 @@ _data = {
 &"idle": SubResource("Animation_i1uru"),
 &"jump_down": SubResource("Animation_typba"),
 &"jump_up": SubResource("Animation_rbgwy"),
+&"onhit": SubResource("Animation_6qokg"),
 &"ramp": SubResource("Animation_ms575"),
 &"shoot": SubResource("Animation_dyo71"),
 &"strong": SubResource("Animation_r4aas"),
@@ -383,7 +418,7 @@ jump_force = -750.0
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(165, 64.1667)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("21_bj58r")
+texture = ExtResource("2_2paov")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(142.5, 105)

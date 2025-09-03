@@ -439,24 +439,36 @@ func kill_by_plant() -> void:
 # =                     DOMMAGES ET MORT                                      =
 # =============================================================================
 func on_hit(damage: int) -> void:
-	if not can_be_damaged:
+	if not can_be_damaged or is_dead:
 		return
 
+	# i-frames ON pendant l'impact
+	can_be_damaged = false
+
+	# -- PV & HUD --
 	pv -= damage
 	pv = clamp(pv, 0, max_pv)
-
-	game_state.health_bar.set_value(pv)
+	if game_state and game_state.health_bar:
+		game_state.health_bar.set_value(pv)
 	show_damage_popup(damage)
 	update_can_heal()
 	refresh_hud_buttons()
-
 	var hud = game_state.health_bar.get_parent()
-	if hud.has_method("set_button_enabled"):
+	if hud and hud.has_method("set_button_enabled"):
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
 
+	# Mort 
 	if pv <= 0:
 		die()
+		return
 
+	# -- LOCK anim & jouer "onhit" sans interruption --
+	animation_locked = true
+	anim.play("onhit")
+	await anim.animation_finished
+	animation_locked = false
+
+	can_be_damaged = true
 
 func die():
 	if is_dead:
