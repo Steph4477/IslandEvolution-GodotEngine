@@ -7,7 +7,7 @@ var seed_count = 0
 var heal_amount = 0
 var can_fire_coco = false
 var has_key = false
-
+var has_lance =false
 # --- Joueur, HUD & Scènes ---
 var player_scene = preload("res://Player/evo1.tscn")
 var player: Node = null
@@ -32,6 +32,7 @@ var collected_seeds := 0
 # --- Signaux ---
 signal all_seeds_collected
 signal key_collected
+signal lance_collected
 signal player_updated(new_player)
 
 # --- Initialisation ---
@@ -150,6 +151,7 @@ func restart_game():
 	seed_count = 0
 	can_fire_coco = false
 	has_key = false
+	has_lance = false
 
 	if hud and hud.has_method("update_lives_display"):
 		hud.update_lives_display(lives)
