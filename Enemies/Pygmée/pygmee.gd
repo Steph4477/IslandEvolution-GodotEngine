@@ -8,6 +8,9 @@ extends CharacterBody2D
 @export var gravity = 1000.0
 @export var jump_velocity = -600.0
 
+# === Loot à la mort ===
+var loot_lance_scene: PackedScene = preload("res://Loot/lance/lance.tscn")
+
 # ============================ NODES ===========================
 @onready var rig = $Rig
 @onready var anim = $Rig/AnimationPlayer
@@ -53,7 +56,7 @@ func _physics_process(delta):
 	if is_dead:
 		return
 
-	# Gravité 
+	# Gravité
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -75,13 +78,13 @@ func _physics_process(delta):
 		return
 
 	face_player()
-	
-	# Appels des états 
+
+	# Appels des états
 	in_cac()
 	in_melee()
 	shooting()
 
-	# Idle uniquement si aucun état 
+	# Idle uniquement si aucun état
 	if not in_cac_active and not in_melee_active and not is_shooting and not is_attacking:
 		velocity.x = 0
 		move_and_slide()
@@ -120,7 +123,6 @@ func shooting():
 func face_player():
 	if not can_flip or is_attacking or is_dead:
 		return
-	
 	var dx = player.global_position.x - global_position.x
 	if dx < 0 and facing != -1:
 		facing = -1
@@ -145,7 +147,7 @@ func walk_towards_player():
 	if is_attacking or is_dead:
 		return
 	var dir_x = sign(player.global_position.x - global_position.x)
-	velocity.x = dir_x * move_speed  
+	velocity.x = dir_x * move_speed
 	move_and_slide()
 	anim.play("walk")
 
@@ -159,7 +161,7 @@ func shoot_lance():
 	if player.is_dead:
 		is_shooting = false
 		return
-		
+
 	is_shooting = true
 	anim.play("attack")
 
@@ -178,9 +180,9 @@ func shoot_lance():
 		lance.scale.x = sx
 	else:
 		lance.scale.x = -sx
-	
+
 	# attendre la fin de l'anim "attack" pour relancer une attaque
-	var attack_duration = anim.get_animation("attack").length 
+	var attack_duration = anim.get_animation("attack").length
 	if attack_duration > 0:
 		await get_tree().create_timer(attack_duration).timeout
 
@@ -194,7 +196,7 @@ func cac_attack():
 		return
 	if is_attacking:
 		return
-	
+
 	is_attacking = true
 	anim.play("cac")
 
@@ -232,13 +234,13 @@ func _on_cac_zone_body_exited(_body):
 func on_hit(amount):
 	if is_dead or hit_locked:
 		return
-	
+
 	pv -= amount
 	if health_bar:
 		health_bar.max_value = max_pv
 		health_bar.value = pv
 	show_damage_popup(amount)
-	
+
 	hit_locked = true
 	anim.play("onhit")
 	await get_tree().create_timer(hit_lock_time).timeout
@@ -247,21 +249,33 @@ func on_hit(amount):
 func show_damage_popup(amount: int) -> void:
 	var popup_scene := preload("res://ItemsDecors/damage_popup.tscn")
 	var popup: Label = popup_scene.instantiate()
-
-	# enfant de health_bar
 	health_bar.add_child(popup)
-
-	# contenu du label 
 	popup.show_damage(amount)
 
-	# mort 
 	if pv <= 0:
 		die()
 
+# ============================= MORT ===========================
 func die():
 	if is_dead:
 		return
 	is_dead = true
-	anim.play("die")
-	await anim.animation_finished
+
+	# Anim de mort (si présente)
+	if anim:
+		anim.play("die")
+		await anim.animation_finished
+
+	# Spawn du loot lance
+	spawn_loot_lance()
+
+	# On supprime enfin le pyg
 	queue_free()
+
+func spawn_loot_lance():
+	# Instantie le loot 
+	var loot = loot_lance_scene.instantiate()
+	get_tree().current_scene.add_child(loot)
+
+	# Apparition à l’endroit où meurt le pyg 
+	loot.global_position = global_position
