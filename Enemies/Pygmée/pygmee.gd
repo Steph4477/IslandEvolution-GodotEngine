@@ -8,8 +8,8 @@ extends CharacterBody2D
 @export var gravity = 1000.0
 @export var jump_velocity = -600.0
 
-# === Loot à la mort ===
-var loot_lance_scene: PackedScene = preload("res://Loot/lance/lance.tscn")
+# ============================ LOOT ============================
+var loot_lance_scene = preload("res://Loot/lance/lance.tscn")
 
 # ============================ NODES ===========================
 @onready var rig = $Rig

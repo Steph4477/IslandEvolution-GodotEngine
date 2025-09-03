@@ -79,12 +79,12 @@ action = "ui_accept"
 position = Vector2(51, 49)
 shape = SubResource("CircleShape2D_lwpkd")
 
-[node name="Spear" type="TouchScreenButton" parent="Gamepad"]
+[node name="Lance" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(195, 838)
 texture_normal = ExtResource("12_s8lhr")
 texture_pressed = ExtResource("13_lwpkd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Spear"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Lance"]
 position = Vector2(49, 53)
 shape = SubResource("CircleShape2D_xl2wx")
 

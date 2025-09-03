@@ -9,7 +9,8 @@ const INPUT = {
 	"left": "ui_left",
 	"right": "ui_right",
 	"down": "ui_down",
-	"fire": "ui_cancel",
+	"fire_coco": "ui_cancel",
+	"fire_lance": "shoot",
 	"heal": "ui_accept",
 	"ramp": "ramping",
 	"clac": "clacing"
@@ -27,7 +28,8 @@ const JUMP_BUFFER_TIME := 0.1
 @export var heal_amount: int = 50  # défini dans GameState
 @export var total_seeds_in_level: int = 10  
 
-var SpellCoco = preload("res://Tir/coco.tscn")
+var spell_coco = preload("res://Tir/coco.tscn")
+var spell_lance = preload("res://Tir/lance.tscn")
 var game_state
 var can_move = true
 var can_be_damaged = true
@@ -43,6 +45,7 @@ var is_ramping = false
 var ramp_locked = false
 var is_gazed = false
 var can_fire_coco = false
+var can_fire_lance = false
 var rate_of_fire = 0.4
 var is_attacking = false # Attaque corps à corps 
 var coco_count = 0
@@ -263,6 +266,18 @@ func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
 	update_coco_display()
 	show_info_popup("Tu peux lancer 3 noix de coco")
 
+func collect_lance(enable_shooting: bool = false) -> void:
+	if enable_shooting:
+		can_fire_lance = true
+		var hud = game_state.health_bar.get_parent()
+		if hud.has_method("set_button_enabled"):
+			hud.set_button_enabled(hud.get_node("Gamepad/lance"), true)
+
+	if game_state:
+		game_state.can_fire_lance = can_fire_lance
+
+	show_info_popup("Tu peux shooter des lances")
+
 func collect_seed(amount: int = 1) -> void:
 	seed_count += amount
 
@@ -288,7 +303,7 @@ func collect_seed(amount: int = 1) -> void:
 
 # --- Tir ---
 func shoot_coco():
-	if Input.is_action_just_pressed(INPUT["fire"]) and coco_count > 0:
+	if Input.is_action_just_pressed(INPUT["fire_coco"]) and coco_count > 0:
 		coco_count -= 1
 		can_fire_coco = coco_count > 0
 		update_coco_display()
@@ -302,7 +317,30 @@ func shoot_coco():
 		await anim.animation_finished
 
 		# 🥥 Maintenant on lance la noix de coco
-		var spell = SpellCoco.instantiate()
+		var spell = spell_coco.instantiate()
+		var dir = 1
+		if sprite.scale.x < 0:
+			dir = -1
+		spell.start($TurnAxis/CastPoint.global_position, dir)
+		get_tree().current_scene.add_child(spell)
+
+		animation_locked = false
+		refresh_hud_buttons()
+
+		# (optionnel) attends un petit cooldown de cadence de tir
+		await get_tree().create_timer(rate_of_fire).timeout
+
+func shoot_lance():
+	if Input.is_action_just_pressed(INPUT["fire_lance"]):
+		# 🔒 On bloque les autres animations pendant le tir
+		animation_locked = true
+		anim.play("shoot")
+
+		# ⏳ Attente de fin d'animation
+		await anim.animation_finished
+
+		# Maintenant on shoot la lance
+		var spell = spell_lance.instantiate()
 		var dir = 1
 		if sprite.scale.x < 0:
 			dir = -1
@@ -316,18 +354,15 @@ func shoot_coco():
 		await get_tree().create_timer(rate_of_fire).timeout
 
 func _process_shoot():
-	if Input.is_action_pressed(INPUT["fire"]) and can_fire_coco:
+	if Input.is_action_pressed(INPUT["fire_coco"]) and can_fire_coco:
 		shoot_coco()
+	if Input.is_action_pressed(INPUT["fire_lance"]) and can_fire_lance:
+		shoot_lance()
 
 # --- Corps à corps ---
 func clac_attack():
 	if is_attacking or is_dead:
 		return
-	var dir = 1
-	if sprite.scale.x < 0:
-		dir = -1
-
-	$ClacArea.position.x = abs($ClacArea.position.x) * dir
 
 	is_attacking = true
 	animation_locked = true
@@ -569,6 +604,10 @@ func refresh_hud_buttons():
 	# 🌴 Bouton coco
 	if hud_parent.has_node("Gamepad/Coco"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Coco"), can_fire_coco)
+	
+	# 🌴 Bouton lance
+	if hud_parent.has_node("Gamepad/Lance"):
+		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Lance"), can_fire_lance)
 
 	# 🍌 Bouton soin
 	var can_heal_btn = pv < max_pv and heal_potions.size() > 0 and not in_cooldown
@@ -610,6 +649,7 @@ func reset_state() -> void:
 		game_state.coco_count = 0
 		game_state.seed_count = 0
 		game_state.can_fire_coco = false
+		game_state.can_fire_lance = false
 
 		# ✅ MAJ immédiate avant la frame 
 		if game_state.hud and game_state.hud.has_method("update_health_bar"):

@@ -6,6 +6,7 @@ var coco_count = 0
 var seed_count = 0
 var heal_amount = 0
 var can_fire_coco = false
+var can_fire_lance = false
 var has_key = false
 var has_lance =false
 # --- Joueur, HUD & Scènes ---
@@ -150,6 +151,7 @@ func restart_game():
 	coco_count = 0
 	seed_count = 0
 	can_fire_coco = false
+	can_fire_lance = false
 	has_key = false
 	has_lance = false
 
