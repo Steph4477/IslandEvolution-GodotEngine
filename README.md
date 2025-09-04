@@ -51,7 +51,11 @@ Help Moko:
 
 
 🎬 Click on the image below to watch the gameplay video:
-[![Voir la vidéo](https://imgur.com/a/1CvFyAS)](https://youtu.be/8XeBQ5ShogQ)
+[![Voir la vidéo](https://imgur.com/LghPG0e.png)](https://youtu.be/mqLqzB0Nst8)
+
+
+![Mon image](https://imgur.com/Jycy4aG.png)
+
 
 ![Mon image](https://imgur.com/IR5p9SY.png)
 
