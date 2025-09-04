@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=63 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/evo_1.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://2ymynqarqqhp" path="res://Player/Sprite/onhit/1.png" id="2_2paov"]
@@ -382,6 +382,34 @@ tracks/0/keys = {
 "values": [ExtResource("13_p7kcq"), ExtResource("35_l6ey7"), ExtResource("14_vbwkl")]
 }
 
+[sub_resource type="Animation" id="Animation_qh0f6"]
+resource_name = "door_2"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(150, 61.667), Vector2(150, 40.667), Vector2(150, 20.667), Vector2(150, 0.667), Vector2(150, -20.667), Vector2(150, -40.667), Vector2(150, -60.667), Vector2(150, -80.667), Vector2(150, -100.667), Vector2(150, -120.667), Vector2(150, -140.667), Vector2(150, -160.667), Vector2(150, -180.667)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("5_ifp5e"), ExtResource("6_m3p76"), ExtResource("7_p7kcq"), ExtResource("6_m3p76"), ExtResource("7_p7kcq"), ExtResource("6_m3p76"), ExtResource("7_p7kcq"), ExtResource("6_m3p76"), ExtResource("7_p7kcq"), ExtResource("6_m3p76"), ExtResource("7_p7kcq"), ExtResource("6_m3p76"), ExtResource("7_p7kcq")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
 &"RESET": SubResource("Animation_i7max"),
@@ -390,6 +418,7 @@ _data = {
 &"climb_coco": SubResource("Animation_p8mbp"),
 &"die": SubResource("Animation_cwkp3"),
 &"door": SubResource("Animation_ifp5e"),
+&"door_2": SubResource("Animation_qh0f6"),
 &"empty": SubResource("Animation_e2pw6"),
 &"hang": SubResource("Animation_kse80"),
 &"heal": SubResource("Animation_y06ei"),
@@ -416,7 +445,7 @@ script = ExtResource("1_5psm4")
 jump_force = -750.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(165, 64.1667)
+position = Vector2(150, 61.667)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_2paov")
 

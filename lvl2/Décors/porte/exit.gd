@@ -7,9 +7,9 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	var anim_player = body.get_node("Anim")
-	if anim_player.has_animation("door"):
+	if anim_player.has_animation("door_2"):
 		body.animation_locked = true
-		anim_player.play("door")
+		anim_player.play("door_2")
 		await anim_player.animation_finished
 		body.set_physics_process(false)
 		await change_scene()
@@ -19,8 +19,5 @@ func change_scene() -> void:
 	if not gs:
 		return
 
-	#if gs.fade:
-		#await gs.fade.fade_out()
-
-	await get_tree().create_timer(0.2).timeout
+	#await get_tree().create_timer(2.5).timeout
 	gs.change_scene(next_scene_path)
