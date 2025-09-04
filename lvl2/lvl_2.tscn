@@ -206,4 +206,4 @@ autoplay = true
 position = Vector2(577, 1453)
 
 [node name="Exit" parent="." instance=ExtResource("12_vjssa")]
-position = Vector2(4276, 1123)
+position = Vector2(3169, 1108)

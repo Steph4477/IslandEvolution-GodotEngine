@@ -248,7 +248,7 @@ func collect_banane(amount: int = 1) -> void:
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
 
 	update_banane_display()
-	show_info_popup("5 jus de bananes récupérés !")
+	#show_info_popup("5 jus de bananes récupérés !")
 	refresh_hud_buttons()
 
 func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:

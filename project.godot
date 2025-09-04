@@ -25,7 +25,8 @@ window/handheld/orientation=1
 
 [editor]
 
-movie_writer/movie_file="C:/Users/zozoe/OneDrive/Bureau/video_moko/Island_Evolution.avi"
+movie_writer/movie_file="C:/Users/morel/Documents/Island_Evolution.avi"
+movie_writer/fps=30
 
 [importer_defaults]
 
