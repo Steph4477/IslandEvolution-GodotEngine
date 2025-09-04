@@ -1,17 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=17 format=3 uid="uid://wmhfpjd1c3jy"]
 
-[ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
-[ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://lvl2/WorldEnvironment.tscn" id="2_rwgjh"]
-[ext_resource type="PackedScene" uid="uid://c2h3f7cwjc1n5" path="res://lvl2/Décors/tileMap.tscn" id="4_djaxt"]
-[ext_resource type="PackedScene" uid="uid://dqktopdb40juo" path="res://Enemies/Pygmée/pygmee.tscn" id="4_rwgjh"]
-[ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="4_wsvun"]
-[ext_resource type="Texture2D" uid="uid://bi6rljbw0w1wl" path="res://ItemsDecors/Torche/manche.png" id="5_dig3c"]
-[ext_resource type="Texture2D" uid="uid://celxtkk1mrp87" path="res://ItemsDecors/Torche/flame.png" id="6_anwb5"]
-[ext_resource type="PackedScene" uid="uid://cxxgitsp1x75c" path="res://ItemsDecors/Torche/Torche.tscn" id="6_ochkp"]
-[ext_resource type="Texture2D" uid="uid://ongwfoy1d66w" path="res://ItemsDecors/Torche/halo.png" id="7_eotvo"]
-[ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="10_ochkp"]
-[ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_2ivwu"]
-[ext_resource type="PackedScene" uid="uid://bxg7s54g6pc3h" path="res://lvl2/Décors/porte/Exit.tscn" id="12_vjssa"]
+[ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_6sncs"]
+[ext_resource type="PackedScene" uid="uid://c2h3f7cwjc1n5" path="res://lvl2/Décors/tileMap.tscn" id="3_sbfsf"]
+[ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="4_dq813"]
+[ext_resource type="PackedScene" uid="uid://cxxgitsp1x75c" path="res://ItemsDecors/Torche/Torche.tscn" id="6_dntyv"]
+[ext_resource type="Texture2D" uid="uid://ongwfoy1d66w" path="res://ItemsDecors/Torche/halo.png" id="7_jdw5o"]
+[ext_resource type="Texture2D" uid="uid://bi6rljbw0w1wl" path="res://ItemsDecors/Torche/manche.png" id="8_57xq1"]
+[ext_resource type="Texture2D" uid="uid://celxtkk1mrp87" path="res://ItemsDecors/Torche/flame.png" id="9_w1c1k"]
+[ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="10_uikls"]
+[ext_resource type="PackedScene" uid="uid://cohmext14ho56" path="res://Enemies/Mygale/mygale.tscn" id="11_6sncs"]
+[ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_gr680"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(125, 4097)
@@ -132,12 +130,10 @@ _data = {
 &"RESET": SubResource("Animation_2ivwu")
 }
 
-[node name="lvl2" type="Node2D"]
-script = ExtResource("1_vnrni")
+[node name="lvl2b" type="Node2D"]
+script = ExtResource("1_6sncs")
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("2_rwgjh")]
-
-[node name="TileMap" parent="." instance=ExtResource("4_djaxt")]
+[node name="TileMap" parent="." instance=ExtResource("3_sbfsf")]
 position = Vector2(-29, 419)
 
 [node name="platform" type="StaticBody2D" parent="."]
@@ -158,15 +154,12 @@ shape = SubResource("RectangleShape2D_wsvun")
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(239, 1248)
 
-[node name="Ramp" parent="." instance=ExtResource("4_wsvun")]
+[node name="Ramp" parent="." instance=ExtResource("4_dq813")]
 position = Vector2(699, 1435)
-
-[node name="Pygmee" parent="." instance=ExtResource("4_rwgjh")]
-position = Vector2(1977, 1398)
 
 [node name="TorchGroup" type="Node2D" parent="."]
 
-[node name="SlowTorch" parent="TorchGroup" instance=ExtResource("6_ochkp")]
+[node name="SlowTorch" parent="TorchGroup" instance=ExtResource("6_dntyv")]
 
 [node name="Torch2" type="Node2D" parent="TorchGroup"]
 position = Vector2(921, -31)
@@ -176,18 +169,18 @@ position = Vector2(583, 1172)
 scale = Vector2(2.36441, 1.72)
 color = Color(1, 0.537255, 0.984314, 0.768627)
 energy = 2.0
-texture = ExtResource("7_eotvo")
+texture = ExtResource("7_jdw5o")
 texture_scale = 2.5
 
 [node name="Handle" type="Sprite2D" parent="TorchGroup/Torch2"]
 position = Vector2(568, 1266)
 scale = Vector2(0.0900391, 0.1)
-texture = ExtResource("5_dig3c")
+texture = ExtResource("8_57xq1")
 
 [node name="Flame" type="Sprite2D" parent="TorchGroup/Torch2"]
 position = Vector2(568.2, 1239.5)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_anwb5")
+texture = ExtResource("9_w1c1k")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="TorchGroup/Torch2"]
 root_node = NodePath("../Flame")
@@ -199,11 +192,11 @@ autoplay = "Flame"
 [node name="Sound" type="Node2D" parent="."]
 
 [node name="lvl2" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("10_ochkp")
+stream = ExtResource("10_uikls")
 autoplay = true
 
-[node name="BagLoot" parent="." instance=ExtResource("11_2ivwu")]
+[node name="BagLoot" parent="." instance=ExtResource("11_gr680")]
 position = Vector2(580, 1436)
 
-[node name="Exit" parent="." instance=ExtResource("12_vjssa")]
-position = Vector2(4276, 1123)
+[node name="mygale" parent="." instance=ExtResource("11_6sncs")]
+position = Vector2(3959, 133)

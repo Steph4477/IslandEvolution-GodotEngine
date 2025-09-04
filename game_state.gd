@@ -11,14 +11,14 @@ var has_key = false
 var has_lance =false
 # --- Joueur, HUD & Scènes ---
 var player_scene = preload("res://Player/evo1.tscn")
-var player: Node = null
+var player = null
 
 var hud_scene = preload("res://Interface/Hud.tscn")
-var hud: Node = null
-var health_bar: Node = null
+var hud = null
+var health_bar = null
 
 var fade_scene = preload("res://Effects/fade.tscn")
-var fade: Node = null
+var fade = null
 
 # --- Vies & niveaux ---
 var max_lives = 3

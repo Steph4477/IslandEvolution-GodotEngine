@@ -297,7 +297,6 @@ func collect_seed(amount: int = 1) -> void:
 	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
 		await parent.focus_camera_on_totem_with_anim(game_state.collected_seeds)
 
-
 # =============================================================================
 # =                              ACTIONS                                      =
 # =============================================================================
@@ -401,7 +400,6 @@ func update_can_heal() -> void:
 func _process_heal() -> void:
 	if Input.is_action_just_pressed(INPUT["heal"]):
 		use_banane()
-
 
 func use_banane() -> void:
 	var msg := ""
