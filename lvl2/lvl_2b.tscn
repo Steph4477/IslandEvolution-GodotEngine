@@ -148,14 +148,14 @@ position = Vector2(6534, 760.125)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="platform"]
-position = Vector2(3451, 1567.19)
+position = Vector2(3489, 1582)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(239, 1248)
 
 [node name="Ramp" parent="." instance=ExtResource("4_dq813")]
-position = Vector2(699, 1435)
+position = Vector2(697, 1458)
 
 [node name="TorchGroup" type="Node2D" parent="."]
 
@@ -196,7 +196,7 @@ stream = ExtResource("10_uikls")
 autoplay = true
 
 [node name="BagLoot" parent="." instance=ExtResource("11_gr680")]
-position = Vector2(580, 1436)
+position = Vector2(577, 1456)
 
 [node name="mygale" parent="." instance=ExtResource("11_6sncs")]
 position = Vector2(3959, 133)
