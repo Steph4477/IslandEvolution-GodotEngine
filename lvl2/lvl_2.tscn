@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="10_ochkp"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_2ivwu"]
 [ext_resource type="PackedScene" uid="uid://bxg7s54g6pc3h" path="res://lvl2/Décors/porte/Exit.tscn" id="12_vjssa"]
-[ext_resource type="PackedScene" uid="uid://bqehq7ay05ukd" path="res://ItemsDecors/Box/box.tscn" id="13_ifea3"]
+[ext_resource type="PackedScene" uid="uid://jkvq258v3ett" path="res://ItemsDecors/PushPlatform/push_platform.tscn" id="13_ifea3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(125, 4097)
@@ -163,11 +163,12 @@ shape = SubResource("RectangleShape2D_wsvun")
 position = Vector2(2197, 1437)
 
 [node name="Pygmee" parent="." instance=ExtResource("4_rwgjh")]
-position = Vector2(3934, 1407)
+position = Vector2(1595, 1414)
 
 [node name="TorchGroup" type="Node2D" parent="."]
 
 [node name="SlowTorch" parent="TorchGroup" instance=ExtResource("6_ochkp")]
+position = Vector2(173, -1930)
 
 [node name="Torch2" type="Node2D" parent="TorchGroup"]
 position = Vector2(921, -31)
@@ -206,8 +207,8 @@ autoplay = true
 [node name="BagLoot" parent="." instance=ExtResource("11_2ivwu")]
 position = Vector2(507, 1441)
 
-[node name="Box" parent="." instance=ExtResource("13_ifea3")]
-position = Vector2(967, 1419)
-
 [node name="Exit" parent="." instance=ExtResource("12_vjssa")]
-position = Vector2(3169, 1108)
+position = Vector2(3193, -176)
+
+[node name="PushPlatform" parent="." instance=ExtResource("13_ifea3")]
+position = Vector2(904, 1395)

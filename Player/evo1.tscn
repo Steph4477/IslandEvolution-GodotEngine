@@ -327,6 +327,21 @@ tracks/0/keys = {
 "values": [ExtResource("39_r4aas")]
 }
 
+[sub_resource type="Animation" id="Animation_2paov"]
+resource_name = "push"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.95),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("23_17nxb"), ExtResource("23_17nxb")]
+}
+
 [sub_resource type="Animation" id="Animation_ms575"]
 resource_name = "ramp"
 length = 0.4
@@ -407,21 +422,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [ExtResource("13_p7kcq"), ExtResource("35_l6ey7"), ExtResource("14_vbwkl")]
-}
-
-[sub_resource type="Animation" id="Animation_2paov"]
-resource_name = "push"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.95),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("23_17nxb"), ExtResource("23_17nxb")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
