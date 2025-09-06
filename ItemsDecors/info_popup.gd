@@ -1,30 +1,53 @@
 extends CanvasLayer
 
-@onready var info_label = $InfoLabel
-
-@export var float_distance := 40
 @export var info_duration := 1.5
+@export var max_messages := 6
+@export var stack_width_ratio := 0.8
+@export var vertical_position_ratio := 0.35
+@export var font_size := 30
 
-func show_info(txt: String) -> void:
-	info_label.visible = true
-	info_label.modulate = Color.WHITE
-	info_label.text = txt
+@onready var template_label = $InfoLabel
+var stack
 
-	if not info_label.label_settings:
-		info_label.label_settings = LabelSettings.new()
-	info_label.label_settings.font_size = 32
-	info_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	info_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	info_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+func _ready():
+	add_to_group("info_overlay_group")
 
-	var viewport_size = get_viewport().get_visible_rect().size
-	info_label.size = viewport_size * Vector2(0.8, 0.3)
-	info_label.position = (viewport_size - info_label.size) / 2
+	# gabarit (style)
+	if not template_label.label_settings:
+		template_label.label_settings = LabelSettings.new()
+	template_label.label_settings.font_size = font_size
+	template_label.visible = false
 
-	var tween = create_tween()
-	tween.tween_property(info_label, "modulate:a", 1.0, 0.2)
-	tween.tween_interval(info_duration - 0.4)
-	tween.tween_property(info_label, "modulate:a", 0.0, 0.2)
-	await tween.finished
+	# pile de messages
+	stack = VBoxContainer.new()
+	add_child(stack)
 
-	queue_free()
+	# position/largeur
+	var sz = get_viewport().get_visible_rect().size
+	stack.size = Vector2(sz.x * stack_width_ratio, 0)
+	stack.position = Vector2((sz.x - stack.size.x) / 2.0, sz.y * vertical_position_ratio)
+
+func show_info(txt):
+	var lbl = Label.new()
+	lbl.label_settings = template_label.label_settings.duplicate()
+	lbl.label_settings.font_size = font_size
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD
+	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lbl.custom_minimum_size.x = stack.size.x
+	lbl.text = str(txt)
+	lbl.modulate.a = 0.0
+
+	stack.add_child(lbl)
+
+	# limiter le nombre de messages
+	while stack.get_child_count() > max_messages:
+		stack.get_child(0).queue_free()
+
+	# fade-in -> attente -> fade-out -> suppression
+	var t = create_tween()
+	t.tween_property(lbl, "modulate:a", 1.0, 0.1)
+	t.tween_interval(info_duration)
+	t.tween_property(lbl, "modulate:a", 0.0, 0.2)
+	t.tween_callback(func(): lbl.queue_free())

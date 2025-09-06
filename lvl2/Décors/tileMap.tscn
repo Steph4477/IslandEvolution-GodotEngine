@@ -21,7 +21,7 @@ tile_set = ExtResource("1_h3ohk")
 [node name="TileMapColone" type="TileMapLayer" parent="."]
 z_index = 1
 position = Vector2(-1459, 75)
-tile_map_data = PackedByteArray("AAA2AJQABQAAAAAAAACfADAABgAAAAAAAABCAjMAEAAAAAAAAACGATMAEAAAAAAAAABEATAABgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAA2AJQABQAAAAAAAABCAjMAEAAAAAAAAACGATMAEAAAAAAAAACdADAABgAAAAAAAABFATAABgAAAAAAAAA=")
 tile_set = ExtResource("1_h3ohk")
 
 [node name="TileMapPlatform" type="TileMapLayer" parent="."]

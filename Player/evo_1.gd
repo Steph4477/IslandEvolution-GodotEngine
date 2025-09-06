@@ -248,7 +248,7 @@ func collect_banane(amount: int = 1) -> void:
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
 
 	update_banane_display()
-	#show_info_popup("5 jus de bananes récupérés !")
+	show_info_popup("5 jus de bananes récupérés !")
 	refresh_hud_buttons()
 
 func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
@@ -627,10 +627,15 @@ func refresh_hud_buttons():
 	if hud_parent.has_node("Gamepad/Ramp"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Ramp"), can_ramp)
 
-func show_info_popup(txt: String) -> void:
-	var popup = preload("res://ItemsDecors/info_popup.tscn").instantiate()
-	add_child(popup)
+func show_info_popup(txt):
+	var popup = get_tree().get_first_node_in_group("info_overlay_group")
+	if popup == null:
+		popup = preload("res://ItemsDecors/info_popup.tscn").instantiate()
+		# Tu peux aussi faire: get_tree().current_scene.add_child(popup)
+		# CanvasLayer s’affiche au-dessus, même si on l’attache au Player
+		add_child(popup)
 	popup.show_info(txt)
+
 
 func show_damage_popup(amount: int) -> void:
 	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()
