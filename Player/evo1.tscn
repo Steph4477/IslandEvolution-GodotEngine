@@ -457,7 +457,6 @@ position = Vector2(0, -1)
 scale = Vector2(1.2, 1.2)
 collision_mask = 270
 script = ExtResource("1_5psm4")
-jump_force = -750.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(150, 61.667)

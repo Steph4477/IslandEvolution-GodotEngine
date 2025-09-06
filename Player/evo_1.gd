@@ -18,7 +18,7 @@ const INPUT = {
 const JUMP_BUFFER_TIME := 0.1
 
 @export var speed: float = 400
-@export var jump_force: float = -400
+@export var jump_force: float = -800
 @export var gravity: float = 1200
 @export var climb_speed: float = 100
 @export var clac_damage: int = 10

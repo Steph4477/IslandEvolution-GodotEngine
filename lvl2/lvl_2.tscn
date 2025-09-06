@@ -160,10 +160,10 @@ position = Vector2(3465, 1579)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Ramp" parent="." instance=ExtResource("4_wsvun")]
-position = Vector2(1469, 1441)
+position = Vector2(2197, 1437)
 
 [node name="Pygmee" parent="." instance=ExtResource("4_rwgjh")]
-position = Vector2(5047, 1373)
+position = Vector2(3934, 1407)
 
 [node name="TorchGroup" type="Node2D" parent="."]
 
@@ -204,10 +204,10 @@ stream = ExtResource("10_ochkp")
 autoplay = true
 
 [node name="BagLoot" parent="." instance=ExtResource("11_2ivwu")]
-position = Vector2(1555, 1441)
+position = Vector2(507, 1441)
 
 [node name="Box" parent="." instance=ExtResource("13_ifea3")]
-position = Vector2(1052, 1415)
+position = Vector2(967, 1419)
 
 [node name="Exit" parent="." instance=ExtResource("12_vjssa")]
 position = Vector2(3169, 1108)
