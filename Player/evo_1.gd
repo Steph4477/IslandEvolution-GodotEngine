@@ -415,15 +415,25 @@ func use_banane() -> void:
 		await _play_anim("empty")
 		return
 
+	# Animation de soin
 	await _play_anim("heal")
 
+	# Applique le soin
 	heal(game_state.heal_amount)
-	heal_potions.pop_front()
 
+	# ❗ Retire la potion utilisée puis recalcule immédiatement les compteurs
+	if not heal_potions.is_empty():
+		heal_potions.pop_front()
+
+	banane_count = heal_potions.size()
+	update_banane_display()
+
+	if game_state:
+		game_state.banane_count = banane_count
+
+	# Passe en cooldown et rafraîchit les boutons
 	in_cooldown = true
 	update_can_heal()
-	update_banane_display()
-	game_state.banane_count = banane_count
 	refresh_hud_buttons()
 	start_potion_cooldown()
 

@@ -284,7 +284,7 @@ position = Vector2(-5190, -251)
 position = Vector2(3329, 1040)
 
 [node name="Snake" parent="Wildlife" instance=ExtResource("17_f0kof")]
-position = Vector2(637, 414)
+position = Vector2(627, 389)
 
 [node name="Mousquito" parent="Wildlife" instance=ExtResource("16_cvxqb")]
 position = Vector2(2843, 40)

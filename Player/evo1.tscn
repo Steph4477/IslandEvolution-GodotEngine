@@ -473,16 +473,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_p7kcq")
 }
 
-[node name="TurnAxisHead" type="Marker2D" parent="."]
-position = Vector2(164.167, 50)
-rotation = 0.785398
-
 [node name="TurnAxis" type="Marker2D" parent="."]
 position = Vector2(163.333, 70)
 rotation = 0.785398
 
 [node name="CastPoint" type="Marker2D" parent="TurnAxis"]
-position = Vector2(-11.1958, -32.4091)
+position = Vector2(21.2134, -2.35725)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(151, 61)

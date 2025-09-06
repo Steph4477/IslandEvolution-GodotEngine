@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=22 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://lvl2/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_2ivwu"]
 [ext_resource type="PackedScene" uid="uid://bxg7s54g6pc3h" path="res://lvl2/Décors/porte/Exit.tscn" id="12_vjssa"]
 [ext_resource type="PackedScene" uid="uid://jkvq258v3ett" path="res://ItemsDecors/PushPlatform/push_platform.tscn" id="13_ifea3"]
+[ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="14_utbl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(125, 4097)
@@ -22,6 +23,9 @@ size = Vector2(143, 3825.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
 size = Vector2(10271, 186.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifea3"]
+size = Vector2(2720.25, 41)
 
 [sub_resource type="Animation" id="Animation_ochkp"]
 resource_name = "Flame"
@@ -134,6 +138,7 @@ _data = {
 }
 
 [node name="lvl2" type="Node2D"]
+position = Vector2(4, 27)
 script = ExtResource("1_vnrni")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_rwgjh")]
@@ -142,7 +147,7 @@ script = ExtResource("1_vnrni")
 position = Vector2(-29, 419)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(403, 1341)
+position = Vector2(1189, 1351)
 
 [node name="platform" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -156,14 +161,18 @@ position = Vector2(6534, 760.125)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="platform"]
-position = Vector2(3465, 1579)
+position = Vector2(3475, 1555)
 shape = SubResource("RectangleShape2D_wsvun")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+position = Vector2(2374.88, 1073)
+shape = SubResource("RectangleShape2D_ifea3")
+
 [node name="Ramp" parent="." instance=ExtResource("4_wsvun")]
-position = Vector2(2197, 1437)
+position = Vector2(1793, 1015)
 
 [node name="Pygmee" parent="." instance=ExtResource("4_rwgjh")]
-position = Vector2(1595, 1414)
+position = Vector2(3131, 1388)
 
 [node name="TorchGroup" type="Node2D" parent="."]
 
@@ -171,7 +180,7 @@ position = Vector2(1595, 1414)
 position = Vector2(173, -1930)
 
 [node name="Torch2" type="Node2D" parent="TorchGroup"]
-position = Vector2(921, -31)
+position = Vector2(902, -465)
 
 [node name="PointLight2D" type="PointLight2D" parent="TorchGroup/Torch2"]
 position = Vector2(583, 1172)
@@ -205,10 +214,13 @@ stream = ExtResource("10_ochkp")
 autoplay = true
 
 [node name="BagLoot" parent="." instance=ExtResource("11_2ivwu")]
-position = Vector2(507, 1441)
+position = Vector2(558, 1425)
 
 [node name="Exit" parent="." instance=ExtResource("12_vjssa")]
 position = Vector2(3193, -176)
 
 [node name="PushPlatform" parent="." instance=ExtResource("13_ifea3")]
-position = Vector2(904, 1395)
+position = Vector2(392, 1372)
+
+[node name="Serpent" parent="." instance=ExtResource("14_utbl0")]
+position = Vector2(2052, 989)

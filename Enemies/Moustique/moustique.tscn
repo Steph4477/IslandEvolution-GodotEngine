@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dlwtrnoi7mm54" path="res://Enemies/Moustique/moustique.gd" id="1_r0nwy"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/HealthBar.tscn" id="2_2vk4j"]
-[ext_resource type="Texture2D" uid="uid://b1tovtbnrhkcl" path="res://Enemies/Moustique/die.png" id="3_2vk4j"]
-[ext_resource type="Texture2D" uid="uid://ch2kkrng62f8f" path="res://Enemies/Moustique/attaque1.png" id="4_27a47"]
-[ext_resource type="Texture2D" uid="uid://cjhjxfoory1io" path="res://Enemies/Moustique/attaque.png" id="5_nl3xb"]
-[ext_resource type="Texture2D" uid="uid://1r02kh5qy1nx" path="res://Enemies/Moustique/moustique.png" id="6_c0yhc"]
-[ext_resource type="Texture2D" uid="uid://bh3gu5wckpmu8" path="res://Enemies/Moustique/moustique1.png" id="7_qm3hn"]
-[ext_resource type="Texture2D" uid="uid://b806wtm41obwv" path="res://Enemies/Moustique/patrol.png" id="8_27a47"]
-[ext_resource type="Texture2D" uid="uid://b0apw11ud66gp" path="res://Enemies/Moustique/patrol1.png" id="9_nl3xb"]
+[ext_resource type="Texture2D" uid="uid://gqvi4gsj3jg1" path="res://Enemies/Moustique/die.png" id="3_2vk4j"]
+[ext_resource type="Texture2D" uid="uid://bkkfutwo2vlqe" path="res://Enemies/Moustique/attaque1.png" id="4_27a47"]
+[ext_resource type="Texture2D" uid="uid://crbnj2htmphdq" path="res://Enemies/Moustique/attaque.png" id="5_nl3xb"]
+[ext_resource type="Texture2D" uid="uid://bywp7um2rbbml" path="res://Enemies/Moustique/moustique.png" id="6_c0yhc"]
+[ext_resource type="Texture2D" uid="uid://dsyldk60lmkfr" path="res://Enemies/Moustique/moustique1.png" id="7_qm3hn"]
+[ext_resource type="Texture2D" uid="uid://cxpohxf7amqp3" path="res://Enemies/Moustique/patrol.png" id="8_27a47"]
+[ext_resource type="Texture2D" uid="uid://cpcgh8t544iy6" path="res://Enemies/Moustique/patrol1.png" id="9_nl3xb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0nwy"]
 radius = 39.1152
@@ -119,6 +119,7 @@ _data = {
 }
 
 [node name="Moustique" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(0.6, 0.6)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_r0nwy")
