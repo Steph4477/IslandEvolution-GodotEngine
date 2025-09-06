@@ -2,41 +2,58 @@ extends RigidBody2D
 
 @onready var area = $Area2D
 
-var is_push_mode_enabled = false
-var player_in_range = false
+var player = null
+
+# Flag unique vrai si le joueur est dans la zone de la caisse
+# et donc autorisé à déclencher l’anim "push"
+var pushing = false   
 
 func _ready():
-	freeze = true  # on bloque le corps au départ
-	gravity_scale = 0.0  # empêche toute chute
+	# La caisse est figée et ne tombe pas par défaut
+	freeze = true
+	gravity_scale = 0.0
+	collision_layer = 2   # layer 2 = "platform" (Moko peut marcher dessus mais pas pousser)
 
-	# Connexion des signaux de détection
-	area.body_entered.connect(_on_area_2d_body_entered)
-	area.body_exited.connect(_on_area_2d_body_exited)
+	# 🔎 Récupère le player via GameState
+	var gs = get_node("/root/GameState")
+	player = gs.player
+	# Si jamais le player est recréé (perte de vie), on le met à jour 
+	gs.connect("player_updated", Callable(self, "_on_player_changed"))
 
-func _process(delta):
-	# Toggle push
-	if player_in_range and Input.is_action_just_pressed("push"):
-		is_push_mode_enabled = !is_push_mode_enabled
+func _on_player_changed(p):
+	# Quand GameState envoie le nouveau player (après respawn)
+	player = p
 
-		if is_push_mode_enabled:
-			freeze = false
-			print("🟢 Moko commence à pousser (mode activé)")
-		else:
-			freeze = true
-			print("🔴 Moko arrête de pousser (mode désactivé)")
+func _physics_process(delta):
+	# si pas de player, on fait rien
+	if not player:
+		return
 
-	# Si Moko part, désactivation auto
-	if not player_in_range and is_push_mode_enabled:
-		is_push_mode_enabled = false
+	var anim = player.get_node("Anim")
+
+	# ✅ Si le joueur est dans la zone ET qu’il maintient "push"
+	if pushing and Input.is_action_pressed("push"):
+		freeze = false              # la caisse devient poussable
+		collision_layer = 1         # interaction physique avec Moko
+		await get_tree().process_frame  # attend une frame pour écraser "walk"
+		anim.play("push")           # force l’anim "push"
+	else:
+		# ❌ la caisse redevient figée et solide
 		freeze = true
-		print("🚪 Moko s'est éloigné, mode push désactivé")
+		collision_layer = 2
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player_in_range = true
-		print("✅ Moko est à proximité de la caisse")
+# Affiche un popup d’info au joueur
+func show_info_popup(txt: String) -> void:
+	var popup = preload("res://ItemsDecors/info_popup.tscn").instantiate()
+	add_child(popup)
+	popup.show_info(txt)
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		player_in_range = false
-		print("🚶‍♂️ Moko quitte la zone")
+		pushing = true   # active le mode "push"
+		show_info_popup('Maintiens la touche "P" enfoncée pour pousser la caisse')
+
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("Player"):
+		pushing = false  # le joueur reprend ses anims normales

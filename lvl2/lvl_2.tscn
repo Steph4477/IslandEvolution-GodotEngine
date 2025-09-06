@@ -141,6 +141,9 @@ script = ExtResource("1_vnrni")
 [node name="TileMap" parent="." instance=ExtResource("4_djaxt")]
 position = Vector2(-29, 419)
 
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(403, 1341)
+
 [node name="platform" type="StaticBody2D" parent="."]
 collision_layer = 2
 
@@ -155,9 +158,6 @@ shape = SubResource("RectangleShape2D_djaxt")
 [node name="Border3" type="CollisionShape2D" parent="platform"]
 position = Vector2(3465, 1579)
 shape = SubResource("RectangleShape2D_wsvun")
-
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(403, 1341)
 
 [node name="Ramp" parent="." instance=ExtResource("4_wsvun")]
 position = Vector2(1469, 1441)
@@ -206,8 +206,8 @@ autoplay = true
 [node name="BagLoot" parent="." instance=ExtResource("11_2ivwu")]
 position = Vector2(1555, 1441)
 
-[node name="Exit" parent="." instance=ExtResource("12_vjssa")]
-position = Vector2(3169, 1108)
-
 [node name="Box" parent="." instance=ExtResource("13_ifea3")]
 position = Vector2(1052, 1415)
+
+[node name="Exit" parent="." instance=ExtResource("12_vjssa")]
+position = Vector2(3169, 1108)
