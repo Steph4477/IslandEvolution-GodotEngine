@@ -1,17 +1,18 @@
 extends Node2D
 
+@export var dialogue_scene = preload("res://Interface/dialogue_ui.tscn")
+
 func _ready():
 	$Sound/lvl2.play()
-	# Répetition du paralaxe
-	var paralaxe_fond = $ParalaxeFond
-	if paralaxe_fond:
-		var pb = paralaxe_fond.get_node("ParallaxBackground")
-		if pb:
-			var layer = pb.get_node("ParallaxLayer_fond")
-			if layer:
-				layer.motion_scale = Vector2(0.5, 0.5)
 	
+	# insertion du dialogue du toucan
 	await get_tree().process_frame  
+	var dlg = dialogue_scene.instantiate()
+	dlg.name = "DialogueUI"
+	add_child(dlg)
+	await get_tree().process_frame
+	dlg.start()
+	await dlg.finished
 	
 	# Assombrissement de Moko
 	var gs = get_node_or_null("/root/GameState")

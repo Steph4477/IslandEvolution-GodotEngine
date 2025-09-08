@@ -84,7 +84,7 @@ size = Vector2(5.4567, 20)
 script = ExtResource("1_vc1ff")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(256, 1180)
+position = Vector2(180, 1441)
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
@@ -266,7 +266,7 @@ position = Vector2(-2709, -325)
 position = Vector2(-4717, -364)
 
 [node name="Loot" type="Node2D" parent="Trees"]
-position = Vector2(-341, -91)
+position = Vector2(-334, -90)
 
 [node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
 position = Vector2(-2280, -229)
@@ -336,13 +336,7 @@ position = Vector2(6128, 1255)
 script = ExtResource("18_myamh")
 
 [node name="Seed1" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
-position = Vector2(-2976, -675)
-
-[node name="Seed3" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
-position = Vector2(-1746, -335)
-
-[node name="Seed4" parent="Items/Seeds" instance=ExtResource("15_kgp0u")]
-position = Vector2(-1693, -337)
+position = Vector2(-2970, -685)
 
 [node name="Sound" type="Node2D" parent="."]
 
@@ -351,6 +345,6 @@ position = Vector2(1226, 1228)
 stream = ExtResource("16_kgp0u")
 
 [node name="Totem" parent="." instance=ExtResource("21_lr8k6")]
-position = Vector2(3756, 557)
+position = Vector2(3757, 555)
 
 [node name="QuestBox" parent="." instance=ExtResource("24_0og2l")]

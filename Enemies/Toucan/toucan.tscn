@@ -1,16 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3vsv1rjlngm5"]
+[gd_scene load_steps=20 format=3 uid="uid://d3vsv1rjlngm5"]
 
 [ext_resource type="Script" uid="uid://bvduen3qm8dbb" path="res://Enemies/Toucan/toucan.gd" id="1_1fck1"]
-[ext_resource type="Texture2D" uid="uid://rfflhsp3uk27" path="res://Enemies/Toucan/die.png" id="3_1fck1"]
-[ext_resource type="Texture2D" uid="uid://b1tovtbnrhkcl" path="res://Enemies/Moustique/die.png" id="3_yx355"]
-[ext_resource type="Texture2D" uid="uid://edag8b1uu3v1" path="res://Enemies/Toucan/vol1.png" id="4_ldug1"]
-[ext_resource type="Texture2D" uid="uid://d0ngfsh0yag3c" path="res://Enemies/Toucan/vol3.png" id="5_yx355"]
-[ext_resource type="Texture2D" uid="uid://bpjt8028pbo30" path="res://Enemies/Toucan/vol2.png" id="6_1fck1"]
-[ext_resource type="Texture2D" uid="uid://dnujq7scyyu25" path="res://Enemies/Toucan/idle3.png" id="7_gopdl"]
-[ext_resource type="Texture2D" uid="uid://dmda1w0mgs7da" path="res://Enemies/Toucan/vol12.png" id="8_qealk"]
-[ext_resource type="Texture2D" uid="uid://b8454rfxptayk" path="res://Enemies/Toucan/idle1.png" id="9_dg1kv"]
-[ext_resource type="Texture2D" uid="uid://dqih5cddwhx32" path="res://Enemies/Toucan/idle2.png" id="10_xf6h4"]
-[ext_resource type="Texture2D" uid="uid://mido1f130c1u" path="res://Enemies/Toucan/look.png" id="11_1fck1"]
+[ext_resource type="Texture2D" uid="uid://b6anlojssjb1d" path="res://Enemies/Toucan/die.png" id="3_1fck1"]
+[ext_resource type="Texture2D" uid="uid://gqvi4gsj3jg1" path="res://Enemies/Moustique/die.png" id="3_yx355"]
+[ext_resource type="Texture2D" uid="uid://b0if0gqwaxinj" path="res://Enemies/Toucan/vol1.png" id="4_ldug1"]
+[ext_resource type="Texture2D" uid="uid://cwr74p4d8fnuv" path="res://Enemies/Toucan/vol2.png" id="6_1fck1"]
+[ext_resource type="Texture2D" uid="uid://b2ii0vy2opvyh" path="res://Enemies/Toucan/idle3.png" id="7_gopdl"]
+[ext_resource type="Texture2D" uid="uid://k8ymoh0m6s53" path="res://Enemies/Toucan/vol3.png" id="8_qealk"]
+[ext_resource type="Texture2D" uid="uid://cl58hg78msv21" path="res://Enemies/Toucan/idle1.png" id="9_dg1kv"]
+[ext_resource type="Texture2D" uid="uid://dfmhkvrhjgat2" path="res://Enemies/Toucan/idle2.png" id="10_xf6h4"]
+[ext_resource type="Texture2D" uid="uid://cdmxltre7anas" path="res://Enemies/Toucan/look.png" id="11_1fck1"]
 [ext_resource type="PackedScene" uid="uid://cxdl03sy2f1ou" path="res://Enemies/Toucan/ToucanHealthBar.tscn" id="11_yx355"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0nwy"]
@@ -50,7 +49,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_l6bps"]
 resource_name = "flight"
-length = 4.0
+length = 2.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -59,10 +58,10 @@ tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.8, 1, 1.2, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8, 1, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_ldug1"), ExtResource("5_yx355"), ExtResource("4_ldug1"), ExtResource("5_yx355"), ExtResource("4_ldug1"), ExtResource("5_yx355"), ExtResource("6_1fck1"), ExtResource("6_1fck1")]
+"values": [ExtResource("4_ldug1"), ExtResource("8_qealk"), ExtResource("4_ldug1"), ExtResource("8_qealk"), ExtResource("4_ldug1"), ExtResource("8_qealk"), ExtResource("6_1fck1")]
 }
 
 [sub_resource type="Animation" id="Animation_d1ku1"]

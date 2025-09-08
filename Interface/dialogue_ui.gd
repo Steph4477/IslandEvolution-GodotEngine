@@ -1,4 +1,5 @@
 extends CanvasLayer
+
 signal finished
 
 @onready var box  = $Box
@@ -8,9 +9,9 @@ signal finished
 # Réglages via l’inspecteur
 @export var lines := [
 	"J'ai faim ! Ce temple regorge de graines !",
-	"Vole au moins [b]5 [/b]graines au clan des Pygmées.",
+	"Vole au moins 5 graines au clan des Pygmées.",
 	"Alors, peut-être que je deviendrai ton ami, Moko !",
-	"[i]Bonne chance ![/i]"
+	"Bonne chance !"
 ]
 
 @export var auto_start := true           # Démarrer au _ready
