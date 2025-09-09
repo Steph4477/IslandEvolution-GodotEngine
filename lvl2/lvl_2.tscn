@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=31 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://lvl2/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -14,40 +14,43 @@
 [ext_resource type="PackedScene" uid="uid://bxg7s54g6pc3h" path="res://lvl2/Décors/porte/Exit.tscn" id="12_vjssa"]
 [ext_resource type="PackedScene" uid="uid://jkvq258v3ett" path="res://ItemsDecors/PushPlatform/push_platform.tscn" id="13_ifea3"]
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="14_utbl0"]
-[ext_resource type="PackedScene" uid="uid://c5bug2b6apnq6" path="res://ItemsDecors/MobilePlatform/mobile_plat_form.tscn" id="15_a6f7x"]
+[ext_resource type="PackedScene" uid="uid://cr0w31y6mkn3m" path="res://ItemsDecors/lvl2/mobile_plat_form.tscn" id="15_a6f7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(111.5, 4097)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djaxt"]
-size = Vector2(143, 3825.75)
+size = Vector2(109.5, 4425.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(10271, 186.375)
+size = Vector2(10805.5, 186.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifea3"]
-size = Vector2(3496.13, 41)
+size = Vector2(3450, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6f7x"]
-size = Vector2(968, 37)
+size = Vector2(939.5, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2tf"]
 size = Vector2(5581, 45)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnvun"]
-size = Vector2(6385.5, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah614"]
-size = Vector2(4627.5, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2552o"]
-size = Vector2(5580, 20)
+size = Vector2(6313, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdx3j"]
 size = Vector2(6364, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxp1h"]
-size = Vector2(4904, 49)
+size = Vector2(6252, 52.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnvun"]
+size = Vector2(858.85, 75.0146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah614"]
+size = Vector2(832.488, 46.0412)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yvr4"]
+size = Vector2(861.009, 46.8618)
 
 [sub_resource type="Animation" id="Animation_ochkp"]
 resource_name = "Flame"
@@ -180,44 +183,51 @@ position = Vector2(-67.75, 604)
 shape = SubResource("RectangleShape2D_ekrdk")
 
 [node name="Border2" type="CollisionShape2D" parent="platform"]
-position = Vector2(6534, 760.125)
+position = Vector2(9022, 464.75)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="platform"]
-position = Vector2(3475, 1555)
+position = Vector2(3742.25, 1555)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
-position = Vector2(2356, 716)
+position = Vector2(2354, 716)
 shape = SubResource("RectangleShape2D_ifea3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="platform"]
-position = Vector2(1962, -133.5)
+position = Vector2(1937.75, -114.5)
 shape = SubResource("RectangleShape2D_a6f7x")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="platform"]
 position = Vector2(6310.5, -909)
 shape = SubResource("RectangleShape2D_3p2tf")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="platform"]
-position = Vector2(8221.25, -3349)
-shape = SubResource("RectangleShape2D_mnvun")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="platform"]
-position = Vector2(9073.25, -4136)
-shape = SubResource("RectangleShape2D_ah614")
-
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="platform"]
-position = Vector2(6294, -1718)
+position = Vector2(8189.5, -1735)
 shape = SubResource("RectangleShape2D_2552o")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="platform"]
-position = Vector2(8209, -2519)
+position = Vector2(8204, -2551)
 shape = SubResource("RectangleShape2D_sdx3j")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="platform"]
-position = Vector2(5201, -115)
+position = Vector2(5900, -113.25)
 shape = SubResource("RectangleShape2D_vxp1h")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="platform"]
+position = Vector2(11363.7, -2136.44)
+rotation = 1.56791
+shape = SubResource("RectangleShape2D_mnvun")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="platform"]
+position = Vector2(4056, 290)
+rotation = 1.56219
+shape = SubResource("RectangleShape2D_ah614")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="platform"]
+position = Vector2(654.375, 294.499)
+rotation = 1.56988
+shape = SubResource("RectangleShape2D_8yvr4")
 
 [node name="Ramp" parent="." instance=ExtResource("4_wsvun")]
 position = Vector2(3379, 156)
@@ -268,15 +278,13 @@ autoplay = true
 position = Vector2(1128, 1016)
 
 [node name="Exit" parent="." instance=ExtResource("12_vjssa")]
-position = Vector2(10982, -4546)
+position = Vector2(11134, -1807)
 
 [node name="PushPlatform" parent="." instance=ExtResource("13_ifea3")]
-position = Vector2(986, 948)
+position = Vector2(2267, 108)
 
 [node name="Serpent" parent="." instance=ExtResource("14_utbl0")]
 position = Vector2(2509, 1000)
 
 [node name="MobilePlatForm" parent="." instance=ExtResource("15_a6f7x")]
-position = Vector2(2789, 627)
-distance = 500.0
-direction = 1
+position = Vector2(2773, 719)

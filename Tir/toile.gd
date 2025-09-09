@@ -8,6 +8,7 @@ var damage = 400
 
 var direction: Vector2 = Vector2.ZERO
 var has_collided = false
+var is_web = true
 
 func _ready():
 	sprite.play("attaque_toile")
@@ -22,7 +23,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	queue_free()
 	if body.is_in_group("Player"):
 		has_collided = true
-
+		is_web = true
 		var effet_scene = preload("res://Effects/effet_toile_collée.tscn")
 		var effet = effet_scene.instantiate()
 		

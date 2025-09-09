@@ -53,8 +53,8 @@ func _ready():
 	# Premier chargement
 	await get_tree().process_frame
 	#await load_level("res://Menu/lancement_lvl1/menu_lvl1.tscn")
-	await load_level("res://lvl2/lvl_2.tscn")
-	#await load_level("res://lvl2/lvl_2b.tscn")
+	#await load_level("res://lvl2/lvl_2.tscn")
+	await load_level("res://lvl2/lvl_2b.tscn")
 
 func set_player(p):
 	player = p

@@ -44,6 +44,7 @@ var can_ramp = false
 var is_ramping = false
 var ramp_locked = false
 var is_gazed = false
+var is_web = false
 var can_fire_coco = false
 var can_fire_lance = false
 var rate_of_fire = 0.4
@@ -471,10 +472,14 @@ func apply_gaz():
 	speed /= 0.2
 	is_gazed = false
 
-func apply_web():
+func apply_web_effect():
+	if is_web:
+		return
+	is_web = true
 	speed *= 0.5
 	await get_tree().create_timer(10).timeout
 	speed /= 0.5
+	is_web = false
 
 func kill_by_plant() -> void:
 	visible = false
@@ -568,6 +573,8 @@ func update_animation():
 			if abs(velocity.x) > 0.1:
 				if is_gazed:
 					anim.play("walk_gaz")
+				if is_web:
+					anim.play("web_effect")
 				else:
 					anim.play("walk")
 			else:
