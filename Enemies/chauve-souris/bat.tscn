@@ -12,21 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://ck4ta7jbb2lyw" path="res://Enemies/chauve-souris/8.png" id="9_s0l8n"]
 [ext_resource type="Texture2D" uid="uid://vi0sqsj0gir8" path="res://Enemies/chauve-souris/10.png" id="10_rljnx"]
 
-[sub_resource type="Animation" id="Animation_evnmi"]
-resource_name = "fly"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_eoopm"), ExtResource("2_eoopm"), ExtResource("3_qi3cr"), ExtResource("4_f6jfk"), ExtResource("5_vkqg0"), ExtResource("6_xkqv6"), ExtResource("7_jl6lm"), ExtResource("8_jqvev"), ExtResource("9_s0l8n"), ExtResource("9_a3i2a"), ExtResource("10_rljnx")]
-}
-
 [sub_resource type="Animation" id="Animation_b1nwg"]
 length = 0.001
 tracks/0/type = "value"
@@ -40,6 +25,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_eoopm")]
+}
+
+[sub_resource type="Animation" id="Animation_evnmi"]
+resource_name = "fly"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_eoopm"), ExtResource("2_eoopm"), ExtResource("3_qi3cr"), ExtResource("4_f6jfk"), ExtResource("5_vkqg0"), ExtResource("6_xkqv6"), ExtResource("7_jl6lm"), ExtResource("8_jqvev"), ExtResource("9_s0l8n"), ExtResource("9_a3i2a"), ExtResource("10_rljnx")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sjt6i"]
