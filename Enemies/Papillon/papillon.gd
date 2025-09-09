@@ -1,47 +1,34 @@
 extends CharacterBody2D
 
-@export var speed: float = 100.0
-@export var patrol_change_interval: float = 2.0
-@export var butterfly_color: Color = Color(1, 1, 1, 1)
-@export var shader: Shader = preload("res://Enemies/Papillon/papillon_recolor.gdshader")
+@export var show_duration := 1.8
 
-@onready var timer = $Timer
-@onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite
+@onready var anim = $AnimationPlayer
+@onready var timer = $Timer
+@onready var area = $Area2D
 
-var patrol_direction := Vector2.ZERO
+func _ready():
+	# Caché au départ
+	#sprite.visible = false
+	# Timer en one_shot pour auto-s'arrêter
+	timer.one_shot = true
+	# Connecte le signal une seule fois si pas déjà fait (au cas où)
+	if not timer.timeout.is_connected(_on_timer_timeout):
+		timer.timeout.connect(_on_timer_timeout)
 
-func _ready() -> void:
-	var mat := ShaderMaterial.new()
-	mat.shader = shader
-	mat.set_shader_parameter("target_color", butterfly_color)
-	mat.set_shader_parameter("mix_strength", 0.8)  # 1.0 = couleur vive, 0.0 = texture originale
 
-	sprite.material = mat
-	
-	await get_tree().process_frame  # 👈 Attendre que l'instance soit bien initialisée
-	sprite.modulate = butterfly_color
-	start_patrol()
-
-func _physics_process(delta: float) -> void:
-	velocity = patrol_direction * speed
-	anim.play("flight")
-
-	# Flip du sprite selon la direction
-	if velocity.x != 0:
-		sprite.scale.x = abs(sprite.scale.x) if velocity.x > 0 else -abs(sprite.scale.x)
-
-	move_and_slide()
-
-func start_patrol():
-	change_patrol_direction()
-	timer.wait_time = patrol_change_interval
-	timer.timeout.connect(_on_timer_timeout)
+func start_show():
+	# Affiche, lance l’anim une fois, puis démarre le compte à rebours
+	#sprite.visible = true
+	if anim.current_animation != "fly" or not anim.is_playing():
+		anim.play("fly")
+	timer.wait_time = show_duration
 	timer.start()
 
-func change_patrol_direction():
-	var angle = randf() * TAU
-	patrol_direction = Vector2(cos(angle), sin(angle)).normalized()
-
 func _on_timer_timeout():
-	change_patrol_direction()
+	queue_free()
+
+func _on_area_2d_body_entered(body):
+	# Affiche lors de la collision et démarre le timer
+	print("collision avec :", body)
+	start_show()

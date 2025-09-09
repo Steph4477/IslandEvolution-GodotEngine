@@ -308,23 +308,18 @@ position = Vector2(3516, 215)
 
 [node name="Butterfly2" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
 position = Vector2(2387, 97)
-butterfly_color = Color(0.801714, 0.800346, 1.92523e-06, 1)
 
 [node name="Butterfly3" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
 position = Vector2(1419, 279)
-butterfly_color = Color(1, 0.606896, 0.988799, 1)
 
 [node name="Butterfly4" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
 position = Vector2(386, 83)
-butterfly_color = Color(0.478638, 0.663994, 0.981419, 1)
 
 [node name="Butterfly5" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
 position = Vector2(-629, -97)
-butterfly_color = Color(0.311701, 0.768988, 0.469055, 1)
 
 [node name="Butterfly6" parent="Wildlife/Butterfly2" instance=ExtResource("20_26k7p")]
 position = Vector2(-1231, -55)
-butterfly_color = Color(0.85355, 0.592829, 0.169727, 1)
 
 [node name="Items" type="Node2D" parent="."]
 
