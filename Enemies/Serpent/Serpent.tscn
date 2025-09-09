@@ -176,9 +176,9 @@ libraries = {
 autoplay = "walk"
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-0.999939, -1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("9_jadvf")
+position = Vector2(-16.4, -1)
+scale = Vector2(0.119922, 0.15)
+texture = ExtResource("5_oyke2")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_pioq7")]
 position = Vector2(-50, -86)
