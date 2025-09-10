@@ -17,6 +17,13 @@ lock_rotation = true
 script = ExtResource("1_pw6g8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_pw6g8")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.239216)
+position = Vector2(122, -6.5)
+scale = Vector2(1, 0.905)
 texture = ExtResource("2_pw6g8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

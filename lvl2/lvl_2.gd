@@ -12,13 +12,16 @@ func _ready():
 	var gs = get_node("/root/GameState")
 	if gs.player:
 		var cam = gs.player.get_node("Camera2D")
-		cam.limit_top = -100000
-		cam.limit_right= 12000   
+		cam.limit_top = -200000
+		cam.limit_right = 12000   
 
 	# Assombrissement de Moko
 	if gs.player:
 		var moko = gs.player
 		moko.get_node("Sprite").modulate = Color(0.4, 0.4, 0.4)
+
+		# 🔒 Bloque le mouvement de Moko pendant le dialogue
+		moko.can_move = false
 	
 	# Insertion du dialogue du toucan
 	await get_tree().process_frame
@@ -28,3 +31,7 @@ func _ready():
 	await get_tree().process_frame
 	dlg.start()
 	await dlg.finished
+
+	# 🔓 Réactive le mouvement de Moko après le dialogue
+	if gs.player:
+		gs.player.can_move = true

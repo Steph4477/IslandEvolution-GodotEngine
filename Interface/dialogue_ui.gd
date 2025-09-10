@@ -7,10 +7,10 @@ signal finished
 @onready var anim = $Anim 
 
 # Réglages via l’inspecteur
-@export var lines := [
+@export var lines = [
 	"J'ai faim ! Ce temple regorge de graines !",
 	"Vole au moins 5 graines au clan des Pygmées.",
-	"Alors, peut-être que je deviendrai ton ami, Moko !",
+	"Alors, peut-être que je pourrais t'aider, Moko !",
 	"Bonne chance !"
 ]
 
