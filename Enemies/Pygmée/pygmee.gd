@@ -275,6 +275,7 @@ func die():
 func spawn_loot_lance():
 	# Instantie le loot 
 	var loot = loot_lance_scene.instantiate()
+
 	get_tree().current_scene.add_child(loot)
 
 	# Apparition à l’endroit où meurt le pyg 

@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvf4m"]
 
 [node name="TileMapWall" type="Node2D"]
+z_index = 3
 
 [node name="Area2D" type="Area2D" parent="."]
 
