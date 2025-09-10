@@ -119,9 +119,8 @@ z_index = 2
 position = Vector2(173, -585)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(583, 1172)
-scale = Vector2(2.36441, 1.72)
-color = Color(1, 0.537255, 0.984314, 0.768627)
+position = Vector2(576, 1206)
+color = Color(1, 0.537255, 0.984314, 0.239216)
 energy = 2.0
 texture = ExtResource("2_7uk4e")
 texture_scale = 2.5

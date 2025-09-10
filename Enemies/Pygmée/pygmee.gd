@@ -2,12 +2,14 @@ extends CharacterBody2D
 
 # ========================== RÉGLAGES ==========================
 @export var lance_scene = preload("res://Tir/lance_trap.tscn")
-@export var fire_interval = 2.0
+@export var fire_interval = 3
 @export var move_speed = 100.0
 @export var melee_damage = 100
 @export var gravity = 1000.0
 @export var jump_velocity = -600.0
-
+# ============================ RÉGLAGES SHOOT ============================
+@export var min_shoot_distance: float = 300.0  # distance mini avant tir
+@export var max_shoot_distance: float = 800.0 # distance maxi avant tir
 # ============================ LOOT ============================
 var loot_lance_scene = preload("res://Loot/lance/lance.tscn")
 
@@ -155,7 +157,17 @@ func walk_towards_player():
 func _on_lance_timer_timeout():
 	if is_dead or in_melee_active or in_cac_active or is_attacking or is_shooting or hit_locked:
 		return
-	shoot_lance()
+	
+	# Vérifie que le joueur existe et est vivant
+	if not player or player.is_dead:
+		return
+	
+	# Distance horizontale entre le pygmée et Moko
+	var dist = global_position.distance_to(player.global_position)
+	
+	# On ne tire que si la distance est dans l'intervalle défini
+	if dist >= min_shoot_distance and dist <= max_shoot_distance:
+		shoot_lance()
 
 func shoot_lance():
 	if player.is_dead:

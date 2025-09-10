@@ -1,27 +1,16 @@
-[gd_scene load_steps=5 format=4 uid="uid://b6c1pngk06uxp"]
+[gd_scene load_steps=3 format=4 uid="uid://b6c1pngk06uxp"]
 
 [ext_resource type="Script" uid="uid://cxw36pnglwt2i" path="res://lvl2/Décors/tile_map.gd" id="1_or13q"]
 [ext_resource type="TileSet" uid="uid://bdlsfsw2hywfm" path="res://lvl2/Décors/tilesFond/murs_tile_set.tres" id="2_vm8rx"]
-[ext_resource type="PackedScene" uid="uid://dlbee1ryeyvmv" path="res://lvl2/Décors/tileMapPlatform.tscn" id="3_vm8rx"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvf4m"]
 
 [node name="TileMapColonShadow" type="Node2D"]
-modulate = Color(0.192157, 0.192157, 0.192157, 0.85098)
+modulate = Color(0.192157, 0.192157, 0.192157, 0.243137)
 position = Vector2(-716, 768)
 script = ExtResource("1_or13q")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_dvf4m")
-
-[node name="TileMapPlatform" type="TileMapLayer" parent="."]
+[node name="TileMapColone" type="TileMapLayer" parent="."]
 z_index = 1
-position = Vector2(-3732, -1194)
+position = Vector2(-3590, -1170)
 scale = Vector2(1.00067, 1.00227)
-tile_map_data = PackedByteArray("AADIAc//BgAAAAAAAABJAc//BgAAAAAAAACcAQMABgAAAAAAAAAuAoP/BgAAAAAAAABRAoP/BgAAAAAAAADBAtH/BgAAAAAAAADBAun/BgAAAAAAAACaAfb/BAAAAAAAAACeAfb/BAAAAAAAABCcAen/BgAAAAAAAABHAdz/BAAAAAAAAABLAdz/BAAAAAAAABBJAen/BgAAAAAAAABJAQEABgAAAAAAAADGAZn/BAAAAAAAAADIAYz/BgAAAAAAAADIAab/BgAAAAAAAADKAZn/BAAAAAAAABD9/hX/BAAAAAAAAAD//gj/BgAAAAAAAAD//iL/BgAAAAAAAAAB/xX/BAAAAAAAABA=")
+tile_map_data = PackedByteArray("AAATAU0ABgAAAAAAAAATATUABgAAAAAAAAATARsABgAAAAAAAABLAQEABgAAAAAAAABdAQEABgAAAAAAAABdARsABgAAAAAAAACJARsABgAAAAAAAACJATUABgAAAAAAAACJAQEABgAAAAAAAACJAef/BgAAAAAAAACJAc3/BgAAAAAAAAChAQEABgAAAAAAAAChARsABgAAAAAAAAChATUABgAAAAAAAAAiAc3/BgAAAAAAAABEAc3/BgAAAAAAAAChAef/BgAAAAAAAAChAc3/BgAAAAAAAABqAU8ABgAAAAAAAAChAU8ABgAAAAAAAAA=")
 tile_set = ExtResource("2_vm8rx")
-
-[node name="TileMapPlatform2" parent="." instance=ExtResource("3_vm8rx")]
-position = Vector2(33, 39)

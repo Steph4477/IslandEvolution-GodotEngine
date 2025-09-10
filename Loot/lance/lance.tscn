@@ -44,6 +44,7 @@ _data = {
 }
 
 [node name="Lance" type="Node2D"]
+z_index = 5
 script = ExtResource("1_p2kqn")
 
 [node name="Area2D" type="Area2D" parent="."]

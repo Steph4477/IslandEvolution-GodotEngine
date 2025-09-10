@@ -10,6 +10,9 @@ radius = 199.565
 radius = 551.439
 
 [node name="Gaz" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_gkcrc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

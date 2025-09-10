@@ -7,7 +7,7 @@
 radius = 3.96024
 
 [node name="BagLoot" type="Node2D"]
-z_index = 3
+z_index = 5
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_cn0u3")
 
