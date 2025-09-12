@@ -52,6 +52,7 @@ var is_attacking = false # Attaque corps à corps
 var coco_count = 0
 var banane_count = 0
 var seed_count = 0
+var gravity_factor = 1.0
 var heal_potions = []
 var in_cooldown = false
 var can_heal = true
@@ -146,7 +147,7 @@ func _update_jump(delta):
 		velocity.y = jump_force
 		is_ramping = false
 	elif not is_ramping:
-		velocity.y += gravity * delta
+		velocity.y += gravity * gravity_factor * delta
 
 # --- Escalade ---
 func set_can_climb(state: bool, anim_name := ""):

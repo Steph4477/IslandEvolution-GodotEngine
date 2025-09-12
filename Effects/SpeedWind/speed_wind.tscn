@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://8cborn5jckxg"]
+
+[ext_resource type="Script" uid="uid://d3pkbdjkvkmt3" path="res://Effects/SpeedWind/speed_wind.gd" id="1_n6f2s"]
+[ext_resource type="Texture2D" uid="uid://curs6y5m1b1ku" path="res://Effects/SpeedWind/speed.png" id="2_xruil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnqpd"]
+size = Vector2(2463, 201)
+
+[sub_resource type="Animation" id="Animation_xruil"]
+resource_name = "speed"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wwkp8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.270588)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ry2fs"]
+_data = {
+&"RESET": SubResource("Animation_wwkp8"),
+&"speed": SubResource("Animation_xruil")
+}
+
+[node name="SpeedWind" type="Area2D"]
+script = ExtResource("1_n6f2s")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1228, 97)
+shape = SubResource("RectangleShape2D_qnqpd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(1229, 90)
+scale = Vector2(5.13226, 2.93)
+texture = ExtResource("2_xruil")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_ry2fs")
+}
+autoplay = "speed"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

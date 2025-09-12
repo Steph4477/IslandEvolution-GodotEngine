@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://b6xqnwpvhvxil" path="res://lvl2/Décors/tiles platforms/T5.png" id="2_7272f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfqmu"]
-size = Vector2(180, 23.5)
+size = Vector2(134, 23.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dj8e"]
-size = Vector2(164.5, 22)
+size = Vector2(120, 22)
 
 [node name="MobilePlatForm" type="StaticBody2D"]
 collision_layer = 2
@@ -25,19 +25,20 @@ texture = ExtResource("2_7272f")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.239216)
-position = Vector2(123, 15)
-scale = Vector2(0.2, 0.2)
+position = Vector2(112, 17)
+scale = Vector2(0.130273, 0.143945)
 texture = ExtResource("2_7272f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(34, -41.75)
+position = Vector2(34, -29)
 shape = SubResource("RectangleShape2D_rfqmu")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+position = Vector2(4, 11)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(32, -46)
+position = Vector2(34, -46)
 shape = SubResource("RectangleShape2D_8dj8e")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

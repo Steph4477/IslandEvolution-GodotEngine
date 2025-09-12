@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://wtf74815khkx"]
+[gd_scene load_steps=4 format=4 uid="uid://wtf74815khkx"]
 
 [ext_resource type="Script" uid="uid://cxw36pnglwt2i" path="res://lvl2/Décors/tile_map.gd" id="1_0px5i"]
 [ext_resource type="TileSet" uid="uid://bdlsfsw2hywfm" path="res://lvl2/Décors/tilesFond/murs_tile_set.tres" id="2_ry8c0"]
+[ext_resource type="PackedScene" uid="uid://dlbee1ryeyvmv" path="res://lvl2/Décors/tileMapPlatform.tscn" id="3_ry8c0"]
 
 [node name="TileMapColone" type="Node2D"]
 z_index = 10
@@ -14,6 +15,17 @@ metadata/_edit_horizontal_guides_ = [-1283.0]
 [node name="TileMapColone" type="TileMapLayer" parent="."]
 z_index = 1
 position = Vector2(-3762, -1164)
+scale = Vector2(1.00067, 1.00227)
+tile_map_data = PackedByteArray("AAATAU0ABgAAAAAAAAATATUABgAAAAAAAAATARsABgAAAAAAAABLAQEABgAAAAAAAABdAQEABgAAAAAAAABdARsABgAAAAAAAACJARsABgAAAAAAAACJATUABgAAAAAAAACJAQEABgAAAAAAAACJAef/BgAAAAAAAACJAc3/BgAAAAAAAAChAQEABgAAAAAAAAChARsABgAAAAAAAAChATUABgAAAAAAAAAiAc3/BgAAAAAAAABEAc3/BgAAAAAAAAChAef/BgAAAAAAAAChAc3/BgAAAAAAAABqAU8ABgAAAAAAAAChAU8ABgAAAAAAAAA=")
+tile_set = ExtResource("2_ry8c0")
+
+[node name="TileMapPlatform" parent="." instance=ExtResource("3_ry8c0")]
+position = Vector2(7, -5)
+scale = Vector2(1.00067, 1.00227)
+
+[node name="TileMapColone2" type="TileMapLayer" parent="."]
+z_index = 1
+position = Vector2(2111, -1017)
 scale = Vector2(1.00067, 1.00227)
 tile_map_data = PackedByteArray("AAATAU0ABgAAAAAAAAATATUABgAAAAAAAAATARsABgAAAAAAAABLAQEABgAAAAAAAABdAQEABgAAAAAAAABdARsABgAAAAAAAACJARsABgAAAAAAAACJATUABgAAAAAAAACJAQEABgAAAAAAAACJAef/BgAAAAAAAACJAc3/BgAAAAAAAAChAQEABgAAAAAAAAChARsABgAAAAAAAAChATUABgAAAAAAAAAiAc3/BgAAAAAAAABEAc3/BgAAAAAAAAChAef/BgAAAAAAAAChAc3/BgAAAAAAAABqAU8ABgAAAAAAAAChAU8ABgAAAAAAAAA=")
 tile_set = ExtResource("2_ry8c0")
