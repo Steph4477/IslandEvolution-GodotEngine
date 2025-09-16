@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=54 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://lvl2/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqktopdb40juo" path="res://Enemies/Pygmée/pygmee.tscn" id="4_rwgjh"]
 [ext_resource type="PackedScene" uid="uid://cxxgitsp1x75c" path="res://ItemsDecors/Torche/Torche.tscn" id="6_ochkp"]
 [ext_resource type="PackedScene" uid="uid://b6c1pngk06uxp" path="res://lvl2/Décors/tileMapColoneShadow.tscn" id="7_mnvun"]
+[ext_resource type="PackedScene" uid="uid://dtodcfh3btk86" path="res://Effects/SpeedWind/speed_wind_vertical.tscn" id="10_2552o"]
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="10_ochkp"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_2ivwu"]
 [ext_resource type="PackedScene" uid="uid://bxg7s54g6pc3h" path="res://lvl2/Décors/porte/Exit.tscn" id="12_vjssa"]
@@ -89,7 +90,7 @@ size = Vector2(951.5, 20)
 size = Vector2(1310, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vnxp"]
-size = Vector2(4396.5, 118)
+size = Vector2(4401, 141.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwf5r"]
 size = Vector2(605, 20)
@@ -107,7 +108,7 @@ size = Vector2(363, 20)
 size = Vector2(948.5, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7vye"]
-size = Vector2(643.5, 23)
+size = Vector2(647, 43.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kq7q"]
 size = Vector2(557, 90)
@@ -122,7 +123,7 @@ size = Vector2(4481, 131)
 size = Vector2(115, 2678)
 
 [node name="lvl2" type="Node2D"]
-position = Vector2(-17, 381)
+position = Vector2(88, 153)
 script = ExtResource("1_vnrni")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_rwgjh")]
@@ -146,8 +147,8 @@ script = null
 position = Vector2(-526, 799)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-z_index = 10
-position = Vector2(2294, -1717)
+z_index = 5
+position = Vector2(6834, 703)
 
 [node name="Torchs" type="Node2D" parent="."]
 light_mask = 0
@@ -302,7 +303,7 @@ position = Vector2(6356.5, 836.5)
 shape = SubResource("RectangleShape2D_wpmwo")
 
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="platforms"]
-position = Vector2(7863.75, 1700.5)
+position = Vector2(7861.5, 1688.75)
 shape = SubResource("RectangleShape2D_0vnxp")
 
 [node name="CollisionShape2D28" type="CollisionShape2D" parent="platforms"]
@@ -326,7 +327,7 @@ position = Vector2(8068.75, -403.5)
 shape = SubResource("RectangleShape2D_y8ogd")
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="platforms"]
-position = Vector2(8245.25, -1215)
+position = Vector2(8243.5, -1225.25)
 shape = SubResource("RectangleShape2D_t7vye")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="platforms"]
@@ -345,6 +346,16 @@ shape = SubResource("RectangleShape2D_lc01g")
 position = Vector2(5717.5, 433)
 shape = SubResource("RectangleShape2D_d8ncv")
 
+[node name="SpeedWinds" type="Node2D" parent="."]
+z_index = 3
+
+[node name="SpeedWind" parent="SpeedWinds" instance=ExtResource("19_2552o")]
+z_index = 3
+position = Vector2(3615, -1510)
+
+[node name="SpeedWindVertical" parent="SpeedWinds" instance=ExtResource("10_2552o")]
+position = Vector2(9036, -1505)
+
 [node name="MobilePlatForms" type="Node2D" parent="."]
 z_index = 3
 position = Vector2(221, 138)
@@ -359,13 +370,8 @@ position = Vector2(7257, -1337)
 scale = Vector2(1.2, 1.2)
 distance = 1800.0
 
-[node name="MobilePlatForm3" parent="MobilePlatForms" instance=ExtResource("15_a6f7x")]
-position = Vector2(8700, -1162)
-scale = Vector2(1.2, 1.2)
-distance = 1800.0
-
 [node name="PushPlatforms" type="Node2D" parent="."]
-z_index = 12
+z_index = 5
 position = Vector2(2499, 106)
 
 [node name="PushPlatform1" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
@@ -461,7 +467,7 @@ position = Vector2(2224, -277)
 position = Vector2(2182, 576)
 
 [node name="Enemies" type="Node2D" parent="."]
-z_index = 3
+z_index = 5
 position = Vector2(6821, 125)
 rotation = 3.14159
 scale = Vector2(1, -1)
@@ -487,6 +493,7 @@ scale = Vector2(1, 1)
 
 [node name="Serpent3" parent="Enemies" instance=ExtResource("14_utbl0")]
 position = Vector2(-1257, 257.003)
+scale = Vector2(-0.6, 0.6)
 
 [node name="Serpent4" parent="Enemies" instance=ExtResource("14_utbl0")]
 position = Vector2(357.997, -1000)
@@ -496,7 +503,8 @@ position = Vector2(-3329, 1042.01)
 scale = Vector2(0.36, 0.36)
 
 [node name="Serpent5" parent="Enemies" instance=ExtResource("14_utbl0")]
-position = Vector2(672.001, 258.998)
+position = Vector2(-1290, 672.003)
+scale = Vector2(-0.6, 0.6)
 
 [node name="Pygmee5" parent="Enemies" instance=ExtResource("4_rwgjh")]
 position = Vector2(-1611, -201.996)
@@ -508,10 +516,12 @@ position = Vector2(-1175, -1044)
 scale = Vector2(1, 1)
 
 [node name="Pygmee3" parent="Enemies" instance=ExtResource("4_rwgjh")]
-position = Vector2(-82.9995, 215)
+position = Vector2(597.001, 220.998)
+scale = Vector2(1, 1)
 
 [node name="Pygmee6" parent="Enemies" instance=ExtResource("4_rwgjh")]
 position = Vector2(-2294, 1007.01)
+scale = Vector2(1, 1)
 
 [node name="Sound" type="Node2D" parent="."]
 position = Vector2(232, -2)
@@ -543,10 +553,11 @@ position = Vector2(1945, -210)
 position = Vector2(795, -635)
 
 [node name="BagLoot6" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(6889, 350)
+z_index = 3
+position = Vector2(7595, 773)
 
 [node name="BagLoot7" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(7747, 769)
+position = Vector2(8414, 356)
 
 [node name="BagLoot8" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(6090, -906)
@@ -581,7 +592,3 @@ position = Vector2(620, 61)
 z_index = 3
 position = Vector2(9659, 829)
 rotation = -0.000533727
-
-[node name="SpeedWind" parent="." instance=ExtResource("19_2552o")]
-z_index = 3
-position = Vector2(3615, -1510)
