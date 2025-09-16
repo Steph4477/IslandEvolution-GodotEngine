@@ -148,7 +148,7 @@ position = Vector2(-526, 799)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 z_index = 5
-position = Vector2(6834, 703)
+position = Vector2(3056, -1551)
 
 [node name="Torchs" type="Node2D" parent="."]
 light_mask = 0
