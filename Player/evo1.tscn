@@ -46,7 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://c7wm8x6ecr4e3" path="res://Player/Sprite/web_effect/4.png" id="42_y06ei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
-size = Vector2(122.222, 248.227)
+size = Vector2(444.444, 310.285)
 
 [sub_resource type="Animation" id="Animation_i7max"]
 length = 0.001
@@ -486,7 +486,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_2paov")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(142.5, 104.167)
+position = Vector2(140, 95.4169)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_j3qaj")
 
@@ -525,7 +525,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClacArea"]
-position = Vector2(140.833, 107.5)
+position = Vector2(141.667, 90.8333)
 shape = SubResource("CircleShape2D_bj58r")
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]

@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # ========================== RÉGLAGES ==========================
-@export var move_speed = 100.0
-@export var melee_damage = 100
+@export var move_speed = 300.0
+@export var melee_damage = 20
 @export var gravity = 1000.0
 
 # ============================ LOOT ============================
@@ -126,7 +126,7 @@ func cac_attack():
 	move_and_slide()
 
 	player.on_hit(melee_damage)
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.6).timeout
 
 	is_attacking = false
 
@@ -164,7 +164,7 @@ func on_hit(amount):
 	show_damage_popup(amount)
 
 	hit_locked = true
-	anim.play("onhit")
+	#anim.play("onhit")
 	await get_tree().create_timer(hit_lock_time).timeout
 	hit_locked = false
 
@@ -184,9 +184,9 @@ func die():
 	is_dead = true
 
 	# Anim de mort (si présente)
-	if anim:
-		#anim.play("die")
-		await anim.animation_finished
+	#if anim:
+		##anim.play("die")
+		#await anim.animation_finished
 
 	# Spawn du loot lance
 	spawn_loot_lance()
