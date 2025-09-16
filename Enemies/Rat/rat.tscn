@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://csklsid7fjxbo"]
+
+[ext_resource type="Script" uid="uid://4nndo6lu3ssx" path="res://Enemies/Rat/rat.gd" id="1_e4syr"]
+[ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/HealthBar.tscn" id="2_hmr1k"]
+[ext_resource type="Texture2D" uid="uid://dgnl8yp661nxt" path="res://Enemies/Rat/1.png" id="26_e4syr"]
+[ext_resource type="Texture2D" uid="uid://bcxkmxxsoktln" path="res://Enemies/Rat/2.png" id="27_hmr1k"]
+[ext_resource type="Texture2D" uid="uid://bguj7ao83li82" path="res://Enemies/Rat/3.png" id="28_qpyqf"]
+[ext_resource type="Texture2D" uid="uid://i4rdun4lr2ag" path="res://Enemies/Rat/4.png" id="29_f5yxl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(62, 45)
+
+[sub_resource type="Animation" id="Animation_j2nn7"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("26_e4syr"), ExtResource("27_hmr1k"), ExtResource("28_qpyqf"), ExtResource("29_f5yxl")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
+_data = {
+&"walk": SubResource("Animation_j2nn7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
+size = Vector2(1022.38, 223)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8q6o"]
+size = Vector2(36, 43)
+
+[node name="Rat" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(-1, 1)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_e4syr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -3.5)
+shape = SubResource("RectangleShape2D_x2fpe")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_hmr1k")]
+position = Vector2(49, -87)
+rotation = 3.14159
+scale = Vector2(1, -1.00374)
+
+[node name="Rig" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_1lwxd")
+}
+autoplay = "walk"
+
+[node name="MeleeZone" type="Area2D" parent="Rig" groups=["Enemies"]]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/MeleeZone"]
+position = Vector2(-562.813, -42.5)
+shape = SubResource("RectangleShape2D_jhvfg")
+
+[node name="CacZone" type="Area2D" parent="Rig" groups=["Enemies"]]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/CacZone"]
+position = Vector2(-58, -9.5)
+shape = SubResource("RectangleShape2D_x8q6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rig"]
+modulate = Color(0.442911, 0.442911, 0.442911, 1)
+position = Vector2(-1, -15)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("26_e4syr")
+
+[connection signal="body_entered" from="Rig/MeleeZone" to="." method="_on_melee_zone_body_entered"]
+[connection signal="body_exited" from="Rig/MeleeZone" to="." method="_on_melee_zone_body_exited"]
+[connection signal="body_entered" from="Rig/CacZone" to="." method="_on_cac_zone_body_entered"]
+[connection signal="body_exited" from="Rig/CacZone" to="." method="_on_cac_zone_body_exited"]

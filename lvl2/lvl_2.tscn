@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=55 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://lvl2/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dlbee1ryeyvmv" path="res://lvl2/Décors/tileMapPlatform.tscn" id="15_3p2tf"]
 [ext_resource type="PackedScene" uid="uid://cr0w31y6mkn3m" path="res://ItemsDecors/lvl2/mobile_plat_form.tscn" id="15_a6f7x"]
 [ext_resource type="PackedScene" uid="uid://dm2boosfjpcpo" path="res://Enemies/chauve-souris/bat.tscn" id="16_3p2tf"]
+[ext_resource type="PackedScene" uid="uid://csklsid7fjxbo" path="res://Enemies/Rat/rat.tscn" id="16_sdx3j"]
 [ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/graine/seed.tscn" id="17_mnvun"]
 [ext_resource type="PackedScene" uid="uid://8cborn5jckxg" path="res://Effects/SpeedWind/speed_wind.tscn" id="19_2552o"]
 
@@ -72,7 +73,7 @@ size = Vector2(1340, 31)
 size = Vector2(268.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwkd"]
-size = Vector2(984.5, 104)
+size = Vector2(982.25, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6vc5"]
 size = Vector2(790, 29)
@@ -84,7 +85,7 @@ size = Vector2(763, 36)
 size = Vector2(1123, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mp3u"]
-size = Vector2(951.5, 20)
+size = Vector2(950.5, 13.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpmwo"]
 size = Vector2(1310, 20)
@@ -93,25 +94,25 @@ size = Vector2(1310, 20)
 size = Vector2(4401, 141.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwf5r"]
-size = Vector2(605, 20)
+size = Vector2(603.5, 10.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ow1"]
-size = Vector2(1321, 20)
+size = Vector2(1315.5, 11.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myagb"]
-size = Vector2(948.5, 30)
+size = Vector2(946.5, 25.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s36pp"]
-size = Vector2(363, 20)
+size = Vector2(363, 12.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ogd"]
 size = Vector2(948.5, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7vye"]
-size = Vector2(647, 43.5)
+size = Vector2(647, 31.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kq7q"]
-size = Vector2(557, 90)
+size = Vector2(558, 83)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2btv"]
 size = Vector2(89, 3345)
@@ -136,7 +137,7 @@ z_index = 1
 position = Vector2(233, -2)
 
 [node name="TileMapColone" parent="." instance=ExtResource("4_ah614")]
-position = Vector2(-522, 798)
+position = Vector2(-519, 815)
 
 [node name="TileMapColonShadow" parent="." instance=ExtResource("7_mnvun")]
 z_index = 2
@@ -279,7 +280,7 @@ position = Vector2(2868.75, 399)
 shape = SubResource("RectangleShape2D_2552o")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="platforms"]
-position = Vector2(8035.75, -791.5)
+position = Vector2(8058.88, -814.5)
 shape = SubResource("RectangleShape2D_kjwkd")
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="platforms"]
@@ -295,7 +296,7 @@ position = Vector2(7676, 1271.5)
 shape = SubResource("RectangleShape2D_vatd7")
 
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="platforms"]
-position = Vector2(8086.25, 836.5)
+position = Vector2(8085.75, 839.75)
 shape = SubResource("RectangleShape2D_7mp3u")
 
 [node name="CollisionShape2D23" type="CollisionShape2D" parent="platforms"]
@@ -307,19 +308,19 @@ position = Vector2(7861.5, 1688.75)
 shape = SubResource("RectangleShape2D_0vnxp")
 
 [node name="CollisionShape2D28" type="CollisionShape2D" parent="platforms"]
-position = Vector2(7921, 415.5)
+position = Vector2(7921.75, 420.25)
 shape = SubResource("RectangleShape2D_bwf5r")
 
 [node name="CollisionShape2D22" type="CollisionShape2D" parent="platforms"]
-position = Vector2(6372, 418.5)
+position = Vector2(6369.25, 422.75)
 shape = SubResource("RectangleShape2D_v1ow1")
 
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="platforms"]
-position = Vector2(8061.75, 11.5)
+position = Vector2(8060.75, 13.75)
 shape = SubResource("RectangleShape2D_myagb")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="platforms"]
-position = Vector2(6803, 3.5)
+position = Vector2(6803, 7.25)
 shape = SubResource("RectangleShape2D_s36pp")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="platforms"]
@@ -327,11 +328,11 @@ position = Vector2(8068.75, -403.5)
 shape = SubResource("RectangleShape2D_y8ogd")
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="platforms"]
-position = Vector2(8243.5, -1225.25)
+position = Vector2(8243.5, -1219.25)
 shape = SubResource("RectangleShape2D_t7vye")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="platforms"]
-position = Vector2(2981.5, -987)
+position = Vector2(2982, -983.5)
 shape = SubResource("RectangleShape2D_3kq7q")
 
 [node name="CollisionShape2D24" type="CollisionShape2D" parent="platforms"]
@@ -388,10 +389,10 @@ position = Vector2(-524, 861)
 position = Vector2(3832, 1017)
 
 [node name="PushPlatform4" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
-position = Vector2(6095, -612)
+position = Vector2(6097, -597)
 
 [node name="PushPlatform5" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
-position = Vector2(3701, -187)
+position = Vector2(3701, -179)
 
 [node name="Bats" type="Node2D" parent="."]
 z_index = 3
@@ -466,62 +467,92 @@ position = Vector2(2224, -277)
 [node name="Bat21" parent="Bats" instance=ExtResource("16_3p2tf")]
 position = Vector2(2182, 576)
 
+[node name="Bat22" parent="Bats" instance=ExtResource("16_3p2tf")]
+position = Vector2(6786, -920)
+
+[node name="Bat23" parent="Bats" instance=ExtResource("16_3p2tf")]
+position = Vector2(7885, -513)
+
+[node name="Bat24" parent="Bats" instance=ExtResource("16_3p2tf")]
+position = Vector2(6888, -95)
+
+[node name="Bat25" parent="Bats" instance=ExtResource("16_3p2tf")]
+position = Vector2(8541, -1744)
+
 [node name="Enemies" type="Node2D" parent="."]
 z_index = 5
 position = Vector2(6821, 125)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
-[node name="Pygmee" parent="Enemies" instance=ExtResource("4_rwgjh")]
-z_index = 20
-position = Vector2(3828, -218.01)
+[node name="Rat" parent="Enemies" instance=ExtResource("16_sdx3j")]
+position = Vector2(3765, -1676.01)
 scale = Vector2(1, 1)
 
-[node name="Serpent" parent="Enemies" instance=ExtResource("14_utbl0")]
+[node name="Rat" parent="Enemies/Rat" instance=ExtResource("16_sdx3j")]
+position = Vector2(941.006, 2520)
+scale = Vector2(1, 1)
+
+[node name="Rat2" parent="Enemies/Rat" instance=ExtResource("16_sdx3j")]
+position = Vector2(-5318, 1480.01)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="Rat3" parent="Enemies/Rat" instance=ExtResource("16_sdx3j")]
+position = Vector2(764.002, 897.998)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="Pygmées" type="Node2D" parent="Enemies"]
+position = Vector2(3828, -218.01)
+
+[node name="Pygmee4" parent="Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+position = Vector2(-5003, -825.99)
+scale = Vector2(1, 1)
+
+[node name="Pygmee3" parent="Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+position = Vector2(-3231, 439.008)
+scale = Vector2(1, 1)
+
+[node name="Pygmee6" parent="Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+position = Vector2(-6122, 1225.02)
+scale = Vector2(1, 1)
+
+[node name="Pygmee" parent="Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+z_index = 20
+position = Vector2(-0.000244141, 0)
+scale = Vector2(1, 1)
+
+[node name="Serpents" type="Node2D" parent="Enemies"]
+
+[node name="Serpent" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(3835, 86.9903)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Serpent2" parent="Enemies" instance=ExtResource("14_utbl0")]
+[node name="Serpent2" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(3776, -767.01)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Pygmee2" parent="Enemies" instance=ExtResource("4_rwgjh")]
-position = Vector2(6642, 52.9832)
-scale = Vector2(1, 1)
-
-[node name="Serpent3" parent="Enemies" instance=ExtResource("14_utbl0")]
+[node name="Serpent3" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(-1257, 257.003)
-scale = Vector2(-0.6, 0.6)
+rotation = 3.14159
+scale = Vector2(0.6, -0.6)
 
-[node name="Serpent4" parent="Enemies" instance=ExtResource("14_utbl0")]
+[node name="Serpent4" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(357.997, -1000)
+rotation = 3.14159
+scale = Vector2(0.6, -0.6)
 
-[node name="Serpent6" parent="Enemies" instance=ExtResource("14_utbl0")]
+[node name="Serpent6" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(-3329, 1042.01)
 scale = Vector2(0.36, 0.36)
 
-[node name="Serpent5" parent="Enemies" instance=ExtResource("14_utbl0")]
+[node name="Serpent5" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(-1290, 672.003)
-scale = Vector2(-0.6, 0.6)
-
-[node name="Pygmee5" parent="Enemies" instance=ExtResource("4_rwgjh")]
-position = Vector2(-1611, -201.996)
 rotation = 3.14159
-scale = Vector2(1, -1)
-
-[node name="Pygmee4" parent="Enemies" instance=ExtResource("4_rwgjh")]
-position = Vector2(-1175, -1044)
-scale = Vector2(1, 1)
-
-[node name="Pygmee3" parent="Enemies" instance=ExtResource("4_rwgjh")]
-position = Vector2(597.001, 220.998)
-scale = Vector2(1, 1)
-
-[node name="Pygmee6" parent="Enemies" instance=ExtResource("4_rwgjh")]
-position = Vector2(-2294, 1007.01)
-scale = Vector2(1, 1)
+scale = Vector2(0.6, -0.6)
 
 [node name="Sound" type="Node2D" parent="."]
 position = Vector2(232, -2)
@@ -554,16 +585,16 @@ position = Vector2(795, -635)
 
 [node name="BagLoot6" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
 z_index = 3
-position = Vector2(7595, 773)
+position = Vector2(7597, 782)
 
 [node name="BagLoot7" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(8414, 356)
+position = Vector2(8415, 368)
 
 [node name="BagLoot8" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(6090, -906)
 
 [node name="BagLoot9" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(8470, -486)
+position = Vector2(8471, -470)
 
 [node name="Seeds" type="Node2D" parent="."]
 z_index = 3
@@ -580,7 +611,7 @@ z_index = 5
 position = Vector2(-1124, -1196)
 
 [node name="Seed4" parent="Seeds" instance=ExtResource("17_mnvun")]
-position = Vector2(7230, -1428)
+position = Vector2(7233, -1417)
 
 [node name="Seed5" parent="Seeds" instance=ExtResource("17_mnvun")]
 position = Vector2(1682, -791)
