@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://wmhfpjd1c3jy"]
 
-[ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_6sncs"]
+[ext_resource type="Script" uid="uid://c2w24rymygghn" path="res://lvl2/lvl_2b.gd" id="1_ribhp"]
 [ext_resource type="PackedScene" uid="uid://c2h3f7cwjc1n5" path="res://lvl2/Décors/tileMap.tscn" id="3_sbfsf"]
 [ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/ramp.tscn" id="4_dq813"]
 [ext_resource type="PackedScene" uid="uid://cxxgitsp1x75c" path="res://ItemsDecors/Torche/Torche.tscn" id="6_dntyv"]
@@ -131,7 +131,7 @@ _data = {
 }
 
 [node name="lvl2b" type="Node2D"]
-script = ExtResource("1_6sncs")
+script = ExtResource("1_ribhp")
 
 [node name="TileMap" parent="." instance=ExtResource("3_sbfsf")]
 position = Vector2(-29, 419)
