@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://cohmext14ho56"]
 
 [ext_resource type="Script" uid="uid://jojs3i2towy0" path="res://Enemies/Mygale/mygale.gd" id="1_g1fhx"]
-[ext_resource type="Texture2D" uid="uid://n2rl8icsahv5" path="res://Enemies/Mygale/attaque3.png" id="2_mvlt6"]
-[ext_resource type="Texture2D" uid="uid://ckp16qwvcq1" path="res://Enemies/Mygale/attaque.png" id="2_tlaig"]
-[ext_resource type="Texture2D" uid="uid://mwurl35unoxj" path="res://Enemies/Mygale/idle.png" id="3_mvlt6"]
-[ext_resource type="Texture2D" uid="uid://cx8s66ryawj51" path="res://Enemies/Mygale/walk1.png" id="4_sxn7g"]
-[ext_resource type="Texture2D" uid="uid://bhugkh6xqlinf" path="res://Enemies/Mygale/walk2.png" id="5_g1fhx"]
+[ext_resource type="Texture2D" uid="uid://bsb0wrxey2cyx" path="res://Enemies/Mygale/attaque3.png" id="2_mvlt6"]
+[ext_resource type="Texture2D" uid="uid://p8l0i1dgosx4" path="res://Enemies/Mygale/attaque.png" id="2_tlaig"]
+[ext_resource type="Texture2D" uid="uid://d0tmq6lm52vbd" path="res://Enemies/Mygale/idle.png" id="3_mvlt6"]
+[ext_resource type="Texture2D" uid="uid://c2sbjy6g0r1jn" path="res://Enemies/Mygale/walk1.png" id="4_sxn7g"]
+[ext_resource type="Texture2D" uid="uid://xf54yrc08rqp" path="res://Enemies/Mygale/walk2.png" id="5_g1fhx"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/HealthBar.tscn" id="9_kg14j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q0aj"]

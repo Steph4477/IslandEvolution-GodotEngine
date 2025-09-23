@@ -8,8 +8,8 @@ extends CharacterBody2D
 @export var gravity = 1000.0
 @export var jump_velocity = -600.0
 # ============================ RÉGLAGES SHOOT ============================
-@export var min_shoot_distance: float = 300.0  # distance mini avant tir
-@export var max_shoot_distance: float = 800.0 # distance maxi avant tir
+@export var min_shoot_distance = 300.0  # distance mini avant tir
+@export var max_shoot_distance = 800.0 # distance maxi avant tir
 # ============================ LOOT ============================
 var loot_lance_scene = preload("res://Loot/lance/lance.tscn")
 

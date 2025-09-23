@@ -33,10 +33,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 
 	attacking = true
-	var game_state = get_node("/root/GameState")
 	anim.play("attaque")
-
-	#await get_tree().create_timer(0.2).timeout
 
 	# 👻 Ghost Moko avalé
 	player.kill_by_plant()
@@ -67,8 +64,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.on_hit(body.max_pv)
 
 	attacking = false
-
-
 
 func _process(delta: float) -> void:
 	if not player:

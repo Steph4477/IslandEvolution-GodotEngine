@@ -34,7 +34,6 @@ var collected_seeds = 0
 # --- Signaux ---
 signal all_seeds_collected
 signal key_collected
-signal lance_collected
 signal player_updated(new_player)
 
 # --- Initialisation ---
@@ -52,8 +51,8 @@ func _ready():
 
 	# Premier chargement
 	await get_tree().process_frame
-	#await load_level("res://Menu/lancement_lvl1/menu_lvl1.tscn")
-	await load_level("res://lvl2/lvl_2.tscn")
+	await load_level("res://Menu/lancement_lvl1/menu_lvl1.tscn")
+	#await load_level("res://lvl2/lvl_2.tscn")
 	#await load_level("res://lvl2/lvl_2b.tscn")
 
 func set_player(p):
@@ -93,7 +92,7 @@ func load_level(scene_path):
 		var p = player_scene.instantiate()
 		level.add_child(p)
 
-		var spawn_point = level.get_node("SpawnPoint")
+		var spawn_point = level.get_node("Node2D/SpawnPoint")
 		p.global_position = spawn_point.global_position
 
 		if p.has_method("reset_state"):
@@ -179,3 +178,7 @@ func reinitialise():
 	hud.set_button_enabled(gamepad.get_node("Health"), false)
 
 	hud.update_seed_display(0, total_seeds_in_level)
+
+# --- Pour supprimer l'avertissement UNUSED_SIGNAL qui arrive de key.gd et porte/exit.gd ---
+func signal_key_collected():
+	emit_signal("key_collected")

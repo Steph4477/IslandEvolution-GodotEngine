@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://3wuwvy2qqjp"]
 
 [ext_resource type="Script" uid="uid://do6fsiib65a4p" path="res://Effects/plafonds.gd" id="1_pyt7t"]
-[ext_resource type="Texture2D" uid="uid://brajjxi4c44oo" path="res://Effects/ToilePlafond.png" id="2_jjo8r"]
-[ext_resource type="Texture2D" uid="uid://cqc61q83clwj6" path="res://Effects/FiletPlafond.png" id="3_6xf1m"]
-[ext_resource type="Texture2D" uid="uid://4w5ddch6nek6" path="res://Effects/MygalePlafond.png" id="4_im1s2"]
+[ext_resource type="Texture2D" uid="uid://bbwxcx4628w8p" path="res://Effects/ToilePlafond.png" id="2_jjo8r"]
+[ext_resource type="Texture2D" uid="uid://ducmukgr06rvh" path="res://Effects/FiletPlafond.png" id="3_6xf1m"]
+[ext_resource type="Texture2D" uid="uid://dom864ke1iwgm" path="res://Effects/MygalePlafond.png" id="4_im1s2"]
 
 [sub_resource type="Animation" id="Animation_jjo8r"]
 length = 0.001

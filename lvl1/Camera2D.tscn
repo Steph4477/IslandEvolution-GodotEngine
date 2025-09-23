@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh25cejpkfp3j"]
 
-[ext_resource type="Texture2D" uid="uid://cixh7sh7rit8t" path="res://lvl1/Decors/ChatGPT Image 9 avr. 2025, 20_19_03.png" id="1_o1nii"]
+[sub_resource type="Resource" id="Resource_alvoo"]
+metadata/__load_path__ = "res://lvl1/Decors/ChatGPT Image 9 avr. 2025, 20_19_03.png"
 
 [node name="Camera2D" type="Camera2D"]
 limit_smoothed = true
@@ -17,5 +18,5 @@ motion_mirroring = Vector2(1, 1)
 [node name="Sprite2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(2, -740)
 scale = Vector2(1.07757, 1.26409)
-texture = ExtResource("1_o1nii")
+texture = SubResource("Resource_alvoo")
 centered = false

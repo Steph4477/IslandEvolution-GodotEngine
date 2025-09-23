@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ds8xt7te3yx5j"]
 
 [ext_resource type="Script" uid="uid://bhk73j7pugrbo" path="res://Tir/gaz_serpent.gd" id="1_0swx6"]
-[ext_resource type="Texture2D" uid="uid://capn32nksk6cf" path="res://Tir/gaz.png" id="2_yt74o"]
+[ext_resource type="Texture2D" uid="uid://dcwbqpydoagjw" path="res://Tir/gaz.png" id="2_yt74o"]
 
 [sub_resource type="Animation" id="Animation_yt74o"]
 length = 0.001
@@ -96,6 +96,7 @@ radius = 5.97944
 radius = 15.493
 
 [node name="GazSerpent" type="CharacterBody2D"]
+z_index = 5
 collision_layer = 8
 script = ExtResource("1_0swx6")
 

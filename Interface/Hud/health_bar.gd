@@ -8,29 +8,28 @@ func _ready():
 	bar.value = max_value
 
 	# 🔗 Référence globale dans le GameState
-	var game_state = get_node_or_null("/root/GameState")
-	if game_state:
-		game_state.health_bar = self
+	var _game_state = get_node_or_null("/root/GameState")
+	if _game_state:
+		_game_state.health_bar = self
 
 # 🔧 Setter public
-func set_max_value(v: int) -> void:
+func set_max_value(v):
 	if bar:
 		bar.max_value = v
 
-func set_value(v: int) -> void:
+func set_value(v):
 	if bar:
 		bar.value = clamp(v, 0, bar.max_value)
 
-func update_health_bar(current: int, max: int) -> void:
-	set_max_value(max)
+func update_health_bar(current, new_max_value):
+	set_max_value(new_max_value)
 	set_value(current)
 
 	# Sécurité visuelle
 	if bar:
-		bar.max_value = max
-		bar.value = clamp(current, 0, max)
-
+		bar.max_value = new_max_value
+		bar.value = clamp(current, 0, new_max_value)
 
 # 💥 Appelée en temps réel lors des dégâts
-func update_health_bar_current(current: int) -> void:
+func update_health_bar_current(current):
 	set_value(current)

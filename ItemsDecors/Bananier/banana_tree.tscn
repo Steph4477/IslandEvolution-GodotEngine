@@ -1,25 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cev5rxsibfue3"]
+[gd_scene load_steps=6 format=3 uid="uid://cxnniofi0ftoy"]
 
-[ext_resource type="Script" uid="uid://j7ave7ddv36k" path="res://ItemsDecors/Cocotier/cocotier.gd" id="1_it4j1"]
-[ext_resource type="Texture2D" uid="uid://2hivv8hkoqwv" path="res://ItemsDecors/Cocotier/cocotier1.png" id="2_koarn"]
+[ext_resource type="Script" uid="uid://j7ave7ddv36k" path="res://ItemsDecors/Cocotier/cocotier.gd" id="1_cpg34"]
+[ext_resource type="Texture2D" uid="uid://bx1k54pp8pfb1" path="res://ItemsDecors/Bananier/Bananier1.png" id="2_cpg34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
-size = Vector2(4.9996614, 380.512)
-
-[sub_resource type="Animation" id="Animation_i7hbb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
+size = Vector2(24.8005, 380.512)
 
 [sub_resource type="Animation" id="Animation_it4j1"]
 resource_name = "wind"
@@ -40,28 +25,27 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0slvd"]
 _data = {
-&"RESET": SubResource("Animation_i7hbb"),
 &"wind": SubResource("Animation_it4j1")
 }
 
-[node name="Cocotier" type="Node2D"]
-script = ExtResource("1_it4j1")
+[node name="BananaTree" type="Node2D"]
+rotation = -0.0349066
+script = ExtResource("1_cpg34")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(215.024, 518.82)
+position = Vector2(216.84756, 444.20422)
 rotation = 0.0244346
-scale = Vector2(0.811754, 1)
-texture = ExtResource("2_koarn")
+scale = Vector2(0.811754, 0.76639104)
+texture = ExtResource("2_cpg34")
 offset = Vector2(-288, -844)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="PivotBase" type="Marker2D" parent="Area2D"]
-position = Vector2(-1, -8)
+position = Vector2(-5.8897943, 97.15096)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.594314, -180.9296)
-scale = Vector2(1.0000005, 1.0000005)
+position = Vector2(-8.491522, -160.85364)
 shape = SubResource("RectangleShape2D_it4j1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

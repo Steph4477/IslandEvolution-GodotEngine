@@ -1,25 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://b07hcnakcojco"]
 
 [ext_resource type="Script" uid="uid://2uk58jasd8va" path="res://Loot/bave_scormard.gd" id="1_y5r8v"]
-[ext_resource type="Texture2D" uid="uid://0wflwpml3sfh" path="res://Loot/bave.png.png" id="3_33h3p"]
+[ext_resource type="Texture2D" uid="uid://uanb3mkg66uk" path="res://Loot/bave.png.png" id="3_33h3p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x18nx"]
 size = Vector2(192.365, 5.51729)
-
-[sub_resource type="Animation" id="Animation_0fa30"]
-resource_name = "splat_flatten"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.3, 0.566667, 1.36667, 2.46667, 2.96667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 0.6), Vector2(1.4, 0.4), Vector2(1.5, 0.3), Vector2(1.5, 0.2), Vector2(1.2, 0.6), Vector2(1.4, 0.4), Vector2(1.5, 0.3), Vector2(1.5, 0.2)]
-}
 
 [sub_resource type="Animation" id="Animation_gokmk"]
 length = 0.001
@@ -34,6 +19,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0fa30"]
+resource_name = "splat_flatten"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.3, 0.566667, 1.36667, 2.46667, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.6), Vector2(1.4, 0.4), Vector2(1.5, 0.3), Vector2(1.5, 0.2), Vector2(1.2, 0.6), Vector2(1.4, 0.4), Vector2(1.5, 0.3), Vector2(1.5, 0.2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kj32c"]

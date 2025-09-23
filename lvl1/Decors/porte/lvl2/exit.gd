@@ -55,7 +55,7 @@ func _on_body_entered(body: Node2D) -> void:
 		$LockedSound.play()
 		return
 
-	var anim_player = body.get_node("Anim")
+	var anim_player = body.get_node("Node2D/Anim")
 	if anim_player.has_animation("door"):
 		print("🎬 Animation 'door' lancée")
 		body.animation_locked = true
@@ -70,8 +70,8 @@ func change_scene() -> void:
 	if not gs:
 		return
 
-	if gs.fade:
-		await gs.fade.fade_out()
+	#if gs.fade:
+		#await gs.fade.fade_out()
 
 	await get_tree().create_timer(0.2).timeout
 	gs.change_scene(next_scene_path)

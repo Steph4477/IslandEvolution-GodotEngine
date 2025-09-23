@@ -5,11 +5,8 @@
 
 [node name="TileMapColone" type="Node2D"]
 z_index = 10
-position = Vector2(-716, 768)
 script = ExtResource("1_0px5i")
 metadata/_edit_horizontal_guides_ = [-1283.0]
-
-[node name="ColoneArea2D" type="Area2D" parent="."]
 
 [node name="TileMapColone" type="TileMapLayer" parent="."]
 z_index = 1

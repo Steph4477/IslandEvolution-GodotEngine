@@ -4,7 +4,7 @@ extends Node2D
 
 func _ready():
 	# Musique de fond
-	$Sound/lvl2.play()
+	$Node2D/Sound/lvl2.play()
 	# On attend pour tout charger
 	await get_tree().process_frame
 
@@ -18,7 +18,7 @@ func _ready():
 	# Assombrissement de Moko
 	if gs.player:
 		var moko = gs.player
-		moko.get_node("Sprite").modulate = Color(0.4, 0.4, 0.4)
+		moko.get_node("Node2D/Sprite").modulate = Color(0.4, 0.4, 0.4)
 
 		# 🔒 Bloque le mouvement de Moko pendant le dialogue
 		moko.can_move = false

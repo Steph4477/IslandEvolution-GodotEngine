@@ -1,21 +1,23 @@
 [gd_scene load_steps=17 format=3 uid="uid://bqmvtj8xw8p25"]
 
 [ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Menu/lancement_lvl1/menu_lvl_1.gd" id="1_rv0fi"]
-[ext_resource type="Texture2D" uid="uid://c010oxwq0i74x" path="res://Menu/lancement_lvl1/cadre.png" id="2_oo4jl"]
-[ext_resource type="Texture2D" uid="uid://b0apw11ud66gp" path="res://Enemies/Moustique/patrol1.png" id="3_uawj8"]
-[ext_resource type="Texture2D" uid="uid://deygem7pbieo7" path="res://Menu/lancement_lvl1/image.png" id="3_uw7hi"]
-[ext_resource type="Texture2D" uid="uid://bd28sda5grtmr" path="res://Enemies/Carnivore/ouvert.png" id="4_uw7hi"]
-[ext_resource type="Texture2D" uid="uid://cv1plkmedpd47" path="res://Enemies/Carnivore/tige_grande.png" id="5_1fa01"]
-[ext_resource type="Texture2D" uid="uid://5fn0wsmkcqd1" path="res://Enemies/Serpent/walk3.png" id="6_1fa01"]
-[ext_resource type="Texture2D" uid="uid://edag8b1uu3v1" path="res://Enemies/Toucan/vol1.png" id="7_yk3kc"]
-[ext_resource type="Texture2D" uid="uid://dnupaiboobmet" path="res://Player/Sprite/jump.png" id="8_oo4jl"]
-[ext_resource type="Texture2D" uid="uid://usj7b2bvsgb0" path="res://Menu/Boutons/jouer.png" id="9_ss15l"]
-[ext_resource type="Texture2D" uid="uid://cincmvfbhhfwk" path="res://Menu/Boutons/presse/jouer.png" id="10_dlb7y"]
-[ext_resource type="Texture2D" uid="uid://cgvol5subky3v" path="res://Menu/Boutons/options.png" id="11_bfns0"]
-[ext_resource type="Texture2D" uid="uid://dgbrmqosr4omm" path="res://Menu/Boutons/presse/options.png" id="12_n1ip6"]
-[ext_resource type="Texture2D" uid="uid://b77eaywfqp73s" path="res://Menu/Boutons/quitter.png" id="13_rqobp"]
-[ext_resource type="AudioStream" uid="uid://bwmq5rwe88mn7" path="res://sounds/dijee.wav" id="13_yvok6"]
-[ext_resource type="Texture2D" uid="uid://bi88x75h4cs3x" path="res://Menu/Boutons/presse/quitter.png" id="14_yvok6"]
+[ext_resource type="Texture2D" uid="uid://dt66tyhkix240" path="res://Menu/lancement_lvl1/cadre.png" id="2_oo4jl"]
+[ext_resource type="Texture2D" uid="uid://cpcgh8t544iy6" path="res://Enemies/Moustique/patrol1.png" id="3_uawj8"]
+[ext_resource type="Texture2D" uid="uid://c2u4i6iy87lc5" path="res://Menu/lancement_lvl1/image.png" id="3_uw7hi"]
+[ext_resource type="Texture2D" uid="uid://ljld8piww8or" path="res://Enemies/Carnivore/ouvert.png" id="4_uw7hi"]
+[ext_resource type="Texture2D" uid="uid://cjpf8vtog8sxh" path="res://Enemies/Carnivore/tige_grande.png" id="5_1fa01"]
+[ext_resource type="Texture2D" uid="uid://cndcb7gm4tqk1" path="res://Enemies/Serpent/walk3.png" id="6_1fa01"]
+[ext_resource type="Texture2D" uid="uid://b0if0gqwaxinj" path="res://Enemies/Toucan/vol1.png" id="7_yk3kc"]
+[ext_resource type="Texture2D" uid="uid://b7cu373brt3cl" path="res://Menu/Boutons/jouer.png" id="9_ss15l"]
+[ext_resource type="Texture2D" uid="uid://b4dhfq2201ktp" path="res://Menu/Boutons/presse/jouer.png" id="10_dlb7y"]
+[ext_resource type="Texture2D" uid="uid://bqbuxpodjjsvo" path="res://Menu/Boutons/options.png" id="11_bfns0"]
+[ext_resource type="Texture2D" uid="uid://cqjgwsvhaeoft" path="res://Menu/Boutons/presse/options.png" id="12_n1ip6"]
+[ext_resource type="Texture2D" uid="uid://dwwiacrdwftwj" path="res://Menu/Boutons/quitter.png" id="13_rqobp"]
+[ext_resource type="AudioStream" uid="uid://doo70l3xvv5u4" path="res://sounds/dijee.wav" id="13_yvok6"]
+[ext_resource type="Texture2D" uid="uid://bdvcchdibhe84" path="res://Menu/Boutons/presse/quitter.png" id="14_yvok6"]
+
+[sub_resource type="Resource" id="Resource_uawj8"]
+metadata/__load_path__ = "res://Player/Sprite/jump.png"
 
 [node name="MenuLvl1" type="Node2D"]
 script = ExtResource("1_rv0fi")
@@ -65,7 +67,7 @@ texture = ExtResource("5_1fa01")
 position = Vector2(1476, 976.967)
 rotation = 0.0631889
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("8_oo4jl")
+texture = SubResource("Resource_uawj8")
 
 [node name="Toucan" type="Sprite2D" parent="Background"]
 position = Vector2(950, 119.002)

@@ -12,8 +12,6 @@ func _ready():
 	if game_state:
 		game_state.hud = self
 	
-	var button = $Gamepad/Hand
-	
 	$Gamepad/Hand.pressed.connect(_on_hand_pressed)
 	
 	update_lives_display(game_state.lives)

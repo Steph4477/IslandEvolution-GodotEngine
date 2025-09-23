@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg6mgnhckbjhx"]
+[gd_scene load_steps=10 format=3 uid="uid://bf1n0fcexb05c"]
 
 [ext_resource type="Script" uid="uid://cbavpp0y04il3" path="res://ItemsDecors/Bananier/bananier.gd" id="1_nm5gv"]
 [ext_resource type="Texture2D" uid="uid://bx1k54pp8pfb1" path="res://ItemsDecors/Bananier/Bananier1.png" id="2_l2fy6"]

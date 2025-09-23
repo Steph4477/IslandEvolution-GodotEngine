@@ -1,6 +1,6 @@
 extends Node2D
 
-signal lance_collected
+#signal lance_collected
 
 @onready var anim = $AnimationPlayer
 

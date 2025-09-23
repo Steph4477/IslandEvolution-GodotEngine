@@ -1,15 +1,17 @@
 [gd_scene load_steps=14 format=3 uid="uid://lt163krgrux1"]
 
-[ext_resource type="Script" uid="uid://cnquios5860dx" path="res://scene/enemy2.gd" id="1_hyu5o"]
-[ext_resource type="Texture2D" uid="uid://c4fie5q7uab1i" path="res://Enemies/Scormard/enemyataque2.png" id="2_ucyh2"]
-[ext_resource type="Texture2D" uid="uid://psgutnnpdua1" path="res://Enemies/Scormard/enemyataque.png" id="3_lppxe"]
-[ext_resource type="Texture2D" uid="uid://dt5f7rdfoxyxx" path="res://Enemies/Scormard/enemyface.png" id="4_samuv"]
-[ext_resource type="Texture2D" uid="uid://cx744nsqxs5qr" path="res://Enemies/Scormard/slide01.png" id="5_g2imt"]
-[ext_resource type="Texture2D" uid="uid://dmv137wy3casr" path="res://Enemies/Scormard/die.png" id="5_ucyh2"]
-[ext_resource type="Texture2D" uid="uid://q53xb71wcsax" path="res://Enemies/Scormard/slide1.png" id="6_4rgcv"]
-[ext_resource type="Texture2D" uid="uid://c6c50erfwud1f" path="res://Enemies/Scormard/slide2.png" id="7_6e20w"]
-[ext_resource type="Texture2D" uid="uid://b36h1sf05kr75" path="res://Enemies/Scormard/enemyprofil.png" id="8_321e1"]
+[ext_resource type="Texture2D" uid="uid://dm44ml421ittl" path="res://Enemies/Scormard/enemyataque2.png" id="2_ucyh2"]
+[ext_resource type="Texture2D" uid="uid://i2y31dou62ar" path="res://Enemies/Scormard/enemyataque.png" id="3_lppxe"]
+[ext_resource type="Texture2D" uid="uid://bfqq3bod81i7x" path="res://Enemies/Scormard/enemyface.png" id="4_samuv"]
+[ext_resource type="Texture2D" uid="uid://c503qbg27bksj" path="res://Enemies/Scormard/slide01.png" id="5_g2imt"]
+[ext_resource type="Texture2D" uid="uid://wp2c4e7n5rtx" path="res://Enemies/Scormard/die.png" id="5_ucyh2"]
+[ext_resource type="Texture2D" uid="uid://d30dd8yspnnqj" path="res://Enemies/Scormard/slide1.png" id="6_4rgcv"]
+[ext_resource type="Texture2D" uid="uid://d33ev2jk3oxb" path="res://Enemies/Scormard/slide2.png" id="7_6e20w"]
+[ext_resource type="Texture2D" uid="uid://c4j4gidrarjbm" path="res://Enemies/Scormard/enemyprofil.png" id="8_321e1"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/HealthBar.tscn" id="9_fs8jn"]
+
+[sub_resource type="Resource" id="Resource_hyu5o"]
+metadata/__load_path__ = "res://scene/enemy2.gd"
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
@@ -99,7 +101,7 @@ size = Vector2(173.333, 66.6666)
 scale = Vector2(0.6, 0.6)
 collision_layer = 8
 collision_mask = 3
-script = ExtResource("1_hyu5o")
+script = SubResource("Resource_hyu5o")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

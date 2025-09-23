@@ -14,9 +14,10 @@ func _ready():
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	queue_free()

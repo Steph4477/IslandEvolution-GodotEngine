@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cobg74te505u8"]
 
-[ext_resource type="Texture2D" uid="uid://diiehyygmooqp" path="res://Effects/Toile.png" id="1_sv1np"]
+[ext_resource type="Texture2D" uid="uid://ckchsj07lgcg2" path="res://Effects/Toile.png" id="1_sv1np"]
 [ext_resource type="Script" uid="uid://dfwc54dnovclx" path="res://Effects/effet_toile_collée.gd" id="1_uwx3n"]
 
 [sub_resource type="Animation" id="Animation_bn57y"]

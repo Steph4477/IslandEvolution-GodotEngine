@@ -54,4 +54,4 @@ func spawn_key():
 	if key_scene and key_spawn:
 		var key = key_scene.instantiate()
 		key.global_position = key_spawn.global_position
-		get_tree().current_scene.add_child(key)
+		get_tree().current_scene.call_deferred("add_child", key)

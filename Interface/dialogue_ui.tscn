@@ -90,9 +90,9 @@ theme_override_constants/margin_bottom = 24
 [node name="Text" type="RichTextLabel" parent="Box/MarginContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/italics_font_size = 35
 theme_override_font_sizes/normal_font_size = 35
 theme_override_font_sizes/bold_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
 bbcode_enabled = true
 scroll_active = false
 

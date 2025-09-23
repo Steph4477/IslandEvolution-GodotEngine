@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=53 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://lvl2/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Serpent/Serpent.tscn" id="14_utbl0"]
 [ext_resource type="PackedScene" uid="uid://dlbee1ryeyvmv" path="res://lvl2/Décors/tileMapPlatform.tscn" id="15_3p2tf"]
 [ext_resource type="PackedScene" uid="uid://cr0w31y6mkn3m" path="res://ItemsDecors/lvl2/mobile_plat_form.tscn" id="15_a6f7x"]
-[ext_resource type="PackedScene" uid="uid://dm2boosfjpcpo" path="res://Enemies/chauve-souris/bat.tscn" id="16_3p2tf"]
 [ext_resource type="PackedScene" uid="uid://csklsid7fjxbo" path="res://Enemies/Rat/rat.tscn" id="16_sdx3j"]
 [ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/graine/seed.tscn" id="17_mnvun"]
 [ext_resource type="PackedScene" uid="uid://8cborn5jckxg" path="res://Effects/SpeedWind/speed_wind.tscn" id="19_2552o"]
@@ -121,452 +120,416 @@ size = Vector2(4481, 131)
 size = Vector2(115, 2678)
 
 [node name="lvl2" type="Node2D"]
-position = Vector2(88, 153)
 script = ExtResource("1_vnrni")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_rwgjh")]
 
-[node name="TileMap" parent="." instance=ExtResource("14_a6f7x")]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(88, 153)
+
+[node name="TileMap" parent="Node2D" instance=ExtResource("14_a6f7x")]
 position = Vector2(226, 2092)
 
-[node name="TileMapWall" parent="." instance=ExtResource("14_a6f7x")]
+[node name="TileMapWall" parent="Node2D" instance=ExtResource("14_a6f7x")]
 z_index = 1
 position = Vector2(233, -2)
 
-[node name="TileMapColone" parent="." instance=ExtResource("4_ah614")]
+[node name="TileMapColone" parent="Node2D" instance=ExtResource("4_ah614")]
 position = Vector2(-518, 800)
 
-[node name="TileMapColonShadow" parent="." instance=ExtResource("7_mnvun")]
+[node name="TileMapColonShadow" parent="Node2D" instance=ExtResource("7_mnvun")]
 z_index = 2
 position = Vector2(-593, 803)
 script = null
 
-[node name="TileMapPlatform" parent="." instance=ExtResource("15_3p2tf")]
+[node name="TileMapPlatform" parent="Node2D" instance=ExtResource("15_3p2tf")]
 position = Vector2(-526, 799)
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(578, 985)
+position = Vector2(761, 725)
 
-[node name="Torchs" type="Node2D" parent="."]
+[node name="Torchs" type="Node2D" parent="Node2D"]
 light_mask = 0
 z_index = 3
 z_as_relative = false
 position = Vector2(-1356, -250)
 script = ExtResource("4_3p2tf")
 
-[node name="Torch1" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch1" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(2985, -1406)
 
-[node name="Torch2" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch2" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(2999, -1796)
 
-[node name="Torch3" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch3" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(2977, -990)
 
-[node name="Torch4" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch4" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(1953, -1404)
 
-[node name="Torch" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(2982, -558)
 
-[node name="Torch5" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch5" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(2979, -2209)
 
-[node name="Torch6" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch6" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(2031, -180)
 
-[node name="Torch7" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch7" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(7816, -1252)
 
-[node name="Torch8" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch8" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(8874, -425)
 
-[node name="Torch9" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch9" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(8879, -847)
 
-[node name="Torch10" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch10" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(8875, -1262)
 
-[node name="Torch11" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch11" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(8885, -1657)
 
-[node name="Torch12" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch12" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(8890, -2060)
 
-[node name="Torch13" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch13" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(7292, -2078)
 
-[node name="Torch14" parent="Torchs" instance=ExtResource("6_ochkp")]
+[node name="Torch14" parent="Node2D/Torchs" instance=ExtResource("6_ochkp")]
 position = Vector2(8874, 37)
 
-[node name="platforms" type="StaticBody2D" parent="."]
+[node name="platforms" type="StaticBody2D" parent="Node2D"]
 z_index = 3
 position = Vector2(201, -399)
 collision_layer = 2
 
-[node name="Border" type="CollisionShape2D" parent="platforms"]
+[node name="Border" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(-219, 61.75)
 shape = SubResource("RectangleShape2D_ekrdk")
 
-[node name="Border3" type="CollisionShape2D" parent="platforms"]
+[node name="Border3" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(1392, 1544.59)
 shape = SubResource("RectangleShape2D_wsvun")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(2321.88, 689)
 shape = SubResource("RectangleShape2D_ifea3")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(1833.25, 1110)
 shape = SubResource("RectangleShape2D_a6f7x")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(2370, -967.25)
 shape = SubResource("RectangleShape2D_3p2tf")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(2374.5, -144.5)
 shape = SubResource("RectangleShape2D_vxp1h")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platforms"]
 visible = false
 position = Vector2(11363.7, -2136.44)
 rotation = 1.56791
 shape = SubResource("RectangleShape2D_mnvun")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(3023, 239)
 rotation = 1.56219
 shape = SubResource("RectangleShape2D_ah614")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(485, -563)
 shape = SubResource("RectangleShape2D_dadqh")
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(494.25, -979)
 shape = SubResource("RectangleShape2D_vmwbq")
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(2351.5, -564.5)
 shape = SubResource("RectangleShape2D_6nkff")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(958.75, -143)
 shape = SubResource("RectangleShape2D_8yvr4")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(530, 269)
 shape = SubResource("RectangleShape2D_huc8a")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(2066.5, 268)
 shape = SubResource("RectangleShape2D_hnsbv")
 
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(504, 690.5)
 shape = SubResource("RectangleShape2D_sdx3j")
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(2868.75, 399)
 shape = SubResource("RectangleShape2D_2552o")
 
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(8058.88, -814.5)
 shape = SubResource("RectangleShape2D_kjwkd")
 
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(6340.5, -818)
 shape = SubResource("RectangleShape2D_r6vc5")
 
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(6340, -402.25)
 shape = SubResource("RectangleShape2D_dnr68")
 
-[node name="CollisionShape2D26" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D26" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(7676, 1271.5)
 shape = SubResource("RectangleShape2D_vatd7")
 
-[node name="CollisionShape2D27" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D27" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(8085.75, 839.75)
 shape = SubResource("RectangleShape2D_7mp3u")
 
-[node name="CollisionShape2D23" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D23" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(6356.5, 836.5)
 shape = SubResource("RectangleShape2D_wpmwo")
 
-[node name="CollisionShape2D25" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D25" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(7861.5, 1688.75)
 shape = SubResource("RectangleShape2D_0vnxp")
 
-[node name="CollisionShape2D28" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D28" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(7921.75, 420.25)
 shape = SubResource("RectangleShape2D_bwf5r")
 
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(6369.25, 422.75)
 shape = SubResource("RectangleShape2D_v1ow1")
 
-[node name="CollisionShape2D21" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(8060.75, 13.75)
 shape = SubResource("RectangleShape2D_myagb")
 
-[node name="CollisionShape2D20" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(6803, 7.25)
 shape = SubResource("RectangleShape2D_s36pp")
 
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(8068.75, -401.75)
 shape = SubResource("RectangleShape2D_y8ogd")
 
-[node name="CollisionShape2D29" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D29" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(8243.5, -1219.25)
 shape = SubResource("RectangleShape2D_t7vye")
 
-[node name="CollisionShape2D30" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D30" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(2982, -983.5)
 shape = SubResource("RectangleShape2D_3kq7q")
 
-[node name="CollisionShape2D24" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D24" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(10105.5, 67.5)
 shape = SubResource("RectangleShape2D_p2btv")
 
-[node name="CollisionShape2D31" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D31" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(7901.5, -1657.5)
 shape = SubResource("RectangleShape2D_lc01g")
 
-[node name="CollisionShape2D32" type="CollisionShape2D" parent="platforms"]
+[node name="CollisionShape2D32" type="CollisionShape2D" parent="Node2D/platforms"]
 position = Vector2(5717.5, 433)
 shape = SubResource("RectangleShape2D_d8ncv")
 
-[node name="SpeedWinds" type="Node2D" parent="."]
+[node name="SpeedWinds" type="Node2D" parent="Node2D"]
 z_index = 3
 
-[node name="SpeedWind" parent="SpeedWinds" instance=ExtResource("19_2552o")]
+[node name="SpeedWind" parent="Node2D/SpeedWinds" instance=ExtResource("19_2552o")]
 z_index = 3
 position = Vector2(3615, -1510)
 
-[node name="SpeedWindVertical" parent="SpeedWinds" instance=ExtResource("10_2552o")]
+[node name="SpeedWindVertical" parent="Node2D/SpeedWinds" instance=ExtResource("10_2552o")]
 position = Vector2(9036, -1505)
 
-[node name="MobilePlatForms" type="Node2D" parent="."]
+[node name="MobilePlatForms" type="Node2D" parent="Node2D"]
 z_index = 3
 position = Vector2(221, 138)
 
-[node name="MobilePlatForm1" parent="MobilePlatForms" instance=ExtResource("15_a6f7x")]
+[node name="MobilePlatForm1" parent="Node2D/MobilePlatForms" instance=ExtResource("15_a6f7x")]
 position = Vector2(1371, -1276)
 scale = Vector2(1.2, 1.2)
 distance = 1800.0
 
-[node name="MobilePlatForm2" parent="MobilePlatForms" instance=ExtResource("15_a6f7x")]
+[node name="MobilePlatForm2" parent="Node2D/MobilePlatForms" instance=ExtResource("15_a6f7x")]
 position = Vector2(7257, -1337)
 scale = Vector2(1.2, 1.2)
 distance = 1800.0
 
-[node name="PushPlatforms" type="Node2D" parent="."]
-z_index = 5
+[node name="PushPlatforms" type="Node2D" parent="Node2D"]
+z_index = 2
 position = Vector2(2499, 106)
 
-[node name="PushPlatform1" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
+[node name="PushPlatform1" parent="Node2D/PushPlatforms" instance=ExtResource("13_ifea3")]
 position = Vector2(-2101, -336)
 
-[node name="PushPlatform2" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
+[node name="PushPlatform2" parent="Node2D/PushPlatforms" instance=ExtResource("13_ifea3")]
 position = Vector2(-270, 80)
 mass = 5000.0
 
-[node name="PushPlatform" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
+[node name="PushPlatform" parent="Node2D/PushPlatforms" instance=ExtResource("13_ifea3")]
 position = Vector2(-524, 861)
 
-[node name="PushPlatform3" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
+[node name="PushPlatform3" parent="Node2D/PushPlatforms" instance=ExtResource("13_ifea3")]
 position = Vector2(3833, 1023)
 
-[node name="PushPlatform4" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
+[node name="PushPlatform4" parent="Node2D/PushPlatforms" instance=ExtResource("13_ifea3")]
 position = Vector2(6097, -597)
 
-[node name="PushPlatform5" parent="PushPlatforms" instance=ExtResource("13_ifea3")]
+[node name="PushPlatform5" parent="Node2D/PushPlatforms" instance=ExtResource("13_ifea3")]
 position = Vector2(3701, -179)
 
-[node name="Bats" type="Node2D" parent="."]
-z_index = 3
-position = Vector2(4, 33)
-
-[node name="Bat1" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(1167, 113)
-rotation = 3.14159
-scale = Vector2(1, -1)
-
-[node name="Bat6" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(2928, -1164)
-
-[node name="Bat15" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(2805, 891)
-
-[node name="Bat16" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(1411, 860)
-
-[node name="Bat17" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(141, 944)
-
-[node name="Bat18" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(211, -287)
-
-[node name="Bat19" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(391, 945)
-
-[node name="Bat20" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(2224, -277)
-
-[node name="Bat21" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(2182, 576)
-
-[node name="Bat22" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(6786, -920)
-
-[node name="Bat25" parent="Bats" instance=ExtResource("16_3p2tf")]
-position = Vector2(8541, -1744)
-
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="Node2D"]
 z_index = 5
 position = Vector2(6821, 125)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
-[node name="Rat" parent="Enemies" instance=ExtResource("16_sdx3j")]
+[node name="Rat" parent="Node2D/Enemies" instance=ExtResource("16_sdx3j")]
 position = Vector2(3765, -1676.01)
 scale = Vector2(1, 1)
 
-[node name="Rat" parent="Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(2826.01, 2533.99)
+[node name="Rat" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+position = Vector2(1392.0012, 2160.997)
 scale = Vector2(1, 1)
 
-[node name="Rat2" parent="Enemies/Rat" instance=ExtResource("16_sdx3j")]
+[node name="Rat2" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
 position = Vector2(-5318, 1480.01)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
-[node name="Rat3" parent="Enemies/Rat" instance=ExtResource("16_sdx3j")]
+[node name="Rat3" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
 position = Vector2(832.9983, 959.99835)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
-[node name="Pygmées" type="Node2D" parent="Enemies"]
+[node name="Pygmées" type="Node2D" parent="Node2D/Enemies"]
 position = Vector2(3828, -218.01)
 
-[node name="Pygmee4" parent="Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+[node name="Pygmee4" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
 position = Vector2(-5003, -825.99)
 scale = Vector2(1, 1)
 
-[node name="Pygmee3" parent="Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+[node name="Pygmee3" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
 position = Vector2(-3231, 439.008)
 scale = Vector2(1, 1)
 
-[node name="Pygmee6" parent="Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+[node name="Pygmee6" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
 position = Vector2(-6122, 1225.02)
 scale = Vector2(1, 1)
 
-[node name="Pygmee" parent="Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+[node name="Pygmee" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
 z_index = 20
 position = Vector2(-0.000244141, 0)
 scale = Vector2(1, 1)
 
-[node name="Serpents" type="Node2D" parent="Enemies"]
+[node name="Serpents" type="Node2D" parent="Node2D/Enemies"]
 
-[node name="Serpent" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(3835, 86.9903)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Serpent2" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent2" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(3776, -767.01)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Serpent3" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent3" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(-1257, 257.003)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Serpent4" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent4" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(357.997, -1000)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Serpent6" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent6" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(-1869, 1024)
 scale = Vector2(-0.6, 0.6)
 
-[node name="Serpent5" parent="Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent5" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(-1290, 672.003)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Sound" type="Node2D" parent="."]
+[node name="Sound" type="Node2D" parent="Node2D"]
 position = Vector2(232, -2)
 
-[node name="lvl2" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
 stream = ExtResource("10_ochkp")
 autoplay = true
 
-[node name="BagsLoot" type="Node2D" parent="."]
+[node name="BagsLoot" type="Node2D" parent="Node2D"]
 z_index = 20
 position = Vector2(225, 37)
 
-[node name="BagLoot1" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot1" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(163, 988)
 
-[node name="BagLoot2" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot2" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(1928, 621)
 
-[node name="BagLoot3" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot3" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(8, -213)
 
-[node name="BagLoot4" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot4" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(1870, 204)
 
-[node name="BagLoot" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(1945, -210)
 
-[node name="BagLoot5" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot5" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(795, -635)
 
-[node name="BagLoot6" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot6" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 z_index = 3
 position = Vector2(7597, 782)
 
-[node name="BagLoot7" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot7" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(8415, 368)
 
-[node name="BagLoot8" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot8" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(6090, -906)
 
-[node name="BagLoot9" parent="BagsLoot" instance=ExtResource("11_2ivwu")]
+[node name="BagLoot9" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(8471, -470)
 
-[node name="Seeds" type="Node2D" parent="."]
+[node name="Seeds" type="Node2D" parent="Node2D"]
 z_index = 3
 position = Vector2(1485, -237)
 
-[node name="Seed1" parent="Seeds" instance=ExtResource("17_mnvun")]
+[node name="Seed1" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 position = Vector2(6932, 1055)
 
-[node name="Seed2" parent="Seeds" instance=ExtResource("17_mnvun")]
+[node name="Seed2" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 position = Vector2(5482, 219)
 
-[node name="Seed3" parent="Seeds" instance=ExtResource("17_mnvun")]
+[node name="Seed3" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 z_index = 5
 position = Vector2(-1124, -1196)
 
-[node name="Seed4" parent="Seeds" instance=ExtResource("17_mnvun")]
+[node name="Seed4" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 position = Vector2(7233, -1417)
 
-[node name="Seed5" parent="Seeds" instance=ExtResource("17_mnvun")]
+[node name="Seed5" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 position = Vector2(1682, -791)
 
-[node name="Seed6" parent="Seeds" instance=ExtResource("17_mnvun")]
+[node name="Seed6" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 position = Vector2(620, 61)
 
-[node name="Exit" parent="." instance=ExtResource("12_vjssa")]
+[node name="Exit" parent="Node2D" instance=ExtResource("12_vjssa")]
 z_index = 3
 position = Vector2(10156, 861)
 rotation = -0.000533727
+scale = Vector2(2.5000002, 2.5000002)

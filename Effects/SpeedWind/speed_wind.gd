@@ -7,7 +7,7 @@ var original_speed = 0.0
 func _ready ():
 	$Sprite2D.visible = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player:
 		# bloque totalement la gravité
 		player.velocity.y = 0

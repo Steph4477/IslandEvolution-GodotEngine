@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1u0xxu8finvw"]
-
-[ext_resource type="Texture2D" uid="uid://cixh7sh7rit8t" path="res://lvl1/Decors/ChatGPT Image 9 avr. 2025, 20_19_03.png" id="1_do6xw"]
+[gd_scene load_steps=3 format=3 uid="uid://d1u0xxu8finvw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_601ls"]
-texture = ExtResource("1_do6xw")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0

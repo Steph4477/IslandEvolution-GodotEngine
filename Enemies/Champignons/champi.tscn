@@ -1,8 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://dfnra1ay6d3i"]
 
-[ext_resource type="Script" uid="uid://d2inirq4b63ga" path="res://scene/champi.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://bhqkhxgoboywm" path="res://Enemies/champi.png" id="2_gqsq2"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/HealthBar.tscn" id="3_f3614"]
+
+[sub_resource type="Resource" id="Resource_ow0gt"]
+metadata/__load_path__ = "res://scene/champi.gd"
+
+[sub_resource type="Resource" id="Resource_aeqoj"]
+metadata/__load_path__ = "res://Enemies/champi.png"
 
 [sub_resource type="Animation" id="1"]
 resource_name = "idle"
@@ -51,13 +55,13 @@ position = Vector2(12.3147, -49.7796)
 scale = Vector2(0.7, 0.704)
 collision_layer = 8
 collision_mask = 3
-script = ExtResource("2")
+script = SubResource("Resource_ow0gt")
 JUMP_FORCE = -500
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-0.260716, 55.8372)
 scale = Vector2(0.15, 0.163)
-texture = ExtResource("2_gqsq2")
+texture = SubResource("Resource_aeqoj")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

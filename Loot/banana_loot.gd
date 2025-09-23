@@ -4,7 +4,7 @@ extends Node2D
 @export var heal_amount = 500
 
 var game_state
-var collected := false
+var collected = false
 
 func _ready() -> void:
 	game_state = get_node_or_null("/root/GameState")

@@ -168,7 +168,7 @@ func on_hit(amount):
 	await get_tree().create_timer(hit_lock_time).timeout
 	hit_locked = false
 
-func show_damage_popup(amount: int) -> void:
+func show_damage_popup(amount) :
 	var popup_scene := preload("res://ItemsDecors/damage_popup.tscn")
 	var popup: Label = popup_scene.instantiate()
 	health_bar.add_child(popup)
@@ -182,23 +182,4 @@ func die():
 	if is_dead:
 		return
 	is_dead = true
-
-	# Anim de mort (si présente)
-	#if anim:
-		##anim.play("die")
-		#await anim.animation_finished
-
-	# Spawn du loot lance
-	spawn_loot_lance()
-
-	# On supprime enfin le pyg
 	queue_free()
-
-func spawn_loot_lance():
-	# Instantie le loot 
-	var loot = loot_lance_scene.instantiate()
-
-	get_tree().current_scene.add_child(loot)
-
-	# Apparition à l’endroit où meurt le pyg 
-	loot.global_position = global_position

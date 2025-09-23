@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var show_duration := 1.0
+@export var show_duration = 1.0
 
 @onready var sprite = $Sprite2D        
 @onready var timer = $Timer
@@ -19,5 +19,5 @@ func start_show():
 func _on_timer_timeout():
 	queue_free()
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered():
 	start_show()

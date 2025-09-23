@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4ed8cr5fgetb"]
 
 [ext_resource type="Script" uid="uid://b6642kvuswl8v" path="res://Interface/Quetes/quest_box.gd" id="1_i7muu"]
-[ext_resource type="Texture2D" uid="uid://csy6fh5xdhw3n" path="res://Interface/Quetes/quetes2.png" id="2_p3qo8"]
-[ext_resource type="Texture2D" uid="uid://ogmc2ae2b4u" path="res://Interface/Quetes/quetes.png" id="2_thikh"]
-[ext_resource type="Texture2D" uid="uid://cjysr5hfs7p5w" path="res://Interface/Quetes/quetes1.png" id="3_xyq5x"]
+[ext_resource type="Texture2D" uid="uid://c2iclt61bhsnh" path="res://Interface/Quetes/quetes2.png" id="2_p3qo8"]
+[ext_resource type="Texture2D" uid="uid://c5h5hy0my4imd" path="res://Interface/Quetes/quetes.png" id="2_thikh"]
+[ext_resource type="Texture2D" uid="uid://430x8edhnhbl" path="res://Interface/Quetes/quetes1.png" id="3_xyq5x"]
 
 [sub_resource type="Animation" id="Animation_rrnmn"]
 length = 0.001

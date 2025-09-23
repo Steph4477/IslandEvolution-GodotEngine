@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-@export var max_hp: int = 20
-@export var speed: int = 200
-@export var attack_range: int = 500
-@export var attack_contact_radius: float = 24.0  # Rayon de contact réaliste
-@export var cooldown: float = 1.5
-@export var damage: int = 200
-@export var patrol_speed: float = 80
-@export var patrol_change_interval: float = 2.0
+@export var max_hp = 20
+@export var speed = 200
+@export var attack_range = 500
+@export var attack_contact_radius = 24.0
+@export var cooldown = 1.5
+@export var damage = 200
+@export var patrol_speed = 80
+@export var patrol_change_interval = 2.0
 
 @onready var health_bar = $HealthBar/ProgressBar
 @onready var timer = $Timer
@@ -19,14 +19,14 @@ var is_attacking = false
 var patrol_direction = Vector2.ZERO
 var pv = max_hp
 var is_dead = false
-var player: Node2D
+var player
 
-func _ready() -> void:
+func _ready():
 	pv = max_hp
 	find_and_bind_player()
 	start_patrol()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta):
 	if is_dead:
 		return
 
@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	if distance <= attack_contact_radius and not is_attacking:
 		await _perform_attack(player)
 
-func _perform_attack(target: Node) -> void:
+func _perform_attack(target):
 	is_attacking = true
 	velocity = Vector2.ZERO
 	anim.play("attaque")
@@ -76,27 +76,27 @@ func _perform_attack(target: Node) -> void:
 	is_attacking = false
 	anim.play("flight")
 
-func change_patrol_direction() -> void:
+func change_patrol_direction():
 	var angle = randf() * TAU
 	patrol_direction = Vector2(cos(angle), sin(angle)).normalized()
 
-func start_patrol() -> void:
+func start_patrol():
 	change_patrol_direction()
 	timer.wait_time = patrol_change_interval
 	timer.start()
 
-func _on_timer_timeout() -> void:
+func _on_timer_timeout():
 	if is_patrolling:
 		change_patrol_direction()
 
-func on_hit(damage_taken: int) -> void:
+func on_hit(damage_taken):
 	pv -= damage_taken
 	if health_bar:
 		health_bar.max_value = max_hp
 		health_bar.value = pv
 	show_damage_popup(damage_taken)
 
-func show_damage_popup(amount: int) -> void:
+func show_damage_popup(amount):
 	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()
 	add_child(popup)
 	popup.position = Vector2(0, -30)
@@ -104,7 +104,7 @@ func show_damage_popup(amount: int) -> void:
 	if pv <= 0:
 		die()
 
-func die() -> void:
+func die():
 	if is_dead:
 		return
 	is_dead = true
@@ -122,17 +122,15 @@ func die() -> void:
 
 	queue_free()
 
-
 func find_and_bind_player():
 	var gs = get_node_or_null("/root/GameState")
 	if gs:
 		player = gs.player
 		gs.connect("player_updated", Callable(self, "_on_player_changed"))
 
-func _on_player_changed(new_player: Node) -> void:
+func _on_player_changed(new_player):
 	player = new_player
 
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(body):
 	if body.has_method("on_hit"):
 		body.on_hit(damage)

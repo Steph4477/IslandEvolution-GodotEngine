@@ -1,8 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://c62ygv7nqh2vg"]
+[gd_scene load_steps=16 format=3 uid="uid://c62ygv7nqh2vg"]
 
 [ext_resource type="Script" uid="uid://0mxokgpfyut6" path="res://Interface/dialogue_ui_pyg.gd" id="1_nud0n"]
-[ext_resource type="Texture2D" uid="uid://bw11iep13hnld" path="res://ItemsDecors/PushPlatform/totem.png" id="2_nud0n"]
-[ext_resource type="Texture2D" uid="uid://cl58hg78msv21" path="res://Enemies/Toucan/idle1.png" id="3_2ti6f"]
 [ext_resource type="Texture2D" uid="uid://bskf44j3x3llk" path="res://Enemies/Pygmée/Idle/1.png" id="4_nud0n"]
 [ext_resource type="Texture2D" uid="uid://bsedrsvn7wa6x" path="res://Enemies/Pygmée/Idle/2.png" id="5_km4w2"]
 [ext_resource type="Texture2D" uid="uid://uatdifks1yw1" path="res://Enemies/Pygmée/Speack/1.png" id="6_ttupf"]
@@ -15,21 +13,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8hky"]
 bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)
-
-[sub_resource type="Animation" id="Animation_qogum"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pygmee:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_2ti6f")]
-}
 
 [sub_resource type="Animation" id="Animation_00tmg"]
 resource_name = "idle"
@@ -84,7 +67,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_33chn"]
 _data = {
-&"RESET": SubResource("Animation_qogum"),
 &"idle": SubResource("Animation_00tmg"),
 &"laugh": SubResource("Animation_opau2"),
 &"speack": SubResource("Animation_m7a87")
@@ -93,22 +75,15 @@ _data = {
 [node name="DialogueUiPyg" type="CanvasLayer"]
 script = ExtResource("1_nud0n")
 
-[node name="Texture" type="Sprite2D" parent="."]
-modulate = Color(0.497474, 0.497474, 0.497474, 1)
-z_index = 3
-position = Vector2(1637, 843)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_nud0n")
-
 [node name="Box" type="Panel" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 492.0
-offset_top = -369.0
-offset_right = 492.0
-offset_bottom = -149.0
+offset_left = 689.0
+offset_top = -201.0
+offset_right = 689.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_o8hky")
@@ -127,18 +102,18 @@ theme_override_constants/margin_bottom = 24
 [node name="Text" type="RichTextLabel" parent="Box/MarginContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/italics_font_size = 35
 theme_override_font_sizes/normal_font_size = 35
 theme_override_font_sizes/bold_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
 bbcode_enabled = true
 scroll_active = false
 
 [node name="Pygmee" type="Sprite2D" parent="."]
 modulate = Color(0.763809, 0.763809, 0.763808, 1)
 z_index = 5
-position = Vector2(1842, 890)
-scale = Vector2(-0.5, 0.5)
-texture = ExtResource("3_2ti6f")
+position = Vector2(1846.0001, 968)
+scale = Vector2(-0.3, 0.3)
+texture = ExtResource("4_nud0n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

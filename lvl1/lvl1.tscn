@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://chd4s1iv4x63r" path="res://lvl1/Decors/platforms.tscn" id="3_dvpsw"]
 [ext_resource type="PackedScene" uid="uid://bi56b8q1a6s16" path="res://ItemsDecors/Pique/pique.tscn" id="5_am3co"]
 [ext_resource type="PackedScene" uid="uid://tagnybpxlmi" path="res://lvl1/Decors/decor.tscn" id="10_nklpm"]
+[ext_resource type="PackedScene" uid="uid://d212hegf2w8di" path="res://Loot/banana_loot.tscn" id="11_lr8k6"]
+[ext_resource type="PackedScene" uid="uid://bf1n0fcexb05c" path="res://ItemsDecors/Bananier/bananier.tscn" id="12_myamh"]
 [ext_resource type="PackedScene" uid="uid://cev5rxsibfue3" path="res://ItemsDecors/Cocotier/cocotier.tscn" id="13_f0kof"]
-[ext_resource type="PackedScene" uid="uid://dg6mgnhckbjhx" path="res://ItemsDecors/Bananier/bananier.tscn" id="13_ofnsq"]
 [ext_resource type="PackedScene" uid="uid://8dohrfquocyx" path="res://Enemies/Carnivore/carnivore.tscn" id="14_26k7p"]
 [ext_resource type="PackedScene" uid="uid://skt7pf4qgqru" path="res://Loot/Cocotier_loot.tscn" id="14_211dj"]
-[ext_resource type="PackedScene" uid="uid://bufpfyqhh1s65" path="res://Loot/banane_loot.tscn" id="14_e63vn"]
 [ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/graine/seed.tscn" id="15_kgp0u"]
 [ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Moustique/moustique.tscn" id="16_cvxqb"]
 [ext_resource type="PackedScene" uid="uid://c5bug2b6apnq6" path="res://ItemsDecors/MobilePlatform/mobile_plat_form.tscn" id="16_f0kof"]
@@ -83,8 +83,10 @@ size = Vector2(5.4567, 20)
 [node name="lvl1" type="Node2D"]
 script = ExtResource("1_vc1ff")
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(180, 1441)
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
+position = Vector2(191, 1141)
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
@@ -109,7 +111,7 @@ shadow_filter_smooth = 4.0
 position = Vector2(-3329, -1040)
 
 [node name="Exit" parent="." instance=ExtResource("23_myamh")]
-position = Vector2(7153, 1336)
+position = Vector2(7196, 1331)
 next_scene_path = "res://lvl2/lvl_2.tscn"
 
 [node name="Arrows" type="Node2D" parent="."]
@@ -259,26 +261,26 @@ position = Vector2(-675, 56)
 [node name="Coconut2" parent="Trees" instance=ExtResource("13_f0kof")]
 position = Vector2(-5550, 85)
 
-[node name="BananaTree" parent="Trees" instance=ExtResource("13_ofnsq")]
-position = Vector2(-2709, -325)
+[node name="Bananier" parent="Trees" instance=ExtResource("12_myamh")]
+position = Vector2(-4701, -362)
 
-[node name="BananaTree2" parent="Trees" instance=ExtResource("13_ofnsq")]
-position = Vector2(-4717, -364)
+[node name="Bananier2" parent="Trees" instance=ExtResource("12_myamh")]
+position = Vector2(-2723, -363)
 
 [node name="Loot" type="Node2D" parent="Trees"]
 position = Vector2(-334, -90)
-
-[node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
-position = Vector2(-2280, -229)
-
-[node name="BananaLoot2" parent="Trees/Loot" instance=ExtResource("14_e63vn")]
-position = Vector2(-4283, -265)
 
 [node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("14_211dj")]
 position = Vector2(-315, -300)
 
 [node name="CocoLoot" parent="Trees/Loot" instance=ExtResource("14_211dj")]
 position = Vector2(-5190, -251)
+
+[node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("11_lr8k6")]
+position = Vector2(-4303, -289)
+
+[node name="BananaLoot2" parent="Trees/Loot" instance=ExtResource("11_lr8k6")]
+position = Vector2(-2323, -291)
 
 [node name="Wildlife" type="Node2D" parent="."]
 position = Vector2(3329, 1040)

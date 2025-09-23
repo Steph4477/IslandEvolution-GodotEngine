@@ -1,52 +1,49 @@
 extends CharacterBody2D
 
-@export var max_hp: int = 400
-@export var speed: int = 200
-@export var attack_range: int = 1000
-@export var cooldown: float = 1.5
-@export var damage: int = 200
+@export var max_hp = 400
+@export var speed = 200
+@export var attack_range = 1000
+@export var cooldown = 1.5
+@export var damage = 200
 
 @onready var health_bar = $HealthBar/ProgressBar
 @onready var anim_sprite = $AnimatedSprite
 @onready var muzzle = $FlipNode/Muzzle
 @onready var timer = $Timer
-@onready var scene_camera 
+@onready var scene_camera
 
-const GRAVITY: int = 2000
+const GRAVITY = 2000
 
-var can_shoot := true
-var is_attacking := false
-var has_shot := false
-var frozen := false
-var stone_coco := false
-var pv := max_hp
-var player: Node2D
+var can_shoot = true
+var is_attacking = false
+var has_shot = false
+var frozen = false
+var stone_coco = false
+var pv = max_hp
+var player
 
 var DeathEffect = preload("res://Effects/enemy_death_particles.tscn") 
 var BaveFlac = preload("res://Loot/bave_flaque_static.tscn")
 var projectile = preload("res://Tir/toile.tscn")
 var ToilePlafond = preload("res://Effects/plafonds.tscn")
 
-
-func _ready() -> void:
+func _ready():
 	while scene_camera == null:
 		await get_tree().process_frame
 		scene_camera = get_viewport().get_camera_2d()
 		
 	pv = max_hp
-	
 	find_and_bind_player()
-	
 	anim_sprite.frame_changed.connect(shoot_projectile)
 
 	# Phase d'apparition suspendue
 	await play_plafond_intro()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta):
 	if not is_instance_valid(player) or is_attacking:
 		return
 
-	apply_gravity(delta)
+	apply_gravity(_delta)
 
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction.x * speed
@@ -65,13 +62,13 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func apply_gravity(delta: float) -> void:
+func apply_gravity(delta):
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	else:
 		velocity.y = 0
 
-func play_plafond_intro() -> void:
+func play_plafond_intro():
 	visible = false
 	set_physics_process(false)
 	# 1. Centrer temporairement la caméra sur la mygale
@@ -87,27 +84,27 @@ func play_plafond_intro() -> void:
 	visible = true
 	set_physics_process(true)
 	# 5. Restituer le contrôle de la caméra au joueur
-	var player_camera := player.get_node_or_null("Camera2D")
+	var player_camera = player.get_node_or_null("Camera2D")
 	if player_camera:
 		player_camera.make_current()
 	# 🧭 Recentrer la caméra manuellement sur le joueur
-		await get_tree().process_frame  # attendre que make_current prenne effet
-		player_camera.global_position = player.global_position
+	await get_tree().process_frame
+	player_camera.global_position = player.global_position
 
-func attack_and_shoot() -> void:
+func attack_and_shoot():
 	can_shoot = false
 	is_attacking = true
 	has_shot = false
 	anim_sprite.play("attaque")
 
 	var frames = anim_sprite.sprite_frames.get_frame_count("attaque")
-	var speed = anim_sprite.sprite_frames.get_animation_speed("attaque")
-	var anim_duration = frames / speed
+	var anim_speed = anim_sprite.sprite_frames.get_animation_speed("attaque")
+	var anim_duration = frames / anim_speed
 
 	await get_tree().create_timer(anim_duration).timeout
 	is_attacking = false
 
-func shoot_projectile() -> void:
+func shoot_projectile():
 	if anim_sprite.animation == "attaque":
 		var current_frame = anim_sprite.frame
 		var total_frames = anim_sprite.sprite_frames.get_frame_count("attaque")
@@ -121,14 +118,14 @@ func shoot_projectile() -> void:
 			await get_tree().create_timer(cooldown).timeout
 			can_shoot = true
 
-func on_hit(damage_taken: int) -> void:
+func on_hit(damage_taken):
 	pv -= damage_taken
 	if health_bar:
 		health_bar.max_value = max_hp
 		health_bar.value = pv
 	show_damage_popup(damage_taken)
 
-func show_damage_popup(amount: int) -> void:
+func show_damage_popup(amount):
 	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()
 	add_child(popup)
 	popup.position = Vector2(0, -30)
@@ -136,7 +133,7 @@ func show_damage_popup(amount: int) -> void:
 	if pv <= 0:
 		die()
 
-func die() -> void:
+func die():
 	visible = false
 	set_physics_process(false)
 
@@ -155,11 +152,11 @@ func die() -> void:
 
 	queue_free()
 
-func wait_for_particles_to_finish(p: CPUParticles2D) -> void:
+func wait_for_particles_to_finish(p):
 	while p.emitting:
 		await get_tree().process_frame
 
-func stone() -> void:
+func stone():
 	if stone_coco:
 		return
 	stone_coco = true
@@ -168,15 +165,15 @@ func stone() -> void:
 	anim_sprite.play("stone")
 
 	var frames = anim_sprite.sprite_frames.get_frame_count("stone")
-	var speed = anim_sprite.sprite_frames.get_animation_speed("stone")
-	var anim_duration = frames / speed
+	var anim_speed = anim_sprite.sprite_frames.get_animation_speed("stone")
+	var anim_duration = frames / anim_speed
 
 	await get_tree().create_timer(anim_duration).timeout
 	set_physics_process(true)
 	timer.start()
 	stone_coco = false
 
-func freeze() -> void:
+func freeze():
 	if frozen:
 		return
 	frozen = true
@@ -185,17 +182,17 @@ func freeze() -> void:
 	anim_sprite.play("slide")
 
 	var frames = anim_sprite.sprite_frames.get_frame_count("slide")
-	var speed = anim_sprite.sprite_frames.get_animation_speed("slide")
-	var anim_duration = frames / speed
+	var anim_speed = anim_sprite.sprite_frames.get_animation_speed("slide")
+	var anim_duration = frames / anim_speed
 
 	var direction = -sign(velocity.x)
 	if direction == 0:
 		direction = -1
 	var slide_distance = 100.0
 	var slide_speed = slide_distance / anim_duration
-	var elapsed := 0.0
+	var elapsed = 0.0
 	while elapsed < anim_duration:
-		var delta := get_process_delta_time()
+		var delta = get_process_delta_time()
 		position.x += direction * slide_speed * delta
 		await get_tree().process_frame
 		elapsed += delta
@@ -210,10 +207,10 @@ func find_and_bind_player():
 		player = gs.player
 		gs.connect("player_updated", Callable(self, "_on_player_changed"))
 
-func _on_player_changed(new_player: Node) -> void:
+func _on_player_changed(new_player):
 	player = new_player
 
-func _on_Area2D_body_entered(body: Node) -> void:
+func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player") and not is_attacking:
 		velocity.x = 0
 		await attack_and_shoot()

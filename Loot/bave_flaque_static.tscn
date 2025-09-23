@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2ewbqksuwrs6"]
 
 [ext_resource type="Script" uid="uid://2uk58jasd8va" path="res://Loot/bave_scormard.gd" id="1_le1fs"]
-[ext_resource type="Texture2D" uid="uid://bmgex3s5shl1t" path="res://Loot/bave_applatie.png" id="2_le1fs"]
-[ext_resource type="Texture2D" uid="uid://0wflwpml3sfh" path="res://Loot/bave.png.png" id="2_pcalt"]
+[ext_resource type="Texture2D" uid="uid://b7hl5jpkwpfga" path="res://Loot/bave_applatie.png" id="2_le1fs"]
+[ext_resource type="Texture2D" uid="uid://uanb3mkg66uk" path="res://Loot/bave.png.png" id="2_pcalt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcalt"]
 size = Vector2(322.484, 26.2086)

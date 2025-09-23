@@ -15,18 +15,18 @@ const INPUT = {
 	"ramp": "ramping",
 	"clac": "clacing"
 }
-const JUMP_BUFFER_TIME := 0.1
+const JUMP_BUFFER_TIME = 0.1
 
-@export var speed: float = 400
-@export var jump_force: float = -800
-@export var gravity: float = 1200
-@export var climb_speed: float = 100
-@export var clac_damage: int = 10
-@export var max_pv: int = 2000
-@export var pv: int = max_pv
-@export var cooldown_potion: float = 10
-@export var heal_amount: int = 50  # défini dans GameState
-@export var total_seeds_in_level: int = 10  
+@export var speed = 400
+@export var jump_force = -800
+@export var gravity = 1200
+@export var climb_speed = 100
+@export var clac_damage = 10
+@export var max_pv = 2000
+@export var pv = max_pv
+@export var cooldown_potion = 10
+@export var heal_amount = 50  # défini dans GameState
+@export var total_seeds_in_level = 10  
 
 var spell_coco = preload("res://Tir/coco.tscn")
 var spell_lance = preload("res://Tir/lance.tscn")
@@ -37,9 +37,9 @@ var is_dead = false
 var animation_locked = false
 var jump_buffer = 0.0
 var climbing_anim = ""
-var can_climb := false
+var can_climb = false
 var is_hanging = false
-var hang_timer := 0.0
+var hang_timer = 0.0
 var can_ramp = false
 var is_ramping = false
 var ramp_locked = false
@@ -56,17 +56,17 @@ var gravity_factor = 1.0
 var heal_potions = []
 var in_cooldown = false
 var can_heal = true
-var is_in_cooldown: bool = false
+var is_in_cooldown = false
 
 # --- Nodes ---
-@onready var sprite = $Sprite
-@onready var anim = $Anim
+@onready var sprite = $Node2D/Sprite
+@onready var anim = $Node2D/Anim
 @onready var camera = $Camera2D
 
 # --- HUD Labels ---
-var label_banane: Label
-var label_coco: Label
-var label_seed: Label
+var label_banane
+var label_coco
+var label_seed
 
 # =======================================================================
 # =                      INITIALISATION                                 =
@@ -150,7 +150,7 @@ func _update_jump(delta):
 		velocity.y += gravity * gravity_factor * delta
 
 # --- Escalade ---
-func set_can_climb(state: bool, anim_name := ""):
+func set_can_climb(state, anim_name = ""):
 	if state:
 		climbing_anim = anim_name
 		anim.play("hang")  # ✅ Joue directement l'animation d'accroche
@@ -160,7 +160,7 @@ func set_can_climb(state: bool, anim_name := ""):
 		velocity.y = 0
 		anim.play("idle")
 
-func start_climb(anim_name: String):
+func start_climb(anim_name):
 	climbing_anim = anim_name  # On se souvient juste de l’anim
 
 func stop_climb():
@@ -191,7 +191,7 @@ func _process_climb():
 		velocity.y = 0
 
 # --- Effet de balançoire 🍃 de "hang" ---
-func _process_hang_swing(delta: float) -> void:
+func _process_hang_swing(delta):
 	if is_hanging:
 		hang_timer += delta
 		var swing = sin(hang_timer * 2.0) * 5  # vitesse * amplitude
@@ -235,7 +235,7 @@ func _process_ramp():
 # =                                   COLLECTES                                                   =
 # =================================================================================================
 
-func collect_banane(amount: int = 1) -> void:
+func collect_banane(amount = 1):
 	if game_state:
 		for i in range(amount):
 			heal_potions.append(game_state.heal_amount)
@@ -253,7 +253,7 @@ func collect_banane(amount: int = 1) -> void:
 	show_info_popup("5 jus de bananes récupérés !")
 	refresh_hud_buttons()
 
-func collect_coco(amount: int = 1, enable_shooting: bool = false) -> void:
+func collect_coco(amount = 1, enable_shooting = false):
 	coco_count += amount
 
 	if enable_shooting:
@@ -281,7 +281,7 @@ func collect_lance(enable_shooting = false):
 
 	show_info_popup("Tu peux shooter des lances")
 
-func collect_seed(amount: int = 1) -> void:
+func collect_seed(amount = 1):
 	seed_count += amount
 
 	if game_state:
@@ -384,7 +384,7 @@ func _process_clac():
 		clac_attack()
 
 # --- Heal ---
-func heal(amount: int) -> void:
+func heal(amount):
 	pv = clamp(pv + amount, 0, max_pv)
 
 	if game_state:
@@ -395,15 +395,15 @@ func heal(amount: int) -> void:
 	update_banane_display()
 
 
-func update_can_heal() -> void:
+func update_can_heal():
 	can_heal = heal_potions.size() > 0 and pv < max_pv and not in_cooldown
 
 
-func _process_heal() -> void:
+func _process_heal():
 	if Input.is_action_just_pressed(INPUT["heal"]):
 		use_banane()
 
-func use_banane() -> void:
+func use_banane():
 	var msg := ""
 	if pv >= max_pv:
 		msg = "PV au max !"
@@ -440,8 +440,8 @@ func use_banane() -> void:
 	start_potion_cooldown()
 
 
-func _play_anim(name: String) -> void:
-	anim.play(name)
+func _play_anim(_name):
+	anim.play(_name)
 	animation_locked = true
 	await anim.animation_finished
 	animation_locked = false
@@ -482,13 +482,13 @@ func apply_web_effect():
 	speed /= 0.5
 	is_web = false
 
-func kill_by_plant() -> void:
+func kill_by_plant():
 	visible = false
 
 # =============================================================================
 # =                     DOMMAGES ET MORT                                      =
 # =============================================================================
-func on_hit(damage: int) -> void:
+func on_hit(damage):
 	if not can_be_damaged or is_dead:
 		return
 
@@ -645,13 +645,13 @@ func show_info_popup(txt):
 	popup.show_info(txt)
 
 
-func show_damage_popup(amount: int) -> void:
+func show_damage_popup(amount):
 	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()
 	add_child(popup)
 	popup.position = Vector2(0, -30)  # position flottante au-dessus du joueur
 	popup.show_damage(amount)
 
-func reset_state() -> void:
+func reset_state():
 	is_dead = false
 	animation_locked = false
 	visible = true

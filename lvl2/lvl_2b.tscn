@@ -133,38 +133,41 @@ _data = {
 [node name="lvl2b" type="Node2D"]
 script = ExtResource("1_ribhp")
 
-[node name="TileMap" parent="." instance=ExtResource("3_sbfsf")]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(21, 23)
+
+[node name="TileMap" parent="Node2D" instance=ExtResource("3_sbfsf")]
 position = Vector2(-29, 419)
 
-[node name="platform" type="StaticBody2D" parent="."]
+[node name="platform" type="StaticBody2D" parent="Node2D"]
 collision_layer = 2
 
-[node name="Border" type="CollisionShape2D" parent="platform"]
+[node name="Border" type="CollisionShape2D" parent="Node2D/platform"]
 position = Vector2(-61, 604)
 shape = SubResource("RectangleShape2D_ekrdk")
 
-[node name="Border2" type="CollisionShape2D" parent="platform"]
+[node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
 position = Vector2(6534, 760.125)
 shape = SubResource("RectangleShape2D_djaxt")
 
-[node name="Border3" type="CollisionShape2D" parent="platform"]
-position = Vector2(3489, 1582)
+[node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(3485, 1553)
 shape = SubResource("RectangleShape2D_wsvun")
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 position = Vector2(239, 1248)
 
-[node name="Ramp" parent="." instance=ExtResource("4_dq813")]
-position = Vector2(697, 1458)
+[node name="Ramp" parent="Node2D" instance=ExtResource("4_dq813")]
+position = Vector2(696, 1428)
 
-[node name="TorchGroup" type="Node2D" parent="."]
+[node name="TorchGroup" type="Node2D" parent="Node2D"]
 
-[node name="SlowTorch" parent="TorchGroup" instance=ExtResource("6_dntyv")]
+[node name="SlowTorch" parent="Node2D/TorchGroup" instance=ExtResource("6_dntyv")]
 
-[node name="Torch2" type="Node2D" parent="TorchGroup"]
+[node name="Torch2" type="Node2D" parent="Node2D/TorchGroup"]
 position = Vector2(921, -31)
 
-[node name="PointLight2D" type="PointLight2D" parent="TorchGroup/Torch2"]
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/TorchGroup/Torch2"]
 position = Vector2(583, 1172)
 scale = Vector2(2.36441, 1.72)
 color = Color(1, 0.537255, 0.984314, 0.768627)
@@ -172,31 +175,31 @@ energy = 2.0
 texture = ExtResource("7_jdw5o")
 texture_scale = 2.5
 
-[node name="Handle" type="Sprite2D" parent="TorchGroup/Torch2"]
+[node name="Handle" type="Sprite2D" parent="Node2D/TorchGroup/Torch2"]
 position = Vector2(568, 1266)
 scale = Vector2(0.0900391, 0.1)
 texture = ExtResource("8_57xq1")
 
-[node name="Flame" type="Sprite2D" parent="TorchGroup/Torch2"]
+[node name="Flame" type="Sprite2D" parent="Node2D/TorchGroup/Torch2"]
 position = Vector2(568.2, 1239.5)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("9_w1c1k")
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="TorchGroup/Torch2"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Node2D/TorchGroup/Torch2"]
 root_node = NodePath("../Flame")
 libraries = {
 &"": SubResource("AnimationLibrary_vjssa")
 }
 autoplay = "Flame"
 
-[node name="Sound" type="Node2D" parent="."]
+[node name="Sound" type="Node2D" parent="Node2D"]
 
-[node name="lvl2" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
 stream = ExtResource("10_uikls")
 autoplay = true
 
-[node name="BagLoot" parent="." instance=ExtResource("11_gr680")]
-position = Vector2(577, 1456)
+[node name="BagLoot" parent="Node2D" instance=ExtResource("11_gr680")]
+position = Vector2(575, 1429)
 
-[node name="mygale" parent="." instance=ExtResource("11_6sncs")]
-position = Vector2(3959, 133)
+[node name="mygale" parent="Node2D" instance=ExtResource("11_6sncs")]
+position = Vector2(4674, 156)

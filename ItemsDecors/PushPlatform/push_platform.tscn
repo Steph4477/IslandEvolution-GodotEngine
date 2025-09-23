@@ -10,6 +10,7 @@ size = Vector2(143, 170)
 size = Vector2(161, 131)
 
 [node name="PushPlatform" type="RigidBody2D"]
+z_index = 2
 collision_layer = 0
 mass = 500.0
 sleeping = true

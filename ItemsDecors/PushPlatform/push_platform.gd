@@ -24,12 +24,12 @@ func _on_player_changed(p):
 	# Quand GameState envoie le nouveau player (après respawn)
 	player = p
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# si pas de player, on fait rien
 	if not player:
 		return
 
-	var anim = player.get_node("Anim")
+	var anim = player.get_node("Node2D/Anim")
 
 	# ✅ Si le joueur est dans la zone ET qu’il maintient "push"
 	if pushing and Input.is_action_pressed("push"):
@@ -43,7 +43,7 @@ func _physics_process(delta):
 		collision_layer = 2
 
 # Affiche un popup d’info au joueur
-func show_info_popup(txt: String) -> void:
+func show_info_popup(txt) :
 	var popup = preload("res://ItemsDecors/info_popup.tscn").instantiate()
 	add_child(popup)
 	popup.show_info(txt)

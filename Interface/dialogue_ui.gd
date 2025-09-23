@@ -4,7 +4,7 @@ signal finished
 
 @onready var box  = $Box
 @onready var text = $Box/MarginContainer/Text
-@onready var anim = $Anim 
+@onready var anim = $AnimationPlayer
 
 # Réglages via l’inspecteur
 @export var lines = [
@@ -52,7 +52,7 @@ func _start_line():
 	accum = 0.0
 	writing = true
 	pause_left = 0.0
-	$AnimationPlayer.play("speack")       
+	anim.play("speack")       
 	_render()
 
 func _process(delta):
@@ -68,7 +68,7 @@ func _process(delta):
 			if shown_chars >= full_line.length():
 				shown_chars = full_line.length()
 				writing = false
-				$AnimationPlayer.play("idle")           # ← stop quand la phrase est finie
+				anim.play("idle")           # ← stop quand la phrase est finie
 				pause_left = pause_between_lines
 			_render()
 	elif pause_left > 0.0:

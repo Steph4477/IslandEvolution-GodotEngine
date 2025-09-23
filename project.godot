@@ -136,7 +136,3 @@ pointing/handheld/orientation=1
 2d_physics/layer_5="Friend"
 2d_physics/layer_9="spellP"
 2d_physics/layer_10="box"
-
-[rendering]
-
-renderer/rendering_method="forward_2d"

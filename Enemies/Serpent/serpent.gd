@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var max_hp: int = 400
-@export var speed: int = 200
-@export var attack_range: int = 500
-@export var cooldown: float = 1.5
-@export var damage: int = 200
-@export var patrol_speed: float = 80
-@export var patrol_change_interval: float = 2.0
+@export var max_hp = 400
+@export var speed = 200
+@export var attack_range = 500
+@export var cooldown = 1.5
+@export var damage = 200
+@export var patrol_speed = 80
+@export var patrol_change_interval = 2.0
 
 @onready var health_bar = $HealthBar/ProgressBar
 @onready var muzzle = $FlipNode/Muzzle
@@ -14,27 +14,26 @@ extends CharacterBody2D
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite
 
-const GRAVITY: int = 2000
+const GRAVITY = 2000
 
 var is_patrolling = true
-var is_patrol_paused := false
+var is_patrol_paused = false
 var patrol_direction = Vector2.ZERO
-var can_shoot := true
-var is_attacking := false
-var has_shot := false
-var is_dead := false
-var pv := max_hp
-var player: Node2D
+var can_shoot = true
+var is_attacking = false
+var has_shot = false
+var is_dead = false
+var pv = max_hp
+var player
 var projectile = preload("res://Tir/gazSerpent.tscn")
-var custom_velocity := Vector2.ZERO
+var custom_velocity = Vector2.ZERO
 
-func _ready() -> void:
+func _ready():
 	pv = max_hp
 	find_and_bind_player()
-	timer.timeout.connect(_on_timer_timeout)
 	start_patrol()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	if not is_instance_valid(player) or is_attacking or is_dead:
 		return
 
@@ -85,7 +84,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	custom_velocity = velocity
 
-func change_patrol_direction() -> void:
+func change_patrol_direction():
 	is_patrol_paused = true
 	custom_velocity.x = 0
 	anim.play("idle")
@@ -96,22 +95,22 @@ func change_patrol_direction() -> void:
 	var direction = randf_range(-1.0, 1.0)
 	patrol_direction = Vector2(direction, 0).normalized()
 
-func start_patrol() -> void:
+func start_patrol():
 	change_patrol_direction()
 	timer.wait_time = patrol_change_interval
 	timer.start()
 
-func _on_timer_timeout() -> void:
+func _on_timer_timeout():
 	if is_patrolling:
 		change_patrol_direction()
 
-func apply_gravity(delta: float) -> void:
+func apply_gravity(delta):
 	if not is_on_floor():
 		custom_velocity.y += GRAVITY * delta
 	else:
 		custom_velocity.y = 0
 
-func attack_and_shoot() -> void:
+func attack_and_shoot():
 	can_shoot = false
 	is_attacking = true
 	has_shot = false
@@ -122,7 +121,7 @@ func attack_and_shoot() -> void:
 	shoot_projectile()
 	is_attacking = false
 
-func shoot_projectile() -> void:
+func shoot_projectile():
 	if has_shot:
 		return
 	has_shot = true
@@ -135,14 +134,14 @@ func shoot_projectile() -> void:
 	await get_tree().create_timer(cooldown).timeout
 	can_shoot = true
 
-func on_hit(damage_taken: int) -> void:
+func on_hit(damage_taken):
 	pv -= damage_taken
 	if health_bar:
 		health_bar.max_value = max_hp
 		health_bar.value = pv
 	show_damage_popup(damage_taken)
 
-func show_damage_popup(amount: int) -> void:
+func show_damage_popup(amount):
 	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()
 	add_child(popup)
 	popup.position = Vector2(0, -30)
@@ -150,7 +149,7 @@ func show_damage_popup(amount: int) -> void:
 	if pv <= 0:
 		die()
 
-func die() -> void:
+func die():
 	is_dead = true
 	await get_tree().process_frame
 	anim.play("die")
@@ -166,7 +165,7 @@ func find_and_bind_player():
 		player = gs.player
 		gs.connect("player_updated", Callable(self, "_on_player_changed"))
 
-func _on_player_changed(new_player: Node) -> void:
+func _on_player_changed(new_player):
 	player = new_player
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
