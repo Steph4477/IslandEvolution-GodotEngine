@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0f04s74leebk" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank2.png" id="6_kxkem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh2qs"]
-size = Vector2(151, 41)
+size = Vector2(158, 41)
 
 [sub_resource type="Animation" id="Animation_kxkem"]
 resource_name = "crack"
@@ -164,7 +164,7 @@ texture = ExtResource("3_oavne")
 texture = ExtResource("4_kxkem")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_dh2qs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
