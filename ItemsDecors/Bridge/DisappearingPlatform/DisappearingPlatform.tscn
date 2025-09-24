@@ -1,0 +1,187 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpp35yirigbph"]
+
+[ext_resource type="Script" uid="uid://b6j2hgd4tc4n2" path="res://ItemsDecors/Bridge/DisappearingPlatform/disappearing_platform.gd" id="1_8ex6m"]
+[ext_resource type="Texture2D" uid="uid://bnm4l6hpyyv24" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank_left.png" id="3_oavne"]
+[ext_resource type="Texture2D" uid="uid://bomw3l6kgjevw" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank_right.png" id="4_kxkem"]
+[ext_resource type="Texture2D" uid="uid://cocgllfogwrww" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank1.png" id="5_oavne"]
+[ext_resource type="Texture2D" uid="uid://b0f04s74leebk" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank2.png" id="6_kxkem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh2qs"]
+size = Vector2(151, 41)
+
+[sub_resource type="Animation" id="Animation_kxkem"]
+resource_name = "crack"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_oavne"), ExtResource("6_kxkem")]
+}
+
+[sub_resource type="Animation" id="Animation_jrx3d"]
+resource_name = "disappear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D_Left:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D_Right:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite2D_Left:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.43633232]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite2D_Left:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 150)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sprite2D_Left:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D_Right:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.43633232]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Sprite2D_Right:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 150)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Sprite2D_Right:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_htdie"]
+_data = {
+&"crack": SubResource("Animation_kxkem"),
+&"disappear": SubResource("Animation_jrx3d")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oavne"]
+size = Vector2(157, 56)
+
+[node name="DisappearingPlatform" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_8ex6m")
+
+[node name="Visual" type="Node2D" parent="."]
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+visible = false
+texture = ExtResource("5_oavne")
+
+[node name="Sprite2D_Left" type="Sprite2D" parent="Visual"]
+texture = ExtResource("3_oavne")
+
+[node name="Sprite2D_Right" type="Sprite2D" parent="Visual"]
+texture = ExtResource("4_kxkem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_dh2qs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Visual/Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_htdie")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+visible = false
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_oavne")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

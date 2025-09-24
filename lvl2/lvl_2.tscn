@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=54 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://lvl2/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://csklsid7fjxbo" path="res://Enemies/Rat/rat.tscn" id="16_sdx3j"]
 [ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/graine/seed.tscn" id="17_mnvun"]
 [ext_resource type="PackedScene" uid="uid://8cborn5jckxg" path="res://Effects/SpeedWind/speed_wind.tscn" id="19_2552o"]
+[ext_resource type="PackedScene" uid="uid://dpp35yirigbph" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="20_sdx3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(111.5, 2984.5)
@@ -147,7 +148,7 @@ position = Vector2(-526, 799)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(761, 725)
+position = Vector2(3030, -1741)
 
 [node name="Torchs" type="Node2D" parent="Node2D"]
 light_mask = 0
@@ -346,7 +347,7 @@ z_index = 3
 
 [node name="SpeedWind" parent="Node2D/SpeedWinds" instance=ExtResource("19_2552o")]
 z_index = 3
-position = Vector2(3615, -1510)
+position = Vector2(2420, -2189)
 
 [node name="SpeedWindVertical" parent="Node2D/SpeedWinds" instance=ExtResource("10_2552o")]
 position = Vector2(9036, -1505)
@@ -394,22 +395,16 @@ position = Vector2(6821, 125)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
-[node name="Rat" parent="Node2D/Enemies" instance=ExtResource("16_sdx3j")]
-position = Vector2(3765, -1676.01)
-scale = Vector2(1, 1)
-
-[node name="Rat" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(1392.0012, 2160.997)
-scale = Vector2(1, 1)
+[node name="Rat" type="Node2D" parent="Node2D/Enemies"]
 
 [node name="Rat2" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(-5318, 1480.01)
-rotation = 3.14159
+position = Vector2(4285.0015, 475.98914)
+rotation = 3.1415927
 scale = Vector2(1, -1)
 
-[node name="Rat3" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(832.9983, 959.99835)
-rotation = 3.14159
+[node name="Rat" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+position = Vector2(3734.997, -1206.0095)
+rotation = 3.1415927
 scale = Vector2(1, -1)
 
 [node name="Pygmées" type="Node2D" parent="Node2D/Enemies"]
@@ -532,4 +527,70 @@ position = Vector2(620, 61)
 z_index = 3
 position = Vector2(10156, 861)
 rotation = -0.000533727
-scale = Vector2(2.5000002, 2.5000002)
+scale = Vector2(2.5000007, 2.5000007)
+
+[node name="disappearingPlatform" type="Node2D" parent="Node2D"]
+position = Vector2(3612, -1512)
+
+[node name="DisappearingPlatform" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+
+[node name="DisappearingPlatform2" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(152, 0)
+
+[node name="DisappearingPlatform3" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(306, 0)
+
+[node name="DisappearingPlatform4" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(459, 0)
+
+[node name="DisappearingPlatform5" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(613, 0)
+
+[node name="DisappearingPlatform6" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(766, 0)
+
+[node name="DisappearingPlatform7" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(919, 0)
+
+[node name="DisappearingPlatform8" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(1076, 0)
+
+[node name="DisappearingPlatform9" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(1229, 0)
+
+[node name="DisappearingPlatform10" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(1381, 0)
+
+[node name="DisappearingPlatform11" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(1535, 0)
+
+[node name="DisappearingPlatform12" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(1688, 0)
+
+[node name="DisappearingPlatform13" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(1842, 0)
+
+[node name="DisappearingPlatform14" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(1995, 0)
+
+[node name="DisappearingPlatform15" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(2148, 0)
+
+[node name="DisappearingPlatform16" parent="Node2D/disappearingPlatform" instance=ExtResource("20_sdx3j")]
+z_index = 3
+position = Vector2(2305, -2)

@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cgsy8csn5xuaf" path="res://sounds/porte_temple_fermé.wav" id="4_jvi1g"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(5.875, 217)
+size = Vector2(6.6874995, 18.500015)
 
 [sub_resource type="Animation" id="Animation_26mmp"]
 length = 0.001
@@ -83,7 +83,8 @@ position = Vector2(3, -361)
 texture = ExtResource("3_55pyj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 45)
+position = Vector2(-0.40624967, 144.24997)
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
