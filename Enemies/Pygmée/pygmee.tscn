@@ -179,7 +179,7 @@ _data = {
 size = Vector2(446.75, 223)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8q6o"]
-size = Vector2(30, 38)
+size = Vector2(69, 38)
 
 [node name="Pygmee" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(-1, 1)
@@ -220,7 +220,7 @@ shape = SubResource("RectangleShape2D_jhvfg")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/CacZone"]
-position = Vector2(-57, 4)
+position = Vector2(-76.5, 4)
 shape = SubResource("RectangleShape2D_x8q6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rig"]

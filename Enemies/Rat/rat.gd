@@ -3,177 +3,128 @@ extends CharacterBody2D
 # ========================== RÉGLAGES ==========================
 @export var move_speed = 300.0
 @export var melee_damage = 20
-@export var gravity = 1000.0
-
-# ============================ LOOT ============================
-var loot_lance_scene = preload("res://Loot/lance/lance.tscn")
+@export var gravity = 2000.0
+@export var attack_range = 1000.0   # distance max pour poursuite
+@export var attack_cooldown = 0.6
 
 # ============================ NODES ===========================
 @onready var rig = $Rig
 @onready var anim = $Rig/AnimationPlayer
-@onready var melee_zone = $Rig/MeleeZone
 @onready var cac_zone = $Rig/CacZone
 @onready var health_bar = $HealthBar/ProgressBar
 
 # ============================= ÉTAT ===========================
 var player = null
-var in_melee_active = false
 var in_cac_active = false
 var is_attacking = false
-var can_flip = true
-var facing = 1
 var base_scale_x = 1.0
-
-var max_pv = 200
-var pv = 200
-var hit_locked = false
-var hit_lock_time = 0.20
 var is_dead = false
+var pv = 200
+var max_pv = 200
 
 # ============================ READY ===========================
 func _ready():
 	base_scale_x = abs(rig.scale.x)
 	var gs = get_node("/root/GameState")
 	player = gs.player
-	gs.connect("player_updated", Callable(self, "on_player_changed"))
+	gs.connect("player_updated", Callable(self, "_on_player_changed"))
 
-func on_player_changed(p):
+func _on_player_changed(p):
 	player = p
 
 # ======================= BOUCLE PHYSIQUE ======================
 func _physics_process(delta):
-	if is_dead:
+	if is_dead or not is_instance_valid(player):
 		return
 
-	face_player()
-	
-	# Gravité
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	apply_gravity(delta)
 
-	# Pendant le onhit : fige et n'écrase pas l'anim
-	if hit_locked:
-		velocity.x = 0
-		move_and_slide()
-		return
+	var distance = global_position.distance_to(player.global_position)
 
-
-	# Appels des états
-	in_cac()
-	in_melee()
-
-	# Idle uniquement si aucun état
-	if not in_cac_active and not in_melee_active and not is_attacking:
-		velocity.x = 0
-		move_and_slide()
-
-# ======================== FONCTIONS D'ÉTAT ====================
-func in_cac():
 	if in_cac_active:
-		# Ne pas écraser une anim en cours
-		if is_attacking or hit_locked:
-			return
-		if not is_attacking:
-			cac_attack()
+		cac_attack()
+	elif distance <= attack_range:
+		chase_player()
+	else:
 		velocity.x = 0
-		move_and_slide()
+		if not is_attacking:
+			anim.play("idle")
 
-func in_melee():
-	if in_melee_active:
-		# Ne pas écraser une anim en cours
-		if is_attacking or hit_locked:
-			return
-		var dir_x = sign(player.global_position.x - global_position.x)
-		velocity.x = dir_x * move_speed
-		move_and_slide()
-		anim.play("walk")
-
-# ========================= ORIENTATION ========================
-func face_player():
-	if not can_flip or is_attacking or is_dead:
-		return
-	var dx = player.global_position.x - global_position.x
-	if dx < 0 and facing != -1:
-		facing = -1
-		rig.scale.x = -base_scale_x
-	elif dx > 0 and facing != 1:
-		facing = 1
-		rig.scale.x = base_scale_x
+	move_and_slide()
 
 # ========================= DÉPLACEMENT ========================
-func walk_towards_player():
-	if is_attacking or is_dead:
-		return
-	var dir_x = sign(player.global_position.x - global_position.x)
-	velocity.x = dir_x * move_speed
-	move_and_slide()
-	anim.play("walk")
-
-
-# ========================= CORPS À CORPS ======================
-func cac_attack():
-	# Si le coup tue Moko, on ferme la CacZone tout de suite (évite le "double décès")
-	if player.is_dead:
-		in_cac_active = false
-		return
+func chase_player():
 	if is_attacking:
 		return
 
+	var dx = player.global_position.x - global_position.x
+	var direction_x = 0
+
+	# ✅ Deadzone pour éviter le spam de flip quand Moko est trop proche
+	if dx < -32:
+		direction_x = -1
+	elif dx > 32:
+		direction_x = 1
+	else:
+		direction_x = 0  # trop près → on garde la direction actuelle
+
+	velocity.x = direction_x * move_speed
+
+	# ✅ Flip seulement si on est en dehors de la deadzone
+	if not is_attacking:
+		if direction_x == -1 and rig.scale.x != -base_scale_x:
+			rig.scale.x = -base_scale_x
+		elif direction_x == 1 and rig.scale.x != base_scale_x:
+			rig.scale.x = base_scale_x
+
+	if not is_attacking and direction_x != 0:
+		anim.play("walk")
+	elif not is_attacking:
+		anim.play("idle")
+
+
+# ========================= ATTAQUE ============================
+func cac_attack():
+	if is_attacking or is_dead:
+		return
+	
 	is_attacking = true
-	#anim.play("cac")
-
 	velocity.x = 0
-	move_and_slide()
+	anim.play("cac")
 
-	player.on_hit(melee_damage)
-	await get_tree().create_timer(0.6).timeout
+	# Délai avant d’infliger les dégâts
+	await get_tree().create_timer(0.3).timeout
+	if is_instance_valid(player):
+		player.on_hit(melee_damage)
 
+	# Cooldown avant de réattaquer
+	await get_tree().create_timer(attack_cooldown).timeout
 	is_attacking = false
 
 # ============================ ZONES ===========================
-func _on_melee_zone_body_entered(_body):
-	in_melee_active = true
-	can_flip = false
+func _on_cac_zone_body_entered(body):
+	if body.is_in_group("Player"):
+		in_cac_active = true
 
-func _on_melee_zone_body_exited(_body):
-	in_melee_active = false
-	if not in_cac_active:
-		can_flip = true
+func _on_cac_zone_body_exited(body):
+	if body.is_in_group("Player"):
+		in_cac_active = false
 
-func _on_cac_zone_body_entered(_body):
-	if in_cac_active:
-		return
-	in_cac_active = true
-	can_flip = false
-
-func _on_cac_zone_body_exited(_body):
-	in_cac_active = false
-	# pas de flip tant qu'on est dans la CacZone
-	if in_cac_active:
-		return
+# ========================= GRAVITÉ ============================
+func apply_gravity(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0
 
 # ========================= VIE / DÉGÂTS =======================
 func on_hit(amount):
-	if is_dead or hit_locked:
+	if is_dead:
 		return
-
 	pv -= amount
 	if health_bar:
 		health_bar.max_value = max_pv
 		health_bar.value = pv
-	show_damage_popup(amount)
-
-	hit_locked = true
-	#anim.play("onhit")
-	await get_tree().create_timer(hit_lock_time).timeout
-	hit_locked = false
-
-func show_damage_popup(amount) :
-	var popup_scene := preload("res://ItemsDecors/damage_popup.tscn")
-	var popup: Label = popup_scene.instantiate()
-	health_bar.add_child(popup)
-	popup.show_damage(amount)
-
 	if pv <= 0:
 		die()
 
@@ -182,4 +133,6 @@ func die():
 	if is_dead:
 		return
 	is_dead = true
+	anim.play("die")
+	await get_tree().create_timer(0.5).timeout
 	queue_free()

@@ -146,7 +146,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(597, 784)
+position = Vector2(407, 910)
 
 [node name="Tiles" type="Node2D" parent="Node2D"]
 
@@ -445,14 +445,24 @@ scale = Vector2(1, -1)
 [node name="Rat" type="Node2D" parent="Node2D/Enemies"]
 
 [node name="Rat2" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(4285.0015, 475.98914)
+position = Vector2(5177.0015, 536.9869)
 rotation = 3.1415927
-scale = Vector2(1, -1)
+scale = Vector2(-1, -1)
 
-[node name="Rat" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(3734.997, -1206.0095)
+[node name="Rat3" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+position = Vector2(3804.0024, 909.99036)
 rotation = 3.1415927
-scale = Vector2(1, -1)
+scale = Vector2(-1, -1)
+
+[node name="Rat4" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+position = Vector2(4528.999, -298.01147)
+rotation = 3.1415927
+scale = Vector2(-1, -1)
+
+[node name="Rat5" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+position = Vector2(6214.9995, -298.01575)
+rotation = 3.1415927
+scale = Vector2(-1, -1)
 
 [node name="Pygmées" type="Node2D" parent="Node2D/Enemies"]
 position = Vector2(3828, -218.01)
@@ -471,7 +481,7 @@ scale = Vector2(1, 1)
 
 [node name="Pygmee" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
 z_index = 20
-position = Vector2(-0.000244141, 0)
+position = Vector2(2449.0002, 281.99408)
 scale = Vector2(1, 1)
 
 [node name="Serpents" type="Node2D" parent="Node2D/Enemies"]
@@ -493,15 +503,6 @@ scale = Vector2(0.6, -0.6)
 
 [node name="Serpent4" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(357.997, -1000)
-rotation = 3.14159
-scale = Vector2(0.6, -0.6)
-
-[node name="Serpent6" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
-position = Vector2(-1869, 1024)
-scale = Vector2(-0.6, 0.6)
-
-[node name="Serpent5" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
-position = Vector2(-1290, 672.003)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
