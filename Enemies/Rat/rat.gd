@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 # ========================== RÉGLAGES ==========================
-@export var move_speed = 300.0
-@export var melee_damage = 20
+@export var move_speed = 400.0
+@export var melee_damage = 80
 @export var gravity = 2000.0
-@export var attack_range = 1000.0   # distance max pour poursuite
+@export var attack_range = 800.0   # distance max pour poursuite
 @export var attack_cooldown = 0.6
 
 # ============================ NODES ===========================
@@ -42,9 +42,9 @@ func _physics_process(delta):
 	var distance = global_position.distance_to(player.global_position)
 
 	if in_cac_active:
-		cac_attack()
+		attack()
 	elif distance <= attack_range:
-		chase_player()
+		find_player()
 	else:
 		velocity.x = 0
 		if not is_attacking:
@@ -52,8 +52,16 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+
+# ========================= GRAVITÉ ============================
+func apply_gravity(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0
+
 # ========================= DÉPLACEMENT ========================
-func chase_player():
+func find_player():
 	if is_attacking:
 		return
 
@@ -84,13 +92,13 @@ func chase_player():
 
 
 # ========================= ATTAQUE ============================
-func cac_attack():
+func attack():
 	if is_attacking or is_dead:
 		return
 	
 	is_attacking = true
 	velocity.x = 0
-	anim.play("cac")
+	anim.play("attack")
 
 	# Délai avant d’infliger les dégâts
 	await get_tree().create_timer(0.3).timeout
@@ -110,12 +118,6 @@ func _on_cac_zone_body_exited(body):
 	if body.is_in_group("Player"):
 		in_cac_active = false
 
-# ========================= GRAVITÉ ============================
-func apply_gravity(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	else:
-		velocity.y = 0
 
 # ========================= VIE / DÉGÂTS =======================
 func on_hit(amount):
@@ -134,5 +136,5 @@ func die():
 		return
 	is_dead = true
 	anim.play("die")
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.8).timeout
 	queue_free()

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxxgitsp1x75c" path="res://ItemsDecors/Torche/Torche.tscn" id="6_ochkp"]
 [ext_resource type="PackedScene" uid="uid://b6c1pngk06uxp" path="res://lvl2/Décors/tileMapColoneShadow.tscn" id="7_mnvun"]
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="10_ochkp"]
+[ext_resource type="PackedScene" uid="uid://b45qavoaep4q2" path="res://ItemsDecors/KillZone/killZone.tscn" id="11_0vnxp"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_2ivwu"]
 [ext_resource type="PackedScene" uid="uid://bxg7s54g6pc3h" path="res://lvl2/Décors/porte/Exit.tscn" id="12_vjssa"]
 [ext_resource type="PackedScene" uid="uid://jkvq258v3ett" path="res://ItemsDecors/PushPlatform/push_platform.tscn" id="13_ifea3"]
@@ -48,16 +49,13 @@ size = Vector2(1368.25, 28)
 size = Vector2(1121.5, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2tf"]
-size = Vector2(1284, 51.5)
+size = Vector2(724, 51.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxp1h"]
-size = Vector2(1267, 33)
+size = Vector2(675, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnvun"]
 size = Vector2(858.85, 75.0146)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah614"]
-size = Vector2(2466.083, 50.239433)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dadqh"]
 size = Vector2(763, 20)
@@ -66,7 +64,7 @@ size = Vector2(763, 20)
 size = Vector2(789.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nkff"]
-size = Vector2(1247, 29)
+size = Vector2(687, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8yvr4"]
 size = Vector2(378.5, 32)
@@ -132,7 +130,7 @@ size = Vector2(89, 3345)
 size = Vector2(10430, 131)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8ncv"]
-size = Vector2(115, 2678)
+size = Vector2(121, 278)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bwf5r"]
 
@@ -318,11 +316,11 @@ position = Vector2(1833.25, 1110)
 shape = SubResource("RectangleShape2D_a6f7x")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
-position = Vector2(2370, -967.25)
+position = Vector2(2090, -967.25)
 shape = SubResource("RectangleShape2D_3p2tf")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
-position = Vector2(2374.5, -144.5)
+position = Vector2(2078.5, -144.5)
 shape = SubResource("RectangleShape2D_vxp1h")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
@@ -330,11 +328,6 @@ visible = false
 position = Vector2(11363.7, -2136.44)
 rotation = 1.56791
 shape = SubResource("RectangleShape2D_mnvun")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
-position = Vector2(3029, 236)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_ah614")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
 position = Vector2(485, -563)
@@ -345,7 +338,7 @@ position = Vector2(494.25, -979)
 shape = SubResource("RectangleShape2D_vmwbq")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
-position = Vector2(2351.5, -564.5)
+position = Vector2(2071.5, -564.5)
 shape = SubResource("RectangleShape2D_6nkff")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
@@ -433,8 +426,12 @@ position = Vector2(4927, -1657.5)
 shape = SubResource("RectangleShape2D_lc01g")
 
 [node name="CollisionShape2D32" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
-position = Vector2(5717.5, 433)
+position = Vector2(5714.5, 1633)
 shape = SubResource("RectangleShape2D_d8ncv")
+
+[node name="KillZone" parent="Node2D/Platforms" instance=ExtResource("11_0vnxp")]
+z_index = 20
+position = Vector2(4559.0005, 1274.9999)
 
 [node name="Enemies" type="Node2D" parent="Node2D"]
 z_index = 5
@@ -492,7 +489,7 @@ rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
 [node name="Serpent2" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
-position = Vector2(3776, -767.01)
+position = Vector2(6182.996, -1572.0156)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
@@ -559,7 +556,7 @@ position = Vector2(-1124, -1196)
 position = Vector2(7233, -1417)
 
 [node name="Seed5" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
-position = Vector2(1682, -791)
+position = Vector2(1059, -754)
 
 [node name="Seed6" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 position = Vector2(620, 61)

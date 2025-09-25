@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var disappear_delay := 0.0
+@export var disappear_delay: float = 1.0
 
 @onready var anim_player = $AnimationPlayer
 @onready var collision = $CollisionShape2D
@@ -21,11 +21,8 @@ func _on_detector_body_entered(body: Node2D) -> void:
 		anim_player.play("crack")
 		timer.start()
 
-func _on_timer_timeout():
-	# désactiver la collision pour que Moko tombe
+func _on_timer_timeout() -> void:
 	collision.disabled = true
-	# jouer l’animation de chute
 	anim_player.play("disappear")
 	await anim_player.animation_finished
-
 	queue_free()

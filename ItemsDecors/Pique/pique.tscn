@@ -55,7 +55,7 @@ position = Vector2(-8.71507, -218.527)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemies"]]
-position = Vector2(6.99036, 302.35)
+position = Vector2(0.22934675, 565.204)
 scale = Vector2(1.04679, 1.36292)
 shape = SubResource("2")
 
@@ -66,6 +66,5 @@ texture = ExtResource("1_l2d7g")
 libraries = {
 &"": SubResource("AnimationLibrary_3axfj")
 }
-autoplay = "Harrow"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
