@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wmhfpjd1c3jy"]
+[gd_scene load_steps=19 format=3 uid="uid://wmhfpjd1c3jy"]
 
 [ext_resource type="Script" uid="uid://c2w24rymygghn" path="res://lvl2/lvl_2b.gd" id="1_ribhp"]
 [ext_resource type="PackedScene" uid="uid://c2h3f7cwjc1n5" path="res://lvl2/Décors/tileMap.tscn" id="3_sbfsf"]
@@ -9,16 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://celxtkk1mrp87" path="res://ItemsDecors/Torche/flame.png" id="9_w1c1k"]
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="10_uikls"]
 [ext_resource type="PackedScene" uid="uid://cohmext14ho56" path="res://Enemies/Mygale/mygale.tscn" id="11_6sncs"]
+[ext_resource type="Texture2D" uid="uid://bwuctpqor1aet" path="res://ItemsDecors/lvl2/toile.png" id="11_fyxfs"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_gr680"]
+[ext_resource type="Texture2D" uid="uid://yr42qgeox6c6" path="res://ItemsDecors/lvl2/toile2.png" id="11_sbfsf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
-size = Vector2(125, 4097)
+size = Vector2(152.5, 2876)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djaxt"]
-size = Vector2(143, 3825.75)
+size = Vector2(143, 3061.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(10271, 186.375)
+size = Vector2(7079.5, 186.375)
 
 [sub_resource type="Animation" id="Animation_ochkp"]
 resource_name = "Flame"
@@ -134,6 +136,7 @@ _data = {
 script = ExtResource("1_ribhp")
 
 [node name="Node2D" type="Node2D" parent="."]
+modulate = Color(0.46618086, 0.4661808, 0.4661808, 1)
 position = Vector2(21, 23)
 
 [node name="TileMap" parent="Node2D" instance=ExtResource("3_sbfsf")]
@@ -143,15 +146,19 @@ position = Vector2(-29, 419)
 collision_layer = 2
 
 [node name="Border" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(-61, 604)
+position = Vector2(-74.75, 387)
 shape = SubResource("RectangleShape2D_ekrdk")
 
 [node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(6534, 760.125)
+position = Vector2(5275, 515)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(3485, 1553)
+position = Vector2(3286, 1569)
+shape = SubResource("RectangleShape2D_wsvun")
+
+[node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(3214, -831)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
@@ -159,38 +166,6 @@ position = Vector2(239, 1248)
 
 [node name="Ramp" parent="Node2D" instance=ExtResource("4_dq813")]
 position = Vector2(696, 1428)
-
-[node name="TorchGroup" type="Node2D" parent="Node2D"]
-
-[node name="SlowTorch" parent="Node2D/TorchGroup" instance=ExtResource("6_dntyv")]
-
-[node name="Torch2" type="Node2D" parent="Node2D/TorchGroup"]
-position = Vector2(921, -31)
-
-[node name="PointLight2D" type="PointLight2D" parent="Node2D/TorchGroup/Torch2"]
-position = Vector2(583, 1172)
-scale = Vector2(2.36441, 1.72)
-color = Color(1, 0.537255, 0.984314, 0.768627)
-energy = 2.0
-texture = ExtResource("7_jdw5o")
-texture_scale = 2.5
-
-[node name="Handle" type="Sprite2D" parent="Node2D/TorchGroup/Torch2"]
-position = Vector2(568, 1266)
-scale = Vector2(0.0900391, 0.1)
-texture = ExtResource("8_57xq1")
-
-[node name="Flame" type="Sprite2D" parent="Node2D/TorchGroup/Torch2"]
-position = Vector2(568.2, 1239.5)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("9_w1c1k")
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Node2D/TorchGroup/Torch2"]
-root_node = NodePath("../Flame")
-libraries = {
-&"": SubResource("AnimationLibrary_vjssa")
-}
-autoplay = "Flame"
 
 [node name="Sound" type="Node2D" parent="Node2D"]
 
@@ -202,4 +177,60 @@ autoplay = true
 position = Vector2(575, 1429)
 
 [node name="mygale" parent="Node2D" instance=ExtResource("11_6sncs")]
-position = Vector2(4674, 156)
+z_index = 5
+position = Vector2(4578, 938)
+
+[node name="TorchGroup" type="Node2D" parent="."]
+position = Vector2(21, 23)
+
+[node name="SlowTorch" parent="TorchGroup" instance=ExtResource("6_dntyv")]
+
+[node name="Torch2" type="Node2D" parent="TorchGroup"]
+position = Vector2(921, -31)
+
+[node name="PointLight2D" type="PointLight2D" parent="TorchGroup/Torch2"]
+position = Vector2(583, 1172)
+scale = Vector2(2.36441, 1.72)
+color = Color(1, 0.537255, 0.984314, 0.768627)
+energy = 2.0
+texture = ExtResource("7_jdw5o")
+texture_scale = 2.5
+
+[node name="Handle" type="Sprite2D" parent="TorchGroup/Torch2"]
+position = Vector2(568, 1266)
+scale = Vector2(0.0900391, 0.1)
+texture = ExtResource("8_57xq1")
+
+[node name="Flame" type="Sprite2D" parent="TorchGroup/Torch2"]
+position = Vector2(568.2, 1239.5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_w1c1k")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="TorchGroup/Torch2"]
+root_node = NodePath("../Flame")
+libraries = {
+&"": SubResource("AnimationLibrary_vjssa")
+}
+autoplay = "Flame"
+
+[node name="Toile2" type="Sprite2D" parent="."]
+position = Vector2(910.2499, 1140)
+scale = Vector2(0.35231248, 0.39450002)
+texture = ExtResource("11_sbfsf")
+
+[node name="Toile" type="Sprite2D" parent="."]
+z_index = 50
+position = Vector2(1106.2501, 1198)
+scale = Vector2(0.34581247, 0.39450002)
+texture = ExtResource("11_fyxfs")
+
+[node name="Toile3" type="Sprite2D" parent="."]
+position = Vector2(4227.75, 1130)
+scale = Vector2(0.47231245, 0.39450002)
+texture = ExtResource("11_sbfsf")
+
+[node name="Toile4" type="Sprite2D" parent="."]
+z_index = 50
+position = Vector2(4255.25, 1188)
+scale = Vector2(0.4236875, 0.39450002)
+texture = ExtResource("11_fyxfs")
