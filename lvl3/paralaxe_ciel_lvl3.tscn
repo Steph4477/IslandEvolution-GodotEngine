@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://b10wuhuwjnuav"]
+[gd_scene load_steps=3 format=3 uid="uid://b10wuhuwjnuav"]
 
-[ext_resource type="Script" uid="uid://dxfidt764bcqk" path="res://lvl1/Decors/parallax_layer_ciel.gd" id="1_kvcmu"]
 [ext_resource type="Texture2D" uid="uid://crybqf08ti5l4" path="res://lvl3/Décors/sky.png" id="2_5tben"]
 [ext_resource type="Texture2D" uid="uid://dalnwtv7im3vl" path="res://lvl1/Decors/halo.png" id="3_3e7te"]
 
@@ -12,7 +11,6 @@
 position = Vector2(789, -4319)
 scale = Vector2(0.5, 0.5)
 motion_scale = Vector2(0.1, 0.1)
-script = ExtResource("1_kvcmu")
 
 [node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_ciel"]
 position = Vector2(462, 10024)
