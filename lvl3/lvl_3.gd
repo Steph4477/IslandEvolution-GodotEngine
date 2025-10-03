@@ -12,5 +12,5 @@ func _ready():
 	var gs = get_node("/root/GameState")
 	if gs.player:
 		var cam = gs.player.get_node("Camera2D")
-		cam.limit_top = -250000
+		cam.limit_top = -350000
 		cam.limit_right = 12000   
