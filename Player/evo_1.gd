@@ -42,6 +42,8 @@ var is_hanging = false
 var hang_timer = 0.0
 var can_ramp = false
 var is_ramping = false
+var can_swim = false
+var is_swimming = false
 var ramp_locked = false
 var is_gazed = false
 var is_web = false
@@ -119,6 +121,7 @@ func _physics_process(delta):
 	_update_jump(delta)
 	_move_horizontal()
 	_process_ramp()
+	_process_swim()
 	_process_shoot()
 	_process_clac()
 	_process_heal()
@@ -140,6 +143,16 @@ func _move_horizontal():
 			sprite.scale.x = -abs(sprite.scale.x)
 
 func _update_jump(delta):
+	# En nage : on bloque la gravité MAIS on autorise le saut pour sortir de l'eau
+	if is_swimming:
+		if Input.is_action_just_pressed(INPUT["jump"]):
+			is_swimming = false
+			velocity.y = jump_force   # saut vers le haut
+		else:
+			# pas de chute tant qu'il nage et ne saute pas
+			return
+		# si on a sauté, on laisse la suite gérer normalement la physique
+
 	if climbing_anim != "":
 		return
 
@@ -229,6 +242,21 @@ func _process_ramp():
 		velocity.y = 0
 		var rdir = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
 		velocity.x = rdir * speed * 0.4
+
+@export var swim_speed_x = 150
+@export var swim_speed_y = 110
+
+func _process_swim():
+	if is_swimming:
+		var h = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
+		velocity.x = h * swim_speed_x
+		velocity.y = 0  # verrouille l'axe Y tant qu'il ne saute pas
+
+		if h != 0:
+			if h > 0:
+				sprite.scale.x = abs(sprite.scale.x)
+			else:
+				sprite.scale.x = -abs(sprite.scale.x)
 
 
 # =================================================================================================
@@ -553,7 +581,12 @@ func die():
 func update_animation():
 	if animation_locked or is_dead:
 		return
-
+	
+	if is_swimming:
+		if anim.current_animation != "swim":
+			anim.play("swim")
+		return
+	
 	# 🔒 Ne rien toucher si accroché ou en train de grimper
 	if is_hanging:
 		return
