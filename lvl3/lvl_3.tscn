@@ -27,13 +27,13 @@ size = Vector2(143, 2820.9375)
 size = Vector2(9359.375, 186.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
-size = Vector2(245, 629.25)
+size = Vector2(245, 624.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
-size = Vector2(1630.8125, 640.5)
+size = Vector2(1630.8125, 647.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tc27"]
-size = Vector2(1135.375, 649)
+size = Vector2(1135.375, 652.5)
 
 [node name="lvl3" type="Node2D"]
 script = ExtResource("1_73pra")
@@ -67,7 +67,7 @@ texture = ExtResource("9_n7unt")
 modulate = Color(0.41981313, 0.41981313, 0.4198131, 1)
 z_index = 50
 position = Vector2(-22, 939)
-tile_map_data = PackedByteArray("AAAAABYAAgAGAAEAAABKABYAAgAHAAEAAAAtACMAAgAHAAEAAAAFAH0AAgAAAAMAAAASAHwAAgADAAQAAAAWAH4AAgAAAAMAAAAxAH0AAgAAAAMAAABEAHYAAgAFAAIAAABTAHkAAgAAAAMAAABdAHoAAgAEAAIAAABtAH0AAgAFAAIAAACHAH4AAgAAAAMAAACgAHwAAgACAAIAAAChAHwAAgACAAIAAAC4AH4AAgAHAAMAAADJAHkAAgAEAAIAAADhAHwAAgAHAAMAAADxAHgAAgADAAQAAADxAHkAAgADAAQAAAD3AHoAAgAEAAIAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAABYAAgAGAAEAAABKABYAAgAHAAEAAAAtACMAAgAHAAEAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAAA=")
 tile_set = ExtResource("5_yixkb")
 
 [node name="TileMapLayer1" type="TileMapLayer" parent="DecorsTiles"]
@@ -130,7 +130,7 @@ position = Vector2(4410, -851)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(1802.5, 1463.625)
+position = Vector2(1802.5, 1466.125)
 shape = SubResource("RectangleShape2D_hag10")
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
@@ -147,7 +147,7 @@ stream = ExtResource("4_bgnwh")
 autoplay = true
 
 [node name="BagLoot" parent="Node2D" instance=ExtResource("5_mult3")]
-position = Vector2(1810, 1153)
+position = Vector2(1805.0001, 1166)
 
 [node name="SwimZone" type="Node2D" parent="."]
 script = ExtResource("10_4tc27")
@@ -155,7 +155,7 @@ script = ExtResource("10_4tc27")
 [node name="Area2D" type="Area2D" parent="SwimZone"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwimZone/Area2D"]
-position = Vector2(880.59375, 1522)
+position = Vector2(880.59375, 1518.625)
 shape = SubResource("RectangleShape2D_n7unt")
 
 [node name="SwimZone2" type="Node2D" parent="."]
@@ -165,7 +165,7 @@ script = ExtResource("10_4tc27")
 [node name="Area2D" type="Area2D" parent="SwimZone2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwimZone2/Area2D"]
-position = Vector2(854.6875, 1535)
+position = Vector2(854.6875, 1533.25)
 shape = SubResource("RectangleShape2D_4tc27")
 
 [connection signal="body_entered" from="SwimZone/Area2D" to="SwimZone" method="_on_area_2d_body_entered"]

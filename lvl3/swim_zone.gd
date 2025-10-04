@@ -1,17 +1,14 @@
 extends Node2D
 
+var current = Vector2(-120, 0)  # force du courant
+
 func _on_area_2d_body_entered(body):
-	print("[SwimZone] body_entered:", body.name)
 	if body.is_in_group("Player"):
-		print("[SwimZone] → Player détecté, passage en mode nage")
 		body.is_swimming = true
-	else:
-		print("[SwimZone] → Ce n'est pas le Player")
+		body.water_current = current
 
 func _on_area_2d_body_exited(body):
-	print("[SwimZone] body_exited:", body.name)
+	print("[SwimZone] exited:", body.name)
 	if body.is_in_group("Player"):
-		print("[SwimZone] → Player sorti, retour normal")
 		body.is_swimming = false
-	else:
-		print("[SwimZone] → Ce n'est pas le Player")
+		body.water_current = Vector2.ZERO

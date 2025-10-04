@@ -397,6 +397,23 @@ tracks/0/keys = {
 "values": [ExtResource("36_qh0f6"), ExtResource("38_7clvs"), ExtResource("38_7clvs")]
 }
 
+[sub_resource type="Animation" id="Animation_i0d2o"]
+resource_name = "swim"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("43_y06ei"), ExtResource("44_e2pw6"), ExtResource("45_jaf6r"), ExtResource("46_any7n")]
+}
+
 [sub_resource type="Animation" id="Animation_vbwkl"]
 resource_name = "walk"
 length = 1.7
@@ -446,23 +463,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("39_6qokg"), ExtResource("40_i7max"), ExtResource("41_m2xt8"), ExtResource("42_y06ei")]
-}
-
-[sub_resource type="Animation" id="Animation_i0d2o"]
-resource_name = "swim"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("43_y06ei"), ExtResource("44_e2pw6"), ExtResource("45_jaf6r"), ExtResource("46_any7n")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
