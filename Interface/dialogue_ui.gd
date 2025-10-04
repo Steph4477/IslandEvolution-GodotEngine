@@ -58,7 +58,7 @@ func _start_line():
 func _process(delta):
 	if not box.visible:
 		return
-
+	
 	if writing:
 		accum += delta
 		var step = int(accum * chars_per_sec)
@@ -86,4 +86,3 @@ func _end_dialogue():
 		visible = false
 	set_process(false)
 	emit_signal("finished")
-	

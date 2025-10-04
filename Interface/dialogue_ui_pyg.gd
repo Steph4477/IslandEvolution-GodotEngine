@@ -4,7 +4,6 @@ signal finished
 
 @onready var box  = $Box
 @onready var text = $Box/MarginContainer/Text
-@onready var anim = $Anim 
 
 # Réglages via l’inspecteur
 @export var lines = [

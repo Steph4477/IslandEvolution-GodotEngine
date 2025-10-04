@@ -21,11 +21,10 @@ var frozen = false
 var stone_coco = false
 var pv = max_hp
 var player
-
 var DeathEffect = preload("res://Effects/enemy_death_particles.tscn") 
-var BaveFlac = preload("res://Loot/bave_flaque_static.tscn")
 var projectile = preload("res://Tir/toile.tscn")
 var ToilePlafond = preload("res://Effects/plafonds.tscn")
+var ramp_loot_scene = preload("res://Loot/ramp.tscn")
 
 func _ready():
 	while scene_camera == null:
@@ -35,31 +34,31 @@ func _ready():
 	pv = max_hp
 	find_and_bind_player()
 	anim_sprite.frame_changed.connect(shoot_projectile)
-
+	
 	# Phase d'apparition suspendue
 	await play_plafond_intro()
 
 func _physics_process(_delta):
 	if not is_instance_valid(player) or is_attacking:
 		return
-
+	
 	apply_gravity(_delta)
-
+	
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction.x * speed
-
+	
 	anim_sprite.flip_h = direction.x > 0
 	$FlipNode.scale.x = -1 if anim_sprite.flip_h else 1
-
+	
 	anim_sprite.play("walk" if velocity.x != 0 else "idle")
-
+	
 	var target = player.get_node("TurnAxis").global_position
 	var distance = global_position.distance_to(target)
-
+	
 	if distance < attack_range and can_shoot:
 		velocity.x = 0
 		await attack_and_shoot()
-
+		
 	move_and_slide()
 
 func apply_gravity(delta):
@@ -96,11 +95,11 @@ func attack_and_shoot():
 	is_attacking = true
 	has_shot = false
 	anim_sprite.play("attaque")
-
+	
 	var frames = anim_sprite.sprite_frames.get_frame_count("attaque")
 	var anim_speed = anim_sprite.sprite_frames.get_animation_speed("attaque")
 	var anim_duration = frames / anim_speed
-
+	
 	await get_tree().create_timer(anim_duration).timeout
 	is_attacking = false
 
@@ -108,7 +107,7 @@ func shoot_projectile():
 	if anim_sprite.animation == "attaque":
 		var current_frame = anim_sprite.frame
 		var total_frames = anim_sprite.sprite_frames.get_frame_count("attaque")
-
+		
 		if current_frame == total_frames - 1 and not has_shot:
 			has_shot = true
 			var instance = projectile.instantiate()
@@ -128,7 +127,7 @@ func on_hit(damage_taken):
 func show_damage_popup(amount):
 	var popup = preload("res://ItemsDecors/damage_popup.tscn").instantiate()
 	add_child(popup)
-	popup.position = Vector2(0, -30)
+	popup.position = Vector2(0, -500)
 	popup.show_damage(amount)
 	if pv <= 0:
 		die()
@@ -136,70 +135,20 @@ func show_damage_popup(amount):
 func die():
 	visible = false
 	set_physics_process(false)
-
+	
 	var particles = DeathEffect.instantiate()
 	particles.global_position = global_position
 	get_parent().add_child(particles)
 
 	var cpu_particles = particles.get_node("CPUParticles2D")
 	cpu_particles.emitting = true
-
-	await wait_for_particles_to_finish(cpu_particles)
-
-	var bave = BaveFlac.instantiate()
-	bave.global_position = global_position + Vector2(0, 10)
-	get_tree().current_scene.add_child(bave)
-
+	
+	# lache loot pour ramper 
+	var loot = ramp_loot_scene.instantiate()
+	loot.global_position = global_position 
+	get_parent().add_child(loot)
+	
 	queue_free()
-
-func wait_for_particles_to_finish(p):
-	while p.emitting:
-		await get_tree().process_frame
-
-func stone():
-	if stone_coco:
-		return
-	stone_coco = true
-	set_physics_process(false)
-	timer.stop()
-	anim_sprite.play("stone")
-
-	var frames = anim_sprite.sprite_frames.get_frame_count("stone")
-	var anim_speed = anim_sprite.sprite_frames.get_animation_speed("stone")
-	var anim_duration = frames / anim_speed
-
-	await get_tree().create_timer(anim_duration).timeout
-	set_physics_process(true)
-	timer.start()
-	stone_coco = false
-
-func freeze():
-	if frozen:
-		return
-	frozen = true
-	set_physics_process(false)
-	timer.stop()
-	anim_sprite.play("slide")
-
-	var frames = anim_sprite.sprite_frames.get_frame_count("slide")
-	var anim_speed = anim_sprite.sprite_frames.get_animation_speed("slide")
-	var anim_duration = frames / anim_speed
-
-	var direction = -sign(velocity.x)
-	if direction == 0:
-		direction = -1
-	var slide_distance = 100.0
-	var slide_speed = slide_distance / anim_duration
-	var elapsed = 0.0
-	while elapsed < anim_duration:
-		var delta = get_process_delta_time()
-		position.x += direction * slide_speed * delta
-		await get_tree().process_frame
-		elapsed += delta
-
-	set_physics_process(true)
-	timer.start()
-	frozen = false
 
 func find_and_bind_player():
 	var gs = get_node_or_null("/root/GameState")

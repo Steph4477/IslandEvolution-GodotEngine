@@ -1,9 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgqac2t0stpjh"]
+[gd_scene load_steps=2 format=3 uid="uid://swmol5435jt3"]
 
 [ext_resource type="Texture2D" uid="uid://qtvktejbnymm" path="res://Effects/scormard_particles.png" id="1_geybv"]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(1055, 537)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false

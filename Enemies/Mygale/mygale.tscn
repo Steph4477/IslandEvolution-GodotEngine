@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cohmext14ho56"]
+[gd_scene load_steps=12 format=3 uid="uid://cohmext14ho56"]
 
 [ext_resource type="Script" uid="uid://jojs3i2towy0" path="res://Enemies/Mygale/mygale.gd" id="1_g1fhx"]
 [ext_resource type="Texture2D" uid="uid://bsb0wrxey2cyx" path="res://Enemies/Mygale/attaque3.png" id="2_mvlt6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0tmq6lm52vbd" path="res://Enemies/Mygale/idle.png" id="3_mvlt6"]
 [ext_resource type="Texture2D" uid="uid://c2sbjy6g0r1jn" path="res://Enemies/Mygale/walk1.png" id="4_sxn7g"]
 [ext_resource type="Texture2D" uid="uid://xf54yrc08rqp" path="res://Enemies/Mygale/walk2.png" id="5_g1fhx"]
+[ext_resource type="Texture2D" uid="uid://qtvktejbnymm" path="res://Effects/scormard_particles.png" id="8_mvlt6"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/HealthBar.tscn" id="9_kg14j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q0aj"]
@@ -82,7 +83,7 @@ shape = SubResource("RectangleShape2D_4q0aj")
 position = Vector2(-20, -26)
 
 [node name="Muzzle" type="Marker2D" parent="FlipNode"]
-position = Vector2(-139, 51)
+position = Vector2(-166, -14)
 rotation = 0.785398
 
 [node name="Timer" type="Timer" parent="."]
@@ -98,12 +99,26 @@ shape = SubResource("CircleShape2D_g1fhx")
 position = Vector2(-11, -32)
 scale = Vector2(0.6, 0.636)
 sprite_frames = SubResource("1")
-animation = &"attaque"
-frame = 1
-frame_progress = 0.786881
+animation = &"slide"
 
 [node name="HealthBar" parent="." instance=ExtResource("9_kg14j")]
 position = Vector2(-107, -185)
 scale = Vector2(1.84, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-11, -42)
+emitting = false
+amount = 50
+texture = ExtResource("8_mvlt6")
+lifetime = 0.5
+one_shot = true
+lifetime_randomness = 1.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+damping_min = 20.0
+damping_max = 30.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
