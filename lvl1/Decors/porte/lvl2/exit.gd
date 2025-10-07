@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var next_scene_path: String = "res://lvl2/lvl2.tscn"
+@export var next_scene_path: String = "res://lvl2/lvl_2.tscn"
 
 var is_unlocked = false
 var already_faded = false

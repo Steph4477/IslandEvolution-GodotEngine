@@ -92,7 +92,7 @@ position = Vector2(191, 1141)
 position = Vector2(3329, 1040)
 
 [node name="ParalaxeCiel" parent="Background" instance=ExtResource("10_nklpm")]
-position = Vector2(985, -1761)
+position = Vector2(1173, -1770)
 scale = Vector2(3.28, 1)
 
 [node name="SunLight2D" type="DirectionalLight2D" parent="Background"]
