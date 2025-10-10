@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://wmhfpjd1c3jy"]
+[gd_scene load_steps=25 format=3 uid="uid://wmhfpjd1c3jy"]
 
 [ext_resource type="Script" uid="uid://c2w24rymygghn" path="res://lvl2/lvl_2b.gd" id="1_ribhp"]
 [ext_resource type="PackedScene" uid="uid://tagnybpxlmi" path="res://lvl1/Decors/decor.tscn" id="2_fyxfs"]
@@ -11,10 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bfwphcgvb8stw" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="8_dntyv"]
 [ext_resource type="Texture2D" uid="uid://celxtkk1mrp87" path="res://ItemsDecors/Torche/flame.png" id="9_w1c1k"]
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="10_uikls"]
+[ext_resource type="PackedScene" uid="uid://cohmext14ho56" path="res://Enemies/Mygale/mygale.tscn" id="11_6sncs"]
 [ext_resource type="Texture2D" uid="uid://bwuctpqor1aet" path="res://ItemsDecors/lvl2/toile.png" id="11_fyxfs"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/sac/Bag_loot.tscn" id="11_gr680"]
 [ext_resource type="Texture2D" uid="uid://yr42qgeox6c6" path="res://ItemsDecors/lvl2/toile2.png" id="11_sbfsf"]
 [ext_resource type="PackedScene" uid="uid://bu2ct8a57pel" path="res://lvl2/Lvl_2b/exit.tscn" id="15_jdw5o"]
+[ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="17_jdw5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -23,7 +25,7 @@ size = Vector2(152.5, 2876)
 size = Vector2(196, 3061.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(7390.1875, 186.375)
+size = Vector2(5972, 186.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57xq1"]
 size = Vector2(494, 97)
@@ -277,11 +279,11 @@ position = Vector2(16879, 207)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(2177.9063, 1557)
+position = Vector2(2807, 1557)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(7845.8125, -831)
+position = Vector2(5686.453, -831)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform"]
@@ -361,3 +363,10 @@ texture = ExtResource("11_fyxfs")
 [node name="Exit" parent="." instance=ExtResource("15_jdw5o")]
 position = Vector2(5953.9995, 1362)
 scale = Vector2(4.6000004, 0.8)
+
+[node name="mygale" parent="." instance=ExtResource("11_6sncs")]
+position = Vector2(3859, -662)
+speed = 150
+
+[node name="Toucan" parent="." instance=ExtResource("17_jdw5o")]
+position = Vector2(7907, -1048)
