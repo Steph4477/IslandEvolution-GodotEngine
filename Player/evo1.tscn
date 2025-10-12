@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=75 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/evo_1.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://2ymynqarqqhp" path="res://Player/Sprite/onhit/1.png" id="2_2paov"]
@@ -492,7 +492,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
-size = Vector2(256.66666, 263.00238)
+size = Vector2(256.66666, 284.279)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y06ei"]
+size = Vector2(253.33334, 152.48228)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj58r"]
 radius = 23.086792
@@ -517,10 +520,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_p7kcq")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(124.5, 97.08334)
+[node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]
+position = Vector2(124.5, 94.083336)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_j3qaj")
+
+[node name="ColRamp" type="CollisionShape2D" parent="." groups=["Player"]]
+position = Vector2(124, 111.5)
+scale = Vector2(0.3, 0.282)
+shape = SubResource("RectangleShape2D_y06ei")
+disabled = true
 
 [node name="TurnAxis" type="Marker2D" parent="."]
 position = Vector2(163.333, 70)

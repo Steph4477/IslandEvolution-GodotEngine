@@ -228,8 +228,12 @@ func process_ramp():
 		
 		if is_ramping:
 			show_info_popup("🧎 Rampe activée !")
+			$ColStand.disabled = true
+			$ColRamp.disabled = false
 		else:
 			show_info_popup("🚶 Rampe désactivée !")
+			$ColStand.disabled = false
+			$ColRamp.disabled = true
 		
 		await get_tree().create_timer(0.2).timeout
 		ramp_locked = false

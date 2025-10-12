@@ -65,6 +65,7 @@ animations = [{
 }]
 
 [node name="mygale" type="CharacterBody2D" groups=["Enemies"]]
+z_index = 5
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_g1fhx")

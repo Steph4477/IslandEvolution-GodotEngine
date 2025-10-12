@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-@export var max_hp = 400
-@export var speed = 200
+@export var max_hp = 300
+@export var speed = 70
 @export var attack_range = 1000
-@export var cooldown = 1.5
-@export var damage = 200
+@export var cooldown = 2
+@export var damage = 50
 
 @onready var health_bar = $HealthBar/ProgressBar
 @onready var anim_sprite = $AnimatedSprite
