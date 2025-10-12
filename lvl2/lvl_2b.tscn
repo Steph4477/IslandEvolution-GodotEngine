@@ -19,10 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bqc5xixxrivsr" path="res://lvl2/Lvl_2b/exit/z-index0.png" id="20_4s17o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
-size = Vector2(152.5, 2225)
+size = Vector2(152.5, 1491)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uikls"]
-size = Vector2(134, 4229)
+size = Vector2(134, 3527)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djaxt"]
 size = Vector2(196, 3061.875)
@@ -37,7 +37,7 @@ size = Vector2(7305, 108)
 size = Vector2(490, 48.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1c1k"]
-size = Vector2(182.5, 1936)
+size = Vector2(182.5, 1240)
 
 [node name="lvl2b" type="Node2D"]
 script = ExtResource("1_ribhp")
@@ -72,11 +72,11 @@ position = Vector2(3878, 609)
 collision_layer = 2
 
 [node name="Border" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(-74.75, 555.5)
+position = Vector2(-74.75, 922.5)
 shape = SubResource("RectangleShape2D_ekrdk")
 
 [node name="Border5" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(7087, 1562.5)
+position = Vector2(7087, 1913.5)
 shape = SubResource("RectangleShape2D_uikls")
 
 [node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
@@ -88,7 +88,7 @@ position = Vector2(1735, 1564)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(3502.5, -485)
+position = Vector2(3482, 233)
 shape = SubResource("RectangleShape2D_gr680")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform"]
@@ -100,7 +100,7 @@ position = Vector2(6815, 1907)
 shape = SubResource("RectangleShape2D_57xq1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(2843, 435)
+position = Vector2(2843, 783)
 shape = SubResource("RectangleShape2D_w1c1k")
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
@@ -216,7 +216,7 @@ texture = ExtResource("7_sbfsf")
 
 [node name="ExitTempleTrunk" type="Node2D" parent="."]
 z_index = 3
-position = Vector2(837.99994, 19)
+position = Vector2(836.99994, 32.999996)
 rotation = -0.008726646
 scale = Vector2(0.4, 0.4)
 
