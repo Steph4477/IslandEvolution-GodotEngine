@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://skt7pf4qgqru"]
 
-[ext_resource type="Script" uid="uid://cn4njet10v7wo" path="res://Loot/cocotier_loot.gd" id="1_52bb4"]
-[ext_resource type="Texture2D" uid="uid://csnhymgnb4h52" path="res://Loot/CocotierGrappe.png" id="2_52bb4"]
+[ext_resource type="Script" uid="uid://cn4njet10v7wo" path="res://Loot/coco/cocotier_loot.gd" id="1_52bb4"]
+[ext_resource type="Texture2D" uid="uid://kcobjjpvblk3" path="res://Loot/coco/CocoGrappe.png" id="2_52bb4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
 radius = 3.47464
@@ -45,7 +45,6 @@ _data = {
 }
 
 [node name="CocoLoot" type="Node2D"]
-position = Vector2(-2, 0)
 script = ExtResource("1_52bb4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

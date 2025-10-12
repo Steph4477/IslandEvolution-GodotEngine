@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://do6vj6xmbp01c" path="res://Interface/gamePad/ramp_enfonce.png" id="15_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://b8wdslrwg00xo" path="res://Interface/gamePad/cooldown_popo2.png" id="16_b0qj5"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Hud/health_bar.gd" id="19_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://smjqi2obreu1" path="res://Loot/vie.png" id="22_lwpkd"]
+[ext_resource type="Texture2D" uid="uid://d1sab8mb4xrdf" path="res://Loot/vie.png" id="22_lwpkd"]
 [ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/barre de vie/bar_under.png" id="22_xl2wx"]
 [ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/barre de vie/bar_fill2.png" id="23_u63cs"]
 

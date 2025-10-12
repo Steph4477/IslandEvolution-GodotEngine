@@ -51,9 +51,9 @@ func _ready():
 
 	# Premier chargement
 	await get_tree().process_frame
-	#await load_level("res://Menu/lancement_lvl1/menu_lvl1.tscn")
+	await load_level("res://Menu/lancement_lvl1/menu_lvl1.tscn")
 	#await load_level("res://lvl2/lvl_2.tscn")
-	await load_level("res://lvl2/lvl_2b.tscn")
+	#await load_level("res://lvl2/lvl_2b.tscn")
 	#await load_level("res://lvl3/lvl_3.tscn")
 
 func set_player(p):
@@ -128,6 +128,15 @@ func lose_life():
 		hud.update_lives_display(lives)
 		reinitialise()
 		request_reload_after_delay(0.5)
+
+# --- Gain de vie via loot ---
+func gain_life():
+	if lives < max_lives:
+		lives += 1
+		hud.update_lives_display(lives)
+		hud.show_info_popup("❤️ +1 vie (" + str(lives) + "/" + str(max_lives) + ")")
+	else:
+		hud.show_info_popup("❤️ Vies déjà au maximum (" + str(max_lives) + ")")
 
 func is_game_over():
 	return lives <= 0
