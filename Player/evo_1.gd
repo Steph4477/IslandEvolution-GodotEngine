@@ -677,8 +677,6 @@ func show_info_popup(txt):
 	var popup = get_tree().get_first_node_in_group("info_overlay_group")
 	if popup == null:
 		popup = preload("res://ItemsDecors/info_popup.tscn").instantiate()
-		# Tu peux aussi faire: get_tree().current_scene.add_child(popup)
-		# CanvasLayer s’affiche au-dessus, même si on l’attache au Player
 		add_child(popup)
 	popup.show_info(txt)
 

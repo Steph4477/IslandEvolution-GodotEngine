@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dalnwtv7im3vl" path="res://lvl1/Decors/halo.png" id="3_pklm8"]
 
 [node name="ParalaxeCiel" type="Node2D"]
+modulate = Color(0.7385896, 0.7385896, 0.7385896, 1)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

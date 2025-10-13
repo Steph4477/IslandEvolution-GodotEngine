@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://wmhfpjd1c3jy"]
+[gd_scene load_steps=26 format=3 uid="uid://wmhfpjd1c3jy"]
 
 [ext_resource type="Script" uid="uid://c2w24rymygghn" path="res://lvl2/lvl_2b.gd" id="1_ribhp"]
 [ext_resource type="PackedScene" uid="uid://tagnybpxlmi" path="res://lvl1/Decors/decor.tscn" id="2_fyxfs"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://yr42qgeox6c6" path="res://ItemsDecors/lvl2/toile2.png" id="11_sbfsf"]
 [ext_resource type="PackedScene" uid="uid://bu2ct8a57pel" path="res://lvl2/Lvl_2b/exit.tscn" id="15_jdw5o"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="17_jdw5o"]
+[ext_resource type="PackedScene" uid="uid://bcs46og1xw5xu" path="res://Loot/life/life_loot.tscn" id="18_57xq1"]
 [ext_resource type="Texture2D" uid="uid://buwotkxelgpra" path="res://lvl2/Lvl_2b/exit/z-index10.png" id="18_uikls"]
 [ext_resource type="Texture2D" uid="uid://f8myd6e04x3i" path="res://lvl2/Lvl_2b/exit/halo_z-index10.png" id="19_gr680"]
 [ext_resource type="Texture2D" uid="uid://bqc5xixxrivsr" path="res://lvl2/Lvl_2b/exit/z-index0.png" id="20_4s17o"]
@@ -25,7 +26,7 @@ size = Vector2(152.5, 1491)
 size = Vector2(134, 3527)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djaxt"]
-size = Vector2(196, 3061.875)
+size = Vector2(196, 1205.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
 size = Vector2(3814, 186.375)
@@ -50,6 +51,7 @@ position = Vector2(-65, -1453)
 position = Vector2(8313, 1319)
 
 [node name="ParalaxeCiel" parent="Node2D/Background" instance=ExtResource("2_fyxfs")]
+modulate = Color(0.3791798, 0.3791798, 0.37917978, 1)
 position = Vector2(14170, -8524)
 scale = Vector2(3.28, 1)
 
@@ -65,8 +67,110 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 4.0
 
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Background"]
+
 [node name="TileMap" parent="Node2D" instance=ExtResource("3_sbfsf")]
 position = Vector2(3878, 609)
+
+[node name="Bridge" type="Node2D" parent="Node2D"]
+modulate = Color(0.5449743, 0.54497427, 0.54497427, 1)
+position = Vector2(3959.0002, 1906)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Ropes" type="Sprite2D" parent="Node2D/Bridge"]
+modulate = Color(0.39688927, 0.39688927, 0.39688924, 1)
+z_index = 5
+position = Vector2(1387.3484, 510.72424)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("8_dntyv")
+
+[node name="CliffL" type="Sprite2D" parent="Node2D/Bridge"]
+position = Vector2(-506, 671)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("7_sbfsf")
+
+[node name="CliffR" type="Sprite2D" parent="Node2D/Bridge"]
+position = Vector2(2979.9998, 619)
+rotation = -3.1415925
+scale = Vector2(0.99999994, -0.99999994)
+texture = ExtResource("7_sbfsf")
+
+[node name="DisappearingPlatform20" type="Node2D" parent="Node2D/Bridge"]
+
+[node name="DisappearingPlatform18" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(-155, 0)
+
+[node name="DisappearingPlatform" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+
+[node name="DisappearingPlatform2" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(152.00024, 0)
+
+[node name="DisappearingPlatform3" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(306, 0.00012207031)
+
+[node name="DisappearingPlatform4" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(459.00024, 0)
+
+[node name="DisappearingPlatform5" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(612.99976, 0.00012207031)
+
+[node name="DisappearingPlatform6" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(766.00024, -0.00012207031)
+
+[node name="DisappearingPlatform7" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(919.00024, 0)
+
+[node name="DisappearingPlatform8" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(1076.0002, 0)
+
+[node name="DisappearingPlatform9" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(1229.0002, 0.00012207031)
+
+[node name="DisappearingPlatform10" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(1381.0002, 0.00012207031)
+
+[node name="DisappearingPlatform11" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(1535.0002, 0)
+
+[node name="DisappearingPlatform12" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(1688.0002, 0.00012207031)
+
+[node name="DisappearingPlatform13" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(1842.0002, 0.00012207031)
+
+[node name="DisappearingPlatform14" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(1995.0002, -0.00012207031)
+
+[node name="DisappearingPlatform15" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(2148.0002, 0)
+
+[node name="DisappearingPlatform16" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(2305.0002, -1.9998779)
+
+[node name="DisappearingPlatform17" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(2457.0002, -2.000122)
+
+[node name="DisappearingPlatform19" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+z_index = 3
+position = Vector2(2609.0002, -2)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 collision_layer = 2
@@ -80,7 +184,7 @@ position = Vector2(7087, 1913.5)
 shape = SubResource("RectangleShape2D_uikls")
 
 [node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(16879, 207)
+position = Vector2(6916, 2520.0313)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
@@ -104,7 +208,7 @@ position = Vector2(2843, 783)
 shape = SubResource("RectangleShape2D_w1c1k")
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
-position = Vector2(239, 1248)
+position = Vector2(230, 1248)
 
 [node name="Sound" type="Node2D" parent="Node2D"]
 
@@ -115,104 +219,6 @@ autoplay = true
 [node name="BagLoot" parent="Node2D" instance=ExtResource("11_gr680")]
 z_index = 25
 position = Vector2(582, 1435)
-
-[node name="Bridge" type="Node2D" parent="."]
-modulate = Color(0.5449743, 0.54497427, 0.54497427, 1)
-position = Vector2(3894.0002, 453)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="DisappearingPlatform20" type="Node2D" parent="Bridge"]
-
-[node name="DisappearingPlatform18" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(-155, 0)
-
-[node name="DisappearingPlatform" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-
-[node name="DisappearingPlatform2" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(152.00024, 0)
-
-[node name="DisappearingPlatform3" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(306, 0.00012207031)
-
-[node name="DisappearingPlatform4" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(459.00024, 0)
-
-[node name="DisappearingPlatform5" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(612.99976, 0.00012207031)
-
-[node name="DisappearingPlatform6" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(766.00024, -0.00012207031)
-
-[node name="DisappearingPlatform7" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(919.00024, 0)
-
-[node name="DisappearingPlatform8" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(1076.0002, 0)
-
-[node name="DisappearingPlatform9" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(1229.0002, 0.00012207031)
-
-[node name="DisappearingPlatform10" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(1381.0002, 0.00012207031)
-
-[node name="DisappearingPlatform11" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(1535.0002, 0)
-
-[node name="DisappearingPlatform12" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(1688.0002, 0.00012207031)
-
-[node name="DisappearingPlatform13" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(1842.0002, 0.00012207031)
-
-[node name="DisappearingPlatform14" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(1995.0002, -0.00012207031)
-
-[node name="DisappearingPlatform15" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(2148.0002, 0)
-
-[node name="DisappearingPlatform16" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(2305.0002, -1.9998779)
-
-[node name="DisappearingPlatform17" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(2457.0002, -2.000122)
-
-[node name="DisappearingPlatform19" parent="Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
-z_index = 3
-position = Vector2(2609.0002, -2)
-
-[node name="Ropes" type="Sprite2D" parent="Bridge"]
-modulate = Color(0.39688927, 0.39688927, 0.39688924, 1)
-z_index = 5
-position = Vector2(1387.3484, 510.72424)
-texture = ExtResource("8_dntyv")
-
-[node name="CliffL" type="Sprite2D" parent="Bridge"]
-position = Vector2(-506, 671)
-texture = ExtResource("7_sbfsf")
-
-[node name="CliffR" type="Sprite2D" parent="Bridge"]
-position = Vector2(2980, 619)
-rotation = 3.1415927
-scale = Vector2(1, -1)
-texture = ExtResource("7_sbfsf")
 
 [node name="ExitTempleTrunk" type="Node2D" parent="."]
 z_index = 3
@@ -276,3 +282,9 @@ scale = Vector2(4.6000004, 0.8)
 
 [node name="Toucan" parent="." instance=ExtResource("17_jdw5o")]
 position = Vector2(5140, -1012)
+
+[node name="LifeLoot" parent="." instance=ExtResource("18_57xq1")]
+modulate = Color(0.5106012, 0.5106013, 0.5106012, 1)
+z_index = 10
+position = Vector2(6684, 408)
+scale = Vector2(0.15, 0.15)
