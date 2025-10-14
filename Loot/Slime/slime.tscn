@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2ewbqksuwrs6"]
+[gd_scene load_steps=7 format=3 uid="uid://c2ewbqksuwrs6"]
 
 [ext_resource type="Script" uid="uid://2uk58jasd8va" path="res://Loot/Slime/slime.gd" id="1_le1fs"]
-[ext_resource type="Texture2D" path="res://Loot/bave_applatie.png" id="2_le1fs"]
-[ext_resource type="Texture2D" path="res://Loot/bave.png.png" id="2_pcalt"]
+[ext_resource type="Texture2D" uid="uid://priohcirl1hv" path="res://Enemies/Tarantula/Effects/slim_bubble.png" id="2_pcalt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcalt"]
 size = Vector2(322.484, 26.2086)
@@ -49,7 +48,7 @@ collision_layer = 8
 collision_mask = 3
 contact_monitor = true
 script = ExtResource("1_le1fs")
-flaque_texture = ExtResource("2_le1fs")
+flaque_texture = ExtResource("2_pcalt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.00003, 1)

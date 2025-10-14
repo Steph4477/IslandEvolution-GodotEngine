@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0tmq6lm52vbd" path="res://Enemies/Tarantula/idle.png" id="3_mvlt6"]
 [ext_resource type="Texture2D" uid="uid://c2sbjy6g0r1jn" path="res://Enemies/Tarantula/walk1.png" id="4_sxn7g"]
 [ext_resource type="Texture2D" uid="uid://xf54yrc08rqp" path="res://Enemies/Tarantula/walk2.png" id="5_g1fhx"]
-[ext_resource type="Texture2D" uid="uid://qtvktejbnymm" path="res://Effects/Tarantula/scormard_particles.png" id="8_mvlt6"]
+[ext_resource type="Texture2D" uid="uid://qtvktejbnymm" path="res://Enemies/Tarantula/Effects/particles.png" id="8_mvlt6"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="9_kg14j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q0aj"]

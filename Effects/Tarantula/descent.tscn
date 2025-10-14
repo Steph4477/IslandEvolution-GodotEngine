@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://3wuwvy2qqjp"]
 
-[ext_resource type="Script" uid="uid://do6fsiib65a4p" path="res://Effects/Tarantula/plafonds.gd" id="1_pyt7t"]
-[ext_resource type="Texture2D" uid="uid://bbwxcx4628w8p" path="res://Effects/Tarantula/ToilePlafond.png" id="2_jjo8r"]
-[ext_resource type="Texture2D" uid="uid://ducmukgr06rvh" path="res://Effects/Tarantula/descent_web.png" id="3_6xf1m"]
-[ext_resource type="Texture2D" uid="uid://dom864ke1iwgm" path="res://Effects/Tarantula/descent_tarantula.png" id="4_im1s2"]
+[ext_resource type="Script" uid="uid://do6fsiib65a4p" path="res://Enemies/Tarantula/Effects/descent.gd" id="1_pyt7t"]
+[ext_resource type="Texture2D" uid="uid://bbwxcx4628w8p" path="res://Enemies/Tarantula/Effects/glued_web.png" id="2_jjo8r"]
+[ext_resource type="Texture2D" uid="uid://ducmukgr06rvh" path="res://Enemies/Tarantula/Effects/descent_web.png" id="3_6xf1m"]
+[ext_resource type="Texture2D" uid="uid://dom864ke1iwgm" path="res://Enemies/Tarantula/Effects/descent_tarantula.png" id="4_im1s2"]
 
 [sub_resource type="Animation" id="Animation_jjo8r"]
 length = 0.001
