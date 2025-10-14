@@ -21,9 +21,9 @@ var frozen = false
 var stone_coco = false
 var pv = max_hp
 var player
-var DeathEffect = preload("res://Effects/Tarantula/enemy_death_particles.tscn") 
+var DeathEffect = preload("res://Enemies/Tarantula/effects/enemy_death_particles.tscn") 
 var projectile = preload("res://Shoot/Enemies/Web/web.tscn")
-var ToilePlafond = preload("res://Effects/Tarantula/descent.tscn")
+var ToilePlafond = preload("res://Enemies/Tarantula/effects/descent.tscn")
 var ramp_loot_scene = preload("res://Loot/Ramp/ramp.tscn")
 
 func _ready():
