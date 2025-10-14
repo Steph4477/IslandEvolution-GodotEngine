@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=4 uid="uid://wtf74815khkx"]
+
+[ext_resource type="Script" uid="uid://cxw36pnglwt2i" path="res://Levels/Lvl2/Environement/Background/Tiles/tile_map.gd" id="1_0px5i"]
+[ext_resource type="TileSet" uid="uid://bdlsfsw2hywfm" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="2_ry8c0"]
+
+[node name="TileMapColone" type="Node2D"]
+z_index = 10
+script = ExtResource("1_0px5i")
+metadata/_edit_horizontal_guides_ = [-1283.0]
+
+[node name="TileMapColone" type="TileMapLayer" parent="."]
+z_index = 1
+position = Vector2(-3762, -1164)
+scale = Vector2(1.00067, 1.00227)
+tile_map_data = PackedByteArray("AAATAU0ABgAAAAAAAAATATUABgAAAAAAAAATARsABgAAAAAAAABLAQEABgAAAAAAAABdAQEABgAAAAAAAABdARsABgAAAAAAAACJARsABgAAAAAAAACJATUABgAAAAAAAACJAQEABgAAAAAAAACJAef/BgAAAAAAAACJAc3/BgAAAAAAAAChAQEABgAAAAAAAAChARsABgAAAAAAAAChATUABgAAAAAAAAAiAc3/BgAAAAAAAABEAc3/BgAAAAAAAAChAef/BgAAAAAAAAChAc3/BgAAAAAAAABqAU8ABgAAAAAAAAChAU8ABgAAAAAAAAA=")
+tile_set = ExtResource("2_ry8c0")
+
+[node name="TileMapColone2" type="TileMapLayer" parent="."]
+z_index = 1
+position = Vector2(2126.0002, -1002.99994)
+scale = Vector2(1.00067, 1.00227)
+tile_map_data = PackedByteArray("AAATAU0ABgAAAAAAAAATATUABgAAAAAAAAATARsABgAAAAAAAABLAQEABgAAAAAAAABdAQEABgAAAAAAAABdARsABgAAAAAAAACJARsABgAAAAAAAACJATUABgAAAAAAAACJAQEABgAAAAAAAACJAef/BgAAAAAAAACJAc3/BgAAAAAAAAChAQEABgAAAAAAAAChARsABgAAAAAAAAChATUABgAAAAAAAAAiAc3/BgAAAAAAAABEAc3/BgAAAAAAAAChAef/BgAAAAAAAAChAc3/BgAAAAAAAABqAU8ABgAAAAAAAAChAU8ABgAAAAAAAAA=")
+tile_set = ExtResource("2_ry8c0")

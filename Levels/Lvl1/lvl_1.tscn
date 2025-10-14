@@ -1,0 +1,341 @@
+[gd_scene load_steps=41 format=3 uid="uid://f001f0m7opwe"]
+
+[ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
+[ext_resource type="PackedScene" uid="uid://tagnybpxlmi" path="res://Levels/Lvl1/Environement/environement.tscn" id="2_lalfn"]
+[ext_resource type="PackedScene" uid="uid://ct7cfs6fktu4n" path="res://Levels/Lvl1/Environement/tileForet.tscn" id="3_mpeth"]
+[ext_resource type="PackedScene" uid="uid://cqgah4py8x2ry" path="res://Levels/Lvl1/Environement/Door/lvl2/Exit.tscn" id="4_na1bk"]
+[ext_resource type="PackedScene" uid="uid://bi56b8q1a6s16" path="res://ItemsDecors/Spike/spike.tscn" id="5_jneuh"]
+[ext_resource type="PackedScene" uid="uid://chd4s1iv4x63r" path="res://Levels/Lvl1/Environement/platforms.tscn" id="6_gchcg"]
+[ext_resource type="PackedScene" uid="uid://c5bug2b6apnq6" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.tscn" id="7_wpu1g"]
+[ext_resource type="PackedScene" uid="uid://cev5rxsibfue3" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.tscn" id="8_n1s4q"]
+[ext_resource type="PackedScene" uid="uid://bf1n0fcexb05c" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.tscn" id="9_wh82l"]
+[ext_resource type="PackedScene" uid="uid://skt7pf4qgqru" path="res://Loot/Coconut/coconut.tscn" id="10_oicsw"]
+[ext_resource type="PackedScene" uid="uid://d212hegf2w8di" path="res://Loot/Banana/banana.tscn" id="11_hkrhx"]
+[ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
+[ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
+[ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
+[ext_resource type="PackedScene" uid="uid://8dohrfquocyx" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
+[ext_resource type="PackedScene" uid="uid://ekkwdt7bcqfu" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
+[ext_resource type="Script" uid="uid://o41uset6a6qr" path="res://Levels/Lvl1/Environement/seeds.gd" id="18_p8qu6"]
+[ext_resource type="PackedScene" uid="uid://du0o733kb7eqe" path="res://Loot/Seed/seed.tscn" id="19_hs4kr"]
+[ext_resource type="AudioStream" uid="uid://bey7vvkh1a4ru" path="res://sounds/lvl1.mp3" id="20_qky26"]
+[ext_resource type="PackedScene" uid="uid://b6y25h2tqe3bh" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
+[ext_resource type="PackedScene" uid="uid://c4ed8cr5fgetb" path="res://Interface/Quest/quest.tscn" id="22_2hr7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
+size = Vector2(2.23209, 104.915)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
+size = Vector2(313.271, 30.1528)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am3co"]
+size = Vector2(5.66036, 32.0992)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofnsq"]
+size = Vector2(1.5478, 35.4137)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e63vn"]
+size = Vector2(5.98233, 36.4877)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vc1ff"]
+size = Vector2(5.43134, 25.4167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgp0u"]
+size = Vector2(4.39744, 32.0253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lr8k6"]
+size = Vector2(5.39862, 21.0509)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3xnj"]
+size = Vector2(9.84062, 18.7567)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvxqb"]
+size = Vector2(5.35568, 26.5216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26k7p"]
+size = Vector2(5.35569, 21.5524)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0og2l"]
+size = Vector2(7.2582, 97.1215)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcd4a"]
+size = Vector2(3.43382, 201.303)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhs03"]
+size = Vector2(5.00002, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avxqp"]
+size = Vector2(9.65034, 20.4457)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlm52"]
+size = Vector2(14.3997, 61.8802)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0804m"]
+size = Vector2(20.1556, 79.0103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmo30"]
+size = Vector2(312.797, 53.526)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myamh"]
+size = Vector2(5.4567, 20)
+
+[node name="lvl1" type="Node2D"]
+script = ExtResource("1_mebys")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
+position = Vector2(191, 1141)
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(3329, 1040)
+
+[node name="ParalaxeCiel" parent="Background" instance=ExtResource("2_lalfn")]
+position = Vector2(1173, -1770)
+scale = Vector2(3.28, 1)
+
+[node name="SunLight2D" type="DirectionalLight2D" parent="Background"]
+position = Vector2(-1680, -751)
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+color = Color(1, 0.952941, 0.682353, 1)
+energy = 1.6
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+
+[node name="Forest" parent="Background" instance=ExtResource("3_mpeth")]
+position = Vector2(-3329, -1040)
+
+[node name="Exit" parent="." instance=ExtResource("4_na1bk")]
+position = Vector2(7196, 1331)
+
+[node name="Arrows" type="Node2D" parent="."]
+position = Vector2(3068, 1446)
+scale = Vector2(0.635458, 0.141613)
+
+[node name="Arrow1" parent="Arrows" instance=ExtResource("5_jneuh")]
+position = Vector2(-6.29467, 42.369)
+scale = Vector2(1, 1)
+
+[node name="Arrow2" parent="Arrows" instance=ExtResource("5_jneuh")]
+position = Vector2(-1852.21, -7.06152)
+rotation = -3.14158
+scale = Vector2(0.397965, -1.02986)
+skew = -1.0848e-05
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="PlatformsTiles" parent="Platforms" instance=ExtResource("6_gchcg")]
+position = Vector2(825, 369)
+
+[node name="PlatformsCollision" type="StaticBody2D" parent="Platforms"]
+position = Vector2(734, -1811)
+scale = Vector2(0.089149, 0.144557)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(14393.9, 21967.1)
+rotation = -3.14159
+scale = Vector2(286.449, -13.7806)
+shape = SubResource("RectangleShape2D_wajbs")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+light_mask = 4
+position = Vector2(34156.3, 23061.8)
+scale = Vector2(283.803, 14.7983)
+shape = SubResource("RectangleShape2D_dvpsw")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(23174.7, 18145.1)
+scale = Vector2(217.988, 8.30556)
+shape = SubResource("RectangleShape2D_am3co")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(14358, 21133.5)
+scale = Vector2(992.862, 8.2334)
+shape = SubResource("RectangleShape2D_ofnsq")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(22950.3, 19639.3)
+scale = Vector2(401.261, 7.01483)
+shape = SubResource("RectangleShape2D_e63vn")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(33561.8, 16796.1)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_vc1ff")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(11318.1, 21970.6)
+scale = Vector2(300.999, -7.56021)
+shape = SubResource("RectangleShape2D_kgp0u")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(37723.4, 18262.7)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_lr8k6")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(-8244.62, 17698.9)
+scale = Vector2(123.511, -685.622)
+shape = SubResource("RectangleShape2D_t3xnj")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(76611.3, 17446.4)
+rotation = -3.14159
+scale = Vector2(144.607, 694.703)
+shape = SubResource("RectangleShape2D_t3xnj")
+
+[node name="CollisionShape2D30" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(27134.3, 16879.2)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_cvxqb")
+
+[node name="CollisionShape2D31" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(16646.3, 19750)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_26k7p")
+
+[node name="CollisionShape2D24" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(23036.7, 20148.3)
+scale = Vector2(282.291, 10.4812)
+shape = SubResource("RectangleShape2D_0og2l")
+
+[node name="CollisionShape2D26" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(23023.2, 21655.8)
+scale = Vector2(282.291, 10.4812)
+shape = SubResource("RectangleShape2D_kcd4a")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(19932.9, 18539.4)
+rotation = -3.14159
+scale = Vector2(286.449, -13.7806)
+shape = SubResource("RectangleShape2D_uhs03")
+
+[node name="CollisionShape2D25" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(41604.5, 19210.4)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_avxqp")
+
+[node name="CollisionShape2D27" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(41621.3, 21479.4)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_mlm52")
+
+[node name="CollisionShape2D28" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(41576, 22375.2)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_0804m")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(34840.6, 12353.3)
+scale = Vector2(283.803, 14.7983)
+shape = SubResource("RectangleShape2D_pmo30")
+
+[node name="CollisionShape2D29" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+position = Vector2(65362.5, 20338)
+scale = Vector2(222.011, 12.5199)
+shape = SubResource("RectangleShape2D_myamh")
+
+[node name="MobilePlatForm1" parent="Platforms" instance=ExtResource("7_wpu1g")]
+position = Vector2(6356, 1311)
+speed = 200.0
+direction = 1
+
+[node name="MobilePlatForm2" parent="Platforms" instance=ExtResource("7_wpu1g")]
+position = Vector2(4708, 1089)
+speed = 300.0
+distance = 1800.0
+
+[node name="Trees" type="Node2D" parent="."]
+position = Vector2(6144, 1425)
+
+[node name="Coconut" parent="Trees" instance=ExtResource("8_n1s4q")]
+position = Vector2(-675, 56)
+
+[node name="Coconut2" parent="Trees" instance=ExtResource("8_n1s4q")]
+position = Vector2(-5550, 85)
+
+[node name="Bananier" parent="Trees" instance=ExtResource("9_wh82l")]
+position = Vector2(-4701, -362)
+
+[node name="Bananier2" parent="Trees" instance=ExtResource("9_wh82l")]
+position = Vector2(-2723, -363)
+
+[node name="Loot" type="Node2D" parent="Trees"]
+position = Vector2(-5519, -361)
+
+[node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("10_oicsw")]
+
+[node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("11_hkrhx")]
+position = Vector2(882, -23)
+
+[node name="BananaLoot2" parent="Trees/Loot" instance=ExtResource("11_hkrhx")]
+position = Vector2(2861, -22)
+
+[node name="CocoLoot" parent="Trees/Loot" instance=ExtResource("10_oicsw")]
+position = Vector2(4882, -28)
+
+[node name="Creatures" type="Node2D" parent="."]
+position = Vector2(3329, 1040)
+
+[node name="Snake" parent="Creatures" instance=ExtResource("12_d0a2k")]
+position = Vector2(627, 389)
+
+[node name="Mousquito" parent="Creatures" instance=ExtResource("13_oiu73")]
+position = Vector2(2843, 40)
+
+[node name="Toucan" parent="Creatures" instance=ExtResource("14_li3ov")]
+position = Vector2(487, -159)
+
+[node name="Carnivore" parent="Creatures" instance=ExtResource("15_los52")]
+position = Vector2(-1070, 343)
+
+[node name="Mousquito2" parent="Creatures" instance=ExtResource("13_oiu73")]
+position = Vector2(980, -356)
+
+[node name="Carnivore2" parent="Creatures" instance=ExtResource("15_los52")]
+position = Vector2(-791, 342)
+
+[node name="Butterfly2" type="Node2D" parent="Creatures"]
+
+[node name="Butterfly" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
+position = Vector2(3516, 215)
+
+[node name="Butterfly2" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
+position = Vector2(2387, 97)
+
+[node name="Butterfly3" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
+position = Vector2(1419, 279)
+
+[node name="Butterfly4" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
+position = Vector2(386, 83)
+
+[node name="Butterfly5" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
+position = Vector2(-629, -97)
+
+[node name="Butterfly6" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
+position = Vector2(-1231, -55)
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Seeds" type="Node2D" parent="Items"]
+position = Vector2(6128, 1255)
+script = ExtResource("18_p8qu6")
+
+[node name="Seed1" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
+position = Vector2(-2970, -685)
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="lvl1" type="AudioStreamPlayer2D" parent="Sound"]
+position = Vector2(1226, 1228)
+stream = ExtResource("20_qky26")
+
+[node name="Totem" parent="." instance=ExtResource("21_t7ttw")]
+position = Vector2(3757, 555)
+
+[node name="QuestBox" parent="." instance=ExtResource("22_2hr7n")]

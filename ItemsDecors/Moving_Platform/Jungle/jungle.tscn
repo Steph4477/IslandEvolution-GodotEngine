@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5bug2b6apnq6"]
+
+[ext_resource type="Script" uid="uid://c2gwqc2veghiu" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.gd" id="1_bg0dk"]
+[ext_resource type="Texture2D" uid="uid://l0w6vqgd0e7o" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.png" id="2_4clc2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfqmu"]
+size = Vector2(157.25, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dj8e"]
+size = Vector2(164.5, 22)
+
+[node name="MobilePlatForm" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_bg0dk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(31, -2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_4clc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, -48)
+shape = SubResource("RectangleShape2D_rfqmu")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(32, -46)
+shape = SubResource("RectangleShape2D_8dj8e")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

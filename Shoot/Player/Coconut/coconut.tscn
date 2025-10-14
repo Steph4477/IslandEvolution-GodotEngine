@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://tof0c1grgaav"]
+
+[ext_resource type="Script" uid="uid://chdjuk11cxt2j" path="res://Shoot/Player/Coconut/coconut.gd" id="1_3fuhs"]
+[ext_resource type="Texture2D" uid="uid://ljjnpel77xw0" path="res://Shoot/Player/Coconut/coconut.png" id="2_3fuhs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja31b"]
+
+[node name="coco" type="RigidBody2D"]
+z_index = 5
+scale = Vector2(0.0358231, -0.0413194)
+collision_layer = 256
+collision_mask = 74
+contact_monitor = true
+script = ExtResource("1_3fuhs")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0.759033, 2.65039)
+rotation = -3.10394
+scale = Vector2(0.5, 0.408)
+texture = ExtResource("2_3fuhs")
+offset = Vector2(1.99504, 4.08113)
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_ja31b")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://swmol5435jt3"]
+
+[ext_resource type="Texture2D" uid="uid://qtvktejbnymm" path="res://Effects/Tarantula/scormard_particles.png" id="1_geybv"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+texture = ExtResource("1_geybv")
+lifetime = 0.5
+one_shot = true
+lifetime_randomness = 1.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+damping_min = 20.0
+damping_max = 30.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5

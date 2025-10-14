@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b10wuhuwjnuav"]
+
+[ext_resource type="Texture2D" uid="uid://crybqf08ti5l4" path="res://Levels/Lvl3/Environement/sky.png" id="2_5tben"]
+[ext_resource type="Texture2D" uid="uid://dalnwtv7im3vl" path="res://Levels/Lvl1/Environement/halo.png" id="3_3e7te"]
+
+[node name="ParalaxeCielLvl3" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer_ciel" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(789, -4319)
+scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_ciel"]
+position = Vector2(462, 10024)
+scale = Vector2(5.22005, 4.46484)
+texture = ExtResource("2_5tben")
+
+[node name="Halo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_ciel"]
+visible = false
+modulate = Color(1, 0.984, 0.882, 0.4)
+position = Vector2(1766, 9236)
+scale = Vector2(2.64559, 2.7193)
+texture = ExtResource("3_3e7te")

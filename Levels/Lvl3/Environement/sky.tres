@@ -1,0 +1,7 @@
+[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://lxyv0seok3p7"]
+
+[ext_resource type="Texture2D" uid="uid://crybqf08ti5l4" path="res://Levels/Lvl3/Environement/sky.png" id="1_fel3q"]
+
+[resource]
+diffuse_texture = ExtResource("1_fel3q")
+texture_repeat = 2

@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4ed8cr5fgetb"]
+
+[ext_resource type="Script" uid="uid://b6642kvuswl8v" path="res://Interface/Quest/quest.gd" id="1_i7muu"]
+[ext_resource type="Texture2D" uid="uid://c2iclt61bhsnh" path="res://Interface/Quest/2.png" id="2_p3qo8"]
+[ext_resource type="Texture2D" uid="uid://c5h5hy0my4imd" path="res://Interface/Quest/3.png" id="2_thikh"]
+[ext_resource type="Texture2D" uid="uid://430x8edhnhbl" path="res://Interface/Quest/1.png" id="3_xyq5x"]
+
+[sub_resource type="Animation" id="Animation_rrnmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_p3qo8")]
+}
+
+[sub_resource type="Animation" id="Animation_3gfbw"]
+resource_name = "rule"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_p3qo8"), ExtResource("3_xyq5x"), ExtResource("2_thikh")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5usc"]
+_data = {
+&"RESET": SubResource("Animation_rrnmn"),
+&"rule": SubResource("Animation_3gfbw")
+}
+
+[node name="QuestBox" type="CanvasLayer"]
+script = ExtResource("1_i7muu")
+
+[node name="QuestSprite" type="Sprite2D" parent="."]
+position = Vector2(966, 853)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_p3qo8")
+
+[node name="Checkmark" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../QuestSprite")
+libraries = {
+&"": SubResource("AnimationLibrary_k5usc")
+}

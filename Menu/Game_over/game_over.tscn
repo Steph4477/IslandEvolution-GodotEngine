@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://k1xqojnucpwg"]
 
 [ext_resource type="Script" uid="uid://dr8albc6i3xav" path="res://Menu/Game_over/game_over.gd" id="1_jfwx8"]
-[ext_resource type="Texture2D" uid="uid://bebnpqrg6jl3" path="res://Menu/Game_over/decors.png" id="2_jfwx8"]
-[ext_resource type="Texture2D" uid="uid://dab5obyl8g1w3" path="res://Menu/Game_over/mokoSombre.png" id="4_jfwx8"]
-[ext_resource type="Texture2D" uid="uid://dt66tyhkix240" path="res://Menu/lancement_lvl1/cadre.png" id="4_luhk1"]
+[ext_resource type="Texture2D" uid="uid://bebnpqrg6jl3" path="res://Menu/Game_over/background.png" id="2_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://dab5obyl8g1w3" path="res://Menu/Game_over/moko.png" id="4_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://dt66tyhkix240" path="res://Levels/Lvl0/Environement/border.png" id="4_luhk1"]
 [ext_resource type="Texture2D" uid="uid://cv804x4ayaofx" path="res://Menu/Game_over/police.png" id="5_rsbxp"]
-[ext_resource type="Texture2D" uid="uid://dk2pnjh7ymd51" path="res://Menu/Boutons/recommencer.png" id="6_877a3"]
-[ext_resource type="Texture2D" uid="uid://bitlxmh5eiycf" path="res://Menu/Boutons/presse/recommencer.png" id="7_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://dk2pnjh7ymd51" path="res://Menu/Boutons/restart.png" id="6_877a3"]
+[ext_resource type="Texture2D" uid="uid://bitlxmh5eiycf" path="res://Menu/Boutons/Pressed/restart.png" id="7_jfwx8"]
 [ext_resource type="AudioStream" uid="uid://cdo8bns7p3l15" path="res://sounds/gameover.wav" id="10_jfwx8"]
-[ext_resource type="Texture2D" uid="uid://dwwiacrdwftwj" path="res://Menu/Boutons/quitter.png" id="12_6ap2q"]
-[ext_resource type="Texture2D" uid="uid://bdvcchdibhe84" path="res://Menu/Boutons/presse/quitter.png" id="13_hoxwm"]
+[ext_resource type="Texture2D" uid="uid://dwwiacrdwftwj" path="res://Menu/Boutons/quit.png" id="12_6ap2q"]
+[ext_resource type="Texture2D" uid="uid://bdvcchdibhe84" path="res://Menu/Boutons/Pressed/quit.png" id="13_hoxwm"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_jfwx8")

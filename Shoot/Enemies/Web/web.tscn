@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dygr7hu10mfub"]
+
+[ext_resource type="Script" uid="uid://bj8f56nomjww3" path="res://Shoot/Enemies/Web/web.gd" id="1_jv0dl"]
+[ext_resource type="Texture2D" uid="uid://b0uf3qtdnxxii" path="res://Shoot/Enemies/Web/web.png" id="2_jv0dl"]
+[ext_resource type="Texture2D" uid="uid://bb7p84cglgrf5" path="res://Shoot/Enemies/Web/web1.png" id="3_xepjl"]
+[ext_resource type="Texture2D" uid="uid://b0y1p8jqrx8h5" path="res://Shoot/Enemies/Web/web2.png" id="4_3lbob"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g75qk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3lbob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xepjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jv0dl")
+}],
+"loop": true,
+"name": &"attaque_toile",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bydea"]
+radius = 13.9161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xepjl"]
+radius = 30.1034
+
+[node name="Toile" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_jv0dl")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_g75qk")
+animation = &"attaque_toile"
+frame = 1
+frame_progress = 0.912194
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.52, 1.76)
+shape = SubResource("CircleShape2D_bydea")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+scale = Vector2(0.560001, 0.360001)
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(2.84, 4.36)
+shape = SubResource("CircleShape2D_xepjl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

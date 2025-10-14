@@ -1,0 +1,187 @@
+[gd_scene load_steps=21 format=3 uid="uid://c8gltlvsgbgh2"]
+
+[ext_resource type="Script" uid="uid://bsyyh16expc5i" path="res://Enemies/Snake/snake.gd" id="1_oyke2"]
+[ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_pioq7"]
+[ext_resource type="Texture2D" uid="uid://dlh8kxa7tq5vl" path="res://Enemies/Snake/idle.png" id="3_bfvbs"]
+[ext_resource type="Texture2D" uid="uid://be468sew6q0ey" path="res://Enemies/Snake/attack.png" id="4_lyaop"]
+[ext_resource type="Texture2D" uid="uid://bytwsq5mf736c" path="res://Enemies/Snake/attack1.png" id="5_oyke2"]
+[ext_resource type="Texture2D" uid="uid://civhq2e3bxkdl" path="res://Enemies/Snake/walk1.png" id="7_jadvf"]
+[ext_resource type="Texture2D" uid="uid://db6jygow68t07" path="res://Enemies/Snake/walk2.png" id="7_pioq7"]
+[ext_resource type="Texture2D" uid="uid://cndcb7gm4tqk1" path="res://Enemies/Snake/walk3.png" id="8_feqrn"]
+[ext_resource type="Texture2D" uid="uid://op242eh6rd13" path="res://Enemies/Snake/die.png" id="9_jadvf"]
+[ext_resource type="Texture2D" uid="uid://cgu4u681pugy2" path="res://Enemies/Snake/patrol1.png" id="10_ix0nr"]
+[ext_resource type="Texture2D" uid="uid://bmmvhs1ya5054" path="res://Enemies/Snake/patrol2.png" id="11_m2mdo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q0aj"]
+size = Vector2(48.5, 74.9555)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pioq7"]
+radius = 59.9862
+height = 214.009
+
+[sub_resource type="Animation" id="Animation_6x27n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pioq7"]
+resource_name = "attaque"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_bfvbs"), ExtResource("4_lyaop"), ExtResource("5_oyke2")]
+}
+
+[sub_resource type="Animation" id="Animation_feqrn"]
+resource_name = "die"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("9_jadvf"), ExtResource("9_jadvf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m2mdo"]
+resource_name = "idle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_bfvbs"), ExtResource("3_bfvbs")]
+}
+
+[sub_resource type="Animation" id="Animation_to62f"]
+resource_name = "patrol"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_ix0nr"), ExtResource("11_m2mdo"), ExtResource("11_m2mdo")]
+}
+
+[sub_resource type="Animation" id="Animation_ix0nr"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_jadvf"), ExtResource("7_pioq7"), ExtResource("8_feqrn")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_feqrn"]
+_data = {
+&"RESET": SubResource("Animation_6x27n"),
+&"attaque": SubResource("Animation_pioq7"),
+&"die": SubResource("Animation_feqrn"),
+&"idle": SubResource("Animation_m2mdo"),
+&"patrol": SubResource("Animation_to62f"),
+&"walk": SubResource("Animation_ix0nr")
+}
+
+[node name="Serpent" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(0.6, 0.6)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_oyke2")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+position = Vector2(-3, 5)
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6, -3)
+shape = SubResource("RectangleShape2D_4q0aj")
+
+[node name="FlipNode" type="Node2D" parent="."]
+position = Vector2(-165, -54)
+
+[node name="Muzzle" type="Marker2D" parent="FlipNode"]
+position = Vector2(120, 41)
+rotation = 0.785398
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pioq7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+libraries = {
+&"": SubResource("AnimationLibrary_feqrn")
+}
+autoplay = "walk"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-16.4, -1)
+scale = Vector2(0.119922, 0.15)
+texture = ExtResource("5_oyke2")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_pioq7")]
+position = Vector2(-50, -86)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

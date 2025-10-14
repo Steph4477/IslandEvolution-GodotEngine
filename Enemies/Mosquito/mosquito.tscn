@@ -1,0 +1,159 @@
+[gd_scene load_steps=18 format=3 uid="uid://cyglsdydp0fhr"]
+
+[ext_resource type="Script" uid="uid://dlwtrnoi7mm54" path="res://Enemies/Mosquito/mosquito.gd" id="1_r0nwy"]
+[ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_2vk4j"]
+[ext_resource type="Texture2D" uid="uid://gqvi4gsj3jg1" path="res://Enemies/Mosquito/die.png" id="3_2vk4j"]
+[ext_resource type="Texture2D" uid="uid://bkkfutwo2vlqe" path="res://Enemies/Mosquito/attack1.png" id="4_27a47"]
+[ext_resource type="Texture2D" uid="uid://crbnj2htmphdq" path="res://Enemies/Mosquito/attack.png" id="5_nl3xb"]
+[ext_resource type="Texture2D" uid="uid://bywp7um2rbbml" path="res://Enemies/Mosquito/2.png" id="6_c0yhc"]
+[ext_resource type="Texture2D" uid="uid://dsyldk60lmkfr" path="res://Enemies/Mosquito/1.png" id="7_qm3hn"]
+[ext_resource type="Texture2D" uid="uid://cxpohxf7amqp3" path="res://Enemies/Mosquito/patrol.png" id="8_27a47"]
+[ext_resource type="Texture2D" uid="uid://cpcgh8t544iy6" path="res://Enemies/Mosquito/patrol1.png" id="9_nl3xb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0nwy"]
+radius = 39.1152
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1fhx"]
+radius = 11.0454
+
+[sub_resource type="Animation" id="Animation_27a47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_27a47")]
+}
+
+[sub_resource type="Animation" id="Animation_b0e3j"]
+resource_name = "attaque"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_27a47"), ExtResource("5_nl3xb"), ExtResource("4_27a47")]
+}
+
+[sub_resource type="Animation" id="Animation_jin1k"]
+resource_name = "die"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_2vk4j"), ExtResource("3_2vk4j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l6bps"]
+resource_name = "flight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_c0yhc"), ExtResource("7_qm3hn")]
+}
+
+[sub_resource type="Animation" id="Animation_r0nwy"]
+resource_name = "patrol"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8_27a47"), ExtResource("9_nl3xb")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcxtp"]
+_data = {
+&"RESET": SubResource("Animation_27a47"),
+&"attaque": SubResource("Animation_b0e3j"),
+&"die": SubResource("Animation_jin1k"),
+&"flight": SubResource("Animation_l6bps"),
+&"patrol": SubResource("Animation_r0nwy")
+}
+
+[node name="Moustique" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(0.6, 0.6)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_r0nwy")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+position = Vector2(30.682, 39.089)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-35.682, -69.089)
+shape = SubResource("CircleShape2D_r0nwy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="HealthBar" parent="." instance=ExtResource("2_2vk4j")]
+position = Vector2(-61, -158)
+scale = Vector2(1.07101, 1.11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -29)
+shape = SubResource("CircleShape2D_g1fhx")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-1, -34)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_27a47")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kcxtp")
+}
+autoplay = "patrol"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

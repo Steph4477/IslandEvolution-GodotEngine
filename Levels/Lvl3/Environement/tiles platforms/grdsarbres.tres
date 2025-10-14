@@ -1,0 +1,16 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bjf1tccucg2qw"]
+
+[ext_resource type="Texture2D" uid="uid://b0bpllhhcxe12" path="res://Levels/Lvl3/Environement/tiles platforms/grdarbressheet.png" id="1_nv3cu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_573ck"]
+texture = ExtResource("1_nv3cu")
+texture_region_size = Vector2i(1024, 1536)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_573ck")

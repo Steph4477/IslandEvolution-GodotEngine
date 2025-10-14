@@ -1,26 +1,26 @@
-[gd_scene load_steps=27 format=3 uid="uid://cn0x2ue3ec5ba"]
+[gd_scene load_steps=27 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
-[ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/cadre.png" id="2_eumbl"]
+[ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
 [ext_resource type="PackedScene" uid="uid://dl764ckbcmvqy" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://cnkc7vm4biqiy" path="res://Interface/gamePad/Tir.png" id="6_rgqxt"]
-[ext_resource type="Texture2D" uid="uid://ddmlglu40faqi" path="res://Interface/gamePad/Tir_enfonce.png" id="7_b0qj5"]
-[ext_resource type="Texture2D" uid="uid://dc1tmce1542wp" path="res://Interface/gamePad/coco.png" id="8_b0qj5"]
-[ext_resource type="Texture2D" uid="uid://b4wng1w7yblh2" path="res://Interface/gamePad/potionSoins.png" id="8_voibu"]
-[ext_resource type="Texture2D" uid="uid://xhcbhoxhiulw" path="res://Interface/gamePad/cocoEnfonce.png" id="9_870gb"]
-[ext_resource type="Texture2D" uid="uid://c1dlght8ht65f" path="res://Interface/gamePad/potionSoinsEnfonce.png" id="11_e8y56"]
-[ext_resource type="Texture2D" uid="uid://ljjnpel77xw0" path="res://Tir/coco.png" id="12_6yv8p"]
-[ext_resource type="Texture2D" uid="uid://dtiaxcihy2ofw" path="res://Interface/gamePad/lance1.png" id="12_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://k8plb36agpki" path="res://Interface/gamePad/lance1Enfonce.png" id="13_lwpkd"]
-[ext_resource type="Texture2D" uid="uid://croid74mvw1fb" path="res://Loot/graine/graineHUD.png" id="13_voibu"]
-[ext_resource type="Texture2D" uid="uid://bcbo7opbktbwb" path="res://Interface/gamePad/ramp.png" id="14_e8y56"]
-[ext_resource type="Texture2D" uid="uid://ecc0y625hs75" path="res://Interface/gamePad/potion.png" id="15_rgqxt"]
-[ext_resource type="Texture2D" uid="uid://do6vj6xmbp01c" path="res://Interface/gamePad/ramp_enfonce.png" id="15_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://b8wdslrwg00xo" path="res://Interface/gamePad/cooldown_popo2.png" id="16_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://cnkc7vm4biqiy" path="res://Interface/GamePad/shoot.png" id="6_rgqxt"]
+[ext_resource type="Texture2D" uid="uid://ddmlglu40faqi" path="res://Interface/GamePad/Pressed/shoot.png" id="7_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://dc1tmce1542wp" path="res://Interface/GamePad/coconut.png" id="8_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://b4wng1w7yblh2" path="res://Interface/GamePad/healing_potion.png" id="8_voibu"]
+[ext_resource type="Texture2D" uid="uid://xhcbhoxhiulw" path="res://Interface/GamePad/Pressed/coconut.png" id="9_870gb"]
+[ext_resource type="Texture2D" uid="uid://c1dlght8ht65f" path="res://Interface/GamePad/Pressed/healing_potion.png" id="11_e8y56"]
+[ext_resource type="Texture2D" uid="uid://ljjnpel77xw0" path="res://Shoot/Player/Coconut/coconut.png" id="12_6yv8p"]
+[ext_resource type="Texture2D" uid="uid://dtiaxcihy2ofw" path="res://Interface/GamePad/spear.png" id="12_s8lhr"]
+[ext_resource type="Texture2D" uid="uid://k8plb36agpki" path="res://Interface/GamePad/Pressed/spear.png" id="13_lwpkd"]
+[ext_resource type="Texture2D" uid="uid://croid74mvw1fb" path="res://Interface/Hud/seed.png" id="13_voibu"]
+[ext_resource type="Texture2D" uid="uid://bcbo7opbktbwb" path="res://Interface/GamePad/ramp.png" id="14_e8y56"]
+[ext_resource type="Texture2D" uid="uid://ecc0y625hs75" path="res://Interface/GamePad/potion.png" id="15_rgqxt"]
+[ext_resource type="Texture2D" uid="uid://do6vj6xmbp01c" path="res://Interface/GamePad/Pressed/ramp.png" id="15_s8lhr"]
+[ext_resource type="Texture2D" uid="uid://b8wdslrwg00xo" path="res://Interface/GamePad/cooldown_popo2.png" id="16_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://dhaaggwqnjw7f" path="res://Interface/Hud/life.png" id="18_1hj8m"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Hud/health_bar.gd" id="19_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://d1sab8mb4xrdf" path="res://Loot/vie.png" id="22_lwpkd"]
-[ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/barre de vie/bar_under.png" id="22_xl2wx"]
-[ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/barre de vie/bar_fill2.png" id="23_u63cs"]
+[ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/Healt_Bar/bar_under.png" id="22_xl2wx"]
+[ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/Healt_Bar/bar_fill2.png" id="23_u63cs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hj8m"]
 radius = 64.0078
@@ -186,15 +186,15 @@ offset_bottom = 139.0
 scale = Vector2(0.15, 0.15)
 
 [node name="Life1" type="Sprite2D" parent="HBoxContainerLive"]
-texture = ExtResource("22_lwpkd")
+texture = ExtResource("18_1hj8m")
 
 [node name="Life2" type="Sprite2D" parent="HBoxContainerLive"]
 position = Vector2(500, 0)
-texture = ExtResource("22_lwpkd")
+texture = ExtResource("18_1hj8m")
 
 [node name="Life3" type="Sprite2D" parent="HBoxContainerLive"]
 position = Vector2(1000, 0)
-texture = ExtResource("22_lwpkd")
+texture = ExtResource("18_1hj8m")
 
 [node name="HealthBar" type="CanvasLayer" parent="."]
 script = ExtResource("19_s8lhr")

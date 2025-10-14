@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnty8c00xit1y"]
+
+[ext_resource type="Script" uid="uid://ba7mwcqj14x7u" path="res://Loot/Spear/spear.gd" id="1_p2kqn"]
+[ext_resource type="Texture2D" uid="uid://b6axd8gi6rmq1" path="res://Shoot/Enemies/Spear/spear.png" id="2_ja6jw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3a4u"]
+size = Vector2(0.30919, 7.68626)
+
+[sub_resource type="Animation" id="Animation_68vs2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_upfg8"]
+resource_name = "appear"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, -1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5ss7"]
+_data = {
+&"RESET": SubResource("Animation_68vs2"),
+&"appear": SubResource("Animation_upfg8")
+}
+
+[node name="Lance" type="Node2D"]
+z_index = 5
+script = ExtResource("1_p2kqn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(-4, -12)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ja6jw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6, -17)
+scale = Vector2(16.1713, -4.03317)
+shape = SubResource("RectangleShape2D_b3a4u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k5ss7")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://d3vsv1rjlngm5"]
 
 [ext_resource type="Script" uid="uid://bvduen3qm8dbb" path="res://Enemies/Toucan/toucan.gd" id="1_1fck1"]
-[ext_resource type="Texture2D" uid="uid://b0if0gqwaxinj" path="res://Enemies/Toucan/vol1.png" id="4_ldug1"]
-[ext_resource type="Texture2D" uid="uid://cwr74p4d8fnuv" path="res://Enemies/Toucan/vol2.png" id="6_1fck1"]
+[ext_resource type="Texture2D" uid="uid://b0if0gqwaxinj" path="res://Enemies/Toucan/1.png" id="4_ldug1"]
+[ext_resource type="Texture2D" uid="uid://cwr74p4d8fnuv" path="res://Enemies/Toucan/2.png" id="6_1fck1"]
 [ext_resource type="Texture2D" uid="uid://b2ii0vy2opvyh" path="res://Enemies/Toucan/idle3.png" id="7_gopdl"]
-[ext_resource type="Texture2D" uid="uid://k8ymoh0m6s53" path="res://Enemies/Toucan/vol3.png" id="8_qealk"]
+[ext_resource type="Texture2D" uid="uid://k8ymoh0m6s53" path="res://Enemies/Toucan/3.png" id="8_qealk"]
 [ext_resource type="Texture2D" uid="uid://cl58hg78msv21" path="res://Enemies/Toucan/idle1.png" id="9_dg1kv"]
 [ext_resource type="Texture2D" uid="uid://dfmhkvrhjgat2" path="res://Enemies/Toucan/idle2.png" id="10_xf6h4"]
 [ext_resource type="Texture2D" uid="uid://cdmxltre7anas" path="res://Enemies/Toucan/look.png" id="11_1fck1"]
-[ext_resource type="PackedScene" uid="uid://cxdl03sy2f1ou" path="res://Enemies/Toucan/ToucanHealthBar.tscn" id="11_yx355"]
+[ext_resource type="PackedScene" uid="uid://cxdl03sy2f1ou" path="res://Enemies/Toucan/toucan_health_bar.tscn" id="11_yx355"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0nwy"]
 radius = 61.0737
@@ -79,7 +79,8 @@ script = ExtResource("1_1fck1")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
 position = Vector2(30.682, 39.089)
-collision_layer = 8
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-30.682, -68.089)

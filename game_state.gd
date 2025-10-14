@@ -11,14 +11,14 @@ var has_key = false
 var has_lance = false
 
 # --- Joueur, HUD & Scènes ---
-var player_scene = preload("res://Player/evo1.tscn")
+var player_scene = preload("res://Player/player.tscn")
 var player = null
 
-var hud_scene = preload("res://Interface/Hud.tscn")
+var hud_scene = preload("res://Interface/Hud/hud.tscn")
 var hud = null
 var health_bar = null
 
-var fade_scene = preload("res://Effects/fade.tscn")
+var fade_scene = preload("res://Effects/Fade/fade.tscn")
 var fade = null
 
 # --- Vies & niveaux ---
@@ -51,51 +51,78 @@ func _ready():
 
 	# Premier chargement
 	await get_tree().process_frame
-	#await load_level("res://Menu/lancement_lvl1/menu_lvl1.tscn")
-	#await load_level("res://lvl2/lvl_2.tscn")
-	await load_level("res://lvl2/lvl_2b.tscn")
-	#await load_level("res://lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
+	await load_level("res:///Levels/Lvl2/lvl_2.tscn")
+	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
 func set_player(p):
 	player = p
 	emit_signal("player_updated", p)
 
 # --- Chargement de niveau ---
+# --- Helper : cherche un node nommé "SpawnPoint" n'importe où dans la scène ---
+func _find_spawn(level: Node) -> Node:
+	# Vérifie si un node "SpawnPoint" existe directement
+	var direct = level.get_node_or_null("SpawnPoint")
+	if direct:
+		return direct
+
+	# Sinon cherche récursivement dans les enfants
+	for child in level.get_children():
+		var found = _find_spawn(child)
+		if found:
+			return found
+
+	return null
+
+
+# --- Chargement de niveau robuste menus/sans spawn ---
 func load_level(scene_path):
 	print("🚪 Chargement du niveau :", scene_path)
-	var is_menu = is_menu_scene(scene_path)
-	if not is_menu:
-		current_level_path = scene_path
-
-	hud.visible = not is_menu
-	health_bar.visible = not is_menu
 
 	await fade.fade_out()
 
-	# Purge immédiate des refs player avant cleanup
+	# Purge la ref player pour éviter les accès pendants
 	emit_signal("player_updated", null)
 	player = null
 
-	# Supprime tout sauf fade et hud (old level + old player)
+	# Supprime tout sauf fade et hud
 	for child in get_children():
 		if child != fade and child != hud:
 			child.queue_free()
 
 	await get_tree().process_frame
 
+	# Instancie le niveau demandé
 	var level = load(scene_path).instantiate()
 	current_level = level
 	add_child(level)
 
+	# Détermine s'il y a un SpawnPoint
+	var spawn_point = _find_spawn(level)
+	var is_menu = spawn_point == null  # pas de ternaire, clair et net
+
+	# HUD visible seulement en jeu
+	hud.visible = not is_menu
+	health_bar.visible = not is_menu
+
 	if not is_menu:
+		# On mémorise le chemin du "vrai" niveau (pas les menus)
+		current_level_path = scene_path
+
+		# Comptage des graines depuis la scène
 		reset_seed_tracking_from_scene()
 
+		# Instancie le joueur
 		var p = player_scene.instantiate()
 		level.add_child(p)
 
-		var spawn_point = level.get_node("Node2D/SpawnPoint")
+		# Place le joueur au SpawnPoint
 		p.global_position = spawn_point.global_position
 
+		# Reset PV simple
 		if p.has_method("reset_state"):
 			p.reset_state()
 		elif p.has_variable("pv") and p.has_variable("max_pv"):
@@ -105,6 +132,8 @@ func load_level(scene_path):
 
 		# Nouvelle ref officielle
 		set_player(p)
+	else:
+		print("🧭 Scène sans SpawnPoint détectée → mode MENU (", level.name, ")")
 
 	await fade.fade_in()
 

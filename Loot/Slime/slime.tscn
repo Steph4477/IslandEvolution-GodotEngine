@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2ewbqksuwrs6"]
+
+[ext_resource type="Script" uid="uid://2uk58jasd8va" path="res://Loot/Slime/slime.gd" id="1_le1fs"]
+[ext_resource type="Texture2D" path="res://Loot/bave_applatie.png" id="2_le1fs"]
+[ext_resource type="Texture2D" path="res://Loot/bave.png.png" id="2_pcalt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcalt"]
+size = Vector2(322.484, 26.2086)
+
+[sub_resource type="Animation" id="Animation_gokmk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.367)]
+}
+
+[sub_resource type="Animation" id="Animation_0fa30"]
+resource_name = "splat_flatten"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.966667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 0.367), Vector2(0.1, 0.367), Vector2(0.2, 0.367), Vector2(0.3, 0.367)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kj32c"]
+_data = {
+&"RESET": SubResource("Animation_gokmk"),
+&"splat_flatten": SubResource("Animation_0fa30")
+}
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(834, 555)
+collision_layer = 8
+collision_mask = 3
+contact_monitor = true
+script = ExtResource("1_le1fs")
+flaque_texture = ExtResource("2_le1fs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.00003, 1)
+scale = Vector2(0.1, 0.367)
+texture = ExtResource("2_pcalt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -19)
+rotation = -3.14159
+scale = Vector2(0.40002, -2.89969)
+shape = SubResource("RectangleShape2D_pcalt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kj32c")
+}
+autoplay = "RESET"

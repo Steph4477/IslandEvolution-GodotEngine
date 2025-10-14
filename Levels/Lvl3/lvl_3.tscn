@@ -1,0 +1,173 @@
+[gd_scene load_steps=17 format=4 uid="uid://bfnii0n8mia6o"]
+
+[ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
+[ext_resource type="Texture2D" uid="uid://q072nybkifbr" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="3_hag10"]
+[ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="4_bgnwh"]
+[ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/Bag/bag.tscn" id="5_mult3"]
+[ext_resource type="TileSet" uid="uid://b2ljk1cgl2kj5" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="5_yixkb"]
+[ext_resource type="Script" uid="uid://ffcbfbsbmbbr" path="res://Levels/Lvl3/Environement/world_parallaxe.gd" id="6_si8q7"]
+[ext_resource type="Shader" uid="uid://dhlsmhn1pvc4d" path="res://Levels/Lvl3/Environement/swim_zone.gdshader" id="9_4tc27"]
+[ext_resource type="Texture2D" uid="uid://cjf1jwma4wrye" path="res://Levels/Lvl3/Environement/water.tres" id="9_n7unt"]
+[ext_resource type="Script" uid="uid://bj2b2nld2cnfh" path="res://Levels/Lvl3/Environement/swim_zone.gd" id="10_4tc27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
+size = Vector2(152.5, 2876)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djaxt"]
+size = Vector2(143, 2820.9375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
+size = Vector2(9359.375, 186.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
+size = Vector2(245, 624.25)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0a5l"]
+shader = ExtResource("9_4tc27")
+shader_parameter/scroll_speed = Vector2(0.05, 0)
+shader_parameter/tint_strength = 0.0
+shader_parameter/tint_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
+size = Vector2(1630.8125, 647.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tc27"]
+size = Vector2(1135.375, 652.5)
+
+[node name="lvl3" type="Node2D"]
+script = ExtResource("1_73pra")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(21, 23)
+
+[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
+z_index = 5
+position = Vector2(188, 912)
+
+[node name="platform" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-4, 34)
+collision_layer = 2
+
+[node name="Border" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(-74.75, 387)
+shape = SubResource("RectangleShape2D_ekrdk")
+
+[node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(8890, 365)
+shape = SubResource("RectangleShape2D_djaxt")
+
+[node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(4330, 1379)
+shape = SubResource("RectangleShape2D_wsvun")
+
+[node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(4410, -851)
+shape = SubResource("RectangleShape2D_wsvun")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(1802.5, 1466.125)
+shape = SubResource("RectangleShape2D_hag10")
+
+[node name="Sound" type="Node2D" parent="Node2D"]
+
+[node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
+stream = ExtResource("4_bgnwh")
+autoplay = true
+
+[node name="World" type="Node2D" parent="."]
+modulate = Color(0.47137535, 0.4713753, 0.4713753, 1)
+
+[node name="WorldParallaxe" type="ParallaxBackground" parent="World"]
+script = ExtResource("6_si8q7")
+
+[node name="SkyLayer" type="ParallaxLayer" parent="World/WorldParallaxe"]
+z_index = -100
+
+[node name="SkySprite" type="Sprite2D" parent="World/WorldParallaxe/SkyLayer"]
+z_index = -100
+position = Vector2(0, -1712.0001)
+scale = Vector2(5.794922, 2.726875)
+texture = ExtResource("3_hag10")
+centered = false
+
+[node name="WaterLayer" type="ParallaxLayer" parent="World/WorldParallaxe"]
+material = SubResource("ShaderMaterial_u0a5l")
+position = Vector2(-9, 77)
+motion_scale = Vector2(1.875, 0.527)
+motion_mirroring = Vector2(1920, 540)
+
+[node name="WaterSprite" type="Sprite2D" parent="World/WorldParallaxe/WaterLayer"]
+modulate = Color(0.6310349, 0.631035, 0.6310349, 1)
+position = Vector2(982, 915)
+texture = ExtResource("9_n7unt")
+
+[node name="DecorsTiles" type="Node2D" parent="World"]
+
+[node name="TileMapLayer0" type="TileMapLayer" parent="World/DecorsTiles"]
+modulate = Color(0.41981313, 0.41981313, 0.4198131, 1)
+z_index = 50
+position = Vector2(-22, 939)
+tile_map_data = PackedByteArray("AAAAABYAAgAGAAEAAABKABYAAgAHAAEAAAAtACMAAgAHAAEAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAAA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer1" type="TileMapLayer" parent="World/DecorsTiles"]
+modulate = Color(0.14044744, 0.14044744, 0.14044744, 1)
+z_index = 40
+position = Vector2(-4, 667)
+scale = Vector2(0.4, 0.4)
+tile_map_data = PackedByteArray("AAAFAH0AAgAAAAMAAAAWAH4AAgAAAAMAAAAxAH0AAgAAAAMAAABTAHkAAgAAAAMAAACHAH4AAgAAAAMAAABEAHYAAgAFAAIAAABtAH0AAgAFAAIAAAChAHwAAgACAAIAAACgAHwAAgACAAIAAAC4AH4AAgAHAAMAAADhAHwAAgAHAAMAAADJAHkAAgAEAAIAAABdAHoAAgAEAAIAAAD3AHoAAgAEAAIAAADxAHgAAgADAAQAAADxAHkAAgADAAQAAAASAHwAAgADAAQAAAA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="World/DecorsTiles"]
+modulate = Color(0.39308554, 0.3930855, 0.39308548, 1)
+z_index = 3
+position = Vector2(-64, 683)
+scale = Vector2(0.3, 0.3)
+tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAdAFgAAgADAAUAAAAwAFkAAgADAAUAAAA/AFkAAgACAAQAAABSAFgAAgACAAQAAABlAFgAAgABAAMAAAB3AFsAAgAAAAMAAACLAFoAAgAAAAMAAAA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="World/DecorsTiles"]
+z_index = 2
+position = Vector2(-261, 161.00002)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAeADsAAgAGAAEAAAA2ADsAAgAGAAEAAABSADoAAgAHAAAAAABrADoAAgAGAAAAAACHADsAAgAGAAEAAACfADoAAgAHAAAAAACoADkAAgAHAAAAAAC0ADgAAgAHAAAAAAC7ADwAAgAGAAEAAADWADoAAgAGAAAAAAA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer4" type="TileMapLayer" parent="World/DecorsTiles"]
+position = Vector2(2782, -1014.99994)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAA6/5UAAgAHAAEAAABu/5UAAgAHAAEAAACK/5UAAgAHAAAAAABf/5QAAgAHAAAAAADW/5YAAgAHAAAAAAA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer5" type="TileMapLayer" parent="World/DecorsTiles"]
+position = Vector2(2803, -1585.9999)
+scale = Vector2(0.4, 0.4)
+tile_map_data = PackedByteArray("AABn/7EBAgACAAIAABA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="SwimZone" type="Node2D" parent="World"]
+script = ExtResource("10_4tc27")
+
+[node name="Area2D" type="Area2D" parent="World/SwimZone"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone/Area2D"]
+position = Vector2(880.59375, 1518.625)
+shape = SubResource("RectangleShape2D_n7unt")
+
+[node name="SwimZone2" type="Node2D" parent="World"]
+position = Vector2(1657, -11)
+script = ExtResource("10_4tc27")
+
+[node name="Area2D" type="Area2D" parent="World/SwimZone2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone2/Area2D"]
+position = Vector2(854.6875, 1533.25)
+shape = SubResource("RectangleShape2D_4tc27")
+
+[node name="BagLoot" parent="World" instance=ExtResource("5_mult3")]
+position = Vector2(1826.0001, 1189)
+
+[connection signal="body_entered" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="World/SwimZone2/Area2D" to="World/SwimZone2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="World/SwimZone2/Area2D" to="World/SwimZone2" method="_on_area_2d_body_exited"]

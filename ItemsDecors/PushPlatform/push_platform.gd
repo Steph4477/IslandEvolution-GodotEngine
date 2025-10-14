@@ -44,7 +44,7 @@ func _physics_process(_delta):
 
 # Affiche un popup d’info au joueur
 func show_info_popup(txt) :
-	var popup = preload("res://ItemsDecors/info_popup.tscn").instantiate()
+	var popup = preload("res://Interface/Popup/Info_popup/info_popup.tscn").instantiate()
 	add_child(popup)
 	popup.show_info(txt)
 
