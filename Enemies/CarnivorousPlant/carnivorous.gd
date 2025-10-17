@@ -38,8 +38,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	# 👻 Ghost Moko avalé
 	player.kill_by_plant()
 
-	var ghost_sprite := Sprite2D.new()
-	var sprite_ref = player.get_node("Sprite")
+	var ghost_sprite = Sprite2D.new()
+	var sprite_ref = player.get_node("Node2D/Sprite")
 	ghost_sprite.texture = sprite_ref.texture
 	ghost_sprite.scale = sprite_ref.scale
 	ghost_sprite.rotation = sprite_ref.rotation

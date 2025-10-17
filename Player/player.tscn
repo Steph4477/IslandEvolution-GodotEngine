@@ -492,10 +492,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
-size = Vector2(256.66666, 284.279)
+size = Vector2(153.33331, 284.279)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y06ei"]
-size = Vector2(253.33334, 152.48228)
+size = Vector2(209.99995, 156.02838)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj58r"]
 radius = 42.190044
@@ -510,8 +510,8 @@ position = Vector2(-23, -28)
 scale = Vector2(1.2, 1.2)
 
 [node name="Sprite" type="Sprite2D" parent="Node2D"]
-position = Vector2(150, 61.667)
-scale = Vector2(0.2, 0.2)
+position = Vector2(154.16666, 40.833332)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_2paov")
 
 [node name="Anim" type="AnimationPlayer" parent="Node2D"]
@@ -521,12 +521,12 @@ libraries = {
 }
 
 [node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(124.5, 94.083336)
+position = Vector2(128, 94.083336)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_j3qaj")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(124, 111.5)
+position = Vector2(135.5, 111)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_y06ei")
 disabled = true

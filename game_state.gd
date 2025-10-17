@@ -51,9 +51,9 @@ func _ready():
 
 	# Premier chargement
 	await get_tree().process_frame
-	await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
-	#await load_level("res:///Levels/Lvl2/lvl_2.tscn")
+	await load_level("res:///Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
@@ -127,13 +127,11 @@ func load_level(scene_path):
 			p.reset_state()
 		elif p.has_variable("pv") and p.has_variable("max_pv"):
 			p.pv = p.max_pv
-
+		
 		health_bar.update_health_bar(p.pv, p.max_pv)
 
 		# Nouvelle ref officielle
 		set_player(p)
-	else:
-		print("🧭 Scène sans SpawnPoint détectée → mode MENU (", level.name, ")")
 
 	await fade.fade_in()
 
@@ -181,7 +179,7 @@ func restart_game():
 	reinitialise()
 	await get_tree().process_frame
 	if current_level_path == "" or current_level_path.contains("game_over"):
-		load_level("res://Levels/level_1.tscn")
+		load_level("res://Levels/Lvl1/lvl_1.tscn")
 	else:
 		load_level(current_level_path)
 
@@ -219,7 +217,7 @@ func reinitialise():
 	hud.set_button_enabled(gamepad.get_node("Coco"), false)
 	hud.set_button_enabled(gamepad.get_node("Spear"), false)
 	hud.set_button_enabled(gamepad.get_node("Health"), false)
-
+	
 	hud.update_seed_display(0, total_seeds_in_level)
 
 # --- Pour supprimer l'avertissement UNUSED_SIGNAL qui arrive de key.gd et porte/exit.gd ---
