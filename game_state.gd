@@ -61,8 +61,6 @@ func _ready():
 	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
-func _physics_process(delta: float) -> void:
-	print(correct_symbols)
 func set_player(p):
 	player = p
 	emit_signal("player_updated", p)

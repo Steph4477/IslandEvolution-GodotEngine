@@ -44,3 +44,6 @@ func _ready():
 	# 🔓 Réactive le mouvement de Moko après le dialogue
 	if gs.player:
 		gs.player.can_move = true
+	
+	gs.correct_symbols = ["owl", "lion", "bowl"]  # jeu d'essai
+	gs.selected_symbols.clear()
