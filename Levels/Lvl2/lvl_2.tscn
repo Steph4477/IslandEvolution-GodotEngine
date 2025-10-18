@@ -549,13 +549,15 @@ scale = Vector2(0.8, 0.8)
 z_index = 0
 position = Vector2(-11.2499695, 3.75)
 scale = Vector2(0.99999994, 0.99999994)
+symbol_name = "bowl"
 texture_off = ExtResource("17_kxq3y")
 texture_on = ExtResource("18_igsey")
 
 [node name="Lion" parent="Node2D/Symbols" instance=ExtResource("36_ureso")]
 z_index = 0
-position = Vector2(6237.5, 972.50006)
+position = Vector2(6237.5, 956.25006)
 scale = Vector2(0.8, 0.8)
+symbol_name = "lion"
 texture_off = ExtResource("12_ureso")
 texture_on = ExtResource("20_5rcsp")
 
@@ -563,6 +565,7 @@ texture_on = ExtResource("20_5rcsp")
 z_index = 0
 position = Vector2(6735, 1940)
 scale = Vector2(0.7, 0.7)
+symbol_name = "owl"
 texture_off = ExtResource("21_04g0o")
 texture_on = ExtResource("22_reql1")
 

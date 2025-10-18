@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5eos"]
 size = Vector2(15.669969, 13.109882)
 
-[node name="Symbol" type="Node2D"]
+[node name="SymbolReveal" type="Node2D"]
 z_index = 5
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_rnyai")

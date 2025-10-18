@@ -36,6 +36,10 @@ signal all_seeds_collected
 signal key_collected
 signal player_updated(new_player)
 
+# --- Digicode lvl2 ---
+var correct_symbols = []   # les 3 bons rencontrés dans le niveau
+var selected_symbols = []  # la sélection du joueur sur le digicode final
+
 # --- Initialisation ---
 func _ready():
 	print("📦 [GameState] Initialisé")
@@ -57,6 +61,8 @@ func _ready():
 	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
+func _physics_process(delta: float) -> void:
+	print(correct_symbols)
 func set_player(p):
 	player = p
 	emit_signal("player_updated", p)
