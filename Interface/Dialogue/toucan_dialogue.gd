@@ -6,20 +6,13 @@ signal finished
 @onready var text = $Box/MarginContainer/Text
 @onready var anim = $AnimationPlayer
 
-# Réglages via l’inspecteur
-@export var lines = [
-	"J'ai faim ! Ce temple regorge de graines !",
-	"Vole au moins 5 graines au clan des Pygmées.",
-	"Alors, peut-être que je pourrais t'aider, Moko !",
-	"Bonne chance !"
-]
-
+@export var lines = []
 @export var auto_start := true           # Démarrer au _ready
-@export var chars_per_sec := 30          # Vitesse d’écriture
-@export var pause_between_lines := 2.0   # Pause entre les lignes (s)
-@export var hide_when_done := true       # Cacher le bandeau à la fin
 
 # État interne
+var chars_per_sec := 30          # Vitesse d’écriture
+var pause_between_lines := 2.0   # Pause entre les lignes (s)
+var hide_when_done := true       # Cacher le bandeau à la fin
 var line_index := -1
 var full_line := ""
 var shown_chars := 0

@@ -28,9 +28,18 @@ func _ready():
 	var dlg = dialogue_scene.instantiate()
 	dlg.name = "DialogueUI"
 	add_child(dlg)
-	await get_tree().process_frame
-	dlg.start()
+
+	# 💬 Ici tu définis directement le texte du dialogue
+	dlg.start([
+		"Trouve ma plume magique.",
+		"Le clan pygmée me l'a volée.",
+		"Ils ont dû la cacher dans le temple.",
+		"Alors, peut-être que je pourrai t'aider, Moko !",
+		"Bonne chance !"
+	])
+
 	await dlg.finished
+
 
 	# 🔓 Réactive le mouvement de Moko après le dialogue
 	if gs.player:
