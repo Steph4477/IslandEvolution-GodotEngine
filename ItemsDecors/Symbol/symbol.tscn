@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bldp8xpxjsett"]
+
+[ext_resource type="Script" uid="uid://rkr1tqhcoaa7" path="res://ItemsDecors/Symbol/symbol.gd" id="1_rnyai"]
+[ext_resource type="Texture2D" uid="uid://cea0yxjth7ec7" path="res://ItemsDecors/Symbol/Turn_on/bowl_symbol_transparent.png" id="2_7w0cf"]
+[ext_resource type="Texture2D" uid="uid://b8nq2qworxyii" path="res://ItemsDecors/Symbol/Turn_off/bowl.png" id="3_sqdya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5eos"]
+size = Vector2(15.051422, 7.465349)
+
+[node name="Symbol" type="Node2D"]
+z_index = 5
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_rnyai")
+
+[node name="TurnOn" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_7w0cf")
+
+[node name="TurnOff" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_sqdya")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.6666666, 5.000003)
+rotation = -3.14159
+scale = Vector2(16.1668, -18.3068)
+shape = SubResource("RectangleShape2D_y5eos")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

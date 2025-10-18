@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=70 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://Levels/Lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://Levels/Lvl2/Environement/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://c1l2knlr44ii3" path="res://Levels/Lvl2/Accessory/urn.png" id="30_wpmwo"]
 [ext_resource type="Texture2D" uid="uid://bc5421d0ikjk4" path="res://Levels/Lvl2/Accessory/urn1.png" id="31_0vnxp"]
 [ext_resource type="Texture2D" uid="uid://c3ipf0rb5oiux" path="res://Levels/Lvl2/Accessory/urn2.png" id="32_3kq7q"]
+[ext_resource type="PackedScene" uid="uid://bldp8xpxjsett" path="res://ItemsDecors/Symbol/symbol.tscn" id="36_ureso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(86.75, 3228)
@@ -173,7 +174,7 @@ z_index = 3
 position = Vector2(221, 138)
 
 [node name="MobilePlatForm1" parent="Node2D/Platforms/MobilePlatForms" instance=ExtResource("15_a6f7x")]
-position = Vector2(1371, -1276)
+position = Vector2(1448, -1271)
 scale = Vector2(1.2, 1.2)
 distance = 1800.0
 
@@ -1692,3 +1693,8 @@ position = Vector2(232, -2)
 [node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
 stream = ExtResource("10_ochkp")
 autoplay = true
+
+[node name="Symbol" parent="." instance=ExtResource("36_ureso")]
+z_index = 3
+position = Vector2(1785, -325)
+scale = Vector2(0.8, 0.8)
