@@ -35,6 +35,7 @@ var collected_seeds = 0
 signal all_seeds_collected
 signal key_collected
 signal player_updated(new_player)
+signal digicode_ok  
 
 # --- Digicode lvl2 ---
 var correct_symbols = []   # les 3 bons rencontrés dans le niveau
@@ -67,20 +68,15 @@ func set_player(p):
 
 # --- Chargement de niveau ---
 # --- Helper : cherche un node nommé "SpawnPoint" n'importe où dans la scène ---
-func _find_spawn(level: Node) -> Node:
-	# Vérifie si un node "SpawnPoint" existe directement
+func _find_spawn(level):
 	var direct = level.get_node_or_null("SpawnPoint")
 	if direct:
 		return direct
-
-	# Sinon cherche récursivement dans les enfants
 	for child in level.get_children():
 		var found = _find_spawn(child)
 		if found:
 			return found
-
 	return null
-
 
 # --- Chargement de niveau robuste menus/sans spawn ---
 func load_level(scene_path):
@@ -88,53 +84,39 @@ func load_level(scene_path):
 
 	await fade.fade_out()
 
-	# Purge la ref player pour éviter les accès pendants
 	emit_signal("player_updated", null)
 	player = null
 
-	# Supprime tout sauf fade et hud
 	for child in get_children():
 		if child != fade and child != hud:
 			child.queue_free()
 
 	await get_tree().process_frame
 
-	# Instancie le niveau demandé
 	var level = load(scene_path).instantiate()
 	current_level = level
 	add_child(level)
 
-	# Détermine s'il y a un SpawnPoint
 	var spawn_point = _find_spawn(level)
-	var is_menu = spawn_point == null  # pas de ternaire, clair et net
+	var is_menu = spawn_point == null
 
-	# HUD visible seulement en jeu
 	hud.visible = not is_menu
 	health_bar.visible = not is_menu
 
 	if not is_menu:
-		# On mémorise le chemin du "vrai" niveau (pas les menus)
 		current_level_path = scene_path
-
-		# Comptage des graines depuis la scène
 		reset_seed_tracking_from_scene()
 
-		# Instancie le joueur
 		var p = player_scene.instantiate()
 		level.add_child(p)
-
-		# Place le joueur au SpawnPoint
 		p.global_position = spawn_point.global_position
 
-		# Reset PV simple
 		if p.has_method("reset_state"):
 			p.reset_state()
 		elif p.has_variable("pv") and p.has_variable("max_pv"):
 			p.pv = p.max_pv
 		
 		health_bar.update_health_bar(p.pv, p.max_pv)
-
-		# Nouvelle ref officielle
 		set_player(p)
 
 	await fade.fade_in()
@@ -167,11 +149,11 @@ func gain_life():
 		hud.update_lives_display(lives)
 		if player:
 			player.show_info_popup("❤️ +1 vie (" + str(lives) + "/" + str(max_lives) + ")")
-		return true   # ✅ renvoie un booléen le loot peut disparaître
+		return true
 	else:
 		if player:
 			player.show_info_popup("❤️ Vies déjà au maximum (" + str(max_lives) + ")")
-		return false  # 🚫 loot doit rester
+		return false
 
 func is_game_over():
 	return lives <= 0
@@ -224,6 +206,9 @@ func reinitialise():
 	
 	hud.update_seed_display(0, total_seeds_in_level)
 
-# --- Pour supprimer l'avertissement UNUSED_SIGNAL qui arrive de key.gd et porte/exit.gd ---
+# --- Signaux "clé" et "digicode" ---
 func signal_key_collected():
 	emit_signal("key_collected")
+
+func signal_digicode_ok():   
+	emit_signal("digicode_ok")

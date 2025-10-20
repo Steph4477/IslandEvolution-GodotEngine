@@ -1,23 +1,105 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxg7s54g6pc3h"]
+[gd_scene load_steps=7 format=3 uid="uid://bxg7s54g6pc3h"]
 
 [ext_resource type="Script" uid="uid://cndbe5xn6w044" path="res://Levels/Lvl2/Environement/Door/door.gd" id="1_80iex"]
-[ext_resource type="Texture2D" uid="uid://rk8m3qbyiso2" path="res://Levels/Lvl2/Environement/Door/1.png" id="1_l6shg"]
+[ext_resource type="Texture2D" uid="uid://dro0n5gbrrds5" path="res://Levels/Lvl2/Environement/Door/door.png" id="2_stmkj"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(2, 217)
+size = Vector2(6, 217)
 
-[node name="Exit" type="Area2D"]
+[sub_resource type="Animation" id="Animation_stmkj"]
+resource_name = "open"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1024, 824), Vector2(98600000, 824)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(713, -402), Vector2(0, -412)]
+}
+
+[sub_resource type="Animation" id="Animation_yh81q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 840)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(985.98975, -412)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rjagk"]
+_data = {
+&"RESET": SubResource("Animation_yh81q"),
+&"open": SubResource("Animation_stmkj")
+}
+
+[node name="Door" type="Area2D"]
 z_index = 5
-scale = Vector2(2.5, 2.5)
 collision_layer = 256
 script = ExtResource("1_80iex")
 next_scene_path = "res://lvl2/lvl_2b.tscn"
 
-[node name="CloseSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_l6shg")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.2, 45)
+position = Vector2(493, 303)
 shape = SubResource("2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rjagk")
+}
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(1024, 824)
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 985.98975
+offset_top = -412.0
+offset_right = 2009.9897
+offset_bottom = 428.0
+grow_vertical = 2
+scale = Vector2(1e-05, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 98600000.0
+offset_bottom = 824.0
+texture = ExtResource("2_stmkj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

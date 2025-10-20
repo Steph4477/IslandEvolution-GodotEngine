@@ -1,5 +1,6 @@
 extends GridContainer
 
+
 @export var correct_symbols = ["bowl", "lion", "owl"]
 
 var selected_symbols = []
@@ -37,6 +38,9 @@ func check_combination():
 		if valid:
 			print("✅ Code correct :", selected_symbols)
 			lock_buttons()
+			var gs = get_node_or_null("/root/GameState")
+			if gs:
+				gs.signal_digicode_ok()
 		else:
 			# Sinon -> on réinitialise les boutons pour que le joueur réessaie
 			print("❌ Code incorrect :", selected_symbols)

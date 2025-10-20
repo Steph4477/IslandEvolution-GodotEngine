@@ -2,15 +2,61 @@ extends Area2D
 
 @export var next_scene_path = "res://Levels/lvl2/Lvl_2b/lvl_2b.tscn"
 
-func _on_body_entered(body: Node2D) -> void:
+var is_unlocked = false
+var open_anim_played = false
+
+@onready var door_anim = $AnimationPlayer
+@onready var door_collision = $CollisionShape2D
+@onready var door_control = $Control
+
+# --- Utilitaire popup ---
+func show_info_popup(txt):
+	var popup_scene = preload("res://Interface/Popup/Info_popup/info_popup.tscn")
+	var popup = popup_scene.instantiate()
+	get_tree().root.add_child(popup)
+	await get_tree().process_frame
+	popup.show_info(txt)
+
+func _ready():
+	# 1) État initial : caché + collision off
+	if door_control:
+		door_control.visible = false
+	if door_collision:
+		door_collision.disabled = true
+
+	await get_tree().process_frame
+
+	# 2) Connexion au signal global du GameState 
+	var gs = get_node_or_null("/root/GameState")
+	if gs:
+		if not gs.is_connected("digicode_ok", Callable(self, "on_digicode_ok")):
+			gs.digicode_ok.connect(on_digicode_ok)
+
+# --- Reçoit le signal du GS quand le code est OK ---
+func on_digicode_ok():
+	is_unlocked = true
+	# Affiche le visuel (Control) et active la collision
+	if door_control:
+		door_control.visible = true
+	if door_collision:
+		door_collision.disabled = false
+	# Lance l'animation "open"
+	if door_anim and door_anim.has_animation("open") and not open_anim_played:
+		door_anim.play("open")
+		await door_anim.animation_finished
+		open_anim_played = true
+
+# --- Entrée dans l'Area2D ---
+func _on_body_entered(body):
 	if body.name != "Player":
 		return
 
-	var anim_player = body.get_node("Node2D/Anim")
-	if anim_player.has_animation("door_2"):
+	# Jouer l'anim du joueur puis changer de scène
+	var player_anim = body.get_node("Node2D/Anim")
+	if player_anim and player_anim.has_animation("door_2"):
 		body.animation_locked = true
-		anim_player.play("door_2")
-		await anim_player.animation_finished
+		player_anim.play("door_2")
+		await player_anim.animation_finished
 		body.set_physics_process(false)
 		change_scene()
 
