@@ -308,7 +308,7 @@ func process_liana(_delta):
 	
 	# SAUT = on se projette selon l'angle actuel de la liane puis on se détache
 	if Input.is_action_just_pressed("jump"):
-		var power = 700
+		var power = 900
 		var angle_deg = current_liana.get_node("Pivot").rotation_degrees
 		velocity = Vector2(0, -power).rotated(deg_to_rad(angle_deg))
 		# on supprime la colision de la liane

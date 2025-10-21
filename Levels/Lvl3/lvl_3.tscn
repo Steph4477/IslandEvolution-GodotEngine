@@ -37,7 +37,7 @@ size = Vector2(418, 641.25)
 size = Vector2(394.6875, 652.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdlip"]
-size = Vector2(1324, 664)
+size = Vector2(2830, 664)
 
 [node name="lvl3" type="Node2D"]
 script = ExtResource("1_73pra")
@@ -47,7 +47,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(103, 879)
+position = Vector2(1159, 847)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 position = Vector2(-4, 34)
@@ -113,7 +113,7 @@ z_index = -100
 [node name="SkySprite" type="Sprite2D" parent="World/WorldParallaxe/SkyLayer"]
 z_index = -100
 position = Vector2(0, -1712.0001)
-scale = Vector2(5.794922, 2.726875)
+scale = Vector2(5.794922, 2.737305)
 texture = ExtResource("3_hag10")
 centered = false
 
@@ -125,7 +125,8 @@ motion_mirroring = Vector2(1920, 540)
 
 [node name="WaterSprite" type="Sprite2D" parent="World/WorldParallaxe/WaterLayer"]
 modulate = Color(0.6310349, 0.631035, 0.6310349, 1)
-position = Vector2(982, 915)
+position = Vector2(1892, 874)
+scale = Vector2(1.95, 1)
 texture = ExtResource("9_n7unt")
 
 [node name="DecorsTiles" type="Node2D" parent="World"]
@@ -186,20 +187,33 @@ position = Vector2(-795.34375, 1529)
 shape = SubResource("RectangleShape2D_4tc27")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/SwimZone2/Area2D"]
-position = Vector2(315, 1522)
+position = Vector2(1068, 1522)
 shape = SubResource("RectangleShape2D_sdlip")
 
 [node name="BagLoot" parent="World" instance=ExtResource("5_mult3")]
 position = Vector2(529, 1223)
 
-[node name="Liana" parent="World" instance=ExtResource("11_sdlip")]
+[node name="lianas" type="Node2D" parent="World"]
+position = Vector2(184, -17)
+
+[node name="Liana" parent="World/lianas" instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(1400, 137)
+position = Vector2(1439, 266)
 scale = Vector2(0.4, 1)
 
-[node name="Liana2" parent="World" instance=ExtResource("11_sdlip")]
+[node name="Liana2" parent="World/lianas" instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(1801, 137)
+position = Vector2(2124, 268)
+scale = Vector2(0.4, 1)
+
+[node name="Liana3" parent="World/lianas" instance=ExtResource("11_sdlip")]
+z_index = 3
+position = Vector2(2795, 239)
+scale = Vector2(0.4, 1)
+
+[node name="Liana4" parent="World/lianas" instance=ExtResource("11_sdlip")]
+z_index = 3
+position = Vector2(3480, 247)
 scale = Vector2(0.4, 1)
 
 [connection signal="body_entered" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_entered"]
