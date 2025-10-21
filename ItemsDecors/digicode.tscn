@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://c32q0ryim8cri"]
+[gd_scene load_steps=22 format=3 uid="uid://c32q0ryim8cri"]
 
 [ext_resource type="Texture2D" uid="uid://b8nq2qworxyii" path="res://ItemsDecors/Symbol/Turn_off/bowl.png" id="1_d6sm0"]
-[ext_resource type="Script" uid="uid://cxmnh7lwns3iw" path="res://ItemsDecors/Digicode/digicode.gd" id="1_xhigu"]
+[ext_resource type="Script" uid="uid://b8johyhfwb82s" path="res://ItemsDecors/Digicode/digicode.gd" id="1_xhigu"]
+[ext_resource type="Script" uid="uid://cxmnh7lwns3iw" path="res://ItemsDecors/Digicode/options.gd" id="2_nno4w"]
 [ext_resource type="Texture2D" uid="uid://cea0yxjth7ec7" path="res://ItemsDecors/Symbol/Turn_on/bowl_symbol_transparent.png" id="2_xhigu"]
 [ext_resource type="Texture2D" uid="uid://pn7c4aduph5y" path="res://ItemsDecors/Symbol/Turn_off/circle.png" id="3_nno4w"]
 [ext_resource type="Texture2D" uid="uid://ddrwbeijfxcbh" path="res://ItemsDecors/Symbol/Turn_on/circle.png" id="4_kq106"]
@@ -20,13 +21,17 @@
 [ext_resource type="Texture2D" uid="uid://cig7g3t1jwrw6" path="res://ItemsDecors/Symbol/Turn_off/triangl.png" id="17_qbohp"]
 [ext_resource type="Texture2D" uid="uid://chc3ychbkdj6p" path="res://ItemsDecors/Symbol/Turn_on/triangl.png" id="18_qmmek"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhigu"]
+size = Vector2(3068, 4212)
+
 [node name="Digicode" type="Node2D"]
+script = ExtResource("1_xhigu")
 
 [node name="Options" type="GridContainer" parent="."]
 offset_right = 3080.0
 offset_bottom = 3080.0
 columns = 3
-script = ExtResource("1_xhigu")
+script = ExtResource("2_nno4w")
 
 [node name="bowl" type="TextureButton" parent="Options"]
 layout_mode = 2
@@ -82,6 +87,12 @@ toggle_mode = true
 texture_normal = ExtResource("17_qbohp")
 texture_pressed = ExtResource("18_qmmek")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1524, 2096)
+shape = SubResource("RectangleShape2D_xhigu")
+
 [connection signal="toggled" from="Options/bowl" to="Options" method="_on_symbol_toggled" flags=18]
 [connection signal="toggled" from="Options/circle" to="Options" method="_on_symbol_toggled" flags=18]
 [connection signal="toggled" from="Options/ellipse" to="Options" method="_on_symbol_toggled" flags=18]
@@ -91,3 +102,4 @@ texture_pressed = ExtResource("18_qmmek")
 [connection signal="toggled" from="Options/owl" to="Options" method="_on_symbol_toggled" flags=18]
 [connection signal="toggled" from="Options/rope8" to="Options" method="_on_symbol_toggled" flags=18]
 [connection signal="toggled" from="Options/triangl" to="Options" method="_on_symbol_toggled"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
