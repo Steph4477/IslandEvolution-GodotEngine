@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=20 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="Texture2D" uid="uid://q072nybkifbr" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="3_hag10"]
+[ext_resource type="Texture2D" uid="uid://bakem4letrjah" path="res://Levels/Lvl3/Environement/tiles platforms/decosheet.png" id="3_o2qeu"]
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="4_bgnwh"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/Bag/bag.tscn" id="5_mult3"]
 [ext_resource type="TileSet" uid="uid://b2ljk1cgl2kj5" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="5_yixkb"]
@@ -9,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://dhlsmhn1pvc4d" path="res://Levels/Lvl3/Environement/swim_zone.gdshader" id="9_4tc27"]
 [ext_resource type="Texture2D" uid="uid://cjf1jwma4wrye" path="res://Levels/Lvl3/Environement/water.tres" id="9_n7unt"]
 [ext_resource type="Script" uid="uid://bj2b2nld2cnfh" path="res://Levels/Lvl3/Environement/swim_zone.gd" id="10_4tc27"]
+[ext_resource type="PackedScene" uid="uid://b6ybyb2g34piq" path="res://ItemsDecors/Liana/Liana.tscn" id="11_sdlip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -29,10 +31,13 @@ shader_parameter/tint_strength = 0.0
 shader_parameter/tint_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
-size = Vector2(1630.8125, 647.25)
+size = Vector2(418, 641.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tc27"]
-size = Vector2(1135.375, 652.5)
+size = Vector2(394.6875, 652.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdlip"]
+size = Vector2(1324, 664)
 
 [node name="lvl3" type="Node2D"]
 script = ExtResource("1_73pra")
@@ -42,7 +47,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(188, 912)
+position = Vector2(103, 879)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 position = Vector2(-4, 34)
@@ -65,7 +70,11 @@ position = Vector2(4410, -851)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(1802.5, 1466.125)
+position = Vector2(524, 1474)
+shape = SubResource("RectangleShape2D_hag10")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(1167, 1480)
 shape = SubResource("RectangleShape2D_hag10")
 
 [node name="Sound" type="Node2D" parent="Node2D"]
@@ -73,6 +82,24 @@ shape = SubResource("RectangleShape2D_hag10")
 [node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
 stream = ExtResource("4_bgnwh")
 autoplay = true
+
+[node name="Nenuphar" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
+position = Vector2(519, 1168)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_o2qeu")
+hframes = 8
+vframes = 6
+frame = 18
+
+[node name="Nenuphar2" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
+position = Vector2(1173, 1162)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_o2qeu")
+hframes = 8
+vframes = 6
+frame = 18
 
 [node name="World" type="Node2D" parent="."]
 modulate = Color(0.47137535, 0.4713753, 0.4713753, 1)
@@ -139,19 +166,13 @@ scale = Vector2(0.8, 0.8)
 tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAA6/5UAAgAHAAEAAABu/5UAAgAHAAEAAACK/5UAAgAHAAAAAABf/5QAAgAHAAAAAADW/5YAAgAHAAAAAAA=")
 tile_set = ExtResource("5_yixkb")
 
-[node name="TileMapLayer5" type="TileMapLayer" parent="World/DecorsTiles"]
-position = Vector2(2803, -1585.9999)
-scale = Vector2(0.4, 0.4)
-tile_map_data = PackedByteArray("AABn/7EBAgACAAIAABA=")
-tile_set = ExtResource("5_yixkb")
-
 [node name="SwimZone" type="Node2D" parent="World"]
 script = ExtResource("10_4tc27")
 
 [node name="Area2D" type="Area2D" parent="World/SwimZone"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone/Area2D"]
-position = Vector2(880.59375, 1518.625)
+position = Vector2(207, 1521.625)
 shape = SubResource("RectangleShape2D_n7unt")
 
 [node name="SwimZone2" type="Node2D" parent="World"]
@@ -161,11 +182,25 @@ script = ExtResource("10_4tc27")
 [node name="Area2D" type="Area2D" parent="World/SwimZone2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone2/Area2D"]
-position = Vector2(854.6875, 1533.25)
+position = Vector2(-795.34375, 1529)
 shape = SubResource("RectangleShape2D_4tc27")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/SwimZone2/Area2D"]
+position = Vector2(315, 1522)
+shape = SubResource("RectangleShape2D_sdlip")
+
 [node name="BagLoot" parent="World" instance=ExtResource("5_mult3")]
-position = Vector2(1826.0001, 1189)
+position = Vector2(529, 1223)
+
+[node name="Liana" parent="World" instance=ExtResource("11_sdlip")]
+z_index = 3
+position = Vector2(1400, 137)
+scale = Vector2(0.4, 1)
+
+[node name="Liana2" parent="World" instance=ExtResource("11_sdlip")]
+z_index = 3
+position = Vector2(1801, 137)
+scale = Vector2(0.4, 1)
 
 [connection signal="body_entered" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_exited"]

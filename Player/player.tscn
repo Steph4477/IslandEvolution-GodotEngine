@@ -520,6 +520,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_p7kcq")
 }
 
+[node name="AttachMarker" type="Node2D" parent="Node2D"]
+position = Vector2(164.16666, 61.666664)
+
 [node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(128, 94.083336)
 scale = Vector2(0.3, 0.282)

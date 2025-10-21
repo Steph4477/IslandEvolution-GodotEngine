@@ -63,6 +63,9 @@ var heal_potions = []
 var in_cooldown = false
 var can_heal = true
 var is_in_cooldown = false
+var is_on_liana = false
+var current_liana = null
+
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
 @onready var anim = $Node2D/Anim
@@ -121,6 +124,7 @@ func _physics_process(delta):
 	if not can_move or animation_locked:
 		return
 	process_climb()
+	process_liana(delta)
 	update_jump(delta)
 	move_horizontal()
 	process_ramp()
@@ -137,6 +141,11 @@ func _physics_process(delta):
 # ============================================================================
 
 func move_horizontal():
+	# Bloqué si accroché à une liane
+	if is_on_liana:
+		velocity.x = 0
+		return
+	
 	var dir = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
 	velocity.x = dir * speed
 	if dir != 0:
@@ -144,6 +153,7 @@ func move_horizontal():
 			sprite.scale.x = abs(sprite.scale.x)
 		else:
 			sprite.scale.x = -abs(sprite.scale.x)
+
 
 func update_jump(delta):
 	if is_swimming:
@@ -243,6 +253,7 @@ func process_ramp():
 		var rdir = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
 		velocity.x = rdir * speed * 0.4
 
+# --- Nage ---
 func process_swim(delta):
 	if is_swimming:
 		swim_timer += delta
@@ -256,7 +267,64 @@ func process_swim(delta):
 				sprite.scale.x = abs(sprite.scale.x)
 			else:
 				sprite.scale.x = -abs(sprite.scale.x)
-		
+
+# --- Liane & Balancement ---
+func attach_to_liana(liana):
+	is_on_liana = true
+	current_liana = liana
+	if current_liana.has_method("on_player_attach"):
+		current_liana.on_player_attach()
+
+	velocity = Vector2.ZERO
+	
+	# Aligne la main au Grip de la liane
+	hand_to_grip()
+	
+	# Pose "climb" maintenue tant qu'on est accroché
+	anim.play("climb")
+
+func detach_to_liana():
+	is_on_liana = false
+	current_liana = null
+
+func process_liana(_delta):
+	if not is_on_liana or current_liana == null:
+		return
+	
+	# Moko figé et collé au point Grip (si la liane bouge, Moko suit)
+	velocity = Vector2.ZERO
+	hand_to_grip()
+	
+	# left et right pilotent UNIQUEMENT la liane
+	var left = Input.is_action_pressed(INPUT["left"])
+	var right = Input.is_action_pressed(INPUT["right"])
+	if current_liana.has_node("Pivot"):
+		if left:
+			current_liana.angle_direction = 1
+		elif right:
+			current_liana.angle_direction = -1
+		else:
+			current_liana.angle_direction = 0
+	
+	# SAUT = on se projette selon l'angle actuel de la liane puis on se détache
+	if Input.is_action_just_pressed("jump"):
+		var power = 700
+		var angle_deg = current_liana.get_node("Pivot").rotation_degrees
+		velocity = Vector2(0, -power).rotated(deg_to_rad(angle_deg))
+		# on supprime la colision de la liane
+		current_liana.expect_exit = true
+		current_liana.on_player_detach()
+		current_liana.disable_collision_temporarily(0.3)
+
+		detach_to_liana()
+
+# on attache les mains à l'attache de la liane
+func hand_to_grip():
+	var grip = current_liana.get_node("Pivot/Grip")
+	var hand = $Node2D/AttachMarker
+	var delta = grip.global_position - hand.global_position
+	global_position += delta
+
 # =================================================================================================
 # =                                   COLLECTES                                                   =
 # =================================================================================================
@@ -331,7 +399,7 @@ func collect_seed(amount = 1):
 
 # --- Tir ---
 func shoot_coco():
-	if is_swimming or is_ramping or is_hanging:
+	if is_swimming or is_ramping or is_hanging or is_on_liana:
 		return
 		
 	if Input.is_action_just_pressed(INPUT["fire_coco"]) and coco_count > 0:
@@ -362,6 +430,9 @@ func shoot_coco():
 		await get_tree().create_timer(rate_of_fire).timeout
 
 func shoot_lance():
+	if is_on_liana:
+		return
+	
 	if Input.is_action_just_pressed(INPUT["fire_lance"]):
 		# 🔒 On bloque les autres animations pendant le tir
 		animation_locked = true
@@ -575,7 +646,7 @@ func die():
 	game_state.load_level(next_level)
 
 # ============================================================================
-# =                            ANIMATIONS                                    =
+# =                            ANIMATIONS                                   =
 # ============================================================================
 func update_animation():
 	if animation_locked or is_dead:
@@ -584,6 +655,9 @@ func update_animation():
 	if is_swimming:
 		if anim.current_animation != "swim":
 			anim.play("swim")
+		return
+	
+	if is_on_liana:
 		return
 	
 	# 🔒 Ne rien toucher si accroché ou en train de grimper

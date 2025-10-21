@@ -31,19 +31,52 @@ func _ready():
 
 	# 💬 Ici tu définis directement le texte du dialogue
 	dlg.start([
-		"Trouve ma plume magique.",
-		"Le clan pygmée me l'a volée.",
-		"Ils ont dû la cacher dans le temple.",
-		"Alors, peut-être que je pourrai t'aider, Moko !",
-		"Bonne chance !"
+		"J'ai faim, Moko.",
+		"Trouve-moi 5 graines avant de sortir.",
+		"Et peut-être que je pourrai t'aider..."
 	])
 
 	await dlg.finished
 
-
+	# focus sur le digicode
+	await focus_camera_on_node("Node2D/Digicode")
+	
+	# pause d'une seconde sur le digicode
+	await get_tree().create_timer(1).timeout
+	
+	# retour sur la camera du joueur
+	await return_camera_to_player()
+	
 	# 🔓 Réactive le mouvement de Moko après le dialogue
 	if gs.player:
 		gs.player.can_move = true
 	
-	gs.correct_symbols = ["owl", "lion", "bowl"]  # jeu d'essai
+	gs.correct_symbols = ["owl", "lion", "bowl"]  
 	gs.selected_symbols.clear()
+
+# === FOCUS CAMÉRA GÉNÉRIQUE ===
+func focus_camera_on_node(node_name: String) -> void:
+	var gs = get_node("/root/GameState")
+	var player = gs.player
+	var cam = player.get_node("Camera2D")
+	var target = get_node_or_null(node_name)
+	if not target:
+		return
+
+	var tween = create_tween()
+	tween.tween_property(cam, "global_position", target.global_position, 1.2)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
+
+	await get_tree().create_timer(0.6).timeout
+
+# === RETOUR CAMÉRA VERS MOKO ===
+func return_camera_to_player() -> void:
+	var gs = get_node("/root/GameState")
+	var player = gs.player
+	var cam = player.get_node("Camera2D")
+
+	var tween = create_tween()
+	tween.tween_property(cam, "global_position", player.global_position, 1.2)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
