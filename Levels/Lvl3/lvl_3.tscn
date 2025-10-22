@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=21 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="Texture2D" uid="uid://q072nybkifbr" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="3_hag10"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cjf1jwma4wrye" path="res://Levels/Lvl3/Environement/water.tres" id="9_n7unt"]
 [ext_resource type="Script" uid="uid://bj2b2nld2cnfh" path="res://Levels/Lvl3/Environement/swim_zone.gd" id="10_4tc27"]
 [ext_resource type="PackedScene" uid="uid://b6ybyb2g34piq" path="res://ItemsDecors/Liana/Liana.tscn" id="11_sdlip"]
+[ext_resource type="PackedScene" uid="uid://b3eigelsea7jk" path="res://Enemies/Crocodile/crocodile.tscn" id="12_12vmq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -19,7 +20,7 @@ size = Vector2(152.5, 2876)
 size = Vector2(143, 2820.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(9359.375, 186.375)
+size = Vector2(9298.6875, 292.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(245, 624.25)
@@ -37,7 +38,7 @@ size = Vector2(418, 641.25)
 size = Vector2(394.6875, 652.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdlip"]
-size = Vector2(2830, 664)
+size = Vector2(2666, 664)
 
 [node name="lvl3" type="Node2D"]
 script = ExtResource("1_73pra")
@@ -47,7 +48,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(1159, 847)
+position = Vector2(1073, 849)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 position = Vector2(-4, 34)
@@ -62,7 +63,7 @@ position = Vector2(8890, 365)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(4330, 1379)
+position = Vector2(4360.3438, 1326.0938)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
@@ -75,6 +76,10 @@ shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platform"]
 position = Vector2(1167, 1480)
+shape = SubResource("RectangleShape2D_hag10")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(4084, 1470)
 shape = SubResource("RectangleShape2D_hag10")
 
 [node name="Sound" type="Node2D" parent="Node2D"]
@@ -101,6 +106,25 @@ hframes = 8
 vframes = 6
 frame = 18
 
+[node name="Nenuphar3" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
+position = Vector2(4060, 1155)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_o2qeu")
+hframes = 8
+vframes = 6
+frame = 18
+
+[node name="Ennemies" type="Node2D" parent="Node2D"]
+z_index = 5
+position = Vector2(-21, -23)
+
+[node name="Crocodile" parent="Node2D/Ennemies" instance=ExtResource("12_12vmq")]
+position = Vector2(1842, 1317)
+scale = Vector2(1.5, 1.5)
+collision_layer = 0
+collision_mask = 34
+
 [node name="World" type="Node2D" parent="."]
 modulate = Color(0.47137535, 0.4713753, 0.4713753, 1)
 
@@ -125,8 +149,8 @@ motion_mirroring = Vector2(1920, 540)
 
 [node name="WaterSprite" type="Sprite2D" parent="World/WorldParallaxe/WaterLayer"]
 modulate = Color(0.6310349, 0.631035, 0.6310349, 1)
-position = Vector2(1892, 874)
-scale = Vector2(1.95, 1)
+position = Vector2(602.5, 920)
+scale = Vector2(3.2442708, 1)
 texture = ExtResource("9_n7unt")
 
 [node name="DecorsTiles" type="Node2D" parent="World"]
@@ -171,6 +195,8 @@ tile_set = ExtResource("5_yixkb")
 script = ExtResource("10_4tc27")
 
 [node name="Area2D" type="Area2D" parent="World/SwimZone"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone/Area2D"]
 position = Vector2(207, 1521.625)
@@ -181,13 +207,15 @@ position = Vector2(1657, -11)
 script = ExtResource("10_4tc27")
 
 [node name="Area2D" type="Area2D" parent="World/SwimZone2"]
+collision_layer = 2
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone2/Area2D"]
 position = Vector2(-795.34375, 1529)
 shape = SubResource("RectangleShape2D_4tc27")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/SwimZone2/Area2D"]
-position = Vector2(1068, 1522)
+position = Vector2(986, 1522)
 shape = SubResource("RectangleShape2D_sdlip")
 
 [node name="BagLoot" parent="World" instance=ExtResource("5_mult3")]

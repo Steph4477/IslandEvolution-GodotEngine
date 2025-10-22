@@ -144,5 +144,6 @@ pointing/handheld/orientation=1
 2d_physics/layer_3="pique"
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="Friend"
+2d_physics/layer_6="Swim"
 2d_physics/layer_9="spellP"
 2d_physics/layer_10="box"
