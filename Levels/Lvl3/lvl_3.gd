@@ -6,7 +6,7 @@ func _ready():
 	
 	## On attend pour tout charger
 	await get_tree().process_frame
-#
+	
 	## Récupéreration du game state
 	var gs = get_node("/root/GameState")
 	

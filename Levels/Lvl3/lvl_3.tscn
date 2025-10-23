@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=22 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="Texture2D" uid="uid://q072nybkifbr" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="3_hag10"]
 [ext_resource type="Texture2D" uid="uid://bakem4letrjah" path="res://Levels/Lvl3/Environement/tiles platforms/decosheet.png" id="3_o2qeu"]
+[ext_resource type="Texture2D" uid="uid://v1ymctshdtf2" path="res://Loot/Flower/flower.png" id="4_7b6wd"]
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="4_bgnwh"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/Bag/bag.tscn" id="5_mult3"]
 [ext_resource type="TileSet" uid="uid://b2ljk1cgl2kj5" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="5_yixkb"]
@@ -41,6 +42,7 @@ size = Vector2(394.6875, 652.5)
 size = Vector2(2666, 664)
 
 [node name="lvl3" type="Node2D"]
+position = Vector2(134, -66)
 script = ExtResource("1_73pra")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -88,7 +90,9 @@ shape = SubResource("RectangleShape2D_hag10")
 stream = ExtResource("4_bgnwh")
 autoplay = true
 
-[node name="Nenuphar" type="Sprite2D" parent="Node2D"]
+[node name="Nenuphars" type="Node2D" parent="Node2D"]
+
+[node name="Nenuphar" type="Sprite2D" parent="Node2D/Nenuphars"]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
 position = Vector2(519, 1168)
 scale = Vector2(0.8, 0.8)
@@ -97,7 +101,7 @@ hframes = 8
 vframes = 6
 frame = 18
 
-[node name="Nenuphar2" type="Sprite2D" parent="Node2D"]
+[node name="Nenuphar2" type="Sprite2D" parent="Node2D/Nenuphars"]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
 position = Vector2(1173, 1162)
 scale = Vector2(0.8, 0.8)
@@ -106,14 +110,19 @@ hframes = 8
 vframes = 6
 frame = 18
 
-[node name="Nenuphar3" type="Sprite2D" parent="Node2D"]
+[node name="Nenuphar3" type="Sprite2D" parent="Node2D/Nenuphars"]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
-position = Vector2(4060, 1155)
-scale = Vector2(0.8, 0.8)
+position = Vector2(4093, 1152)
+scale = Vector2(-0.8, 0.8)
 texture = ExtResource("3_o2qeu")
 hframes = 8
 vframes = 6
 frame = 18
+
+[node name="Flower" type="Sprite2D" parent="Node2D/Nenuphars"]
+position = Vector2(4099, 1166)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_7b6wd")
 
 [node name="Ennemies" type="Node2D" parent="Node2D"]
 z_index = 5
@@ -133,24 +142,25 @@ script = ExtResource("6_si8q7")
 
 [node name="SkyLayer" type="ParallaxLayer" parent="World/WorldParallaxe"]
 z_index = -100
+position = Vector2(3225, 682)
 
 [node name="SkySprite" type="Sprite2D" parent="World/WorldParallaxe/SkyLayer"]
 z_index = -100
-position = Vector2(0, -1712.0001)
+position = Vector2(-3241.0005, -1579.0001)
 scale = Vector2(5.794922, 2.737305)
 texture = ExtResource("3_hag10")
 centered = false
 
 [node name="WaterLayer" type="ParallaxLayer" parent="World/WorldParallaxe"]
 material = SubResource("ShaderMaterial_u0a5l")
-position = Vector2(-9, 77)
+position = Vector2(2443, 562)
 motion_scale = Vector2(1.875, 0.527)
 motion_mirroring = Vector2(1920, 540)
 
 [node name="WaterSprite" type="Sprite2D" parent="World/WorldParallaxe/WaterLayer"]
 modulate = Color(0.6310349, 0.631035, 0.6310349, 1)
-position = Vector2(602.5, 920)
-scale = Vector2(3.2442708, 1)
+position = Vector2(1127, 920)
+scale = Vector2(6.6312504, 1)
 texture = ExtResource("9_n7unt")
 
 [node name="DecorsTiles" type="Node2D" parent="World"]
