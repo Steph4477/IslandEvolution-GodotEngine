@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=23 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
+[ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
 [ext_resource type="Texture2D" uid="uid://q072nybkifbr" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="3_hag10"]
 [ext_resource type="Texture2D" uid="uid://bakem4letrjah" path="res://Levels/Lvl3/Environement/tiles platforms/decosheet.png" id="3_o2qeu"]
 [ext_resource type="Texture2D" uid="uid://v1ymctshdtf2" path="res://Loot/Flower/flower.png" id="4_7b6wd"]
@@ -33,13 +34,13 @@ shader_parameter/tint_strength = 0.0
 shader_parameter/tint_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
-size = Vector2(418, 641.25)
+size = Vector2(418, 665.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tc27"]
-size = Vector2(394.6875, 652.5)
+size = Vector2(394.6875, 666.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdlip"]
-size = Vector2(2666, 664)
+size = Vector2(2669, 675)
 
 [node name="lvl3" type="Node2D"]
 position = Vector2(134, -66)
@@ -50,7 +51,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(1073, 849)
+position = Vector2(157, 552)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 position = Vector2(-4, 34)
@@ -90,49 +91,7 @@ shape = SubResource("RectangleShape2D_hag10")
 stream = ExtResource("4_bgnwh")
 autoplay = true
 
-[node name="Nenuphars" type="Node2D" parent="Node2D"]
-
-[node name="Nenuphar" type="Sprite2D" parent="Node2D/Nenuphars"]
-modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
-position = Vector2(519, 1168)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_o2qeu")
-hframes = 8
-vframes = 6
-frame = 18
-
-[node name="Nenuphar2" type="Sprite2D" parent="Node2D/Nenuphars"]
-modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
-position = Vector2(1173, 1162)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_o2qeu")
-hframes = 8
-vframes = 6
-frame = 18
-
-[node name="Nenuphar3" type="Sprite2D" parent="Node2D/Nenuphars"]
-modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
-position = Vector2(4093, 1152)
-scale = Vector2(-0.8, 0.8)
-texture = ExtResource("3_o2qeu")
-hframes = 8
-vframes = 6
-frame = 18
-
-[node name="Flower" type="Sprite2D" parent="Node2D/Nenuphars"]
-position = Vector2(4099, 1166)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_7b6wd")
-
-[node name="Ennemies" type="Node2D" parent="Node2D"]
-z_index = 5
-position = Vector2(-21, -23)
-
-[node name="Crocodile" parent="Node2D/Ennemies" instance=ExtResource("12_12vmq")]
-position = Vector2(1842, 1317)
-scale = Vector2(1.5, 1.5)
-collision_layer = 0
-collision_mask = 34
+[node name="ChronoZone" parent="Node2D" instance=ExtResource("3_4esaq")]
 
 [node name="World" type="Node2D" parent="."]
 modulate = Color(0.47137535, 0.4713753, 0.4713753, 1)
@@ -205,27 +164,19 @@ tile_set = ExtResource("5_yixkb")
 script = ExtResource("10_4tc27")
 
 [node name="Area2D" type="Area2D" parent="World/SwimZone"]
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone/Area2D"]
-position = Vector2(207, 1521.625)
-shape = SubResource("RectangleShape2D_n7unt")
-
-[node name="SwimZone2" type="Node2D" parent="World"]
-position = Vector2(1657, -11)
-script = ExtResource("10_4tc27")
-
-[node name="Area2D" type="Area2D" parent="World/SwimZone2"]
-collision_layer = 2
+collision_layer = 32
 collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone2/Area2D"]
-position = Vector2(-795.34375, 1529)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/SwimZone/Area2D"]
+position = Vector2(207, 1509.625)
+shape = SubResource("RectangleShape2D_n7unt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/SwimZone/Area2D"]
+position = Vector2(861.65625, 1511.125)
 shape = SubResource("RectangleShape2D_4tc27")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/SwimZone2/Area2D"]
-position = Vector2(986, 1522)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/SwimZone/Area2D"]
+position = Vector2(2641.5, 1505.5)
 shape = SubResource("RectangleShape2D_sdlip")
 
 [node name="BagLoot" parent="World" instance=ExtResource("5_mult3")]
@@ -254,7 +205,49 @@ z_index = 3
 position = Vector2(3480, 247)
 scale = Vector2(0.4, 1)
 
+[node name="Nenuphars" type="Node2D" parent="World"]
+position = Vector2(21, 23)
+
+[node name="Nenuphar" type="Sprite2D" parent="World/Nenuphars"]
+modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
+position = Vector2(519, 1168)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_o2qeu")
+hframes = 8
+vframes = 6
+frame = 18
+
+[node name="Nenuphar2" type="Sprite2D" parent="World/Nenuphars"]
+modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
+position = Vector2(1173, 1162)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_o2qeu")
+hframes = 8
+vframes = 6
+frame = 18
+
+[node name="Nenuphar3" type="Sprite2D" parent="World/Nenuphars"]
+modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
+position = Vector2(4093, 1152)
+scale = Vector2(-0.8, 0.8)
+texture = ExtResource("3_o2qeu")
+hframes = 8
+vframes = 6
+frame = 18
+
+[node name="Flower" type="Sprite2D" parent="World/Nenuphars"]
+position = Vector2(4099, 1166)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_7b6wd")
+
+[node name="Ennemies" type="Node2D" parent="World"]
+z_index = 5
+
+[node name="Crocodile" parent="World/Ennemies" instance=ExtResource("12_12vmq")]
+position = Vector2(1842, 1317)
+scale = Vector2(1.5, 1.5)
+collision_layer = 0
+collision_mask = 34
+
 [connection signal="body_entered" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="World/SwimZone2/Area2D" to="World/SwimZone2" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="World/SwimZone2/Area2D" to="World/SwimZone2" method="_on_area_2d_body_exited"]

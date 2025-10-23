@@ -28,7 +28,7 @@ offset_bottom = 921.3051
 texture = ExtResource("2_uawj8")
 
 [node name="Background" type="Sprite2D" parent="Background/Background"]
-scale = Vector2(1.983073, 1.7806801)
+scale = Vector2(1, 0.898)
 texture = ExtResource("2_uawj8")
 
 [node name="Frame" type="Sprite2D" parent="Background/Background"]

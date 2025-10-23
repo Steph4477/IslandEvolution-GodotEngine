@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=28 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b8wdslrwg00xo" path="res://Interface/GamePad/cooldown_popo2.png" id="16_b0qj5"]
 [ext_resource type="Texture2D" uid="uid://dhaaggwqnjw7f" path="res://Interface/Hud/life.png" id="18_1hj8m"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Hud/health_bar.gd" id="19_s8lhr"]
+[ext_resource type="PackedScene" uid="uid://cbx7p8yvy6gn3" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
 [ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/Healt_Bar/bar_under.png" id="22_xl2wx"]
 [ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/Healt_Bar/bar_fill2.png" id="23_u63cs"]
 
@@ -213,3 +214,9 @@ texture_progress = ExtResource("23_u63cs")
 [node name="TextureRect" type="TextureRect" parent="HealthBar"]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TimerChrono" parent="." instance=ExtResource("22_hny2p")]
+offset_left = 138.0
+offset_top = 145.0
+offset_right = 178.0
+offset_bottom = 185.0

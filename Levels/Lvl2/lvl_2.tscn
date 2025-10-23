@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dn1s51o2indg1"]
+[gd_scene load_steps=76 format=3 uid="uid://dn1s51o2indg1"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://Levels/Lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="PackedScene" uid="uid://dwdkiu0gtcqd1" path="res://Levels/Lvl2/Environement/WorldEnvironment.tscn" id="2_rwgjh"]
@@ -108,7 +108,7 @@ size = Vector2(950.5, 13.5)
 size = Vector2(1310, 8.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vnxp"]
-size = Vector2(4401, 141.5)
+size = Vector2(4349, 136.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwf5r"]
 size = Vector2(603.5, 10.5)
@@ -137,9 +137,6 @@ size = Vector2(89, 3345)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lc01g"]
 size = Vector2(10430, 131)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8ncv"]
-size = Vector2(121, 278)
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bwf5r"]
 
 [node name="lvl2" type="Node2D"]
@@ -152,7 +149,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 8
-position = Vector2(8754, 961)
+position = Vector2(275, 814)
 
 [node name="Tiles" type="Node2D" parent="Node2D"]
 
@@ -195,10 +192,10 @@ z_index = 3
 position = Vector2(2499, 106)
 
 [node name="PushPlatform1" parent="Node2D/Platforms/PushPlatforms" instance=ExtResource("13_ifea3")]
-position = Vector2(-2101, -336)
+position = Vector2(-2218, -337)
 
 [node name="PushPlatform2" parent="Node2D/Platforms/PushPlatforms" instance=ExtResource("13_ifea3")]
-position = Vector2(-270, 80)
+position = Vector2(14, 86)
 mass = 5000.0
 
 [node name="PushPlatform" parent="Node2D/Platforms/PushPlatforms" instance=ExtResource("13_ifea3")]
@@ -207,11 +204,12 @@ position = Vector2(-524, 861)
 [node name="PushPlatform3" parent="Node2D/Platforms/PushPlatforms" instance=ExtResource("13_ifea3")]
 position = Vector2(3833, 1023)
 
-[node name="PushPlatform4" parent="Node2D/Platforms/PushPlatforms" instance=ExtResource("13_ifea3")]
-position = Vector2(6097, -597)
-
 [node name="PushPlatform5" parent="Node2D/Platforms/PushPlatforms" instance=ExtResource("13_ifea3")]
 position = Vector2(3701, -179)
+
+[node name="PushPlatform6" parent="Node2D/Platforms/PushPlatforms" instance=ExtResource("13_ifea3")]
+position = Vector2(5440, -1422)
+gravity_scale = 3.0
 
 [node name="Bridge" type="Node2D" parent="Node2D/Platforms"]
 modulate = Color(0.5449743, 0.54497427, 0.54497427, 1)
@@ -394,7 +392,7 @@ position = Vector2(6356.5, 842.25)
 shape = SubResource("RectangleShape2D_wpmwo")
 
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
-position = Vector2(7861.5, 1688.75)
+position = Vector2(7887.5, 1691.25)
 shape = SubResource("RectangleShape2D_0vnxp")
 
 [node name="CollisionShape2D28" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
@@ -433,10 +431,6 @@ shape = SubResource("RectangleShape2D_p2btv")
 position = Vector2(4927, -1657.5)
 shape = SubResource("RectangleShape2D_lc01g")
 
-[node name="CollisionShape2D32" type="CollisionShape2D" parent="Node2D/Platforms/platforms"]
-position = Vector2(5714.5, 1633)
-shape = SubResource("RectangleShape2D_d8ncv")
-
 [node name="KillZone" parent="Node2D/Platforms" instance=ExtResource("11_0vnxp")]
 z_index = 20
 position = Vector2(4559.0005, 1274.9999)
@@ -450,12 +444,12 @@ scale = Vector2(1, -1)
 [node name="Rat" type="Node2D" parent="Node2D/Enemies"]
 
 [node name="Rat2" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(5702.999, -347.01447)
+position = Vector2(6313.997, -1166.016)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
 [node name="Rat3" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(3804.0024, 909.99036)
+position = Vector2(5071.001, 521.9872)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
@@ -465,7 +459,7 @@ rotation = 3.1415927
 scale = Vector2(-1, -1)
 
 [node name="Rat5" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(6214.9995, -298.01575)
+position = Vector2(5979.999, -391.01514)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
@@ -477,22 +471,22 @@ position = Vector2(-5003, -825.99)
 scale = Vector2(1, 1)
 
 [node name="Pygmee3" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
-position = Vector2(1392.0022, 1059.9967)
+position = Vector2(2683, 278.9935)
 scale = Vector2(1, 1)
 
 [node name="Pygmee6" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
-position = Vector2(-3095.999, 412.00812)
+position = Vector2(-4804.9976, 1224.0125)
 scale = Vector2(1, 1)
 
 [node name="Serpents" type="Node2D" parent="Node2D/Enemies"]
 
 [node name="Serpent" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
-position = Vector2(3835, 86.9903)
+position = Vector2(4527.001, 92.988525)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
 [node name="Serpent2" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
-position = Vector2(6182.996, -1572.0156)
+position = Vector2(4242.9966, -1566.0106)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
@@ -513,20 +507,11 @@ position = Vector2(225, 37)
 [node name="BagLoot1" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(600, 991)
 
-[node name="BagLoot2" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(1928, 621)
-
 [node name="BagLoot3" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(8, -213)
-
-[node name="BagLoot4" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(1870, 204)
+position = Vector2(1007, 209)
 
 [node name="BagLoot" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(1945, -210)
-
-[node name="BagLoot5" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(795, -635)
 
 [node name="BagLoot6" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 z_index = 3
@@ -536,7 +521,7 @@ position = Vector2(7597, 782)
 position = Vector2(8415, 368)
 
 [node name="BagLoot8" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
-position = Vector2(6090, -906)
+position = Vector2(6094, -887.00006)
 
 [node name="BagLoot9" parent="Node2D/BagsLoot" instance=ExtResource("11_2ivwu")]
 position = Vector2(8471, -470)
@@ -582,7 +567,7 @@ position = Vector2(5482, 219)
 
 [node name="Seed3" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 z_index = 5
-position = Vector2(-1124, -1196)
+position = Vector2(-337, -346)
 
 [node name="Seed4" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
 position = Vector2(7233, -1417)
@@ -591,7 +576,7 @@ position = Vector2(7233, -1417)
 position = Vector2(1059, -754)
 
 [node name="Seed6" parent="Node2D/Seeds" instance=ExtResource("17_mnvun")]
-position = Vector2(620, 61)
+position = Vector2(1605, 205)
 
 [node name="Torchs" type="Node2D" parent="Node2D"]
 light_mask = 0
@@ -1664,7 +1649,7 @@ texture = ExtResource("32_3kq7q")
 
 [node name="Urn7" type="Sprite2D" parent="Node2D/Decorations/Urns"]
 z_index = 3
-position = Vector2(1249, 247.99998)
+position = Vector2(1295, -585)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("30_wpmwo")
 
