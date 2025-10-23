@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
 [ext_resource type="Texture2D" uid="uid://q072nybkifbr" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="3_hag10"]
 [ext_resource type="Texture2D" uid="uid://bakem4letrjah" path="res://Levels/Lvl3/Environement/tiles platforms/decosheet.png" id="3_o2qeu"]
-[ext_resource type="Texture2D" uid="uid://v1ymctshdtf2" path="res://Loot/Flower/flower.png" id="4_7b6wd"]
 [ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="4_bgnwh"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/Bag/bag.tscn" id="5_mult3"]
 [ext_resource type="TileSet" uid="uid://b2ljk1cgl2kj5" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="5_yixkb"]
@@ -14,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bj2b2nld2cnfh" path="res://Levels/Lvl3/Environement/swim_zone.gd" id="10_4tc27"]
 [ext_resource type="PackedScene" uid="uid://b6ybyb2g34piq" path="res://ItemsDecors/Liana/Liana.tscn" id="11_sdlip"]
 [ext_resource type="PackedScene" uid="uid://b3eigelsea7jk" path="res://Enemies/Crocodile/crocodile.tscn" id="12_12vmq"]
+[ext_resource type="PackedScene" uid="uid://c7ps13ndncbr4" path="res://Loot/Flower/flower.tscn" id="14_4esaq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -235,11 +235,6 @@ hframes = 8
 vframes = 6
 frame = 18
 
-[node name="Flower" type="Sprite2D" parent="World/Nenuphars"]
-position = Vector2(4099, 1166)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_7b6wd")
-
 [node name="Ennemies" type="Node2D" parent="World"]
 z_index = 5
 
@@ -248,6 +243,10 @@ position = Vector2(1842, 1317)
 scale = Vector2(1.5, 1.5)
 collision_layer = 0
 collision_mask = 34
+
+[node name="Flower" parent="World" instance=ExtResource("14_4esaq")]
+position = Vector2(4080, 1177)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="body_entered" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="World/SwimZone/Area2D" to="World/SwimZone" method="_on_area_2d_body_exited"]

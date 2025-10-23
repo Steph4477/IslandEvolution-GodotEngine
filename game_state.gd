@@ -34,6 +34,7 @@ var collected_seeds = 0
 # --- Signaux ---
 signal all_seeds_collected
 signal key_collected
+signal flower_collected
 signal player_updated(new_player)
 signal digicode_ok  
 
@@ -206,9 +207,12 @@ func reinitialise():
 	
 	hud.update_seed_display(0, total_seeds_in_level)
 
-# --- Signaux "clé" et "digicode" ---
+# --- Signaux "clé", "digicode", "flower" ---
 func signal_key_collected():
 	emit_signal("key_collected")
 
 func signal_digicode_ok():   
 	emit_signal("digicode_ok")
+	
+func signal_flower_collected():
+	emit_signal("flower_collected")
