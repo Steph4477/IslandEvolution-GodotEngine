@@ -8,11 +8,11 @@ size = Vector2(76, 79)
 [node name="ChronoZone" type="Node2D"]
 script = ExtResource("1_774ca")
 
-[node name="ChronoZone" type="Area2D" parent="."]
+[node name="Zone" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChronoZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone"]
 position = Vector2(1162, 1163.5)
 shape = SubResource("RectangleShape2D_fqi2f")
 
-[connection signal="body_entered" from="ChronoZone" to="." method="_on_chrono_zone_body_entered"]
-[connection signal="body_exited" from="ChronoZone" to="." method="_on_chrono_zone_body_exited"]
+[connection signal="body_entered" from="Zone" to="." method="_on_zone_body_entered"]
+[connection signal="body_exited" from="Zone" to="." method="_on_zone_body_exited"]

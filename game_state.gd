@@ -9,6 +9,7 @@ var can_fire_coco = false
 var can_fire_lance = false
 var has_key = false
 var has_lance = false
+var has_flower = false
 
 # --- Joueur, HUD & Scènes ---
 var player_scene = preload("res://Player/player.tscn")
