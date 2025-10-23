@@ -24,7 +24,6 @@ func _process(delta):
 			return
 		_update_label()
 
-# --- API ---
 func start_chrono():
 	time_left = start_time
 	is_running = true
