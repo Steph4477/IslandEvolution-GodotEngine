@@ -1,8 +1,8 @@
 extends Control
 
-signal finished  # émis quand on atteint 0
+signal finished  
 
-@export var start_time = 10.0  # temps de départ en secondes
+@export var start_time = 20.0  
 
 var time_left = 0.0
 var is_running = false
@@ -22,7 +22,7 @@ func _process(delta):
 			time_left = 0
 			is_running = false
 			_update_label()
-			emit_signal("finished")  # ✅ annonce la fin
+			emit_signal("finished")  
 			return
 		_update_label()
 
