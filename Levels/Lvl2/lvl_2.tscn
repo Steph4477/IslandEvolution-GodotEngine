@@ -449,7 +449,7 @@ rotation = 3.1415927
 scale = Vector2(-1, -1)
 
 [node name="Rat3" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
-position = Vector2(5071.001, 521.9872)
+position = Vector2(5040.0024, 888.98724)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 

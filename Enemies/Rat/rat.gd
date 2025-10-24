@@ -1,140 +1,149 @@
 extends CharacterBody2D
 
-# ========================== RÉGLAGES ==========================
-@export var move_speed = 400.0
-@export var melee_damage = 80
-@export var gravity = 2000.0
-@export var attack_range = 800.0   # distance max pour poursuite
-@export var attack_cooldown = 0.6
+@export var max_hp = 300
+@export var speed = 800
+@export var attack_range = 1000
+@export var stop_distance = 60
+@export var cooldown = 1.0
+@export var damage = 100
 
-# ============================ NODES ===========================
-@onready var rig = $Rig
-@onready var anim = $Rig/AnimationPlayer
-@onready var cac_zone = $Rig/CacZone
+const GRAVITY = 2000
+
 @onready var health_bar = $HealthBar/ProgressBar
+@onready var sprite = $Rotator/Sprite2D
+@onready var anim = $Rotator/AnimationPlayer
+@onready var rotator = $Rotator
 
-# ============================= ÉTAT ===========================
+var pv = 0
 var player = null
-var in_cac_active = false
 var is_attacking = false
-var base_scale_x = 1.0
-var is_dead = false
-var pv = 200
-var max_pv = 200
+var in_melee = false
+var attack_timer = null
 
-# ============================ READY ===========================
 func _ready():
-	base_scale_x = abs(rig.scale.x)
-	var gs = get_node("/root/GameState")
-	player = gs.player
-	gs.connect("player_updated", Callable(self, "_on_player_changed"))
+	pv = max_hp
+	if health_bar:
+		health_bar.max_value = max_hp
+		health_bar.value = pv
+	find_and_bind_player()
+	
+	attack_timer = Timer.new()
+	attack_timer.one_shot = false
+	attack_timer.wait_time = cooldown
+	add_child(attack_timer)
+	attack_timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
 
-func _on_player_changed(p):
-	player = p
-
-# ======================= BOUCLE PHYSIQUE ======================
 func _physics_process(delta):
-	if is_dead or not is_instance_valid(player):
-		return
-
 	apply_gravity(delta)
 
-	var distance = global_position.distance_to(player.global_position)
+	if is_instance_valid(player) and not is_attacking:
+		var target_pos = player.global_position
+		var turn_axis = player.get_node_or_null("TurnAxis")
+		if turn_axis:
+			target_pos = turn_axis.global_position
 
-	if in_cac_active:
-		attack()
-	elif distance <= attack_range:
-		find_player()
+		var to_target = target_pos - global_position
+		var distance = to_target.length()
+
+		# Flip du Rotator entier
+		if distance > 1:
+			if to_target.x > 0:
+				rotator.scale.x = abs(rotator.scale.x)
+			else:
+				rotator.scale.x = -abs(rotator.scale.x)
+
+		# Avance jusqu'à proximité, sinon stop
+		if distance < attack_range and abs(to_target.x) > stop_distance:
+			var direction = to_target.normalized()
+			velocity.x = direction.x * speed
+		else:
+			velocity.x = 0
 	else:
 		velocity.x = 0
-		if not is_attacking:
-			anim.play("idle")
+
+	# Stop net si collision latérale
+	if is_on_wall():
+		velocity.x = 0
 
 	move_and_slide()
 
-
-# ========================= GRAVITÉ ============================
 func apply_gravity(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	else:
+	if is_on_floor():
 		velocity.y = 0
+	else:
+		velocity.y += GRAVITY * delta
 
-# ========================= DÉPLACEMENT ========================
-func find_player():
+# ============================ COMBAT ============================
+func _on_attack_timer_timeout():
+	if not in_melee:
+		return
+	if not is_instance_valid(player):
+		return
 	if is_attacking:
 		return
+	_do_attack_tick()
 
-	var dx = player.global_position.x - global_position.x
-	var direction_x = 0
-
-	# ✅ Deadzone pour éviter le spam de flip quand Moko est trop proche
-	if dx < -32:
-		direction_x = -1
-	elif dx > 32:
-		direction_x = 1
-	else:
-		direction_x = 0  # trop près → on garde la direction actuelle
-
-	velocity.x = direction_x * move_speed
-
-	# ✅ Flip seulement si on est en dehors de la deadzone
-	if not is_attacking:
-		if direction_x == -1 and rig.scale.x != -base_scale_x:
-			rig.scale.x = -base_scale_x
-		elif direction_x == 1 and rig.scale.x != base_scale_x:
-			rig.scale.x = base_scale_x
-
-	if not is_attacking and direction_x != 0:
-		anim.play("walk")
-	elif not is_attacking:
-		anim.play("idle")
-
-
-# ========================= ATTAQUE ============================
-func attack():
-	if is_attacking or is_dead:
-		return
-	
+func _do_attack_tick():
 	is_attacking = true
 	velocity.x = 0
-	anim.play("attack")
-
-	# Délai avant d’infliger les dégâts
-	await get_tree().create_timer(0.3).timeout
-	if is_instance_valid(player):
-		player.on_hit(melee_damage)
-
-	# Cooldown avant de réattaquer
-	await get_tree().create_timer(attack_cooldown).timeout
+		
+	if anim.has_animation("attack"):
+		anim.play("attack")
+		
+	# Applique les dégâts réguliers à Moko (comme le croco mais sans one-shot)
+	_apply_attack_damage()
+	
 	is_attacking = false
 
-# ============================ ZONES ===========================
-func _on_cac_zone_body_entered(body):
-	if body.is_in_group("Player"):
-		in_cac_active = true
-
-func _on_cac_zone_body_exited(body):
-	if body.is_in_group("Player"):
-		in_cac_active = false
-
-
-# ========================= VIE / DÉGÂTS =======================
-func on_hit(amount):
-	if is_dead:
+func _apply_attack_damage():
+	if not is_instance_valid(player):
 		return
-	pv -= amount
+	if player.has_method("on_hit"):
+		player.on_hit(damage)
+
+# ============================ DÉGÂTS RAT =========================
+func on_hit(damage_taken):
+	pv -= damage_taken
 	if health_bar:
-		health_bar.max_value = max_pv
-		health_bar.value = pv
+		if pv < 0:
+			health_bar.value = 0
+		else:
+			health_bar.value = pv
+	show_damage_popup(damage_taken)
 	if pv <= 0:
 		die()
 
-# ============================= MORT ===========================
+func show_damage_popup(amount):
+	var scene = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn")
+	var popup = scene.instantiate()
+	add_child(popup)
+	popup.position = Vector2(0, -500)
+	popup.show_damage(amount)
+
 func die():
-	if is_dead:
-		return
-	is_dead = true
 	anim.play("die")
 	await get_tree().create_timer(0.8).timeout
 	queue_free()
+
+# ========================= PLAYER BIND ===========================
+func find_and_bind_player():
+	var gs = get_node_or_null("/root/GameState")
+	if gs:
+		player = gs.player
+		gs.connect("player_updated", Callable(self, "_on_player_changed"))
+
+func _on_player_changed(new_player):
+	player = new_player
+
+# ============================ ZONES ==============================
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Player") or body.name == "Player":
+		in_melee = true
+		if attack_timer.is_stopped():
+			attack_timer.start()
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("Player")or body.name == "Player":
+		in_melee = false
+		attack_timer.stop()
+		is_attacking = false

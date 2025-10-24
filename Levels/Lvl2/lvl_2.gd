@@ -20,36 +20,36 @@ func _ready():
 		var moko = gs.player
 		moko.get_node("Node2D/Sprite").modulate = Color(0.4, 0.4, 0.4)
 
-		# 🔒 Bloque le mouvement de Moko pendant le dialogue
-		moko.can_move = false
-	
-	# Insertion du dialogue du toucan
-	await get_tree().process_frame
-	var dlg = dialogue_scene.instantiate()
-	dlg.name = "DialogueUI"
-	add_child(dlg)
-
-	# 💬 Ici tu définis directement le texte du dialogue
-	dlg.start([
-		"J'ai faim, Moko.",
-		"Trouve-moi 5 graines avant de sortir.",
-		"Et peut-être que je pourrai t'aider..."
-	])
-
-	await dlg.finished
-
-	# focus sur le digicode
-	await focus_camera_on_node("Node2D/Digicode")
-	
-	# pause d'une seconde sur le digicode
-	await get_tree().create_timer(1).timeout
-	
-	# retour sur la camera du joueur
-	await return_camera_to_player()
-	
-	# 🔓 Réactive le mouvement de Moko après le dialogue
-	if gs.player:
-		gs.player.can_move = true
+		## 🔒 Bloque le mouvement de Moko pendant le dialogue
+		#moko.can_move = false
+	#
+	## Insertion du dialogue du toucan
+	#await get_tree().process_frame
+	#var dlg = dialogue_scene.instantiate()
+	#dlg.name = "DialogueUI"
+	#add_child(dlg)
+#
+	## 💬 Ici tu définis directement le texte du dialogue
+	#dlg.start([
+		#"J'ai faim, Moko.",
+		#"Trouve-moi 5 graines avant de sortir.",
+		#"Et peut-être que je pourrai t'aider..."
+	#])
+#
+	#await dlg.finished
+#
+	## focus sur le digicode
+	#await focus_camera_on_node("Node2D/Digicode")
+	#
+	## pause d'une seconde sur le digicode
+	#await get_tree().create_timer(1).timeout
+	#
+	## retour sur la camera du joueur
+	#await return_camera_to_player()
+	#
+	## 🔓 Réactive le mouvement de Moko après le dialogue
+	#if gs.player:
+		#gs.player.can_move = true
 	
 	gs.correct_symbols = ["owl", "lion", "bowl"]  
 	gs.selected_symbols.clear()

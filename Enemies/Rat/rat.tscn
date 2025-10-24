@@ -10,15 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://bguj7ao83li82" path="res://Enemies/Rat/3.png" id="28_qpyqf"]
 [ext_resource type="Texture2D" uid="uid://i4rdun4lr2ag" path="res://Enemies/Rat/4.png" id="29_f5yxl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(62, 45)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gg55r"]
+radius = 19.0
 
 [sub_resource type="Animation" id="Animation_gg55r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Rig/Sprite2D:modulate")
+tracks/1/path = NodePath("Rotator/Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -46,7 +46,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +62,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +74,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Rig/Sprite2D:modulate")
+tracks/1/path = NodePath("Rotator/Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -89,7 +89,7 @@ resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -106,7 +106,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Sprite2D:texture")
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -125,46 +125,46 @@ _data = {
 &"walk": SubResource("Animation_j2nn7")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8q6o"]
-size = Vector2(69, 43)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(58, 16)
 
 [node name="Rat" type="CharacterBody2D" groups=["Enemies"]]
+z_index = 5
 scale = Vector2(-1, 1)
 collision_layer = 8
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_e4syr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6, -3.5)
-shape = SubResource("RectangleShape2D_x2fpe")
+[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-40, -16)
+shape = SubResource("CircleShape2D_gg55r")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_hmr1k")]
 position = Vector2(49, -87)
 rotation = 3.14159
 scale = Vector2(1, -1.00374)
 
-[node name="Rig" type="Node2D" parent="."]
+[node name="Rotator" type="Node2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig"]
+[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+modulate = Color(0.442911, 0.442911, 0.442911, 1)
+position = Vector2(-4, -14)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("7_vwo2e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" groups=["Enemies"]]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_1lwxd")
 }
 autoplay = "walk"
 
-[node name="Sprite2D" type="Sprite2D" parent="Rig"]
-modulate = Color(0.442911, 0.442911, 0.442911, 1)
-position = Vector2(-1, -15)
-rotation = 3.14159
-scale = Vector2(0.25, -0.25)
-texture = ExtResource("7_vwo2e")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 13)
+shape = SubResource("RectangleShape2D_x2fpe")
 
-[node name="CacZone" type="Area2D" parent="Rig" groups=["Enemies"]]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rig/CacZone"]
-position = Vector2(-86.5, -17)
-shape = SubResource("RectangleShape2D_x8q6o")
-
-[connection signal="body_entered" from="Rig/CacZone" to="." method="_on_cac_zone_body_entered"]
-[connection signal="body_exited" from="Rig/CacZone" to="." method="_on_cac_zone_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
