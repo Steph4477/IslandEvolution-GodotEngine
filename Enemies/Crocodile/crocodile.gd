@@ -13,7 +13,6 @@ const GRAVITY = 2000
 @onready var sprite = $Rotator/Sprite2D
 @onready var anim = $Rotator/AnimationPlayer
 @onready var gloups_sprite = $GloupsSprite
-@onready var burp_anim = get_node_or_null("BurpAnimationPlayer")
 
 var pv = 0
 var player = null
@@ -144,11 +143,7 @@ func _on_area_2d_body_entered(body):
 		# 🤢 Gloups après attaque
 		if gloups_sprite:
 			gloups_sprite.visible = true
-			if burp_anim and burp_anim.has_animation("burp"):
-				burp_anim.play("burp")
-				await burp_anim.animation_finished
-			else:
-				await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.5).timeout
 			gloups_sprite.visible = false
 
 		# ☠️ Tue Moko
