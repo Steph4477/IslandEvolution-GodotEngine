@@ -149,7 +149,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 8
-position = Vector2(327, 711)
+position = Vector2(278, 790)
 
 [node name="Tiles" type="Node2D" parent="Node2D"]
 
@@ -483,7 +483,7 @@ position = Vector2(2683, 278.9935)
 scale = Vector2(1, 1)
 
 [node name="Pygmee6" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
-position = Vector2(-4804.9976, 1224.0125)
+position = Vector2(-3255.9995, 428.00854)
 scale = Vector2(1, 1)
 
 [node name="Serpents" type="Node2D" parent="Node2D/Enemies"]

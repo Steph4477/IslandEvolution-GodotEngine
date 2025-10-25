@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=29 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Hud/health_bar.gd" id="19_s8lhr"]
 [ext_resource type="PackedScene" uid="uid://cbx7p8yvy6gn3" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
 [ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/Healt_Bar/bar_under.png" id="22_xl2wx"]
+[ext_resource type="PackedScene" uid="uid://ccmd315gfailw" path="res://Interface/Cursor/game_cursor.tscn" id="23_ff868"]
 [ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/Healt_Bar/bar_fill2.png" id="23_u63cs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hj8m"]
@@ -220,3 +221,5 @@ offset_left = 138.0
 offset_top = 145.0
 offset_right = 178.0
 offset_bottom = 185.0
+
+[node name="GameCursor" parent="." instance=ExtResource("23_ff868")]

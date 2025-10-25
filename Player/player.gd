@@ -9,9 +9,9 @@ const INPUT = {
 	"left": "ui_left",
 	"right": "ui_right",
 	"down": "ui_down",
-	"fire_coco": "ui_cancel",
+	"fire_coco": "shoot",
 	"fire_lance": "shoot_spear",
-	"heal": "ui_accept",
+	"heal": "heal",
 	"ramp": "ramping",
 	"clac": "clacing"
 }
@@ -227,7 +227,7 @@ func process_climb():
 		return
 	
 	# --- Appui maintenu : monter ---
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("climb"):
 		if not anim.is_playing() or anim.current_animation != climbing_anim:
 			anim.play(climbing_anim)
 		velocity.y = -climb_speed
@@ -283,9 +283,9 @@ func process_ramp():
 		ramp_locked = false
 	
 	if is_ramping:
-		velocity.y = 0
 		var rdir = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
 		velocity.x = rdir * speed * 0.4
+		velocity.y += gravity * gravity_factor * get_physics_process_delta_time()
 
 # --- Nage ---
 func process_swim(delta):

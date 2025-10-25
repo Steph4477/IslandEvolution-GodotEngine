@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccmd315gfailw"]
+
+[ext_resource type="Script" uid="uid://ceeklr4rw41cy" path="res://Interface/Cursor/cursor.gd" id="1_q6lwa"]
+[ext_resource type="Texture2D" uid="uid://bm38fk7sflemh" path="res://Interface/Cursor/cusor.png" id="2_x64wh"]
+
+[node name="GameCursor" type="CanvasLayer"]
+script = ExtResource("1_q6lwa")
+
+[node name="Cursor" type="Node2D" parent="."]
+position = Vector2(3, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cursor"]
+position = Vector2(-2, 8)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_x64wh")

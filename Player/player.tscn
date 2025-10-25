@@ -333,6 +333,21 @@ tracks/0/keys = {
 "values": [ExtResource("39_r4aas")]
 }
 
+[sub_resource type="Animation" id="Animation_7x5p2"]
+resource_name = "pull"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.95),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("23_17nxb"), ExtResource("23_17nxb")]
+}
+
 [sub_resource type="Animation" id="Animation_2paov"]
 resource_name = "push"
 tracks/0/type = "value"
@@ -465,21 +480,6 @@ tracks/0/keys = {
 "values": [ExtResource("39_6qokg"), ExtResource("40_i7max"), ExtResource("41_m2xt8"), ExtResource("42_y06ei")]
 }
 
-[sub_resource type="Animation" id="Animation_7x5p2"]
-resource_name = "pull"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.95),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("23_17nxb"), ExtResource("23_17nxb")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
 &"RESET": SubResource("Animation_i7max"),
@@ -511,7 +511,7 @@ _data = {
 size = Vector2(186.66667, 284.279)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y06ei"]
-size = Vector2(183.33334, 156.02838)
+size = Vector2(186.66667, 163.12057)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x5p2"]
 size = Vector2(92, 122)
@@ -545,7 +545,7 @@ scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_j3qaj")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(128.5, 110.00001)
+position = Vector2(128, 111.00001)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_y06ei")
 disabled = true
