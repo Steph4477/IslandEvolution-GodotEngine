@@ -3,29 +3,31 @@ extends Node2D
 @export var dialogue_scene = preload("res://Interface/Dialogue/pyg_dialogue.tscn")
 
 func _ready():
-	# Musique de fond
 	$Node2D/Sound/lvl2.play()
-	# On attend pour tout charger
 	await get_tree().process_frame
-	
-	# Récupérer la caméra du Player et augmenter ses limites
+
 	var gs = get_node("/root/GameState")
+
+	# Caméra + assombrissement (toujours faits)
 	if gs.player:
 		var cam = gs.player.get_node("Camera2D")
 		cam.limit_top = -250000
-		cam.limit_right = 12000   
-	
-	# Assombrissement de Moko
-	if gs.player:
+		cam.limit_right = 12000
+
 		var moko = gs.player
 		moko.get_node("Node2D/Sprite").modulate = Color(0.4, 0.4, 0.4)
-	
-		# 🔒 Bloque le mouvement de Moko pendant le dialogue
 		moko.can_move = false
-	
-	# Insertion du dialogue du pygmée
+
+	# Déjà vu dans cette partie ? -> pas de dialogue, on redonne le contrôle et on garde l'assombrissement
+	if gs.pygmy_dialogue_seen:
+		if gs.player:
+			gs.player.can_move = true
+		return
+
+	# Dialogue Pygmée (une seule fois)
 	await get_tree().process_frame
 	await get_tree().create_timer(3).timeout
+
 	var dlg = dialogue_scene.instantiate()
 	dlg.name = "DialogueUI"
 	add_child(dlg)
@@ -33,6 +35,9 @@ func _ready():
 	dlg.start()
 	await dlg.finished
 
-	# 🔓 Réactive le mouvement de Moko après le dialogue
+	# Marque comme vu
+	gs.pygmy_dialogue_seen = true
+
+	# Redonne le contrôle
 	if gs.player:
 		gs.player.can_move = true

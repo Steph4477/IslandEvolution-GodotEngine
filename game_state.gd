@@ -11,6 +11,10 @@ var has_key = false
 var has_lance = false
 var has_flower = false
 
+# --- Dialogues uniques par partie ---
+var toucan_dialogue_seen = false
+var pygmy_dialogue_seen = false
+
 # --- Joueur, HUD & Scènes ---
 var player_scene = preload("res://Player/player.tscn")
 var player = null
@@ -37,7 +41,7 @@ signal all_seeds_collected
 signal key_collected
 signal flower_collected
 signal player_updated(new_player)
-signal digicode_ok  
+signal digicode_ok
 
 # --- Digicode lvl2 ---
 var correct_symbols = []   # les 3 bons rencontrés dans le niveau
@@ -56,20 +60,34 @@ func _ready():
 
 	health_bar = hud.get_node("HealthBar")
 
+	# Nouvelle session -> reset des dialogues uniques
+	reset_session_dialogues()
+
 	# Premier chargement
 	await get_tree().process_frame
-	await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res:///Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
-	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
 func set_player(p):
 	player = p
 	emit_signal("player_updated", p)
 
+# --- Dialogues ---
+func reset_session_dialogues():
+	toucan_dialogue_seen = false
+	pygmy_dialogue_seen = false
+
+func mark_toucan_dialogue_seen():
+	toucan_dialogue_seen = true
+
+func mark_pygmy_dialogue_seen():
+	pygmy_dialogue_seen = true
+
 # --- Chargement de niveau ---
-# --- Helper : cherche un node nommé "SpawnPoint" n'importe où dans la scène ---
+# --- cherche un node nommé "SpawnPoint" n'importe où dans la scène ---
 func _find_spawn(level):
 	var direct = level.get_node_or_null("SpawnPoint")
 	if direct:
@@ -80,7 +98,7 @@ func _find_spawn(level):
 			return found
 	return null
 
-# --- Chargement de niveau robuste menus/sans spawn ---
+# --- Chargement de niveau menus/sans spawn ---
 func load_level(scene_path):
 	print("🚪 Chargement du niveau :", scene_path)
 
@@ -117,7 +135,7 @@ func load_level(scene_path):
 			p.reset_state()
 		elif p.has_variable("pv") and p.has_variable("max_pv"):
 			p.pv = p.max_pv
-		
+
 		health_bar.update_health_bar(p.pv, p.max_pv)
 		set_player(p)
 
@@ -160,11 +178,12 @@ func gain_life():
 func is_game_over():
 	return lives <= 0
 
-# --- Redémarrage ---
+# --- Redémarrage (nouvelle partie) ---
 func restart_game():
 	lives = max_lives
 	hud.update_lives_display(lives)
 	reinitialise()
+	reset_session_dialogues()
 	await get_tree().process_frame
 	if current_level_path == "" or current_level_path.contains("game_over"):
 		load_level("res://Levels/Lvl1/lvl_1.tscn")
@@ -205,15 +224,15 @@ func reinitialise():
 	hud.set_button_enabled(gamepad.get_node("Coco"), false)
 	hud.set_button_enabled(gamepad.get_node("Spear"), false)
 	hud.set_button_enabled(gamepad.get_node("Health"), false)
-	
+
 	hud.update_seed_display(0, total_seeds_in_level)
 
 # --- Signaux "clé", "digicode", "flower" ---
 func signal_key_collected():
 	emit_signal("key_collected")
 
-func signal_digicode_ok():   
+func signal_digicode_ok():
 	emit_signal("digicode_ok")
-	
+
 func signal_flower_collected():
 	emit_signal("flower_collected")

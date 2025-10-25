@@ -14,5 +14,10 @@ script = ExtResource("1_774ca")
 position = Vector2(1162, 1163.5)
 shape = SubResource("RectangleShape2D_fqi2f")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
 [connection signal="body_entered" from="Zone" to="." method="_on_zone_body_entered"]
 [connection signal="body_exited" from="Zone" to="." method="_on_zone_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
