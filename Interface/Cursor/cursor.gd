@@ -9,7 +9,8 @@ var sprite
 var idle_time = 0.0
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	# Laisse toujours le pointeur OS visible
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	set_process_unhandled_input(true)
 
@@ -57,6 +58,9 @@ func unhandled_input(event):
 		if confine_to_screen:
 			var r = get_tree().root.get_visible_rect()
 			cursor.position = cursor.position.clamp(r.position, r.position + r.size)
+		on_activity()
+
+	if event is InputEventMouseButton:
 		on_activity()
 
 func mouse_button(pressed, button):
