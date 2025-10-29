@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci5h0g428xork"]
+
+[ext_resource type="Script" uid="uid://dlic6u5t768n4" path="res://ItemsDecors/Bridge/Crank/crank.gd" id="1_8fd66"]
+[ext_resource type="Texture2D" uid="uid://bn572scgkg85" path="res://ItemsDecors/Bridge/Crank/crank.png" id="1_8iib5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fd66"]
+radius = 235.54405
+
+[sub_resource type="Animation" id="Animation_6or23"]
+resource_name = "turn"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 12.566371, -0.16666667, -2.0943952, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_62ars"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uluo2"]
+_data = {
+&"RESET": SubResource("Animation_62ars"),
+&"turn": SubResource("Animation_6or23")
+}
+
+[node name="Crank" type="Area2D"]
+z_index = 3
+script = ExtResource("1_8fd66")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8iib5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8fd66")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uluo2")
+}
+
+[connection signal="activated" from="." to="." method="_on_crank_activated" flags=18]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
