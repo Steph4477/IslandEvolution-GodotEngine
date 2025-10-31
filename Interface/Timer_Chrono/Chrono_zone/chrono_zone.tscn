@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bbig80f62uyqw" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.gd" id="1_774ca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqi2f"]
-size = Vector2(76, 79)
+size = Vector2(154, 150.5)
 
 [node name="ChronoZone" type="Node2D"]
 script = ExtResource("1_774ca")
@@ -11,7 +11,7 @@ script = ExtResource("1_774ca")
 [node name="Zone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone"]
-position = Vector2(1162, 1163.5)
+position = Vector2(39, -34.75)
 shape = SubResource("RectangleShape2D_fqi2f")
 
 [node name="Timer" type="Timer" parent="."]

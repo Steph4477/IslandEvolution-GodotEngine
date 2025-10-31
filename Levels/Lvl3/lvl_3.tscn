@@ -92,6 +92,7 @@ stream = ExtResource("4_bgnwh")
 autoplay = true
 
 [node name="ChronoZone" parent="Node2D" instance=ExtResource("3_4esaq")]
+position = Vector2(1155, 1150)
 
 [node name="World" type="Node2D" parent="."]
 modulate = Color(0.47137535, 0.4713753, 0.4713753, 1)

@@ -41,7 +41,7 @@ size = Vector2(7305, 108)
 size = Vector2(490, 48.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1c1k"]
-size = Vector2(182.5, 1231)
+size = Vector2(182.5, 1260)
 
 [node name="lvl2b" type="Node2D"]
 script = ExtResource("1_ribhp")
@@ -209,7 +209,7 @@ position = Vector2(6815, 1907)
 shape = SubResource("RectangleShape2D_57xq1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(2843, 778.5)
+position = Vector2(2843, 793)
 shape = SubResource("RectangleShape2D_w1c1k")
 
 [node name="Sound" type="Node2D" parent="Node2D"]

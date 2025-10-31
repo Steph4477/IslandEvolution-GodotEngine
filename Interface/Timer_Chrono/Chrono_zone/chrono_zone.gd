@@ -13,27 +13,30 @@ extends Node2D
 @export var stop_on_exit = false
 @export var hide_on_exit = false
 @export var can_repeat_challenge = false
-@export var replay_dialogue_on_retry = false   # ignoré une fois le dialogue montré
+@export var replay_dialogue_on_retry = false
 
-# --- états ---
 var challenge_started = false
 var challenge_completed = false
 var dialogue_played = false
 
-# --- refs ---
 var gs
-var chrono        # HUD/TimerChrono pour l’affichage uniquement
-var timer         # Timer de la scène, réglé dans l’inspecteur (signal timeout -> _on_timer_timeout)
+var chrono        # Hud/TimerChrono
+var timer         # Timer local (assigné dans l’inspecteur)
 
 func _ready():
 	gs = get_node("/root/GameState")
-	chrono = gs.hud.get_node("TimerChrono")
 	timer = $Timer
+	call_deferred("_bind_hud_and_timer")
 
-	# player_updated pour couper proprement si respawn
-	var cb_player = Callable(self, "_on_player_updated")
-	if not gs.is_connected("player_updated", cb_player):
-		gs.connect("player_updated", cb_player)
+func _bind_hud_and_timer():
+	# Attendre que le HUD soit créé par le GameState
+	while gs and gs.hud == null:
+		await get_tree().process_frame
+
+	if not gs or not gs.hud:
+		return
+
+	chrono = gs.hud.get_node_or_null("TimerChrono")
 
 # ================== ZONE ==================
 func _on_zone_body_entered(body):
@@ -41,11 +44,9 @@ func _on_zone_body_entered(body):
 	if not is_player:
 		return
 
-	# déjà réussi et répétition interdite -> on sort
 	if challenge_completed and not can_repeat_challenge:
 		return
 
-	# première entrée -> lancement (avec/sans dialogue)
 	if not challenge_started:
 		if gs.toucan_dialogue_seen:
 			_start_chrono()
@@ -54,7 +55,6 @@ func _on_zone_body_entered(body):
 			gs.toucan_dialogue_seen = true
 		return
 
-	# défi en cours -> si joueur a la fleur, on valide selon le temps restant
 	if gs.has_flower and not challenge_completed:
 		var time_left_ok = false
 		if timer:
@@ -75,9 +75,11 @@ func _on_zone_body_exited(body):
 	if stop_on_exit:
 		if timer:
 			timer.stop()
-		chrono.stop_chrono()
+		if chrono:
+			chrono.stop_chrono()
 	if hide_on_exit:
-		chrono.visible = false
+		if chrono:
+			chrono.visible = false
 
 # ================ DÉPART ================
 func _start_dialogue_then_chrono():
@@ -100,6 +102,9 @@ func _start_dialogue_then_chrono():
 func _start_chrono():
 	gs.has_flower = false
 
+	if chrono == null:
+		return
+
 	if reset_on_start:
 		chrono.reset_chrono()
 
@@ -108,7 +113,7 @@ func _start_chrono():
 
 	if timer:
 		timer.stop()
-		timer.start()   # durée fixée dans l’Inspector
+		timer.start()
 
 	challenge_started = true
 	challenge_completed = false
@@ -120,8 +125,9 @@ func _validate_success():
 
 	if timer:
 		timer.stop()
-	chrono.stop_chrono()
-	chrono.visible = false
+	if chrono:
+		chrono.stop_chrono()
+		chrono.visible = false
 
 	if gs.player:
 		gs.player.show_info_popup("✅ Défi réussi !")
@@ -132,37 +138,21 @@ func _fail_challenge():
 
 	if timer:
 		timer.stop()
-	chrono.stop_chrono()
-	chrono.visible = false
+	if chrono:
+		chrono.stop_chrono()
+		chrono.visible = false
 
 	if gs.player:
 		gs.player.show_info_popup("⏳ Temps écoulé... Défi raté.")
 
 	gs.has_flower = false
-	dialogue_played = true   # on garde “une fois par partie”
+	dialogue_played = true
 
 # ================ CALLBACKS ================
-# Timer de la scène (assigné via Inspector) -> timeout
 func _on_timer_timeout():
-	# Si le temps est fini pendant le run :
-	# - sans fleur -> échec immédiat
-	# - avec fleur -> l’échec sera acté à la prochaine entrée de zone (temps écoulé)
 	if not gs:
 		return
-
 	if not challenge_started or challenge_completed:
 		return
-
 	if not gs.has_flower:
 		_fail_challenge()
-		return
-	# a la fleur mais pas revenu à temps : on ne fait rien ici.
-	# en réentrant dans la zone, le test "time_left_ok" échouera => _fail_challenge().
-
-# Couper net si le joueur change (mort/respawn)
-func _on_player_updated(_new_player):
-	if timer:
-		timer.stop()
-	chrono.stop_chrono()
-	chrono.visible = false
-	challenge_started = false

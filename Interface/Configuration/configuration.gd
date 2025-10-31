@@ -4,7 +4,7 @@ var gs
 
 func _ready() -> void:
 	$sound/dijee.play()
-	$"VBoxContainer/démarrer".grab_focus()
+	$"Démarer/VBoxContainer/démarrer".grab_focus()
 	gs = get_node("/root/GameState")  # ✅ correct
 
 func _on_démarrer_pressed() -> void:

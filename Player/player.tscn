@@ -507,17 +507,18 @@ _data = {
 &"web_effect": SubResource("Animation_jaf6r")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x5p2"]
+size = Vector2(92, 122)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
 size = Vector2(186.66667, 284.279)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y06ei"]
 size = Vector2(186.66667, 163.12057)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x5p2"]
-size = Vector2(92, 122)
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 8
+scale = Vector2(0.8, 0.8)
 collision_mask = 294
 script = ExtResource("1_5psm4")
 
@@ -538,17 +539,6 @@ libraries = {
 
 [node name="AttachMarker" type="Node2D" parent="Node2D"]
 position = Vector2(164.16666, 61.666664)
-
-[node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(128, 94.083336)
-scale = Vector2(0.3, 0.282)
-shape = SubResource("RectangleShape2D_j3qaj")
-
-[node name="ColRamp" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(128, 111.00001)
-scale = Vector2(0.3, 0.282)
-shape = SubResource("RectangleShape2D_y06ei")
-disabled = true
 
 [node name="TurnAxis" type="Marker2D" parent="."]
 position = Vector2(135, 64)
@@ -583,5 +573,16 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClacArea"]
 position = Vector2(154, 117)
 shape = SubResource("RectangleShape2D_7x5p2")
+
+[node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]
+position = Vector2(128, 94.08334)
+scale = Vector2(0.3, 0.282)
+shape = SubResource("RectangleShape2D_j3qaj")
+
+[node name="ColRamp" type="CollisionShape2D" parent="." groups=["Player"]]
+position = Vector2(128, 111.000015)
+scale = Vector2(0.3, 0.282)
+shape = SubResource("RectangleShape2D_y06ei")
+disabled = true
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]

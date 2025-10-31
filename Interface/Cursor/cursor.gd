@@ -41,10 +41,10 @@ func _process(delta):
 		var r = get_tree().root.get_visible_rect()
 		cursor.position = cursor.position.clamp(r.position, r.position + r.size)
 
-	if Input.is_action_just_pressed("gc_click"):
+	if Input.is_action_just_pressed("interact"):
 		mouse_button(true, MOUSE_BUTTON_LEFT)
 		on_activity()
-	if Input.is_action_just_released("gc_click"):
+	if Input.is_action_just_released("interact"):
 		mouse_button(false, MOUSE_BUTTON_LEFT)
 		on_activity()
 

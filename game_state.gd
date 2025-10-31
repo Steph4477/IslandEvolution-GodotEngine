@@ -59,9 +59,9 @@ func _ready():
 	# Démarrage sur le niveau voulu
 	# await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	# await load_level("res://Levels/Lvl1/lvl_1.tscn")
-	await load_level("res:///Levels/Lvl2/lvl_2.tscn")
-	# await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
-	# await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res:///Levels/Lvl2/lvl_2.tscn")
+	await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
 func set_player(p):
 	player = p
@@ -251,3 +251,9 @@ func signal_digicode_ok():
 
 func signal_flower_collected():
 	emit_signal("flower_collected")
+
+# --- Retour menu avec joystique et clavier ---
+func _input(_event):
+	if Input.is_action_just_pressed("gc_menu") or Input.is_action_just_pressed("menu"):
+		if not is_menu_scene(current_level_path):
+			load_level("res://Levels/Lvl0/lvl_0.tscn")

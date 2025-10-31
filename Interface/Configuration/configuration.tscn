@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://s32vb4webr6v"]
+[gd_scene load_steps=10 format=3 uid="uid://s32vb4webr6v"]
 
 [ext_resource type="Script" uid="uid://cws2xewfc2m6n" path="res://Interface/Configuration/configuration.gd" id="1_cacsw"]
 [ext_resource type="Texture2D" uid="uid://bgjmrgw0xxxcx" path="res://Interface/Configuration/configuration.png" id="2_g4g8p"]
+[ext_resource type="Texture2D" uid="uid://csefjca1xvw1l" path="res://Interface/Configuration/background.png" id="2_tle2q"]
 [ext_resource type="Texture2D" uid="uid://dt66tyhkix240" path="res://Levels/Lvl0/Environement/border.png" id="3_tle2q"]
 [ext_resource type="Texture2D" uid="uid://b7cu373brt3cl" path="res://Menu/button/play.png" id="4_m3h2v"]
 [ext_resource type="Texture2D" uid="uid://b4dhfq2201ktp" path="res://Menu/button/Pressed/play.png" id="5_yep7t"]
@@ -10,49 +11,29 @@
 [ext_resource type="Texture2D" uid="uid://gt1j518e3is2" path="res://Interface/GamePad/Pressed/menu.png" id="8_m3h2v"]
 
 [node name="Configuration" type="Node2D"]
+position = Vector2(404, 247)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_cacsw")
 
 [node name="Background" type="Node2D" parent="."]
-position = Vector2(403, 251)
-scale = Vector2(0.5, 0.521)
 
 [node name="Background" type="Node2D" parent="Background"]
 position = Vector2(1114, 552.783)
 
-[node name="TextureRect" type="TextureRect" parent="Background/Background"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -1780.0
-offset_top = -934.7408
-offset_right = 1772.0
-offset_bottom = 921.3051
-texture = ExtResource("2_g4g8p")
+[node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
+position = Vector2(11.000086, 37.21705)
+scale = Vector2(1.8364584, 1.465625)
+texture = ExtResource("2_tle2q")
 
-[node name="Background" type="Sprite2D" parent="Background/Background"]
-position = Vector2(-212, -34.548943)
-scale = Vector2(1.5, 1.5)
+[node name="Configuration" type="Sprite2D" parent="Background/Background"]
+position = Vector2(175.99997, 21.216995)
+scale = Vector2(1.6453124, 1.6867187)
 texture = ExtResource("2_g4g8p")
 
 [node name="Frame" type="Sprite2D" parent="Background/Background"]
-position = Vector2(-1.78814e-06, 1.91948)
-scale = Vector2(2.5, 2.02435)
+position = Vector2(-1.78814e-06, 35.3346)
+scale = Vector2(2.5, 2.089614)
 texture = ExtResource("3_tle2q")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1633.0
-offset_top = 814.0
-offset_right = 2541.0
-offset_bottom = 1921.0
-grow_vertical = 0
-scale = Vector2(0.2, 0.2)
-alignment = 1
-
-[node name="démarrer" type="TextureButton" parent="VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_m3h2v")
-texture_pressed = ExtResource("5_yep7t")
 
 [node name="sound" type="Node2D" parent="."]
 position = Vector2(108, 237)
@@ -62,8 +43,7 @@ scale = Vector2(2.10789, 2.42027)
 stream = ExtResource("6_inojj")
 
 [node name="Menu" type="Node2D" parent="."]
-position = Vector2(1575.0001, -377)
-scale = Vector2(0.6, 0.6)
+position = Vector2(2402, -986)
 
 [node name="VBoxContainerMenu" type="VBoxContainer" parent="Menu"]
 anchors_preset = 2
@@ -82,5 +62,27 @@ layout_mode = 2
 texture_normal = ExtResource("7_tle2q")
 texture_pressed = ExtResource("8_m3h2v")
 
-[connection signal="pressed" from="VBoxContainer/démarrer" to="." method="_on_démarrer_pressed"]
+[node name="Démarer" type="Node2D" parent="."]
+z_index = 5
+position = Vector2(-1348, -637)
+scale = Vector2(1.5, 1.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Démarer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2564.0
+offset_top = 1123.0
+offset_right = 3472.0
+offset_bottom = 2230.0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+alignment = 1
+
+[node name="démarrer" type="TextureButton" parent="Démarer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_m3h2v")
+texture_pressed = ExtResource("5_yep7t")
+
 [connection signal="pressed" from="Menu/VBoxContainerMenu/Menu" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Démarer/VBoxContainer/démarrer" to="." method="_on_démarrer_pressed"]

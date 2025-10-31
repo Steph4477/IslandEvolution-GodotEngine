@@ -74,7 +74,7 @@ func _on_all_seeds_collected():
 	dlg.start([
 		"C'est bien Moko !",
 		"Je vais pouvoir manger, tu as récupéré toutes mes graines !",
-		"Regarde là-bas... une manivelle est apparue !",
+		"Regarde là-bas... une manivelle !"
 	])
 	await dlg.finished
 

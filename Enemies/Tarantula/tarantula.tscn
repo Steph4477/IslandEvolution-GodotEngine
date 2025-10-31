@@ -84,7 +84,7 @@ shape = SubResource("RectangleShape2D_4q0aj")
 position = Vector2(-20, -26)
 
 [node name="Muzzle" type="Marker2D" parent="FlipNode"]
-position = Vector2(-166, -14)
+position = Vector2(-176, 20.000008)
 rotation = 0.785398
 
 [node name="Timer" type="Timer" parent="."]
