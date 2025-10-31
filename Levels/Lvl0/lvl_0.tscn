@@ -78,3 +78,4 @@ texture_normal = ExtResource("11_bfns0")
 texture_pressed = ExtResource("12_n1ip6")
 
 [connection signal="pressed" from="VBoxContainer/démarrer" to="." method="_on_démarrer_pressed"]
+[connection signal="pressed" from="VBoxContainerOptions/Options" to="." method="_on_options_pressed"]

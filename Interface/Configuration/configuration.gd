@@ -12,4 +12,4 @@ func _on_démarrer_pressed() -> void:
 	gs.load_level("res://Levels/Lvl1/lvl_1.tscn")
 
 func _on_options_pressed() -> void:
-	gs.load_level("res://Interface/Configuration/configuration.tscn")
+	gs.load_level("res://Levels/Lvl0/lvl_0.tscn")

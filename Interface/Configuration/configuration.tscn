@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://s32vb4webr6v"]
+
+[ext_resource type="Script" uid="uid://cws2xewfc2m6n" path="res://Interface/Configuration/configuration.gd" id="1_cacsw"]
+[ext_resource type="Texture2D" uid="uid://bgjmrgw0xxxcx" path="res://Interface/Configuration/configuration.png" id="2_g4g8p"]
+[ext_resource type="Texture2D" uid="uid://dt66tyhkix240" path="res://Levels/Lvl0/Environement/border.png" id="3_tle2q"]
+[ext_resource type="Texture2D" uid="uid://b7cu373brt3cl" path="res://Menu/button/play.png" id="4_m3h2v"]
+[ext_resource type="Texture2D" uid="uid://b4dhfq2201ktp" path="res://Menu/button/Pressed/play.png" id="5_yep7t"]
+[ext_resource type="AudioStream" uid="uid://doo70l3xvv5u4" path="res://sounds/dijee.wav" id="6_inojj"]
+[ext_resource type="Texture2D" uid="uid://3bqredga1mej" path="res://Interface/GamePad/menu.png" id="7_tle2q"]
+[ext_resource type="Texture2D" uid="uid://gt1j518e3is2" path="res://Interface/GamePad/Pressed/menu.png" id="8_m3h2v"]
+
+[node name="Configuration" type="Node2D"]
+script = ExtResource("1_cacsw")
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(403, 251)
+scale = Vector2(0.5, 0.521)
+
+[node name="Background" type="Node2D" parent="Background"]
+position = Vector2(1114, 552.783)
+
+[node name="TextureRect" type="TextureRect" parent="Background/Background"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -1780.0
+offset_top = -934.7408
+offset_right = 1772.0
+offset_bottom = 921.3051
+texture = ExtResource("2_g4g8p")
+
+[node name="Background" type="Sprite2D" parent="Background/Background"]
+position = Vector2(-212, -34.548943)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_g4g8p")
+
+[node name="Frame" type="Sprite2D" parent="Background/Background"]
+position = Vector2(-1.78814e-06, 1.91948)
+scale = Vector2(2.5, 2.02435)
+texture = ExtResource("3_tle2q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1633.0
+offset_top = 814.0
+offset_right = 2541.0
+offset_bottom = 1921.0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+alignment = 1
+
+[node name="démarrer" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_m3h2v")
+texture_pressed = ExtResource("5_yep7t")
+
+[node name="sound" type="Node2D" parent="."]
+position = Vector2(108, 237)
+scale = Vector2(2.10789, 2.42027)
+
+[node name="dijee" type="AudioStreamPlayer" parent="sound"]
+stream = ExtResource("6_inojj")
+
+[node name="Menu" type="Node2D" parent="."]
+position = Vector2(1575.0001, -377)
+scale = Vector2(0.6, 0.6)
+
+[node name="VBoxContainerMenu" type="VBoxContainer" parent="Menu"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 121.0
+offset_top = 771.0
+offset_right = 1145.0
+offset_bottom = 1878.0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+alignment = 1
+
+[node name="Menu" type="TextureButton" parent="Menu/VBoxContainerMenu"]
+layout_mode = 2
+texture_normal = ExtResource("7_tle2q")
+texture_pressed = ExtResource("8_m3h2v")
+
+[connection signal="pressed" from="VBoxContainer/démarrer" to="." method="_on_démarrer_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainerMenu/Menu" to="." method="_on_options_pressed"]
