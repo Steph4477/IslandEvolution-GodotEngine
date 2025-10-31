@@ -4,26 +4,30 @@ extends CanvasLayer
 @onready var coco_button = $Gamepad/Coco
 @onready var lance_button = $Gamepad/Spear
 @onready var health_button = $Gamepad/Health
-
 @onready var life_sprites = $HBoxContainerLive.get_children()
 
+var gs
+
 func _ready():
-	var game_state = get_node_or_null("/root/GameState")
-	if game_state:
-		game_state.hud = self
-	
-	$Gamepad/Hand.pressed.connect(_on_hand_pressed)
-	
-	update_lives_display(game_state.lives)
-	
+	gs = get_node("/root/GameState")
+
+	# Boutons grisés au démarrage (le Moko les activera quand il débloque les items)
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(coco_button, false)
 	set_button_enabled(lance_button, false)
 	set_button_enabled(health_button, false)
 
+	if gs:
+		gs.hud = self
+		update_lives_display(gs.lives)
+
+	# Neutralise toutes actions d'input des boutons HUD au lancement
+	for b in [ramp_button, coco_button, lance_button, health_button]:
+		if b:
+			b.action = ""         # très important
+
 func update_lives_display(lives):
-	if not life_sprites.is_empty():
-		life_sprites = $HBoxContainerLive.get_children()
+	life_sprites = $HBoxContainerLive.get_children()
 	for i in range(life_sprites.size()):
 		life_sprites[i].visible = i < lives
 
@@ -31,7 +35,6 @@ func start_banane_cooldown(duration_sec):
 	var cooldown = $HBoxContainerBanane/Texture/coolDownCircle
 	cooldown.value = 100
 	cooldown.show()
-
 	var tween = create_tween()
 	tween.tween_property(cooldown, "value", 0, duration_sec).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	tween.finished.connect(func(): cooldown.hide())
@@ -69,9 +72,21 @@ func update_seed_display(collected, total):
 	else:
 		label.text = "0 / 0 (0%)"
 
+# --- Boutons ---
+func _on_menu_pressed():
+	gs.load_level("res://Levels/Lvl0/lvl_0.tscn")
+
 func _on_hand_pressed():
-	var game_state = get_node_or_null("/root/GameState")
-	if game_state and game_state.player:
-		var player = game_state.player
-		if player.has_method("clac_attack"):
-			player.clac_attack()
+	gs.player.clac_attack()
+
+func _on_coco_pressed():
+	gs.player.shoot_coco()
+
+func _on_health_pressed():
+	gs.player.use_banane()
+
+func _on_spear_pressed():
+	gs.player.shoot_lance()
+
+func _on_ramp_pressed():
+	gs.player.process_ramp()

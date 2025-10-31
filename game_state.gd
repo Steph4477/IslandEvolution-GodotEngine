@@ -44,32 +44,24 @@ signal player_updated(new_player)
 signal digicode_ok
 
 # --- Digicode lvl2 ---
-var correct_symbols = []   # les 3 bons rencontrés dans le niveau
-var selected_symbols = []  # la sélection du joueur sur le digicode final
+var correct_symbols = []
+var selected_symbols = []
 
-# --- Initialisation ---
 func _ready():
-	print("📦 [GameState] Initialisé")
-
-	# HUD + Fade
+	# On ne crée PAS le HUD ici.
+	# On crée seulement le fade.
 	fade = fade_scene.instantiate()
 	add_child(fade)
 
-	hud = hud_scene.instantiate()
-	add_child(hud)
-
-	health_bar = hud.get_node("HealthBar")
-
-	# Nouvelle session -> reset des dialogues uniques
 	reset_session_dialogues()
 
-	# Premier chargement
 	await get_tree().process_frame
-	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
-	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
+	# Démarrage sur le niveau voulu
+	# await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	# await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	await load_level("res:///Levels/Lvl2/lvl_2.tscn")
-	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
-	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	# await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
+	# await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
 func set_player(p):
 	player = p
@@ -86,8 +78,7 @@ func mark_toucan_dialogue_seen():
 func mark_pygmy_dialogue_seen():
 	pygmy_dialogue_seen = true
 
-# --- Chargement de niveau ---
-# --- cherche un node nommé "SpawnPoint" n'importe où dans la scène ---
+# --- Outils Spawn ---
 func _find_spawn(level):
 	var direct = level.get_node_or_null("SpawnPoint")
 	if direct:
@@ -98,15 +89,17 @@ func _find_spawn(level):
 			return found
 	return null
 
-# --- Chargement de niveau menus/sans spawn ---
-func load_level(scene_path):
-	print("🚪 Chargement du niveau :", scene_path)
+func is_menu_scene(scene_path):
+	return scene_path.contains("menu") or scene_path.contains("Menu")
 
+# --- Chargement de niveau ---
+func load_level(scene_path):
 	await fade.fade_out()
 
 	emit_signal("player_updated", null)
 	player = null
 
+	# On supprime tout sauf fade et HUD (si HUD existe)
 	for child in get_children():
 		if child != fade and child != hud:
 			child.queue_free()
@@ -120,13 +113,27 @@ func load_level(scene_path):
 	var spawn_point = _find_spawn(level)
 	var is_menu = spawn_point == null
 
-	hud.visible = not is_menu
-	health_bar.visible = not is_menu
+	# Gestion HUD (création paresseuse, toujours enfant du GameState)
+	if is_menu:
+		if hud:
+			hud.visible = false
+		if health_bar:
+			health_bar.visible = false
+	else:
+		# On n’instancie le HUD que pour les scènes jouables
+		if hud == null:
+			hud = hud_scene.instantiate()
+			add_child(hud)
+			health_bar = hud.get_node("HealthBar")
+		hud.visible = true
+		if health_bar:
+			health_bar.visible = true
 
 	if not is_menu:
 		current_level_path = scene_path
 		reset_seed_tracking_from_scene()
 
+		# Spawn player
 		var p = player_scene.instantiate()
 		level.add_child(p)
 		p.global_position = spawn_point.global_position
@@ -136,8 +143,15 @@ func load_level(scene_path):
 		elif p.has_variable("pv") and p.has_variable("max_pv"):
 			p.pv = p.max_pv
 
-		health_bar.update_health_bar(p.pv, p.max_pv)
+		if health_bar:
+			health_bar.update_health_bar(p.pv, p.max_pv)
+
 		set_player(p)
+
+		# MAJ affichages HUD simples au chargement
+		if hud:
+			hud.update_lives_display(lives)
+			hud.update_seed_display(collected_seeds, total_seeds_in_level)
 
 	await fade.fade_in()
 
@@ -147,26 +161,25 @@ func change_scene(scene_path):
 		return
 	await load_level(scene_path)
 
-func is_menu_scene(scene_path):
-	return scene_path.contains("menu") or scene_path.contains("Menu")
-
 # --- Vies ---
 func reset_lives():
 	lives = max_lives
-	hud.update_lives_display(lives)
+	if hud:
+		hud.update_lives_display(lives)
 
 func lose_life():
 	if lives > 0:
 		lives -= 1
-		hud.update_lives_display(lives)
+		if hud:
+			hud.update_lives_display(lives)
 		reinitialise()
 		request_reload_after_delay(0.5)
 
-# --- Gain de vie ---
 func gain_life():
 	if lives < max_lives:
 		lives += 1
-		hud.update_lives_display(lives)
+		if hud:
+			hud.update_lives_display(lives)
 		if player:
 			player.show_info_popup("❤️ +1 vie (" + str(lives) + "/" + str(max_lives) + ")")
 		return true
@@ -178,10 +191,11 @@ func gain_life():
 func is_game_over():
 	return lives <= 0
 
-# --- Redémarrage (nouvelle partie) ---
+# --- Redémarrage ---
 func restart_game():
 	lives = max_lives
-	hud.update_lives_display(lives)
+	if hud:
+		hud.update_lives_display(lives)
 	reinitialise()
 	reset_session_dialogues()
 	await get_tree().process_frame
@@ -202,12 +216,13 @@ func reset_seed_tracking_from_scene():
 	var seeds = current_level.get_tree().get_nodes_in_group("Seed")
 	total_seeds_in_level = seeds.size()
 	collected_seeds = 0
-	print("🌱 Graines détectées :", total_seeds_in_level)
-	hud.update_seed_display(collected_seeds, total_seeds_in_level)
+	if hud:
+		hud.update_seed_display(collected_seeds, total_seeds_in_level)
 
 func add_seed_collected():
 	collected_seeds += 1
-	hud.update_seed_display(collected_seeds, total_seeds_in_level)
+	if hud:
+		hud.update_seed_display(collected_seeds, total_seeds_in_level)
 	if collected_seeds >= total_seeds_in_level:
 		emit_signal("all_seeds_collected")
 
@@ -219,13 +234,13 @@ func reinitialise():
 	can_fire_coco = false
 	can_fire_lance = false
 
-	var gamepad = hud.get_node("Gamepad")
-	hud.set_button_enabled(gamepad.get_node("Ramp"), false)
-	hud.set_button_enabled(gamepad.get_node("Coco"), false)
-	hud.set_button_enabled(gamepad.get_node("Spear"), false)
-	hud.set_button_enabled(gamepad.get_node("Health"), false)
-
-	hud.update_seed_display(0, total_seeds_in_level)
+	if hud:
+		var gamepad = hud.get_node("Gamepad")
+		hud.set_button_enabled(gamepad.get_node("Ramp"), false)
+		hud.set_button_enabled(gamepad.get_node("Coco"), false)
+		hud.set_button_enabled(gamepad.get_node("Spear"), false)
+		hud.set_button_enabled(gamepad.get_node("Health"), false)
+		hud.update_seed_display(0, total_seeds_in_level)
 
 # --- Signaux "clé", "digicode", "flower" ---
 func signal_key_collected():

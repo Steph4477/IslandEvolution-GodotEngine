@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=26 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://k8plb36agpki" path="res://Interface/GamePad/Pressed/spear.png" id="13_lwpkd"]
 [ext_resource type="Texture2D" uid="uid://croid74mvw1fb" path="res://Interface/Hud/seed.png" id="13_voibu"]
 [ext_resource type="Texture2D" uid="uid://bcbo7opbktbwb" path="res://Interface/GamePad/ramp.png" id="14_e8y56"]
+[ext_resource type="Texture2D" uid="uid://3bqredga1mej" path="res://Interface/GamePad/menu.png" id="14_tlm4v"]
+[ext_resource type="Texture2D" uid="uid://gt1j518e3is2" path="res://Interface/GamePad/Pressed/menu.png" id="15_ce0vt"]
 [ext_resource type="Texture2D" uid="uid://ecc0y625hs75" path="res://Interface/GamePad/potion.png" id="15_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://do6vj6xmbp01c" path="res://Interface/GamePad/Pressed/ramp.png" id="15_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://b8wdslrwg00xo" path="res://Interface/GamePad/cooldown_popo2.png" id="16_b0qj5"]
@@ -23,21 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/Healt_Bar/bar_under.png" id="22_xl2wx"]
 [ext_resource type="PackedScene" uid="uid://ccmd315gfailw" path="res://Interface/Cursor/game_cursor.tscn" id="23_ff868"]
 [ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/Healt_Bar/bar_fill2.png" id="23_u63cs"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1hj8m"]
-radius = 64.0078
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_s8lhr"]
-radius = 43.7379
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lwpkd"]
-radius = 45.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xl2wx"]
-radius = 42.0476
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_e8y56"]
-radius = 41.0122
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_0b1lv")
@@ -57,19 +44,11 @@ scale = Vector2(1, 0.998)
 texture_normal = ExtResource("6_rgqxt")
 texture_pressed = ExtResource("7_b0qj5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Hand"]
-position = Vector2(77, 75.1503)
-shape = SubResource("CircleShape2D_1hj8m")
-
 [node name="Coco" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(71, 783)
 texture_normal = ExtResource("8_b0qj5")
 texture_pressed = ExtResource("9_870gb")
 action = "ui_cancel"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Coco"]
-position = Vector2(51, 55)
-shape = SubResource("CircleShape2D_s8lhr")
 
 [node name="Health" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(201, 963)
@@ -77,19 +56,11 @@ texture_normal = ExtResource("8_voibu")
 texture_pressed = ExtResource("11_e8y56")
 action = "ui_accept"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Health"]
-position = Vector2(51, 49)
-shape = SubResource("CircleShape2D_lwpkd")
-
 [node name="Spear" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(195, 838)
 texture_normal = ExtResource("12_s8lhr")
 texture_pressed = ExtResource("13_lwpkd")
 action = "shoot"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Spear"]
-position = Vector2(49, 53)
-shape = SubResource("CircleShape2D_xl2wx")
 
 [node name="Ramp" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(339, 922)
@@ -97,19 +68,12 @@ texture_normal = ExtResource("14_e8y56")
 texture_pressed = ExtResource("15_s8lhr")
 action = "ramping"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Ramp"]
-position = Vector2(50, 53)
-shape = SubResource("CircleShape2D_e8y56")
-
-[node name="Coco2" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(71, 783)
-texture_normal = ExtResource("8_b0qj5")
-texture_pressed = ExtResource("9_870gb")
+[node name="Menu" type="TouchScreenButton" parent="Gamepad"]
+position = Vector2(1597, 42)
+scale = Vector2(0.11, 0.11)
+texture_normal = ExtResource("14_tlm4v")
+texture_pressed = ExtResource("15_ce0vt")
 action = "ui_cancel"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gamepad/Coco2"]
-position = Vector2(51, 55)
-shape = SubResource("CircleShape2D_s8lhr")
 
 [node name="HBoxContainerBanane" type="HBoxContainer" parent="."]
 offset_left = -1007.0
@@ -223,3 +187,10 @@ offset_right = 178.0
 offset_bottom = 185.0
 
 [node name="GameCursor" parent="." instance=ExtResource("23_ff868")]
+
+[connection signal="pressed" from="Gamepad/Hand" to="." method="_on_hand_pressed"]
+[connection signal="pressed" from="Gamepad/Coco" to="." method="_on_coco_pressed"]
+[connection signal="pressed" from="Gamepad/Health" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]
+[connection signal="pressed" from="Gamepad/Ramp" to="." method="_on_ramp_pressed"]
+[connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]

@@ -38,7 +38,7 @@ func _ready():
 	add_child(dlg)
 	dlg.start([
 		"J'ai faim, Moko.",
-		"Trouve-moi 5 graines avant de sortir.",
+		"Trouve-moi 5 graines...",
 		"Et peut-être que je pourrai t'aider..."
 	])
 	await dlg.finished
@@ -75,7 +75,6 @@ func _on_all_seeds_collected():
 		"C'est bien Moko !",
 		"Je vais pouvoir manger, tu as récupéré toutes mes graines !",
 		"Regarde là-bas... une manivelle est apparue !",
-		"Elle te permettra d'abaisser le pont."
 	])
 	await dlg.finished
 
@@ -105,8 +104,6 @@ func _set_digicode_symbols(_gs):
 #             FOCUS CAMÉRA GÉNÉRIQUE                  
 # ======================================================
 func focus_camera_on_node(node_path):
-	#var gs = get_node("/root/GameState")
-	#cam = gs.moko.get_node("Camera2D")
 	var target = get_node_or_null(node_path)
 	var tween = create_tween()
 	tween.tween_property(cam, "global_position", target.global_position, 1.2)\
@@ -118,8 +115,6 @@ func focus_camera_on_node(node_path):
 #                RETOUR CAMÉRA VERS MOKO              
 # ======================================================
 func return_camera_to_player():
-	#var gs = get_node("/root/GameState")
-	#var cam = gs.player.get_node("Camera2D")
 	var tween = create_tween()
 	tween.tween_property(cam, "global_position", gs.player.global_position, 1.2)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

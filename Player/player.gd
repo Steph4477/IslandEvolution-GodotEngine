@@ -431,63 +431,57 @@ func collect_seed(amount = 1):
 # =                              ACTIONS                                     =
 # =============================================================================
 
-# --- Tir ---
+# --- Tir coco : déclenchable par HUD OU par input ---
 func shoot_coco():
 	if is_swimming or is_ramping or is_hanging or is_on_liana:
 		return
-		
-	if Input.is_action_just_pressed(INPUT["fire_coco"]) and coco_count > 0:
-		coco_count -= 1
-		can_fire_coco = coco_count > 0
-		update_coco_display()
-		game_state.coco_count = coco_count
-	
-		# 🔒 On bloque les autres animations pendant le tir
-		animation_locked = true
-		anim.play("shoot")
-		
-		# ⏳ Attente de fin d'animation
-		await anim.animation_finished
-		
-		# 🥥 Maintenant on lance la noix de coco
-		var spell = spell_coco.instantiate()
-		var dir = 1
-		if sprite.scale.x < 0:
-			dir = -1
-		spell.start($TurnAxis/CastPoint.global_position, dir)
-		get_tree().current_scene.add_child(spell)
-		
-		animation_locked = false
-		refresh_hud_buttons()
-		
-		# (optionnel) attends un petit cooldown de cadence de tir
-		await get_tree().create_timer(rate_of_fire).timeout
+	if not can_fire_coco:
+		return
+	if coco_count <= 0:
+		return
 
+	coco_count -= 1
+	can_fire_coco = coco_count > 0
+	update_coco_display()
+	if game_state:
+		game_state.coco_count = coco_count
+
+	animation_locked = true
+	anim.play("shoot")
+	await anim.animation_finished
+
+	var spell = spell_coco.instantiate()
+	var dir = 1
+	if sprite.scale.x < 0:
+		dir = -1
+	spell.start($TurnAxis/CastPoint.global_position, dir)
+	get_tree().current_scene.add_child(spell)
+
+	animation_locked = false
+	refresh_hud_buttons()
+	await get_tree().create_timer(rate_of_fire).timeout
+
+# --- Tir lance : déclenchable par HUD OU par input ---
 func shoot_lance():
 	if is_on_liana:
 		return
-	
-	if Input.is_action_just_pressed(INPUT["fire_lance"]):
-		# 🔒 On bloque les autres animations pendant le tir
-		animation_locked = true
-		anim.play("shoot")
-		
-		# ⏳ Attente de fin d'animation
-		await anim.animation_finished
-		
-		# Maintenant on shoot la lance
-		var spell = spell_lance.instantiate()
-		var dir = 1
-		if sprite.scale.x < 0:
-			dir = -1
-		spell.start($TurnAxis/CastPoint.global_position, dir)
-		get_tree().current_scene.add_child(spell)
-		
-		animation_locked = false
-		refresh_hud_buttons()
-		
-		# (optionnel) attends un petit cooldown de cadence de tir
-		await get_tree().create_timer(rate_of_fire).timeout
+	if not can_fire_lance:
+		return
+
+	animation_locked = true
+	anim.play("shoot")
+	await anim.animation_finished
+
+	var spell = spell_lance.instantiate()
+	var dir = 1
+	if sprite.scale.x < 0:
+		dir = -1
+	spell.start($TurnAxis/CastPoint.global_position, dir)
+	get_tree().current_scene.add_child(spell)
+
+	animation_locked = false
+	refresh_hud_buttons()
+	await get_tree().create_timer(rate_of_fire).timeout
 
 func process_shoot():
 	if Input.is_action_pressed(INPUT["fire_coco"]) and can_fire_coco:
@@ -746,30 +740,32 @@ func update_all_displays():
 	update_coco_display()
 	update_seed_display()
 
+# --- Corrige le chemin du bouton lance (Spear) ---
 func refresh_hud_buttons():
 	if not game_state or not game_state.health_bar:
 		return
-	
+
 	var hud_parent = game_state.health_bar.get_parent()
 	if not hud_parent:
 		return
-	
-	# 🌴 Bouton coco
+
+	# Bouton coco
 	if hud_parent.has_node("Gamepad/Coco"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Coco"), can_fire_coco)
-	
-	# 🌴 Bouton lance
-	if hud_parent.has_node("Gamepad/Lance"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Lance"), can_fire_lance)
-	
-	# 🍌 Bouton soin
+
+	# Bouton lance 
+	if hud_parent.has_node("Gamepad/Spear"):
+		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Spear"), can_fire_lance)
+
+	# Bouton soin
 	var can_heal_btn = pv < max_pv and heal_potions.size() > 0 and not in_cooldown
 	if hud_parent.has_node("Gamepad/Health"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Health"), can_heal_btn)
-	
-	# 🤸‍♂️ Bouton ramp
+
+	# Bouton ramp
 	if hud_parent.has_node("Gamepad/Ramp"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Ramp"), can_ramp)
+
 
 func reset_state():
 	is_dead = false

@@ -1,14 +1,15 @@
 extends Node2D
 
+var gs
+
 func _ready() -> void:
 	$sound/dijee.play()
 	$"VBoxContainer/démarrer".grab_focus()
+	gs = get_node("/root/GameState")  # ✅ correct
 
 func _on_démarrer_pressed() -> void:
-	var game_state = get_node("/root/GameState")  # ✅ correct
-	if game_state:
-		game_state.reset_lives()
-		game_state.load_level("res://Levels/Lvl1/lvl_1.tscn")
+	gs.reset_lives()
+	gs.load_level("res://Levels/Lvl1/lvl_1.tscn")
 
 func _on_Options_pressed():
 	pass
