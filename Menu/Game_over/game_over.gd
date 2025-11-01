@@ -1,15 +1,13 @@
 extends Node2D
 
-func _ready ():	
-	$sound/GameOver.play()
-	$"VBoxContainer/démarrer".grab_focus()
+var gs
 
-func _on_démarrer_pressed() -> void:
-	var game_state = get_node("/root/GameState")
-	game_state.restart_game()  # 💡 recharge current_level_path et reset les vies
+func _ready ():
+	gs = get_node("/root/GameState")
 
-func _on_Options_pressed():
-	pass
+func _on_restart_pressed() -> void:
+	gs.reset_lives()
+	gs.restart_game()  
 
-func _on_Quitter_pressed():
-	pass
+func _on_menu_pressed() -> void:
+	gs.load_level("res://Levels/Lvl0/lvl_0.tscn")

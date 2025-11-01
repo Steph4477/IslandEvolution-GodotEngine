@@ -5,10 +5,15 @@ extends CanvasLayer
 @onready var lance_button = $Gamepad/Spear
 @onready var health_button = $Gamepad/Health
 @onready var life_sprites = $HBoxContainerLive.get_children()
+@onready var pause_button = $Gamepad/Break   # bouton pause (TouchScreenButton)
+@onready var break_sprite = $BreakSprite
 
 var gs
 
 func _ready():
+	# Le HUD doit continuer à recevoir les inputs même quand le jeu est en pause
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	gs = get_node("/root/GameState")
 
 	# Boutons grisés au démarrage (le Moko les activera quand il débloque les items)
@@ -16,15 +21,16 @@ func _ready():
 	set_button_enabled(coco_button, false)
 	set_button_enabled(lance_button, false)
 	set_button_enabled(health_button, false)
-
-	if gs:
-		gs.hud = self
-		update_lives_display(gs.lives)
+	
+	gs.hud = self
+	update_lives_display(gs.lives)
 
 	# Neutralise toutes actions d'input des boutons HUD au lancement
 	for b in [ramp_button, coco_button, lance_button, health_button]:
 		if b:
-			b.action = ""         # très important
+			b.action = "" 
+	 
+	break_sprite.visible = false
 
 func update_lives_display(lives):
 	life_sprites = $HBoxContainerLive.get_children()
@@ -90,3 +96,11 @@ func _on_spear_pressed():
 
 func _on_ramp_pressed():
 	gs.player.process_ramp()
+
+# --- Bouton Pause ---
+func _on_break_pressed():
+	gs.toggle_pause()
+
+# --- Appelé par GameState -> Affichage de l'ecran de pause par dessus  ---
+func set_pause_visual(paused):
+	break_sprite.visible = paused

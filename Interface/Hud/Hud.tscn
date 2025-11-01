@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=29 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
@@ -19,12 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://ecc0y625hs75" path="res://Interface/GamePad/potion.png" id="15_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://do6vj6xmbp01c" path="res://Interface/GamePad/Pressed/ramp.png" id="15_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://b8wdslrwg00xo" path="res://Interface/GamePad/cooldown_popo2.png" id="16_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://bgs6ob3c4vn6i" path="res://Interface/GamePad/break.png" id="16_smsye"]
+[ext_resource type="Texture2D" uid="uid://bh7du3h4bnf8w" path="res://Interface/GamePad/Pressed/break.png" id="17_m6ehm"]
 [ext_resource type="Texture2D" uid="uid://dhaaggwqnjw7f" path="res://Interface/Hud/life.png" id="18_1hj8m"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Hud/health_bar.gd" id="19_s8lhr"]
 [ext_resource type="PackedScene" uid="uid://cbx7p8yvy6gn3" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
 [ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/Healt_Bar/bar_under.png" id="22_xl2wx"]
 [ext_resource type="PackedScene" uid="uid://ccmd315gfailw" path="res://Interface/Cursor/game_cursor.tscn" id="23_ff868"]
 [ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/Healt_Bar/bar_fill2.png" id="23_u63cs"]
+[ext_resource type="Texture2D" uid="uid://cvxra31oja48s" path="res://Interface/Hud/break.png" id="28_m6ehm"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_0b1lv")
@@ -73,6 +76,13 @@ position = Vector2(1597, 42)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("14_tlm4v")
 texture_pressed = ExtResource("15_ce0vt")
+action = "ui_cancel"
+
+[node name="Break" type="TouchScreenButton" parent="Gamepad"]
+position = Vector2(1488, 40)
+scale = Vector2(0.11, 0.11)
+texture_normal = ExtResource("16_smsye")
+texture_pressed = ExtResource("17_m6ehm")
 action = "ui_cancel"
 
 [node name="HBoxContainerBanane" type="HBoxContainer" parent="."]
@@ -188,9 +198,16 @@ offset_bottom = 185.0
 
 [node name="GameCursor" parent="." instance=ExtResource("23_ff868")]
 
+[node name="BreakSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.31764707)
+position = Vector2(980, 553.00006)
+scale = Vector2(0.7216797, 0.7216797)
+texture = ExtResource("28_m6ehm")
+
 [connection signal="pressed" from="Gamepad/Hand" to="." method="_on_hand_pressed"]
 [connection signal="pressed" from="Gamepad/Coco" to="." method="_on_coco_pressed"]
 [connection signal="pressed" from="Gamepad/Health" to="." method="_on_health_pressed"]
 [connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]
 [connection signal="pressed" from="Gamepad/Ramp" to="." method="_on_ramp_pressed"]
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Gamepad/Break" to="." method="_on_break_pressed"]
