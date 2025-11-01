@@ -36,6 +36,10 @@ var lives = max_lives
 var current_level_path = ""
 var current_level = null
 
+# --- Symboles lvl2 ----
+var correct_symbols = []
+var selected_symbols = []
+
 # --- Graines ---
 var total_seeds_in_level = 0
 var collected_seeds = 0
@@ -65,7 +69,12 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
+	await load_level("res:///Levels/Lvl2/lvl_2.tscn")
+	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	
 
 func _process(_delta):
 	# Pause via action "break"
@@ -164,7 +173,7 @@ func load_level(scene_path):
 	if not is_menu:
 		current_level_path = scene_path
 		reset_seed_tracking_from_scene()
-
+		
 		var p = player_scene.instantiate()
 		level.add_child(p)  # player sous le level (lui-même sous World)
 		p.global_position = spawn_point.global_position
@@ -191,6 +200,22 @@ func reset_lives():
 	lives = max_lives
 	if hud:
 		hud.update_lives_display(lives)
+
+func gain_life():
+	if lives < max_lives:
+		lives += 1
+		if hud:
+			hud.update_lives_display(lives)
+		if player:
+			player.show_info_popup("❤️ +1 vie (" + str(lives) + "/" + str(max_lives) + ")")
+		return true
+	else:
+		if player:
+			player.show_info_popup("❤️ Vies déjà au maximum (" + str(max_lives) + ")")
+		return false
+
+func is_game_over():
+	return lives <= 0
 
 func lose_life():
 	if lives > 0:
@@ -222,6 +247,22 @@ func add_seed_collected():
 		hud.update_seed_display(collected_seeds, total_seeds_in_level)
 	if collected_seeds >= total_seeds_in_level:
 		emit_signal("all_seeds_collected")
+
+# --- Signaux "clé", "digicode", "flower" ---
+func signal_key_collected():
+	emit_signal("key_collected")
+
+func signal_digicode_ok():
+	emit_signal("digicode_ok")
+
+func signal_flower_collected():
+	emit_signal("flower_collected")
+
+# --- Retour menu avec joystique et clavier ---
+func _input(_event):
+	if Input.is_action_just_pressed("gc_menu") or Input.is_action_just_pressed("menu"):
+		if not is_menu_scene(current_level_path):
+			load_level("res://Levels/Lvl0/lvl_0.tscn")
 
 # --- Reset inventaire ---
 func reinitialise():
