@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bn572scgkg85" path="res://ItemsDecors/Bridge/Crank/crank.png" id="1_8iib5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fd66"]
-radius = 235.54405
+radius = 389.08224
 
 [sub_resource type="Animation" id="Animation_62ars"]
 length = 0.001
@@ -55,5 +55,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_uluo2")
 }
 
+[connection signal="activated" from="." to="." method="_on_activated"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

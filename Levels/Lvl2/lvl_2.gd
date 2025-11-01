@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var dialogue_scene = preload("res://Interface/Dialogue/toucan_dialogue.tscn")
-@export var crank_path = NodePath("Bridge/Crank")  
+@export var crank_path = NodePath("Node2D/Platforms/Bridge/Crank")  
 
 var gs
 var moko 
@@ -64,9 +64,6 @@ func _on_all_seeds_collected():
 	# --- On bloque le mouvement de Moko
 	moko.can_move = false
 
-	# --- Focus caméra sur la manivelle ---
-	await focus_camera_on_node(crank_path)
-
 	# --- Dialogue Toucan manivelle ---
 	await get_tree().process_frame
 	var dlg = dialogue_scene.instantiate()
@@ -77,7 +74,10 @@ func _on_all_seeds_collected():
 		"Regarde là-bas... une manivelle !"
 	])
 	await dlg.finished
-
+	
+	# --- Focus caméra sur la manivelle ---
+	await focus_camera_on_node(crank_path)
+	
 	# --- Déverrouille et rend visible la manivelle ---
 	var crank = get_node_or_null(crank_path)
 	if crank:
@@ -91,7 +91,6 @@ func _on_all_seeds_collected():
 	# --- Retour caméra sur le joueur ---
 	await return_camera_to_player()
 	moko.can_move = true
-
 
 # ======================================================
 #                    Digicode                        

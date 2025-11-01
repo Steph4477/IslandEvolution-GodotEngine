@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@onready var area = $Area2D
+@onready var area = $InteractionArea
 var player = null
 var pushing = false
 
