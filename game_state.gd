@@ -10,6 +10,7 @@ var can_fire_lance = false
 var has_key = false
 var has_lance = false
 var has_flower = false
+var toucan_challenge_retry = false
 
 # --- Dialogues uniques par partie ---
 var toucan_dialogue_seen = false
@@ -60,8 +61,8 @@ func _ready():
 	# await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	# await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res:///Levels/Lvl2/lvl_2.tscn")
-	await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
-	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
+	await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
 func set_player(p):
 	player = p
