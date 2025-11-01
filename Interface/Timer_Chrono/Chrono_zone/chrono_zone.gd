@@ -1,5 +1,7 @@
 extends Node2D
 
+signal challenge_win
+
 @export var dialogue_scene = preload("res://Interface/Dialogue/toucan_dialogue.tscn")
 @export var dialogue_lines = [
 	"Hé Moko !",
@@ -92,6 +94,7 @@ func win():
 	chrono.stop_chrono()
 	chrono.visible = false
 	gs.player.show_info_popup("✅ Défi réussi !")
+	emit_signal("challenge_win")
 
 func lose():
 	started = false
