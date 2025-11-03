@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn147nite2tp7"]
+
+[ext_resource type="Script" uid="uid://b0vwb7dh7qpa7" path="res://Enemies/Froggle/Drool/drool_bolt.gd" id="1_h2bdb"]
+[ext_resource type="Texture2D" uid="uid://b38m81rqf83wd" path="res://Enemies/Froggle/Drool/drool_bolt.png" id="2_mkcx0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1r2o"]
+radius = 25.495098
+
+[node name="DroolBolt" type="Node2D"]
+z_index = 5
+scale = Vector2(-0.3, 0.3)
+script = ExtResource("1_h2bdb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(-0.05, 0.05)
+texture = ExtResource("2_mkcx0")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_e1r2o")
+
+[node name="LifeTimer" type="Timer" parent="."]
+one_shot = true

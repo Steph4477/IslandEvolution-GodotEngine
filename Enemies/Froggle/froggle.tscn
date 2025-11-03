@@ -1,14 +1,33 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0bueayd3ta8b"]
+[gd_scene load_steps=40 format=3 uid="uid://d0bueayd3ta8b"]
 
-[ext_resource type="Script" uid="uid://4nndo6lu3ssx" path="res://Enemies/Rat/rat.gd" id="1_eisds"]
+[ext_resource type="Script" uid="uid://cpxyhdihwqfj7" path="res://Enemies/Froggle/froggle.gd" id="1_8j4gp"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_hui0c"]
-[ext_resource type="Texture2D" uid="uid://lgkigpurrhwo" path="res://Enemies/Rat/die.png" id="3_cc6d8"]
-[ext_resource type="Texture2D" uid="uid://cawm43vhnsuxe" path="res://Enemies/Rat/attack.png" id="4_ehayy"]
-[ext_resource type="Texture2D" uid="uid://d14k0ukwu7dgb" path="res://Enemies/Rat/idle.png" id="5_bk7f5"]
-[ext_resource type="Texture2D" uid="uid://dgnl8yp661nxt" path="res://Enemies/Rat/1.png" id="6_12b85"]
-[ext_resource type="Texture2D" uid="uid://bcxkmxxsoktln" path="res://Enemies/Rat/2.png" id="7_nkrgj"]
-[ext_resource type="Texture2D" uid="uid://bguj7ao83li82" path="res://Enemies/Rat/3.png" id="8_3fepy"]
-[ext_resource type="Texture2D" uid="uid://i4rdun4lr2ag" path="res://Enemies/Rat/4.png" id="9_be56r"]
+[ext_resource type="Texture2D" uid="uid://b35qv5rxbcrbw" path="res://Enemies/Froggle/Attack/1.png" id="4_a6b7o"]
+[ext_resource type="Texture2D" uid="uid://yhsvytaawr76" path="res://Enemies/Froggle/Attack/2.png" id="5_ricjb"]
+[ext_resource type="Texture2D" uid="uid://ddowqe3a4wmwv" path="res://Enemies/Froggle/Attack/3.png" id="6_4ppl1"]
+[ext_resource type="Texture2D" uid="uid://bcqf1bq4o3pk0" path="res://Enemies/Froggle/Attack/4.png" id="7_cvs1a"]
+[ext_resource type="Texture2D" uid="uid://is6roxsua8md" path="res://Enemies/Froggle/Die/1.png" id="8_1d0q6"]
+[ext_resource type="Texture2D" uid="uid://xgybd64fu0g8" path="res://Enemies/Froggle/Die/2.png" id="9_6une6"]
+[ext_resource type="Texture2D" uid="uid://vq51u4ccsw5v" path="res://Enemies/Froggle/Die/3.png" id="10_gf6fb"]
+[ext_resource type="Texture2D" uid="uid://bp3vcw2hff4pp" path="res://Enemies/Froggle/Die/4.png" id="11_x1jqt"]
+[ext_resource type="Texture2D" uid="uid://uhu0lqosi5s6" path="res://Enemies/Froggle/Idle/1.png" id="12_b5yhw"]
+[ext_resource type="Texture2D" uid="uid://bifymj4k7ak1t" path="res://Enemies/Froggle/Idle/2.png" id="13_vox5d"]
+[ext_resource type="Texture2D" uid="uid://bg6bpyw71ntdo" path="res://Enemies/Froggle/Idle/3.png" id="14_l0nb2"]
+[ext_resource type="Texture2D" uid="uid://cf7hfsv0ofggv" path="res://Enemies/Froggle/Walk/1.png" id="15_614lx"]
+[ext_resource type="Texture2D" uid="uid://ig5x16nxngb6" path="res://Enemies/Froggle/Walk/2.png" id="16_mlotn"]
+[ext_resource type="Texture2D" uid="uid://cubeyk6l1dxug" path="res://Enemies/Froggle/Walk/3.png" id="17_dt3mn"]
+[ext_resource type="Texture2D" uid="uid://bkuv223v10ou3" path="res://Enemies/Froggle/Walk/4.png" id="18_a3577"]
+[ext_resource type="Texture2D" uid="uid://cx7dprpyyl2vd" path="res://Enemies/Froggle/Walk/5.png" id="19_wyr8o"]
+[ext_resource type="Texture2D" uid="uid://b2bv1hnxxicif" path="res://Enemies/Froggle/Drool/1.png" id="20_1i8k8"]
+[ext_resource type="Texture2D" uid="uid://5u6daj6fusgl" path="res://Enemies/Froggle/Drool/2.png" id="21_4my4o"]
+[ext_resource type="Texture2D" uid="uid://bcnk5rhs48l12" path="res://Enemies/Froggle/Drool/3.png" id="22_c4rvl"]
+[ext_resource type="Texture2D" uid="uid://bbxofvgxmlqbo" path="res://Enemies/Froggle/Drool/4.png" id="23_dgcif"]
+[ext_resource type="Texture2D" uid="uid://yet5pqyr2j3g" path="res://Enemies/Froggle/Jump_Attack/1.png" id="24_61ogj"]
+[ext_resource type="Texture2D" uid="uid://dkeq5hbk5pc42" path="res://Enemies/Froggle/Jump_Attack/2.png" id="25_cc3aa"]
+[ext_resource type="Texture2D" uid="uid://0rsceq62dk76" path="res://Enemies/Froggle/Jump_Attack/3.png" id="26_ecfuu"]
+[ext_resource type="Texture2D" uid="uid://bm6nunwt5nthk" path="res://Enemies/Froggle/Jump_Attack/4.png" id="27_0uyrs"]
+[ext_resource type="Texture2D" uid="uid://tvrbsjfijagv" path="res://Enemies/Froggle/OneHit/1.png" id="28_gdpa4"]
+[ext_resource type="Texture2D" uid="uid://b7nfu7l6x4pni" path="res://Enemies/Froggle/OneHit/2.png" id="29_mit5x"]
 
 [sub_resource type="Animation" id="Animation_gg55r"]
 length = 0.001
@@ -22,7 +41,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_cc6d8")]
+"values": [ExtResource("12_b5yhw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -34,12 +53,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.442911, 0.442911, 0.442911, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_bsx7r"]
 resource_name = "attack"
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,15 +66,15 @@ tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_ehayy"), ExtResource("5_bk7f5")]
+"values": [ExtResource("4_a6b7o"), ExtResource("5_ricjb"), ExtResource("6_4ppl1"), ExtResource("7_cvs1a")]
 }
 
 [sub_resource type="Animation" id="Animation_e055m"]
 resource_name = "die"
-length = 0.8
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,10 +82,10 @@ tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_cc6d8"), ExtResource("3_cc6d8")]
+"values": [ExtResource("8_1d0q6"), ExtResource("9_6une6"), ExtResource("10_gf6fb"), ExtResource("11_x1jqt")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,13 +94,28 @@ tracks/1/path = NodePath("Rotator/Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0.9, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.442911, 0.442911, 0.442911, 1), Color(0.44313726, 0.44313726, 0.44313726, 0.011764706)]
+"values": [Color(1, 1, 1, 1), Color(0.44313726, 0.44313726, 0.44313726, 0.011764706)]
 }
 
-[sub_resource type="Animation" id="Animation_4jfus"]
+[sub_resource type="Animation" id="Animation_k53b5"]
+resource_name = "drool"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("20_1i8k8"), ExtResource("21_4my4o"), ExtResource("22_c4rvl"), ExtResource("23_dgcif")]
+}
+
+[sub_resource type="Animation" id="Animation_j2nn7"]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -90,16 +124,15 @@ tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("5_bk7f5"), ExtResource("5_bk7f5")]
+"values": [ExtResource("12_b5yhw"), ExtResource("13_vox5d"), ExtResource("14_l0nb2"), ExtResource("13_vox5d"), ExtResource("14_l0nb2")]
 }
 
-[sub_resource type="Animation" id="Animation_j2nn7"]
-resource_name = "walk"
-length = 0.4
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_6rj3w"]
+resource_name = "jump_attack"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -107,10 +140,42 @@ tracks/0/path = NodePath("Rotator/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("6_12b85"), ExtResource("7_nkrgj"), ExtResource("8_3fepy"), ExtResource("9_be56r")]
+"values": [ExtResource("24_61ogj"), ExtResource("25_cc3aa"), ExtResource("26_ecfuu"), ExtResource("27_0uyrs")]
+}
+
+[sub_resource type="Animation" id="Animation_3wujl"]
+resource_name = "on_hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("28_gdpa4"), ExtResource("29_mit5x")]
+}
+
+[sub_resource type="Animation" id="Animation_4jfus"]
+resource_name = "walk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("15_614lx"), ExtResource("16_mlotn"), ExtResource("17_dt3mn"), ExtResource("18_a3577"), ExtResource("19_wyr8o")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
@@ -118,57 +183,67 @@ _data = {
 &"RESET": SubResource("Animation_gg55r"),
 &"attack": SubResource("Animation_bsx7r"),
 &"die": SubResource("Animation_e055m"),
-&"idle": SubResource("Animation_4jfus"),
-&"walk": SubResource("Animation_j2nn7")
+&"drool": SubResource("Animation_k53b5"),
+&"idle": SubResource("Animation_j2nn7"),
+&"jump_attack": SubResource("Animation_6rj3w"),
+&"on_hit": SubResource("Animation_3wujl"),
+&"walk": SubResource("Animation_4jfus")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gg55r"]
-radius = 9.055386
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73kmb"]
+size = Vector2(250, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(68, 40)
+size = Vector2(95, 13.5)
 
 [node name="Froggle" type="CharacterBody2D" groups=["Enemies"]]
+modulate = Color(0.8289096, 0.82890964, 0.82890975, 1)
 z_index = 5
 scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_eisds")
+script = ExtResource("1_8j4gp")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_hui0c")]
-position = Vector2(49, -87)
+position = Vector2(46, -68)
 rotation = 3.14159
 scale = Vector2(1, -1.00374)
 
 [node name="Rotator" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator"]
-modulate = Color(0.442911, 0.442911, 0.442911, 1)
-position = Vector2(-4, -14)
+position = Vector2(-55, -30)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
-texture = ExtResource("3_cc6d8")
+texture = ExtResource("12_b5yhw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" groups=["Enemies"]]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_1lwxd")
 }
-autoplay = "walk"
 
 [node name="Area2D" type="Area2D" parent="Rotator" groups=["Enemies"]]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/Area2D"]
-position = Vector2(-45, -6)
-shape = SubResource("CircleShape2D_gg55r")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Rotator/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_73kmb")
+
+[node name="Muzzle" type="Marker2D" parent="Rotator"]
+position = Vector2(-31, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11, -3)
+position = Vector2(1, 36)
 shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DroolTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="Rotator/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Rotator/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DroolTimer" to="." method="_on_drool_timer_timeout"]

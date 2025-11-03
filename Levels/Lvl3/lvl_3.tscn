@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=28 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b6ybyb2g34piq" path="res://ItemsDecors/Liana/Liana.tscn" id="11_sdlip"]
 [ext_resource type="PackedScene" uid="uid://b3eigelsea7jk" path="res://Enemies/Crocodile/crocodile.tscn" id="12_12vmq"]
 [ext_resource type="PackedScene" uid="uid://c7ps13ndncbr4" path="res://Loot/Flower/flower.tscn" id="14_4esaq"]
+[ext_resource type="PackedScene" uid="uid://d0bueayd3ta8b" path="res://Enemies/Froggle/froggle.tscn" id="15_6n0ay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -137,7 +138,12 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(157, 552)
+position = Vector2(5063, 701)
+
+[node name="Froggle" parent="Node2D" instance=ExtResource("15_6n0ay")]
+position = Vector2(6109, 946)
+rotation = 3.1415927
+scale = Vector2(1.5, -1.5)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 position = Vector2(-4, 34)
