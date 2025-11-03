@@ -1,0 +1,174 @@
+[gd_scene load_steps=18 format=3 uid="uid://d0bueayd3ta8b"]
+
+[ext_resource type="Script" uid="uid://4nndo6lu3ssx" path="res://Enemies/Rat/rat.gd" id="1_eisds"]
+[ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_hui0c"]
+[ext_resource type="Texture2D" uid="uid://lgkigpurrhwo" path="res://Enemies/Rat/die.png" id="3_cc6d8"]
+[ext_resource type="Texture2D" uid="uid://cawm43vhnsuxe" path="res://Enemies/Rat/attack.png" id="4_ehayy"]
+[ext_resource type="Texture2D" uid="uid://d14k0ukwu7dgb" path="res://Enemies/Rat/idle.png" id="5_bk7f5"]
+[ext_resource type="Texture2D" uid="uid://dgnl8yp661nxt" path="res://Enemies/Rat/1.png" id="6_12b85"]
+[ext_resource type="Texture2D" uid="uid://bcxkmxxsoktln" path="res://Enemies/Rat/2.png" id="7_nkrgj"]
+[ext_resource type="Texture2D" uid="uid://bguj7ao83li82" path="res://Enemies/Rat/3.png" id="8_3fepy"]
+[ext_resource type="Texture2D" uid="uid://i4rdun4lr2ag" path="res://Enemies/Rat/4.png" id="9_be56r"]
+
+[sub_resource type="Animation" id="Animation_gg55r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cc6d8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.442911, 0.442911, 0.442911, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bsx7r"]
+resource_name = "attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_ehayy"), ExtResource("5_bk7f5")]
+}
+
+[sub_resource type="Animation" id="Animation_e055m"]
+resource_name = "die"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_cc6d8"), ExtResource("3_cc6d8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.442911, 0.442911, 0.442911, 1), Color(0.44313726, 0.44313726, 0.44313726, 0.011764706)]
+}
+
+[sub_resource type="Animation" id="Animation_4jfus"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_bk7f5"), ExtResource("5_bk7f5")]
+}
+
+[sub_resource type="Animation" id="Animation_j2nn7"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_12b85"), ExtResource("7_nkrgj"), ExtResource("8_3fepy"), ExtResource("9_be56r")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
+_data = {
+&"RESET": SubResource("Animation_gg55r"),
+&"attack": SubResource("Animation_bsx7r"),
+&"die": SubResource("Animation_e055m"),
+&"idle": SubResource("Animation_4jfus"),
+&"walk": SubResource("Animation_j2nn7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gg55r"]
+radius = 9.055386
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(68, 40)
+
+[node name="Froggle" type="CharacterBody2D" groups=["Enemies"]]
+z_index = 5
+scale = Vector2(-1, 1)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_eisds")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_hui0c")]
+position = Vector2(49, -87)
+rotation = 3.14159
+scale = Vector2(1, -1.00374)
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+modulate = Color(0.442911, 0.442911, 0.442911, 1)
+position = Vector2(-4, -14)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("3_cc6d8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" groups=["Enemies"]]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_1lwxd")
+}
+autoplay = "walk"
+
+[node name="Area2D" type="Area2D" parent="Rotator" groups=["Enemies"]]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/Area2D"]
+position = Vector2(-45, -6)
+shape = SubResource("CircleShape2D_gg55r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11, -3)
+shape = SubResource("RectangleShape2D_x2fpe")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Rotator/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Rotator/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
