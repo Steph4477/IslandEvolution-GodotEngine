@@ -141,6 +141,9 @@ position = Vector2(21, 23)
 z_index = 5
 position = Vector2(5063, 701)
 
+[node name="BagLoot" parent="Node2D" instance=ExtResource("5_mult3")]
+position = Vector2(5265, 1178)
+
 [node name="Froggle" parent="Node2D" instance=ExtResource("15_6n0ay")]
 position = Vector2(6109, 946)
 rotation = 3.1415927
@@ -221,8 +224,8 @@ motion_mirroring = Vector2(1920, 540)
 
 [node name="WaterSprite" type="Sprite2D" parent="Node2D/World/WorldParallaxe/WaterLayer"]
 modulate = Color(0.6310349, 0.631035, 0.6310349, 1)
-position = Vector2(1127, 920)
-scale = Vector2(6.6312504, 1)
+position = Vector2(1095, 999)
+scale = Vector2(6.6312504, 1.8066406)
 texture = ExtResource("9_n7unt")
 
 [node name="DecorsTiles" type="Node2D" parent="Node2D/World"]
@@ -281,9 +284,6 @@ shape = SubResource("RectangleShape2D_4tc27")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
 position = Vector2(2641, 1530)
 shape = SubResource("RectangleShape2D_sdlip")
-
-[node name="BagLoot" parent="Node2D/World" instance=ExtResource("5_mult3")]
-position = Vector2(529, 1223)
 
 [node name="TreeBranch" parent="Node2D/World" instance=ExtResource("4_gstoe")]
 z_index = 3

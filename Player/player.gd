@@ -664,6 +664,15 @@ func die():
 	
 	game_state.load_level(next_level)
 
+# ======================================================================
+# =        IMMUNITÉ AUX SECOUSSES (tremblement grenouille)             =
+# ======================================================================
+func is_quake_safe():
+	# Si Moko n’est pas au sol (en saut, chute, liane) → pas de dégâts
+	if not is_on_floor():
+		return true
+	return false
+
 # ============================================================================
 # =                            ANIMATIONS                                   =
 # ============================================================================
@@ -686,6 +695,11 @@ func update_animation():
 		anim.play(climbing_anim)
 		return
 	if anim.current_animation == "hang":
+		return
+	
+	if is_gazed:
+		if anim.current_animation != "walk_gaz":
+			anim.play("walk_gaz")
 		return
 	
 	# ✅ SOL — forcer idle, walk ou ramp
