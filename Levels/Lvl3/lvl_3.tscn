@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=29 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
+[ext_resource type="AudioStream" uid="uid://xw852443pndg" path="res://sounds/lvl3/water.ogg" id="3_06aic"]
 [ext_resource type="Texture2D" uid="uid://q072nybkifbr" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="3_hag10"]
 [ext_resource type="Texture2D" uid="uid://bakem4letrjah" path="res://Levels/Lvl3/Environement/tiles platforms/decosheet.png" id="3_o2qeu"]
-[ext_resource type="AudioStream" uid="uid://b0cnglh0y5jdl" path="res://sounds/lvl2.ogg" id="4_bgnwh"]
+[ext_resource type="AudioStream" uid="uid://b0snt0ob41imw" path="res://sounds/lvl3/birds.ogg" id="4_06aic"]
 [ext_resource type="PackedScene" uid="uid://t6efq7471rm8" path="res://Levels/Lvl3/Environement/Tree_branch/tree_branch.tscn" id="4_gstoe"]
 [ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/Bag/bag.tscn" id="5_mult3"]
 [ext_resource type="TileSet" uid="uid://b2ljk1cgl2kj5" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="5_yixkb"]
@@ -179,9 +180,17 @@ shape = SubResource("RectangleShape2D_hag10")
 
 [node name="Sound" type="Node2D" parent="Node2D"]
 
-[node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
-stream = ExtResource("4_bgnwh")
+[node name="WaterSound" type="AudioStreamPlayer" parent="Node2D/Sound"]
+stream = ExtResource("3_06aic")
+volume_db = -4.062
 autoplay = true
+bus = &"Water"
+
+[node name="BirdsSound" type="AudioStreamPlayer" parent="Node2D/Sound"]
+stream = ExtResource("4_06aic")
+volume_db = 4.65
+autoplay = true
+bus = &"Birds"
 
 [node name="ChronoZone" parent="Node2D" instance=ExtResource("3_4esaq")]
 position = Vector2(1155, 1150)

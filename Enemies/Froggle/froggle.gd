@@ -144,6 +144,10 @@ func drool_attack():
 	is_attacking = true
 	is_drooling = true
 	velocity.x = 0
+	
+	# Son du jet de bave
+	$DroolSound.play()
+	
 	anim.play("drool")   
 	await anim.animation_finished
 	
@@ -172,9 +176,6 @@ func drool_attack():
 
 	bolt.direction = Vector2(dir_x, 0)
 	bolt.max_distance = drool_range
-
-	if has_node("SpitSound"):
-		$SpitSound.play_spit()
 
 	is_attacking = false
 	is_drooling = false

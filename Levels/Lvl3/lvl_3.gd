@@ -5,8 +5,11 @@ extends Node2D
 @onready var anim = $Node2D/World/lianas/AnimationPlayer
 
 func _ready():
+
+
 	## Musique de fond
-	$Node2D/Sound/lvl2.play()
+	$Node2D/Sound/BirdsSound.play()
+	$Node2D/Sound/WaterSound.play()
 	
 	# Position initiale => anim calée à 0.0s
 	if anim.has_animation("fall"):

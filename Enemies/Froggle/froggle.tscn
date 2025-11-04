@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://d0bueayd3ta8b"]
+[gd_scene load_steps=41 format=3 uid="uid://d0bueayd3ta8b"]
 
 [ext_resource type="Script" uid="uid://cpxyhdihwqfj7" path="res://Enemies/Froggle/froggle.gd" id="1_8j4gp"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_hui0c"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://0rsceq62dk76" path="res://Enemies/Froggle/Jump_Attack/3.png" id="26_ecfuu"]
 [ext_resource type="Texture2D" uid="uid://bm6nunwt5nthk" path="res://Enemies/Froggle/Jump_Attack/4.png" id="27_0uyrs"]
 [ext_resource type="Texture2D" uid="uid://tvrbsjfijagv" path="res://Enemies/Froggle/OneHit/1.png" id="28_gdpa4"]
+[ext_resource type="AudioStream" uid="uid://3mfvfdskfypf" path="res://sounds/lvl3/drool.wav" id="29_8j4gp"]
 [ext_resource type="Texture2D" uid="uid://b7nfu7l6x4pni" path="res://Enemies/Froggle/OneHit/2.png" id="29_mit5x"]
 
 [sub_resource type="Animation" id="Animation_gg55r"]
@@ -242,6 +243,10 @@ one_shot = true
 
 [node name="DroolTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DroolSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_8j4gp")
+volume_db = -10.481
 
 [connection signal="body_entered" from="Rotator/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Rotator/Area2D" to="." method="_on_area_2d_body_exited"]

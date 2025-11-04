@@ -343,6 +343,7 @@ position = Vector2(-2972, -679)
 [node name="lvl1" type="AudioStreamPlayer2D" parent="Sound"]
 position = Vector2(1226, 1228)
 stream = ExtResource("20_qky26")
+volume_db = 4.837
 
 [node name="Totem" parent="." instance=ExtResource("21_t7ttw")]
 position = Vector2(3757, 555)

@@ -216,6 +216,7 @@ shape = SubResource("RectangleShape2D_w1c1k")
 
 [node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
 stream = ExtResource("10_uikls")
+volume_db = 8.0
 autoplay = true
 
 [node name="BagLoot" parent="Node2D" instance=ExtResource("11_gr680")]

@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Levels/Lvl0/lvl0.gd" id="1_rv0fi"]
 [ext_resource type="Texture2D" uid="uid://dt66tyhkix240" path="res://Levels/Lvl0/Environement/border.png" id="2_oo4jl"]
 [ext_resource type="Texture2D" uid="uid://ctax2hqehyebs" path="res://Levels/Lvl0/Environement/background.png" id="2_uawj8"]
+[ext_resource type="AudioStream" uid="uid://24fwln65j5wm" path="res://sounds/dijee.ogg" id="4_1tkva"]
 [ext_resource type="Texture2D" uid="uid://dk2pnjh7ymd51" path="res://Menu/Buttons/restart.png" id="9_7s5l6"]
 [ext_resource type="Texture2D" uid="uid://b7cu373brt3cl" path="res://Menu/Buttons/play.png" id="9_ss15l"]
 [ext_resource type="Texture2D" uid="uid://b4dhfq2201ktp" path="res://Menu/Buttons/Pressed/play.png" id="10_dlb7y"]
 [ext_resource type="Texture2D" uid="uid://bqbuxpodjjsvo" path="res://Menu/Buttons/options.png" id="11_bfns0"]
 [ext_resource type="Texture2D" uid="uid://cqjgwsvhaeoft" path="res://Menu/Buttons/Pressed/options.png" id="12_n1ip6"]
-[ext_resource type="AudioStream" uid="uid://doo70l3xvv5u4" path="res://sounds/dijee.wav" id="13_yvok6"]
 
 [node name="MenuLvl1" type="Node2D"]
 script = ExtResource("1_rv0fi")
@@ -42,7 +42,8 @@ position = Vector2(108, 237)
 scale = Vector2(2.10789, 2.42027)
 
 [node name="dijee" type="AudioStreamPlayer" parent="sound"]
-stream = ExtResource("13_yvok6")
+stream = ExtResource("4_1tkva")
+volume_db = -6.45
 
 [node name="VBoxContainerOptions" type="VBoxContainer" parent="."]
 anchors_preset = 2

@@ -1632,6 +1632,7 @@ position = Vector2(232, -2)
 
 [node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
 stream = ExtResource("10_ochkp")
+volume_db = 8.0
 autoplay = true
 
 [node name="Digicode" parent="Node2D" instance=ExtResource("43_04g0o")]

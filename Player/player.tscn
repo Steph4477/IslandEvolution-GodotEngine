@@ -518,7 +518,6 @@ size = Vector2(146.66666, 163.12057)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 8
-scale = Vector2(1.5, 1.5)
 collision_mask = 294
 script = ExtResource("1_5psm4")
 
@@ -565,6 +564,7 @@ stream = ExtResource("11_leyao")
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("12_5vkkw")
+volume_db = -6.287
 
 [node name="ClacArea" type="Area2D" parent="."]
 position = Vector2(26, -44)
@@ -577,12 +577,12 @@ position = Vector2(154, 117)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(134, 94.08334)
+position = Vector2(133, 105)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_j3qaj")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(134, 111.00002)
+position = Vector2(133, 121.91668)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_y06ei")
 disabled = true
