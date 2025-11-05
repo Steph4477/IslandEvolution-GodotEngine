@@ -491,6 +491,8 @@ func process_shoot():
 
 # --- Corps à corps ---
 func clac_attack():
+	if not is_on_floor():
+		return  # interdit dans les airs
 	if is_attacking or is_dead:
 		return
 	
@@ -532,6 +534,8 @@ func process_heal():
 		use_banane()
 
 func use_banane():
+	if not is_on_floor():
+		return  # impossible de se soigner en l’air
 	var msg := ""
 	if pv >= max_pv:
 		msg = "PV au max !"

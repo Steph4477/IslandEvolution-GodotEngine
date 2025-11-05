@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl5ptkisjbtjs"]
+
+[ext_resource type="Script" uid="uid://cn4njet10v7wo" path="res://Loot/Coconut/coconut.gd" id="1_sxahi"]
+[ext_resource type="Texture2D" uid="uid://kcobjjpvblk3" path="res://Loot/Coconut/coconut.png" id="2_pe4xy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
+radius = 3.47464
+
+[node name="CocoLoot" type="Node2D"]
+script = ExtResource("1_sxahi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-20, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pe4xy")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 0)
+rotation = -3.14159
+scale = Vector2(16.1668, -18.3068)
+shape = SubResource("CircleShape2D_52bb4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -4,7 +4,7 @@ extends Node2D
 @export var froggle_scene = preload("res://Enemies/Froggle/froggle.tscn")   
 @export var froggle_spawn_path = NodePath("Node2D/FroggleSpawn")            
 
-@onready var anim = $Node2D/World/lianas/AnimationPlayer
+@onready var anim = $Node2D/World/AnimationPlayer
 
 var _froggle_spawned = false
 
