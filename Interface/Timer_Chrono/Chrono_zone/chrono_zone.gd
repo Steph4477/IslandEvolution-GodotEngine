@@ -15,7 +15,7 @@ signal challenge_win
 	"Oui Moko tu as réussi !",
 	"Merci j'ai enfin ma fleur,",
 	"depuis le temps que j'en rêvais !",
-	"Maintenant attention aux secousses !😊"
+	"Maintenant, attention aux secousses !😊"
 ]
 
 @export var reset_on_start = true
@@ -107,12 +107,15 @@ func win():
 	chrono.stop_chrono()
 	chrono.visible = false
 	gs.player.show_info_popup("✅ Défi réussi !")
-	emit_signal("challenge_win")
 	
-	# Dialogue de victoire 
+	# 1) Dialogue 
 	await dialogue_win_toucan()
 	
-	# Supprime la scène du défi 
+	# 2) On demande le focus grenouille (via gs) et on prévient lvl3
+	gs.focus_cam_frog = true
+	emit_signal("challenge_win")
+	
+	# 3) On supprime la scène
 	if is_instance_valid(self):
 		queue_free()
 

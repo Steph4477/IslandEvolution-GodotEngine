@@ -11,6 +11,7 @@ var has_key = false
 var has_lance = false
 var has_flower = false
 var toucan_challenge_retry = false
+var focus_cam_frog = false
 
 # --- Dialogues uniques ---
 var toucan_dialogue_seen = false
