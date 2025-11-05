@@ -5,24 +5,24 @@
 [ext_resource type="Texture2D" uid="uid://reh04kipd64q" path="res://Levels/Lvl3/Environement/Tree_branch/tree_branch2.png" id="3_40f3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ojmy"]
-size = Vector2(2462, 37)
+size = Vector2(1715, 37)
 
 [node name="TreeBranch" type="Node2D"]
 script = ExtResource("1_4ojmy")
 
 [node name="float" type="Sprite2D" parent="."]
 position = Vector2(440, 27.000015)
-scale = Vector2(1.4919094, 0.6611328)
+scale = Vector2(1.0940772, 0.6611328)
 texture = ExtResource("1_f4ba2")
 
 [node name="flow" type="Sprite2D" parent="."]
-position = Vector2(440, 27.000015)
-scale = Vector2(1.4919094, 0.6611328)
+position = Vector2(440, 23.749996)
+scale = Vector2(1.0940772, 0.6547851)
 texture = ExtResource("3_40f3g")
 
 [node name="Area2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(605, -30.5)
+position = Vector2(574.5, -30.5)
 shape = SubResource("RectangleShape2D_4ojmy")

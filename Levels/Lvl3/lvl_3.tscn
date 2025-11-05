@@ -41,7 +41,7 @@ size = Vector2(418, 638.25)
 size = Vector2(394.6875, 640.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdlip"]
-size = Vector2(2529, 659)
+size = Vector2(2196, 659)
 
 [sub_resource type="Animation" id="Animation_gstoe"]
 length = 0.001
@@ -119,7 +119,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2080, -240), Vector2(2096, 1200)]
+"values": [Vector2(1858, -240), Vector2(1858, 1200)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6n0ay"]
@@ -171,7 +171,7 @@ position = Vector2(1167, 1468.7813)
 shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(3965, 1471)
+position = Vector2(3630, 1470)
 shape = SubResource("RectangleShape2D_hag10")
 
 [node name="Sound" type="Node2D" parent="Node2D"]
@@ -275,7 +275,7 @@ position = Vector2(861.65625, 1524.125)
 shape = SubResource("RectangleShape2D_4tc27")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
-position = Vector2(2570.5, 1513.5)
+position = Vector2(2404, 1513.5)
 shape = SubResource("RectangleShape2D_sdlip")
 
 [node name="TreeBranch" parent="Node2D/World" instance=ExtResource("4_gstoe")]
@@ -288,22 +288,22 @@ position = Vector2(184, 2000)
 
 [node name="Liana" parent="Node2D/World/lianas" instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(1439, 266)
+position = Vector2(1318, 270)
 scale = Vector2(0.4, 1)
 
 [node name="Liana2" parent="Node2D/World/lianas" instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(2066, 268)
+position = Vector2(1945, 272)
 scale = Vector2(0.4, 1)
 
 [node name="Liana3" parent="Node2D/World/lianas" instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(2679, 239)
+position = Vector2(2558, 243)
 scale = Vector2(0.4, 1)
 
 [node name="Liana4" parent="Node2D/World/lianas" instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(3277, 261)
+position = Vector2(3156, 265)
 scale = Vector2(0.4, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/World/lianas"]
@@ -334,7 +334,7 @@ frame = 18
 
 [node name="Nenuphar3" type="Sprite2D" parent="Node2D/World/Nenuphars"]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
-position = Vector2(3972, 1160)
+position = Vector2(3591, 1174)
 scale = Vector2(-0.8, 0.8)
 texture = ExtResource("3_o2qeu")
 hframes = 8
@@ -348,7 +348,7 @@ z_index = 5
 position = Vector2(2290, 969)
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
-position = Vector2(3985, 1193)
+position = Vector2(3585, 1198)
 scale = Vector2(0.5, 0.5)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]

@@ -11,6 +11,13 @@ signal challenge_win
 	"Le chrono démarre maintenant !"
 ]
 
+@export var dialogue_win = [
+	"Oui Moko tu as réussi !",
+	"Merci j'ai enfin ma fleur,",
+	"depuis le temps que j'en rêvais !",
+	"Maintenant attention aux secousses !😊"
+]
+
 @export var reset_on_start = true
 @export var stop_on_exit = false
 @export var hide_on_exit = false
@@ -23,6 +30,8 @@ var started = false
 func _ready():
 	gs = get_node("/root/GameState")
 	timer = $Timer
+	
+	# Récup chrono HUD (attend que le HUD existe)
 	while gs.hud == null:
 		await get_tree().process_frame
 	chrono = gs.hud.get_node("TimerChrono")
@@ -38,12 +47,16 @@ func _physics_process(_delta):
 
 # ================== ZONE ==================
 func _on_zone_body_entered(_body):
+	# Si la scène a été supprimée → rien ne se relance
+	if not is_instance_valid(self):
+		return
+		
 	# Relance 3,2,1 si un retry est prévu
 	if gs.toucan_challenge_retry:
 		gs.toucan_challenge_retry = false
 		await retry_then_start()
 		return
-
+		
 	# Démarrage si pas lancé
 	if not started:
 		if gs.toucan_dialogue_seen:
@@ -52,7 +65,7 @@ func _on_zone_body_entered(_body):
 			await intro_then_start()
 			gs.toucan_dialogue_seen = true
 		return
-
+		
 	# Défi en cours : valider si fleur + temps restant
 	if gs.has_flower:
 		if timer.time_left > 0 or chrono.time_left > 0:
@@ -95,6 +108,13 @@ func win():
 	chrono.visible = false
 	gs.player.show_info_popup("✅ Défi réussi !")
 	emit_signal("challenge_win")
+	
+	# Dialogue de victoire 
+	await dialogue_win_toucan()
+	
+	# Supprime la scène du défi 
+	if is_instance_valid(self):
+		queue_free()
 
 func lose():
 	started = false
@@ -106,7 +126,7 @@ func lose():
 	gs.toucan_challenge_retry = true
 	gs.player.die()
 
-# ================ RETRY 3,2,1 ================
+# ================ DIALOGUE RETENTE ================
 func retry_then_start():
 	gs.player.can_move = false
 	await get_tree().process_frame
@@ -117,7 +137,18 @@ func retry_then_start():
 	gs.player.can_move = true
 	start()
 
-# ================ TIMER ================
+# =============== DIALOGUE WIN =====================
+func dialogue_win_toucan():
+	gs.player.can_move = false
+	await get_tree().process_frame
+	var dlg = dialogue_scene.instantiate()
+	dlg.challenge_win = true # informe le dialogue qu’on est dans un win pour afficher la fleur
+	add_child(dlg)
+	dlg.start(dialogue_win)
+	await dlg.finished
+	gs.player.can_move = true
+
+# ================ TIMER ==================
 func _on_timer_timeout():
 	if not started:
 		return
