@@ -90,6 +90,7 @@ texture = ExtResource("5_vsmij")
 
 [node name="Rotator" type="Node2D" parent="."]
 position = Vector2(40, -54)
+scale = Vector2(1.07, 1)
 
 [node name="Muzzle" type="Marker2D" parent="Rotator"]
 

@@ -151,7 +151,14 @@ func setup_hud():
 
 
 func _physics_process(delta):
-	if not can_move or animation_locked:
+	if not can_move:
+		velocity.x = 0
+		# ✅ Forcer l’animation idle
+		if anim.current_animation != "idle":
+			anim.play("idle")
+			
+		return
+	if animation_locked:
 		return
 	
 	# MAJ états push/pull 
