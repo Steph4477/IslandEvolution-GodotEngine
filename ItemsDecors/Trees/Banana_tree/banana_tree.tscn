@@ -24,7 +24,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_64mfa"]
 resource_name = "wind"
 length = 8.0
-loop_mode = 1
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,7 +57,6 @@ texture = ExtResource("2_l2fy6")
 libraries = {
 &"": SubResource("AnimationLibrary_2gwjb")
 }
-autoplay = "wind"
 
 [node name="Area2D" type="Area2D" parent="."]
 

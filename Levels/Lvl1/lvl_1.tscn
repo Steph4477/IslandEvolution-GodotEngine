@@ -301,6 +301,7 @@ position = Vector2(980, -356)
 position = Vector2(-791, 342)
 
 [node name="Butterfly2" type="Node2D" parent="Creatures"]
+z_index = 5
 
 [node name="Butterfly" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
 position = Vector2(3516, 215)

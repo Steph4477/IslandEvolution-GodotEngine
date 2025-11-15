@@ -95,7 +95,6 @@ scale = Vector2(1.07, 1)
 [node name="Muzzle" type="Marker2D" parent="Rotator"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator"]
-modulate = Color(0.442911, 0.442911, 0.442911, 1)
 position = Vector2(-38, 37)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_6tjv3")
