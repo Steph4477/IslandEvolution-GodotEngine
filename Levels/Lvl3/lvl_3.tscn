@@ -241,7 +241,7 @@ bus = &"Birds"
 position = Vector2(1155, 1150)
 
 [node name="World" type="Node2D" parent="Node2D"]
-modulate = Color(0.47137535, 0.4713753, 0.4713753, 1)
+modulate = Color(1, 0.7607843, 1, 1)
 position = Vector2(-21, -23)
 
 [node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World"]

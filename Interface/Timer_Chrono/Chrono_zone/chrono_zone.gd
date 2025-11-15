@@ -3,6 +3,7 @@ extends Node2D
 signal challenge_win
 
 @export var dialogue_scene = preload("res://Interface/Dialogue/toucan_dialogue.tscn")
+@export var counter_time = preload("res://Levels/Lvl3/Environement/Counter_time/counter_time.tscn")
 @export var dialogue_lines = [
 	"Hé Moko !",
 	"Balance-toi vite entre les lianes...",
@@ -135,8 +136,18 @@ func retry_then_start():
 	await get_tree().process_frame
 	var dlg = dialogue_scene.instantiate()
 	add_child(dlg)
-	dlg.start(["Retente", "3,", "2,", "1..."])
+	dlg.start(["Retente !"])
 	await dlg.finished
+	gs.player.can_move = true
+	counter_time_start()
+
+# ======== COMPTE A REBOURD RETENTE =============
+func counter_time_start():
+	gs.player.can_move = false
+	await get_tree().process_frame
+	var cptanim = counter_time.instantiate()
+	add_child(cptanim)
+	await get_tree().create_timer(1.6).timeout
 	gs.player.can_move = true
 	start()
 
