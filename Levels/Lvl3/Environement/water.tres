@@ -1,7 +1,0 @@
-[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://cjf1jwma4wrye"]
-
-[ext_resource type="Texture2D" uid="uid://bgelohdvgqwfg" path="res://Levels/Lvl3/Environement/water.png" id="1_tivli"]
-
-[resource]
-diffuse_texture = ExtResource("1_tivli")
-texture_repeat = 2

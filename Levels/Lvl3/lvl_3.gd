@@ -21,12 +21,6 @@ func _ready():
 		anim.stop()
 		
 	await get_tree().process_frame
-	
-	# Assombrissement de Moko au chargement
-	var gs = get_node("/root/GameState")
-	if gs.player:
-		var moko = gs.player
-		moko.get_node("Node2D/Sprite").modulate = Color(0.4, 0.4, 0.4)
 
 # --- Signals ---
 func _on_chrono_zone_challenge_win():
