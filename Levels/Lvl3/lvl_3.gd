@@ -8,11 +8,19 @@ extends Node2D
 
 var froggle_spawned = false
 var focus_cam_frog = false # préparation du focus de la caméra si challenge_win
+var cam
+var gs
 
 func _ready():
 	# Musiques d’ambiance
 	$Node2D/Sound/BirdsSound.play()
 	$Node2D/Sound/WaterSound.play()
+	# --- Limite caméra & assombrissement ---
+	await get_tree().process_frame
+	gs = get_node("/root/GameState")
+	cam = gs.player.get_node("Camera2D")
+	cam.limit_top = -250000
+	cam.limit_right = 12000
 	
 	# Position initiale de l’anim “fall” à 0.0
 	if anim.has_animation("fall"):
@@ -24,7 +32,6 @@ func _ready():
 
 # --- Signals ---
 func _on_chrono_zone_challenge_win():
-	var gs = get_node("/root/GameState")
 	if not gs.focus_cam_frog:
 		return
 		
@@ -47,7 +54,6 @@ func _on_chrono_zone_challenge_win():
 	
 	# 4) Focus caméra sur la grenouille
 	if gs.player:
-		var cam = gs.player.get_node("Camera2D")
 		var frog = get_node_or_null("Froggle")
 		if frog and cam:
 			cam.global_position = frog.global_position
