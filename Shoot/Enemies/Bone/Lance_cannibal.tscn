@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://clxkfq127fkwi"]
 
 [ext_resource type="Texture2D" uid="uid://b6axd8gi6rmq1" path="res://Shoot/Enemies/Spear/spear.png" id="1_5srk5"]
-[ext_resource type="Script" uid="uid://bw7rne4p1bor5" path="res://Shoot/Enemies/Lance_cannibal/lance_cannibal.gd" id="1_u77ki"]
+[ext_resource type="Script" uid="uid://bw7rne4p1bor5" path="res://Shoot/Enemies/Bone/bone.gd" id="1_u77ki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyw12"]
 size = Vector2(7, 8)

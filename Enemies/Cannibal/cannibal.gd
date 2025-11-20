@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # ========================== RÉGLAGES ==========================
-@export var lance_scene = preload("res://Shoot/Enemies/Lance_cannibal/Lance_cannibal.tscn")
+@export var lance_scene = preload("res://Shoot/Enemies/Bone/bone.tscn")
 
 # ============================ LOOT ============================
 var loot_lance_scene = preload("res://Loot/Spear/spear.tscn")
