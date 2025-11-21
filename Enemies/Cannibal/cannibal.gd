@@ -8,11 +8,10 @@ var loot_lance_scene = preload("res://Loot/Spear/spear.tscn")
 
 @export var max_hp = 600
 @export var speed = 200
-@export var attack_range = 300      # distance pour considérer le cac
-@export var lance_range = 800       # portée de la lance
-@export var stop_distance = 40      # plus trop utile mais on garde si besoin)
+@export var attack_range = 300      # distance pour le cac
+@export var bone_range = 800       # distance pour le jet d'os
 @export var damage = 50
-@export var lance_cooldown = 1.6
+@export var bone_cooldown = 1.6
 @export var attack_cooldown = 1.0
 
 const GRAVITY = 2000
@@ -22,7 +21,7 @@ const GRAVITY = 2000
 @onready var anim = $Rotator/AnimationPlayer
 @onready var rotator = $Rotator
 @onready var attack_timer = $CacTimer
-@onready var lance_timer = $LanceTimer
+@onready var bone_timer = $BoneTimer
 
 var pv = 0
 var player = null
@@ -51,8 +50,8 @@ func _ready():
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.stop()
 	
-	lance_timer.one_shot = true
-	lance_timer.stop()
+	bone_timer.one_shot = true
+	bone_timer.stop()
 
 # =============================================================
 #                      PHYSICS PROCESS
@@ -82,9 +81,9 @@ func _physics_process(delta):
 	
 	# Lancer de lance à distance, hors mêlée
 	if not is_dead and not is_attacking:
-		if not in_melee and distance > attack_range and distance <= lance_range:
-			if lance_timer.is_stopped():
-				lance_attack()
+		if not in_melee and distance > attack_range and distance <= bone_range:
+			if bone_timer.is_stopped():
+				bone_attack()
 	
 	move_and_slide()
 
@@ -179,7 +178,7 @@ func attack_melee():
 	
 	is_attacking = false
 
-func lance_attack():
+func bone_attack():
 	if is_dead or is_attacking:
 		return
 	
@@ -209,10 +208,10 @@ func lance_attack():
 		lance.global_position = global_position
 	
 	lance.direction = Vector2(dir_x, 0)
-	lance.max_distance = lance_range
+	lance.max_distance = bone_range
 	
 	is_attacking = false
-	lance_timer.start(lance_cooldown)
+	bone_timer.start(bone_cooldown)
 
 # =============================================================
 #                 DOMMAGES / MORT
@@ -220,8 +219,8 @@ func lance_attack():
 func on_hit(damage_taken):
 	if is_dead:
 		return
-	if not anim.is_playing() or anim.current_animation != "on_hit":
-		anim.play("on_hit")
+	if not anim.is_playing() or anim.current_animation != "onhit":
+		anim.play("onhit")
 	
 	pv -= damage_taken
 	if pv < 0:
@@ -245,7 +244,7 @@ func die():
 	is_dead = true
 	in_melee = false
 	attack_timer.stop()
-	lance_timer.stop()
+	bone_timer.stop()
 	is_attacking = false
 	velocity = Vector2.ZERO
 	if cam:
@@ -278,12 +277,12 @@ func _on_cac_timer_timeout():
 	if in_melee and not is_dead and not is_attacking:
 		attack_melee()
 
-func _on_lance_timer_timeout():
+func _on_bone_timer_timeout():
 	if is_dead:
 		return
 	if in_melee:
 		return
-	if not is_attacking and distance > attack_range and distance <= lance_range:
-		lance_attack()
+	if not is_attacking and distance > attack_range and distance <= bone_range:
+		bone_attack()
 	else:
-		lance_timer.stop()
+		bone_timer.stop()

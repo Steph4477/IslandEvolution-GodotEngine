@@ -6,18 +6,18 @@ extends RigidBody2D
 
 var direction = Vector2.RIGHT
 var start_position = Vector2.ZERO
-var has_start_position = false
+var has_initialized_trajectory = false
 var did_hit = false
 
 @onready var hitbox = $Area2D
 @onready var shape = $Area2D/CollisionPolygon2D
-@onready var spr = $SpearSprite if has_node("SpearSprite") else null
+@onready var spr = $SpearSprite 
 
 func _ready():
-	# Pas de gravité ni rotation parasite
-	gravity_scale = 0
+	# On remet de la gravité et on laisse tourner librement
+	gravity_scale = 1.0          
 	linear_damp = 0
-	angular_damp = 100000.0
+	angular_damp = 0             
 	freeze = false
 
 	if shape:
@@ -29,25 +29,32 @@ func _physics_process(_delta):
 	if did_hit:
 		return
 
-	# On fixe la position de départ **après** que le pygmée ait placé la lance
-	if not has_start_position:
+	# On initialise la trajectoire pour le moteur
+	if has_initialized_trajectory == false:
 		start_position = global_position
-		has_start_position = true
+		has_initialized_trajectory = true
 
-	# Mouvement droit, sans arc ni chute
-	if direction.length() == 0:
-		direction = Vector2.RIGHT
+		if direction.length() == 0:
+			direction = Vector2.RIGHT
 
-	linear_velocity = direction.normalized() * speed
+		# Vitesse de départ, la gravité modifie la trajectoire
+		linear_velocity = direction.normalized() * speed
 
-	# Flip visuel selon la direction
-	if spr:
+		# Rotation continue sur lui-même pendant tout le vol
 		if direction.x < 0:
+			angular_velocity = -10.0   # tourne dans un sens
+		else:
+			angular_velocity = 10.0    # tourne dans l'autre
+
+	# Flip visuel selon la direction actuelle du mouvement
+	var vx = linear_velocity.x
+	if spr:
+		if vx < 0:
 			spr.flip_h = false
 		else:
 			spr.flip_h = true
 	else:
-		if direction.x < 0:
+		if vx < 0:
 			scale.x = abs(scale.x)
 		else:
 			scale.x = -abs(scale.x)
