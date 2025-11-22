@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://c62ygv7nqh2vg"]
 
-[ext_resource type="Script" uid="uid://0mxokgpfyut6" path="res://Interface/Dialogue/pyg_dialogue.gd" id="1_nud0n"]
-[ext_resource type="Texture2D" uid="uid://bskf44j3x3llk" path="res://Enemies/Pygmy/Idle/1.png" id="4_nud0n"]
-[ext_resource type="Texture2D" uid="uid://bsedrsvn7wa6x" path="res://Enemies/Pygmy/Idle/2.png" id="5_km4w2"]
-[ext_resource type="Texture2D" uid="uid://uatdifks1yw1" path="res://Enemies/Pygmy/Speack/1.png" id="6_ttupf"]
-[ext_resource type="Texture2D" uid="uid://dqf1c68to5xsh" path="res://Enemies/Pygmy/Speack/3.png" id="7_ipmtp"]
-[ext_resource type="Texture2D" uid="uid://dge31pplsh13v" path="res://Enemies/Pygmy/Speack/2.png" id="8_ut7vf"]
-[ext_resource type="Texture2D" uid="uid://vbebeg2rfrsu" path="res://Enemies/Pygmy/Laugh/1.png" id="9_aw5nu"]
-[ext_resource type="Texture2D" uid="uid://o3c0oyl8qd1n" path="res://Enemies/Pygmy/Laugh/2.png" id="10_5af83"]
-[ext_resource type="Texture2D" uid="uid://vjyusp4xmxoq" path="res://Enemies/Pygmy/Laugh/3.png" id="12_wgomc"]
+[ext_resource type="Script" path="res://Interface/Dialogue/pyg_dialogue.gd" id="1_nud0n"]
+[ext_resource type="Texture2D" path="res://Enemies/Pygmy/Idle/1.png" id="4_nud0n"]
+[ext_resource type="Texture2D" path="res://Enemies/Pygmy/Idle/2.png" id="5_km4w2"]
+[ext_resource type="Texture2D" path="res://Enemies/Pygmy/Speack/1.png" id="6_ttupf"]
+[ext_resource type="Texture2D" path="res://Enemies/Pygmy/Speack/3.png" id="7_ipmtp"]
+[ext_resource type="Texture2D" path="res://Enemies/Pygmy/Speack/2.png" id="8_ut7vf"]
+[ext_resource type="Texture2D" path="res://Enemies/Pygmy/Laugh/1.png" id="9_aw5nu"]
+[ext_resource type="Texture2D" path="res://Enemies/Pygmy/Laugh/2.png" id="10_5af83"]
+[ext_resource type="Texture2D" path="res://Enemies/Pygmy/Laugh/3.png" id="12_wgomc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8hky"]
 bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)

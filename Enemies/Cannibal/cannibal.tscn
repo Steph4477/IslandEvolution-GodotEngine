@@ -1,30 +1,40 @@
 [gd_scene load_steps=38 format=3 uid="uid://bpcvkjusjlhgm"]
 
-[ext_resource type="Script" uid="uid://doruwrclaqe4p" path="res://Enemies/Cannibal/cannibal.gd" id="1_es0vt"]
-[ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_xp156"]
-[ext_resource type="Texture2D" uid="uid://bnug5js1w20al" path="res://Enemies/Cannibal/Walk/1.png" id="3_0csa5"]
-[ext_resource type="Texture2D" uid="uid://cbh8egaav6b35" path="res://Enemies/Cannibal/Walk/4.png" id="4_wn78t"]
-[ext_resource type="Texture2D" uid="uid://deox04gyv2t4s" path="res://Enemies/Cannibal/Attack/1.png" id="5_i4ydi"]
-[ext_resource type="Texture2D" uid="uid://del8ovyib8awa" path="res://Enemies/Cannibal/Attack/2.png" id="6_ljii3"]
-[ext_resource type="Texture2D" uid="uid://dfxi5cbyjtw5s" path="res://Enemies/Cannibal/Attack/3.png" id="7_1f2nh"]
-[ext_resource type="Texture2D" uid="uid://cqkhf4xrrler7" path="res://Enemies/Cannibal/OnHit/1.png" id="7_u02tl"]
-[ext_resource type="Texture2D" uid="uid://bvgj2e1d2nvfg" path="res://Enemies/Cannibal/Die/1.png" id="8_02acu"]
-[ext_resource type="Texture2D" uid="uid://bskf44j3x3llk" path="res://Enemies/Cannibal/Idle/1.png" id="8_jw50x"]
-[ext_resource type="Texture2D" uid="uid://6v7xg8qwtvqq" path="res://Enemies/Cannibal/Die/2.png" id="9_5ylc3"]
-[ext_resource type="Texture2D" uid="uid://drps308nx1s1i" path="res://Enemies/Cannibal/Cac/3.png" id="9_8rla3"]
-[ext_resource type="Texture2D" uid="uid://bsedrsvn7wa6x" path="res://Enemies/Cannibal/Idle/2.png" id="9_8wr6u"]
-[ext_resource type="Texture2D" uid="uid://2xwf1440hacj" path="res://Enemies/Cannibal/Idle/3.png" id="11_8rla3"]
-[ext_resource type="Texture2D" uid="uid://cy41o0yj1a4kk" path="res://Enemies/Cannibal/Idle/4.png" id="12_by3v2"]
-[ext_resource type="Texture2D" uid="uid://vbebeg2rfrsu" path="res://Enemies/Cannibal/Run/1.png" id="15_p2lg6"]
-[ext_resource type="Texture2D" uid="uid://o3c0oyl8qd1n" path="res://Enemies/Cannibal/Run/2.png" id="16_ix806"]
-[ext_resource type="Texture2D" uid="uid://vjyusp4xmxoq" path="res://Enemies/Cannibal/Run/3.png" id="17_es0vt"]
-[ext_resource type="Texture2D" uid="uid://c0ltki5rjgdg0" path="res://Enemies/Cannibal/Run/4.png" id="18_xp156"]
-[ext_resource type="Texture2D" uid="uid://wt62tkjo3fgx" path="res://Enemies/Cannibal/Jump/1.png" id="19_5edlg"]
-[ext_resource type="Texture2D" uid="uid://5cpshn5bwuy6" path="res://Enemies/Cannibal/Jump/2.png" id="20_p1o2p"]
-[ext_resource type="Texture2D" uid="uid://0hr61kosshje" path="res://Enemies/Cannibal/Jump/3.png" id="21_ki2nr"]
-[ext_resource type="Texture2D" uid="uid://cxgbkq0eevtj5" path="res://Enemies/Cannibal/Jump/4.png" id="22_i4yq6"]
-[ext_resource type="Texture2D" uid="uid://djj4t01pmo1st" path="res://Enemies/Cannibal/Cac/1.png" id="23_by3v2"]
-[ext_resource type="Texture2D" uid="uid://b0wtq1dsnqghv" path="res://Enemies/Cannibal/Cac/2.png" id="24_p2lg6"]
+[ext_resource type="Script" path="res://Enemies/Cannibal/cannibal.gd" id="1_es0vt"]
+[ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="2_xp156"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Walk/1.png" id="3_0csa5"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Walk/4.png" id="4_wn78t"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Attack/1.png" id="5_i4ydi"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Attack/2.png" id="6_ljii3"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Attack/3.png" id="7_1f2nh"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/OnHit/1.png" id="7_u02tl"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Die/1.png" id="8_02acu"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Idle/1.png" id="8_jw50x"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Die/2.png" id="9_5ylc3"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Cac/3.png" id="9_8rla3"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Idle/2.png" id="9_8wr6u"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Idle/3.png" id="11_8rla3"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Idle/4.png" id="12_by3v2"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Run/1.png" id="15_p2lg6"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Run/2.png" id="16_ix806"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Run/3.png" id="17_es0vt"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Run/4.png" id="18_xp156"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Jump/1.png" id="19_5edlg"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Jump/2.png" id="20_p1o2p"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Jump/3.png" id="21_ki2nr"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Jump/4.png" id="22_i4yq6"]
+
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Cac/1.png" id="23_by3v2"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Cac/2.png" id="24_p2lg6"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
 size = Vector2(147, 95)
