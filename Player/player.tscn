@@ -508,7 +508,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x5p2"]
-size = Vector2(92, 122)
+size = Vector2(137, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qaj"]
 size = Vector2(146.66666, 284.279)
@@ -573,7 +573,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClacArea"]
-position = Vector2(154, 117)
+position = Vector2(125.5, 118)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]

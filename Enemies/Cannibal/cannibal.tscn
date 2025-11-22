@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bbgfpvexbdmkw" path="res://Enemies/Cannibal/spritesheet.png" id="3_gf82a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
-size = Vector2(132, 95)
+size = Vector2(159, 90.5)
 
 [sub_resource type="Animation" id="Animation_32703"]
 length = 0.001
@@ -190,7 +190,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(128.5, 5.25)
+size = Vector2(32, 113)
 
 [node name="Cannibal" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(-1, 1)
@@ -213,10 +213,11 @@ vframes = 23
 frame = 1
 
 [node name="Area2D" type="Area2D" parent="Rotator" groups=["Enemies"]]
-collision_layer = 0
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/Area2D"]
-position = Vector2(7, -11)
+light_mask = 0
+position = Vector2(1.5, -13.25)
 shape = SubResource("RectangleShape2D_jhvfg")
 
 [node name="Muzzle" type="Marker2D" parent="Rotator"]
@@ -228,8 +229,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_giy1g")
 }
 
+[node name="DustOrigin" type="Marker2D" parent="Rotator"]
+position = Vector2(159, 10)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, 42.375)
+position = Vector2(-1, -11.5)
 shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="JumpTimer" type="Timer" parent="."]

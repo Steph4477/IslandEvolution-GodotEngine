@@ -9,10 +9,22 @@ var loot_lance_scene = preload("res://Loot/Spear/spear.tscn")
 @export var max_hp = 600
 @export var speed = 200
 @export var attack_range = 300      # distance pour le cac
-@export var bone_range = 800       # distance pour le jet d'os
+@export var bone_range = 800        # distance pour le jet d'os
 @export var damage = 50
 @export var bone_cooldown = 1.6
 @export var attack_cooldown = 1.0
+@export var jump_velocity = -600.0
+
+# --- Charge sauvage ---
+@export var charge_speed = 600.0           # vitesse pendant la charge
+@export var charge_min_range = 250.0       # distance mini pour déclencher
+@export var charge_max_range = 600.0       # distance maxi pour déclencher
+@export var charge_duration = 0.6          # durée de la charge (en secondes)
+@export var charge_cooldown = 2.5          # temps avant de pouvoir recharger
+
+# --- Poussière de charge ---
+var dust_scene = preload("res://Enemies/Cannibal/Effects/dust_charge.tscn")
+var dust_instance = null
 
 const GRAVITY = 2000
 
@@ -22,6 +34,7 @@ const GRAVITY = 2000
 @onready var rotator = $Rotator
 @onready var attack_timer = $CacTimer
 @onready var bone_timer = $BoneTimer
+@onready var dust_origin = $Rotator/DustOrigin   # 🔹 marqueur aux pieds
 
 var pv = 0
 var player = null
@@ -30,10 +43,20 @@ var cam = null
 var in_melee = false
 var is_attacking = false
 var is_dead = false
+var is_jumping = false
+
+# --- Charge state ---
+var is_charging = false
+var charge_dir = 0
+var charge_time = 0.0
+var charge_cooldown_left = 0.0
 
 var base_scale_x = 0.0
 var dx = 0.0
 var distance = 0.0
+
+# suivi pour détecter le début de saut de Moko
+var player_prev_on_floor = true
 
 # =============================================================
 #                         READY
@@ -64,7 +87,14 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 	
-	# Pendant une attaque (cac ou lance), il ne se déplace pas
+	# cooldown de la charge
+	if charge_cooldown_left > 0.0:
+		charge_cooldown_left -= delta
+	
+	# Saut synchronisé avec Moko
+	sync_jump_with_player()
+	
+	# Si on est en pleine attaque (cac ou tir), il ne bouge pas
 	if is_attacking:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -73,14 +103,35 @@ func _physics_process(delta):
 	if is_instance_valid(player):
 		target()
 		flip(dx)
-		move_and_anim()
+		
+		# Essaye de lancer une charge si possible
+		maybe_start_charge()
+		
+		if is_charging:
+			# Mouvement de charge : tout droit vers Moko
+			velocity.x = charge_dir * charge_speed
+			charge_time -= delta
+			
+			# 🔹 Poussière suit toujours DustOrigin (qui flip avec Rotator)
+			if dust_instance and is_instance_valid(dust_origin):
+				dust_instance.global_position = dust_origin.global_position
+				# 🔹 On force aussi le flip de la poussière
+				dust_instance.scale.x = rotator.scale.x
+			
+			if charge_time <= 0.0:
+				is_charging = false
+				charge_cooldown_left = charge_cooldown
+				velocity.x = 0
+				clear_dust()
+		else:
+			move_and_anim()
 	else:
 		velocity.x = 0
 		if anim.current_animation != "idle":
 			anim.play("idle")
 	
-	# Lancer de lance à distance, hors mêlée
-	if not is_dead and not is_attacking:
+	# Lancer d'os à distance, hors mêlée et hors charge
+	if not is_dead and not is_attacking and not is_charging:
 		if not in_melee and distance > attack_range and distance <= bone_range:
 			if bone_timer.is_stopped():
 				bone_attack()
@@ -108,6 +159,14 @@ func flip(_dx):
 #               MOUVEMENT + ANIMATION
 # =============================================================
 func move_and_anim():
+	# 🔒 Si saut en cours, on ne touche pas à l'anim
+	if is_jumping:
+		return
+	
+	# 🔒 Si charge en cours, on ne touche pas à l'anim ici
+	if is_charging:
+		return
+		
 	# 1) En mêlée on ne bouge plus, on laisse le cac se faire avec les timers
 	if in_melee:
 		velocity.x = 0
@@ -153,6 +212,82 @@ func on_player_changed(new_player):
 	if player:
 		cam = player.get_node("Camera2D")
 
+# ====================== SAUT SYNCHRONISÉ ======================
+func sync_jump_with_player():
+	if player == null:
+		return
+	
+	var p_on_floor = player.is_on_floor()
+	var player_started_jump = player_prev_on_floor and not p_on_floor and player.velocity.y < 0
+	player_prev_on_floor = p_on_floor
+
+	# 🔽 Si le cannibale retouche le sol, il n'est plus en saut
+	if is_on_floor() and is_jumping:
+		is_jumping = false
+
+	# 🔼 Si le joueur commence un saut, on saute aussi
+	if player_started_jump and is_on_floor() and not is_dead and not is_attacking:
+		is_jumping = true
+		velocity.y = jump_velocity
+		anim.play("jump")
+
+# ====================== CHARGE SAUVAGE ========================
+func maybe_start_charge():
+	# conditions générales
+	if is_dead:
+		return
+	if is_attacking:
+		return
+	if is_jumping:
+		return
+	if in_melee:
+		return
+	if is_charging:
+		return
+	if charge_cooldown_left > 0.0:
+		return
+	
+	# distance mauvaise -> pas de charge
+	if distance < charge_min_range:
+		return
+	if distance > charge_max_range:
+		return
+	
+	# On lance la charge
+	is_charging = true
+	charge_time = charge_duration
+	
+	charge_dir = 1
+	if rotator.scale.x < 0:
+		charge_dir = -1
+	
+	velocity.y = 0
+	anim.play("charge")
+	spawn_dust()
+
+# ======================== POUSSIÈRE ===========================
+func spawn_dust():
+	if dust_instance != null:
+		dust_instance.queue_free()
+		dust_instance = null
+	
+	dust_instance = dust_scene.instantiate()
+	get_parent().add_child(dust_instance)
+	
+	if is_instance_valid(dust_origin):
+		dust_instance.global_position = dust_origin.global_position
+	
+	# 🔹 On synchronise le flip de la poussière avec le cannibal
+	dust_instance.scale.x = rotator.scale.x
+	
+	if dust_instance.has_node("AnimationPlayer"):
+		dust_instance.get_node("AnimationPlayer").play("fade")
+
+func clear_dust():
+	if dust_instance:
+		dust_instance.queue_free()
+		dust_instance = null
+
 # =============================================================
 #                         ATTAQUES
 # =============================================================
@@ -189,7 +324,7 @@ func bone_attack():
 	if is_dead:
 		return
 	
-	# Si il au cac, on annule le tir
+	# Si il est au cac, on annule le tir
 	if in_melee or distance <= attack_range:
 		is_attacking = false
 		return
@@ -246,6 +381,8 @@ func die():
 	attack_timer.stop()
 	bone_timer.stop()
 	is_attacking = false
+	is_charging = false
+	clear_dust()
 	velocity = Vector2.ZERO
 	if cam:
 		cam.offset = Vector2.ZERO
@@ -259,6 +396,10 @@ func die():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		in_melee = true
+		# si on était en charge, on la stoppe
+		is_charging = false
+		charge_time = 0.0
+		clear_dust()
 		velocity = Vector2.ZERO
 		if attack_timer.is_stopped():
 			attack_timer.start()
