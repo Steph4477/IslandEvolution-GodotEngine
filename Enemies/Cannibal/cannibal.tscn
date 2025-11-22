@@ -1,69 +1,37 @@
-[gd_scene load_steps=38 format=3 uid="uid://bpcvkjusjlhgm"]
+[gd_scene load_steps=16 format=3 uid="uid://bpcvkjusjlhgm"]
 
-[ext_resource type="Script" path="res://Enemies/Cannibal/cannibal.gd" id="1_es0vt"]
-[ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="2_xp156"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Walk/1.png" id="3_0csa5"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Walk/4.png" id="4_wn78t"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Attack/1.png" id="5_i4ydi"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Attack/2.png" id="6_ljii3"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Attack/3.png" id="7_1f2nh"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/OnHit/1.png" id="7_u02tl"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Die/1.png" id="8_02acu"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Idle/1.png" id="8_jw50x"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Die/2.png" id="9_5ylc3"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Cac/3.png" id="9_8rla3"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Idle/2.png" id="9_8wr6u"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Idle/3.png" id="11_8rla3"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Idle/4.png" id="12_by3v2"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Run/1.png" id="15_p2lg6"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Run/2.png" id="16_ix806"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Run/3.png" id="17_es0vt"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Run/4.png" id="18_xp156"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Jump/1.png" id="19_5edlg"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Jump/2.png" id="20_p1o2p"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Jump/3.png" id="21_ki2nr"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Jump/4.png" id="22_i4yq6"]
-
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Cac/1.png" id="23_by3v2"]
-[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Cac/2.png" id="24_p2lg6"]
-
+[ext_resource type="Script" uid="uid://doruwrclaqe4p" path="res://Enemies/Cannibal/cannibal.gd" id="1_es0vt"]
+[ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_xp156"]
+[ext_resource type="Texture2D" uid="uid://bbgfpvexbdmkw" path="res://Enemies/Cannibal/spritesheet.png" id="3_gf82a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
-size = Vector2(147, 95)
+size = Vector2(132, 95)
 
 [sub_resource type="Animation" id="Animation_32703"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_jw50x")]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_cdxee"]
@@ -72,14 +40,14 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("5_i4ydi"), ExtResource("6_ljii3"), ExtResource("7_1f2nh")]
+"values": [0, 1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_xp156"]
@@ -88,14 +56,14 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
+"times": PackedFloat32Array(0, 0.2, 0.43333337),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("23_by3v2"), ExtResource("24_p2lg6"), ExtResource("9_8rla3")]
+"values": [3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_v1ul3"]
@@ -104,26 +72,26 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.36666667, 0.76666665),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("7_u02tl"), ExtResource("8_02acu"), ExtResource("9_5ylc3")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.76666665, 1.4333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_uofv0"]
@@ -133,14 +101,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("8_jw50x"), ExtResource("9_8wr6u"), ExtResource("11_8rla3"), ExtResource("12_by3v2")]
+"values": [8, 9, 10, 11]
 }
 
 [sub_resource type="Animation" id="Animation_eydga"]
@@ -148,14 +116,14 @@ resource_name = "jump"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("19_5edlg"), ExtResource("20_p1o2p"), ExtResource("21_ki2nr"), ExtResource("22_i4yq6")]
+"values": [12, 13, 14, 15]
 }
 
 [sub_resource type="Animation" id="Animation_8rla3"]
@@ -164,14 +132,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_u02tl")]
+"values": [16]
 }
 
 [sub_resource type="Animation" id="Animation_t23p8"]
@@ -181,14 +149,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.06666668, 0.16666667, 0.26666668, 0.43333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("15_p2lg6"), ExtResource("16_ix806"), ExtResource("17_es0vt"), ExtResource("18_xp156"), ExtResource("4_wn78t")]
+"values": [17, 18, 19, 20, 21]
 }
 
 [sub_resource type="Animation" id="Animation_23rwj"]
@@ -198,14 +166,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("3_0csa5"), ExtResource("4_wn78t")]
+"values": [21, 22]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_giy1g"]
@@ -222,7 +190,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(128.5, 22.5)
+size = Vector2(128.5, 5.25)
 
 [node name="Cannibal" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(-1, 1)
@@ -231,36 +199,37 @@ collision_mask = 2
 script = ExtResource("1_es0vt")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_xp156")]
-position = Vector2(67, -81)
+position = Vector2(56, -100)
 rotation = 3.14159
 scale = Vector2(1, -1.00374)
 
 [node name="Rotator" type="Node2D" parent="."]
 
-[node name="Sprite2D2" type="Sprite2D" parent="Rotator"]
-position = Vector2(45, -18)
+[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+position = Vector2(-36, -16)
 scale = Vector2(-0.25, 0.25)
-texture = ExtResource("8_jw50x")
+texture = ExtResource("3_gf82a")
+vframes = 23
+frame = 1
 
 [node name="Area2D" type="Area2D" parent="Rotator" groups=["Enemies"]]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/Area2D"]
-visible = false
-position = Vector2(12.5, -10.5)
+position = Vector2(7, -11)
 shape = SubResource("RectangleShape2D_jhvfg")
 
 [node name="Muzzle" type="Marker2D" parent="Rotator"]
 position = Vector2(-57, -6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator"]
-root_node = NodePath("../Sprite2D2")
+root_node = NodePath("../Sprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_giy1g")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(14.75, 59)
+position = Vector2(7, 42.375)
 shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="JumpTimer" type="Timer" parent="."]

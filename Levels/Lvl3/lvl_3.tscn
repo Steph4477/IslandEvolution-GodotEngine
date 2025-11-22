@@ -418,9 +418,7 @@ position = Vector2(2290, 969)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
-position = Vector2(8663, 892)
-rotation = 3.1415927
-scale = Vector2(1, -1)
+position = Vector2(8757, 866)
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
