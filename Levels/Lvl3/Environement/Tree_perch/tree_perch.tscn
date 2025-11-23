@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1q1ij1egetju"]
+[gd_scene load_steps=10 format=3 uid="uid://d1q1ij1egetju"]
 
 [ext_resource type="Texture2D" uid="uid://rahb7go75tvt" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.png" id="1_1mhcq"]
 [ext_resource type="Script" uid="uid://csuvlk5tu2pfu" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.gd" id="1_m1g1l"]
@@ -36,9 +36,26 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_m1g1l"]
+resource_name = "appear"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Full:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_syslc"]
 _data = {
 &"RESET": SubResource("Animation_57j43"),
+&"appear": SubResource("Animation_m1g1l"),
 &"fade": SubResource("Animation_yphk1")
 }
 
@@ -63,10 +80,21 @@ libraries = {
 &"": SubResource("AnimationLibrary_syslc")
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="door" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door"]
 position = Vector2(292, 898)
 shape = SubResource("RectangleShape2D_m1g1l")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(110, 824, 133, 691, 151, 221, 166, 228, 159, 497, 153, 687, 142, 776)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(451, 940, 406, 828, 378, 694, 358, 502, 354, 343, 356, 159, 367, -393, 379, -635, 399, -637, 389, -392, 379, 157, 381, 497, 409, 790, 429, 855, 466, 927)
+
+[connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
+[connection signal="body_exited" from="door" to="." method="_on_door_body_exited"]

@@ -193,7 +193,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(10147, 645)
+position = Vector2(9946, 773)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -435,7 +435,7 @@ texture = ExtResource("17_06aic")
 
 [node name="Tree_perch" parent="Node2D2" instance=ExtResource("19_8n178")]
 z_index = 4
-position = Vector2(10447, -143)
+position = Vector2(10359, -129)
 scale = Vector2(1.2, 1.2)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
