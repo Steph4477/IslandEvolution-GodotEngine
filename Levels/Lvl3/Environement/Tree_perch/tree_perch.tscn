@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1q1ij1egetju"]
+
+[ext_resource type="Texture2D" uid="uid://rahb7go75tvt" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.png" id="1_1mhcq"]
+[ext_resource type="Script" uid="uid://csuvlk5tu2pfu" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.gd" id="1_m1g1l"]
+[ext_resource type="Texture2D" uid="uid://cvvetpiprecf1" path="res://Levels/Lvl3/Environement/Tree_perch/tree_door.png" id="1_tt4of"]
+[ext_resource type="Texture2D" uid="uid://c7usraw8x4k28" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch_open.png" id="2_tt4of"]
+
+[sub_resource type="Animation" id="Animation_yphk1"]
+resource_name = "fade"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Full:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_57j43"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Full:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_syslc"]
+_data = {
+&"RESET": SubResource("Animation_57j43"),
+&"fade": SubResource("Animation_yphk1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1g1l"]
+size = Vector2(232, 116)
+
+[node name="Tree_perch" type="Node2D"]
+script = ExtResource("1_m1g1l")
+
+[node name="Door" type="Sprite2D" parent="."]
+texture = ExtResource("1_tt4of")
+
+[node name="Full" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("1_1mhcq")
+
+[node name="Open" type="Sprite2D" parent="."]
+texture = ExtResource("2_tt4of")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_syslc")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(292, 898)
+shape = SubResource("RectangleShape2D_m1g1l")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

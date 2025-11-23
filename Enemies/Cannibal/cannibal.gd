@@ -1,18 +1,15 @@
 extends CharacterBody2D
 
 # ========================== RÉGLAGES ==========================
-@export var lance_scene = preload("res://Shoot/Enemies/Bone/bone.tscn")
-
-# ============================ LOOT ============================
-var loot_lance_scene = preload("res://Loot/Spear/spear.tscn")
+@export var bone_scene = preload("res://Shoot/Enemies/Bone/bone.tscn")
 
 @export var max_hp = 600
 @export var speed = 200
 @export var attack_range = 300      # distance pour le cac
 @export var bone_range = 800        # distance pour le jet d'os
 @export var damage = 50
-@export var bone_cooldown = 1.6
-@export var attack_cooldown = 1.0
+@export var bone_cooldown = 1.0
+@export var attack_cooldown = 0.6
 @export var jump_velocity = -600.0
 
 # --- Charge sauvage ---
@@ -32,9 +29,9 @@ const GRAVITY = 2000
 @onready var sprite = $Rotator/Sprite2D
 @onready var anim = $Rotator/AnimationPlayer
 @onready var rotator = $Rotator
-@onready var attack_timer = $CacTimer
+@onready var attack_timer = $CacTimer           # plus utilisé pour le CàC
 @onready var bone_timer = $BoneTimer
-@onready var dust_origin = $Rotator/DustOrigin   # 🔹 marqueur aux pieds
+@onready var dust_origin = $Rotator/DustOrigin  # Marker2D aux pieds pour la poussière
 
 var pv = 0
 var player = null
@@ -94,7 +91,7 @@ func _physics_process(delta):
 	# Saut synchronisé avec Moko
 	sync_jump_with_player()
 	
-	# Si on est en pleine attaque (cac ou tir), il ne bouge pas
+	# Si on est en pleine attaque (CàC ou tir), il ne bouge pas
 	if is_attacking:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -112,10 +109,9 @@ func _physics_process(delta):
 			velocity.x = charge_dir * charge_speed
 			charge_time -= delta
 			
-			# 🔹 Poussière suit toujours DustOrigin (qui flip avec Rotator)
+			# Poussière suit toujours DustOrigin (qui flip avec Rotator)
 			if dust_instance and is_instance_valid(dust_origin):
 				dust_instance.global_position = dust_origin.global_position
-				# 🔹 On force aussi le flip de la poussière
 				dust_instance.scale.x = rotator.scale.x
 			
 			if charge_time <= 0.0:
@@ -166,12 +162,10 @@ func move_and_anim():
 	# 🔒 Si charge en cours, on ne touche pas à l'anim ici
 	if is_charging:
 		return
-		
-	# 1) En mêlée on ne bouge plus, on laisse le cac se faire avec les timers
+	
+	# 1) En mêlée : on NE FORCE PLUS idle, on laisse attack_melee gérer l'anim
 	if in_melee:
 		velocity.x = 0
-		if anim.current_animation != "idle":
-			anim.play("idle")
 		return
 	
 	# 2) Sinon on marche vers Moko
@@ -277,7 +271,6 @@ func spawn_dust():
 	if is_instance_valid(dust_origin):
 		dust_instance.global_position = dust_origin.global_position
 	
-	# 🔹 On synchronise le flip de la poussière avec le cannibal
 	dust_instance.scale.x = rotator.scale.x
 	
 	if dust_instance.has_node("AnimationPlayer"):
@@ -292,24 +285,31 @@ func clear_dust():
 #                         ATTAQUES
 # =============================================================
 func attack_melee():
-	# cac avec cooldown
+	# CàC en boucle tant qu'on reste en melee
 	if is_dead or is_attacking:
 		return
 	
 	is_attacking = true
 	velocity.x = 0
-	anim.play("cac")
 	
-	# Dégâts sur Moko
-	if not is_dead and is_instance_valid(player):
-		player.on_hit(damage)
-	
-	# On attend le cooldown
-	var t = get_tree().create_timer(attack_cooldown)
-	await t.timeout
-	
-	if is_dead:
-		return
+	while in_melee and not is_dead:
+		# Lancer anim CàC
+		anim.play("cac")
+		
+		# Attendre la fin de l'animation
+		await anim.animation_finished
+		
+		# Si on est mort ou plus en mêlée, on sort
+		if is_dead or not in_melee:
+			break
+		
+		# Appliquer les dégâts à Moko
+		if is_instance_valid(player):
+			player.on_hit(damage)
+		
+		# Petit cooldown entre deux frappes
+		var t = get_tree().create_timer(attack_cooldown)
+		await t.timeout
 	
 	is_attacking = false
 
@@ -329,8 +329,8 @@ func bone_attack():
 		is_attacking = false
 		return
 	
-	var lance = lance_scene.instantiate()
-	get_parent().add_child(lance)
+	var bone = bone_scene.instantiate()
+	get_parent().add_child(bone)
 	
 	var dir_x = 1
 	if rotator.scale.x < 0:
@@ -338,12 +338,12 @@ func bone_attack():
 	
 	var muzzle = rotator.get_node("Muzzle")
 	if muzzle:
-		lance.global_position = muzzle.global_position
+		bone.global_position = muzzle.global_position
 	else:
-		lance.global_position = global_position
+		bone.global_position = global_position
 	
-	lance.direction = Vector2(dir_x, 0)
-	lance.max_distance = bone_range
+	bone.direction = Vector2(dir_x, 0)
+	bone.max_distance = bone_range
 	
 	is_attacking = false
 	bone_timer.start(bone_cooldown)
@@ -401,9 +401,9 @@ func _on_area_2d_body_entered(body):
 		charge_time = 0.0
 		clear_dust()
 		velocity = Vector2.ZERO
-		if attack_timer.is_stopped():
-			attack_timer.start()
-		if not is_dead and not is_attacking:
+		
+		# On démarre la boucle d'attaques CàC si pas déjà en cours
+		if not is_attacking and not is_dead:
 			attack_melee()
 
 func _on_area_2d_body_exited(body):
@@ -415,8 +415,8 @@ func _on_area_2d_body_exited(body):
 #                     TIMERS / CADENCEMENT
 # =============================================================
 func _on_cac_timer_timeout():
-	if in_melee and not is_dead and not is_attacking:
-		attack_melee()
+	# On n'utilise plus le timer pour le CàC, la boucle est dans attack_melee()
+	pass
 
 func _on_bone_timer_timeout():
 	if is_dead:

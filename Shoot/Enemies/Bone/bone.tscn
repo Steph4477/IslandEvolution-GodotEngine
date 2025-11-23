@@ -18,7 +18,7 @@ script = ExtResource("1_8jblq")
 [node name="SpearSprite" type="Sprite2D" parent="."]
 z_index = 5
 rotation = -3.1415927
-scale = Vector2(0.2, -0.2)
+scale = Vector2(0.25, -0.3)
 texture = ExtResource("2_8jblq")
 
 [node name="Area2D" type="Area2D" parent="."]

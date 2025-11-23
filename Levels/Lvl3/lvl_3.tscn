@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=33 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c7ps13ndncbr4" path="res://Loot/Flower/flower.tscn" id="14_4esaq"]
 [ext_resource type="PackedScene" uid="uid://bpcvkjusjlhgm" path="res://Enemies/Cannibal/cannibal.tscn" id="16_qaw7r"]
 [ext_resource type="Texture2D" uid="uid://bo8hwb1ehdil4" path="res://Levels/Lvl3/Environement/tiles platforms/village.png" id="17_06aic"]
+[ext_resource type="PackedScene" uid="uid://d1q1ij1egetju" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -192,7 +193,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(5253, 658)
+position = Vector2(10147, 645)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -429,6 +430,13 @@ modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
 z_index = 4
 position = Vector2(9632, 807)
 texture = ExtResource("17_06aic")
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Tree_perch" parent="Node2D2" instance=ExtResource("19_8n178")]
+z_index = 4
+position = Vector2(10447, -143)
+scale = Vector2(1.2, 1.2)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]
