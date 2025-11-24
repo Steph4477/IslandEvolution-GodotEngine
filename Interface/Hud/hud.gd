@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var life_sprites = $HBoxContainerLive.get_children()
 @onready var pause_button = $Gamepad/Break   # bouton pause (TouchScreenButton)
 @onready var break_sprite = $BreakSprite
+@onready var lance_label = $HBoxContainerLance/LanceCountLabel
 
 var gs
 
@@ -24,6 +25,7 @@ func _ready():
 	
 	gs.hud = self
 	update_lives_display(gs.lives)
+	update_lance_display()
 
 	# Neutralise toutes actions d'input des boutons HUD au lancement
 	for b in [ramp_button, coco_button, lance_button, health_button]:
@@ -77,6 +79,17 @@ func update_seed_display(collected, total):
 		label.text = "%d / %d (%d%%)" % [collected, total, percent]
 	else:
 		label.text = "0 / 0 (0%)"
+
+func update_lance_display():
+	if lance_label and gs:
+		# même style que les cocos : "x 4"
+		lance_label.text = "x " + str(gs.lance_count)
+	
+	# Active / désactive le bouton en fonction du stock
+	if gs and gs.lance_count > 0:
+		set_lance_button_enabled(true)
+	else:
+		set_lance_button_enabled(false)
 
 # --- Boutons ---
 func _on_menu_pressed():

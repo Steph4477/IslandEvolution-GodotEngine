@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=35 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -18,8 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://c7ps13ndncbr4" path="res://Loot/Flower/flower.tscn" id="14_4esaq"]
 [ext_resource type="PackedScene" uid="uid://bpcvkjusjlhgm" path="res://Enemies/Cannibal/cannibal.tscn" id="16_qaw7r"]
 [ext_resource type="Texture2D" uid="uid://bo8hwb1ehdil4" path="res://Levels/Lvl3/Environement/tiles platforms/village.png" id="17_06aic"]
+[ext_resource type="PackedScene" uid="uid://dqktopdb40juo" path="res://Enemies/Pygmy/pygmy.tscn" id="17_odqky"]
 [ext_resource type="PackedScene" uid="uid://d1q1ij1egetju" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
-[ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/Ramp/ramp.tscn" id="20_xni6f"]
+[ext_resource type="PackedScene" uid="uid://4nftk6ff2hsq" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -420,7 +421,10 @@ position = Vector2(2290, 969)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
-position = Vector2(8757, 866)
+position = Vector2(6979, 894)
+
+[node name="Pygmee" parent="Node2D/World/Ennemies" instance=ExtResource("17_odqky")]
+position = Vector2(11064, 904)
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
@@ -439,9 +443,10 @@ z_index = 4
 position = Vector2(10456, 240)
 scale = Vector2(0.8, 0.8)
 
-[node name="Ramp" parent="Node2D2" instance=ExtResource("20_xni6f")]
+[node name="Spear_rack" parent="Node2D2" instance=ExtResource("20_xni6f")]
 z_index = 5
-position = Vector2(11218, 941)
+position = Vector2(10228, 844)
+scale = Vector2(0.2, 0.2)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

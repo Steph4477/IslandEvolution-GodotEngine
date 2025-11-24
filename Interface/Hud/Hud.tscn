@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=30 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bh7du3h4bnf8w" path="res://Interface/GamePad/Pressed/break.png" id="17_m6ehm"]
 [ext_resource type="Texture2D" uid="uid://dhaaggwqnjw7f" path="res://Interface/Hud/life.png" id="18_1hj8m"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Hud/health_bar.gd" id="19_s8lhr"]
+[ext_resource type="Texture2D" uid="uid://c1f0a8oirerab" path="res://Interface/Hud/spear.png" id="20_aubrx"]
 [ext_resource type="PackedScene" uid="uid://cbx7p8yvy6gn3" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
 [ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/Healt_Bar/bar_under.png" id="22_xl2wx"]
 [ext_resource type="PackedScene" uid="uid://ccmd315gfailw" path="res://Interface/Cursor/game_cursor.tscn" id="23_ff868"]
@@ -133,6 +134,20 @@ layout_mode = 2
 texture = ExtResource("12_6yv8p")
 
 [node name="CocoCountLabel" type="Label" parent="HBoxContainerCoco"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainerLance" type="HBoxContainer" parent="."]
+offset_left = 199.0
+offset_top = 195.0
+offset_right = 296.0
+offset_bottom = 275.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainerLance"]
+layout_mode = 2
+texture = ExtResource("20_aubrx")
+
+[node name="LanceCountLabel" type="Label" parent="HBoxContainerLance"]
 layout_mode = 2
 text = "0"
 

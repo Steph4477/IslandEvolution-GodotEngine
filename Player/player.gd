@@ -58,6 +58,7 @@ var is_attacking = false # Attaque corps à corps
 var coco_count = 0
 var banane_count = 0
 var seed_count = 0
+var lance_count = 0
 var gravity_factor = 1.0
 var heal_potions = []
 var in_cooldown = false
@@ -129,6 +130,7 @@ func setup_game_state():
 	banane_count = game_state.banane_count
 	coco_count = game_state.coco_count
 	seed_count = game_state.seed_count
+	lance_count = game_state.lance_count
 	can_fire_coco = game_state.can_fire_coco
 	can_fire_lance = game_state.can_fire_lance
 
@@ -411,17 +413,23 @@ func collect_coco(amount = 1, enable_shooting = false):
 	update_coco_display()
 	show_info_popup("Tu peux lancer 3 noix de coco")
 
-func collect_lance(enable_shooting = false):
+func collect_lance(amount = 1, enable_shooting = false):
+	lance_count += amount
+	
 	if enable_shooting:
 		can_fire_lance = true
 		var hud = game_state.hud
-		if hud.has_method("set_lance_button_enabled"):
+		if hud.has_node("Gamepad/Spear"):
 			hud.set_button_enabled(hud.get_node("Gamepad/Spear"), true)
 	
 	if game_state:
+		game_state.lance_count = lance_count
 		game_state.can_fire_lance = can_fire_lance
+		if game_state.hud and game_state.hud.has_method("update_lance_display"):
+			game_state.hud.update_lance_display()
 	
 	show_info_popup("Tu peux shooter des lances")
+	refresh_hud_buttons()
 
 func collect_seed(amount = 1):
 	seed_count += amount
@@ -457,6 +465,7 @@ func shoot_coco():
 	update_coco_display()
 	if game_state:
 		game_state.coco_count = coco_count
+		game_state.can_fire_coco = can_fire_coco
 
 	animation_locked = true
 	anim.play("shoot")
@@ -474,10 +483,32 @@ func shoot_coco():
 	await get_tree().create_timer(rate_of_fire).timeout
 
 func shoot_lance():
-	if is_on_liana:
+	if is_swimming or is_ramping or is_hanging or is_on_liana:
 		return
+	
+	# Sync avec GameState
+	if game_state:
+		lance_count = game_state.lance_count
+		can_fire_lance = game_state.can_fire_lance
+	
 	if not can_fire_lance:
 		return
+	if lance_count <= 0:
+		if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
+			game_state.hud.update_lance_display()
+		return
+	
+	# Consomme une lance
+	lance_count -= 1
+	if lance_count <= 0:
+		can_fire_lance = false
+	
+	if game_state:
+		game_state.lance_count = lance_count
+		game_state.can_fire_lance = can_fire_lance
+	
+	if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
+		game_state.hud.update_lance_display()
 
 	animation_locked = true
 	anim.play("shoot")
@@ -750,6 +781,8 @@ func update_all_displays():
 	update_banane_display()
 	update_coco_display()
 	update_seed_display()
+	if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
+		game_state.hud.update_lance_display()
 
 func refresh_hud_buttons():
 	if not game_state or not game_state.health_bar:
@@ -783,12 +816,15 @@ func reset_state():
 	banane_count = 0
 	coco_count = 0
 	seed_count = 0
+	lance_count = 0
 	can_fire_coco = false
+	can_fire_lance = false
 	
 	if game_state:
 		game_state.banane_count = 0
 		game_state.coco_count = 0
 		game_state.seed_count = 0
+		game_state.lance_count = 0
 		game_state.can_fire_coco = false
 		game_state.can_fire_lance = false
 		
@@ -797,6 +833,8 @@ func reset_state():
 			
 		if game_state.hud and game_state.hud.has_method("update_lives_display"):
 			game_state.hud.update_lives_display(game_state.lives)
+		if game_state.hud and game_state.hud.has_method("update_lance_display"):
+			game_state.hud.update_lance_display()
 		
 	await get_tree().create_timer(1.0).timeout
 	can_be_damaged = true

@@ -5,6 +5,7 @@ var banane_count = 0
 var coco_count = 0
 var seed_count = 0
 var heal_amount = 0
+var lance_count = 0
 var can_fire_coco = false
 var can_fire_lance = false
 var has_key = false
@@ -58,32 +59,29 @@ signal digicode_ok
 func _ready():
 	# GameState reste toujours actif pendant la pause
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
+	
 	# Fade toujours actif
 	fade = fade_scene.instantiate()
 	add_child(fade)
 	fade.process_mode = Node.PROCESS_MODE_ALWAYS
-
+	
 	# Crée le conteneur gameplay pausable
 	_create_world()
-
+	
 	reset_session_dialogues()
-
+	
 	await get_tree().process_frame
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res:///Levels/Lvl2/lvl_2.tscn")
-	
 	#await load_level("res://Levels/lvl2/Lvl_2b/lvl_2b.tscn")
-	
 	await load_level("res://Levels/Lvl3/lvl_3.tscn")
-	
 
 func _process(_delta):
 	# Pause via action "break"
 	if Input.is_action_just_pressed("break"):
 		toggle_pause()
-
+	
 	# Retour menu
 	if Input.is_action_just_pressed("gc_menu") or Input.is_action_just_pressed("menu"):
 		if not is_menu_scene(current_level_path):
@@ -107,11 +105,11 @@ func restart_game():
 	# 🔄 Réinitialise les compteurs, dialogues, et inventaire
 	reinitialise()
 	reset_session_dialogues()
-
+	
 	# ⏳ Attend une frame pour éviter les conflits de chargement
 	await get_tree().process_frame
-
-	# 🗺️ Recharge le dernier niveau si défini, sinon démarre le niveau 1
+	
+	# Recharge le dernier niveau si défini, sinon démarre le niveau 1
 	if current_level_path == "":
 		await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	else:
@@ -140,23 +138,23 @@ func is_menu_scene(scene_path):
 func load_level(scene_path):
 	resume_game()
 	await fade.fade_out()
-
+	
 	emit_signal("player_updated", null)
 	player = null
-
+	
 	# On ne supprime pas hud ni fade, seulement le contenu gameplay
 	for child in world.get_children():
 		child.queue_free()
-
+	
 	await get_tree().process_frame
-
+	
 	var level = load(scene_path).instantiate()
 	current_level = level
-	world.add_child(level)  # ← dans World (pausable)
-
+	world.add_child(level)  # dans World (pausable)
+	
 	var spawn_point = _find_spawn(level)
 	var is_menu = spawn_point == null
-
+	
 	# HUD (toujours actif)
 	if is_menu:
 		if hud:
@@ -172,7 +170,7 @@ func load_level(scene_path):
 		hud.visible = true
 		if health_bar:
 			health_bar.visible = true
-
+		
 	if not is_menu:
 		current_level_path = scene_path
 		reset_seed_tracking_from_scene()
@@ -181,20 +179,21 @@ func load_level(scene_path):
 		level.add_child(p)  # player sous le level (lui-même sous World)
 		p.global_position = spawn_point.global_position
 		# Le player hérite de level → donc PAUSABLE via World
-
+		
 		if p.has_method("reset_state"):
 			p.reset_state()
 		elif p.has_variable("pv") and p.has_variable("max_pv"):
 			p.pv = p.max_pv
-
+		
 		if health_bar:
 			health_bar.update_health_bar(p.pv, p.max_pv)
-
+		
 		set_player(p)
-
+		
 		if hud:
 			hud.update_lives_display(lives)
 			hud.update_seed_display(collected_seeds, total_seeds_in_level)
+			hud.update_lance_display()
 
 	await fade.fade_in()
 
@@ -272,6 +271,7 @@ func reinitialise():
 	banane_count = 0
 	coco_count = 0
 	seed_count = 0
+	lance_count = 0
 	can_fire_coco = false
 	can_fire_lance = false
 	if hud:
@@ -281,6 +281,7 @@ func reinitialise():
 		hud.set_button_enabled(gamepad.get_node("Spear"), false)
 		hud.set_button_enabled(gamepad.get_node("Health"), false)
 		hud.update_seed_display(0, total_seeds_in_level)
+		hud.update_lance_display()
 
 # --- Pause ---
 func toggle_pause():
