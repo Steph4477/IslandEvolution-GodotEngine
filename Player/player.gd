@@ -84,14 +84,12 @@ var label_seed
 # =                      ULTILITAIRES                                  =
 # =======================================================================
 
-# --- Lock anim pour jouer animation prioritaire ---
 func play_anim(_name):
 	anim.play(_name)
 	animation_locked = true
 	await anim.animation_finished
 	animation_locked = false
 
-# --- Affiche les informations ---
 func show_info_popup(txt):
 	var popup = get_tree().get_first_node_in_group("info_overlay_group")
 	if popup == null:
@@ -99,11 +97,10 @@ func show_info_popup(txt):
 		add_child(popup)
 	popup.show_info(txt)
 
-# --- Affiche les domages ---
 func show_damage_popup(amount):
 	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
 	add_child(popup)
-	popup.position = Vector2(0, -30)  # position flottante au-dessus du joueur
+	popup.position = Vector2(0, -30)
 	popup.show_damage(amount)
 
 # =======================================================================
@@ -119,7 +116,6 @@ func _ready():
 	if game_state and game_state.hud.has_method("update_seed_display"):
 		game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
 	
-	# Forcer l’anim au neutre -> fix bug : "hang"
 	if anim.current_animation == "hang":
 		anim.play("idle")
 	is_hanging = false
@@ -149,19 +145,16 @@ func setup_hud():
 	update_all_displays()
 	refresh_hud_buttons()
 
-
 func _physics_process(delta):
 	if not can_move:
 		velocity.x = 0
-		# ✅ Forcer l’animation idle
 		if anim.current_animation != "idle":
 			anim.play("idle")
-			
 		return
+	
 	if animation_locked:
 		return
 	
-	# MAJ états push/pull 
 	is_pushing_or_pulling = can_push_pull and Input.is_action_pressed("push_pull")
 	
 	process_climb()
@@ -174,7 +167,10 @@ func _physics_process(delta):
 	process_clac()
 	process_heal()
 	process_hang_swing(delta)
+	
 	move_and_slide()
+	
+	process_wall_jump_input()
 	update_animation()
 
 # ============================================================================
@@ -182,7 +178,6 @@ func _physics_process(delta):
 # ============================================================================
 
 func move_horizontal():
-	# Bloqué si accroché à une liane
 	if is_on_liana:
 		velocity.x = 0
 		return
@@ -203,17 +198,45 @@ func update_jump(delta):
 	if climbing_anim != "":
 		return
 	
-	if is_on_floor() and Input.is_action_just_pressed(INPUT["jump"]):
-		velocity.y = jump_force
-		is_ramping = false
-	elif not is_ramping:
-		velocity.y += gravity * gravity_factor * delta
+	if is_on_floor():
+		if Input.is_action_just_pressed(INPUT["jump"]):
+			velocity.y = jump_force
+			is_ramping = false
+	else:
+		if not is_ramping:
+			velocity.y += gravity * gravity_factor * delta
+
+# --- WALL JUMP SIMPLE ---
+func process_wall_jump_input():
+	# Pas de wall jump dans ces cas-là
+	if is_on_floor():
+		return
+	if is_on_liana:
+		return
+	if is_swimming:
+		return
+	
+	if is_on_wall() and Input.is_action_just_pressed(INPUT["jump"]):
+		wall_jump()
+
+func wall_jump():
+	var normal = get_wall_normal()
+	var dir = -normal.x
+	
+	if dir == 0:
+		if sprite.scale.x >= 0:
+			dir = -1
+		else:
+			dir = 1
+	
+	velocity.y = jump_force
+	velocity.x = dir * speed
 
 # --- Escalade ---
 func set_can_climb(state, anim_name = ""):
 	if state:
 		climbing_anim = anim_name
-		anim.play("hang")  # Joue directement l'animation d'accroche
+		anim.play("hang")
 	else:
 		climbing_anim = ""
 		is_hanging = false
@@ -221,7 +244,7 @@ func set_can_climb(state, anim_name = ""):
 		anim.play("idle")
 
 func start_climb(anim_name):
-	climbing_anim = anim_name  # On se souvient juste de l’anim
+	climbing_anim = anim_name
 
 func stop_climb():
 	climbing_anim = ""
@@ -233,28 +256,24 @@ func process_climb():
 			is_hanging = false
 		return
 	
-	# --- Appui maintenu : monter ---
 	if Input.is_action_pressed("climb"):
 		if not anim.is_playing() or anim.current_animation != climbing_anim:
 			anim.play(climbing_anim)
 		velocity.y = -climb_speed
 		is_hanging = false
 	
-	# --- Touche relâchée : rester accroché ---
 	elif Input.is_action_just_released("ui_up"):
 		anim.play("hang")
 		velocity.y = 0
 		is_hanging = true
 	
-	# --- Aucun input, pas de changement ---
 	elif not Input.is_action_pressed("ui_up"):
 		velocity.y = 0
 
-# --- Effet de balançoire "hang" ---
 func process_hang_swing(delta):
 	if is_hanging:
 		hang_timer += delta
-		var swing = sin(hang_timer * 2.0) * 5  # vitesse * amplitude
+		var swing = sin(hang_timer * 2.0) * 5
 		sprite.rotation_degrees = swing
 	else:
 		sprite.rotation_degrees = 0
@@ -300,9 +319,8 @@ func process_swim(delta):
 		swim_timer += delta
 		var h = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
 		velocity.x = h * speed * 0.5 + water_current.x
-		velocity.y = 0  # verrouille l'axe Y tant qu'il ne saute pas
+		velocity.y = 0
 		
-		# flip visuel
 		if h != 0:
 			if h > 0:
 				sprite.scale.x = abs(sprite.scale.x)
@@ -317,11 +335,7 @@ func attach_to_liana(liana):
 		current_liana.on_player_attach()
 
 	velocity = Vector2.ZERO
-	
-	# Aligne la main au Grip de la liane
 	hand_to_grip()
-	
-	# Pose "climb" maintenue tant qu'on est accroché
 	anim.play("climb")
 
 func detach_to_liana():
@@ -332,11 +346,9 @@ func process_liana(_delta):
 	if not is_on_liana or current_liana == null:
 		return
 	
-	# Moko figé et collé au point Grip (si la liane bouge, Moko suit)
 	velocity = Vector2.ZERO
 	hand_to_grip()
 	
-	# left et right pilotent UNIQUEMENT la liane
 	var left = Input.is_action_pressed(INPUT["left"])
 	var right = Input.is_action_pressed(INPUT["right"])
 	if current_liana.has_node("Pivot"):
@@ -347,19 +359,15 @@ func process_liana(_delta):
 		else:
 			current_liana.angle_direction = 0
 	
-	# SAUT = on se projette selon l'angle actuel de la liane puis on se détache
 	if Input.is_action_just_pressed("jump"):
 		var power = 900
 		var angle_deg = current_liana.get_node("Pivot").rotation_degrees
 		velocity = Vector2(0, -power).rotated(deg_to_rad(angle_deg))
-		# on supprime la colision de la liane
 		current_liana.expect_exit = true
 		current_liana.on_player_detach()
 		current_liana.disable_collision_temporarily(0.3)
-
 		detach_to_liana()
 
-# On attache les mains à l'attache de la liane
 func hand_to_grip():
 	var grip = current_liana.get_node("Pivot/Grip")
 	var hand = $Node2D/AttachMarker
@@ -378,7 +386,6 @@ func collect_banane(amount = 1):
 	if game_state:
 		game_state.banane_count = banane_count
 		
-	# Mise à jour heal et bouton
 	update_can_heal()
 	var hud = game_state.hud
 	if hud.has_method("set_button_enabled"):
@@ -429,7 +436,6 @@ func collect_seed(amount = 1):
 		if game_state.collected_seeds >= game_state.total_seeds_in_level:
 			game_state.emit_signal("all_seeds_collected")
 	
-	# 🎥 Focus caméra + anim totem + retour
 	var parent = get_parent()
 	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
 		await parent.focus_camera_on_totem_with_anim(game_state.collected_seeds)
@@ -438,7 +444,6 @@ func collect_seed(amount = 1):
 # =                              ACTIONS                                     =
 # =============================================================================
 
-# --- Tir coco : déclenchable par HUD OU par input ---
 func shoot_coco():
 	if is_swimming or is_ramping or is_hanging or is_on_liana:
 		return
@@ -468,7 +473,6 @@ func shoot_coco():
 	refresh_hud_buttons()
 	await get_tree().create_timer(rate_of_fire).timeout
 
-# --- Tir lance : déclenchable par HUD OU par input ---
 func shoot_lance():
 	if is_on_liana:
 		return
@@ -499,7 +503,7 @@ func process_shoot():
 # --- Corps à corps ---
 func clac_attack():
 	if not is_on_floor():
-		return  # interdit dans les airs
+		return
 	if is_attacking or is_dead:
 		return
 	
@@ -507,7 +511,6 @@ func clac_attack():
 	animation_locked = true
 	anim.play("clac")
 	
-	# Active la zone d'attaque temporairement
 	$ClacArea.monitoring = true
 	
 	await anim.animation_finished
@@ -531,10 +534,8 @@ func heal(amount):
 	banane_count = heal_potions.size()
 	update_banane_display()
 
-
 func update_can_heal():
 	can_heal = heal_potions.size() > 0 and pv < max_pv and not in_cooldown
-
 
 func process_heal():
 	if Input.is_action_just_pressed(INPUT["heal"]):
@@ -542,8 +543,9 @@ func process_heal():
 
 func use_banane():
 	if not is_on_floor():
-		return  # impossible de se soigner en l’air
-	var msg := ""
+		return
+	
+	var msg = ""
 	if pv >= max_pv:
 		msg = "PV au max !"
 	elif in_cooldown:
@@ -556,13 +558,10 @@ func use_banane():
 		await play_anim("empty")
 		return
 	
-	# Animation de soin
 	await play_anim("heal")
 	
-	# Applique le soin
 	heal(game_state.heal_amount)
 	
-	# ❗ Retire la potion utilisée puis recalcule immédiatement les compteurs
 	if not heal_potions.is_empty():
 		heal_potions.pop_front()
 	
@@ -572,7 +571,6 @@ func use_banane():
 	if game_state:
 		game_state.banane_count = banane_count
 	
-	# Passe en cooldown et rafraîchit les boutons
 	in_cooldown = true
 	update_can_heal()
 	refresh_hud_buttons()
@@ -586,7 +584,6 @@ func start_potion_cooldown():
 	in_cooldown = false
 	refresh_hud_buttons()
 
-# --- Control ---
 func disable_controls():
 	can_move = false
 	velocity = Vector2.ZERO
@@ -594,7 +591,6 @@ func disable_controls():
 func enable_controls():
 	can_move = true
 
-# --- Effects ---
 func apply_gaz():
 	if is_gazed:
 		return
@@ -623,10 +619,8 @@ func on_hit(damage):
 	if not can_be_damaged or is_dead:
 		return
 	
-	# i-frames ON pendant l'impact
 	can_be_damaged = false
 	
-	# -- PV & HUD --
 	pv -= damage
 	pv = clamp(pv, 0, max_pv)
 	if game_state and game_state.health_bar:
@@ -638,12 +632,10 @@ func on_hit(damage):
 	if hud and hud.has_method("set_button_enabled"):
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
 	
-	# Mort 
 	if pv <= 0:
 		die()
 		return
 	
-	# -- LOCK anim & jouer "onhit" sans interruption --
 	play_anim("onhit")
 	
 	can_be_damaged = true
@@ -663,7 +655,6 @@ func die():
 	await anim.animation_finished
 	
 	is_dead = false
-	# ✅ Remet l'opacité à fond
 	modulate = Color(1, 1, 1, 1)
 	await  get_tree().process_frame
 	
@@ -679,7 +670,6 @@ func die():
 # =        IMMUNITÉ AUX SECOUSSES (tremblement grenouille)             =
 # ======================================================================
 func is_quake_safe():
-	# Si Moko n’est pas au sol (en saut, chute, liane) → pas de dégâts
 	if not is_on_floor():
 		return true
 	return false
@@ -699,7 +689,6 @@ func update_animation():
 	if is_on_liana:
 		return
 	
-	# 🔒 Ne rien toucher si accroché ou en train de grimper
 	if is_hanging:
 		return
 	if climbing_anim != "" and velocity.y != 0:
@@ -713,12 +702,10 @@ func update_animation():
 			anim.play("walk_gaz")
 		return
 	
-	# ✅ SOL — forcer idle, walk ou ramp
 	if is_on_floor():
 		if is_pushing_or_pulling and not is_ramping:
-			anim.play("push")  # 💡 même anim pour push & pull
+			anim.play("push")
 			return
-
 		
 		if is_ramping:
 			if abs(velocity.x) > 0.1:
@@ -735,14 +722,13 @@ func update_animation():
 					anim.play("walk")
 			else:
 				anim.play("idle")
-		return  # 🛑 Ne va pas dans la logique en l'air
+		return
 	
-	# 🪂 EN L’AIR
 	if velocity.y < 0:
 		anim.play("jump_up")
 		$Sound/Jump.play()
 	elif velocity.y > 0:
-		anim.play("jump_down")  # proche du sol : joue idle (pose atterrissage)
+		anim.play("jump_down")
 
 # =============================================================================
 # =                             HUD & Popups                                  =
@@ -765,7 +751,6 @@ func update_all_displays():
 	update_coco_display()
 	update_seed_display()
 
-# --- Corrige le chemin du bouton lance (Spear) ---
 func refresh_hud_buttons():
 	if not game_state or not game_state.health_bar:
 		return
@@ -774,33 +759,26 @@ func refresh_hud_buttons():
 	if not hud_parent:
 		return
 
-	# Bouton coco
 	if hud_parent.has_node("Gamepad/Coco"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Coco"), can_fire_coco)
 
-	# Bouton lance 
 	if hud_parent.has_node("Gamepad/Spear"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Spear"), can_fire_lance)
 
-	# Bouton soin
 	var can_heal_btn = pv < max_pv and heal_potions.size() > 0 and not in_cooldown
 	if hud_parent.has_node("Gamepad/Health"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Health"), can_heal_btn)
 
-	# Bouton ramp
 	if hud_parent.has_node("Gamepad/Ramp"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Ramp"), can_ramp)
-
 
 func reset_state():
 	is_dead = false
 	animation_locked = false
 	visible = true
 	
-	# ❤️ PV à fond
 	pv = max_pv
 	
-	# 🍌 Réinitialise les loots
 	heal_potions.clear()
 	banane_count = 0
 	coco_count = 0
@@ -814,17 +792,15 @@ func reset_state():
 		game_state.can_fire_coco = false
 		game_state.can_fire_lance = false
 		
-		# ✅ MAJ immédiate avant la frame 
 		if game_state.hud and game_state.hud.has_method("update_health_bar"):
 			game_state.hud.update_health_bar(pv, max_pv)
 			
 		if game_state.hud and game_state.hud.has_method("update_lives_display"):
 			game_state.hud.update_lives_display(game_state.lives)
 		
-	# ⏳ Protection temporaire (1s) pour éviter les pièges instantanés
 	await get_tree().create_timer(1.0).timeout
 	can_be_damaged = true
 
-func _on_clac_area_body_entered(body: Node2D) -> void:
+func _on_clac_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(clac_damage)

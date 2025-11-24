@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=34 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bpcvkjusjlhgm" path="res://Enemies/Cannibal/cannibal.tscn" id="16_qaw7r"]
 [ext_resource type="Texture2D" uid="uid://bo8hwb1ehdil4" path="res://Levels/Lvl3/Environement/tiles platforms/village.png" id="17_06aic"]
 [ext_resource type="PackedScene" uid="uid://d1q1ij1egetju" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
+[ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/Ramp/ramp.tscn" id="20_xni6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -271,8 +272,8 @@ position = Vector2(3225, 682)
 
 [node name="SkySprite" type="Sprite2D" parent="Node2D/World/WorldParallaxe/SkyLayer"]
 z_index = -100
-position = Vector2(-3241.0005, -1579.0001)
-scale = Vector2(8.126954, 2.737305)
+position = Vector2(-3241.0005, -4746)
+scale = Vector2(8.126954, 5.8300786)
 texture = ExtResource("8_qaw7r")
 centered = false
 
@@ -435,8 +436,12 @@ texture = ExtResource("17_06aic")
 
 [node name="Tree_perch" parent="Node2D2" instance=ExtResource("19_8n178")]
 z_index = 4
-position = Vector2(10359, -129)
-scale = Vector2(1.2, 1.2)
+position = Vector2(10456, 240)
+scale = Vector2(0.8, 0.8)
+
+[node name="Ramp" parent="Node2D2" instance=ExtResource("20_xni6f")]
+z_index = 5
+position = Vector2(11218, 941)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]
