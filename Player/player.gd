@@ -511,7 +511,7 @@ func shoot_lance():
 		game_state.hud.update_lance_display()
 
 	animation_locked = true
-	anim.play("shoot")
+	anim.play("shoot_lance")
 	await anim.animation_finished
 
 	var spell = spell_lance.instantiate()

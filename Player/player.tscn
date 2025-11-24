@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=82 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/player.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://2ymynqarqqhp" path="res://Player/Sprite/onhit/1.png" id="2_2paov"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://cwhhdnohrltya" path="res://Player/Sprite/shoot/2.png" id="25_fnfic"]
 [ext_resource type="Texture2D" uid="uid://cnb4o82w6s2n" path="res://Player/Sprite/shoot/3.png" id="26_bpa77"]
 [ext_resource type="Texture2D" uid="uid://bekf3l20vunr3" path="res://Player/Sprite/jump/2.png" id="29_6qokg"]
+[ext_resource type="Texture2D" uid="uid://cacevmaw14krk" path="res://Player/Sprite/shoot/4.png" id="34_c4i3b"]
 [ext_resource type="Texture2D" uid="uid://b800f6sqowv4d" path="res://Player/Sprite/empty/1.png" id="35_6qokg"]
 [ext_resource type="Texture2D" uid="uid://d2r1b4txm4x58" path="res://Player/Sprite/gaz/walk_gaz2.png" id="35_l6ey7"]
 [ext_resource type="Texture2D" uid="uid://do3p637lg72w" path="res://Player/Sprite/empty/2.png" id="36_i7max"]
@@ -48,6 +49,10 @@
 [ext_resource type="Texture2D" uid="uid://cm3iv58d37q34" path="res://Player/Sprite/swim/2.png" id="44_e2pw6"]
 [ext_resource type="Texture2D" uid="uid://c1hof63wbs7el" path="res://Player/Sprite/swim/3.png" id="45_jaf6r"]
 [ext_resource type="Texture2D" uid="uid://c1g0do6ollyhi" path="res://Player/Sprite/swim/4.png" id="46_any7n"]
+[ext_resource type="Texture2D" uid="uid://do8ainv3hwaji" path="res://Player/Sprite/shoot_lance/1.png" id="48_uvbbp"]
+[ext_resource type="Texture2D" uid="uid://4ouno587mqbq" path="res://Player/Sprite/shoot_lance/2.png" id="49_7v2uk"]
+[ext_resource type="Texture2D" uid="uid://d204gnpcy2m08" path="res://Player/Sprite/shoot_lance/3.png" id="50_m6nl3"]
+[ext_resource type="Texture2D" uid="uid://bl4xn0r2wg5qv" path="res://Player/Sprite/shoot_lance/4.png" id="51_8hx1r"]
 
 [sub_resource type="Animation" id="Animation_i7max"]
 length = 0.001
@@ -381,7 +386,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dyo71"]
 resource_name = "shoot"
-length = 0.6
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -389,10 +394,10 @@ tracks/0/path = NodePath("Node2D/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ExtResource("24_17nxb"), ExtResource("25_fnfic"), ExtResource("26_bpa77")]
+"values": [ExtResource("24_17nxb"), ExtResource("25_fnfic"), ExtResource("26_bpa77"), ExtResource("34_c4i3b")]
 }
 
 [sub_resource type="Animation" id="Animation_r4aas"]
@@ -480,6 +485,22 @@ tracks/0/keys = {
 "values": [ExtResource("39_6qokg"), ExtResource("40_i7max"), ExtResource("41_m2xt8"), ExtResource("42_y06ei")]
 }
 
+[sub_resource type="Animation" id="Animation_qas3k"]
+resource_name = "shoot_lance"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("48_uvbbp"), ExtResource("49_7v2uk"), ExtResource("50_m6nl3"), ExtResource("51_8hx1r")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
 &"RESET": SubResource("Animation_i7max"),
@@ -500,6 +521,7 @@ _data = {
 &"push": SubResource("Animation_2paov"),
 &"ramp": SubResource("Animation_ms575"),
 &"shoot": SubResource("Animation_dyo71"),
+&"shoot_lance": SubResource("Animation_qas3k"),
 &"strong": SubResource("Animation_r4aas"),
 &"swim": SubResource("Animation_i0d2o"),
 &"walk": SubResource("Animation_vbwkl"),
