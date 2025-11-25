@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=36 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bo8hwb1ehdil4" path="res://Levels/Lvl3/Environement/tiles platforms/village.png" id="17_06aic"]
 [ext_resource type="PackedScene" uid="uid://d1q1ij1egetju" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="PackedScene" uid="uid://4nftk6ff2hsq" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
+[ext_resource type="PackedScene" uid="uid://c3bfbcik1hu58" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -28,10 +29,13 @@ size = Vector2(152.5, 2876)
 size = Vector2(143, 2820.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(12057.844, 284.1875)
+size = Vector2(16706.96, 284.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(290, 572.8906)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odqky"]
+size = Vector2(2257.75, 91)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odqky"]
 shader = ExtResource("5_xni6f")
@@ -194,7 +198,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(230, 547)
+position = Vector2(102, 724)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -210,15 +214,15 @@ position = Vector2(-74.75, 387)
 shape = SubResource("RectangleShape2D_ekrdk")
 
 [node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(11869, 426)
+position = Vector2(14245, 507)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(4359.8438, 1330.0938)
+position = Vector2(6338.961, 1330.0938)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(5789.078, -851)
+position = Vector2(6134.5195, -851)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform"]
@@ -235,7 +239,11 @@ shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform"]
 position = Vector2(-676, 196)
-polygon = PackedVector2Array(4714, 1237, 4879, 1163, 5406, 738, 12595, 754, 12595, 888, 5624, 812, 5063, 1185)
+polygon = PackedVector2Array(4714, 1237, 4879, 1163, 5406, 738, 12505, 747, 12510, 846, 5624, 812, 5063, 1185)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(13215.875, 988.5)
+shape = SubResource("RectangleShape2D_odqky")
 
 [node name="Sound" type="Node2D" parent="Node2D"]
 
@@ -266,8 +274,8 @@ position = Vector2(-21, -23)
 [node name="WaterSprite" type="Sprite2D" parent="Node2D/World"]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_odqky")
-position = Vector2(5178.261, 1367)
-scale = Vector2(9.257752, 2.084961)
+position = Vector2(6533.7617, 1367)
+scale = Vector2(10.97684, 2.084961)
 texture = SubResource("CanvasTexture_qaw7r")
 
 [node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World"]
@@ -278,8 +286,8 @@ position = Vector2(3225, 682)
 
 [node name="SkySprite" type="Sprite2D" parent="Node2D/World/WorldParallaxe/SkyLayer"]
 z_index = -100
-position = Vector2(-3239, -4737)
-scale = Vector2(8.126954, 5.8300786)
+position = Vector2(-3617, -3871)
+scale = Vector2(9.79427, 8.052735)
 texture = ExtResource("8_qaw7r")
 centered = false
 
@@ -426,7 +434,7 @@ position = Vector2(3524, 1133)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
-position = Vector2(12933, 919)
+position = Vector2(7093, 896)
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
@@ -435,7 +443,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Village" type="Sprite2D" parent="."]
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
 z_index = 4
-position = Vector2(9632, 807)
+position = Vector2(9642, 814)
 texture = ExtResource("17_06aic")
 
 [node name="Node2D2" type="Node2D" parent="."]
@@ -449,6 +457,9 @@ scale = Vector2(0.8, 0.8)
 z_index = 5
 position = Vector2(10214, 912)
 scale = Vector2(0.15, 0.15)
+
+[node name="HiddenTrap" parent="." instance=ExtResource("21_odqky")]
+position = Vector2(11985, 1048)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

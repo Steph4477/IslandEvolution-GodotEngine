@@ -24,7 +24,7 @@ func _ready():
 	gs = get_node("/root/GameState")
 	cam = gs.player.get_node("Camera2D")
 	cam.limit_top = -250000
-	cam.limit_right = 12000
+	cam.limit_right = 15000
 	
 	# Position initiale de l’anim “fall” à 0.0
 	if anim.has_animation("fall"):
@@ -49,13 +49,12 @@ func _on_chrono_zone_challenge_win():
 	if anim.has_animation("fall"):
 		anim.play("fall")
 		
-		# Tremblement de la camera à l'impact du tronc dans l'eau
+		# Tremblement de la camera à l'impact du tronc dans l'eau avec son
 		await get_tree().create_timer(0.8).timeout
 		$Node2D/Sound/WaterSplashTree.play()
 		camera_shake(intensity, duration)
 		
 		await anim.animation_finished
-		
 		
 	# 2) Attente avant spawn
 	await get_tree().create_timer(2.0).timeout
