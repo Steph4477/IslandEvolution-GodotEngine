@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=34 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
 [ext_resource type="AudioStream" uid="uid://xw852443pndg" path="res://sounds/lvl3/water.ogg" id="3_06aic"]
 [ext_resource type="Texture2D" uid="uid://bakem4letrjah" path="res://Levels/Lvl3/Environement/tiles platforms/decosheet.png" id="3_o2qeu"]
+[ext_resource type="AudioStream" uid="uid://cabcmhgbenj1w" path="res://sounds/water_splash_tree.ogg" id="3_xni6f"]
 [ext_resource type="AudioStream" uid="uid://b0snt0ob41imw" path="res://sounds/lvl3/birds.ogg" id="4_06aic"]
 [ext_resource type="PackedScene" uid="uid://t6efq7471rm8" path="res://Levels/Lvl3/Environement/Tree_branch/tree_branch.tscn" id="4_gstoe"]
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/water.gdshader" id="5_xni6f"]
@@ -193,7 +194,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(178, -554)
+position = Vector2(230, 547)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -242,6 +243,11 @@ polygon = PackedVector2Array(4714, 1237, 4879, 1163, 5406, 738, 12595, 754, 1259
 stream = ExtResource("3_06aic")
 volume_db = -4.062
 autoplay = true
+bus = &"Water"
+
+[node name="WaterSplashTree" type="AudioStreamPlayer" parent="Node2D/Sound"]
+stream = ExtResource("3_xni6f")
+volume_db = 4.622
 bus = &"Water"
 
 [node name="BirdsSound" type="AudioStreamPlayer" parent="Node2D/Sound"]

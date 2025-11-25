@@ -11,6 +11,10 @@ var focus_cam_frog = false # préparation du focus de la caméra si challenge_wi
 var cam
 var gs
 
+# --- Réglages du tremblement caméra et dégâts ---
+@export var intensity = 50.0   # Intensité du shake de caméra
+@export var duration = 3.0     # Durée du tremblement
+
 func _ready():
 	# Musiques d’ambiance
 	$Node2D/Sound/BirdsSound.play()
@@ -44,7 +48,14 @@ func _on_chrono_zone_challenge_win():
 	# 1) Chute des lianes
 	if anim.has_animation("fall"):
 		anim.play("fall")
+		
+		# Tremblement de la camera à l'impact du tronc dans l'eau
+		await get_tree().create_timer(0.8).timeout
+		$Node2D/Sound/WaterSplashTree.play()
+		camera_shake(intensity, duration)
+		
 		await anim.animation_finished
+		
 		
 	# 2) Attente avant spawn
 	await get_tree().create_timer(2.0).timeout
@@ -106,3 +117,13 @@ func _spawn_froggle():
 	add_child(frog)
 	frog.name = "Froggle"
 	frog.global_position = spawn_pos
+
+func camera_shake(_intensity, _duration):
+	if cam == null:
+		return
+	var t = create_tween()
+	var steps = int(duration / 0.1)
+	for i in range(steps):
+		var offset = Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
+		t.tween_property(cam, "offset", offset, 0.05)
+	t.tween_property(cam, "offset", Vector2.ZERO, 0.1)
