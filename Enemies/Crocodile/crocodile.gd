@@ -9,7 +9,6 @@ extends CharacterBody2D
 
 const GRAVITY = 2000
 
-@onready var health_bar = $HealthBar/ProgressBar
 @onready var sprite = $Rotator/Sprite2D
 @onready var anim = $Rotator/AnimationPlayer
 @onready var gloups_sprite = $GloupsSprite
@@ -20,9 +19,6 @@ var is_attacking = false
 
 func _ready():
 	pv = max_hp
-	if health_bar:
-		health_bar.max_value = max_hp
-		health_bar.value = pv
 	find_and_bind_player()
 	if gloups_sprite:
 		gloups_sprite.visible = false
@@ -56,34 +52,11 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
 func apply_gravity(delta):
 	if is_on_floor():
 		velocity.y = 0
 	else:
 		velocity.y += GRAVITY * delta
-
-# --- Combat ---
-func on_hit(damage_taken):
-	pv -= damage_taken
-	if health_bar:
-		if pv < 0:
-			health_bar.value = 0
-		else:
-			health_bar.value = pv
-	show_damage_popup(damage_taken)
-	if pv <= 0:
-		die()
-
-func show_damage_popup(amount):
-	var scene = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn")
-	var popup = scene.instantiate()
-	add_child(popup)
-	popup.position = Vector2(0, -500)
-	popup.show_damage(amount)
-
-func die():
-	queue_free()
 
 # --- Trouve Moko ----
 func find_and_bind_player():
@@ -104,11 +77,8 @@ func _on_area_2d_body_entered(body):
 		velocity.x = 0
 
 		# 🐊 Joue l'animation d'attaque
-		if anim:
-			if anim.has_animation("attaque"):
-				anim.play("attaque")
-			elif anim.has_animation("attack"):
-				anim.play("attack")
+		if anim.has_animation("attack"):
+			anim.play("attack")
 
 		# 👻 Crée le ghost à la position de Moko
 		var sprite_ref = body.get_node_or_null("Node2D/Sprite")
@@ -137,8 +107,7 @@ func _on_area_2d_body_entered(body):
 			tween.tween_callback(Callable(ghost_sprite, "queue_free"))
 
 		# ⏳ Attente de la fin de l'anim attaque
-		if anim:
-			await anim.animation_finished
+		await anim.animation_finished
 
 		# 🤢 Gloups après attaque
 		if gloups_sprite:
@@ -149,8 +118,8 @@ func _on_area_2d_body_entered(body):
 		# ☠️ Tue Moko
 		if body.has_method("die"):
 			body.die()
-		elif body.has_method("on_hit"):
-			body.on_hit(1000000)
+		#elif body.has_method("on_hit"):
+			#body.on_hit(1000000)
 
 		await get_tree().create_timer(cooldown).timeout
 		is_attacking = false

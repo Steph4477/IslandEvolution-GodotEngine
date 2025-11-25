@@ -256,7 +256,7 @@ func maybe_start_charge():
 		charge_dir = -1
 	
 	velocity.y = 0
-	anim.play("charge")
+	anim.play("run")
 	spawn_dust()
 
 # ======================== POUSSIÈRE ===========================

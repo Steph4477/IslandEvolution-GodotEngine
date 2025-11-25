@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cv804x4ayaofx" path="res://Menu/Game_over/police.png" id="5_rsbxp"]
 [ext_resource type="Texture2D" uid="uid://dk2pnjh7ymd51" path="res://Menu/Buttons/restart.png" id="6_877a3"]
 [ext_resource type="Texture2D" uid="uid://3bqredga1mej" path="res://Interface/GamePad/menu.png" id="9_av6lx"]
-[ext_resource type="AudioStream" uid="uid://cdo8bns7p3l15" path="res://sounds/gameover.wav" id="10_jfwx8"]
+[ext_resource type="AudioStream" uid="uid://b1y8jhh18q4f1" path="res://sounds/gameover.ogg" id="10_jfwx8"]
 [ext_resource type="Texture2D" uid="uid://gt1j518e3is2" path="res://Interface/GamePad/Pressed/menu.png" id="10_rsbxp"]
 
 [node name="GameOver" type="Node2D"]

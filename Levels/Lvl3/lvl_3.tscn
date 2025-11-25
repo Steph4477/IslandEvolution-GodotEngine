@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=33 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -9,7 +9,6 @@
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/water.gdshader" id="5_xni6f"]
 [ext_resource type="TileSet" uid="uid://b2ljk1cgl2kj5" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="5_yixkb"]
 [ext_resource type="Texture2D" uid="uid://bgelohdvgqwfg" path="res://Levels/Lvl3/Environement/water.png" id="6_06aic"]
-[ext_resource type="Script" uid="uid://ffcbfbsbmbbr" path="res://Levels/Lvl3/Environement/world_parallaxe.gd" id="6_si8q7"]
 [ext_resource type="Texture2D" uid="uid://b0iqy3w1nkrn0" path="res://Levels/Lvl1/Environement/sky.png" id="8_qaw7r"]
 [ext_resource type="Script" uid="uid://bj2b2nld2cnfh" path="res://Levels/Lvl3/Environement/swim_zone.gd" id="10_4tc27"]
 [ext_resource type="PackedScene" uid="uid://bl5ptkisjbtjs" path="res://Loot/Coconut/coco_loot_lvl3.tscn" id="11_6n0ay"]
@@ -42,13 +41,13 @@ diffuse_texture = ExtResource("6_06aic")
 texture_repeat = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
-size = Vector2(418, 638.25)
+size = Vector2(429, 650.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tc27"]
-size = Vector2(394.6875, 640.25)
+size = Vector2(389, 651.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdlip"]
-size = Vector2(2196, 659)
+size = Vector2(2214, 659)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06aic"]
 size = Vector2(1499, 312)
@@ -194,13 +193,14 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(9946, 773)
+position = Vector2(178, -554)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
 position = Vector2(2830, 730)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
+z_index = 5
 position = Vector2(-4, 34)
 collision_layer = 2
 
@@ -251,7 +251,8 @@ autoplay = true
 bus = &"Birds"
 
 [node name="ChronoZone" parent="Node2D" instance=ExtResource("3_4esaq")]
-position = Vector2(1155, 1150)
+z_index = 5
+position = Vector2(1158, 1215)
 
 [node name="World" type="Node2D" parent="Node2D"]
 position = Vector2(-21, -23)
@@ -264,7 +265,6 @@ scale = Vector2(9.257752, 2.084961)
 texture = SubResource("CanvasTexture_qaw7r")
 
 [node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World"]
-script = ExtResource("6_si8q7")
 
 [node name="SkyLayer" type="ParallaxLayer" parent="Node2D/World/WorldParallaxe"]
 z_index = -100
@@ -272,7 +272,7 @@ position = Vector2(3225, 682)
 
 [node name="SkySprite" type="Sprite2D" parent="Node2D/World/WorldParallaxe/SkyLayer"]
 z_index = -100
-position = Vector2(-3241.0005, -4746)
+position = Vector2(-3239, -4737)
 scale = Vector2(8.126954, 5.8300786)
 texture = ExtResource("8_qaw7r")
 centered = false
@@ -323,15 +323,15 @@ collision_layer = 32
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
-position = Vector2(207, 1523.125)
+position = Vector2(212.5, 1517.125)
 shape = SubResource("RectangleShape2D_n7unt")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
-position = Vector2(861.65625, 1524.125)
+position = Vector2(858.5, 1518.625)
 shape = SubResource("RectangleShape2D_4tc27")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
-position = Vector2(2404, 1513.5)
+position = Vector2(2395, 1513.5)
 shape = SubResource("RectangleShape2D_sdlip")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
@@ -386,7 +386,7 @@ position = Vector2(21, 23)
 
 [node name="Nenuphar" type="Sprite2D" parent="Node2D/World/Nenuphars"]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
-position = Vector2(519, 1168)
+position = Vector2(533, 1163)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_o2qeu")
 hframes = 8
@@ -395,7 +395,7 @@ frame = 18
 
 [node name="Nenuphar2" type="Sprite2D" parent="Node2D/World/Nenuphars"]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
-position = Vector2(1173, 1162)
+position = Vector2(1158, 1167)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_o2qeu")
 hframes = 8
@@ -416,11 +416,11 @@ z_index = 5
 position = Vector2(-1843, 9)
 
 [node name="Crocodile" parent="Node2D/World/Ennemies" instance=ExtResource("12_12vmq")]
-position = Vector2(2290, 969)
+position = Vector2(3597, 1037)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
-position = Vector2(6979, 894)
+position = Vector2(12933, 919)
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
