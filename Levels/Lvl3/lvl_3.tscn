@@ -416,7 +416,7 @@ z_index = 5
 position = Vector2(-1843, 9)
 
 [node name="Crocodile" parent="Node2D/World/Ennemies" instance=ExtResource("12_12vmq")]
-position = Vector2(3597, 1037)
+position = Vector2(3524, 1133)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]

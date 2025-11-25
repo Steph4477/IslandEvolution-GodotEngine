@@ -10,7 +10,7 @@
 size = Vector2(34, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsmij"]
-size = Vector2(75, 46)
+size = Vector2(77, 32)
 
 [sub_resource type="Animation" id="Animation_6utxn"]
 length = 0.001
@@ -79,7 +79,7 @@ shape = SubResource("RectangleShape2D_x2fpe")
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2.5, -28)
+position = Vector2(2.5, -21)
 shape = SubResource("RectangleShape2D_vsmij")
 
 [node name="GloupsSprite" type="Sprite2D" parent="."]
@@ -93,6 +93,7 @@ position = Vector2(40, -54)
 scale = Vector2(1.07, 1)
 
 [node name="Muzzle" type="Marker2D" parent="Rotator"]
+position = Vector2(-15.887848, 33)
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator"]
 position = Vector2(-38, 37)
