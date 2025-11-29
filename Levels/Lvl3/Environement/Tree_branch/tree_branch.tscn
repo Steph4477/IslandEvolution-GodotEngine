@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://t6efq7471rm8"]
+[gd_scene load_steps=4 format=3 uid="uid://t6efq7471rm8"]
 
 [ext_resource type="Script" uid="uid://dn4alqj0u0tck" path="res://Levels/Lvl3/Environement/Tree_branch/tree_branch.gd" id="1_4ojmy"]
 [ext_resource type="Texture2D" uid="uid://dud3jweeagsby" path="res://Levels/Lvl3/Environement/Tree_branch/treebranch1.png" id="2_4ojmy"]
 [ext_resource type="Texture2D" uid="uid://d001ww4qk6qhp" path="res://Levels/Lvl3/Environement/Tree_branch/treebranch.png" id="3_40f3g"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ojmy"]
-size = Vector2(3213, 68)
 
 [node name="TreeBranch" type="Node2D"]
 script = ExtResource("1_4ojmy")
@@ -16,14 +13,14 @@ scale = Vector2(2.468262, 3.145813)
 texture = ExtResource("2_4ojmy")
 
 [node name="flow" type="Sprite2D" parent="."]
-position = Vector2(530.75006, 421.99997)
-scale = Vector2(2.4936523, 3.3310544)
+position = Vector2(568.00006, 376)
+scale = Vector2(2.4707031, 3.3310544)
 texture = ExtResource("3_40f3g")
 
 [node name="Area2D" type="StaticBody2D" parent="."]
 position = Vector2(30, -433)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(540.5, -46)
-shape = SubResource("RectangleShape2D_4ojmy")
+polygon = PackedVector2Array(-1034.5, 849, -833.5, 849, -523.5, 802, -214.5, 748, 81.5, 668, 451.5, 560, 714.5, 419, 922.5, 311, 996.5, 513, -577.5, 950, -1048.5, 984)

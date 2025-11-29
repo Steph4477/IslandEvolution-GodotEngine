@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1q1ij1egetju"]
+[gd_scene load_steps=9 format=3 uid="uid://d1q1ij1egetju"]
 
 [ext_resource type="Texture2D" uid="uid://rahb7go75tvt" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.png" id="1_1mhcq"]
 [ext_resource type="Script" uid="uid://csuvlk5tu2pfu" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.gd" id="1_m1g1l"]
-[ext_resource type="Texture2D" uid="uid://cvvetpiprecf1" path="res://Levels/Lvl3/Environement/Tree_perch/tree_door.png" id="1_tt4of"]
+[ext_resource type="Texture2D" uid="uid://dj4acjlnx8a62" path="res://Levels/Lvl3/Environement/Tree_perch/z-index0.png" id="2_m1g1l"]
 [ext_resource type="Texture2D" uid="uid://c7usraw8x4k28" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch_open.png" id="2_tt4of"]
-[ext_resource type="Texture2D" uid="uid://q0jdahrprtu5" path="res://Levels/Lvl3/Environement/Tree_perch/tree_root.png" id="5_yphk1"]
 
 [sub_resource type="Animation" id="Animation_57j43"]
 length = 0.001
@@ -60,25 +59,24 @@ _data = {
 &"fade": SubResource("Animation_yphk1")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1g1l"]
-size = Vector2(232, 116)
-
 [node name="Tree_perch" type="Node2D"]
 script = ExtResource("1_m1g1l")
 
 [node name="Door" type="Sprite2D" parent="."]
-texture = ExtResource("1_tt4of")
+position = Vector2(4, -2)
+texture = ExtResource("2_m1g1l")
 
 [node name="Full" type="Sprite2D" parent="."]
-z_index = 10
+z_index = 2
+position = Vector2(4, -3)
 texture = ExtResource("1_1mhcq")
 
 [node name="Open" type="Sprite2D" parent="."]
+position = Vector2(4, -3)
 texture = ExtResource("2_tt4of")
 
 [node name="Root" type="Sprite2D" parent="."]
 z_index = 20
-texture = ExtResource("5_yphk1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -91,24 +89,25 @@ collision_layer = 2
 collision_mask = 9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(10, -41)
-polygon = PackedVector2Array(110, 824, 133, 691, 151, 221, 204, 241, 194, 505, 167, 839, 151, 865)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(7, -2)
-polygon = PackedVector2Array(430, 915, 399, 830, 372, 692, 352, 503, 365, 338, 374, 157, 389, -405, 397, -633, 409, -638, 413, -395, 398, 156, 381, 497, 409, 790, 429, 855, 449, 902)
+polygon = PackedVector2Array(-210, 5, -169, -23, -137, -28, -102, -26, -66, -7, -35, 24, -49, 80, -64, 304, -322, -39, -297, -32, -267, -28, -239, -4)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(165, 70, 200, 77, 220, -601, 163, -592)
+position = Vector2(-55, -40)
+polygon = PackedVector2Array(80, -108, 117, -93, 147, -119, 151, -101, 177, -100, 171, -182, 37, -146)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(151, 215, 144, 291, -287, 146, -498, 159, -655, 53, -854, 42, -1080, -108, -1000, -101, -935, -28, -872, 12, -796, 22, -726, 4, -674, 13, -613, 63, -537, 108, -462, 120, -374, 102, -283, 95, -210, 107, -166, 145, -41, 208, 70, 235, 115, 222)
+polygon = PackedVector2Array(104, -53, 126, -73, 160, -80, 221, -74, 85, 301, 30, 304, 24, 214, 26, 172, 33, 123, 61, 56, 80, 3)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Area2D"]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(4, -58, 15, -60, 13, -94, -4, -127, -37, -156, -17, -185, -119, -177, -77, -114)
 
 [node name="door" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="door"]
-position = Vector2(292, 898)
-shape = SubResource("RectangleShape2D_m1g1l")
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="door"]
+position = Vector2(-26, 412.75)
+polygon = PackedVector2Array(-65, -13.75, 74, -13.75, 64, -100.75, 53, -175.75, 53, -239.75, 65, -305.75, 136, -464.75, 138, -511.75, 137, -537.75, 130, -559.75, 123, -578.75, 102, -569.75, 83, -549.75, 72, -549.75, 62, -571.75, 45, -589.75, 29, -592.75, 12, -606.75, -6, -622.75, -28, -619.75, -24, -596.75, -12, -567.75, 11, -550.75, 26, -528.75, 35, -508.75, 36, -488.75, 32, -451.75, 16, -423.75, -4, -380.75, -19, -354.75, -31, -325.75, -37, -280.75, -40, -229.75, -41, -175.75, -47, -141.75, -55, -108.75, -63, -56.75)
 
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
 [connection signal="body_exited" from="door" to="." method="_on_door_body_exited"]

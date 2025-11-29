@@ -6,3 +6,10 @@ func _on_door_body_entered(body: Node2D) -> void:
 		$AnimationPlayer.play("fade")
 		await get_tree().create_timer(0.8).timeout
 		$Full.visible = false
+
+
+func _on_door_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		$AnimationPlayer.play("appear")
+		await get_tree().create_timer(0.8).timeout
+		$Full.visible = true

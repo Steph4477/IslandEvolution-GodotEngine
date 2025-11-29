@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=37 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -157,7 +157,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1858, -240), Vector2(2057, 1526)]
+"values": [Vector2(1843.0001, -1010), Vector2(1938, 1018)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -169,7 +169,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.5, 1, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1750, 200), Vector2(1800, 1106), Vector2(1947, 1132)]
+"values": [Vector2(1750, -621), Vector2(1800, 1106), Vector2(1947, 1203)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -190,6 +190,9 @@ _data = {
 &"fall": SubResource("Animation_4esaq")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nymq"]
+size = Vector2(33, 63)
+
 [node name="lvl3" type="Node2D"]
 script = ExtResource("1_73pra")
 
@@ -198,7 +201,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(102, 724)
+position = Vector2(526, 877)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -353,11 +356,12 @@ position = Vector2(4453.5, 1373)
 shape = SubResource("RectangleShape2D_06aic")
 
 [node name="CocoLoot" parent="Node2D/World" instance=ExtResource("11_6n0ay")]
-z_index = 5
+z_index = 6
 
 [node name="TreeBranch" parent="Node2D/World" instance=ExtResource("4_gstoe")]
+z_index = 5
 position = Vector2(2096, 1100)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.8, 0.5)
 
 [node name="Liana5" parent="Node2D/World" instance=ExtResource("11_sdlip")]
 z_index = 3
@@ -429,11 +433,19 @@ z_index = 5
 position = Vector2(-1843, 9)
 
 [node name="Crocodile" parent="Node2D/World/Ennemies" instance=ExtResource("12_12vmq")]
-position = Vector2(12949, 965)
+position = Vector2(3563, 1189)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
-position = Vector2(13336, 856)
+position = Vector2(12260, 741)
+
+[node name="ColEnemies" type="StaticBody2D" parent="Node2D/World/Ennemies"]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/Ennemies/ColEnemies"]
+position = Vector2(6632, 956)
+shape = SubResource("RectangleShape2D_2nymq")
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
@@ -449,8 +461,8 @@ texture = ExtResource("17_06aic")
 
 [node name="Tree_perch" parent="Node2D2" instance=ExtResource("19_8n178")]
 z_index = 4
-position = Vector2(10456, 240)
-scale = Vector2(0.8, 0.8)
+position = Vector2(10857, 267)
+scale = Vector2(1.4, 1.8)
 
 [node name="Spear_rack" parent="Node2D2" instance=ExtResource("20_xni6f")]
 z_index = 5
