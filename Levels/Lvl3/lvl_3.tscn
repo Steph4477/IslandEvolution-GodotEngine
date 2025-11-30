@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=38 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b3eigelsea7jk" path="res://Enemies/Crocodile/SwimCroco/swim_croco.tscn" id="12_12vmq"]
 [ext_resource type="PackedScene" uid="uid://c7ps13ndncbr4" path="res://Loot/Flower/flower.tscn" id="14_4esaq"]
 [ext_resource type="PackedScene" uid="uid://bpcvkjusjlhgm" path="res://Enemies/Cannibal/cannibal.tscn" id="16_qaw7r"]
+[ext_resource type="PackedScene" uid="uid://dhkid0wsh71wa" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_2nymq"]
 [ext_resource type="Texture2D" uid="uid://bo8hwb1ehdil4" path="res://Levels/Lvl3/Environement/tiles platforms/village.png" id="17_06aic"]
 [ext_resource type="PackedScene" uid="uid://d1q1ij1egetju" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="PackedScene" uid="uid://4nftk6ff2hsq" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
@@ -29,7 +30,7 @@ size = Vector2(152.5, 2876)
 size = Vector2(143, 2820.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(16706.96, 284.1875)
+size = Vector2(19169.441, 284.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(290, 572.8906)
@@ -55,7 +56,7 @@ size = Vector2(389, 651.25)
 size = Vector2(2214, 611)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06aic"]
-size = Vector2(1499, 312)
+size = Vector2(1499, 324)
 
 [sub_resource type="Animation" id="Animation_gstoe"]
 length = 0.001
@@ -201,7 +202,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 5
-position = Vector2(526, 877)
+position = Vector2(3587, 968)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -221,7 +222,7 @@ position = Vector2(14245, 507)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(6338.961, 1330.0938)
+position = Vector2(5107.7207, 1330.0938)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
@@ -277,8 +278,8 @@ position = Vector2(-21, -23)
 [node name="WaterSprite" type="Sprite2D" parent="Node2D/World"]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_odqky")
-position = Vector2(6533.7617, 1367)
-scale = Vector2(10.97684, 2.084961)
+position = Vector2(5551.4995, 1367)
+scale = Vector2(12.222575, 2.084961)
 texture = SubResource("CanvasTexture_qaw7r")
 
 [node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World"]
@@ -352,7 +353,7 @@ position = Vector2(2395, 1537.5)
 shape = SubResource("RectangleShape2D_sdlip")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
-position = Vector2(4453.5, 1373)
+position = Vector2(4453.5, 1367)
 shape = SubResource("RectangleShape2D_06aic")
 
 [node name="CocoLoot" parent="Node2D/World" instance=ExtResource("11_6n0ay")]
@@ -432,20 +433,24 @@ frame = 18
 z_index = 5
 position = Vector2(-1843, 9)
 
-[node name="Crocodile" parent="Node2D/World/Ennemies" instance=ExtResource("12_12vmq")]
-position = Vector2(3563, 1189)
+[node name="SwimCrocodile" parent="Node2D/World/Ennemies" instance=ExtResource("12_12vmq")]
+position = Vector2(3513, 1180)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
-position = Vector2(12260, 741)
+position = Vector2(16403, 846)
 
 [node name="ColEnemies" type="StaticBody2D" parent="Node2D/World/Ennemies"]
+position = Vector2(677, 0)
 collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/Ennemies/ColEnemies"]
-position = Vector2(6632, 956)
+position = Vector2(6608, 641)
 shape = SubResource("RectangleShape2D_2nymq")
+
+[node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_2nymq")]
+position = Vector2(7057, 899)
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
@@ -461,8 +466,8 @@ texture = ExtResource("17_06aic")
 
 [node name="Tree_perch" parent="Node2D2" instance=ExtResource("19_8n178")]
 z_index = 4
-position = Vector2(10857, 267)
-scale = Vector2(1.4, 1.8)
+position = Vector2(10874, 438)
+scale = Vector2(1.4, 1.4)
 
 [node name="Spear_rack" parent="Node2D2" instance=ExtResource("20_xni6f")]
 z_index = 5

@@ -1,16 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhkid0wsh71wa"]
+[gd_scene load_steps=25 format=3 uid="uid://dhkid0wsh71wa"]
 
 [ext_resource type="Script" uid="uid://ckwclcdasehtg" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.gd" id="1_co5vm"]
-[ext_resource type="Texture2D" uid="uid://d0db0avqj0qlq" path="res://Enemies/Crocodile/SwimCroco/gloups.png" id="2_g5ibj"]
-[ext_resource type="Texture2D" uid="uid://cd1wxp8b2f0t1" path="res://Enemies/Crocodile/SwimCroco/attack/1.png" id="3_dqd2x"]
-[ext_resource type="Texture2D" uid="uid://tm07wwig22" path="res://Enemies/Crocodile/SwimCroco/attack/2.png" id="4_3j4w1"]
-[ext_resource type="Texture2D" uid="uid://d14k0ukwu7dgb" path="res://Enemies/Rat/idle.png" id="5_01lnk"]
+[ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_01lnk"]
+[ext_resource type="Texture2D" uid="uid://dn0bynb1nfwfl" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/1.png" id="3_g5ibj"]
+[ext_resource type="Texture2D" uid="uid://c1t31waxbs28a" path="res://Enemies/Crocodile/AmphibiousCroco/Swim/2.png" id="5_dqd2x"]
+[ext_resource type="Texture2D" uid="uid://ca2t1r5r3epar" path="res://Enemies/Crocodile/AmphibiousCroco/Swim/1.png" id="6_3j4w1"]
+[ext_resource type="Texture2D" uid="uid://b02mn4n2iun0h" path="res://Enemies/Crocodile/AmphibiousCroco/Attack/1.png" id="6_xna87"]
+[ext_resource type="Texture2D" uid="uid://d3224qjnpy7hv" path="res://Enemies/Crocodile/AmphibiousCroco/Attack/2.png" id="7_g0r8q"]
+[ext_resource type="Texture2D" uid="uid://d27obtumxt726" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/2.png" id="8_rjuuk"]
+[ext_resource type="Texture2D" uid="uid://blal6fn6itk3j" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/3.png" id="9_68bdw"]
+[ext_resource type="Texture2D" uid="uid://cmi3i30ti1qa2" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/1.png" id="10_f7es7"]
+[ext_resource type="Texture2D" uid="uid://kndd8tkdg3pd" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/2.png" id="11_wdxit"]
+[ext_resource type="Texture2D" uid="uid://iaq3livqchs5" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/3.png" id="12_pvx76"]
+[ext_resource type="Texture2D" uid="uid://c0dltvpck542h" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/4.png" id="13_40d2c"]
+[ext_resource type="Texture2D" uid="uid://gy0ptusnh2w5" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/5.png" id="14_7isv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(34, 29)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsmij"]
-size = Vector2(77, 32)
+size = Vector2(228, 21)
 
 [sub_resource type="Animation" id="Animation_6utxn"]
 length = 0.001
@@ -24,26 +30,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_dqd2x")]
-}
-
-[sub_resource type="Animation" id="Animation_4jfus"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rotator/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("5_01lnk"), ExtResource("5_01lnk")]
+"values": [ExtResource("3_g5ibj")]
 }
 
 [sub_resource type="Animation" id="Animation_bsx7r"]
-resource_name = "swim"
+resource_name = "swim_attack"
 length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,50 +46,110 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("4_3j4w1"), ExtResource("3_dqd2x")]
+"values": [ExtResource("5_dqd2x"), ExtResource("6_3j4w1")]
+}
+
+[sub_resource type="Animation" id="Animation_f7es7"]
+resource_name = "swim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_3j4w1"), ExtResource("6_3j4w1")]
+}
+
+[sub_resource type="Animation" id="Animation_wdxit"]
+resource_name = "floor_attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_xna87"), ExtResource("7_g0r8q"), ExtResource("6_xna87")]
+}
+
+[sub_resource type="Animation" id="Animation_pvx76"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_g5ibj"), ExtResource("8_rjuuk"), ExtResource("9_68bdw")]
+}
+
+[sub_resource type="Animation" id="Animation_pp172"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_f7es7"), ExtResource("11_wdxit"), ExtResource("12_pvx76"), ExtResource("13_40d2c"), ExtResource("14_7isv1")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
 _data = {
 &"RESET": SubResource("Animation_6utxn"),
-&"idle": SubResource("Animation_4jfus"),
-&"swim": SubResource("Animation_bsx7r")
+&"floor_attack": SubResource("Animation_wdxit"),
+&"idle": SubResource("Animation_pp172"),
+&"swim": SubResource("Animation_f7es7"),
+&"swim_attack": SubResource("Animation_bsx7r"),
+&"walk": SubResource("Animation_pvx76")
 }
 
-[node name="AmphibiousCroco" type="CharacterBody2D" groups=["Enemies"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_40d2c"]
+radius = 49.5101
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7isv1"]
+radius = 51.009804
+
+[node name="AmphibiousCroco" type="CharacterBody2D" groups=["EnemiesSwim"]]
 z_index = 5
 collision_layer = 8
-collision_mask = 35
+collision_mask = 34
 script = ExtResource("1_co5vm")
 
+[node name="HealthBar" parent="." instance=ExtResource("2_01lnk")]
+position = Vector2(-43, -75)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -11.5)
+position = Vector2(-12, 51.5)
 shape = SubResource("RectangleShape2D_x2fpe")
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
-collision_layer = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.5, -21)
-shape = SubResource("RectangleShape2D_vsmij")
-
-[node name="GloupsSprite" type="Sprite2D" parent="."]
-position = Vector2(69.000015, -67.00001)
-rotation = 0.35604715
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_g5ibj")
-
 [node name="Rotator" type="Node2D" parent="."]
-position = Vector2(40, -54)
+position = Vector2(1, -2)
 scale = Vector2(1.07, 1)
 
-[node name="Muzzle" type="Marker2D" parent="Rotator"]
-position = Vector2(-15.887848, 33)
-
 [node name="Sprite2D" type="Sprite2D" parent="Rotator"]
-position = Vector2(-38, 37)
+position = Vector2(-2.2359695, -16.5)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_dqd2x")
+texture = ExtResource("3_g5ibj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator"]
 root_node = NodePath("../..")
@@ -106,4 +157,24 @@ libraries = {
 &"": SubResource("AnimationLibrary_1lwxd")
 }
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="SwimArea" type="Area2D" parent="Rotator" groups=["Enemies"]]
+position = Vector2(-110.96493, -7.5)
+scale = Vector2(0.9345794, 1)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/SwimArea"]
+position = Vector2(-14, 9)
+shape = SubResource("CircleShape2D_40d2c")
+
+[node name="FloorArea" type="Area2D" parent="Rotator" groups=["Enemies"]]
+position = Vector2(-1.6191444, 0.5)
+scale = Vector2(0.9345794, 1)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/FloorArea"]
+position = Vector2(-131, -3)
+shape = SubResource("CircleShape2D_7isv1")
+
+[connection signal="body_entered" from="Rotator/SwimArea" to="." method="_on_swim_area_body_entered"]
+[connection signal="body_exited" from="Rotator/SwimArea" to="." method="_on_swim_area_body_exited"]
+[connection signal="body_entered" from="Rotator/FloorArea" to="." method="_on_floor_area_body_entered"]
