@@ -3,14 +3,13 @@ extends CharacterBody2D
 @export var max_hp = 500
 @export var speed = 200
 @export var attack_range = 600
-@export var stop_distance = 150
+@export var stop_distance = 100
 @export var cooldown = 1
 @export var damage = 100
 
 const GRAVITY = 2000
 
 @onready var health_bar = $HealthBar/ProgressBar
-@onready var sprite = $Rotator/Sprite2D
 @onready var anim = $Rotator/AnimationPlayer
 @onready var rotator = $Rotator
 
@@ -19,6 +18,9 @@ var player = null
 var is_attacking = false
 var is_swim_croco = false
 var is_dead = false
+var is_hurt = false
+var is_roaring = false
+var has_roared = false
 
 var base_scale_x = 0.0
 var dx = 0.0
@@ -33,6 +35,7 @@ var in_floor_zone = false
 
 func _ready():
 	pv = max_hp
+	health_bar.max_value = max_hp
 	health_bar.value = pv
 	base_scale_x = rotator.scale.x
 	find_and_bind_player()
@@ -99,7 +102,7 @@ func target():
 		return
 	var target_pos = player.get_node("TurnAxis").global_position
 	var to_target = target_pos - global_position
-	dx = to_target.x
+	dx = to_target.x # Distance horizontale x entre le croco et Moko
 	distance = to_target.length()
 
 func flip(_dx):
@@ -116,16 +119,31 @@ func update_logic():
 		velocity.x = 0
 		return
 
-	# Si une attaque est en cours : ne bouge pas
-	if is_attacking:
-		velocity.x = 0
+	# Si un hit, un roar ou une attaque est en cours :
+	# Laisse ces états gérer eux-mêmes velocity.x 
+	if is_attacking or is_hurt or is_roaring:
 		return
 
-	# Distance horizontale uniquement pour le déplacement
-	var horiz_distance = abs(dx)
-
-	# Pas à portée -> on s'arrête (idle sera géré dans process_idle)
+	var horiz_distance = abs(dx) # distance horizontale absolue
+	
+	# Pas à portée -> stop son + reset roar
 	if horiz_distance > attack_range:
+		velocity.x = 0
+		has_roared = false
+		$Sound/Roar.stop()
+		return
+
+	# Moko détecté au sol -> boucle du son roar
+	if not is_swim_croco and horiz_distance <= attack_range:
+		if not $Sound/Roar.playing:
+			$Sound/Roar.play()
+	else:
+		$Sound/Roar.stop()
+
+	# ROAR UNE FOIS seulement si AU SOL
+	if not is_swim_croco and not has_roared:
+		if not is_roaring:
+			roar()
 		velocity.x = 0
 		return
 
@@ -138,10 +156,8 @@ func update_logic():
 			dir = -1
 
 		if is_swim_croco:
-			# Nage vers Moko + courant
 			velocity.x = dir * speed + water_current.x
 		else:
-			# Marche au sol
 			velocity.x = dir * speed
 		return
 
@@ -156,12 +172,62 @@ func update_logic():
 			attack_on_floor()
 
 # =============================================================
+#                         ROAR (SOL UNIQUEMENT)
+# =============================================================
+func roar():
+	if is_dead:
+		return
+	if is_roaring:
+		return
+	if is_swim_croco:
+		return  # pas de roar dans l'eau
+
+	is_roaring = true
+	is_attacking = false
+	is_hurt = false
+	velocity.x = 0
+
+	if not $Sound/Roar.playing:
+		$Sound/Roar.play()
+
+	if anim.has_animation("roar"):
+		anim.play("roar")
+		await anim.animation_finished
+
+	if is_dead:
+		is_roaring = false
+		return
+
+	is_roaring = false
+	has_roared = true
+
+# =============================================================
+#                  PAS ARRIERE APRES ATTAQUE
+# =============================================================
+func steps_back():
+	# Pas de pas arrière dans l'eau
+	if is_swim_croco:
+		return
+
+	if anim.has_animation("recoil"):
+		anim.play("recoil")
+
+	var dir = sign(dx) # direction vers Moko
+	if dir == 0:
+		return
+
+	velocity.x = -dir * 150   # dash arrière
+	var recoil_timer = get_tree().create_timer(0.6)
+	await recoil_timer.timeout
+	velocity.x = 0
+
+# =============================================================
 #                         ATTAQUES
 # =============================================================
 func attack_on_floor():
 	if is_dead:
 		return
-	if is_attacking:
+	if is_attacking or is_hurt or is_roaring:
 		return
 	if not is_on_floor():
 		return
@@ -174,21 +240,23 @@ func attack_on_floor():
 	if anim.has_animation("floor_attack"):
 		anim.play("floor_attack")
 
-		# Impact à 0.1s après le début
+		# Impact à 0.2s après le début
 		var impact_timer = get_tree().create_timer(0.2)
 		await impact_timer.timeout
 
 		if is_instance_valid(player) and not is_dead:
 			player.on_hit(damage)
 
-		# Attend la fin de l'animation d'attaque
+		# attend la fin de l'anim d'attaque
 		await anim.animation_finished
+
+		# Pas arrière après l'attaque
+		await steps_back()
 
 	if is_dead:
 		is_attacking = false
 		return
 
-	# Petit cooldown avant de pouvoir réattaquer
 	if cooldown > 0:
 		var t = get_tree().create_timer(cooldown)
 		await t.timeout
@@ -198,7 +266,7 @@ func attack_on_floor():
 func attack_swim():
 	if is_dead:
 		return
-	if is_attacking:
+	if is_attacking or is_hurt or is_roaring:
 		return
 	if not is_swim_croco:
 		return
@@ -213,7 +281,6 @@ func attack_swim():
 		if is_instance_valid(player) and not is_dead:
 			player.on_hit(damage)
 
-		# Attend la fin de l'animation de nage attaque
 		await anim.animation_finished
 
 	if is_dead:
@@ -233,17 +300,39 @@ func on_hit(damage_taken):
 	if is_dead:
 		return
 
-	if not anim.is_playing() or anim.current_animation != "onhit":
-		anim.play("onhit")
+	# On stoppe attaque + roar
+	is_attacking = false
+	is_roaring = false
+	velocity.x = 0
 
+	var play_onhit = false
+
+	# En eau : pas d'anim onhit, pas de stun
+	if is_swim_croco:
+		is_hurt = false
+	else:
+		is_hurt = true
+		if anim.has_animation("onhit"):
+			anim.play("onhit")
+			play_onhit = true
+
+	# PV
 	pv -= damage_taken
 	if pv < 0:
 		pv = 0
 	health_bar.value = pv
 	_show_damage_popup(damage_taken)
 
+	# Mort ?
 	if pv <= 0:
 		die()
+		return
+
+	# AU SOL : Attend la fin de l'anim onhit avant de pouvoir réattaquer
+	if play_onhit:
+		await anim.animation_finished
+
+	is_hurt = false
 
 func _show_damage_popup(amount):
 	var scene = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn")
@@ -259,10 +348,20 @@ func die():
 		return
 	is_dead = true
 	is_attacking = false
+	is_hurt = false
+	is_roaring = false
 	velocity = Vector2.ZERO
+	$Sound/Roar.stop()
+
+	# En eau : pas d'anim die
+	if is_swim_croco:
+		queue_free()
+		return
+
 	if anim.has_animation("die"):
 		anim.play("die")
 		await anim.animation_finished
+
 	queue_free()
 
 # ============================ ZONES ===========================
@@ -288,26 +387,25 @@ func _on_floor_area_body_exited(body):
 
 # ============================ ANIMS ===========================
 func process_swim():
-	if is_swim_croco and not is_attacking and not is_dead:
+	if is_swim_croco and not is_attacking and not is_dead and not is_hurt and not is_roaring:
 		if anim.has_animation("swim"):
 			if anim.current_animation != "swim":
 				anim.play("swim")
 
 func process_walk():
-	if not is_swim_croco and not is_attacking and not is_dead and is_on_floor():
+	if not is_swim_croco and not is_attacking and not is_dead and not is_hurt and not is_roaring and is_on_floor():
 		if abs(velocity.x) > 0.1:
 			if anim.has_animation("walk"):
 				if anim.current_animation != "walk":
 					anim.play("walk")
 
 func process_idle():
-	if is_attacking or is_dead:
+	if is_attacking or is_dead or is_hurt or is_roaring:
 		return
 
 	if is_swim_croco:
 		return
 
-	# Idle UNIQUEMENT si Moko est hors portée
 	var horiz_distance = abs(dx)
 	if horiz_distance > attack_range and is_on_floor():
 		if anim.has_animation("idle"):
