@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # ============================================================================
-# =                    VARIABLES, CONSTANTES, EXPORTS ...                   =
+#                  VARIABLES, CONSTANTES, EXPORTS, NODES                 
 # ============================================================================
 
 const INPUT = {
@@ -9,13 +9,12 @@ const INPUT = {
 	"left": "ui_left",
 	"right": "ui_right",
 	"down": "ui_down",
-	"fire_coco": "shoot",
+	"fire": "shoot",
 	"fire_lance": "shoot_spear",
 	"heal": "heal",
 	"ramp": "ramping",
 	"clac": "clacing"
 }
-const JUMP_BUFFER_TIME = 0.1
 
 @export var speed = 400
 @export var jump_force = -800
@@ -29,6 +28,7 @@ const JUMP_BUFFER_TIME = 0.1
 @export var total_seeds_in_level = 10  
 
 var spell_coco = preload("res://Shoot/Player/Coconut/coconut.tscn")
+var spell_bone = preload("res://Shoot/Player/Bone/bone.tscn")
 var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
 var game_state
 var can_move = true
@@ -52,10 +52,12 @@ var ramp_locked = false
 var is_gazed = false
 var is_web = false
 var can_fire_coco = false
+var can_fire_bone = false
 var can_fire_lance = false
 var rate_of_fire = 0.4
 var is_attacking = false # Attaque corps à corps 
 var coco_count = 0
+var bone_count = 0
 var banane_count = 0
 var seed_count = 0
 var lance_count = 0
@@ -79,10 +81,11 @@ var is_pushing_or_pulling = false
 # --- HUD Labels ---
 var label_banane
 var label_coco
+var label_bone
 var label_seed
 
 # =======================================================================
-# =                      ULTILITAIRES                                  =
+#                        ULTILITAIRES                                  
 # =======================================================================
 
 func play_anim(_name):
@@ -105,7 +108,7 @@ func show_damage_popup(amount):
 	popup.show_damage(amount)
 
 # =======================================================================
-# =                      INITIALISATION                                =
+#                       INITIALISATION                               
 # =======================================================================
 
 func _ready():
@@ -129,17 +132,20 @@ func setup_game_state():
 	game_state.set_player(self)
 	banane_count = game_state.banane_count
 	coco_count = game_state.coco_count
+	bone_count = game_state.bone_count
 	seed_count = game_state.seed_count
 	lance_count = game_state.lance_count
 	can_fire_coco = game_state.can_fire_coco
 	can_fire_lance = game_state.can_fire_lance
+	can_fire_bone = game_state.can_fire_bone
 
 func setup_hud():
 	if not game_state or not game_state.hud:
 		return
 	var hud = game_state.hud
 	label_banane = hud.get_node("HBoxContainerBanane/Label/BananeCountLabel")
-	label_coco = hud.get_node("HBoxContainerCoco/CocoCountLabel")
+	label_coco = hud.get_node("HbcCoco/HBoxContainerCoco/CocoCountLabel")
+	label_bone = hud.get_node("HbcBone/HBoxContainerBone/BoneCountLabel")
 	label_seed = hud.get_node("HBoxContainerSeed/SeedCountLabel")
 	if game_state and game_state.hud and game_state.hud.has_method("update_lives_display"):
 		game_state.hud.update_lives_display(game_state.lives)
@@ -176,7 +182,7 @@ func _physics_process(delta):
 	update_animation()
 
 # ============================================================================
-# =                         MOUVEMENTS                                      =
+#                           MOUVEMENTS                                      
 # ============================================================================
 
 func move_horizontal():
@@ -218,7 +224,7 @@ func process_wall_jump_input():
 	if is_swimming:
 		return
 	
-	if is_on_wall() and Input.is_action_just_pressed(INPUT["jump"]):
+	if is_on_wall() and Input.is_action_just_pressed("jump"):
 		wall_jump()
 
 func wall_jump():
@@ -351,8 +357,8 @@ func process_liana(_delta):
 	velocity = Vector2.ZERO
 	hand_to_grip()
 	
-	var left = Input.is_action_pressed(INPUT["left"])
-	var right = Input.is_action_pressed(INPUT["right"])
+	var left = Input.is_action_pressed("ui_left")
+	var right = Input.is_action_pressed("ui_right")
 	if current_liana.has_node("Pivot"):
 		if left:
 			current_liana.angle_direction = 1
@@ -377,7 +383,7 @@ func hand_to_grip():
 	global_position += delta
 
 # =================================================================================================
-# =                                   COLLECTES                                                   =
+#                                     COLLECTES                                                   
 # =================================================================================================
 
 func collect_banane(amount = 1):
@@ -412,6 +418,27 @@ func collect_coco(amount = 1, enable_shooting = false):
 	
 	update_coco_display()
 	show_info_popup("Tu peux lancer 3 noix de coco")
+
+func collect_bone(amount = 1, enable_shooting = false):
+	bone_count += amount
+	
+	if enable_shooting:
+		can_fire_bone = true
+		var hud = game_state.hud
+		if hud.has_method("set_button_enabled"):
+			hud.set_button_enabled(hud.get_node("Gamepad/Bone"), true)
+	
+	if game_state:
+		game_state.can_fire_bone = can_fire_bone
+		game_state.bone_count = bone_count
+		
+		# Bascule le HUD en mode BONE en passant par l'animation du HUD (remplace Coco par Bone)
+		if game_state.hud and game_state.hud.has_method("anim_to_bone_mode"):
+			game_state.hud.anim_to_bone_mode()
+	
+	update_bone_display()
+	show_info_popup("Tu peux lancer 3 os")
+	refresh_hud_buttons()
 
 func collect_lance(amount = 1, enable_shooting = false):
 	lance_count += amount
@@ -449,7 +476,7 @@ func collect_seed(amount = 1):
 		await parent.focus_camera_on_totem_with_anim(game_state.collected_seeds)
 
 # =============================================================================
-# =                              ACTIONS                                     =
+#                               ACTIONS                                     
 # =============================================================================
 
 func shoot_coco():
@@ -459,25 +486,55 @@ func shoot_coco():
 		return
 	if coco_count <= 0:
 		return
-
+	
 	coco_count -= 1
 	can_fire_coco = coco_count > 0
 	update_coco_display()
 	if game_state:
 		game_state.coco_count = coco_count
 		game_state.can_fire_coco = can_fire_coco
-
+	
 	animation_locked = true
 	anim.play("shoot")
 	await anim.animation_finished
-
+	
 	var spell = spell_coco.instantiate()
 	var dir = 1
 	if sprite.scale.x < 0:
 		dir = -1
 	spell.start($TurnAxis/CastPoint.global_position, dir)
 	get_tree().current_scene.add_child(spell)
+	
+	animation_locked = false
+	refresh_hud_buttons()
+	await get_tree().create_timer(rate_of_fire).timeout
 
+func shoot_bone():
+	if is_swimming or is_ramping or is_hanging or is_on_liana:
+		return
+	if not can_fire_bone:
+		return
+	if bone_count <= 0:
+		return
+	
+	bone_count -= 1
+	can_fire_bone = bone_count > 0
+	update_bone_display()
+	if game_state:
+		game_state.bone_count = bone_count
+		game_state.can_fire_bone = can_fire_bone
+	
+	animation_locked = true
+	anim.play("shoot")
+	await anim.animation_finished
+	
+	var spell = spell_bone.instantiate()
+	var dir = 1
+	if sprite.scale.x < 0:
+		dir = -1
+	spell.start($TurnAxis/CastPoint.global_position, dir)
+	get_tree().current_scene.add_child(spell)
+	
 	animation_locked = false
 	refresh_hud_buttons()
 	await get_tree().create_timer(rate_of_fire).timeout
@@ -509,25 +566,27 @@ func shoot_lance():
 	
 	if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
 		game_state.hud.update_lance_display()
-
+	
 	animation_locked = true
 	anim.play("shoot_lance")
 	await anim.animation_finished
-
+	
 	var spell = spell_lance.instantiate()
 	var dir = 1
 	if sprite.scale.x < 0:
 		dir = -1
 	spell.start($TurnAxis/CastPoint.global_position, dir)
 	get_tree().current_scene.add_child(spell)
-
+	
 	animation_locked = false
 	refresh_hud_buttons()
 	await get_tree().create_timer(rate_of_fire).timeout
 
 func process_shoot():
-	if Input.is_action_pressed(INPUT["fire_coco"]) and can_fire_coco:
+	if Input.is_action_pressed(INPUT["fire"]) and can_fire_coco:
 		shoot_coco()
+	if Input.is_action_pressed(INPUT["fire"]) and can_fire_bone:
+		shoot_bone()
 	if Input.is_action_pressed(INPUT["fire_lance"]) and can_fire_lance:
 		shoot_lance()
 
@@ -644,7 +703,7 @@ func kill_by_plant():
 	visible = false
 
 # ============================================================================
-# =                     DOMMAGES ET MORT                                       =
+#                       DOMMAGES ET MORT                                       
 # ============================================================================
 func on_hit(damage):
 	if not can_be_damaged or is_dead:
@@ -698,7 +757,7 @@ func die():
 	game_state.load_level(next_level)
 
 # ======================================================================
-# =        IMMUNITÉ AUX SECOUSSES (tremblement grenouille)             =
+#          IMMUNITÉ AUX SECOUSSES (tremblement grenouille)             
 # ======================================================================
 func is_quake_safe():
 	if not is_on_floor():
@@ -706,7 +765,7 @@ func is_quake_safe():
 	return false
 
 # ============================================================================
-# =                            ANIMATIONS                                   =
+#                              ANIMATIONS                                   
 # ============================================================================
 func update_animation():
 	if animation_locked or is_dead:
@@ -762,7 +821,7 @@ func update_animation():
 		anim.play("jump_down")
 
 # =============================================================================
-# =                             HUD & Popups                                  =
+#                               HUD & Popups                                  
 # =============================================================================
 
 func update_banane_display():
@@ -773,6 +832,10 @@ func update_coco_display():
 	if label_coco:
 		label_coco.text = "x %d" % coco_count
 
+func update_bone_display():
+	if label_bone:
+		label_bone.text = "x %d" % bone_count
+
 func update_seed_display():
 	if game_state and game_state.hud.has_method("update_seed_display"):
 		game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
@@ -780,6 +843,7 @@ func update_seed_display():
 func update_all_displays():
 	update_banane_display()
 	update_coco_display()
+	update_bone_display()
 	update_seed_display()
 	if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
 		game_state.hud.update_lance_display()
@@ -794,6 +858,9 @@ func refresh_hud_buttons():
 
 	if hud_parent.has_node("Gamepad/Coco"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Coco"), can_fire_coco)
+
+	if hud_parent.has_node("Gamepad/Bone"):
+		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Bone"), can_fire_bone)
 
 	if hud_parent.has_node("Gamepad/Spear"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Spear"), can_fire_lance)
@@ -815,18 +882,22 @@ func reset_state():
 	heal_potions.clear()
 	banane_count = 0
 	coco_count = 0
+	bone_count = 0
 	seed_count = 0
 	lance_count = 0
 	can_fire_coco = false
 	can_fire_lance = false
+	can_fire_bone = false
 	
 	if game_state:
 		game_state.banane_count = 0
 		game_state.coco_count = 0
+		game_state.bone_count = 0
 		game_state.seed_count = 0
 		game_state.lance_count = 0
 		game_state.can_fire_coco = false
 		game_state.can_fire_lance = false
+		game_state.can_fire_bone = false
 		
 		if game_state.hud and game_state.hud.has_method("update_health_bar"):
 			game_state.hud.update_health_bar(pv, max_pv)

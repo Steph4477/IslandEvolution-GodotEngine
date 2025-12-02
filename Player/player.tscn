@@ -568,7 +568,7 @@ position = Vector2(135, 64)
 rotation = 0.785398
 
 [node name="CastPoint" type="Marker2D" parent="TurnAxis"]
-position = Vector2(34.64825, -6.3639717)
+position = Vector2(36.062447, -33.234)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(151, 61)

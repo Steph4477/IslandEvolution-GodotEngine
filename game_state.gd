@@ -4,10 +4,12 @@ extends Node
 var banane_count = 0
 var coco_count = 0
 var seed_count = 0
+var bone_count = 0
 var heal_amount = 0
 var lance_count = 0
 var can_fire_coco = false
 var can_fire_lance = false
+var can_fire_bone = false
 var has_key = false
 var has_lance = false
 var has_flower = false
@@ -270,14 +272,17 @@ func _input(_event):
 func reinitialise():
 	banane_count = 0
 	coco_count = 0
+	bone_count = 0
 	seed_count = 0
 	lance_count = 0
 	can_fire_coco = false
 	can_fire_lance = false
+	can_fire_bone = false
 	if hud:
 		var gamepad = hud.get_node("Gamepad")
 		hud.set_button_enabled(gamepad.get_node("Ramp"), false)
 		hud.set_button_enabled(gamepad.get_node("Coco"), false)
+		hud.set_button_enabled(gamepad.get_node("Bone"), false)
 		hud.set_button_enabled(gamepad.get_node("Spear"), false)
 		hud.set_button_enabled(gamepad.get_node("Health"), false)
 		hud.update_seed_display(0, total_seeds_in_level)

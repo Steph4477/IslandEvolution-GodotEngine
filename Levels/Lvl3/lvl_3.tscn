@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=39 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://d1q1ij1egetju" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="PackedScene" uid="uid://4nftk6ff2hsq" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
 [ext_resource type="PackedScene" uid="uid://c3bfbcik1hu58" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
+[ext_resource type="PackedScene" uid="uid://ccrqrp5viv4wa" path="res://Loot/Bone/bone_loot.tscn" id="23_1o5ep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -450,7 +451,7 @@ position = Vector2(6608, 641)
 shape = SubResource("RectangleShape2D_2nymq")
 
 [node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_2nymq")]
-position = Vector2(7057, 899)
+position = Vector2(1134, 853)
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
@@ -476,6 +477,11 @@ scale = Vector2(0.15, 0.15)
 
 [node name="HiddenTrap" parent="." instance=ExtResource("21_odqky")]
 position = Vector2(11985, 1048)
+
+[node name="BoneLoot" parent="." instance=ExtResource("23_1o5ep")]
+z_index = 5
+position = Vector2(5275, 981)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]
