@@ -22,16 +22,16 @@ var gs
 func _ready():
 	# Le HUD doit continuer à recevoir les inputs même quand le jeu est en pause
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
+	
 	gs = get_node("/root/GameState")
-
+	
 	# Boutons grisés au démarrage (le Moko les activera quand il débloque les items)
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(coco_button, false)
 	set_button_enabled(lance_button, false)
 	set_button_enabled(health_button, false)
 	set_button_enabled(bone_button, false)
-
+	
 	# État initial : on affiche les cocos, pas les bones
 	if coco_hbox:
 		coco_hbox.visible = true
@@ -39,12 +39,12 @@ func _ready():
 		bone_hbox.visible = false
 	if bone_button:
 		bone_button.visible = false
-
+	
 	gs.hud = self
 	update_lives_display(gs.lives)
 	update_lance_display()
 	update_bone_display()
-
+	
 	# Neutralise toutes actions d'input des boutons HUD au lancement
 	for b in [ramp_button, coco_button, lance_button, health_button, bone_button]:
 		if b:
@@ -117,40 +117,40 @@ func update_bone_display():
 	
 	if bone_label:
 		bone_label.text = "x " + str(gs.bone_count)
-
+	
 	# active/désactive le bouton bone
 	if gs.bone_count > 0:
 		set_bone_button_enabled(true)
 	else:
 		set_bone_button_enabled(false)
-
+	
 # ---------------------------------------------------------
 #  SWITCH COCO -> BONE (appelé quand Moko loot un bone)
 # ---------------------------------------------------------
 func anim_to_bone_mode():
 	update_bone_display()
-
+	
 	# Prépare l’anim : les deux doivent être visibles
 	if coco_button:
 		coco_button.visible = true
 	if coco_hbox:
 		coco_hbox.visible = true
-
+	
 	if bone_button:
 		bone_button.visible = true
 	if bone_hbox:
 		bone_hbox.visible = true
-
+	
 	# Inactive les deux boutons pendant l'anim
 	set_coco_button_enabled(false)
 	set_bone_button_enabled(false)
-
+	
 	# Lance l'animation
 	if anim:
 		anim.play("bone_appear")
 		await anim.animation_finished
-
-	# Et quand l'anim est terminée, on fait le vrai switch
+	
+	# Quand l'anim est terminée, on fait le vrai switch
 	_finalize_switch_to_bone()
 
 func _finalize_switch_to_bone():
@@ -159,17 +159,16 @@ func _finalize_switch_to_bone():
 		coco_button.visible = false
 	if coco_hbox:
 		coco_hbox.visible = false
-
+	
 	# Affiche bone
 	if bone_button:
 		bone_button.visible = true
 		set_bone_button_enabled(true)
-
+	
 	if bone_hbox:
 		bone_hbox.visible = true
-
+	
 	update_bone_display()
-
 
 # --- Boutons ---
 func _on_menu_pressed():
