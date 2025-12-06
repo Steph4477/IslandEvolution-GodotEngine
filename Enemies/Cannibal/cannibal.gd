@@ -2,11 +2,12 @@ extends CharacterBody2D
 
 # ========================== RÉGLAGES ==========================
 @export var bone_scene = preload("res://Shoot/Enemies/Bone/bone.tscn")
+@export var bone_loot_scene = preload("res://Loot/Bone/bone_loot.tscn")
 
 @export var max_hp = 600
 @export var speed = 200
-@export var attack_range = 300      # distance pour le cac
-@export var bone_range = 800        # distance pour le jet d'os
+@export var attack_range = 300      # distance pour le cac (horizontale)
+@export var bone_range = 600        # distance pour le jet d'os (horizontale)
 @export var damage = 50
 @export var bone_cooldown = 1.0
 @export var attack_cooldown = 0.6
@@ -14,8 +15,8 @@ extends CharacterBody2D
 
 # --- Charge sauvage ---
 @export var charge_speed = 600.0           # vitesse pendant la charge
-@export var charge_min_range = 250.0       # distance mini pour déclencher
-@export var charge_max_range = 600.0       # distance maxi pour déclencher
+@export var charge_min_range = 250.0       # distance mini pour déclencher (horizontale)
+@export var charge_max_range = 600.0       # distance maxi pour déclencher (horizontale)
 @export var charge_duration = 0.6          # durée de la charge (en secondes)
 @export var charge_cooldown = 2.5          # temps avant de pouvoir recharger
 
@@ -29,9 +30,9 @@ const GRAVITY = 2000
 @onready var sprite = $Rotator/Sprite2D
 @onready var anim = $Rotator/AnimationPlayer
 @onready var rotator = $Rotator
-@onready var attack_timer = $CacTimer           # plus utilisé pour le CàC
+@onready var attack_timer = $CacTimer
 @onready var bone_timer = $BoneTimer
-@onready var dust_origin = $Rotator/DustOrigin  # Marker2D aux pieds pour la poussière
+@onready var dust_origin = $Rotator/DustOrigin
 
 var pv = 0
 var player = null
@@ -50,7 +51,8 @@ var charge_cooldown_left = 0.0
 
 var base_scale_x = 0.0
 var dx = 0.0
-var distance = 0.0
+var distance = 0.0          # distance totale (si besoin un jour)
+var horiz_distance = 0.0    # distance horizontale comme pour le croco
 
 # suivi pour détecter le début de saut de Moko
 var player_prev_on_floor = true
@@ -128,7 +130,8 @@ func _physics_process(delta):
 	
 	# Lancer d'os à distance, hors mêlée et hors charge
 	if not is_dead and not is_attacking and not is_charging:
-		if not in_melee and distance > attack_range and distance <= bone_range:
+		# même logique que le croco : on se base sur la distance horizontale
+		if not in_melee and horiz_distance > attack_range and horiz_distance <= bone_range:
 			if bone_timer.is_stopped():
 				bone_attack()
 	
@@ -144,6 +147,7 @@ func target():
 	var to_target = target_pos - global_position
 	dx = to_target.x
 	distance = to_target.length()
+	horiz_distance = abs(dx)
 
 func flip(_dx):
 	if dx > 1:
@@ -163,12 +167,19 @@ func move_and_anim():
 	if is_charging:
 		return
 	
-	# 1) En mêlée : on NE FORCE PLUS idle, on laisse attack_melee gérer l'anim
+	# 1) En mêlée : on laisse attack_melee gérer l'anim
 	if in_melee:
 		velocity.x = 0
 		return
 	
-	# 2) Sinon on marche vers Moko
+	# 2) Trop loin horizontalement -> il ne détecte pas Moko, reste idle
+	if horiz_distance > bone_range:
+		velocity.x = 0
+		if anim.current_animation != "idle":
+			anim.play("idle")
+		return
+	
+	# 3) Sinon on marche vers Moko (comme le croco)
 	if dx > 0:
 		velocity.x = speed
 		if anim.current_animation != "walk":
@@ -241,10 +252,10 @@ func maybe_start_charge():
 	if charge_cooldown_left > 0.0:
 		return
 	
-	# distance mauvaise -> pas de charge
-	if distance < charge_min_range:
+	# distance horizontale pour déclencher la charge (comme le croco)
+	if horiz_distance < charge_min_range:
 		return
-	if distance > charge_max_range:
+	if horiz_distance > charge_max_range:
 		return
 	
 	# On lance la charge
@@ -324,8 +335,8 @@ func bone_attack():
 	if is_dead:
 		return
 	
-	# Si il est au cac, on annule le tir
-	if in_melee or distance <= attack_range:
+	# Si il est au cac, on annule le tir (on se base sur la distance horizontale)
+	if in_melee or horiz_distance <= attack_range:
 		is_attacking = false
 		return
 	
@@ -388,6 +399,12 @@ func die():
 		cam.offset = Vector2.ZERO
 	anim.play("die")
 	await anim.animation_finished
+	
+	# lache loot os 
+	var loot = bone_loot_scene.instantiate()
+	get_parent().add_child(loot)
+	loot.global_position = global_position 
+	
 	queue_free()
 
 # =============================================================
@@ -423,7 +440,8 @@ func _on_bone_timer_timeout():
 		return
 	if in_melee:
 		return
-	if not is_attacking and distance > attack_range and distance <= bone_range:
+	# On se base aussi sur la distance horizontale pour le tir
+	if not is_attacking and horiz_distance > attack_range and horiz_distance <= bone_range:
 		bone_attack()
 	else:
 		bone_timer.stop()

@@ -84,6 +84,7 @@ libraries = {
 }
 
 [node name="Area2D" type="StaticBody2D" parent="."]
+visible = false
 z_index = 30
 collision_layer = 2
 collision_mask = 9
@@ -104,6 +105,7 @@ polygon = PackedVector2Array(104, -53, 126, -73, 160, -80, 221, -74, 85, 301, 30
 polygon = PackedVector2Array(4, -58, 15, -60, 13, -94, -4, -127, -37, -156, -17, -185, -119, -177, -77, -114)
 
 [node name="door" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="door"]
 position = Vector2(-26, 412.75)

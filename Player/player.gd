@@ -78,7 +78,7 @@ var is_pushing_or_pulling = false
 @onready var anim = $Node2D/Anim
 @onready var camera = $Camera2D
 
-# --- HUD Labels ---
+# --- HUD Labels (non utilisés directement pour l'affichage, désormais géré par le HUD) ---
 var label_banane
 var label_coco
 var label_bone
@@ -418,6 +418,7 @@ func collect_coco(amount = 1, enable_shooting = false):
 	
 	update_coco_display()
 	show_info_popup("Tu peux lancer 3 noix de coco")
+	refresh_hud_buttons()
 
 func collect_bone(amount = 1, enable_shooting = false):
 	bone_count += amount
@@ -482,18 +483,28 @@ func collect_seed(amount = 1):
 func shoot_coco():
 	if is_swimming or is_ramping or is_hanging or is_on_liana:
 		return
+	
+	# Resync depuis GameState 
+	coco_count = game_state.coco_count
+	can_fire_coco = game_state.can_fire_coco
+	
 	if not can_fire_coco:
 		return
 	if coco_count <= 0:
 		return
 	
+	# Consomme une coco
 	coco_count -= 1
 	can_fire_coco = coco_count > 0
-	update_coco_display()
-	if game_state:
-		game_state.coco_count = coco_count
-		game_state.can_fire_coco = can_fire_coco
 	
+	# Sync GameState
+
+	game_state.coco_count = coco_count
+	game_state.can_fire_coco = can_fire_coco
+	
+	update_coco_display()
+	
+	# Anim + projectile
 	animation_locked = true
 	anim.play("shoot")
 	await anim.animation_finished
@@ -512,18 +523,27 @@ func shoot_coco():
 func shoot_bone():
 	if is_swimming or is_ramping or is_hanging or is_on_liana:
 		return
+	
+	# Resync depuis GameState
+	bone_count = game_state.bone_count
+	can_fire_bone = game_state.can_fire_bone
+	
 	if not can_fire_bone:
 		return
 	if bone_count <= 0:
 		return
 	
+	# Consomme un os
 	bone_count -= 1
 	can_fire_bone = bone_count > 0
-	update_bone_display()
-	if game_state:
-		game_state.bone_count = bone_count
-		game_state.can_fire_bone = can_fire_bone
 	
+	# Sync GameState
+	game_state.bone_count = bone_count
+	game_state.can_fire_bone = can_fire_bone
+	
+	update_bone_display()
+	
+	# Anim + projectile
 	animation_locked = true
 	anim.play("shoot")
 	await anim.animation_finished
@@ -543,30 +563,26 @@ func shoot_lance():
 	if is_swimming or is_ramping or is_hanging or is_on_liana:
 		return
 	
-	# Sync avec GameState
-	if game_state:
-		lance_count = game_state.lance_count
-		can_fire_lance = game_state.can_fire_lance
+	# Resync depuis GameState
+	lance_count = game_state.lance_count
+	can_fire_lance = game_state.can_fire_lance
 	
 	if not can_fire_lance:
 		return
 	if lance_count <= 0:
-		if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
-			game_state.hud.update_lance_display()
 		return
 	
 	# Consomme une lance
 	lance_count -= 1
-	if lance_count <= 0:
-		can_fire_lance = false
+	can_fire_lance = lance_count > 0
 	
-	if game_state:
-		game_state.lance_count = lance_count
-		game_state.can_fire_lance = can_fire_lance
+	# Sync GameState
+	game_state.lance_count = lance_count
+	game_state.can_fire_lance = can_fire_lance
 	
-	if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
-		game_state.hud.update_lance_display()
+	update_lance_display()
 	
+	# Anim + projectile
 	animation_locked = true
 	anim.play("shoot_lance")
 	await anim.animation_finished
@@ -656,10 +672,11 @@ func use_banane():
 		heal_potions.pop_front()
 	
 	banane_count = heal_potions.size()
-	update_banane_display()
 	
 	if game_state:
 		game_state.banane_count = banane_count
+	
+	update_banane_display()
 	
 	in_cooldown = true
 	update_can_heal()
@@ -825,16 +842,20 @@ func update_animation():
 # =============================================================================
 
 func update_banane_display():
-	if label_banane:
-		label_banane.text = "x %d" % banane_count
+	if game_state and game_state.hud and game_state.hud.has_method("update_banane_display"):
+		game_state.hud.update_banane_display()
 
 func update_coco_display():
-	if label_coco:
-		label_coco.text = "x %d" % coco_count
+	if game_state and game_state.hud and game_state.hud.has_method("update_coco_display"):
+		game_state.hud.update_coco_display()
 
 func update_bone_display():
-	if label_bone:
-		label_bone.text = "x %d" % bone_count
+	if game_state and game_state.hud and game_state.hud.has_method("update_bone_display"):
+		game_state.hud.update_bone_display()
+
+func update_lance_display():
+	if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
+		game_state.hud.update_lance_display()
 
 func update_seed_display():
 	if game_state and game_state.hud.has_method("update_seed_display"):
@@ -844,9 +865,8 @@ func update_all_displays():
 	update_banane_display()
 	update_coco_display()
 	update_bone_display()
+	update_lance_display()
 	update_seed_display()
-	if game_state and game_state.hud and game_state.hud.has_method("update_lance_display"):
-		game_state.hud.update_lance_display()
 
 func refresh_hud_buttons():
 	if not game_state or not game_state.health_bar:

@@ -9,11 +9,15 @@ extends CanvasLayer
 @onready var life_sprites = $HBoxContainerLive.get_children()
 @onready var pause_button = $Gamepad/Break   # bouton pause (TouchScreenButton)
 @onready var break_sprite = $BreakSprite
-@onready var lance_label = $HBoxContainerLance/LanceCountLabel
+@onready var lance_label = $Gamepad/Spear/LanceCountLabel
 
 @onready var coco_hbox = $HbcCoco/HBoxContainerCoco
 @onready var bone_hbox = $HbcBone/HBoxContainerBone
-@onready var bone_label = $HbcBone/HBoxContainerBone/BoneCountLabel
+@onready var bone_label = $Gamepad/Bone/BoneCountLabel
+
+# --- Nouveaux labels centralisés dans le HUD ---
+@onready var banane_label = $Gamepad/Health/BananeCountLabel
+@onready var coco_label = $Gamepad/Coco/CocoCountLabel
 
 @onready var anim = $AnimationPlayer
 
@@ -41,9 +45,13 @@ func _ready():
 		bone_button.visible = false
 	
 	gs.hud = self
+	
 	update_lives_display(gs.lives)
 	update_lance_display()
 	update_bone_display()
+	update_banane_display()
+	update_coco_display()
+	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 	
 	# Neutralise toutes actions d'input des boutons HUD au lancement
 	for b in [ramp_button, coco_button, lance_button, health_button, bone_button]:
@@ -93,6 +101,10 @@ func set_lance_button_enabled(enabled):
 func set_bone_button_enabled(enabled):
 	set_button_enabled(bone_button, enabled)
 
+# -----------------------------------------------------------------
+#              AFFICHAGE DES COMPTEURS DANS LE HUD
+# -----------------------------------------------------------------
+
 func update_seed_display(collected, total):
 	var label = $HBoxContainerSeed/SeedCountLabel
 	if total > 0:
@@ -102,8 +114,8 @@ func update_seed_display(collected, total):
 		label.text = "0 / 0 (0%)"
 
 func update_lance_display():
-	if lance_label and gs:
-		lance_label.text = "x " + str(gs.lance_count)
+	if lance_label:
+		lance_label.text = str(gs.lance_count)
 	
 	# Active / désactive le bouton en fonction du stock
 	if gs and gs.lance_count > 0:
@@ -112,18 +124,29 @@ func update_lance_display():
 		set_lance_button_enabled(false)
 
 func update_bone_display():
-	if not gs:
-		return
-	
 	if bone_label:
-		bone_label.text = "x " + str(gs.bone_count)
+		bone_label.text = str(gs.bone_count)
 	
 	# active/désactive le bouton bone
 	if gs.bone_count > 0:
 		set_bone_button_enabled(true)
 	else:
 		set_bone_button_enabled(false)
+
+func update_banane_display():
+	if banane_label:
+		banane_label.text = str(gs.banane_count)
+
+func update_coco_display():
+	if coco_label:
+		coco_label.text = str(gs.coco_count)
 	
+	# Active/désactive le bouton coco en fonction du stock
+	if gs.coco_count > 0:
+		set_coco_button_enabled(true)
+	else:
+		set_coco_button_enabled(false)
+
 # ---------------------------------------------------------
 #  SWITCH COCO -> BONE (appelé quand Moko loot un bone)
 # ---------------------------------------------------------

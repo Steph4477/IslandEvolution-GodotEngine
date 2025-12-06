@@ -214,7 +214,8 @@ _data = {
 [node name="CounterTime" type="Node2D"]
 modulate = Color(1, 1, 1, 0.5019608)
 z_index = 100
-scale = Vector2(0.6, 0.6)
+position = Vector2(11, -72)
+scale = Vector2(0.2, 0.5)
 script = ExtResource("1_sbun5")
 
 [node name="3" type="Sprite2D" parent="."]
