@@ -323,7 +323,7 @@ position = Vector2(-1231, -55)
 butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
 
 [node name="Butterfly" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
-position = Vector2(-2934, 293)
+position = Vector2(-2278, 298)
 
 [node name="Items" type="Node2D" parent="."]
 

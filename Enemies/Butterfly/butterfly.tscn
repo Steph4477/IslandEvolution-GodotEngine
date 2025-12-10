@@ -1,31 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://ekkwdt7bcqfu"]
+[gd_scene load_steps=8 format=3 uid="uid://ekkwdt7bcqfu"]
 
 [ext_resource type="Script" uid="uid://clknygbf50kpn" path="res://Enemies/Butterfly/butterfly.gd" id="1_ca0hv"]
-[ext_resource type="Texture2D" uid="uid://cpd68dxlpdgcg" path="res://Enemies/Butterfly/Sprite/idle.png" id="3_17v06"]
 [ext_resource type="Texture2D" uid="uid://rw65nv7kcond" path="res://Enemies/Butterfly/Sprite/1.png" id="4_o2dpk"]
 [ext_resource type="Texture2D" uid="uid://bm5v83h1ckvnv" path="res://Enemies/Butterfly/Sprite/2.png" id="5_06kue"]
 [ext_resource type="Texture2D" uid="uid://cpd68dxlpdgcg" path="res://Enemies/Butterfly/Sprite/idle.png" id="5_jfxu4"]
 [ext_resource type="Texture2D" uid="uid://dsjt2ielqoul8" path="res://Enemies/Butterfly/Sprite/3.png" id="6_jt551"]
 
-[sub_resource type="Animation" id="Animation_d1ku1"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_17v06"), ExtResource("3_17v06")]
-}
-
 [sub_resource type="Animation" id="Animation_l6bps"]
 resource_name = "flight"
-length = 1.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -34,16 +17,15 @@ tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_o2dpk"), ExtResource("5_06kue"), ExtResource("6_jt551"), ExtResource("3_17v06"), ExtResource("4_o2dpk"), ExtResource("6_jt551")]
+"values": [ExtResource("4_o2dpk"), ExtResource("5_06kue"), ExtResource("6_jt551"), ExtResource("5_jfxu4")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kcxtp"]
 _data = {
-&"fly": SubResource("Animation_l6bps"),
-&"idle": SubResource("Animation_d1ku1")
+&"fly": SubResource("Animation_l6bps")
 }
 
 [node name="Papillon" type="Node2D"]

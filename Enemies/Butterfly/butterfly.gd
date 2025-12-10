@@ -17,7 +17,7 @@ func _ready():
 	# Point de référence pour éviter qu'il parte trop loin
 	origin_position = global_position
 
-	# Appliquer la couleur du papillon depuis l'inspecteur
+	# Applique la couleur du papillon depuis l'inspecteur
 	sprite.modulate = butterfly_color
 
 	# Animation en boucle
@@ -25,7 +25,6 @@ func _ready():
 		anim.play("fly")
 
 	# Timer répétitif
-	timer.one_shot = false
 	timer.wait_time = randf_range(min_dir_time, max_dir_time)
 	timer.start()
 
@@ -39,7 +38,6 @@ func _physics_process(delta):
 	if offset.length() > move_radius:
 		direction = (origin_position - global_position).normalized()
 
-	# Bloquer la rotation verticale → jamais retourné à l’envers
 	_update_sprite_facing()
 
 func _on_timer_timeout():
@@ -48,12 +46,11 @@ func _on_timer_timeout():
 
 func _choose_new_direction():
 	# Nouvelle direction horizontale + légère variation verticale
-	var angle = randf_range(-0.5, 0.5)  # évite de monter/descendre trop
+	var angle = randf_range(-0.5, 0.5)  
 	direction = Vector2(randf_range(-1.0, 1.0), angle).normalized()
 
 func _update_sprite_facing():
-	# Interdit les flips verticaux
-	# On ne flip QUE sur X (gauche/droite)
+	# flip (gauche/droite)
 	if direction.x < 0:
 		sprite.scale.x = -abs(sprite.scale.x)
 	else:
