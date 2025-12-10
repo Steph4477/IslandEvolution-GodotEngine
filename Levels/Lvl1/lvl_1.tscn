@@ -85,7 +85,7 @@ script = ExtResource("1_mebys")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
-position = Vector2(191, 1141)
+position = Vector2(167, 1410)
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
@@ -301,25 +301,29 @@ position = Vector2(980, -356)
 position = Vector2(-791, 342)
 
 [node name="Butterfly2" type="Node2D" parent="Creatures"]
-z_index = 5
-
-[node name="Butterfly" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
-position = Vector2(3516, 215)
 
 [node name="Butterfly2" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
 position = Vector2(2387, 97)
+butterfly_color = Color(0.99785334, 0.9176539, 0.9126982, 1)
 
 [node name="Butterfly3" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
 position = Vector2(1419, 279)
+butterfly_color = Color(0.30679777, 0.024966344, 0.058257446, 1)
 
 [node name="Butterfly4" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
 position = Vector2(386, 83)
+butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
 
 [node name="Butterfly5" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
 position = Vector2(-629, -97)
+butterfly_color = Color(0.82884276, 0.66643363, 0.15861124, 1)
 
 [node name="Butterfly6" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
 position = Vector2(-1231, -55)
+butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
+
+[node name="Butterfly" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
+position = Vector2(-2934, 293)
 
 [node name="Items" type="Node2D" parent="."]
 
@@ -327,17 +331,17 @@ position = Vector2(-1231, -55)
 position = Vector2(6128, 1255)
 script = ExtResource("18_p8qu6")
 
-[node name="Seed1" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
-position = Vector2(-4379, 62)
-
-[node name="Seed2" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
-position = Vector2(-1719, -335)
-
 [node name="Seed3" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
-position = Vector2(439, -173)
+position = Vector2(432, -170)
 
 [node name="Seed4" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
-position = Vector2(-2972, -679)
+position = Vector2(-2033, -469)
+
+[node name="Seed5" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
+position = Vector2(-4114, -59)
+
+[node name="Seed6" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
+position = Vector2(-3326, -491)
 
 [node name="Sound" type="Node2D" parent="."]
 
@@ -347,6 +351,6 @@ stream = ExtResource("20_qky26")
 volume_db = 4.837
 
 [node name="Totem" parent="." instance=ExtResource("21_t7ttw")]
-position = Vector2(3757, 555)
+position = Vector2(3767, 550)
 
 [node name="QuestBox" parent="." instance=ExtResource("22_2hr7n")]

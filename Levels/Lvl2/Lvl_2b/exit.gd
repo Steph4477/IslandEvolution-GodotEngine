@@ -11,4 +11,4 @@ func change_scene():
 	var gs = get_node_or_null("/root/GameState")
 	if not gs:
 		return
-	gs.change_scene(next_scene_path)
+	gs.load_level(next_scene_path)

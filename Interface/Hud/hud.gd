@@ -127,7 +127,7 @@ func update_bone_display():
 	if bone_label:
 		bone_label.text = str(gs.bone_count)
 	
-	# active/désactive le bouton bone
+	# active/désactive le bouton en fonction du stock
 	if gs.bone_count > 0:
 		set_bone_button_enabled(true)
 	else:

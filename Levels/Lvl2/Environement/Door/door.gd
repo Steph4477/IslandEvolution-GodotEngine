@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var next_scene_path = "res://Levels/lvl2/Lvl_2b/lvl_2b.tscn"
+@export var next_scene_path = "res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn"
 
 var is_unlocked = false
 var open_anim_played = false
@@ -64,4 +64,4 @@ func change_scene():
 	var gs = get_node_or_null("/root/GameState")
 	if not gs:
 		return
-	gs.change_scene(next_scene_path)
+	gs.load_level(next_scene_path)

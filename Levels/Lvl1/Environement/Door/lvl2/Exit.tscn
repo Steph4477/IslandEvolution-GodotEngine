@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cgsy8csn5xuaf" path="res://sounds/closed_door.wav" id="4_jvi1g"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(6.6874995, 18.500015)
+size = Vector2(22.500002, 133.75006)
 
 [sub_resource type="Animation" id="Animation_26mmp"]
 length = 0.001
@@ -83,8 +83,8 @@ position = Vector2(3, -361)
 texture = ExtResource("3_55pyj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.40624967, 144.24997)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(7.499997, 158.12495)
+scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

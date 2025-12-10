@@ -13,10 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://yr42qgeox6c6" path="res://Levels/Lvl2/Accessory/web1.png" id="11_sbfsf"]
 [ext_resource type="PackedScene" uid="uid://bu2ct8a57pel" path="res://Levels/Lvl2/Lvl_2b/exit.tscn" id="15_jdw5o"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="17_jdw5o"]
-[ext_resource type="PackedScene" uid="uid://bcs46og1xw5xu" path="res://Loot/Life/life.tscn" id="18_57xq1"]
 [ext_resource type="Texture2D" uid="uid://buwotkxelgpra" path="res://Levels/Lvl2/Lvl_2b/exit/z-index10.png" id="18_uikls"]
 [ext_resource type="PackedScene" uid="uid://etkf807l8n5e" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="18_w1c1k"]
 [ext_resource type="Texture2D" uid="uid://f8myd6e04x3i" path="res://Levels/Lvl2/Lvl_2b/exit/halo_z-index10.png" id="19_gr680"]
+[ext_resource type="PackedScene" uid="uid://bnt151ce54b28" path="res://Loot/Life/life_loot.tscn" id="19_grbhh"]
 [ext_resource type="Texture2D" uid="uid://bqc5xixxrivsr" path="res://Levels/Lvl2/Lvl_2b/exit/z-index0.png" id="20_4s17o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
@@ -51,7 +51,7 @@ modulate = Color(0.46618086, 0.4661808, 0.4661808, 1)
 position = Vector2(-65, -1453)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
-position = Vector2(230, 1248)
+position = Vector2(76, 1375)
 
 [node name="Background" type="Node2D" parent="Node2D"]
 position = Vector2(8313, 1319)
@@ -286,11 +286,8 @@ scale = Vector2(5, 8)
 [node name="Toucan" parent="." instance=ExtResource("17_jdw5o")]
 position = Vector2(5140, -1012)
 
-[node name="LifeLoot" parent="." instance=ExtResource("18_57xq1")]
-modulate = Color(0.5106012, 0.5106013, 0.5106012, 1)
-z_index = 10
-position = Vector2(6684, 408)
-scale = Vector2(0.15, 0.15)
-script = null
-
 [node name="ParalaxeCiel" parent="." instance=ExtResource("18_w1c1k")]
+
+[node name="LifeLoot" parent="." instance=ExtResource("19_grbhh")]
+position = Vector2(6738, 399)
+scale = Vector2(0.1, 0.1)

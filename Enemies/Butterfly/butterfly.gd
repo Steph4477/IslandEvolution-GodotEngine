@@ -1,34 +1,60 @@
-extends CharacterBody2D
+extends Node2D
 
-@export var show_duration := 1.8
+@export var speed = 40.0
+@export var move_radius = 80.0
+@export var min_dir_time = 0.5
+@export var max_dir_time = 2.0
+@export var butterfly_color = Color(1, 1, 1, 1)   # couleur modifiable dans l’inspecteur
 
 @onready var sprite = $Sprite
 @onready var anim = $AnimationPlayer
 @onready var timer = $Timer
-@onready var area = $Area2D
+
+var origin_position
+var direction = Vector2.ZERO
 
 func _ready():
-	# Caché au départ
-	#sprite.visible = false
-	# Timer en one_shot pour auto-s'arrêter
-	timer.one_shot = true
-	# Connecte le signal une seule fois si pas déjà fait (au cas où)
-	if not timer.timeout.is_connected(_on_timer_timeout):
-		timer.timeout.connect(_on_timer_timeout)
+	# Point de référence pour éviter qu'il parte trop loin
+	origin_position = global_position
 
+	# Appliquer la couleur du papillon depuis l'inspecteur
+	sprite.modulate = butterfly_color
 
-func start_show():
-	# Affiche, lance l’anim une fois, puis démarre le compte à rebours
-	#sprite.visible = true
-	if anim.current_animation != "fly" or not anim.is_playing():
+	# Animation en boucle
+	if anim.has_animation("fly"):
 		anim.play("fly")
-	timer.wait_time = show_duration
+
+	# Timer répétitif
+	timer.one_shot = false
+	timer.wait_time = randf_range(min_dir_time, max_dir_time)
 	timer.start()
 
-func _on_timer_timeout():
-	queue_free()
+	_choose_new_direction()
 
-func _on_area_2d_body_entered(body):
-	# Affiche lors de la collision et démarre le timer
-	print("collision avec :", body)
-	start_show()
+func _physics_process(delta):
+	position += direction * speed * delta
+
+	# Limite de rayon
+	var offset = global_position - origin_position
+	if offset.length() > move_radius:
+		direction = (origin_position - global_position).normalized()
+
+	# Bloquer la rotation verticale → jamais retourné à l’envers
+	_update_sprite_facing()
+
+func _on_timer_timeout():
+	timer.wait_time = randf_range(min_dir_time, max_dir_time)
+	_choose_new_direction()
+
+func _choose_new_direction():
+	# Nouvelle direction horizontale + légère variation verticale
+	var angle = randf_range(-0.5, 0.5)  # évite de monter/descendre trop
+	direction = Vector2(randf_range(-1.0, 1.0), angle).normalized()
+
+func _update_sprite_facing():
+	# Interdit les flips verticaux
+	# On ne flip QUE sur X (gauche/droite)
+	if direction.x < 0:
+		sprite.scale.x = -abs(sprite.scale.x)
+	else:
+		sprite.scale.x = abs(sprite.scale.x)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6y25h2tqe3bh"]
+[gd_scene load_steps=8 format=3 uid="uid://b6y25h2tqe3bh"]
 
 [ext_resource type="Script" uid="uid://d3pumlcq6ui8l" path="res://ItemsDecors/Totem/totem.gd" id="1_4w81w"]
 [ext_resource type="Texture2D" uid="uid://b77f8nd62frti" path="res://ItemsDecors/Totem/1.png" id="2_7x43p"]
@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://y4kv5yioo6h8" path="res://ItemsDecors/Totem/5.png" id="4_5qhso"]
 [ext_resource type="Texture2D" uid="uid://bahroyed5cgpi" path="res://ItemsDecors/Totem/3.png" id="4_31wvm"]
 [ext_resource type="Texture2D" uid="uid://b7q70okdy5bti" path="res://ItemsDecors/Totem/4.png" id="5_66g6m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3a4u"]
-size = Vector2(2.68996, 11.4054)
 
 [node name="Totem" type="Node2D"]
 script = ExtResource("1_4w81w")
@@ -44,17 +41,5 @@ position = Vector2(-32, -34)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_66g6m")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(-34, -35)
-rotation = -3.14159
-scale = Vector2(16.1713, -4.03317)
-shape = SubResource("RectangleShape2D_b3a4u")
-
 [node name="KeySpawn" type="Marker2D" parent="."]
 position = Vector2(-38, -35)
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

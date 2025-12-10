@@ -1,8 +1,10 @@
 extends Node2D
 @onready var anim = $AnimationPlayer
 
+
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
+		print("C'est bien le joueur, on tente un gain de vie")
 		var gained = get_node("/root/GameState").gain_life()
 		if gained:
 			anim.play("loot")
