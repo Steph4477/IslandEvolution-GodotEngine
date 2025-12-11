@@ -197,6 +197,7 @@ _data = {
 size = Vector2(33, 63)
 
 [node name="lvl3" type="Node2D"]
+position = Vector2(-6, -39)
 script = ExtResource("1_73pra")
 
 [node name="Node2D" type="Node2D" parent="."]

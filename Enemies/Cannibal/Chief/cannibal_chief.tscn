@@ -1,0 +1,269 @@
+[gd_scene load_steps=17 format=3 uid="uid://ddrhycfvimm23"]
+
+[ext_resource type="Script" uid="uid://bi4txudhhmxkx" path="res://Enemies/Cannibal/Chief/cannibal_chief.gd" id="1_8515d"]
+[ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_bi03u"]
+[ext_resource type="Texture2D" uid="uid://d3o58nw1ob2yt" path="res://Enemies/Cannibal/Chief/cannibal_chief_spritesheet.png" id="3_be8sy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhvfg"]
+size = Vector2(159, 90.5)
+
+[sub_resource type="Animation" id="Animation_32703"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_cdxee"]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_xp156"]
+resource_name = "cac"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.43333337),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_v1ul3"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.76666665, 1.4333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_uofv0"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_eydga"]
+resource_name = "jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_8rla3"]
+resource_name = "onhit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_t23p8"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666668, 0.16666667, 0.26666668, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_23rwj"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [21, 22]
+}
+
+[sub_resource type="Animation" id="Animation_8515d"]
+resource_name = "appear"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_giy1g"]
+_data = {
+&"RESET": SubResource("Animation_32703"),
+&"appear": SubResource("Animation_8515d"),
+&"attack": SubResource("Animation_cdxee"),
+&"cac": SubResource("Animation_xp156"),
+&"die": SubResource("Animation_v1ul3"),
+&"idle": SubResource("Animation_uofv0"),
+&"jump": SubResource("Animation_eydga"),
+&"onhit": SubResource("Animation_8rla3"),
+&"run": SubResource("Animation_t23p8"),
+&"walk": SubResource("Animation_23rwj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(32, 113)
+
+[node name="CannibalChief" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(-1, 1)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_8515d")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_bi03u")]
+position = Vector2(56, -100)
+rotation = 3.14159
+scale = Vector2(1, -1.00374)
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+position = Vector2(-36, -16)
+scale = Vector2(-0.25, 0.25)
+texture = ExtResource("3_be8sy")
+vframes = 23
+frame = 1
+
+[node name="Area2D" type="Area2D" parent="Rotator" groups=["Enemies"]]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/Area2D"]
+light_mask = 0
+position = Vector2(1.5, -13.25)
+shape = SubResource("RectangleShape2D_jhvfg")
+
+[node name="Muzzle" type="Marker2D" parent="Rotator"]
+position = Vector2(-57, -6)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_giy1g")
+}
+autoplay = "appear"
+
+[node name="DustOrigin" type="Marker2D" parent="Rotator"]
+position = Vector2(159, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -11.5)
+shape = SubResource("RectangleShape2D_x2fpe")
+
+[node name="JumpTimer" type="Timer" parent="."]
+
+[node name="CacTimer" type="Timer" parent="."]
+
+[node name="BoneTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Rotator/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Rotator/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="CacTimer" to="." method="_on_cac_timer_timeout"]
+[connection signal="timeout" from="BoneTimer" to="." method="_on_bone_timer_timeout"]
