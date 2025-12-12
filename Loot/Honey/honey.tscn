@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1s7eeygvitm0"]
+
+[ext_resource type="Script" uid="uid://buxm1ymq7od6y" path="res://Loot/Honey/honey.gd" id="1_e4h8j"]
+[ext_resource type="Texture2D" uid="uid://dvabqv4un1wii" path="res://Loot/Honey/honey.png" id="2_e4h8j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4h8j"]
+radius = 25.0
+
+[sub_resource type="Curve2D" id="Curve2D_e4h8j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 9.999999, 0, 0, 0, 0, 0, 45, 13, 0, 0, 0, 0, 72, 0, 0, 0, 0, 0, 92, 6, 0, 0, 0, 0, 111, 0, 0, 0, 0, 0, 127, 2, 0, 0, 0, 0, 138, 9, 0, 0, 0, 0, 152, 1, 0, 0, 0, 0, 171, 1, 0, 0, 0, 0, 190, 0)
+}
+point_count = 10
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
+radius = 1.5076457
+
+[sub_resource type="Animation" id="Animation_qreit"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e4h8j"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.9302604913129778, 0.8377580409572782]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(185, -5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uowfm"]
+_data = {
+&"RESET": SubResource("Animation_qreit"),
+&"appear": SubResource("Animation_e4h8j")
+}
+
+[node name="HoneyLoot" type="RigidBody2D"]
+collision_mask = 2
+gravity_scale = 2.0
+script = ExtResource("1_e4h8j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e4h8j")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_e4h8j")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(190, 0)
+rotation = -0.05258306
+progress = 191.42215
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_e4h8j")
+
+[node name="PickupArea" type="Area2D" parent="Path2D/PathFollow2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/PickupArea"]
+position = Vector2(-6.239994, -10.680002)
+rotation = -3.14159
+scale = Vector2(16.1668, -18.3068)
+shape = SubResource("CircleShape2D_52bb4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uowfm")
+}
+autoplay = "appear"
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/PickupArea" to="." method="_on_pickup_area_body_entered"]
