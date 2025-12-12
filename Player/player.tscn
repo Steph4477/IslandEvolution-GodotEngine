@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=82 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/player.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://2ymynqarqqhp" path="res://Player/Sprite/onhit/1.png" id="2_2paov"]
@@ -536,6 +536,10 @@ size = Vector2(137, 122)
 radius = 40.0
 height = 319.14893
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uvbbp"]
+radius = 40.0
+height = 163.12054
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 10
 collision_mask = 294
@@ -600,5 +604,10 @@ shape = SubResource("RectangleShape2D_7x5p2")
 position = Vector2(135, 101.00001)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("CapsuleShape2D_c4i3b")
+
+[node name="ColRamp" type="CollisionShape2D" parent="." groups=["Player"]]
+position = Vector2(135, 123)
+scale = Vector2(0.3, 0.282)
+shape = SubResource("CapsuleShape2D_uvbbp")
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]

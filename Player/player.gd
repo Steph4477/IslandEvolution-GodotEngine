@@ -13,7 +13,8 @@ const INPUT = {
 	"fire_lance": "shoot_spear",
 	"heal": "heal",
 	"ramp": "ramping",
-	"clac": "clacing"
+	"clac": "clacing",
+	"sprint": "sprint"
 }
 
 @export var speed = 400
@@ -48,6 +49,8 @@ var swim_speed_x = 150
 var swim_speed_y = 110
 var swim_timer = 0.0
 var water_current = Vector2(-120, 0)  # force du courant
+var can_sprint = false
+var is_sprinting = false
 var ramp_locked = false
 var is_gazed = false
 var is_web = false
@@ -138,7 +141,9 @@ func setup_game_state():
 	can_fire_coco = game_state.can_fire_coco
 	can_fire_lance = game_state.can_fire_lance
 	can_fire_bone = game_state.can_fire_bone
-
+	can_ramp = game_state.ramp_unlocked
+	can_sprint = game_state.sprint_unlocked
+	
 func setup_hud():
 	if not game_state or not game_state.hud:
 		return
@@ -168,6 +173,7 @@ func _physics_process(delta):
 	process_climb()
 	process_liana(delta)
 	update_jump(delta)
+	process_sprint()
 	move_horizontal()
 	process_ramp()
 	process_swim(delta)
@@ -184,14 +190,17 @@ func _physics_process(delta):
 # ============================================================================
 #                           MOUVEMENTS                                      
 # ============================================================================
-
 func move_horizontal():
 	if is_on_liana:
 		velocity.x = 0
 		return
 	
 	var dir = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
-	velocity.x = dir * speed
+	var current_speed = speed
+	if is_sprinting:
+		current_speed = speed * 1.5
+	
+	velocity.x = dir * current_speed
 	
 	if dir != 0 and not is_pushing_or_pulling:
 		if dir > 0:
@@ -290,6 +299,8 @@ func process_hang_swing(delta):
 # --- Ramp ---
 func unlock_ramp():
 	can_ramp = true
+	game_state.ramp_unlocked = true   
+
 	show_info_popup("🤸 Tu peux maintenant ramper !")
 	
 	if not game_state or not game_state.health_bar:
@@ -298,6 +309,7 @@ func unlock_ramp():
 	var hud = game_state.hud
 	if hud.has_node("Gamepad/Ramp"):
 		hud.set_button_enabled(hud.get_node("Gamepad/Ramp"), true)
+
 
 func process_ramp():
 	if can_ramp and Input.is_action_just_pressed(INPUT["ramp"]) and is_on_floor() and not ramp_locked:
@@ -320,6 +332,58 @@ func process_ramp():
 		var rdir = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
 		velocity.x = rdir * speed * 0.4
 		velocity.y += gravity * gravity_factor * get_physics_process_delta_time()
+
+# --- Sprint ---
+func unlock_sprint():
+	can_sprint = true
+	game_state.sprint_unlocked = true
+	game_state.sprint_stamina = game_state.sprint_stamina_max
+	
+	if game_state.speed_bar:
+		game_state.speed_bar.visible = true
+		game_state.speed_bar.update_speed_bar_current(game_state.sprint_stamina)
+	
+	if game_state.hud:
+		var hud = game_state.hud
+		if hud.has_node("Gamepad/Sprint"):
+			hud.set_button_enabled(hud.get_node("Gamepad/Sprint"), true)
+	
+	show_info_popup("⚡ Tu peux maintenant sprinter avec Shift !")
+
+func process_sprint():
+	var delta = get_physics_process_delta_time()
+	
+	if not game_state:
+		return
+	
+	if not game_state.sprint_unlocked:
+		is_sprinting = false
+		return
+	
+	# Pas de sprint dans ces états
+	if is_swimming or is_ramping or is_on_liana:
+		is_sprinting = false
+		if game_state.sprint_stamina < game_state.sprint_stamina_max:
+			game_state.sprint_stamina += game_state.sprint_stamina_regen * delta
+			if game_state.sprint_stamina > game_state.sprint_stamina_max:
+				game_state.sprint_stamina = game_state.sprint_stamina_max
+		game_state.speed_bar.update_speed_bar_current(game_state.sprint_stamina)
+		return
+	
+	if Input.is_action_pressed(INPUT["sprint"]) and game_state.sprint_stamina > 0:
+		is_sprinting = true
+		game_state.sprint_stamina -= game_state.sprint_stamina_cost * delta
+		if game_state.sprint_stamina <= 0:
+			game_state.sprint_stamina = 0
+			is_sprinting = false
+	else:
+		is_sprinting = false
+		if game_state.sprint_stamina < game_state.sprint_stamina_max:
+			game_state.sprint_stamina += game_state.sprint_stamina_regen * delta
+			if game_state.sprint_stamina > game_state.sprint_stamina_max:
+				game_state.sprint_stamina = game_state.sprint_stamina_max
+	
+	game_state.speed_bar.update_speed_bar_current(game_state.sprint_stamina)
 
 # --- Nage ---
 func process_swim(delta):
@@ -871,26 +935,29 @@ func update_all_displays():
 func refresh_hud_buttons():
 	if not game_state or not game_state.health_bar:
 		return
-
+	
 	var hud_parent = game_state.health_bar.get_parent()
 	if not hud_parent:
 		return
-
+	
 	if hud_parent.has_node("Gamepad/Coco"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Coco"), can_fire_coco)
-
+	
 	if hud_parent.has_node("Gamepad/Bone"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Bone"), can_fire_bone)
-
+	
 	if hud_parent.has_node("Gamepad/Spear"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Spear"), can_fire_lance)
-
+	
 	var can_heal_btn = pv < max_pv and heal_potions.size() > 0 and not in_cooldown
 	if hud_parent.has_node("Gamepad/Health"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Health"), can_heal_btn)
-
+	
 	if hud_parent.has_node("Gamepad/Ramp"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Ramp"), can_ramp)
+	
+	if hud_parent.has_node("Gamepad/Sprint"):
+		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Sprint"), can_sprint)
 
 func reset_state():
 	is_dead = false

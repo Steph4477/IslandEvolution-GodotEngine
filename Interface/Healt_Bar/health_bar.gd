@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@export var max_value := 2000
-@onready var bar := $TextureProgressBar
+@export var max_value = 2000
+@onready var bar = $TextureProgressBar
 
 func _ready():
 	bar.max_value = max_value

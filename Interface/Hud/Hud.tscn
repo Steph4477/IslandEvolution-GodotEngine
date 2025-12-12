@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=38 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
@@ -19,15 +19,20 @@
 [ext_resource type="Texture2D" uid="uid://gt1j518e3is2" path="res://Interface/GamePad/Pressed/menu.png" id="15_ce0vt"]
 [ext_resource type="Texture2D" uid="uid://ecc0y625hs75" path="res://Interface/GamePad/potion.png" id="15_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://do6vj6xmbp01c" path="res://Interface/GamePad/Pressed/ramp.png" id="15_s8lhr"]
+[ext_resource type="Texture2D" uid="uid://xxtxicxswmnw" path="res://Interface/GamePad/sprint_button.png" id="16_8k643"]
 [ext_resource type="Texture2D" uid="uid://b8wdslrwg00xo" path="res://Interface/GamePad/cooldown_popo2.png" id="16_b0qj5"]
 [ext_resource type="Texture2D" uid="uid://bgs6ob3c4vn6i" path="res://Interface/GamePad/break.png" id="16_smsye"]
+[ext_resource type="Texture2D" uid="uid://cbfrxhvvuqxm0" path="res://Interface/GamePad/Pressed/sprint_button.png" id="17_f7l5a"]
 [ext_resource type="Texture2D" uid="uid://bh7du3h4bnf8w" path="res://Interface/GamePad/Pressed/break.png" id="17_m6ehm"]
 [ext_resource type="Texture2D" uid="uid://dhaaggwqnjw7f" path="res://Interface/Hud/life.png" id="18_1hj8m"]
-[ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Hud/health_bar.gd" id="19_s8lhr"]
+[ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Healt_Bar/health_bar.gd" id="19_s8lhr"]
+[ext_resource type="Texture2D" uid="uid://cp76hvpelaygs" path="res://Interface/GamePad/sprint.png" id="22_f2ifn"]
 [ext_resource type="PackedScene" uid="uid://cbx7p8yvy6gn3" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
 [ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/Healt_Bar/bar_under.png" id="22_xl2wx"]
 [ext_resource type="PackedScene" uid="uid://ccmd315gfailw" path="res://Interface/Cursor/game_cursor.tscn" id="23_ff868"]
-[ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/Healt_Bar/bar_fill2.png" id="23_u63cs"]
+[ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/Healt_Bar/progress_bar.png" id="23_u63cs"]
+[ext_resource type="Texture2D" uid="uid://ce031dj4wmnff" path="res://Interface/Speed_Bar/progress_bar.png" id="27_mltuv"]
+[ext_resource type="Script" uid="uid://bdoxhgt5axy6w" path="res://Interface/Speed_Bar/speed_bar.gd" id="27_wb1yk"]
 [ext_resource type="Texture2D" uid="uid://cvxra31oja48s" path="res://Interface/Hud/break.png" id="28_m6ehm"]
 
 [sub_resource type="Animation" id="Animation_ccc6n"]
@@ -240,6 +245,12 @@ texture_normal = ExtResource("14_e8y56")
 texture_pressed = ExtResource("15_s8lhr")
 action = "ramping"
 
+[node name="Sprint" type="TouchScreenButton" parent="Gamepad"]
+position = Vector2(470, 925)
+texture_normal = ExtResource("16_8k643")
+texture_pressed = ExtResource("17_f7l5a")
+action = "sprint"
+
 [node name="Menu" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(1597, 42)
 scale = Vector2(0.11, 0.11)
@@ -263,18 +274,18 @@ offset_bottom = 432.0
 [node name="Label" type="Node2D" parent="HBoxContainerBanane"]
 position = Vector2(1180, -259)
 
-[node name="Texture" type="Node2D" parent="HBoxContainerBanane"]
+[node name="TexturePotion" type="Node2D" parent="HBoxContainerBanane"]
 position = Vector2(345, -25)
 scale = Vector2(0.715505, 0.715329)
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainerBanane/Texture"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainerBanane/TexturePotion"]
 offset_left = 1030.04
 offset_top = -384.439
 offset_right = 1130.04
 offset_bottom = -282.439
 texture = ExtResource("15_rgqxt")
 
-[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/Texture"]
+[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/TexturePotion"]
 offset_left = 1013.27
 offset_top = -406.806
 offset_right = 2037.27
@@ -338,6 +349,47 @@ texture_progress = ExtResource("23_u63cs")
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="SpeedBar" type="CanvasLayer" parent="."]
+script = ExtResource("27_wb1yk")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SpeedBar"]
+offset_left = 224.0
+offset_top = 159.0
+offset_right = 457.0
+offset_bottom = 233.0
+max_value = 2000.0
+value = 2000.0
+nine_patch_stretch = true
+texture_under = ExtResource("22_xl2wx")
+texture_progress = ExtResource("27_mltuv")
+
+[node name="TextureRect" type="TextureRect" parent="SpeedBar"]
+offset_left = 173.0
+offset_top = 176.0
+offset_right = 213.0
+offset_bottom = 216.0
+
+[node name="TextureSprint" type="Node2D" parent="SpeedBar"]
+position = Vector2(-16, 182)
+scale = Vector2(0.1, 0.1)
+
+[node name="TextureRect" type="TextureRect" parent="SpeedBar/TextureSprint"]
+offset_left = 1030.04
+offset_top = -384.439
+offset_right = 1130.04
+offset_bottom = -282.439
+texture = ExtResource("22_f2ifn")
+
+[node name="coolDownCircle" type="TextureProgressBar" parent="SpeedBar/TextureSprint"]
+offset_left = 1013.27
+offset_top = -406.806
+offset_right = 2037.27
+offset_bottom = 617.194
+scale = Vector2(0.143016, 0.14321)
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("16_b0qj5")
+
 [node name="TimerChrono" parent="." instance=ExtResource("22_hny2p")]
 offset_left = 138.0
 offset_top = 145.0
@@ -363,5 +415,6 @@ libraries = {
 [connection signal="pressed" from="Gamepad/Health" to="." method="_on_health_pressed"]
 [connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]
 [connection signal="pressed" from="Gamepad/Ramp" to="." method="_on_ramp_pressed"]
+[connection signal="pressed" from="Gamepad/Sprint" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Gamepad/Break" to="." method="_on_break_pressed"]

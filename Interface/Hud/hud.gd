@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var ramp_button = $Gamepad/Ramp
+@onready var sprint_button = $Gamepad/Sprint
 @onready var coco_button = $Gamepad/Coco
 @onready var lance_button = $Gamepad/Spear
 @onready var health_button = $Gamepad/Health
@@ -34,6 +35,7 @@ func _ready():
 	
 	# Boutons grisés au démarrage (Moko les activera quand il débloque les items)
 	set_button_enabled(ramp_button, false)
+	set_button_enabled(sprint_button, false)
 	set_button_enabled(coco_button, false)
 	set_button_enabled(lance_button, false)
 	set_button_enabled(health_button, false)
@@ -93,11 +95,12 @@ func set_button_enabled(button, enabled):
 		else:
 			button.modulate = Color(1, 1, 1, 0.4)
 
-func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp):
+func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_sprint):
 	set_button_enabled(coco_button, can_fire_coco)
 	set_button_enabled(lance_button, can_fire_lance)
 	set_button_enabled(health_button, can_heal)
 	set_button_enabled(ramp_button, can_ramp)
+	set_button_enabled(sprint_button, can_sprint)
 
 func set_coco_button_enabled(enabled):
 	set_button_enabled(coco_button, enabled)
@@ -114,7 +117,6 @@ func set_bone_button_enabled(enabled):
 # -----------------------------------------------------------------
 #              AFFICHAGE DES COMPTEURS DANS LE HUD
 # -----------------------------------------------------------------
-
 func update_seed_display(collected, total):
 	var label = $HBoxContainerSeed/SeedCountLabel
 	if total > 0:
@@ -229,6 +231,9 @@ func _on_spear_pressed():
 
 func _on_ramp_pressed():
 	gs.player.process_ramp()
+	
+func _on_speed_pressed() -> void:
+	gs.player.process_sprint()
 
 func _on_bone_pressed():
 	if gs and gs.player:

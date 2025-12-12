@@ -16,6 +16,15 @@ var has_flower = false
 var toucan_challenge_retry = false
 var focus_cam_frog = false
 
+# --- Compétences débloquées ---
+var sprint_unlocked = false
+var sprint_stamina_max = 100
+var sprint_stamina = 100
+var sprint_stamina_cost = 40
+var sprint_stamina_regen = 25
+
+var ramp_unlocked = false
+
 # --- Dialogues uniques ---
 var toucan_dialogue_seen = false
 var pygmy_dialogue_seen = false
@@ -27,6 +36,7 @@ var player = null
 var hud_scene = preload("res://Interface/Hud/hud.tscn")
 var hud = null
 var health_bar = null
+var speed_bar = null
 
 var fade_scene = preload("res://Effects/Fade/fade.tscn")
 var fade = null
@@ -163,24 +173,27 @@ func load_level(scene_path):
 			hud.visible = false
 		if health_bar:
 			health_bar.visible = false
+		if speed_bar:
+			speed_bar.visible = false
 	else:
 		if hud == null:
 			hud = hud_scene.instantiate()
 			add_child(hud)
 			hud.process_mode = Node.PROCESS_MODE_ALWAYS
 			health_bar = hud.get_node("HealthBar")
+			speed_bar = hud.get_node("SpeedBar")
 		hud.visible = true
 		if health_bar:
 			health_bar.visible = true
-		
+		if speed_bar:
+			speed_bar.visible = sprint_unlocked
 	if not is_menu:
 		current_level_path = scene_path
 		reset_seed_tracking_from_scene()
 		
 		var p = player_scene.instantiate()
-		level.add_child(p)  # player sous le level (lui-même sous World)
+		level.add_child(p)
 		p.global_position = spawn_point.global_position
-		# Le player hérite de level → donc PAUSABLE via World
 		
 		if p.has_method("reset_state"):
 			p.reset_state()
@@ -196,7 +209,13 @@ func load_level(scene_path):
 			hud.update_lives_display(lives)
 			hud.update_seed_display(collected_seeds, total_seeds_in_level)
 			hud.update_lance_display()
-
+		
+		# 🔁 Si le sprint est débloqué, barre pleine et visible au chargement du level
+		if sprint_unlocked and speed_bar:
+			sprint_stamina = sprint_stamina_max
+			speed_bar.visible = true
+			speed_bar.update_speed_bar_current(sprint_stamina)
+	
 	await fade.fade_in()
 
 # --- Vies ---
@@ -226,7 +245,14 @@ func lose_life():
 		lives -= 1
 		if hud:
 			hud.update_lives_display(lives)
+		
 		reinitialise()
+		
+		# 🔁 Recharge la barre de sprint à fond à chaque respawn
+		sprint_stamina = sprint_stamina_max
+		if speed_bar:
+			speed_bar.update_speed_bar_current(sprint_stamina)
+		
 		request_reload_after_delay(0.5)
 
 # --- Redémarrage ---
@@ -280,7 +306,6 @@ func reinitialise():
 	can_fire_bone = false
 	if hud:
 		var gamepad = hud.get_node("Gamepad")
-		hud.set_button_enabled(gamepad.get_node("Ramp"), false)
 		hud.set_button_enabled(gamepad.get_node("Coco"), false)
 		hud.set_button_enabled(gamepad.get_node("Bone"), false)
 		hud.set_button_enabled(gamepad.get_node("Spear"), false)
