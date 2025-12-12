@@ -15,7 +15,7 @@ extends CanvasLayer
 @onready var bone_hbox = $HbcBone/HBoxContainerBone
 @onready var bone_label = $Gamepad/Bone/BoneCountLabel
 
-# --- Nouveaux labels centralisés dans le HUD ---
+# Labels centralisés dans le HUD
 @onready var banane_label = $Gamepad/Health/BananeCountLabel
 @onready var coco_label = $Gamepad/Coco/CocoCountLabel
 
@@ -23,20 +23,23 @@ extends CanvasLayer
 
 var gs
 
+# On mémorise si le mode bone a déjà été débloqué une fois 
+var bone_mode_already_unlocked = false
+
 func _ready():
 	# Le HUD doit continuer à recevoir les inputs même quand le jeu est en pause
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	gs = get_node("/root/GameState")
 	
-	# Boutons grisés au démarrage (le Moko les activera quand il débloque les items)
+	# Boutons grisés au démarrage (Moko les activera quand il débloque les items)
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(coco_button, false)
 	set_button_enabled(lance_button, false)
 	set_button_enabled(health_button, false)
 	set_button_enabled(bone_button, false)
 	
-	# État initial : on affiche les cocos, pas les bones
+	# État initial par défaut : on affiche les cocos, pas les bones
 	if coco_hbox:
 		coco_hbox.visible = true
 	if bone_hbox:
@@ -52,6 +55,13 @@ func _ready():
 	update_banane_display()
 	update_coco_display()
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
+	
+	# Si Moko a déjà des bones au moment où le HUD se crée,
+	# on considère que le mode bone a déjà été débloqué une fois,
+	# donc on ne rejoue plus l'animation et on passe direct en mode bone.
+	if gs.bone_count > 0:
+		bone_mode_already_unlocked = true
+		_finalize_switch_to_bone()
 	
 	# Neutralise toutes actions d'input des boutons HUD au lancement
 	for b in [ramp_button, coco_button, lance_button, health_button, bone_button]:
@@ -153,6 +163,15 @@ func update_coco_display():
 func anim_to_bone_mode():
 	update_bone_display()
 	
+	# Si le mode bone a déjà été débloqué une fois :
+	# on ne joue plus l'animation, on passe direct au mode bone.
+	if bone_mode_already_unlocked:
+		_finalize_switch_to_bone()
+		return
+	
+	# Première fois : on joue l’animation puis on marque comme débloqué
+	bone_mode_already_unlocked = true
+	
 	# Prépare l’anim : les deux doivent être visibles
 	if coco_button:
 		coco_button.visible = true
@@ -169,9 +188,8 @@ func anim_to_bone_mode():
 	set_bone_button_enabled(false)
 	
 	# Lance l'animation
-	if anim:
-		anim.play("bone_appear")
-		await anim.animation_finished
+	anim.play("bone_appear")
+	await anim.animation_finished
 	
 	# Quand l'anim est terminée, on fait le vrai switch
 	_finalize_switch_to_bone()

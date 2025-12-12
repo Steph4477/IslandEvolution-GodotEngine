@@ -54,6 +54,9 @@ var dx = 0.0
 var distance = 0.0          # distance totale (si besoin un jour)
 var horiz_distance = 0.0    # distance horizontale comme pour le croco
 
+# --- Apparition depuis la hutte ---
+var has_appeared = false        # tant que false, l'IA est bloquée
+
 # suivi pour détecter le début de saut de Moko
 var player_prev_on_floor = true
 
@@ -83,6 +86,11 @@ func _physics_process(delta):
 	
 	if is_dead:
 		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
+	# Tant que le chef n'a pas "apparu", IA(physique) bloqué
+	if not has_appeared:
 		move_and_slide()
 		return
 	
@@ -445,3 +453,12 @@ func _on_bone_timer_timeout():
 		bone_attack()
 	else:
 		bone_timer.stop()
+
+# =============================================================
+#                   DÉTECTION APPARITION
+# =============================================================
+func _on_detect_area_body_entered(body):
+	if body.is_in_group("Player") and not has_appeared:
+		anim.play("appear")
+		await anim.animation_finished
+		has_appeared = true

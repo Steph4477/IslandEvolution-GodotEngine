@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccrqrp5viv4wa"]
+[gd_scene load_steps=8 format=3 uid="uid://d3pait8vbsc3"]
 
-[ext_resource type="Script" uid="uid://csq5ycjfeilix" path="res://Loot/Bone/bone_loot.gd" id="1_rk3tx"]
+[ext_resource type="Script" uid="uid://bkwtmouqcacme" path="res://Loot/Bone/bone_loot.gd" id="1_rk3tx"]
 [ext_resource type="Texture2D" uid="uid://ddvdg6tpqe0it" path="res://Shoot/Enemies/Bone/bone.png" id="2_xju6l"]
 
 [sub_resource type="Animation" id="Animation_xju6l"]
@@ -91,19 +91,20 @@ curve = SubResource("Curve2D_rk3tx")
 position = Vector2(-6, 132)
 rotation = -0.7055682
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
-rotation = -1.150172
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_xju6l")
-
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
-position = Vector2(-70.22115, 246.28627)
-rotation = -1.3352513
+position = Vector2(231.78261, -46.89267)
+rotation = 2.934564
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
 position = Vector2(238.4363, 4.809868)
 rotation = -3.14159
 scale = Vector2(16.1668, -18.3068)
 shape = SubResource("CircleShape2D_52bb4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-3.3879852, -8.803879)
+rotation = -1.150172
+scale = Vector2(0.49999997, 0.49999997)
+texture = ExtResource("2_xju6l")
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_body_entered"]

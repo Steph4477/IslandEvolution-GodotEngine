@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddrhycfvimm23"]
+[gd_scene load_steps=18 format=3 uid="uid://ddrhycfvimm23"]
 
 [ext_resource type="Script" uid="uid://bi4txudhhmxkx" path="res://Enemies/Cannibal/Chief/cannibal_chief.gd" id="1_8515d"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_bi03u"]
@@ -32,6 +32,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -156)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../HealthBar:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_cdxee"]
@@ -179,19 +215,54 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8515d"]
 resource_name = "appear"
-length = 0.8
-loop_mode = 1
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -80), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../HealthBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [11, 10]
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [11, 10, 11]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_giy1g"]
@@ -211,6 +282,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(32, 113)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8515d"]
+size = Vector2(943, 54)
+
 [node name="CannibalChief" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(-1, 1)
 collision_layer = 8
@@ -218,11 +292,14 @@ collision_mask = 2
 script = ExtResource("1_8515d")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_bi03u")]
+visible = false
 position = Vector2(56, -100)
 rotation = 3.14159
 scale = Vector2(1, -1.00374)
 
 [node name="Rotator" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -156)
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator"]
 position = Vector2(-36, -16)
@@ -247,7 +324,6 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_giy1g")
 }
-autoplay = "appear"
 
 [node name="DustOrigin" type="Marker2D" parent="Rotator"]
 position = Vector2(159, 10)
@@ -262,8 +338,15 @@ shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="BoneTimer" type="Timer" parent="."]
 
+[node name="DetectArea" type="Area2D" parent="." groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+position = Vector2(-2.5, 17)
+shape = SubResource("RectangleShape2D_8515d")
+
 [connection signal="body_entered" from="Rotator/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Rotator/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="CacTimer" to="." method="_on_cac_timer_timeout"]
 [connection signal="timeout" from="BoneTimer" to="." method="_on_bone_timer_timeout"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
