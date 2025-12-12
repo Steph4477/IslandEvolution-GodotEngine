@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=39 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -23,8 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://d1q1ij1egetju" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="PackedScene" uid="uid://4nftk6ff2hsq" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
 [ext_resource type="PackedScene" uid="uid://c3bfbcik1hu58" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
-[ext_resource type="PackedScene" uid="uid://dhjnec07dmtmd" path="res://Loot/Sprint/Sprint.tscn" id="24_vaysu"]
-[ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/Ramp/ramp.tscn" id="25_7qbkl"]
+[ext_resource type="PackedScene" uid="uid://brco1kpm5dfx" path="res://Enemies/Bee/Bee.tscn" id="24_vaysu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -243,7 +242,7 @@ shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform"]
 position = Vector2(-676, 196)
-polygon = PackedVector2Array(4714, 1237, 4879, 1163, 5406, 738, 12505, 747, 12510, 846, 5624, 812, 5063, 1185)
+polygon = PackedVector2Array(5301, 818, 5381, 770, 12505, 747, 12510, 846, 5624, 812, 5066, 1074, 5139, 978)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform"]
 position = Vector2(13215.875, 988.5)
@@ -439,7 +438,7 @@ position = Vector2(3513, 1180)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
-position = Vector2(8623, 868)
+position = Vector2(10171, 957)
 
 [node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_2nymq")]
 position = Vector2(15706, 873)
@@ -454,31 +453,28 @@ scale = Vector2(0.5, 0.5)
 [node name="Village" type="Sprite2D" parent="."]
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
 z_index = 4
-position = Vector2(9714, 802)
+position = Vector2(7011, 850)
+scale = Vector2(-1, 1)
 texture = ExtResource("17_06aic")
 
 [node name="Node2D2" type="Node2D" parent="."]
 
 [node name="Tree_perch" parent="Node2D2" instance=ExtResource("19_8n178")]
 z_index = 4
-position = Vector2(10874, 438)
+position = Vector2(5371, 460)
 scale = Vector2(1.4, 1.4)
 
 [node name="Spear_rack" parent="Node2D2" instance=ExtResource("20_xni6f")]
 z_index = 5
-position = Vector2(5794, 837)
+position = Vector2(6875, 876.00006)
 scale = Vector2(0.15, 0.15)
 
 [node name="HiddenTrap" parent="." instance=ExtResource("21_odqky")]
 position = Vector2(11985, 1048)
 
-[node name="Sprint" parent="." instance=ExtResource("24_vaysu")]
-z_index = 5
-position = Vector2(5958, 970)
-
-[node name="Ramp" parent="." instance=ExtResource("25_7qbkl")]
-z_index = 5
-position = Vector2(5687, 973)
+[node name="Bee" parent="." instance=ExtResource("24_vaysu")]
+z_index = 20
+position = Vector2(6111, 943)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]
