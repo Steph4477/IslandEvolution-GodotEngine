@@ -143,18 +143,29 @@ func setup_game_state():
 	can_fire_bone = game_state.can_fire_bone
 	can_ramp = game_state.ramp_unlocked
 	can_sprint = game_state.sprint_unlocked
-	
+
 func setup_hud():
 	if not game_state or not game_state.hud:
 		return
 	var hud = game_state.hud
+	
 	label_banane = hud.get_node("HBoxContainerBanane/Label/BananeCountLabel")
 	label_coco = hud.get_node("HbcCoco/HBoxContainerCoco/CocoCountLabel")
 	label_bone = hud.get_node("HbcBone/HBoxContainerBone/BoneCountLabel")
 	label_seed = hud.get_node("HBoxContainerSeed/SeedCountLabel")
 	if game_state and game_state.hud and game_state.hud.has_method("update_lives_display"):
 		game_state.hud.update_lives_display(game_state.lives)
-
+	
+	if can_ramp and hud.has_node("Gamepad/Ramp"):
+		var ramp_btn = hud.get_node("Gamepad/Ramp")
+		ramp_btn.visible = true
+		hud.set_button_enabled(ramp_btn, true)
+	
+	if can_sprint and hud.has_node("Gamepad/Sprint"):
+		var sprint_btn = hud.get_node("Gamepad/Sprint")
+		sprint_btn.visible = true
+		hud.set_button_enabled(sprint_btn, true)
+	
 	update_all_displays()
 	refresh_hud_buttons()
 
@@ -300,16 +311,22 @@ func process_hang_swing(delta):
 func unlock_ramp():
 	can_ramp = true
 	game_state.ramp_unlocked = true   
-
+	
 	show_info_popup("🤸 Tu peux maintenant ramper !")
 	
-	if not game_state or not game_state.health_bar:
+	if not game_state or not game_state.hud:
 		return
 	
 	var hud = game_state.hud
 	if hud.has_node("Gamepad/Ramp"):
-		hud.set_button_enabled(hud.get_node("Gamepad/Ramp"), true)
-
+		var btn = hud.get_node("Gamepad/Ramp")
+		btn.visible = true
+		hud.set_button_enabled(btn, true)
+	
+	# Animation du hud
+	if hud.anim.has_animation("appear_ramp"):
+		hud.anim.play("appear_ramp")
+	refresh_hud_buttons()
 
 func process_ramp():
 	if can_ramp and Input.is_action_just_pressed(INPUT["ramp"]) and is_on_floor() and not ramp_locked:
@@ -346,9 +363,16 @@ func unlock_sprint():
 	if game_state.hud:
 		var hud = game_state.hud
 		if hud.has_node("Gamepad/Sprint"):
-			hud.set_button_enabled(hud.get_node("Gamepad/Sprint"), true)
+			var btn = hud.get_node("Gamepad/Sprint")
+			btn.visible = true
+			hud.set_button_enabled(btn, true)
+	
+		# Animation du hud
+		if hud.anim.has_animation("appear_sprint"):
+			hud.anim.play("appear_sprint")
 	
 	show_info_popup("⚡ Tu peux maintenant sprinter avec Shift !")
+	refresh_hud_buttons()
 
 func process_sprint():
 	var delta = get_physics_process_delta_time()
@@ -852,27 +876,41 @@ func update_animation():
 	if animation_locked or is_dead:
 		return
 	
+	# --- Swim ---
 	if is_swimming:
 		if anim.current_animation != "swim":
 			anim.play("swim")
 		return
 	
+	# --- Liana ---
 	if is_on_liana:
 		return
 	
+	# --- Hang ---
 	if is_hanging:
 		return
+	
+	# --- Climb ---
 	if climbing_anim != "" and velocity.y != 0:
 		anim.play(climbing_anim)
 		return
+	
 	if anim.current_animation == "hang":
 		return
 	
+	# --- Gazé ---
 	if is_gazed:
 		if anim.current_animation != "walk_gaz":
 			anim.play("walk_gaz")
 		return
 	
+	# --- Sprint ---
+	if is_on_floor() and is_sprinting and abs(velocity.x) > 0.1:
+		if anim.current_animation != "sprint":
+			anim.play("sprint")
+		return
+	
+	# --- Sol ---
 	if is_on_floor():
 		if is_pushing_or_pulling and not is_ramping:
 			anim.play("push")
@@ -895,6 +933,7 @@ func update_animation():
 				anim.play("idle")
 		return
 	
+	# --- Air ---
 	if velocity.y < 0:
 		anim.play("jump_up")
 		$Sound/Jump.play()
@@ -904,7 +943,6 @@ func update_animation():
 # =============================================================================
 #                               HUD & Popups                                  
 # =============================================================================
-
 func update_banane_display():
 	if game_state and game_state.hud and game_state.hud.has_method("update_banane_display"):
 		game_state.hud.update_banane_display()

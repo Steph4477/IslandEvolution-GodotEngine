@@ -33,6 +33,14 @@ func _ready():
 	
 	gs = get_node("/root/GameState")
 	
+	# -----------------------------------------------------------------
+	# ÉTAT INITIAL : RAMP & SPRINT CACHÉS TANT QUE NON DÉBLOQUÉS
+	# -----------------------------------------------------------------
+	if ramp_button:
+		ramp_button.visible = false
+	if sprint_button:
+		sprint_button.visible = false
+	
 	# Boutons grisés au démarrage (Moko les activera quand il débloque les items)
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(sprint_button, false)
@@ -59,14 +67,13 @@ func _ready():
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 	
 	# Si Moko a déjà des bones au moment où le HUD se crée,
-	# on considère que le mode bone a déjà été débloqué une fois,
-	# donc on ne rejoue plus l'animation et on passe direct en mode bone.
+	# on considère que le mode bone a déjà été débloqué une fois
 	if gs.bone_count > 0:
 		bone_mode_already_unlocked = true
 		_finalize_switch_to_bone()
 	
 	# Neutralise toutes actions d'input des boutons HUD au lancement
-	for b in [ramp_button, coco_button, lance_button, health_button, bone_button]:
+	for b in [ramp_button, coco_button, lance_button, health_button, bone_button, sprint_button]:
 		if b:
 			b.action = "" 
 	 
@@ -95,12 +102,24 @@ func set_button_enabled(button, enabled):
 		else:
 			button.modulate = Color(1, 1, 1, 0.4)
 
+# ---------------------------------------------------------
+#   MISE À JOUR DES BOUTONS (VISIBILITÉ + ÉTAT)
+# ---------------------------------------------------------
 func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_sprint):
+	# Cocos / lances / heal : juste enable/disable
 	set_button_enabled(coco_button, can_fire_coco)
 	set_button_enabled(lance_button, can_fire_lance)
 	set_button_enabled(health_button, can_heal)
-	set_button_enabled(ramp_button, can_ramp)
-	set_button_enabled(sprint_button, can_sprint)
+	
+	# Ramp : visible uniquement si compétence débloquée
+	if ramp_button:
+		ramp_button.visible = can_ramp
+		set_button_enabled(ramp_button, can_ramp)
+	
+	# Sprint : visible uniquement si compétence débloquée
+	if sprint_button:
+		sprint_button.visible = can_sprint
+		set_button_enabled(sprint_button, can_sprint)
 
 func set_coco_button_enabled(enabled):
 	set_button_enabled(coco_button, enabled)
@@ -231,8 +250,8 @@ func _on_spear_pressed():
 
 func _on_ramp_pressed():
 	gs.player.process_ramp()
-	
-func _on_speed_pressed() -> void:
+
+func _on_speed_pressed():
 	gs.player.process_sprint()
 
 func _on_bone_pressed():
