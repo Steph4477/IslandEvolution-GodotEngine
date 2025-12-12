@@ -85,7 +85,7 @@ func update_lives_display(lives):
 		life_sprites[i].visible = i < lives
 
 func start_banane_cooldown(duration_sec):
-	var cooldown = $HBoxContainerBanane/Texture/coolDownCircle
+	var cooldown = $HBoxContainerBanane/TexturePotion/coolDownCircle
 	cooldown.value = 100
 	cooldown.show()
 	var tween = create_tween()

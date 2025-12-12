@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var max_hp = 20
 @export var speed = 400
 @export var orbit_speed_factor = 0.6
-
 @export var attack_contact_radius = 24.0
 @export var damage = 200
 @export var cooldown = 2

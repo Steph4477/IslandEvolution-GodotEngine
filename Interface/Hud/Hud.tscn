@@ -438,6 +438,7 @@ offset_bottom = -282.439
 texture = ExtResource("15_rgqxt")
 
 [node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/TexturePotion"]
+z_index = 5
 offset_left = 1013.27
 offset_top = -406.806
 offset_right = 2037.27

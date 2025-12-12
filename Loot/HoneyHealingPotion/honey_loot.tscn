@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1s7eeygvitm0"]
+
+[ext_resource type="Script" uid="uid://cxfxl00qytde8" path="res://Loot/Banana/banana.gd" id="1_e4h8j"]
+[ext_resource type="Texture2D" uid="uid://dv8hgbj5xwmxs" path="res://Loot/Banana/banana.png" id="2_qreit"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
+radius = 2.0419512
+
+[node name="HoneyLoot" type="Node2D"]
+script = ExtResource("1_e4h8j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_qreit")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8.999999, -2)
+rotation = -3.14159
+scale = Vector2(16.1668, -18.3068)
+shape = SubResource("CircleShape2D_52bb4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
