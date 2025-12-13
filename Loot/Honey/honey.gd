@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var banane_value = 5
+@export var honey_value = 5
 @export var heal_amount = 500
 
 @onready var follower = $Path2D/PathFollow2D
@@ -26,6 +26,6 @@ func _ready():
 		game_state.heal_amount = heal_amount
 
 func _on_pickup_area_body_entered(body):
-	if body.is_in_group("Player") and body.has_method("collect_banane"):
-		body.collect_banane(banane_value)
+	if body.is_in_group("Player") and body.has_method("collect_honey"):
+		body.collect_honey(honey_value)
 		queue_free()

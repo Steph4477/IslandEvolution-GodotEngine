@@ -111,13 +111,12 @@ shape = SubResource("CircleShape2D_e4h8j")
 curve = SubResource("Curve2D_e4h8j")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(190, 0)
-rotation = -0.05258306
-progress = 191.42215
+position = Vector2(9.999999, 0)
+rotation = 0.35563588
 loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_e4h8j")
 
 [node name="PickupArea" type="Area2D" parent="Path2D/PathFollow2D"]

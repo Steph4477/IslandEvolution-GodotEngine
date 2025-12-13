@@ -202,7 +202,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(5162, 820)
+position = Vector2(4811, 778)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -475,7 +475,7 @@ position = Vector2(11985, 1048)
 
 [node name="BeeHive" parent="." instance=ExtResource("24_vaysu")]
 z_index = 20
-position = Vector2(5588, 278.00003)
+position = Vector2(5592, 265)
 scale = Vector2(0.1, 0.1)
 
 [node name="LifeLoot" parent="." instance=ExtResource("25_7qbkl")]
