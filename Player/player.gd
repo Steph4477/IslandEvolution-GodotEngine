@@ -37,7 +37,8 @@ var can_move = true
 var can_be_damaged = true
 var is_dead = false
 var animation_locked = false
-var jump_buffer = 0.0
+
+
 var climbing_anim = ""
 var can_climb = false
 var is_hanging = false
@@ -61,6 +62,14 @@ var can_fire_lance = false
 var rate_of_fire = 0.4
 var is_attacking = false
 
+# --- Jump and double jump ---
+var jump_buffer = 0.0
+var did_double_jump = false
+var jump_count = 0
+var max_jump_count = 1
+var gravity_factor = 1.0
+
+# --- collecte ---
 var coco_count = 0
 var bone_count = 0
 var banane_count = 0
@@ -68,7 +77,6 @@ var honey_count = 0
 var seed_count = 0
 var lance_count = 0
 
-var gravity_factor = 1.0
 
 # Potions séparées
 var heal_potions = []     # bananes
@@ -83,6 +91,7 @@ var current_liana = null
 # --- Caisse ---
 var can_push_pull = false
 var is_pushing_or_pulling = false
+
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
@@ -170,7 +179,10 @@ func setup_game_state():
 	honey_potions.clear()
 	for j in range(honey_count):
 		honey_potions.append(game_state.heal_amount)
-
+	
+	max_jump_count = 1
+	if game_state.double_jump_unlocked:
+		max_jump_count = 2
 
 func setup_hud():
 	if not game_state or not game_state.hud:
@@ -251,7 +263,6 @@ func move_horizontal():
 		else:
 			sprite.scale.x = -abs(sprite.scale.x)
 
-
 func update_jump(delta):
 	if is_swimming:
 		return
@@ -260,13 +271,20 @@ func update_jump(delta):
 		return
 
 	if is_on_floor():
-		if Input.is_action_just_pressed(INPUT["jump"]):
-			velocity.y = jump_force
-			is_ramping = false
-	else:
+		jump_count = 0
+
+	max_jump_count = 1
+	if game_state and game_state.double_jump_unlocked:
+		max_jump_count = 2
+
+	if Input.is_action_just_pressed(INPUT["jump"]) and jump_count < max_jump_count:
+		velocity.y = jump_force
+		is_ramping = false
+		jump_count += 1
+
+	if not is_on_floor():
 		if not is_ramping:
 			velocity.y += gravity * gravity_factor * delta
-
 
 func process_wall_jump_input():
 	if is_on_floor():
@@ -657,6 +675,10 @@ func collect_seed(amount = 1):
 	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
 		await parent.focus_camera_on_totem_with_anim(game_state.collected_seeds)
 
+func collect_double_jump():
+	game_state.double_jump_unlocked = true
+	show_info_popup("🦘 Double saut débloqué !")
+
 
 # =============================================================================
 #                               ACTIONS
@@ -1044,10 +1066,15 @@ func update_animation():
 		return
 
 	if velocity.y < 0:
-		anim.play("jump_up")
-		$Sound/Jump.play()
+		if jump_count > 1:
+			anim.play("jump2_up")
+		else:
+			anim.play("jump_up")
 	elif velocity.y > 0:
-		anim.play("jump_down")
+		if jump_count > 1:
+			anim.play("jump2_down")
+		else:
+			anim.play("jump_down")
 
 # =============================================================================
 #                               HUD & Popups

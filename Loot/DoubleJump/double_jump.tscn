@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c300db1fbxq6y"]
+[gd_scene load_steps=9 format=3 uid="uid://c300db1fbxq6y"]
 
 [ext_resource type="Texture2D" uid="uid://bnwdimru5t04j" path="res://Loot/DoubleJump/ball.png" id="1_fsxl6"]
+[ext_resource type="Script" uid="uid://ugryriri6fl8" path="res://Loot/DoubleJump/double_jump.gd" id="1_teu2d"]
 [ext_resource type="Texture2D" uid="uid://dfhyif0ajp0k0" path="res://Loot/DoubleJump/2.png" id="3_ibyih"]
 [ext_resource type="Texture2D" uid="uid://b3ew0ukbscxsu" path="res://Loot/DoubleJump/1.png" id="4_lt5js"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibyih"]
+radius = 266.27054
 
 [sub_resource type="Animation" id="Animation_tlgqp"]
 length = 0.001
@@ -115,6 +119,7 @@ _data = {
 }
 
 [node name="DoubleJump" type="Node2D"]
+script = ExtResource("1_teu2d")
 
 [node name="Ball" type="Sprite2D" parent="."]
 z_index = 5
@@ -126,8 +131,15 @@ z_index = 5
 position = Vector2(0, -192)
 texture = ExtResource("3_ibyih")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ibyih")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rp2dn")
 }
 autoplay = "appear"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

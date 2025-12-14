@@ -23,7 +23,7 @@ var sprint_stamina_max = 100
 var sprint_stamina = 100
 var sprint_stamina_cost = 40
 var sprint_stamina_regen = 25
-
+var double_jump_unlocked = false
 var ramp_unlocked = false
 
 # --- Dialogues uniques ---
