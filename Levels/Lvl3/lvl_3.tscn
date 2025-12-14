@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c3bfbcik1hu58" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
 [ext_resource type="PackedScene" uid="uid://bwqj4ssllvlpx" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
 [ext_resource type="PackedScene" uid="uid://bnt151ce54b28" path="res://Loot/Life/life_loot.tscn" id="25_7qbkl"]
-[ext_resource type="PackedScene" uid="uid://c300db1fbxq6y" path="res://Loot/DoubleJump/double_jump.tscn" id="26_nqfku"]
+[ext_resource type="PackedScene" uid="uid://d0bueayd3ta8b" path="res://Enemies/Froggle/froggle.tscn" id="26_nqfku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -483,10 +483,8 @@ scale = Vector2(0.1, 0.1)
 position = Vector2(4936, 398)
 scale = Vector2(0.15, 0.15)
 
-[node name="DoubleJump" parent="." instance=ExtResource("26_nqfku")]
-z_index = 10
-position = Vector2(6256, 1008)
-scale = Vector2(0.1, 0.1)
+[node name="Froggle" parent="." instance=ExtResource("26_nqfku")]
+position = Vector2(6471, 933)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

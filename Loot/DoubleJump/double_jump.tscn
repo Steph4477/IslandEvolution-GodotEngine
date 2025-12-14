@@ -1,145 +1,45 @@
-[gd_scene load_steps=9 format=3 uid="uid://c300db1fbxq6y"]
+[gd_scene load_steps=6 format=3 uid="uid://c300db1fbxq6y"]
 
 [ext_resource type="Texture2D" uid="uid://bnwdimru5t04j" path="res://Loot/DoubleJump/ball.png" id="1_fsxl6"]
 [ext_resource type="Script" uid="uid://ugryriri6fl8" path="res://Loot/DoubleJump/double_jump.gd" id="1_teu2d"]
-[ext_resource type="Texture2D" uid="uid://dfhyif0ajp0k0" path="res://Loot/DoubleJump/2.png" id="3_ibyih"]
 [ext_resource type="Texture2D" uid="uid://b3ew0ukbscxsu" path="res://Loot/DoubleJump/1.png" id="4_lt5js"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibyih"]
-radius = 266.27054
+radius = 14.317822
 
-[sub_resource type="Animation" id="Animation_tlgqp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_ibyih")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -192)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Ball:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Ball:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
+[sub_resource type="CircleShape2D" id="CircleShape2D_teu2d"]
+radius = 11.0
 
-[sub_resource type="Animation" id="Animation_nt711"]
-resource_name = "appear"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_ibyih"), ExtResource("4_lt5js")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -192), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Ball:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.2617994]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Ball:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(9.536743e-07, -106)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rp2dn"]
-_data = {
-&"RESET": SubResource("Animation_tlgqp"),
-&"appear": SubResource("Animation_nt711")
-}
-
-[node name="DoubleJump" type="Node2D"]
+[node name="DoubleJump" type="RigidBody2D"]
+collision_mask = 2
+mass = 10.0
+gravity_scale = 10.0
 script = ExtResource("1_teu2d")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.89290524, -2.678009)
+rotation = 0.10801172
+
+[node name="Col" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.61278796, 1.509851)
+shape = SubResource("CircleShape2D_ibyih")
 
 [node name="Ball" type="Sprite2D" parent="."]
 z_index = 5
-scale = Vector2(2, 2)
+position = Vector2(-0.8929072, -2.6780071)
+rotation = 0.4636476
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_fsxl6")
 
 [node name="Icon" type="Sprite2D" parent="."]
 z_index = 5
-position = Vector2(0, -192)
-texture = ExtResource("3_ibyih")
+position = Vector2(-0.44645405, -4.110897)
+rotation = -0.15768959
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_lt5js")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ibyih")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rp2dn")
-}
-autoplay = "appear"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.9802322e-08)
+shape = SubResource("CircleShape2D_teu2d")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

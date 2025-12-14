@@ -216,7 +216,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73kmb"]
-size = Vector2(250, 68)
+size = Vector2(84, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(95, 13.5)
@@ -228,6 +228,7 @@ scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_8j4gp")
+max_hp = 100
 
 [node name="HealthBar" parent="." instance=ExtResource("2_hui0c")]
 position = Vector2(46, -68)
@@ -252,11 +253,14 @@ libraries = {
 collision_layer = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Rotator/Area2D"]
-position = Vector2(-1, 0)
+position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_73kmb")
 
 [node name="Muzzle" type="Marker2D" parent="Rotator"]
 position = Vector2(-31, -4)
+
+[node name="LootSpawn" type="Marker2D" parent="Rotator"]
+position = Vector2(77, -44)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 36)

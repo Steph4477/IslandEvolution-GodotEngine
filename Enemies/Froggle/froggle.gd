@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var stop_distance = 40
 @export var damage = 50
 @export var drool_scene = preload("res://Enemies/Froggle/Drool/drool_bolt.tscn")
+@export var double_jump_loot_scene = preload("res://Loot/DoubleJump/double_jump.tscn")
+
 @export var drool_cooldown = 1.6
 @export var attack_cooldown = 1.0
 @export var jump_attack_interval = 5.0
@@ -25,6 +27,7 @@ const GRAVITY = 2000
 @onready var attack_timer = $CacTimer
 @onready var drool_timer = $DroolTimer
 @onready var jump_timer = $JumpTimer
+@onready var spawn_point = $Rotator/LootSpawn
 
 var pv = 0
 var player = null
@@ -314,9 +317,22 @@ func die():
 	velocity = Vector2.ZERO
 	if cam:
 		cam.offset = Vector2.ZERO
+	
+	drop_double_jump_loot()
+	
 	anim.play("die")
 	await anim.animation_finished
+	
 	queue_free()
+
+func drop_double_jump_loot():
+	var gs = get_node_or_null("/root/GameState")
+	if gs and gs.double_jump_unlocked:
+		return
+	
+	var loot = double_jump_loot_scene.instantiate()
+	get_parent().add_child(loot)
+	loot.global_position = spawn_point.global_position
 
 # --- ZONES ---
 func _on_area_2d_body_entered(body):
