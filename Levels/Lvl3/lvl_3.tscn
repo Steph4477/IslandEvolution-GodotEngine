@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=40 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://4nftk6ff2hsq" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
 [ext_resource type="PackedScene" uid="uid://c3bfbcik1hu58" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
 [ext_resource type="PackedScene" uid="uid://bwqj4ssllvlpx" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
-[ext_resource type="PackedScene" uid="uid://bnt151ce54b28" path="res://Loot/Life/life_loot.tscn" id="25_7qbkl"]
 [ext_resource type="PackedScene" uid="uid://bxq6vqvvu2yvy" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
@@ -203,7 +202,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(6037, 809)
+position = Vector2(4859, 846)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -479,14 +478,11 @@ z_index = 20
 position = Vector2(5592, 265)
 scale = Vector2(0.1, 0.1)
 
-[node name="LifeLoot" parent="." instance=ExtResource("25_7qbkl")]
-position = Vector2(4936, 398)
-scale = Vector2(0.15, 0.15)
-
 [node name="Chameleon" parent="." instance=ExtResource("26_nqfku")]
 z_index = 20
-position = Vector2(6408, 993)
-scale = Vector2(0.25, 0.25)
+position = Vector2(4998, 422.00012)
+rotation = 0.32637656
+scale = Vector2(-0.25, 0.25)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

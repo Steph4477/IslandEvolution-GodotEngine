@@ -100,10 +100,15 @@ func _on_player_changed(new_player):
 func target():
 	if player == null:
 		return
-	var target_pos = player.get_node("TurnAxis").global_position
+
+	var target_pos = player.global_position
+	if player.has_node("TurnAxis"):
+		target_pos = player.get_node("TurnAxis").global_position
+
 	var to_target = target_pos - global_position
-	dx = to_target.x # Distance horizontale x entre le croco et Moko
+	dx = to_target.x
 	distance = to_target.length()
+
 
 func flip(_dx):
 	if dx > 1:

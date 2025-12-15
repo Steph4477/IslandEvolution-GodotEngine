@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=47 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
@@ -16,9 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://bgbd2clr0nkjo" path="res://Interface/GamePad/Pressed/honey.png" id="13_cpk68"]
 [ext_resource type="Texture2D" uid="uid://k8plb36agpki" path="res://Interface/GamePad/Pressed/spear.png" id="13_lwpkd"]
 [ext_resource type="Texture2D" uid="uid://croid74mvw1fb" path="res://Interface/Hud/seed.png" id="13_voibu"]
+[ext_resource type="Texture2D" uid="uid://dl7eufg3ckn6e" path="res://Interface/GamePad/camouflage.png" id="14_akioh"]
 [ext_resource type="Texture2D" uid="uid://bcbo7opbktbwb" path="res://Interface/GamePad/ramp.png" id="14_e8y56"]
 [ext_resource type="Texture2D" uid="uid://3bqredga1mej" path="res://Interface/GamePad/menu.png" id="14_tlm4v"]
 [ext_resource type="Texture2D" uid="uid://gt1j518e3is2" path="res://Interface/GamePad/Pressed/menu.png" id="15_ce0vt"]
+[ext_resource type="Texture2D" uid="uid://cjreop6tuncxh" path="res://Interface/GamePad/Pressed/camouflage.png" id="15_eqcma"]
 [ext_resource type="Texture2D" uid="uid://ecc0y625hs75" path="res://Interface/GamePad/potion.png" id="15_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://do6vj6xmbp01c" path="res://Interface/GamePad/Pressed/ramp.png" id="15_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://xxtxicxswmnw" path="res://Interface/GamePad/sprint_button.png" id="16_8k643"]
@@ -244,6 +246,117 @@ tracks/16/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Gamepad/Camouflage:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(753, 302)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Gamepad/Camouflage:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.2831855]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Gamepad/Camouflage:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.45, 0.45)]
+}
+
+[sub_resource type="Animation" id="Animation_eqcma"]
+resource_name = "appear_honey"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gamepad/Honey:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(753, 302), Vector2(193, 954)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gamepad/Honey:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.2831855, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gamepad/Honey:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.113, 0.113)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1949.6721, -72.69383), Vector2(1037.0298, -383.04053)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.2831855, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7, 7), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_8k643"]
 resource_name = "appear_ramp"
@@ -386,24 +499,24 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_eqcma"]
-resource_name = "appear_honey"
+[sub_resource type="Animation" id="Animation_nnjha"]
+resource_name = "appear_camouflage"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Honey:position")
+tracks/0/path = NodePath("Gamepad/Camouflage:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(753, 302), Vector2(193, 954)]
+"values": [Vector2(753, 302), Vector2(187, 834)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Honey:rotation")
+tracks/1/path = NodePath("Gamepad/Camouflage:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -415,55 +528,20 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Honey:scale")
+tracks/2/path = NodePath("Gamepad/Camouflage:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.45, 0.45), Vector2(0.113, 0.113)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1949.6721, -72.69383), Vector2(1037.0298, -383.04053)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [6.2831855, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(7, 7), Vector2(1, 1)]
+"values": [Vector2(0.45, 0.45), Vector2(0.11, 0.11)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k643"]
 _data = {
 &"RESET": SubResource("Animation_ccc6n"),
+&"appear_camouflage": SubResource("Animation_nnjha"),
 &"appear_honey": SubResource("Animation_eqcma"),
 &"appear_ramp": SubResource("Animation_8k643"),
 &"appear_sprint": SubResource("Animation_f7l5a"),
@@ -544,6 +622,33 @@ offset_right = 930.3539
 offset_bottom = 730.96387
 theme_override_font_sizes/font_size = 150
 text = "0"
+
+[node name="Camouflage" type="TouchScreenButton" parent="Gamepad"]
+position = Vector2(753, 302)
+rotation = 6.2831855
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("14_akioh")
+texture_pressed = ExtResource("15_eqcma")
+action = "shoot"
+
+[node name="CamouflageCountLabel" type="Label" parent="Gamepad/Camouflage"]
+offset_left = 1190.909
+offset_top = 727.27264
+offset_right = 1276.909
+offset_bottom = 932.27264
+theme_override_font_sizes/font_size = 150
+text = "0"
+
+[node name="coolDownCircle" type="TextureProgressBar" parent="Gamepad/Camouflage"]
+z_index = 5
+offset_left = 18.181816
+offset_top = 0.000118255615
+offset_right = 1042.1818
+offset_bottom = 1024.0001
+scale = Vector2(1.0745693, 0.94911045)
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("16_b0qj5")
 
 [node name="Spear" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(195, 838)
@@ -749,6 +854,7 @@ libraries = {
 [connection signal="pressed" from="Gamepad/Bone" to="." method="_on_bone_pressed"]
 [connection signal="pressed" from="Gamepad/Health" to="." method="_on_health_pressed"]
 [connection signal="pressed" from="Gamepad/Honey" to="." method="_on_honey_pressed"]
+[connection signal="pressed" from="Gamepad/Camouflage" to="." method="_on_camouflage_pressed"]
 [connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]
 [connection signal="pressed" from="Gamepad/Ramp" to="." method="_on_ramp_pressed"]
 [connection signal="pressed" from="Gamepad/Sprint" to="." method="_on_speed_pressed"]

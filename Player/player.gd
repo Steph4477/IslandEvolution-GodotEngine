@@ -3,7 +3,6 @@ extends CharacterBody2D
 # ============================================================================
 #                  VARIABLES, CONSTANTES, EXPORTS, NODES
 # ============================================================================
-
 const INPUT = {
 	"jump": "jump",
 	"left": "ui_left",
@@ -14,7 +13,8 @@ const INPUT = {
 	"heal": "heal",
 	"ramp": "ramping",
 	"clac": "clacing",
-	"sprint": "sprint"
+	"sprint": "sprint",
+	"camouflage": "camouflage"
 }
 
 @export var speed = 400
@@ -37,7 +37,6 @@ var can_move = true
 var can_be_damaged = true
 var is_dead = false
 var animation_locked = false
-
 
 var climbing_anim = ""
 var can_climb = false
@@ -62,6 +61,16 @@ var can_fire_lance = false
 var rate_of_fire = 0.4
 var is_attacking = false
 
+# --- Camouflage ---
+var can_camouflage = false
+@export var camouflage_duration = 5.0
+var is_camouflaged = false
+@onready var turn_axis = $TurnAxis
+
+var turn_axis_parent = null
+var turn_axis_index = 0
+
+
 # --- Jump and double jump ---
 var jump_buffer = 0.0
 var did_double_jump = false
@@ -77,7 +86,6 @@ var honey_count = 0
 var seed_count = 0
 var lance_count = 0
 
-
 # Potions séparées
 var heal_potions = []     # bananes
 var honey_potions = []    # miel
@@ -91,7 +99,6 @@ var current_liana = null
 # --- Caisse ---
 var can_push_pull = false
 var is_pushing_or_pulling = false
-
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
@@ -167,10 +174,11 @@ func setup_game_state():
 	can_fire_coco = game_state.can_fire_coco
 	can_fire_lance = game_state.can_fire_lance
 	can_fire_bone = game_state.can_fire_bone
+	can_camouflage = game_state.can_camouflage
 
 	can_ramp = game_state.ramp_unlocked
 	can_sprint = game_state.sprint_unlocked
-
+	
 	# Recrée les listes (important après respawn / reload)
 	heal_potions.clear()
 	for i in range(banane_count):
@@ -234,6 +242,7 @@ func _physics_process(delta):
 	process_shoot()
 	process_clac()
 	process_heal()
+	process_camouflage()
 	process_hang_swing(delta)
 
 	move_and_slide()
@@ -478,6 +487,12 @@ func process_swim(delta):
 			else:
 				sprite.scale.x = -abs(sprite.scale.x)
 
+func process_camouflage():
+	if not can_camouflage:
+		return
+	if Input.is_action_just_pressed(INPUT["camouflage"]):
+		use_camouflage()
+
 
 func attach_to_liana(liana):
 	is_on_liana = true
@@ -602,6 +617,50 @@ func use_honey():
 	refresh_hud_buttons()
 	start_potion_cooldown("honey")
 
+func use_camouflage():
+	if is_camouflaged:
+		return
+	if not game_state.camouflage_unlocked:
+		return
+	if game_state.camouflage_count <= 0:
+		return
+
+	game_state.camouflage_count -= 1
+
+	can_camouflage = game_state.camouflage_unlocked and game_state.camouflage_count > 0
+	game_state.can_camouflage = can_camouflage
+
+	if game_state.hud:
+		game_state.hud.update_camouflage_display()
+
+	start_camouflage()
+
+
+func collect_camouflage(amount = 1):
+	if not game_state:
+		return
+
+	# Débloque le skill 
+	if not game_state.camouflage_unlocked:
+		game_state.camouflage_unlocked = true
+
+	# Ajoute les charges
+	game_state.camouflage_count += amount
+
+	# Etat runtime (utilisable si charges)
+	can_camouflage = game_state.camouflage_unlocked and game_state.camouflage_count > 0
+	game_state.can_camouflage = can_camouflage
+
+	# HUD : switch + anim appear 
+	if game_state.hud:
+		if game_state.hud.has_method("unlock_camouflage_hud"):
+			game_state.hud.unlock_camouflage_hud()
+		if game_state.hud.has_method("update_camouflage_display"):
+			game_state.hud.update_camouflage_display()
+
+	refresh_hud_buttons()
+
+
 func collect_coco(amount = 1, enable_shooting = false):
 	coco_count += amount
 
@@ -685,7 +744,7 @@ func collect_double_jump():
 # =============================================================================
 
 func shoot_coco():
-	if is_swimming or is_ramping or is_hanging or is_on_liana:
+	if is_swimming or is_ramping or is_hanging or is_on_liana or is_camouflaged:
 		return
 
 	coco_count = game_state.coco_count
@@ -721,7 +780,7 @@ func shoot_coco():
 
 
 func shoot_bone():
-	if is_swimming or is_ramping or is_hanging or is_on_liana:
+	if is_swimming or is_ramping or is_hanging or is_on_liana or is_camouflaged:
 		return
 
 	bone_count = game_state.bone_count
@@ -757,20 +816,23 @@ func shoot_bone():
 
 
 func shoot_lance():
-	if is_swimming or is_ramping or is_hanging or is_on_liana:
+	if can_camouflage:
 		return
-
+		
+	if is_swimming or is_ramping or is_hanging or is_on_liana or is_camouflaged:
+		return
+		
 	lance_count = game_state.lance_count
 	can_fire_lance = game_state.can_fire_lance
-
+		
 	if not can_fire_lance:
 		return
 	if lance_count <= 0:
 		return
-
+		
 	lance_count -= 1
 	can_fire_lance = lance_count > 0
-
+		
 	game_state.lance_count = lance_count
 	game_state.can_fire_lance = can_fire_lance
 
@@ -797,7 +859,7 @@ func process_shoot():
 		shoot_coco()
 	if Input.is_action_pressed(INPUT["fire"]) and can_fire_bone:
 		shoot_bone()
-	if Input.is_action_pressed(INPUT["fire_lance"]) and can_fire_lance:
+	if not can_camouflage and Input.is_action_pressed(INPUT["fire_lance"]) and can_fire_lance:
 		shoot_lance()
 
 
@@ -940,6 +1002,43 @@ func apply_web_effect():
 
 func kill_by_plant():
 	visible = false
+
+# --- Camouflage ---
+func start_camouflage():
+	is_camouflaged = true
+	game_state.is_camouflaged = true
+
+	# supprime le noeud de visé des ennemies
+	turn_axis_parent = turn_axis.get_parent()
+	turn_axis_index = turn_axis.get_index()
+	turn_axis_parent.remove_child(turn_axis)
+
+
+	# HUD : cercle = durée du camouflage
+	if game_state.hud and game_state.hud.has_method("start_camouflage_cooldown"):
+		game_state.hud.start_camouflage_cooldown(camouflage_duration)
+
+	refresh_hud_buttons()
+
+	# Effet visuel 
+	sprite.modulate = Color(1, 1, 1, 0.35)
+
+	await get_tree().create_timer(camouflage_duration).timeout
+	stop_camouflage()
+
+
+func stop_camouflage():
+	is_camouflaged = false
+	game_state.is_camouflaged = false
+
+	turn_axis_parent.add_child(turn_axis)
+	turn_axis_parent.move_child(turn_axis, turn_axis_index)
+
+
+	# Retour visuel
+	sprite.modulate = Color(1, 1, 1, 1)
+
+	refresh_hud_buttons()
 
 # ============================================================================
 #                       DOMMAGES ET MORT
@@ -1119,15 +1218,16 @@ func refresh_hud_buttons():
 	if not hud_parent:
 		return
 
+	# Coco / Bone
 	if hud_parent.has_node("Gamepad/Coco"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Coco"), can_fire_coco)
 
 	if hud_parent.has_node("Gamepad/Bone"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Bone"), can_fire_bone)
 
-	if hud_parent.has_node("Gamepad/Spear"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Spear"), can_fire_lance)
 
+
+	# Heal
 	var can_heal_banana_btn = pv < max_pv and heal_potions.size() > 0 and not in_cooldown
 	if hud_parent.has_node("Gamepad/Health"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Health"), can_heal_banana_btn)
@@ -1136,11 +1236,24 @@ func refresh_hud_buttons():
 	if hud_parent.has_node("Gamepad/Honey"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Honey"), can_heal_honey_btn)
 
+	# Spear -> Camouflage (switch)
+	if hud_parent.has_node("Gamepad/Spear"):
+		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Spear"), can_fire_lance and not can_camouflage)
+	
+	# Skills
+	if hud_parent.has_node("Gamepad/Camouflage"):
+		var can_btn = can_camouflage
+		if game_state.is_camouflaged:
+			can_btn = false
+		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Camouflage"), can_btn)
+
+
 	if hud_parent.has_node("Gamepad/Ramp"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Ramp"), can_ramp)
 
 	if hud_parent.has_node("Gamepad/Sprint"):
 		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Sprint"), can_sprint)
+
 
 func reset_state():
 	is_dead = false
@@ -1174,6 +1287,7 @@ func reset_state():
 		game_state.can_fire_coco = false
 		game_state.can_fire_lance = false
 		game_state.can_fire_bone = false
+		can_camouflage = game_state.can_camouflage
 
 		if game_state.hud and game_state.hud.has_method("update_health_bar"):
 			game_state.hud.update_health_bar(pv, max_pv)

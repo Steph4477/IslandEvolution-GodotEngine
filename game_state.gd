@@ -11,11 +11,17 @@ var lance_count = 0
 var can_fire_coco = false
 var can_fire_lance = false
 var can_fire_bone = false
+var can_camouflage = false
 var has_key = false
 var has_lance = false
 var has_flower = false
 var toucan_challenge_retry = false
 var focus_cam_frog = false
+
+# --- Camouflage ---
+var camouflage_unlocked = false
+var camouflage_count = 0
+var is_camouflaged = false
 
 # --- Compétences débloquées ---
 var sprint_unlocked = false
@@ -207,6 +213,9 @@ func load_level(scene_path):
 			hud.update_lance_display()
 			hud.update_banane_display()
 			hud.update_honey_display()
+			hud.update_coco_display()
+			hud.update_bone_display()
+			hud.update_camouflage_display()
 
 		# Sprint
 		if sprint_unlocked and speed_bar:
@@ -215,7 +224,6 @@ func load_level(scene_path):
 			speed_bar.update_speed_bar_current(sprint_stamina)
 
 	await fade.fade_in()
-
 
 # --- Vies ---
 func reset_lives():
@@ -292,7 +300,6 @@ func signal_digicode_ok():
 func signal_flower_collected():
 	emit_signal("flower_collected")
 
-
 func _input(_event):
 	if Input.is_action_just_pressed("gc_menu") or Input.is_action_just_pressed("menu"):
 		if not is_menu_scene(current_level_path):
@@ -307,10 +314,12 @@ func reinitialise():
 	bone_count = 0
 	seed_count = 0
 	lance_count = 0
+	camouflage_count = 0
 
 	can_fire_coco = false
 	can_fire_lance = false
 	can_fire_bone = false
+	can_camouflage = false
 
 	if hud:
 		var gamepad = hud.get_node("Gamepad")
@@ -318,16 +327,16 @@ func reinitialise():
 		hud.set_button_enabled(gamepad.get_node("Bone"), false)
 		hud.set_button_enabled(gamepad.get_node("Spear"), false)
 		hud.set_button_enabled(gamepad.get_node("Health"), false)
-
-		# Honey existe maintenant
-		if gamepad.has_node("Honey"):
-			hud.set_button_enabled(gamepad.get_node("Honey"), false)
-
+		hud.set_button_enabled(gamepad.get_node("Honey"), false)
+		hud.set_button_enabled(gamepad.get_node("Camouflage"), false)
+	
 		hud.update_seed_display(0, total_seeds_in_level)
 		hud.update_lance_display()
 		hud.update_banane_display()
 		hud.update_honey_display()
-
+		hud.update_coco_display()
+		hud.update_bone_display()
+		hud.update_camouflage_display()
 
 # --- Pause ---
 func toggle_pause():

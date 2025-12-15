@@ -109,7 +109,17 @@ func _physics_process(delta):
 	
 	if is_instance_valid(player):
 		target()
+
+		# Camouflage : pas de target => idle + stop
+		if horiz_distance >= 999999:
+			velocity.x = 0
+			if anim.current_animation != "idle":
+				anim.play("idle")
+			move_and_slide()
+			return
+
 		flip(dx)
+
 		
 		# Essaye de lancer une charge si possible
 		maybe_start_charge()
@@ -151,11 +161,20 @@ func _physics_process(delta):
 func target():
 	if player == null:
 		return
+
+	# Camouflage : TurnAxis supprimé => plus de cible
+	if not player.has_node("TurnAxis"):
+		dx = 0
+		distance = 999999
+		horiz_distance = 999999
+		return
+
 	var target_pos = player.get_node("TurnAxis").global_position
 	var to_target = target_pos - global_position
 	dx = to_target.x
 	distance = to_target.length()
 	horiz_distance = abs(dx)
+
 
 func flip(_dx):
 	if dx > 1:
