@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxq6vqvvu2yvy"]
+
+[ext_resource type="Texture2D" uid="uid://dx44f6qdv403v" path="res://Enemies/Chameleon/1.png" id="1_nwt3p"]
+[ext_resource type="Texture2D" uid="uid://c5yxeng0k7pek" path="res://Enemies/Chameleon/2.png" id="2_jyexr"]
+[ext_resource type="Texture2D" uid="uid://cbuhvmhyt0tdr" path="res://Enemies/Chameleon/3.png" id="3_dohme"]
+[ext_resource type="Texture2D" uid="uid://ddeydifqblypp" path="res://Enemies/Chameleon/4.png" id="4_ge73u"]
+[ext_resource type="PackedScene" uid="uid://bt1swvyby7uno" path="res://Loot/Ramp/ramp.tscn" id="5_0uale"]
+
+[sub_resource type="Animation" id="Animation_brclo"]
+resource_name = "appear"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_nwt3p"), ExtResource("2_jyexr"), ExtResource("3_dohme"), ExtResource("2_jyexr"), ExtResource("4_ge73u")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Ramp:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 1.01),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-6, -97), Vector2(-146, -89), Vector2(-11, -95)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Ramp:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Ramp:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.1415927, -6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_3ye6a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_nwt3p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Ramp:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, -97)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Ramp:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Ramp:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wftd7"]
+_data = {
+&"RESET": SubResource("Animation_3ye6a"),
+&"appear": SubResource("Animation_brclo")
+}
+
+[node name="Chameleon" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nwt3p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_wftd7")
+}
+autoplay = "appear"
+
+[node name="Ramp" parent="." instance=ExtResource("5_0uale")]
+visible = false
+position = Vector2(-6, -97)
