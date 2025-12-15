@@ -484,8 +484,8 @@ position = Vector2(4936, 398)
 scale = Vector2(0.15, 0.15)
 
 [node name="Chameleon" parent="." instance=ExtResource("26_nqfku")]
-z_index = 10
-position = Vector2(6361, 1011)
+z_index = 5
+position = Vector2(6408, 993)
 scale = Vector2(0.2, 0.2)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]

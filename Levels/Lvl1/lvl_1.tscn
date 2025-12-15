@@ -85,7 +85,7 @@ script = ExtResource("1_mebys")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
-position = Vector2(167, 1410)
+position = Vector2(179, 1300)
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(3329, 1040)

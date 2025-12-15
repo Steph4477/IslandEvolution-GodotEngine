@@ -8,6 +8,8 @@ extends CanvasLayer
 
 @onready var template_label = $InfoLabel
 var stack
+var persistent_label = null
+
 
 func _ready():
 	add_to_group("info_overlay_group")
@@ -26,6 +28,7 @@ func _ready():
 	var sz = get_viewport().get_visible_rect().size
 	stack.size = Vector2(sz.x * stack_width_ratio, 0)
 	stack.position = Vector2((sz.x - stack.size.x) / 2.0, sz.y * vertical_position_ratio)
+
 
 func show_info(txt):
 	var lbl = Label.new()
@@ -51,3 +54,25 @@ func show_info(txt):
 	t.tween_interval(info_duration)
 	t.tween_property(lbl, "modulate:a", 0.0, 0.2)
 	t.tween_callback(func(): lbl.queue_free())
+
+
+func show_persistent(txt):
+	if persistent_label == null:
+		persistent_label = Label.new()
+		persistent_label.label_settings = template_label.label_settings.duplicate()
+		persistent_label.label_settings.font_size = font_size
+		persistent_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		persistent_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		persistent_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+		persistent_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		persistent_label.custom_minimum_size.x = stack.size.x
+		persistent_label.position = stack.position
+		add_child(persistent_label)
+
+	persistent_label.text = str(txt)
+	persistent_label.visible = true
+
+
+func hide_persistent():
+	if persistent_label:
+		persistent_label.visible = false
