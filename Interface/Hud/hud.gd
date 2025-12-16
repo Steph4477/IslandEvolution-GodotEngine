@@ -273,8 +273,13 @@ func _finalize_switch_to_bone():
 func unlock_camouflage_hud():
 	_finalize_switch_to_camouflage()
 
-	if anim and anim.has_animation("appear_camouflage"):
+	if anim.has_animation("appear_camouflage"):
 		anim.play("appear_camouflage")
+	
+	await anim.animation_finished
+	
+	if anim.has_animation("disappear_spear"):
+		anim.play("disappear_spear")
 
 func _finalize_switch_to_camouflage():
 	lance_button.visible = false
@@ -282,6 +287,31 @@ func _finalize_switch_to_camouflage():
 
 	camouflage_button.visible = true
 	update_camouflage_display()
+
+# --------------------------------------
+#            DESWITCH
+# --------------------------------------
+# camouflage -> lance
+func switch_back_to_spear():
+	# Sécurité
+	if not camouflage_button.visible:
+		return
+
+	# Anim disparition camouflage
+	if anim and anim.has_animation("disappear_camouflage"):
+		anim.play("disappear_camouflage")
+		await anim.animation_finished
+
+	# Cache camouflage
+	camouflage_button.visible = false
+	set_button_enabled(camouflage_button, false)
+
+	# Anim apparition lance
+	lance_button.visible = true
+	if anim and anim.has_animation("appear_spear"):
+		anim.play("appear_spear")
+
+	update_lance_display()
 
 
 # -----------------------------

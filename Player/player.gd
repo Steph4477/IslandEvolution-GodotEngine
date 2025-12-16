@@ -511,7 +511,7 @@ func detach_to_liana():
 
 
 func process_liana(_delta):
-	if not is_on_liana or current_liana == null:
+	if not is_on_liana or current_liana == null or did_double_jump:
 		return
 
 	velocity = Vector2.ZERO
@@ -625,16 +625,26 @@ func use_camouflage():
 	if game_state.camouflage_count <= 0:
 		return
 
+	# Consomme 1 charge
 	game_state.camouflage_count -= 1
+	if game_state.camouflage_count < 0:
+		game_state.camouflage_count = 0
 
-	can_camouflage = game_state.camouflage_unlocked and game_state.camouflage_count > 0
-	game_state.can_camouflage = can_camouflage
+	# Etat global 
+	game_state.can_camouflage = game_state.camouflage_unlocked and game_state.camouflage_count > 0
+	can_camouflage = game_state.can_camouflage
 
+	# HUD : update compteur
 	if game_state.hud:
 		game_state.hud.update_camouflage_display()
 
-	start_camouflage()
+		# Déswitch auto si plus de charges
+		if game_state.camouflage_count == 0:
+			game_state.hud.switch_back_to_spear()
 
+	refresh_hud_buttons()
+
+	start_camouflage()
 
 func collect_camouflage(amount = 1):
 	if not game_state:
