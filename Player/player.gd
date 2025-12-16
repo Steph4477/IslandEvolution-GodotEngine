@@ -561,12 +561,18 @@ func collect_banane(amount = 1):
 	update_can_heal()
 
 	var hud = game_state.hud
-	if hud.has_method("set_button_enabled"):
+	if hud and hud.has_method("anim_to_health_mode"):
+		hud.anim_to_health_mode()
+	elif hud and hud.has_method("update_banane_display"):
+		hud.update_banane_display()
+
+	if hud and hud.has_method("set_button_enabled"):
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
 
 	update_banane_display()
 	show_info_popup("5 jus de bananes récupérés !")
 	refresh_hud_buttons()
+
 
 func collect_honey(amount = 1):
 	for i in range(amount):
@@ -670,23 +676,26 @@ func collect_camouflage(amount = 1):
 
 	refresh_hud_buttons()
 
-
 func collect_coco(amount = 1, enable_shooting = false):
 	coco_count += amount
 
 	if enable_shooting:
 		can_fire_coco = true
-		var hud = game_state.hud
-		if hud.has_method("set_button_enabled"):
-			hud.set_button_enabled(hud.get_node("Gamepad/Coco"), true)
 
 	if game_state:
 		game_state.can_fire_coco = can_fire_coco
 		game_state.coco_count = coco_count
 
+	if game_state.hud:
+		if game_state.hud.has_method("anim_to_coco_mode"):
+			game_state.hud.anim_to_coco_mode()
+		elif game_state.hud.has_method("update_coco_display"):
+			game_state.hud.update_coco_display()
+
 	update_coco_display()
 	show_info_popup("Tu peux lancer 3 noix de coco")
 	refresh_hud_buttons()
+
 
 func collect_bone(amount = 1, enable_shooting = false):
 	bone_count += amount
@@ -713,35 +722,28 @@ func collect_lance(amount = 1, enable_shooting = false):
 
 	if enable_shooting:
 		can_fire_lance = true
-		var hud = game_state.hud
-		if hud.has_node("Gamepad/Spear"):
-			hud.set_button_enabled(hud.get_node("Gamepad/Spear"), true)
 
-	if game_state:
-		game_state.lance_count = lance_count
-		game_state.can_fire_lance = can_fire_lance
-		if game_state.hud and game_state.hud.has_method("update_lance_display"):
-			game_state.hud.update_lance_display()
+	game_state.lance_count = lance_count
+	game_state.can_fire_lance = can_fire_lance
+
+	game_state.hud.anim_to_spear_mode()
 
 	show_info_popup("Tu peux shooter des lances")
 	refresh_hud_buttons()
 
-
 func collect_seed(amount = 1):
 	seed_count += amount
 
-	if game_state:
-		game_state.seed_count = seed_count
-		game_state.collected_seeds += amount
+	game_state.seed_count = seed_count
+	game_state.collected_seeds += amount
 
-		if game_state.hud and game_state.hud.has_method("update_seed_display"):
-			game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
+	game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
 
-		if game_state.collected_seeds >= game_state.total_seeds_in_level:
-			game_state.emit_signal("all_seeds_collected")
+	if game_state.collected_seeds >= game_state.total_seeds_in_level:
+		game_state.emit_signal("all_seeds_collected")
 
 	var parent = get_parent()
-	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
+	if parent.has_method("focus_camera_on_totem_with_anim"):
 		await parent.focus_camera_on_totem_with_anim(game_state.collected_seeds)
 
 func collect_double_jump():

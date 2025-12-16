@@ -25,8 +25,6 @@ extends CanvasLayer
 
 @onready var banane_hbox = get_node_or_null("HBoxContainerBanane")
 @onready var honey_hbox = get_node_or_null("HBoxContainerHoney")
-@onready var coco_hbox = get_node_or_null("HbcCoco/HBoxContainerCoco")
-@onready var bone_hbox = get_node_or_null("HbcBone/HBoxContainerBone")
 
 @onready var anim = $AnimationPlayer
 
@@ -47,21 +45,19 @@ func _ready():
 	gs.hud = self
 
 	# --- Visibilités initiales ---
+	coco_button.visible = false
+	bone_button.visible = false
+	lance_button.visible = false
+	camouflage_button.visible = false
+	health_button.visible = false
+	honey_button.visible = false
 	ramp_button.visible = false
 	sprint_button.visible = false
-	honey_button.visible = false
-	bone_button.visible = false
-	camouflage_button.visible = false
-	health_button.visible = true
 
+	if banane_hbox:
+		banane_hbox.visible = false
 	if honey_hbox:
 		honey_hbox.visible = false
-	if banane_hbox:
-		banane_hbox.visible = true
-	if coco_hbox:
-		coco_hbox.visible = true
-	if bone_hbox:
-		bone_hbox.visible = false
 
 	# --- Désactive les boutons au lancement ---
 	set_button_enabled(ramp_button, false)
@@ -84,16 +80,25 @@ func _ready():
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
 	# --- Restore états persistants ---
+	if gs.coco_count > 0:
+		_finalize_switch_to_coco()
+	
+	if gs.banane_count > 0:
+		_finalize_switch_to_health()
+	
 	if gs.honey_count > 0:
 		honey_mode_already_unlocked = true
 		_finalize_switch_to_honey()
 
-	if gs.bone_count > 0:
-		bone_mode_already_unlocked = true
-		_finalize_switch_to_bone()
+	if gs.lance_count > 0:
+		_finalize_switch_to_spear()
 
 	if gs.camouflage_unlocked:
 		_finalize_switch_to_camouflage()
+
+	if gs.bone_count > 0:
+		bone_mode_already_unlocked = true
+		_finalize_switch_to_bone()
 
 	for b in [ramp_button, sprint_button, coco_button, lance_button, health_button, honey_button, bone_button, camouflage_button]:
 		if b:
@@ -213,6 +218,76 @@ func update_camouflage_display():
 # -----------------------------
 #          SWITCHES
 # -----------------------------
+# Au loot -> coco
+func anim_to_coco_mode():
+	update_coco_display()
+
+	if coco_button.visible:
+		_finalize_switch_to_coco()
+		return
+
+	coco_button.visible = true
+
+	set_button_enabled(coco_button, false)
+
+	anim.play("appear_coco")
+	await anim.animation_finished
+
+	_finalize_switch_to_coco()
+
+# Au loot -> lance
+func anim_to_spear_mode():
+	update_lance_display()
+
+	if lance_button.visible:
+		_finalize_switch_to_spear()
+		return
+
+	lance_button.visible = true
+	set_button_enabled(lance_button, false)
+
+	anim.play("appear_spear")
+	await anim.animation_finished
+
+	_finalize_switch_to_spear() 
+
+func _finalize_switch_to_spear():
+	lance_button.visible = true
+	set_button_enabled(lance_button, gs.lance_count > 0)
+	update_lance_display()
+
+# Au loot-> health (banane)
+func anim_to_health_mode():
+	update_banane_display()
+
+	if health_button.visible:
+		_finalize_switch_to_health()
+		return
+
+	health_button.visible = true
+	if banane_hbox:
+		banane_hbox.visible = true
+
+	set_button_enabled(health_button, false)
+
+	anim.play("appear_health")
+	await anim.animation_finished
+
+	_finalize_switch_to_health()
+
+func _finalize_switch_to_health():
+	health_button.visible = true
+	if banane_hbox:
+		banane_hbox.visible = true
+
+	update_banane_display()
+
+func _finalize_switch_to_coco():
+	coco_button.visible = true
+
+	set_button_enabled(coco_button, gs.coco_count > 0)
+	update_coco_display()
+
 # Banane -> Honey
 func anim_to_honey_mode():
 	update_honey_display()
@@ -251,7 +326,6 @@ func anim_to_bone_mode():
 
 	bone_mode_already_unlocked = true
 	bone_button.visible = true
-	bone_hbox.visible = true
 
 	set_button_enabled(bone_button, false)
 
@@ -262,9 +336,7 @@ func anim_to_bone_mode():
 
 func _finalize_switch_to_bone():
 	coco_button.visible = false
-	coco_hbox.visible = false
 	bone_button.visible = true
-	bone_hbox.visible = true
 
 	set_button_enabled(bone_button, gs.bone_count > 0)
 	update_bone_display()
