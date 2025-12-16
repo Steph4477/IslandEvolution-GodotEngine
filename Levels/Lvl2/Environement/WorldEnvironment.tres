@@ -2,7 +2,7 @@
 
 [resource]
 background_mode = 3
-background_energy_multiplier = 7.28
+background_energy_multiplier = 10.38
 tonemap_mode = 4
 tonemap_exposure = 0.7
 glow_enabled = true

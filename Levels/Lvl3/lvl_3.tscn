@@ -195,6 +195,7 @@ _data = {
 }
 
 [node name="lvl3" type="Node2D"]
+position = Vector2(-52, 66)
 script = ExtResource("1_73pra")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -202,7 +203,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(6201, 888)
+position = Vector2(522, 831)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -467,7 +468,7 @@ scale = Vector2(1.4, 1.4)
 
 [node name="Spear_rack" parent="Node2D2" instance=ExtResource("20_xni6f")]
 z_index = 5
-position = Vector2(6424, 929.00006)
+position = Vector2(6901, 889)
 scale = Vector2(0.15, 0.15)
 
 [node name="HiddenTrap" parent="." instance=ExtResource("21_odqky")]
@@ -480,7 +481,7 @@ scale = Vector2(0.1, 0.1)
 
 [node name="Chameleon" parent="." instance=ExtResource("26_nqfku")]
 z_index = 20
-position = Vector2(6036.9995, 1009.99994)
+position = Vector2(4996, 422)
 rotation = 0.32637656
 scale = Vector2(-0.25, 0.25)
 

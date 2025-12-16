@@ -169,6 +169,9 @@ shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(38, -30)
+
 [connection signal="body_entered" from="Rotator/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Rotator/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

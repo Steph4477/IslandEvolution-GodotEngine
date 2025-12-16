@@ -13,6 +13,9 @@ const GRAVITY = 2000
 @onready var anim = $Rotator/AnimationPlayer
 @onready var rotator = $Rotator
 @onready var attack_timer = $Timer
+@onready var spawnpoint = $SpawnPoint
+
+@export var sprint_loot_scene = preload("res://Loot/Sprint/sprint.tscn")
 
 var pv = 0
 var player = null
@@ -21,7 +24,7 @@ var base_scale_x = 0.0
 var is_dead = false
 var is_attacking = false
 
-# --- variables pour la target ---
+# --- Variables pour la target ---
 var dx = 0.0
 var dy = 0.0
 var distance = 0.0
@@ -36,13 +39,13 @@ func _ready():
 
 func _physics_process(delta):
 	apply_gravity(delta)
-
-	# pendant la mort ou l'attaque fige le perso au sol
+	
+	# Pendant la mort ou l'attaque fige le perso au sol
 	if is_dead or is_attacking:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
-
+	
 	if is_instance_valid(player):
 		target()
 		flip(dx)
@@ -50,7 +53,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		anim.play("idle")
-
+	
 	move_and_slide()
 
 # --- Cible le noeud TurnAxis (la tête de Moko) ---
@@ -88,7 +91,7 @@ func apply_gravity(delta):
 	else:
 		velocity.y += GRAVITY * delta
 
-# --- Trouve le joueur ---
+# --- Trouve Moko ---
 func find_player():
 	var gs = get_node("/root/GameState")
 	player = gs.player
@@ -128,7 +131,7 @@ func _show_damage_popup(amount: int):
 	var popup = scene.instantiate()
 	$HealthBar.add_child(popup)
 	popup.position = Vector2(0, -30)
-	popup.scale.x = 1   # garantit pas d'effet miroir
+	popup.scale.x = 1   # pas d'effet miroir au sprint
 	popup.show_damage(amount)
 
 # --- Mort ---
@@ -139,6 +142,12 @@ func die():
 	velocity = Vector2.ZERO
 	anim.play("die")
 	await anim.animation_finished
+	
+# lache loot sprint
+	var loot = sprint_loot_scene.instantiate()
+	get_parent().add_child(loot)
+	loot.global_position = spawnpoint.global_position
+	
 	queue_free()
 
 # --- Zones ---
