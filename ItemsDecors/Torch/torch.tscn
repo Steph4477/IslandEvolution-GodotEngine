@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxxgitsp1x75c"]
 
-[ext_resource type="Texture2D" uid="uid://ongwfoy1d66w" path="res://ItemsDecors/Torch/light_halo.png" id="2_7uk4e"]
+[ext_resource type="Texture2D" uid="uid://bn6hrcffyidc1" path="res://ItemsDecors/Torch/light_halo_circle.png" id="1_epjmm"]
 [ext_resource type="Texture2D" uid="uid://bi6rljbw0w1wl" path="res://ItemsDecors/Torch/arm.png" id="2_xs22i"]
 [ext_resource type="Texture2D" uid="uid://celxtkk1mrp87" path="res://ItemsDecors/Torch/flame.png" id="3_r44cd"]
 
@@ -56,6 +56,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [3.0, 2.5, 3.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PointLight2D:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.99026644, 0.47657922, 0.07846785, 1), Color(0.86716837, 0.73006314, 0.1428257, 1), Color(0.99026644, 0.47657922, 0.07846785, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_2ivwu"]
 length = 0.001
@@ -107,6 +119,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [2.5]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PointLight2D:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.8669446, 0.7303677, 0.14362484, 0.239216)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vjssa"]
 _data = {
@@ -115,24 +139,24 @@ _data = {
 }
 
 [node name="Torch" type="Node2D"]
-z_index = 2
-position = Vector2(173, -585)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(576, 1206)
-color = Color(1, 0.537255, 0.984314, 0.239216)
+color = Color(0.8669446, 0.7303677, 0.14362484, 0.239216)
 energy = 2.0
-texture = ExtResource("2_7uk4e")
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.851)
+texture = ExtResource("1_epjmm")
 texture_scale = 2.5
 
 [node name="Handle" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 5
 position = Vector2(568, 1266)
 scale = Vector2(0.0900391, 0.1)
 texture = ExtResource("2_xs22i")
 
 [node name="Flame" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 5
 position = Vector2(568.2, 1239.5)
 rotation = -0.0349066
 scale = Vector2(0.1, 0.1)

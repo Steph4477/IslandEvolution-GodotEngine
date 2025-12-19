@@ -203,7 +203,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(522, 831)
+position = Vector2(4828, 790)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
