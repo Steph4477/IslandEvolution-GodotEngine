@@ -41,7 +41,7 @@ scale = Vector2(2.5, 2.02435)
 texture = ExtResource("2_oo4jl")
 
 [node name="sound" type="Node2D" parent="."]
-position = Vector2(108, 237)
+position = Vector2(923.99994, 597)
 scale = Vector2(2.10789, 2.42027)
 
 [node name="dijee" type="AudioStreamPlayer" parent="sound"]
