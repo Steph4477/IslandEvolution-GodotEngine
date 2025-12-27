@@ -2,17 +2,26 @@ extends Node2D
 
 var gs
 
-func _ready() -> void:
+func _ready():
 	$sound/dijee.play()
-	gs = get_node("/root/GameState") 
+	gs = get_node("/root/GameState")
 
-func _on_options_pressed() -> void:
+func _on_options_pressed():
 	gs.load_level("res://Interface/Configuration/configuration.tscn")
 
-func _on_restart_pressed() -> void:
+func _on_restart_pressed():
 	gs.reset_lives()
-	gs.restart_game()  
-
-func _on_start_pressed() -> void:
-	gs.reset_lives()
+	gs.reinitialise()
+	gs.reset_session_dialogues()
 	gs.load_level("res://Levels/Lvl1/lvl_1.tscn")
+	
+
+func _on_load_pressed():
+	await gs.load_game()
+
+func _on_save_pressed():
+	gs.save_game()
+
+
+func _on_continue_pressed():
+	await gs.continue_game()

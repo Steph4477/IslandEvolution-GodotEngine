@@ -141,19 +141,31 @@ func show_damage_popup(amount):
 # =======================================================================
 
 func _ready():
-	camera.make_current()
-	await get_tree().process_frame
 	setup_game_state()
+
+	camera.make_current()
+
+	await get_tree().process_frame
 	setup_hud()
 	await get_tree().process_frame
 
-	if game_state and game_state.hud.has_method("update_seed_display"):
+	if game_state and game_state.hud and game_state.hud.has_method("update_seed_display"):
 		game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
 
 	if anim.current_animation == "hang":
 		anim.play("idle")
 	is_hanging = false
 	climbing_anim = ""
+
+	_restore_loaded_position_post_setup()
+
+
+func _restore_loaded_position_post_setup():
+	var gs = get_node("/root/GameState")
+	if gs.has_pending_load:
+		await get_tree().process_frame
+		global_position = gs.pending_player_pos
+		gs.has_pending_load = false
 
 
 func setup_game_state():
@@ -168,8 +180,10 @@ func setup_game_state():
 
 	coco_count = game_state.coco_count
 	bone_count = game_state.bone_count
-	seed_count = game_state.seed_count
 	lance_count = game_state.lance_count
+
+	# Aligné sur la logique GameState
+	seed_count = game_state.collected_seeds
 
 	can_fire_coco = game_state.can_fire_coco
 	can_fire_lance = game_state.can_fire_lance
@@ -178,7 +192,7 @@ func setup_game_state():
 
 	can_ramp = game_state.ramp_unlocked
 	can_sprint = game_state.sprint_unlocked
-	
+
 	# Recrée les listes (important après respawn / reload)
 	heal_potions.clear()
 	for i in range(banane_count):
@@ -187,34 +201,22 @@ func setup_game_state():
 	honey_potions.clear()
 	for j in range(honey_count):
 		honey_potions.append(game_state.heal_amount)
-	
+
 	max_jump_count = 1
 	if game_state.double_jump_unlocked:
 		max_jump_count = 2
 
+
 func setup_hud():
-	if not game_state or not game_state.hud:
+	if not game_state:
+		return
+	if not game_state.hud:
 		return
 
-	var hud = game_state.hud
 
-	label_banane = hud.get_node("HBoxContainerBanane/Label/BananeCountLabel")
-	label_coco = hud.get_node("HbcCoco/HBoxContainerCoco/CocoCountLabel")
-	label_bone = hud.get_node("HbcBone/HBoxContainerBone/BoneCountLabel")
-	label_seed = hud.get_node("HBoxContainerSeed/SeedCountLabel")
-
-	if game_state and game_state.hud and game_state.hud.has_method("update_lives_display"):
+	# Le HUD gère l'affichage via ses méthodes update
+	if game_state.hud.has_method("update_lives_display"):
 		game_state.hud.update_lives_display(game_state.lives)
-
-	if can_ramp and hud.has_node("Gamepad/Ramp"):
-		var ramp_btn = hud.get_node("Gamepad/Ramp")
-		ramp_btn.visible = true
-		hud.set_button_enabled(ramp_btn, true)
-
-	if can_sprint and hud.has_node("Gamepad/Sprint"):
-		var sprint_btn = hud.get_node("Gamepad/Sprint")
-		sprint_btn.visible = true
-		hud.set_button_enabled(sprint_btn, true)
 
 	update_all_displays()
 	refresh_hud_buttons()
@@ -732,19 +734,17 @@ func collect_lance(amount = 1, enable_shooting = false):
 	refresh_hud_buttons()
 
 func collect_seed(amount = 1):
-	seed_count += amount
+	var gs = get_node("/root/GameState")
 
-	game_state.seed_count = seed_count
-	game_state.collected_seeds += amount
+	for i in range(amount):
+		gs.add_seed_collected()
 
-	game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
-
-	if game_state.collected_seeds >= game_state.total_seeds_in_level:
-		game_state.emit_signal("all_seeds_collected")
+	if gs.hud and gs.hud.has_method("update_seed_display"):
+		gs.hud.update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
 	var parent = get_parent()
-	if parent.has_method("focus_camera_on_totem_with_anim"):
-		await parent.focus_camera_on_totem_with_anim(game_state.collected_seeds)
+	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
+		await parent.focus_camera_on_totem_with_anim(gs.collected_seeds)
 
 func collect_double_jump():
 	game_state.double_jump_unlocked = true

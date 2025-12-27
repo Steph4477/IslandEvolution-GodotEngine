@@ -203,7 +203,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(4828, 790)
+position = Vector2(504, 912)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -440,13 +440,13 @@ position = Vector2(3513, 1180)
 scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
-position = Vector2(10171, 957)
+position = Vector2(11033, 959)
 
 [node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_2nymq")]
-position = Vector2(15706, 873)
+position = Vector2(8429, 942)
 
 [node name="CannibalChief" parent="Node2D/World/Ennemies" instance=ExtResource("18_7qbkl")]
-position = Vector2(11276, 869)
+position = Vector2(12524, 951)
 
 [node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
@@ -455,7 +455,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Village" type="Sprite2D" parent="."]
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
 z_index = 4
-position = Vector2(7011, 850)
+position = Vector2(7028, 844)
 scale = Vector2(-1, 1)
 texture = ExtResource("17_06aic")
 
@@ -472,7 +472,7 @@ position = Vector2(6901, 889)
 scale = Vector2(0.15, 0.15)
 
 [node name="HiddenTrap" parent="." instance=ExtResource("21_odqky")]
-position = Vector2(11985, 1048)
+position = Vector2(7745, 1013)
 
 [node name="BeeHive" parent="." instance=ExtResource("24_vaysu")]
 z_index = 20

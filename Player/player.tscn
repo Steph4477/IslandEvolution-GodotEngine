@@ -292,6 +292,38 @@ tracks/0/keys = {
 "values": [ExtResource("38_7clvs"), ExtResource("2_btooi"), ExtResource("38_7clvs"), ExtResource("24_y06ei"), ExtResource("36_qh0f6"), ExtResource("2_btooi"), ExtResource("38_7clvs"), ExtResource("36_qh0f6")]
 }
 
+[sub_resource type="Animation" id="Animation_8hx1r"]
+resource_name = "jump2_down"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("52_7v2uk"), ExtResource("52_7v2uk")]
+}
+
+[sub_resource type="Animation" id="Animation_m6nl3"]
+resource_name = "jump2_up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("51_uvbbp"), ExtResource("51_uvbbp")]
+}
+
 [sub_resource type="Animation" id="Animation_typba"]
 resource_name = "jump_down"
 tracks/0/type = "value"
@@ -519,38 +551,6 @@ tracks/0/keys = {
 "values": [ExtResource("39_6qokg"), ExtResource("40_i7max"), ExtResource("41_m2xt8"), ExtResource("42_y06ei")]
 }
 
-[sub_resource type="Animation" id="Animation_m6nl3"]
-resource_name = "jump2_up"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("51_uvbbp"), ExtResource("51_uvbbp")]
-}
-
-[sub_resource type="Animation" id="Animation_8hx1r"]
-resource_name = "jump2_down"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("52_7v2uk"), ExtResource("52_7v2uk")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
 &"RESET": SubResource("Animation_i7max"),
@@ -586,11 +586,11 @@ _data = {
 size = Vector2(137, 122)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4i3b"]
-radius = 40.0
+radius = 63.333313
 height = 319.14893
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uvbbp"]
-radius = 40.0
+radius = 56.666656
 height = 163.12054
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
