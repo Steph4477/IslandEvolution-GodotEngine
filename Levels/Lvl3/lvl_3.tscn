@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c3bfbcik1hu58" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
 [ext_resource type="PackedScene" uid="uid://bwqj4ssllvlpx" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
 [ext_resource type="PackedScene" uid="uid://bxq6vqvvu2yvy" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
+[ext_resource type="PackedScene" uid="uid://ceblgpgqa21ae" path="res://Levels/Lvl3/exit.tscn" id="26_twwc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -37,9 +38,6 @@ size = Vector2(19169.441, 284.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(290, 572.8906)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_odqky"]
-size = Vector2(2257.75, 91)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odqky"]
 shader = ExtResource("5_xni6f")
@@ -203,7 +201,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(504, 912)
+position = Vector2(523, 831)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -245,10 +243,6 @@ shape = SubResource("RectangleShape2D_hag10")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform"]
 position = Vector2(-676, 196)
 polygon = PackedVector2Array(5301, 818, 5381, 770, 12505, 747, 12510, 846, 5624, 812, 5066, 1074, 5139, 978)
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(13215.875, 988.5)
-shape = SubResource("RectangleShape2D_odqky")
 
 [node name="Sound" type="Node2D" parent="Node2D"]
 
@@ -484,6 +478,9 @@ z_index = 20
 position = Vector2(4996, 422)
 rotation = 0.32637656
 scale = Vector2(-0.25, 0.25)
+
+[node name="Exit" parent="." instance=ExtResource("26_twwc1")]
+position = Vector2(12074, 981.9999)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

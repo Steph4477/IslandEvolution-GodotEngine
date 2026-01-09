@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceblgpgqa21ae"]
+
+[ext_resource type="Script" uid="uid://bks1383oemo47" path="res://Levels/Lvl3/exit.gd" id="1_4imxi"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(2102.5005, 97.500145)
+
+[node name="Exit" type="Area2D"]
+scale = Vector2(0.8, 0.8)
+collision_layer = 256
+script = ExtResource("1_4imxi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1047.4999, 183.7499)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
