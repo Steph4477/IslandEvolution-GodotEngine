@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://dgtr8bsyw1i14"]
+
+[ext_resource type="Script" uid="uid://bypxy2475x4p6" path="res://Levels/Lvl4/lvl_4.gd" id="1_7mmpv"]
+[ext_resource type="AudioStream" uid="uid://xw852443pndg" path="res://sounds/lvl3/water.ogg" id="2_78ga1"]
+[ext_resource type="AudioStream" uid="uid://b0snt0ob41imw" path="res://sounds/lvl3/birds.ogg" id="4_adlly"]
+[ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/water.gdshader" id="6_3g2p4"]
+[ext_resource type="Texture2D" uid="uid://bgelohdvgqwfg" path="res://Levels/Lvl3/Environement/water.png" id="7_sj7em"]
+[ext_resource type="Texture2D" uid="uid://b0iqy3w1nkrn0" path="res://Levels/Lvl1/Environement/sky.png" id="8_p4ey0"]
+[ext_resource type="Script" uid="uid://bj2b2nld2cnfh" path="res://Levels/Lvl3/Environement/swim_zone.gd" id="10_2k1s8"]
+[ext_resource type="PackedScene" uid="uid://dhkid0wsh71wa" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_4foss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
+size = Vector2(152.5, 5143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djaxt"]
+size = Vector2(143, 5031.4688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
+size = Vector2(19169.441, 284.1875)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_odqky"]
+shader = ExtResource("6_3g2p4")
+shader_parameter/speed = 0.05
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qaw7r"]
+diffuse_texture = ExtResource("7_sj7em")
+texture_repeat = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
+size = Vector2(429, 650.25)
+
+[node name="lvl4" type="Node2D"]
+script = ExtResource("1_7mmpv")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(21, 23)
+
+[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
+z_index = 10
+position = Vector2(271, 97)
+
+[node name="platform" type="StaticBody2D" parent="Node2D"]
+z_index = 5
+position = Vector2(-4, 34)
+collision_layer = 2
+
+[node name="Border" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(-74.75, 1520.5)
+shape = SubResource("RectangleShape2D_ekrdk")
+
+[node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(14245, 1612.2656)
+shape = SubResource("RectangleShape2D_djaxt")
+
+[node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(5824, 3972)
+shape = SubResource("RectangleShape2D_wsvun")
+
+[node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(6134.5195, -851)
+shape = SubResource("RectangleShape2D_wsvun")
+
+[node name="Sound" type="Node2D" parent="Node2D"]
+
+[node name="WaterSound" type="AudioStreamPlayer" parent="Node2D/Sound"]
+stream = ExtResource("2_78ga1")
+volume_db = -4.062
+autoplay = true
+bus = &"Water"
+
+[node name="BirdsSound" type="AudioStreamPlayer" parent="Node2D/Sound"]
+stream = ExtResource("4_adlly")
+volume_db = 4.65
+autoplay = true
+bus = &"Birds"
+
+[node name="World" type="Node2D" parent="Node2D"]
+position = Vector2(184, 2000)
+
+[node name="WaterSprite" type="Sprite2D" parent="Node2D/World"]
+texture_repeat = 3
+material = SubResource("ShaderMaterial_odqky")
+position = Vector2(5645.5, 413.5776)
+scale = Vector2(12.103362, 5.9139667)
+texture = SubResource("CanvasTexture_qaw7r")
+
+[node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World"]
+
+[node name="SkyLayer" type="ParallaxLayer" parent="Node2D/World/WorldParallaxe"]
+z_index = -100
+position = Vector2(3225, 682)
+
+[node name="SkySprite" type="Sprite2D" parent="Node2D/World/WorldParallaxe/SkyLayer"]
+z_index = -100
+position = Vector2(-3617, -3871)
+scale = Vector2(9.79427, 8.052735)
+texture = ExtResource("8_p4ey0")
+centered = false
+
+[node name="SwimZone" type="Node2D" parent="Node2D/World"]
+script = ExtResource("10_2k1s8")
+
+[node name="Area2D" type="Area2D" parent="Node2D/World/SwimZone"]
+collision_layer = 32
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
+position = Vector2(212.5, 1517.125)
+shape = SubResource("RectangleShape2D_n7unt")
+
+[node name="Ennemies" type="Node2D" parent="Node2D/World"]
+z_index = 5
+position = Vector2(-1843, 9)
+
+[node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_4foss")]
+position = Vector2(8429, 942)
+
+[connection signal="body_entered" from="Node2D/World/SwimZone/Area2D" to="Node2D/World/SwimZone" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Node2D/World/SwimZone/Area2D" to="Node2D/World/SwimZone" method="_on_area_2d_body_exited"]
