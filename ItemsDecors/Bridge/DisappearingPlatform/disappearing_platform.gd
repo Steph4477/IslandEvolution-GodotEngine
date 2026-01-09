@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var disappear_delay: float = 1.0
+@export var disappear_delay: float = 0.3
 
 @onready var anim_player = $AnimationPlayer
 @onready var collision = $CollisionShape2D

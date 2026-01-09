@@ -585,13 +585,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x5p2"]
 size = Vector2(137, 122)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4i3b"]
-radius = 63.333313
-height = 319.14893
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvbbp"]
+size = Vector2(106.66666, 329.78723)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uvbbp"]
-radius = 56.666656
-height = 163.12054
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v2uk"]
+size = Vector2(100, 141.84393)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 10
@@ -654,13 +652,13 @@ position = Vector2(125.5, 118)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(135, 101.00001)
+position = Vector2(135, 98.5)
 scale = Vector2(0.3, 0.282)
-shape = SubResource("CapsuleShape2D_c4i3b")
+shape = SubResource("RectangleShape2D_uvbbp")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(135, 123)
+position = Vector2(135, 125)
 scale = Vector2(0.3, 0.282)
-shape = SubResource("CapsuleShape2D_uvbbp")
+shape = SubResource("RectangleShape2D_7v2uk")
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]

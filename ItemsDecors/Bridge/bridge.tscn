@@ -114,15 +114,15 @@ position = Vector2(2148.0002, 0)
 
 [node name="DisappearingPlatform16" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
 z_index = 3
-position = Vector2(2305.0002, -1.9998779)
+position = Vector2(2305.1172, 0.1430428)
 
 [node name="DisappearingPlatform17" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
 z_index = 3
-position = Vector2(2457.0002, -2.000122)
+position = Vector2(2458.5872, 0.10181427)
 
 [node name="DisappearingPlatform19" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
 z_index = 3
-position = Vector2(2609.0002, -2)
+position = Vector2(2611.06, 0.13902688)
 
 [node name="Ropes" type="Sprite2D" parent="Rope_Platform"]
 modulate = Color(0.39688927, 0.39688927, 0.39688924, 1)

@@ -28,6 +28,16 @@ const INPUT = {
 @export var heal_amount = 50  # défini dans GameState
 @export var total_seeds_in_level = 10
 
+# --- Dégâts de chute ---
+@export var fall_damage_enabled = true
+@export var fall_safe_limit = 1200        # en dessous => 0 dégât
+@export var fall_speed_max = 1800             # à partir de là => dégâts max
+@export var fall_damage_max = 600             # dégâts max appliqués
+@export var fall_damage_min = 50              # si on dépasse le seuil, au moins ça
+
+# --- Suivie vitesse de chute ---
+var fall_speed_track = 0.0
+
 var spell_coco = preload("res://Shoot/Player/Coconut/coconut.tscn")
 var spell_bone = preload("res://Shoot/Player/Bone/bone.tscn")
 var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
@@ -60,6 +70,7 @@ var can_fire_bone = false
 var can_fire_lance = false
 var rate_of_fire = 0.4
 var is_attacking = false
+
 
 # --- Camouflage ---
 var can_camouflage = false
@@ -231,6 +242,8 @@ func _physics_process(delta):
 
 	if animation_locked:
 		return
+	
+	var was_on_floor = is_on_floor() # Suivre si on est au sol à chaque frame 
 
 	is_pushing_or_pulling = can_push_pull and Input.is_action_pressed("push_pull")
 
@@ -247,7 +260,11 @@ func _physics_process(delta):
 	process_camouflage()
 	process_hang_swing(delta)
 
+	track_fall_speed(was_on_floor)
+
 	move_and_slide()
+
+	apply_fall_damage(was_on_floor)
 
 	process_wall_jump_input()
 	update_animation()
@@ -273,6 +290,50 @@ func move_horizontal():
 			sprite.scale.x = abs(sprite.scale.x)
 		else:
 			sprite.scale.x = -abs(sprite.scale.x)
+
+# --- Dégats de chute ---
+func track_fall_speed(was_on_floor):
+	if not fall_damage_enabled:
+		return
+
+	if is_swimming or is_on_liana or climbing_anim != "" or is_hanging or is_camouflaged:
+		fall_speed_track = 0
+		return
+
+	if not was_on_floor:
+		if velocity.y > fall_speed_track:
+			fall_speed_track = velocity.y
+	else:
+		fall_speed_track = 0
+
+func apply_fall_damage(was_on_floor):
+	if not fall_damage_enabled:
+		return
+	if is_dead:
+		return
+
+	if not was_on_floor and is_on_floor():
+		var impact_speed = fall_speed_track
+		fall_speed_track = 0
+
+		if impact_speed <= fall_safe_limit:
+			return
+
+		var dmg = fall_damage_min
+
+		if impact_speed >= fall_speed_max:
+			dmg = fall_damage_max
+		else:
+			var range_speed = fall_speed_max - fall_safe_limit
+			var over_speed = impact_speed - fall_safe_limit
+			dmg += (fall_damage_max - fall_damage_min) * over_speed / range_speed
+
+		dmg = int(dmg)
+		if dmg <= 0:
+			return
+
+		# Applique les dégâts + anim onhit 
+		on_hit(dmg)
 
 func update_jump(delta):
 	if is_swimming:
@@ -378,7 +439,7 @@ func unlock_ramp():
 	can_ramp = true
 	game_state.ramp_unlocked = true
 
-	show_info_popup("🤸 Tu peux maintenant ramper !")
+	show_info_popup("🤸 Tu peux maintenant ramper avec ctrl !")
 
 	if not game_state or not game_state.hud:
 		return

@@ -97,7 +97,7 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	await load_level("res://Levels/Lvl2/lvl_2.tscn")
 
 
 func _process(_delta):
@@ -321,12 +321,10 @@ func save_game():
 	file.store_string(JSON.stringify(data))
 	file.close()
 
-	print("[SAVE] OK -> ", SAVE_PATH)
 	return true
 
 
 func load_game():
-
 	if not FileAccess.file_exists(SAVE_PATH):
 		return false
 
@@ -379,7 +377,6 @@ func apply_save_data(data):
 	has_flower = data.get("has_flower", false)
 
 	# Recharge du niveau sauvegardé
-
 	await load_level(pending_level_path)
 
 
