@@ -54,8 +54,13 @@ var is_hanging = false
 var hang_timer = 0.0
 var can_ramp = false
 var is_ramping = false
+
+# --- Nage sur et sous l'eau ---
 var can_swim = false
 var is_swimming = false
+var can_swim_under_water = false
+var is_swimming_under_water = false
+
 var swim_speed_x = 150
 var swim_speed_y = 110
 var swim_timer = 0.0
@@ -254,6 +259,7 @@ func _physics_process(delta):
 	move_horizontal()
 	process_ramp()
 	process_swim(delta)
+	process_swim_under_water(delta)
 	process_shoot()
 	process_clac()
 	process_heal()
@@ -296,7 +302,7 @@ func track_fall_speed(was_on_floor):
 	if not fall_damage_enabled:
 		return
 
-	if is_swimming or is_on_liana or climbing_anim != "" or is_hanging or is_camouflaged:
+	if is_swimming or is_swimming_under_water or is_on_liana or climbing_anim != "" or is_hanging or is_camouflaged:
 		fall_speed_track = 0
 		return
 
@@ -336,7 +342,7 @@ func apply_fall_damage(was_on_floor):
 		on_hit(dmg)
 
 func update_jump(delta):
-	if is_swimming:
+	if is_swimming or is_swimming_under_water:
 		return
 
 	if climbing_anim != "":
@@ -363,7 +369,7 @@ func process_wall_jump_input():
 		return
 	if is_on_liana:
 		return
-	if is_swimming:
+	if is_swimming or is_swimming_under_water:
 		return
 
 	if is_on_wall() and Input.is_action_just_pressed("jump"):
@@ -512,7 +518,7 @@ func process_sprint():
 		is_sprinting = false
 		return
 
-	if is_swimming or is_ramping or is_on_liana:
+	if is_swimming or is_swimming_under_water or is_ramping or is_on_liana:
 		is_sprinting = false
 		if game_state.sprint_stamina < game_state.sprint_stamina_max:
 			game_state.sprint_stamina += game_state.sprint_stamina_regen * delta
@@ -536,6 +542,21 @@ func process_sprint():
 
 	game_state.speed_bar.update_speed_bar_current(game_state.sprint_stamina)
 
+# --- Nage ---
+func process_swim_under_water(delta):
+	if is_swimming_under_water:
+		swim_timer += delta
+		var h = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
+		var v = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+
+		velocity.x = h * speed * 0.5 + water_current.x
+		velocity.y = v * speed * 0.35
+
+		if h != 0:
+			if h > 0:
+				sprite.scale.x = abs(sprite.scale.x)
+			else:
+				sprite.scale.x = -abs(sprite.scale.x)
 
 func process_swim(delta):
 	if is_swimming:
@@ -550,13 +571,8 @@ func process_swim(delta):
 			else:
 				sprite.scale.x = -abs(sprite.scale.x)
 
-func process_camouflage():
-	if not can_camouflage:
-		return
-	if Input.is_action_just_pressed(INPUT["camouflage"]):
-		use_camouflage()
 
-
+#--- Liane ---
 func attach_to_liana(liana):
 	is_on_liana = true
 	current_liana = liana
@@ -605,6 +621,13 @@ func hand_to_grip():
 	var hand = $Node2D/AttachMarker
 	var delta = grip.global_position - hand.global_position
 	global_position += delta
+
+# --- Camouflage ---
+func process_camouflage():
+	if not can_camouflage:
+		return
+	if Input.is_action_just_pressed(INPUT["camouflage"]):
+		use_camouflage()
 
 
 # =================================================================================================
@@ -817,7 +840,7 @@ func collect_double_jump():
 # =============================================================================
 
 func shoot_coco():
-	if is_swimming or is_ramping or is_hanging or is_on_liana or is_camouflaged:
+	if is_swimming or is_swimming_under_water or is_ramping or is_hanging or is_on_liana or is_camouflaged:
 		return
 
 	coco_count = game_state.coco_count
@@ -853,7 +876,7 @@ func shoot_coco():
 
 
 func shoot_bone():
-	if is_swimming or is_ramping or is_hanging or is_on_liana or is_camouflaged:
+	if is_swimming or is_swimming_under_water or is_ramping or is_hanging or is_on_liana or is_camouflaged:
 		return
 
 	bone_count = game_state.bone_count
@@ -892,7 +915,7 @@ func shoot_lance():
 	if can_camouflage:
 		return
 		
-	if is_swimming or is_ramping or is_hanging or is_on_liana or is_camouflaged:
+	if is_swimming or is_swimming_under_water or is_ramping or is_hanging or is_on_liana or is_camouflaged:
 		return
 		
 	lance_count = game_state.lance_count
@@ -1185,6 +1208,11 @@ func is_quake_safe():
 # ============================================================================
 func update_animation():
 	if animation_locked or is_dead:
+		return
+
+	if is_swimming_under_water:
+		if anim.current_animation != "swim_under_water":
+			anim.play("swim_under_water")
 		return
 
 	if is_swimming:
