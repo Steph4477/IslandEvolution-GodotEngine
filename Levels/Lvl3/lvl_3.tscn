@@ -41,7 +41,7 @@ size = Vector2(290, 572.8906)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odqky"]
 shader = ExtResource("5_xni6f")
-shader_parameter/speed = 0.05
+shader_parameter/speed = 0.050000002375
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qaw7r"]
 diffuse_texture = ExtResource("6_06aic")
