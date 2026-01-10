@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgtr8bsyw1i14"]
+[gd_scene load_steps=15 format=3 uid="uid://dgtr8bsyw1i14"]
 
 [ext_resource type="Script" uid="uid://bypxy2475x4p6" path="res://Levels/Lvl4/lvl_4.gd" id="1_7mmpv"]
 [ext_resource type="AudioStream" uid="uid://xw852443pndg" path="res://sounds/lvl3/water.ogg" id="2_78ga1"]
+[ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Player/Skills/Aquatic_breathing/Air/air_bubble.png" id="2_bpjiq"]
 [ext_resource type="AudioStream" uid="uid://b0snt0ob41imw" path="res://sounds/lvl3/birds.ogg" id="4_adlly"]
 [ext_resource type="Texture2D" uid="uid://dj4hho84iy2nw" path="res://Levels/Lvl4/Environement/water.png" id="5_7mmpv"]
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/water.gdshader" id="6_3g2p4"]
@@ -23,7 +24,7 @@ shader = ExtResource("6_3g2p4")
 shader_parameter/speed = 0.10000000475
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
-size = Vector2(8346, 1476.125)
+size = Vector2(8593, 2076.0625)
 
 [node name="lvl4" type="Node2D"]
 script = ExtResource("1_7mmpv")
@@ -31,9 +32,15 @@ script = ExtResource("1_7mmpv")
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(21, 23)
 
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+z_index = 500
+position = Vector2(789.99994, 1137.9999)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_bpjiq")
+
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(271, 97)
+position = Vector2(227, -388)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 z_index = 5
@@ -76,7 +83,7 @@ position = Vector2(184, 2000)
 [node name="WaterSprite" type="Sprite2D" parent="Node2D/World"]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_odqky")
-position = Vector2(3425, -555)
+position = Vector2(3143, -562)
 scale = Vector2(2, 2)
 texture = ExtResource("5_7mmpv")
 
@@ -102,7 +109,7 @@ collision_layer = 32
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
-position = Vector2(4016, -920)
+position = Vector2(3892.5, -1219.9688)
 shape = SubResource("RectangleShape2D_n7unt")
 
 [node name="Ennemies" type="Node2D" parent="Node2D/World"]

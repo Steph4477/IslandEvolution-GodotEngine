@@ -342,7 +342,7 @@ func apply_fall_damage(was_on_floor):
 		on_hit(dmg)
 
 func update_jump(delta):
-	if is_swimming or is_swimming_under_water:
+	if is_swimming :
 		return
 
 	if climbing_anim != "":
