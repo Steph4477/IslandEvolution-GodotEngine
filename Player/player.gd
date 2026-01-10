@@ -56,15 +56,29 @@ var can_ramp = false
 var is_ramping = false
 
 # --- Nage sur et sous l'eau ---
+var water_current = Vector2(-120, 0)
 var can_swim = false
 var is_swimming = false
 var can_swim_under_water = false
 var is_swimming_under_water = false
-
 var swim_speed_x = 150
 var swim_speed_y = 110
 var swim_timer = 0.0
-var water_current = Vector2(-120, 0)
+
+# --- Respiration sous l'eau ---
+@export var max_breath = 30
+@export var panic_start = 15
+@export var drown_damage_per_second = 500
+
+@export var bubble_interval_normal = 1
+@export var bubble_interval_min = 0.06
+
+var breath_left = 0
+var is_underwater = false
+
+var air_bubble_scene = preload("res://Player/Skills/Aquatic_breathing/Air/air_bubble.tscn")
+
+# --- Skills ---
 var can_sprint = false
 var is_sprinting = false
 var ramp_locked = false
@@ -76,16 +90,13 @@ var can_fire_lance = false
 var rate_of_fire = 0.4
 var is_attacking = false
 
-
 # --- Camouflage ---
 var can_camouflage = false
 @export var camouflage_duration = 5.0
 var is_camouflaged = false
-@onready var turn_axis = $TurnAxis
 
 var turn_axis_parent = null
 var turn_axis_index = 0
-
 
 # --- Jump and double jump ---
 var jump_buffer = 0.0
@@ -120,6 +131,11 @@ var is_pushing_or_pulling = false
 @onready var sprite = $Node2D/Sprite
 @onready var anim = $Node2D/Anim
 @onready var camera = $Camera2D
+@onready var air_bubble_spawn = $AirBubbleSpawn
+@onready var breath_tick_timer = $BreathTickTimer
+@onready var bubble_timer = $BubbleTimer
+@onready var turn_axis = $TurnAxis
+@onready var drown_timer = $DrownTimer
 
 # --- HUD Labels (non utilisés directement pour l'affichage, désormais géré par le HUD) ---
 var label_banane
@@ -543,6 +559,20 @@ func process_sprint():
 	game_state.speed_bar.update_speed_bar_current(game_state.sprint_stamina)
 
 # --- Nage ---
+func process_swim(delta):
+	if is_swimming:
+		swim_timer += delta
+		var h = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
+		velocity.x = h * speed * 0.5 + water_current.x
+		velocity.y = 0
+
+		if h != 0:
+			if h > 0:
+				sprite.scale.x = abs(sprite.scale.x)
+			else:
+				sprite.scale.x = -abs(sprite.scale.x)
+
+
 func process_swim_under_water(delta):
 	if is_swimming_under_water:
 		swim_timer += delta
@@ -558,21 +588,129 @@ func process_swim_under_water(delta):
 			else:
 				sprite.scale.x = -abs(sprite.scale.x)
 
-func process_swim(delta):
-	if is_swimming:
-		swim_timer += delta
-		var h = Input.get_action_strength(INPUT["right"]) - Input.get_action_strength(INPUT["left"])
-		velocity.x = h * speed * 0.5 + water_current.x
-		velocity.y = 0
 
-		if h != 0:
-			if h > 0:
-				sprite.scale.x = abs(sprite.scale.x)
-			else:
-				sprite.scale.x = -abs(sprite.scale.x)
+# --- Réspiratioon sous l'eau ---
+func start_underwater_breath():
+	is_underwater = true
+	breath_left = max_breath
+
+	drown_timer.stop()
+	_update_bubble_rate()
+
+	# Timer respiration (1 tick / seconde)
+	if breath_tick_timer.is_stopped():
+		breath_tick_timer.start()
+
+	# Les bulles ne démarrent PAS au début
+	bubble_timer.stop()
+
+	# HUD
+	if game_state and game_state.hud:
+		if game_state.hud.has_method("start_breath"):
+			game_state.hud.start_breath(max_breath)
+		if game_state.hud.has_method("update_breath"):
+			game_state.hud.update_breath(breath_left, max_breath)
 
 
-#--- Liane ---
+func stop_underwater_breath(refill):
+	is_underwater = false
+
+	breath_tick_timer.stop()
+	bubble_timer.stop()
+	drown_timer.stop()
+
+	if refill:
+		breath_left = max_breath
+
+	# HUD
+	game_state.hud.stop_breath()
+	game_state.hud.update_breath(breath_left, max_breath)
+
+
+func _on_breath_tick_timer_timeout():
+	if not is_underwater:
+		return
+
+	breath_left -= 1
+	if breath_left < 0:
+		breath_left = 0
+
+	if game_state and game_state.hud and game_state.hud.has_method("update_breath"):
+		game_state.hud.update_breath(breath_left, max_breath)
+	
+	# Démarrage des bulles uniquement à partir de 15s restantes
+	if breath_left == panic_start:
+		_update_bubble_rate()
+		if bubble_timer.is_stopped():
+			bubble_timer.start()
+
+
+	if breath_left == 0:
+		bubble_timer.stop()
+		if drown_timer.is_stopped():
+			drown_timer.start()
+		return
+
+	_update_bubble_rate()
+
+
+func _on_bubble_timer_timeout():
+	if not is_underwater:
+		return
+
+	# Dès la noyade plus de bulles
+	if not drown_timer.is_stopped():
+		bubble_timer.stop()
+		return
+
+	if breath_left <= 0:
+		bubble_timer.stop()
+		return
+
+	_spawn_air_bubble()
+
+
+func _on_drown_timer_timeout():
+	if not is_underwater:
+		return
+	if breath_left > 0:
+		drown_timer.stop()
+		return
+
+	bubble_timer.stop()
+	on_hit(drown_damage_per_second)
+
+
+func _update_bubble_rate():
+	if breath_left > panic_start:
+		bubble_timer.wait_time = bubble_interval_normal
+		return
+
+	var t = float(panic_start - breath_left) / float(panic_start)
+	if t < 0.0:
+		t = 0.0
+	if t > 1.0:
+		t = 1.0
+
+	var w = bubble_interval_normal - ((bubble_interval_normal - bubble_interval_min) * t)
+	if w < bubble_interval_min:
+		w = bubble_interval_min
+
+	bubble_timer.wait_time = w
+
+func _spawn_air_bubble():
+	# Stop net dès que l'air est à 0 
+	if breath_left <= 0:
+		return
+	if not drown_timer.is_stopped():
+		return
+
+	var b = air_bubble_scene.instantiate()
+	get_parent().add_child(b)
+	b.global_position = air_bubble_spawn.global_position
+
+
+# --- Liane ---
 func attach_to_liana(liana):
 	is_on_liana = true
 	current_liana = liana
@@ -1196,6 +1334,8 @@ func die():
 	else:
 		next_level = game_state.current_level_path
 	
+	stop_underwater_breath(true)
+	
 	game_state.load_level(next_level)
 
 func is_quake_safe():
@@ -1357,6 +1497,7 @@ func refresh_hud_buttons():
 
 
 func reset_state():
+	stop_underwater_breath(true)
 	is_dead = false
 	animation_locked = false
 	visible = true

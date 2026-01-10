@@ -28,6 +28,9 @@ extends CanvasLayer
 
 @onready var anim = $AnimationPlayer
 
+@onready var breath_bar = get_node_or_null("BreathBar")
+@onready var breath_progress = get_node_or_null("BreathBar/TextureProgressBar")
+
 # -----------------------------
 #            VARS
 # -----------------------------
@@ -106,6 +109,13 @@ func _ready():
 
 	if break_sprite:
 		break_sprite.visible = false
+
+	if breath_bar:
+		breath_bar.visible = false
+
+	if breath_progress:
+		breath_progress.max_value = 30
+		breath_progress.value = 30
 
 # -----------------------------
 #        COOLDOWNS
@@ -214,6 +224,18 @@ func update_camouflage_display():
 
 	set_button_enabled(camouflage_button, gs.camouflage_count > 0)
 
+# --- Réspiration sous l'eau ---
+func start_breath(max_value):
+	breath_bar.visible = true
+	breath_progress.max_value = max_value
+	breath_progress.value = max_value
+
+func update_breath(current, max_value):
+	breath_progress.max_value = max_value
+	breath_progress.value = clamp(current, 0, max_value)
+
+func stop_breath():
+	breath_bar.visible = false
 
 # -----------------------------
 #          SWITCHES

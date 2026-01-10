@@ -502,6 +502,23 @@ tracks/0/keys = {
 "values": [ExtResource("43_y06ei"), ExtResource("44_e2pw6"), ExtResource("45_jaf6r"), ExtResource("46_any7n")]
 }
 
+[sub_resource type="Animation" id="Animation_ntwt4"]
+resource_name = "swim_under_water"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("53_m6nl3"), ExtResource("54_8hx1r")]
+}
+
 [sub_resource type="Animation" id="Animation_vbwkl"]
 resource_name = "walk"
 length = 1.7
@@ -551,23 +568,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("39_6qokg"), ExtResource("40_i7max"), ExtResource("41_m2xt8"), ExtResource("42_y06ei")]
-}
-
-[sub_resource type="Animation" id="Animation_ntwt4"]
-resource_name = "swim_under_water"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("53_m6nl3"), ExtResource("54_8hx1r")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
@@ -681,4 +681,16 @@ position = Vector2(135, 125)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_7v2uk")
 
+[node name="AirBubbleSpawn" type="Marker2D" parent="."]
+position = Vector2(177, 125)
+
+[node name="BreathTickTimer" type="Timer" parent="."]
+
+[node name="BubbleTimer" type="Timer" parent="."]
+
+[node name="DrownTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]
+[connection signal="timeout" from="BreathTickTimer" to="." method="_on_breath_tick_timer_timeout"]
+[connection signal="timeout" from="BubbleTimer" to="." method="_on_bubble_timer_timeout"]
+[connection signal="timeout" from="DrownTimer" to="." method="_on_drown_timer_timeout"]
