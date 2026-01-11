@@ -62,6 +62,8 @@ func _ready():
 	if honey_hbox:
 		honey_hbox.visible = false
 
+	hide_breathbar()
+
 	# --- Désactive les boutons au lancement ---
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(sprint_button, false)
@@ -225,8 +227,15 @@ func update_camouflage_display():
 	set_button_enabled(camouflage_button, gs.camouflage_count > 0)
 
 # --- Réspiration sous l'eau ---
-func start_breath(max_value):
+# affichage de la barre seulement aprés 1s l'entrée dans la zone de nage
+func show_breathbar():
 	breath_bar.visible = true
+
+func hide_breathbar():
+	breath_bar.visible = false
+
+# --- func d'affichage de la BreathBar  ---
+func start_breath(max_value):
 	breath_progress.max_value = max_value
 	breath_progress.value = max_value
 
