@@ -73,6 +73,9 @@ var swim_timer = 0.0
 @export var bubble_interval_normal = 1
 @export var bubble_interval_min = 0.06
 
+@export var mouth_show_time = 0.2
+
+
 var breath_left = 0
 var is_underwater = false
 
@@ -136,6 +139,8 @@ var is_pushing_or_pulling = false
 @onready var bubble_timer = $BubbleTimer
 @onready var turn_axis = $TurnAxis
 @onready var drown_timer = $DrownTimer
+@onready var open_mouth = $Node2D/OpenMouth
+@onready var close_mouth = $Node2D/Sprite
 
 # --- HUD Labels (non utilisés directement pour l'affichage, désormais géré par le HUD) ---
 var label_banane
@@ -708,7 +713,15 @@ func _spawn_air_bubble():
 	var b = air_bubble_scene.instantiate()
 	get_parent().add_child(b)
 	b.global_position = air_bubble_spawn.global_position
-
+	
+	# bouche ouverte pendant la noyade à chaque spawn de bulle
+	if open_mouth:
+		open_mouth.visible = true
+		close_mouth.visible = false
+		await get_tree().create_timer(mouth_show_time).timeout
+		if open_mouth:
+			open_mouth.visible = false
+			close_mouth.visible = true
 
 # --- Liane ---
 func attach_to_liana(liana):

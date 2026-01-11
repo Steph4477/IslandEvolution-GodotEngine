@@ -1,7 +1,8 @@
-[gd_scene load_steps=89 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=90 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/player.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://2ymynqarqqhp" path="res://Player/Sprite/onhit/1.png" id="2_2paov"]
+[ext_resource type="Texture2D" uid="uid://n8jyvhkm8ekx" path="res://Player/Sprite/Swim_under_water/3.png" id="2_8hx1r"]
 [ext_resource type="Texture2D" uid="uid://cog5nm84y5adc" path="res://Player/Sprite/idle/2.png" id="2_btooi"]
 [ext_resource type="Texture2D" uid="uid://0wje8ce50pa6" path="res://Player/Sprite/jump/3.png" id="2_l6ey7"]
 [ext_resource type="Texture2D" uid="uid://bkb4ah5m1jprh" path="res://Player/Sprite/climb/1.png" id="2_vbwkl"]
@@ -619,6 +620,14 @@ script = ExtResource("1_5psm4")
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-23, -28)
 scale = Vector2(1.2, 1.2)
+
+[node name="OpenMouth" type="Sprite2D" parent="Node2D"]
+visible = false
+z_index = 50
+position = Vector2(150, 71.6667)
+rotation = -0.08975488
+scale = Vector2(0.19565926, 0.19565926)
+texture = ExtResource("2_8hx1r")
 
 [node name="Sprite" type="Sprite2D" parent="Node2D"]
 modulate = Color(1, 1, 1, 0.9785716)
