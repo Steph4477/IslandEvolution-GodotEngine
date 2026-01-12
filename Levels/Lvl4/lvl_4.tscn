@@ -7,7 +7,7 @@
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/water.gdshader" id="6_3g2p4"]
 [ext_resource type="Script" uid="uid://deuwvmpkoblt5" path="res://Levels/Lvl4/under_swim_zone.gd" id="8_bpjiq"]
 [ext_resource type="Texture2D" uid="uid://b0iqy3w1nkrn0" path="res://Levels/Lvl1/Environement/sky.png" id="8_p4ey0"]
-[ext_resource type="PackedScene" uid="uid://bsj7pn5tcgitu" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubbler/air_bubbler.tscn" id="9_bpjiq"]
+[ext_resource type="PackedScene" uid="uid://ckxvcw56qaywm" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Plants/plant_aqua.tscn" id="9_bpjiq"]
 [ext_resource type="PackedScene" uid="uid://dhkid0wsh71wa" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_4foss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
@@ -115,8 +115,10 @@ position = Vector2(-1843, 9)
 [node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_4foss")]
 position = Vector2(8241, 595)
 
-[node name="AirBubbler" parent="." instance=ExtResource("9_bpjiq")]
-position = Vector2(481, 797)
+[node name="PlantAqua" parent="." instance=ExtResource("9_bpjiq")]
+z_index = 100
+position = Vector2(485, 1253)
+scale = Vector2(-1, 1)
 
 [connection signal="area_exited" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_body_entered"]

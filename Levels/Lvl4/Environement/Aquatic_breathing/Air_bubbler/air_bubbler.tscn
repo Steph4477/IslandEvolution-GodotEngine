@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://eodde4thawq1" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubbler/air_bubbler.gd" id="1_hdtsp"]
 
 [node name="AirBubbler" type="Node2D"]
-position = Vector2(852, 594)
 script = ExtResource("1_hdtsp")
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -14,15 +13,12 @@ autostart = true
 [node name="Emitters" type="Node2D" parent="."]
 
 [node name="Emitter_1" type="Marker2D" parent="Emitters"]
-position = Vector2(-209, 23)
+position = Vector2(-35, 180)
 
 [node name="Emitter_2" type="Marker2D" parent="Emitters"]
-position = Vector2(193, 55)
+position = Vector2(25, 108)
 
 [node name="Emitter_3" type="Marker2D" parent="Emitters"]
-position = Vector2(-104, 81)
-
-[node name="Emitter_4" type="Marker2D" parent="Emitters"]
-position = Vector2(58, 94)
+position = Vector2(-47, 35)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

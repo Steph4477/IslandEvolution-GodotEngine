@@ -602,7 +602,7 @@ func start_underwater_breath():
 	breath_left = max_breath
 
 	drown_timer.stop()
-	_update_bubble_rate()
+	update_bubble_rate()
 
 	# Timer respiration (1 tick / seconde)
 	if breath_tick_timer.is_stopped():
@@ -612,12 +612,8 @@ func start_underwater_breath():
 	bubble_timer.stop()
 
 	# HUD
-	if game_state and game_state.hud:
-		if game_state.hud.has_method("start_breath"):
-			game_state.hud.start_breath(max_breath)
-		if game_state.hud.has_method("update_breath"):
-			game_state.hud.update_breath(breath_left, max_breath)
-
+	game_state.hud.start_breath(max_breath)
+	game_state.hud.update_breath(breath_left, max_breath)
 
 func stop_underwater_breath(refill):
 	is_underwater = false
@@ -642,15 +638,14 @@ func _on_breath_tick_timer_timeout():
 	if breath_left < 0:
 		breath_left = 0
 
-	if game_state and game_state.hud and game_state.hud.has_method("update_breath"):
-		game_state.hud.update_breath(breath_left, max_breath)
+	# HUD
+	game_state.hud.update_breath(breath_left, max_breath)
 	
 	# Démarrage des bulles uniquement à partir de 15s restantes
 	if breath_left == panic_start:
-		_update_bubble_rate()
+		update_bubble_rate()
 		if bubble_timer.is_stopped():
 			bubble_timer.start()
-
 
 	if breath_left == 0:
 		bubble_timer.stop()
@@ -658,8 +653,7 @@ func _on_breath_tick_timer_timeout():
 			drown_timer.start()
 		return
 
-	_update_bubble_rate()
-
+	update_bubble_rate()
 
 func _on_bubble_timer_timeout():
 	if not is_underwater:
@@ -669,13 +663,12 @@ func _on_bubble_timer_timeout():
 	if not drown_timer.is_stopped():
 		bubble_timer.stop()
 		return
-
+		
 	if breath_left <= 0:
 		bubble_timer.stop()
 		return
 
-	_spawn_air_bubble()
-
+	spawn_air_bubble()
 
 func _on_drown_timer_timeout():
 	if not is_underwater:
@@ -687,8 +680,7 @@ func _on_drown_timer_timeout():
 	bubble_timer.stop()
 	on_hit(drown_damage_per_second)
 
-
-func _update_bubble_rate():
+func update_bubble_rate():
 	if breath_left > panic_start:
 		bubble_timer.wait_time = bubble_interval_normal
 		return
@@ -705,7 +697,7 @@ func _update_bubble_rate():
 
 	bubble_timer.wait_time = w
 
-func _spawn_air_bubble():
+func spawn_air_bubble():
 	# Stop net dès que l'air est à 0 
 	if breath_left <= 0:
 		return
@@ -715,7 +707,7 @@ func _spawn_air_bubble():
 	var b = air_bubble_scene.instantiate()
 	get_parent().add_child(b)
 	b.global_position = air_bubble_spawn.global_position
-	
+
 	# bouche ouverte pendant la noyade à chaque spawn de bulle
 	if open_mouth:
 		open_mouth.visible = true
@@ -988,10 +980,6 @@ func collect_double_jump():
 	show_info_popup("🦘 Double saut débloqué !")
 
 func collect_oxygen(amount):
-	# Remonte l'oxygène que sous l'eau
-	if not is_underwater:
-		return
-
 	breath_left += amount
 	if breath_left > max_breath:
 		breath_left = max_breath
@@ -1001,7 +989,7 @@ func collect_oxygen(amount):
 		drown_timer.stop()
 
 	# Ajuste le rythme des bulles (panique -> normal) + HUD
-	_update_bubble_rate()
+	update_bubble_rate()
 	game_state.hud.update_breath(breath_left, max_breath)
 
 	# Revenu au-dessus de 0, on peut relancer les bulles si on est en panique
