@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckxvcw56qaywm"]
+
+[ext_resource type="Texture2D" uid="uid://l4nl2bqgp1ge" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Plants/plant.png" id="1_n3yvq"]
+[ext_resource type="PackedScene" uid="uid://bsj7pn5tcgitu" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubbler/air_bubbler.tscn" id="2_khfsa"]
+
+[sub_resource type="Animation" id="Animation_i7hbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_it4j1"]
+resource_name = "wind"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0349066, 0.0349066, -0.0349066]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0slvd"]
+_data = {
+&"RESET": SubResource("Animation_i7hbb"),
+&"wind": SubResource("Animation_it4j1")
+}
+
+[node name="PlantAqua" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(14.201622, -31.911102)
+rotation = 0.0244346
+scale = Vector2(0.3, 0.369)
+texture = ExtResource("1_n3yvq")
+
+[node name="PivotBase" type="Marker2D" parent="."]
+position = Vector2(-0.99993896, -8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0slvd")
+}
+autoplay = "wind"
+
+[node name="AirBubbler" parent="." instance=ExtResource("2_khfsa")]
+position = Vector2(2.198759, -189.98991)
