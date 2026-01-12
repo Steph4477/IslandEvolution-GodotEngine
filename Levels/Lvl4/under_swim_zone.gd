@@ -58,3 +58,8 @@ func _on_breath_delay_timer_timeout():
 		return
 	if gs.hud:
 		gs.hud.show_breathbar()
+
+func _on_area_2d_area_exited(bubble):
+	if bubble.is_in_group("air_bubbles"):
+		var bubble_root = bubble.get_parent()  # AirBubble (Node2D)
+		bubble_root.queue_free()

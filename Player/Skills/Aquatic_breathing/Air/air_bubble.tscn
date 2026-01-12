@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgo6l7tj5pjii"]
+[gd_scene load_steps=7 format=3 uid="uid://cgo6l7tj5pjii"]
 
 [ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Player/Skills/Aquatic_breathing/Air/air_bubble.png" id="1_xxfgk"]
 
@@ -93,7 +93,9 @@ _data = {
 &"air": SubResource("Animation_xxfgk")
 }
 
-[node name="AirBubble" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xtc5"]
+
+[node name="AirBubble" type="Node2D" groups=["air_bubbles"]]
 z_index = 500
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -112,3 +114,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_q6rgx")
 }
 autoplay = "air"
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" groups=["air_bubbles"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+shape = SubResource("CircleShape2D_7xtc5")

@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgtr8bsyw1i14"]
+[gd_scene load_steps=14 format=3 uid="uid://dgtr8bsyw1i14"]
 
 [ext_resource type="Script" uid="uid://bypxy2475x4p6" path="res://Levels/Lvl4/lvl_4.gd" id="1_7mmpv"]
 [ext_resource type="AudioStream" uid="uid://xw852443pndg" path="res://sounds/lvl3/water.ogg" id="2_78ga1"]
-[ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Player/Skills/Aquatic_breathing/Air/air_bubble.png" id="2_bpjiq"]
 [ext_resource type="AudioStream" uid="uid://b0snt0ob41imw" path="res://sounds/lvl3/birds.ogg" id="4_adlly"]
 [ext_resource type="Texture2D" uid="uid://dj4hho84iy2nw" path="res://Levels/Lvl4/Environement/water.png" id="5_7mmpv"]
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/water.gdshader" id="6_3g2p4"]
@@ -32,12 +31,6 @@ script = ExtResource("1_7mmpv")
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(21, 23)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-z_index = 500
-position = Vector2(789.99994, 1137.9999)
-scale = Vector2(0.02, 0.02)
-texture = ExtResource("2_bpjiq")
-
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
 position = Vector2(227, -388)
@@ -56,7 +49,7 @@ position = Vector2(8159, 1589)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(5781, 1526)
+position = Vector2(5772, 1434)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
@@ -121,6 +114,7 @@ position = Vector2(-1843, 9)
 [node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_4foss")]
 position = Vector2(8241, 595)
 
+[connection signal="area_exited" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Node2D/World/UnderSwimZone/Area2D/BreathDelayTimer" to="Node2D/World/UnderSwimZone" method="_on_breath_delay_timer_timeout"]
