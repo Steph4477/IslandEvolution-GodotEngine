@@ -39,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://ce031dj4wmnff" path="res://Interface/Speed_Bar/progress_bar.png" id="27_mltuv"]
 [ext_resource type="Script" uid="uid://bdoxhgt5axy6w" path="res://Interface/Speed_Bar/speed_bar.gd" id="27_wb1yk"]
 [ext_resource type="Texture2D" uid="uid://cvxra31oja48s" path="res://Interface/Hud/break.png" id="28_m6ehm"]
-[ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Player/Skills/Aquatic_breathing/Air/air_bubble.png" id="37_eqcma"]
+[ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 
 [sub_resource type="Animation" id="Animation_ccc6n"]
 length = 0.001
@@ -1340,10 +1340,10 @@ position = Vector2(345, -25)
 scale = Vector2(0.715505, 0.715329)
 
 [node name="TextureRectHoney" type="TextureRect" parent="HBoxContainerHoney/TexturePotion"]
-offset_left = 1037.0298
-offset_top = -383.04053
-offset_right = 1137.0298
-offset_bottom = -277.04053
+offset_left = 1949.6721
+offset_top = -72.69385
+offset_right = 2049.672
+offset_bottom = 33.306152
 texture = ExtResource("25_akioh")
 
 [node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerHoney/TexturePotion"]
