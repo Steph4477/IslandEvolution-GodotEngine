@@ -236,12 +236,15 @@ func hide_breathbar():
 
 # --- func d'affichage de la BreathBar  ---
 func start_breath(max_value):
+	show_breathbar()
 	breath_progress.max_value = max_value
 	breath_progress.value = max_value
 
 func update_breath(current, max_value):
+	show_breathbar()
 	breath_progress.max_value = max_value
 	breath_progress.value = clamp(current, 0, max_value)
+
 
 func stop_breath():
 	breath_bar.visible = false

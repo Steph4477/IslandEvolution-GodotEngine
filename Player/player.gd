@@ -987,6 +987,29 @@ func collect_double_jump():
 	game_state.double_jump_unlocked = true
 	show_info_popup("🦘 Double saut débloqué !")
 
+func collect_oxygen(amount):
+	# Remonte l'oxygène que sous l'eau
+	if not is_underwater:
+		return
+
+	breath_left += amount
+	if breath_left > max_breath:
+		breath_left = max_breath
+
+	# Si on avait commencé à se noyer, on stop la noyade dès qu'on remonte > 0
+	if breath_left > 0:
+		drown_timer.stop()
+
+	# Ajuste le rythme des bulles (panique -> normal) + HUD
+	_update_bubble_rate()
+	game_state.hud.update_breath(breath_left, max_breath)
+
+	# Revenu au-dessus de 0, on peut relancer les bulles si on est en panique
+	if breath_left > 0 and breath_left <= panic_start:
+		if bubble_timer.is_stopped():
+			bubble_timer.start()
+	else:
+		bubble_timer.stop()
 
 # =============================================================================
 #                               ACTIONS
