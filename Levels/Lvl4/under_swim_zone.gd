@@ -45,6 +45,10 @@ func _on_area_2d_body_exited(body):
 		body.is_swimming_under_water = false
 		body.water_current = Vector2.ZERO
 
+		# FIX: autorise un saut immédiat en sortie d'eau
+		body.jump_count = 0
+		body.did_double_jump = false
+
 	if body.is_in_group("EnemiesSwim"):
 		body.is_swim_croco = false
 		body.water_current = Vector2.ZERO

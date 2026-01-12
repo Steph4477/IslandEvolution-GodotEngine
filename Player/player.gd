@@ -363,7 +363,8 @@ func apply_fall_damage(was_on_floor):
 		on_hit(dmg)
 
 func update_jump(delta):
-	if is_swimming :
+	# Bloque toute logique de saut sous l'eau (surface + underwater)
+	if is_swimming or is_swimming_under_water:
 		return
 
 	if climbing_anim != "":
@@ -384,6 +385,7 @@ func update_jump(delta):
 	if not is_on_floor():
 		if not is_ramping:
 			velocity.y += gravity * gravity_factor * delta
+
 
 func process_wall_jump_input():
 	if is_on_floor():
