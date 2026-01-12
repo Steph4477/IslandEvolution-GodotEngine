@@ -24,7 +24,7 @@ var player
 var DeathEffect = preload("res://Enemies/Tarantula/effects/enemy_death_particles.tscn") 
 var projectile = preload("res://Shoot/Enemies/Web/web.tscn")
 var ToilePlafond = preload("res://Enemies/Tarantula/effects/descent.tscn")
-var ramp_loot_scene = preload("res://Loot/Ramp/ramp.tscn")
+var ramp_loot_scene = preload("res://Player/Skills/Ramp/ramp.tscn")
 
 func _ready():
 	while scene_camera == null:

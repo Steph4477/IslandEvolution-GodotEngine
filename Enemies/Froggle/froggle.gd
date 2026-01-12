@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var stop_distance = 40
 @export var damage = 50
 @export var drool_scene = preload("res://Enemies/Froggle/Drool/drool_bolt.tscn")
-@export var double_jump_loot_scene = preload("res://Loot/DoubleJump/double_jump.tscn")
+@export var double_jump_loot_scene = preload("res://Player/Skills/DoubleJump/double_jump.tscn")
 
 @export var drool_cooldown = 1.6
 @export var attack_cooldown = 1.0

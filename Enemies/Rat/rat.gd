@@ -15,7 +15,7 @@ const GRAVITY = 2000
 @onready var attack_timer = $Timer
 @onready var spawnpoint = $SpawnPoint
 
-@export var sprint_loot_scene = preload("res://Loot/Sprint/sprint.tscn")
+@export var sprint_loot_scene = preload("res://Player/Skills/Sprint/Sprint.tscn")
 
 var pv = 0
 var player = null
