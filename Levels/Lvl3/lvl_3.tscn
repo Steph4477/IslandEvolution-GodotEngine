@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=41 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -38,6 +38,9 @@ size = Vector2(19169.441, 284.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(290, 572.8906)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqfku"]
+size = Vector2(4118, 83.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odqky"]
 shader = ExtResource("5_xni6f")
@@ -201,7 +204,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(523, 831)
+position = Vector2(435, 619)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -240,9 +243,13 @@ shape = SubResource("RectangleShape2D_hag10")
 position = Vector2(3630, 1470)
 shape = SubResource("RectangleShape2D_hag10")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform"]
+position = Vector2(9915, 1010.75)
+shape = SubResource("RectangleShape2D_nqfku")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform"]
 position = Vector2(-676, 196)
-polygon = PackedVector2Array(5301, 818, 5381, 770, 12505, 747, 12510, 846, 5624, 812, 5066, 1074, 5139, 978)
+polygon = PackedVector2Array(5301, 818, 5381, 770, 8278, 773, 8278, 833, 5624, 812, 5066, 1074, 5139, 978)
 
 [node name="Sound" type="Node2D" parent="Node2D"]
 
@@ -466,7 +473,7 @@ position = Vector2(6901, 889)
 scale = Vector2(0.15, 0.15)
 
 [node name="HiddenTrap" parent="." instance=ExtResource("21_odqky")]
-position = Vector2(7745, 1013)
+position = Vector2(7754, 1139)
 
 [node name="BeeHive" parent="." instance=ExtResource("24_vaysu")]
 z_index = 20
@@ -480,7 +487,7 @@ rotation = 0.32637656
 scale = Vector2(-0.25, 0.25)
 
 [node name="Exit" parent="." instance=ExtResource("26_twwc1")]
-position = Vector2(12074, 981.9999)
+position = Vector2(11940, 1048)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

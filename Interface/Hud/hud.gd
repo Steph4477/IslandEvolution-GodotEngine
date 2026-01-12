@@ -57,8 +57,8 @@ func _ready():
 	ramp_button.visible = false
 	sprint_button.visible = false
 
-	if banane_hbox:
-		banane_hbox.visible = false
+	#if banane_hbox:
+		#banane_hbox.visible = false
 	if honey_hbox:
 		honey_hbox.visible = false
 
@@ -296,8 +296,8 @@ func anim_to_health_mode():
 		return
 
 	health_button.visible = true
-	if banane_hbox:
-		banane_hbox.visible = true
+	#if banane_hbox:
+		#banane_hbox.visible = true
 
 	set_button_enabled(health_button, false)
 

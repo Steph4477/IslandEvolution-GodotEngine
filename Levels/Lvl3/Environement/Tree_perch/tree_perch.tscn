@@ -92,11 +92,11 @@ collision_mask = 9
 polygon = PackedVector2Array(-210, 5, -169, -23, -137, -28, -102, -26, -66, -7, -35, 24, -49, 80, -64, 304, -322, -39, -297, -32, -267, -28, -239, -4)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(-55, -40)
+position = Vector2(-54, -68)
 polygon = PackedVector2Array(80, -108, 117, -93, 147, -119, 151, -101, 177, -100, 171, -182, 37, -146)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(104, -53, 128, -74, 158, -85, 189, -85, 211, -79, 231, -72, 145, -1, 116, 67, 122, 207, 235, 357, 304, 407, 417, 441, 85, 466, 29, 408, 24, 214, 26, 172, 33, 123, 61, 56, 80, 3)
+polygon = PackedVector2Array(104, -53, 128, -74, 158, -85, 189, -85, 211, -79, 231, -72, 145, -1, 116, 67, 122, 207, 196, 300, 37, 300, 24, 214, 26, 172, 33, 123, 61, 56, 80, 3)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Area2D"]
 
