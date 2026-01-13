@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgtr8bsyw1i14"]
+[gd_scene load_steps=17 format=4 uid="uid://dgtr8bsyw1i14"]
 
 [ext_resource type="Script" uid="uid://bypxy2475x4p6" path="res://Levels/Lvl4/lvl_4.gd" id="1_7mmpv"]
 [ext_resource type="AudioStream" uid="uid://xw852443pndg" path="res://sounds/lvl3/water.ogg" id="2_78ga1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b0iqy3w1nkrn0" path="res://Levels/Lvl1/Environement/sky.png" id="8_p4ey0"]
 [ext_resource type="PackedScene" uid="uid://ckxvcw56qaywm" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Plants/plant_aqua.tscn" id="9_bpjiq"]
 [ext_resource type="PackedScene" uid="uid://dvjyrbrnxvol8" path="res://Levels/Lvl4/Environement/Fish/fish.tscn" id="10_g7isx"]
+[ext_resource type="TileSet" uid="uid://b2ljk1cgl2kj5" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="11_fqw1p"]
 [ext_resource type="PackedScene" uid="uid://dhkid0wsh71wa" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_4foss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
@@ -35,8 +36,8 @@ z_index = 10
 position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
-z_index = 10
-position = Vector2(227, -388)
+z_index = 50
+position = Vector2(165, -46)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 z_index = 5
@@ -82,6 +83,18 @@ material = SubResource("ShaderMaterial_odqky")
 position = Vector2(1432, -1197)
 texture = ExtResource("5_7mmpv")
 
+[node name="WaterSprite2" type="Sprite2D" parent="Node2D/World"]
+texture_repeat = 3
+material = SubResource("ShaderMaterial_odqky")
+position = Vector2(5268, -1197)
+texture = ExtResource("5_7mmpv")
+
+[node name="WaterSprite3" type="Sprite2D" parent="Node2D/World"]
+texture_repeat = 3
+material = SubResource("ShaderMaterial_odqky")
+position = Vector2(9098, -1198)
+texture = ExtResource("5_7mmpv")
+
 [node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World"]
 
 [node name="SkyLayer" type="ParallaxLayer" parent="Node2D/World/WorldParallaxe"]
@@ -118,21 +131,35 @@ position = Vector2(-1843, 9)
 position = Vector2(8241, 595)
 
 [node name="PlantAqua" parent="." instance=ExtResource("9_bpjiq")]
-z_index = 100
-position = Vector2(485, 1253)
-scale = Vector2(-1, 1)
+modulate = Color(0.5367351, 0.4485007, 0.43122348, 1)
+z_index = 10
+position = Vector2(556, 948)
+scale = Vector2(-0.6, 0.6)
 
 [node name="Fish" parent="." instance=ExtResource("10_g7isx")]
-z_index = 10
-position = Vector2(557, 633)
-scale = Vector2(4, 4)
-butterfly_color = Color(0.41368008, 0.3843038, 0.91232413, 1)
+z_index = 40
+position = Vector2(823, 766)
+scale = Vector2(2, 2)
+speed = 200.0
+wave_frequency = 0.8
+fish_color = Color(0.78072584, 0.67546225, 0.13169536, 1)
 
 [node name="Fish2" parent="." instance=ExtResource("10_g7isx")]
 z_index = 10
-position = Vector2(1093, 773)
-scale = Vector2(4, 4)
-butterfly_color = Color(0.2730177, 0.55274916, 0.20058823, 1)
+position = Vector2(813, 879)
+scale = Vector2(2, 2)
+speed = 200.0
+fish_color = Color(0.7849567, 0.13839829, 0.2134246, 1)
+dir_x = 4.0
+dir_y = 2.0
+
+[node name="TileMapLayer0" type="TileMapLayer" parent="."]
+modulate = Color(0.19315353, 0.19315353, 0.19315347, 1)
+z_index = 200
+position = Vector2(-202, 988)
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAAtACMAAgAHAAEAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAABxACMAAgADAAUAAAAPABsAAgAAAAIAAACxACAAAgAAAAIAAADHACMAAgAAAAIAAADQAB0AAgABAAIAAAByACsAAgAAAAEAAACzACAAAgAAAAEAAAD5ACgAAgAAAAEAAADwACYAAgAAAAMAAAD9ACUAAgADAAQAAAABAScAAgAAAAMAAAAHARsAAgAAAAIAAAAcASYAAgAAAAMAAAAlASMAAgAHAAEAAAAvAR8AAgAFAAIAAAA+ASIAAgAAAAMAAABIASMAAgAEAAIAAABYASYAAgAFAAIAAABpASMAAgADAAUAAABqASsAAgAAAAEAAAByAScAAgAAAAMAAACLASUAAgACAAIAAACMASUAAgACAAIAAACjAScAAgAHAAMAAACpASAAAgAAAAIAAACrASAAAgAAAAEAAAC0ASIAAgAEAAIAAAC/ASMAAgAAAAIAAADIAR0AAgABAAIAAADMASUAAgAHAAMAAADcASEAAgADAAQAAADcASIAAgADAAQAAADiASMAAgAEAAIAAADxASgAAgAAAAEAAAA=")
+tile_set = ExtResource("11_fqw1p")
 
 [connection signal="area_exited" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_body_entered"]
