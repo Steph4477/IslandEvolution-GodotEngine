@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgtr8bsyw1i14"]
+[gd_scene load_steps=16 format=3 uid="uid://dgtr8bsyw1i14"]
 
 [ext_resource type="Script" uid="uid://bypxy2475x4p6" path="res://Levels/Lvl4/lvl_4.gd" id="1_7mmpv"]
 [ext_resource type="AudioStream" uid="uid://xw852443pndg" path="res://sounds/lvl3/water.ogg" id="2_78ga1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://deuwvmpkoblt5" path="res://Levels/Lvl4/under_swim_zone.gd" id="8_bpjiq"]
 [ext_resource type="Texture2D" uid="uid://b0iqy3w1nkrn0" path="res://Levels/Lvl1/Environement/sky.png" id="8_p4ey0"]
 [ext_resource type="PackedScene" uid="uid://ckxvcw56qaywm" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Plants/plant_aqua.tscn" id="9_bpjiq"]
+[ext_resource type="PackedScene" uid="uid://dvjyrbrnxvol8" path="res://Levels/Lvl4/Environement/Fish/fish.tscn" id="10_g7isx"]
 [ext_resource type="PackedScene" uid="uid://dhkid0wsh71wa" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_4foss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
@@ -30,6 +31,7 @@ size = Vector2(8512, 1324)
 script = ExtResource("1_7mmpv")
 
 [node name="Node2D" type="Node2D" parent="."]
+z_index = 10
 position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
@@ -119,6 +121,18 @@ position = Vector2(8241, 595)
 z_index = 100
 position = Vector2(485, 1253)
 scale = Vector2(-1, 1)
+
+[node name="Fish" parent="." instance=ExtResource("10_g7isx")]
+z_index = 10
+position = Vector2(557, 633)
+scale = Vector2(4, 4)
+butterfly_color = Color(0.41368008, 0.3843038, 0.91232413, 1)
+
+[node name="Fish2" parent="." instance=ExtResource("10_g7isx")]
+z_index = 10
+position = Vector2(1093, 773)
+scale = Vector2(4, 4)
+butterfly_color = Color(0.2730177, 0.55274916, 0.20058823, 1)
 
 [connection signal="area_exited" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_body_entered"]
