@@ -1,8 +1,6 @@
 extends Node2D
 
 @export var speed = 400.0
-@export var wave_amplitude = 8.0
-@export var wave_frequency = 1.2
 @export var fish_color = Color(1, 1, 1, 1)
 
 @export var dir_x = 1.0
@@ -10,45 +8,36 @@ extends Node2D
 
 var air_bubble_scene = preload("res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubble/air_bubble.tscn")
 
-
 @onready var visual = $Visual
 @onready var sprite = $Visual/Sprite
 @onready var anim = $AnimationPlayer
 @onready var bounds_col = $SwimBounds/CollisionShape2D
 @onready var air_spawn = $Visual/AirSpawn
 
-var time = 0.0
-var last_sin = 0.0
 var dir = Vector2.ZERO
 var min_bound = Vector2.ZERO
 var max_bound = Vector2.ZERO
 
-var duration_anim_swim = 0.8
+var duration_bubble = 0.5
 
 func _ready():
 	sprite.modulate = fish_color
 
-	if anim.has_animation("Swim"):
-		anim.play("Swim")
+	if anim.has_animation("swim"):
+		anim.play("swim")
 
 	dir = Vector2(dir_x, dir_y).normalized()
 
-	var rect = bounds_col.shape
-	var ext = rect.extents
-	var center = bounds_col.global_position
-	min_bound = center - ext
-	max_bound = center + ext
+	# Calcul de la position dans la zone de patrouille
+	var rect = bounds_col.shape                 # RectangleShape2D
+	var ext = rect.extents                     # Demi-taille du rectangle (largeur/2, hauteur/2)
+	var center = bounds_col.global_position    # Centre du rectangle dans la scène
+	min_bound = center - ext                   # Coin haut-gauche du rectangle
+	max_bound = center + ext                   # Coin bas-droit du rectangle
 
 func _physics_process(delta):
-	time += delta
-
 	# Déplacement
 	global_position += dir * speed * delta
-
-	# Ondulation
-	var s = sin(time * TAU * wave_frequency) * wave_amplitude
-	global_position.y += s - last_sin
-	last_sin = s
 
 	# blocage + rebond
 	if global_position.x < min_bound.x: # La tortue a traversé le mur gauche
@@ -75,10 +64,10 @@ func _physics_process(delta):
 	var t = anim.current_animation_position
 
 	# détection de boucle (retour au début)
-	if t < duration_anim_swim:
+	if t < duration_bubble:
 		_spawn_air_bubble()
 
-	duration_anim_swim = t
+	duration_bubble = t
 
 func _spawn_air_bubble():
 	var b = air_bubble_scene.instantiate()

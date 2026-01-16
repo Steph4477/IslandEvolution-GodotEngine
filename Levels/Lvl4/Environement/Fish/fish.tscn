@@ -19,7 +19,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_l6bps"]
-resource_name = "flight"
+resource_name = "swim"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -37,7 +37,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kcxtp"]
 _data = {
 &"RESET": SubResource("Animation_u1v26"),
-&"Swim": SubResource("Animation_l6bps")
+&"swim": SubResource("Animation_l6bps")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6gxy"]
@@ -51,7 +51,7 @@ script = ExtResource("1_p6gxy")
 libraries = {
 &"": SubResource("AnimationLibrary_kcxtp")
 }
-autoplay = "Swim"
+autoplay = "swim"
 
 [node name="SwimBounds" type="Area2D" parent="."]
 collision_mask = 3
