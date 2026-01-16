@@ -5,25 +5,31 @@ extends Node2D
 @export var wave_frequency = 1.2
 @export var fish_color = Color(1, 1, 1, 1)
 
-# Direction de départ (réglable dans l’inspecteur)
-@export var dir_x = 1.0   # 1 = droite, -1 = gauche
-@export var dir_y = 0.3   # > 0 monte/descend (mets 0.2 / 0.4 etc.)
+@export var dir_x = 1.0
+@export var dir_y = 0.3
 
-@onready var sprite = $Sprite
+var air_bubble_scene = preload("res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubble/air_bubble.tscn")
+
+
+@onready var visual = $Visual
+@onready var sprite = $Visual/Sprite
 @onready var anim = $AnimationPlayer
 @onready var bounds_col = $SwimBounds/CollisionShape2D
+@onready var air_spawn = $Visual/AirSpawn
 
-var dir = Vector2.ZERO
 var time = 0.0
 var last_sin = 0.0
+var dir = Vector2.ZERO
 var min_bound = Vector2.ZERO
 var max_bound = Vector2.ZERO
+
+var duration_anim_swim = 0.8
 
 func _ready():
 	sprite.modulate = fish_color
 
-	if anim.has_animation("fly"):
-		anim.play("fly")
+	if anim.has_animation("Swim"):
+		anim.play("Swim")
 
 	dir = Vector2(dir_x, dir_y).normalized()
 
@@ -36,18 +42,18 @@ func _ready():
 func _physics_process(delta):
 	time += delta
 
-	# 1) Déplacement libre (comme papillon)
+	# Déplacement
 	global_position += dir * speed * delta
 
-	# 2) Ondulation verticale
+	# Ondulation
 	var s = sin(time * TAU * wave_frequency) * wave_amplitude
 	global_position.y += s - last_sin
 	last_sin = s
 
-	# 3) Rebond + clamp dans la zone
-	if global_position.x < min_bound.x:
-		global_position.x = min_bound.x
-		dir.x = -dir.x
+	# blocage + rebond
+	if global_position.x < min_bound.x: # La tortue a traversé le mur gauche
+		global_position.x = min_bound.x # Elle est replacée pile sur le mur
+		dir.x = -dir.x # Elle repart dans l’autre sens
 	if global_position.x > max_bound.x:
 		global_position.x = max_bound.x
 		dir.x = -dir.x
@@ -59,8 +65,30 @@ func _physics_process(delta):
 		global_position.y = max_bound.y
 		dir.y = -dir.y
 
-	# 4) Flip sprite
+	# Flip
 	if dir.x < 0:
-		sprite.scale.x = -abs(sprite.scale.x)
+		visual.scale.x = -abs(visual.scale.x)
 	else:
-		sprite.scale.x = abs(sprite.scale.x)
+		visual.scale.x = abs(visual.scale.x)
+
+	# --- Spawn de la bulle d'air sur la frame de 0 à 0.2s
+	var t = anim.current_animation_position
+
+	# détection de boucle (retour au début)
+	if t < duration_anim_swim:
+		_spawn_air_bubble()
+
+	duration_anim_swim = t
+
+func _spawn_air_bubble():
+	var b = air_bubble_scene.instantiate()
+	
+	# --- Taille de la bulle  ---
+	b.scale = Vector2(0.5, 0.5)
+	
+	get_parent().add_child(b)
+	b.global_position = air_spawn.global_position
+
+	# Lance l'anim "air" 
+	var b_anim = b.get_node("Path2D/PathFollow2D/AnimationPlayer")
+	b_anim.play("air")

@@ -98,6 +98,7 @@ _data = {
 
 [node name="AirBubble" type="Node2D" groups=["air_bubbles"]]
 z_index = 500
+position = Vector2(1, -1)
 script = ExtResource("1_pb66x")
 
 [node name="Path2D" type="Path2D" parent="."]
