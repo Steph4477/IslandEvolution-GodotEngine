@@ -141,7 +141,7 @@ scale = Vector2(-0.6, 0.6)
 z_index = 10
 position = Vector2(823, 766)
 scale = Vector2(2, 2)
-speed = 200.0
+speed = 280.0
 fish_color = Color(0.78072584, 0.67546225, 0.13169536, 1)
 
 [node name="Turtule" parent="." instance=ExtResource("11_mgvxc")]
@@ -149,7 +149,7 @@ modulate = Color(0.5823756, 0.5823756, 0.5823756, 1)
 z_index = 15
 position = Vector2(788, 1015)
 scale = Vector2(0.5, 0.5)
-speed = 100.0
+speed = 120.0
 
 [node name="TileMapLayer0" type="TileMapLayer" parent="."]
 modulate = Color(0.19315353, 0.19315353, 0.19315347, 1)

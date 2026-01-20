@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://duom0ifpb0oms"]
 
-[ext_resource type="Script" uid="uid://cvl7nsrevhl2i" path="res://Enemies/Turtle/turtule.gd" id="1_lyy7k"]
+[ext_resource type="Script" uid="uid://d27fbfveiuhwc" path="res://Enemies/Common/swimDecor.gd" id="1_3n41t"]
 [ext_resource type="Texture2D" uid="uid://dg8a7md8jst02" path="res://Enemies/Turtle/turtule.png" id="2_dochb"]
 
 [sub_resource type="Animation" id="Animation_u1v26"]
@@ -8,7 +8,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,7 +20,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame_coords")
+tracks/1/path = NodePath("Visual/Sprite:frame_coords")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +36,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/path = NodePath("Visual/Sprite:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +53,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -75,10 +75,11 @@ size = Vector2(1173, 467)
 
 [node name="Turtule" type="Node2D"]
 z_index = 5
-script = ExtResource("1_lyy7k")
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+script = ExtResource("1_3n41t")
+speed = 1.0
+angle_range_deg = 30.0
+min_change_time = 3.5
+max_change_time = 6.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -86,18 +87,25 @@ libraries = {
 }
 autoplay = "swim"
 
-[node name="Sprite" type="Sprite2D" parent="."]
-z_index = 5
+[node name="Bounds" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(213.5, -66.5)
+shape = SubResource("RectangleShape2D_p6gxy")
+
+[node name="Visual" type="Node2D" parent="."]
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="Visual"]
+z_index = 5
 texture = ExtResource("2_dochb")
 hframes = 2
 vframes = 2
 
-[node name="SwimBounds" type="Area2D" parent="."]
-collision_mask = 3
+[node name="AirSpawn" type="Marker2D" parent="Visual"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimBounds"]
-position = Vector2(213.5, -66.5)
-shape = SubResource("RectangleShape2D_p6gxy")
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

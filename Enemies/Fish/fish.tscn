@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvjyrbrnxvol8"]
 
-[ext_resource type="Script" uid="uid://bin6rsgdbgq6k" path="res://Enemies/Fish/fish.gd" id="1_p6gxy"]
+[ext_resource type="Script" uid="uid://d27fbfveiuhwc" path="res://Enemies/Common/swimDecor.gd" id="1_llb38"]
 [ext_resource type="Texture2D" uid="uid://bepfbhmpi2ogs" path="res://Enemies/Fish/fish.png" id="2_p6gxy"]
 
 [sub_resource type="Animation" id="Animation_u1v26"]
@@ -45,7 +45,10 @@ size = Vector2(1173, 467)
 
 [node name="Fish" type="Node2D"]
 z_index = 5
-script = ExtResource("1_p6gxy")
+script = ExtResource("1_llb38")
+angle_range_deg = 90.0
+min_change_time = 1.2
+max_change_time = 2.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -53,10 +56,10 @@ libraries = {
 }
 autoplay = "swim"
 
-[node name="SwimBounds" type="Area2D" parent="."]
+[node name="Bounds" type="Area2D" parent="."]
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimBounds"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
 position = Vector2(213.5, -66.5)
 shape = SubResource("RectangleShape2D_p6gxy")
 
@@ -71,3 +74,7 @@ frame = 1
 
 [node name="AirSpawn" type="Marker2D" parent="Visual"]
 position = Vector2(16, 2)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
