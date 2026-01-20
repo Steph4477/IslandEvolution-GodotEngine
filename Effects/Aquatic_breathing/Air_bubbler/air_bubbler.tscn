@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsj7pn5tcgitu"]
 
-[ext_resource type="Script" uid="uid://eodde4thawq1" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubbler/air_bubbler.gd" id="1_hdtsp"]
+[ext_resource type="Script" uid="uid://eodde4thawq1" path="res://Effects/Aquatic_breathing/Air_bubbler/air_bubbler.gd" id="1_hdtsp"]
 
 [node name="AirBubbler" type="Node2D"]
 script = ExtResource("1_hdtsp")

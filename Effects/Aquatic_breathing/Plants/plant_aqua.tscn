@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckxvcw56qaywm"]
 
-[ext_resource type="Texture2D" uid="uid://l4nl2bqgp1ge" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Plants/plant.png" id="1_n3yvq"]
-[ext_resource type="PackedScene" uid="uid://bsj7pn5tcgitu" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubbler/air_bubbler.tscn" id="2_khfsa"]
+[ext_resource type="Texture2D" uid="uid://l4nl2bqgp1ge" path="res://Effects/Aquatic_breathing/Plants/plant.png" id="1_n3yvq"]
+[ext_resource type="PackedScene" uid="uid://bsj7pn5tcgitu" path="res://Effects/Aquatic_breathing/Air_bubbler/air_bubbler.tscn" id="2_khfsa"]
 
 [sub_resource type="Animation" id="Animation_i7hbb"]
 length = 0.001

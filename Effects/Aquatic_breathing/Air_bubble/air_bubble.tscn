@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dviceyy1bf0xf"]
+[gd_scene load_steps=8 format=3 uid="uid://cgo6l7tj5pjii"]
 
-[ext_resource type="Script" uid="uid://d4nde0lcury4j" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Plants/air_bubble.gd" id="1_crv1t"]
-[ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubble/air_bubble.png" id="2_82hev"]
+[ext_resource type="Script" uid="uid://cuy8k0vi3detq" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.gd" id="1_pb66x"]
+[ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="1_xxfgk"]
 
 [sub_resource type="Curve2D" id="Curve2D_bgpav"]
 _data = {
@@ -98,7 +98,8 @@ _data = {
 
 [node name="AirBubble" type="Node2D" groups=["air_bubbles"]]
 z_index = 500
-script = ExtResource("1_crv1t")
+position = Vector2(1, -1)
+script = ExtResource("1_pb66x")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_bgpav")
@@ -109,7 +110,7 @@ loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("2_82hev")
+texture = ExtResource("1_xxfgk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D"]
 libraries = {
@@ -121,5 +122,3 @@ autoplay = "air"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
 shape = SubResource("CircleShape2D_7xtc5")
-
-[connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_body_entered"]

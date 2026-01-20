@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvjyrbrnxvol8"]
 
-[ext_resource type="Script" uid="uid://bin6rsgdbgq6k" path="res://Levels/Lvl4/Environement/Fish/fish.gd" id="1_p6gxy"]
-[ext_resource type="Texture2D" uid="uid://bepfbhmpi2ogs" path="res://Levels/Lvl4/Environement/Fish/fish.png" id="2_p6gxy"]
+[ext_resource type="Script" uid="uid://bin6rsgdbgq6k" path="res://Enemies/Fish/fish.gd" id="1_p6gxy"]
+[ext_resource type="Texture2D" uid="uid://bepfbhmpi2ogs" path="res://Enemies/Fish/fish.png" id="2_p6gxy"]
 
 [sub_resource type="Animation" id="Animation_u1v26"]
 length = 0.001

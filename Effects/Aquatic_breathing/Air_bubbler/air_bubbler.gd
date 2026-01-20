@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var bubble_scene = preload("res://Levels/Lvl4/Environement/Aquatic_breathing/Plants/air_bubble.tscn")
+@export var bubble_scene = preload("res://Effects/Aquatic_breathing/Plants/air_bubble.tscn")
 @export var spawn_interval = 0.4
 @export var burst_spacing = 0.05
 

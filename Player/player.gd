@@ -79,7 +79,7 @@ var swim_timer = 0.0
 var breath_left = 0
 var is_underwater = false
 
-var air_bubble_scene = preload("res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubble/air_bubble.tscn")
+var air_bubble_scene = preload("res://Effects/Aquatic_breathing/Air_bubble/air_bubble.tscn")
 
 # --- Skills ---
 var can_sprint = false

@@ -6,7 +6,7 @@ extends Node2D
 @export var dir_x = 1.0
 @export var dir_y = 0.3
 
-var air_bubble_scene = preload("res://Levels/Lvl4/Environement/Aquatic_breathing/Air_bubble/air_bubble.tscn")
+var air_bubble_scene = preload("res://Effects/Aquatic_breathing/Air_bubble/air_bubble.tscn")
 
 @onready var visual = $Visual
 @onready var sprite = $Visual/Sprite

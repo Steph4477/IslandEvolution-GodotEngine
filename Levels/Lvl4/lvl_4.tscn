@@ -7,10 +7,10 @@
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/water.gdshader" id="6_3g2p4"]
 [ext_resource type="Script" uid="uid://deuwvmpkoblt5" path="res://Levels/Lvl4/under_swim_zone.gd" id="8_bpjiq"]
 [ext_resource type="Texture2D" uid="uid://b0iqy3w1nkrn0" path="res://Levels/Lvl1/Environement/sky.png" id="8_p4ey0"]
-[ext_resource type="PackedScene" uid="uid://ckxvcw56qaywm" path="res://Levels/Lvl4/Environement/Aquatic_breathing/Plants/plant_aqua.tscn" id="9_bpjiq"]
-[ext_resource type="PackedScene" uid="uid://dvjyrbrnxvol8" path="res://Levels/Lvl4/Environement/Fish/fish.tscn" id="10_g7isx"]
+[ext_resource type="PackedScene" uid="uid://ckxvcw56qaywm" path="res://Effects/Aquatic_breathing/Plants/plant_aqua.tscn" id="9_bpjiq"]
+[ext_resource type="PackedScene" uid="uid://dvjyrbrnxvol8" path="res://Enemies/Fish/fish.tscn" id="10_g7isx"]
 [ext_resource type="TileSet" uid="uid://b2ljk1cgl2kj5" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="11_fqw1p"]
-[ext_resource type="PackedScene" uid="uid://duom0ifpb0oms" path="res://Levels/Lvl4/Environement/Turtle/turtule.tscn" id="11_mgvxc"]
+[ext_resource type="PackedScene" uid="uid://duom0ifpb0oms" path="res://Enemies/Turtle/turtule.tscn" id="11_mgvxc"]
 [ext_resource type="PackedScene" uid="uid://dhkid0wsh71wa" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_4foss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
@@ -142,7 +142,6 @@ z_index = 10
 position = Vector2(823, 766)
 scale = Vector2(2, 2)
 speed = 200.0
-wave_frequency = 0.8
 fish_color = Color(0.78072584, 0.67546225, 0.13169536, 1)
 
 [node name="Turtule" parent="." instance=ExtResource("11_mgvxc")]
