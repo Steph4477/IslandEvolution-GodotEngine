@@ -150,6 +150,7 @@ z_index = 15
 position = Vector2(788, 1015)
 scale = Vector2(0.5, 0.5)
 speed = 120.0
+use_bubbles = false
 
 [node name="TileMapLayer0" type="TileMapLayer" parent="."]
 modulate = Color(0.19315353, 0.19315353, 0.19315347, 1)

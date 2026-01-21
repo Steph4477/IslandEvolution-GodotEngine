@@ -12,6 +12,7 @@ extends Node2D
 # timer direction
 @export var min_change_time = 2.0
 @export var max_change_time = 5.0
+@export var use_bubbles = true
 
 var air_bubble_scene = preload("res://Effects/Aquatic_breathing/Air_bubble/air_bubble.tscn")
 
@@ -25,7 +26,6 @@ var air_bubble_scene = preload("res://Effects/Aquatic_breathing/Air_bubble/air_b
 var dir = Vector2.ZERO
 var min_bound = Vector2.ZERO
 var max_bound = Vector2.ZERO
-
 var duration_bubble = 0.5
 
 func _ready():
@@ -64,11 +64,12 @@ func _physics_process(delta):
 	else:
 		visual.scale.x = abs(visual.scale.x)
 
-	# bulles (début de boucle anim)
-	var t = anim.current_animation_position
-	if t < duration_bubble:
-		spawn_air_bubble()
-	duration_bubble = t
+	# bulles optionnelle (début de boucle anim)
+	if use_bubbles:
+		var t = anim.current_animation_position
+		if t < duration_bubble:
+			spawn_air_bubble()
+		duration_bubble = t
 
 # -----------------------
 # TIMER
