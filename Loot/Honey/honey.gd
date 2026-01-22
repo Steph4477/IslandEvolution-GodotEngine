@@ -26,6 +26,6 @@ func _ready():
 		game_state.heal_amount = heal_amount
 
 func _on_pickup_area_body_entered(body):
-	if body.is_in_group("Player") and body.has_method("collect_honey"):
-		body.collect_honey(honey_value)
+	if body.is_in_group("Player"):
+		body.collectItems.collect_honey(honey_value)
 		queue_free()

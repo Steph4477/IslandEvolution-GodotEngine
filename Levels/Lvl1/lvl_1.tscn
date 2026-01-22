@@ -269,6 +269,7 @@ position = Vector2(-2723, -363)
 position = Vector2(-5519, -361)
 
 [node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("10_oicsw")]
+position = Vector2(12, 0)
 
 [node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("11_hkrhx")]
 position = Vector2(882, -23)
@@ -338,7 +339,7 @@ position = Vector2(432, -170)
 position = Vector2(-2033, -469)
 
 [node name="Seed5" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
-position = Vector2(-4114, -59)
+position = Vector2(-3907, -262)
 
 [node name="Seed6" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
 position = Vector2(-3326, -491)

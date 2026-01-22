@@ -4,7 +4,6 @@ extends Node2D
 @export var activate_shooting = false
 
 @onready var anim = $AnimationPlayer
-@onready var area = $Area2D
 @onready var collision = $Path2D/PathFollow2D/Area2D/CollisionShape2D
 
 func _ready():
@@ -17,6 +16,6 @@ func _ready():
 	collision.disabled = false
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("Player") and body.has_method("collect_bone"):
-		body.collect_bone(3, true)
+	if body.is_in_group("Player"):
+		body.collectItems.collect_bone(3, true)
 		queue_free()

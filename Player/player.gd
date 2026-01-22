@@ -43,6 +43,7 @@ var spell_bone = preload("res://Shoot/Player/Bone/bone.tscn")
 var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
 
 var game_state
+var collectItems
 var can_move = true
 var can_be_damaged = true
 var is_dead = false
@@ -180,6 +181,8 @@ func show_damage_popup(amount):
 func _ready():
 	setup_game_state()
 
+	setup_collectItems()
+
 	camera.make_current()
 
 	await get_tree().process_frame
@@ -193,7 +196,8 @@ func _ready():
 		anim.play("idle")
 	is_hanging = false
 	climbing_anim = ""
-
+	
+	# --- Restaure la dernière positon connue de Moko aprés un chargement de partie sauvegardée ---
 	_restore_loaded_position_post_setup()
 
 
@@ -243,6 +247,10 @@ func setup_game_state():
 	if game_state.double_jump_unlocked:
 		max_jump_count = 2
 
+func setup_collectItems ():
+	collectItems = preload("res://Player/Modules/PlayerCollect/PlayerCollectItems.gd").new()
+	add_child(collectItems)
+	collectItems.setup(self)
 
 func setup_hud():
 	if not game_state:
@@ -778,45 +786,6 @@ func process_camouflage():
 # =================================================================================================
 #                                     COLLECTES
 # =================================================================================================
-
-func collect_banane(amount = 1):
-
-	for i in range(amount):
-		heal_potions.append(game_state.heal_amount)
-
-	banane_count = heal_potions.size()
-
-	if game_state:
-		game_state.banane_count = banane_count
-
-	update_can_heal()
-
-	var hud = game_state.hud
-	if hud and hud.has_method("anim_to_health_mode"):
-		hud.anim_to_health_mode()
-	elif hud and hud.has_method("update_banane_display"):
-		hud.update_banane_display()
-
-	if hud and hud.has_method("set_button_enabled"):
-		hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal)
-
-	update_banane_display()
-	show_info_popup("5 jus de bananes récupérés !")
-	refresh_hud_buttons()
-
-
-func collect_honey(amount = 1):
-	for i in range(amount):
-		honey_potions.append(game_state.heal_amount)
-
-	honey_count = honey_potions.size()
-	game_state.honey_count = honey_count
-
-	game_state.hud.update_honey_display()
-	game_state.hud.anim_to_honey_mode()
-
-	refresh_hud_buttons()
-
 func use_honey():
 	if not is_on_floor():
 		return
@@ -906,74 +875,6 @@ func collect_camouflage(amount = 1):
 			game_state.hud.update_camouflage_display()
 
 	refresh_hud_buttons()
-
-func collect_coco(amount = 1, enable_shooting = false):
-	coco_count += amount
-
-	if enable_shooting:
-		can_fire_coco = true
-
-	if game_state:
-		game_state.can_fire_coco = can_fire_coco
-		game_state.coco_count = coco_count
-
-	if game_state.hud:
-		if game_state.hud.has_method("anim_to_coco_mode"):
-			game_state.hud.anim_to_coco_mode()
-		elif game_state.hud.has_method("update_coco_display"):
-			game_state.hud.update_coco_display()
-
-	update_coco_display()
-	show_info_popup("Tu peux lancer 3 noix de coco")
-	refresh_hud_buttons()
-
-
-func collect_bone(amount = 1, enable_shooting = false):
-	bone_count += amount
-
-	if enable_shooting:
-		can_fire_bone = true
-		var hud = game_state.hud
-		if hud.has_method("set_button_enabled"):
-			hud.set_button_enabled(hud.get_node("Gamepad/Bone"), true)
-
-	if game_state:
-		game_state.can_fire_bone = can_fire_bone
-		game_state.bone_count = bone_count
-
-		if game_state.hud and game_state.hud.has_method("anim_to_bone_mode"):
-			game_state.hud.anim_to_bone_mode()
-
-	update_bone_display()
-	show_info_popup("Tu peux lancer 3 os")
-	refresh_hud_buttons()
-
-func collect_lance(amount = 1, enable_shooting = false):
-	lance_count += amount
-
-	if enable_shooting:
-		can_fire_lance = true
-
-	game_state.lance_count = lance_count
-	game_state.can_fire_lance = can_fire_lance
-
-	game_state.hud.anim_to_spear_mode()
-
-	show_info_popup("Tu peux shooter des lances")
-	refresh_hud_buttons()
-
-func collect_seed(amount = 1):
-	var gs = get_node("/root/GameState")
-
-	for i in range(amount):
-		gs.add_seed_collected()
-
-	if gs.hud and gs.hud.has_method("update_seed_display"):
-		gs.hud.update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
-
-	var parent = get_parent()
-	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
-		await parent.focus_camera_on_totem_with_anim(gs.collected_seeds)
 
 func collect_double_jump():
 	game_state.double_jump_unlocked = true

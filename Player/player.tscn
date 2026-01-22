@@ -607,7 +607,7 @@ _data = {
 size = Vector2(137, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvbbp"]
-size = Vector2(106.66666, 329.78723)
+size = Vector2(106.66666, 365.24823)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v2uk"]
 size = Vector2(100, 141.84393)
@@ -681,7 +681,7 @@ position = Vector2(125.5, 118)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="ColStand" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(135, 98.5)
+position = Vector2(135, 93.5)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_uvbbp")
 

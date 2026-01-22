@@ -4,6 +4,6 @@ extends Node2D
 @export var activate_shooting = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and body.has_method("collect_coco"):
-		body.collect_coco(3, true)  
+	if body.is_in_group("Player"):
+		body.collectItems.collect_coco(3, true)  
 		queue_free()
