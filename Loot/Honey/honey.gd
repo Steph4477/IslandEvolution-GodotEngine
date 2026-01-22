@@ -27,5 +27,5 @@ func _ready():
 
 func _on_pickup_area_body_entered(body):
 	if body.is_in_group("Player"):
-		body.collectItems.collect_honey(honey_value)
+		body.collect_items.collect_honey(honey_value)
 		queue_free()

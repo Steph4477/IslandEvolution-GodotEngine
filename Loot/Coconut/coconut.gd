@@ -5,5 +5,5 @@ extends Node2D
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		body.collectItems.collect_coco(3, true)  
+		body.collect_items.collect_coco(3, true)  
 		queue_free()

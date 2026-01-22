@@ -17,5 +17,5 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		body.collectItems.collect_bone(3, true)
+		body.collect_items.collect_bone(3, true)
 		queue_free()

@@ -16,5 +16,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 	if body.is_in_group("Player"):
 		collected = true
-		body.collectItems.collect_banane(banane_value)
+		body.collect_items.collect_banane(banane_value)
 		queue_free()

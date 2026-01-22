@@ -9,8 +9,7 @@ func _ready():
 	queue_free()
 
 
-
 func _on_area_2d_body_entered(body):
-	if body.has_method("collect_oxygen"):
-		body.collect_oxygen(oxygen_value)
+	if body.is_in_group("Player"):
+		body.collect_skills.collect_oxygen(oxygen_value)
 	queue_free()

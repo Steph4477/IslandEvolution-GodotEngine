@@ -10,6 +10,6 @@ func _ready():
 func _on_area_2d_body_entered(body):
 	if col.disabled:
 		return
-	if body.has_method("collect_double_jump"):
-		body.collect_double_jump()
+	if body.is_in_group("Player"):
+		body.collect_skills.collect_double_jump()
 	queue_free()

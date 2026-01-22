@@ -35,7 +35,7 @@ func dialogue_toucan():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		body.unlock_sprint()  # Débloque la compétence côté Moko
+		body.collect_skills.collect_sprint()  # Débloque la compétence côté Moko
 		$Area2D/Sprite2D.visible = false
 		await dialogue_toucan()
 		queue_free()

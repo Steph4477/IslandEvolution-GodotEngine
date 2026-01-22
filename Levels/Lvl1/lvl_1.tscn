@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=42 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
 [ext_resource type="PackedScene" uid="uid://tagnybpxlmi" path="res://Levels/Lvl1/Environement/environement.tscn" id="2_lalfn"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bf1n0fcexb05c" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.tscn" id="9_wh82l"]
 [ext_resource type="PackedScene" uid="uid://skt7pf4qgqru" path="res://Loot/Coconut/coconut.tscn" id="10_oicsw"]
 [ext_resource type="PackedScene" uid="uid://d212hegf2w8di" path="res://Loot/Banana/banana.tscn" id="11_hkrhx"]
+[ext_resource type="PackedScene" uid="uid://dhjnec07dmtmd" path="res://Player/Skills/Sprint/Sprint.tscn" id="11_jsni3"]
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
 [ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
@@ -270,6 +271,9 @@ position = Vector2(-5519, -361)
 
 [node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("10_oicsw")]
 position = Vector2(12, 0)
+
+[node name="Sprint" parent="Trees/Loot/CocoLoot2" instance=ExtResource("11_jsni3")]
+position = Vector2(-292, 388)
 
 [node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("11_hkrhx")]
 position = Vector2(882, -23)

@@ -119,9 +119,9 @@ func collect_camouflage():
 	camo_node.visible = false
 	anim.play("idle")
 
-	# --- Collecte côté Player ---
-	if player.has_method("collect_camouflage"):
-		player.collect_camouflage(3)
+	# --- Collecte côté module du Player ---
+	if player.collect_skills:
+		player.collect_skills.collect_camouflage(3)
 
 	show_info_popup("C'est bien Moko 😊 Tu peux maintenant te camoufler en appuyant sur 'L' !")
 	get_tree().create_timer(2.0).timeout.connect(hide_info_popup)

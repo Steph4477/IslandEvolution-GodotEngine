@@ -49,7 +49,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		queue_free()
 		return
 	
-	body.unlock_ramp()  # 🧠 Débloque la compétence côté joueur
+	body.collect_skills.collect_ramp()  # 🧠 Débloque la compétence côté joueur
 	
 	var loot = $Area2D/Sprite2D
 	loot.visible = false

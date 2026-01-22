@@ -43,7 +43,8 @@ var spell_bone = preload("res://Shoot/Player/Bone/bone.tscn")
 var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
 
 var game_state
-var collectItems
+var collect_items
+var collect_skills
 var can_move = true
 var can_be_damaged = true
 var is_dead = false
@@ -181,7 +182,9 @@ func show_damage_popup(amount):
 func _ready():
 	setup_game_state()
 
-	setup_collectItems()
+	setup_collect_items()
+
+	setup_collect_skills()
 
 	camera.make_current()
 
@@ -247,11 +250,16 @@ func setup_game_state():
 	if game_state.double_jump_unlocked:
 		max_jump_count = 2
 
-func setup_collectItems ():
-	collectItems = preload("res://Player/Modules/PlayerCollect/PlayerCollectItems.gd").new()
-	add_child(collectItems)
-	collectItems.setup(self)
+func setup_collect_items():
+	collect_items = preload("res://Player/Modules/PlayerCollectItems/PlayerCollectItems.gd").new()
+	add_child(collect_items)
+	collect_items.setup(self)
 
+func setup_collect_skills():
+	collect_skills = preload("res://Player/Modules/PlayerCollectSkills/PlayerCollectSkills.gd").new()
+	add_child(collect_skills)
+	collect_skills.setup(self)
+	
 func setup_hud():
 	if not game_state:
 		return
@@ -472,27 +480,6 @@ func process_hang_swing(delta):
 		hang_timer = 0.0
 
 
-func unlock_ramp():
-	can_ramp = true
-	game_state.ramp_unlocked = true
-
-	show_info_popup("🤸 Tu peux maintenant ramper avec ctrl !")
-
-	if not game_state or not game_state.hud:
-		return
-
-	var hud = game_state.hud
-	if hud.has_node("Gamepad/Ramp"):
-		var btn = hud.get_node("Gamepad/Ramp")
-		btn.visible = true
-		hud.set_button_enabled(btn, true)
-
-	if hud.anim.has_animation("appear_ramp"):
-		hud.anim.play("appear_ramp")
-
-	refresh_hud_buttons()
-
-
 func process_ramp():
 	if can_ramp and Input.is_action_just_pressed(INPUT["ramp"]) and is_on_floor() and not ramp_locked:
 		ramp_locked = true
@@ -516,27 +503,27 @@ func process_ramp():
 		velocity.y += gravity * gravity_factor * get_physics_process_delta_time()
 
 
-func unlock_sprint():
-	can_sprint = true
-	game_state.sprint_unlocked = true
-	game_state.sprint_stamina = game_state.sprint_stamina_max
-
-	if game_state.speed_bar:
-		game_state.speed_bar.visible = true
-		game_state.speed_bar.update_speed_bar_current(game_state.sprint_stamina)
-
-	if game_state.hud:
-		var hud = game_state.hud
-		if hud.has_node("Gamepad/Sprint"):
-			var btn = hud.get_node("Gamepad/Sprint")
-			btn.visible = true
-			hud.set_button_enabled(btn, true)
-
-		if hud.anim.has_animation("appear_sprint"):
-			hud.anim.play("appear_sprint")
-
-	show_info_popup("⚡ Tu peux maintenant sprinter avec Shift !")
-	refresh_hud_buttons()
+#func collect_sprint():
+	#can_sprint = true
+	#game_state.sprint_unlocked = true
+	#game_state.sprint_stamina = game_state.sprint_stamina_max
+#
+	#if game_state.speed_bar:
+		#game_state.speed_bar.visible = true
+		#game_state.speed_bar.update_speed_bar_current(game_state.sprint_stamina)
+#
+	#if game_state.hud:
+		#var hud = game_state.hud
+		#if hud.has_node("Gamepad/Sprint"):
+			#var btn = hud.get_node("Gamepad/Sprint")
+			#btn.visible = true
+			#hud.set_button_enabled(btn, true)
+#
+		#if hud.anim.has_animation("appear_sprint"):
+			#hud.anim.play("appear_sprint")
+#
+	#show_info_popup("⚡ Tu peux maintenant sprinter avec Shift !")
+	#refresh_hud_buttons()
 
 
 func process_sprint():
@@ -851,54 +838,6 @@ func use_camouflage():
 	refresh_hud_buttons()
 
 	start_camouflage()
-
-func collect_camouflage(amount = 1):
-	if not game_state:
-		return
-
-	# Débloque le skill 
-	if not game_state.camouflage_unlocked:
-		game_state.camouflage_unlocked = true
-
-	# Ajoute les charges
-	game_state.camouflage_count += amount
-
-	# Etat runtime (utilisable si charges)
-	can_camouflage = game_state.camouflage_unlocked and game_state.camouflage_count > 0
-	game_state.can_camouflage = can_camouflage
-
-	# HUD : switch + anim appear 
-	if game_state.hud:
-		if game_state.hud.has_method("unlock_camouflage_hud"):
-			game_state.hud.unlock_camouflage_hud()
-		if game_state.hud.has_method("update_camouflage_display"):
-			game_state.hud.update_camouflage_display()
-
-	refresh_hud_buttons()
-
-func collect_double_jump():
-	game_state.double_jump_unlocked = true
-	show_info_popup("🦘 Double saut débloqué !")
-
-func collect_oxygen(amount):
-	breath_left += amount
-	if breath_left > max_breath:
-		breath_left = max_breath
-
-	# Si on avait commencé à se noyer, on stop la noyade dès qu'on remonte > 0
-	if breath_left > 0:
-		drown_timer.stop()
-
-	# Ajuste le rythme des bulles (panique -> normal) + HUD
-	update_bubble_rate()
-	game_state.hud.update_breath(breath_left, max_breath)
-
-	# Revenu au-dessus de 0, on peut relancer les bulles si on est en panique
-	if breath_left > 0 and breath_left <= panic_start:
-		if bubble_timer.is_stopped():
-			bubble_timer.start()
-	else:
-		bubble_timer.stop()
 
 # =============================================================================
 #                               ACTIONS
