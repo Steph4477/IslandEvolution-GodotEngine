@@ -163,5 +163,5 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player") and not is_attacking:
 		velocity.x = 0
 		await attack_and_shoot()
-		if body.has_method("on_hit"):
-			body.on_hit(damage)
+		if body.damage_mod.has_method("on_hit"):
+			body.damage_mod.on_hit(damage)

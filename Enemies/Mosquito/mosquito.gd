@@ -2,79 +2,161 @@ extends CharacterBody2D
 
 @export var max_hp = 20
 @export var speed = 200
-@export var attack_range = 500
+@export var attack_range = 2000
 @export var attack_contact_radius = 24.0
-@export var cooldown = 1.5
+@export var cooldown = 0.8
 @export var damage = 200
 @export var patrol_speed = 80
 @export var patrol_change_interval = 2.0
+
+# --- ORBITE AVANT PIQÛRE ---
+@export var orbit_radius_x = 90.0
+@export var orbit_radius_y = 55.0
+@export var orbit_angular_speed = 6.0
+@export var orbit_duration = 1.2
+
+# --- MICRO-OSCILLATIONS (STYLE MOUSTIQUE) ---
+@export var osc_radial_amplitude = 6.0
+@export var osc_radial_frequency = 10.0
+@export var osc_angle_amplitude = 0.12
+@export var osc_angle_frequency = 7.0
 
 @onready var health_bar = $HealthBar/ProgressBar
 @onready var timer = $Timer
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite
 
-var is_patrolling = true
-var is_attacking = false
+const PHASE_PATROL = 0
+const PHASE_ORBIT = 1
+const PHASE_DIVE = 2
+
+var phase = PHASE_PATROL
+
 var patrol_direction = Vector2.ZERO
-var pv = max_hp
+var pv = 0
 var is_dead = false
 var player
+var is_attacking = false
+
+var orbit_angle = 0.0
+var orbit_time_left = 0.0
+var osc_time = 0.0
 
 func _ready():
 	pv = max_hp
 	find_and_bind_player()
 	start_patrol()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if is_dead:
 		return
 
 	if not is_instance_valid(player):
 		return
 
+	# cible : TurnAxis (comme ton code)
 	var target = player.get_node("TurnAxis").global_position
 	var distance = global_position.distance_to(target)
 
-	# Chasse ou patrouille
-	if distance <= attack_range:
-		is_patrolling = false
-		var direction = (target - global_position).normalized()
-		velocity = direction * speed
-	else:
-		is_patrolling = true
+	# -------------------------------------------------
+	# SORTIE COMBAT -> RETOUR PATROUILLE
+	# -------------------------------------------------
+	if distance > attack_range:
+		phase = PHASE_PATROL
+		orbit_time_left = 0.0
+
 		velocity = patrol_direction * patrol_speed
 
-	# Flip du sprite
-	if velocity.x != 0:
-		sprite.scale.x = abs(sprite.scale.x) if velocity.x < 0 else -abs(sprite.scale.x)
-
-	# Animations de déplacement (hors attaque)
-	if not is_attacking:
-		if is_patrolling:
+		if not is_attacking:
 			if anim.current_animation != "patrol":
 				anim.play("patrol")
-		else:
-			if anim.current_animation != "flight":
-				anim.play("flight")
+
+		_flip_from_velocity()
+		move_and_slide()
+		return
+
+	# -------------------------------------------------
+	# ENTREE COMBAT : PATROL -> ORBIT
+	# -------------------------------------------------
+	if phase == PHASE_PATROL:
+		phase = PHASE_ORBIT
+		orbit_time_left = orbit_duration
+		osc_time = 0.0
+		orbit_angle = (global_position - target).angle()
+
+	# -------------------------------------------------
+	# ORBIT
+	# -------------------------------------------------
+	if phase == PHASE_ORBIT and not is_attacking:
+		orbit_time_left -= delta
+		orbit_angle += orbit_angular_speed * delta
+		osc_time += delta
+
+		var wobble_angle = sin(osc_time * TAU * osc_angle_frequency) * osc_angle_amplitude
+		var a = orbit_angle + wobble_angle
+
+		# micro “respiration” radiale (gonfle/rétrécit l’ellipse)
+		var radial_boost = 1.0 + sin(osc_time * TAU * osc_radial_frequency) * (osc_radial_amplitude / orbit_radius_x)
+
+		var rx = orbit_radius_x * radial_boost
+		var ry = orbit_radius_y * radial_boost
+
+		var orbit_pos = target + Vector2(cos(a) * rx, sin(a) * ry)
+		var dir_orbit = (orbit_pos - global_position).normalized()
+		velocity = dir_orbit * speed
+
+		if anim.current_animation != "flight":
+			anim.play("flight")
+
+		if orbit_time_left <= 0.0:
+			phase = PHASE_DIVE
+
+	# -------------------------------------------------
+	# DIVE (fonce pour piquer)
+	# -------------------------------------------------
+	if phase == PHASE_DIVE and not is_attacking:
+		var direction = (target - global_position).normalized()
+		velocity = direction * speed
+
+		if anim.current_animation != "flight":
+			anim.play("flight")
+
+	# Déplacement
+	_flip_from_velocity()
 	move_and_slide()
 
-	# Détection d'attaque au contact
-	if distance <= attack_contact_radius and not is_attacking:
+	# Recalcule distance APRÈS move (plus fiable pour déclencher la piqûre)
+	distance = global_position.distance_to(target)
+
+	# Déclenchement piqûre uniquement en phase DIVE
+	if phase == PHASE_DIVE and distance <= attack_contact_radius and not is_attacking:
 		await _perform_attack(player)
+		phase = PHASE_ORBIT
+		orbit_time_left = orbit_duration
+		osc_time = 0.0
+		orbit_angle = (global_position - target).angle()
 
 func _perform_attack(target):
 	is_attacking = true
-	velocity = Vector2.ZERO
-	anim.play("attaque")
+	anim.play("attack")
 
-	if target.has_method("on_hit"):
-		target.on_hit(damage)
+	if target.damage_mod.has_method("on_hit"):
+		target.damage_mod.on_hit(damage)
 
-	await anim.animation_finished
 	await get_tree().create_timer(cooldown).timeout
 	is_attacking = false
-	anim.play("flight")
+
+	if not is_dead:
+		anim.play("flight")
+
+func _flip_from_velocity():
+	if velocity.x == 0:
+		return
+
+	if velocity.x < 0:
+		sprite.scale.x = abs(sprite.scale.x)
+	else:
+		sprite.scale.x = -abs(sprite.scale.x)
 
 func change_patrol_direction():
 	var angle = randf() * TAU
@@ -86,7 +168,7 @@ func start_patrol():
 	timer.start()
 
 func _on_timer_timeout():
-	if is_patrolling:
+	if phase == PHASE_PATROL:
 		change_patrol_direction()
 
 func on_hit(damage_taken):
@@ -109,17 +191,11 @@ func die():
 		return
 	is_dead = true
 
-	await get_tree().process_frame  # Assure que tout est bien chargé
+	await get_tree().process_frame
 
-	# 🎬 Joue l'animation "die"
 	anim.play("die")
-
-	# ⏱️ Calcule la durée de l'animation "die"
 	var anim_duration = anim.get_animation("die").length
-
-	# 🔁 Attend la fin exacte de l'animation
 	await get_tree().create_timer(anim_duration).timeout
-
 	queue_free()
 
 func find_and_bind_player():
@@ -130,7 +206,3 @@ func find_and_bind_player():
 
 func _on_player_changed(new_player):
 	player = new_player
-
-func _on_area_2d_body_entered(body):
-	if body.has_method("on_hit"):
-		body.on_hit(damage)

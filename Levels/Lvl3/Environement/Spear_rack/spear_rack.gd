@@ -20,7 +20,7 @@ func _on_body_entered(body):
 		gs.can_fire_lance = true
 		
 		# Collecte côté Player 
-		body.collect_lance(lance_amount, true)
+		body.collect_items.collect_lance(lance_amount, true)
 		
 		# Sync direct avec Moko au loot
 		gs.player.can_fire_lance = true

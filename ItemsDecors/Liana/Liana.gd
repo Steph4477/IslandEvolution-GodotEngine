@@ -29,7 +29,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		attached_player = body
-		body.attach_to_liana(self)
+		body.movement_mod.attach_to_liana(self)
 		swinging = true
 		expect_exit = false
 

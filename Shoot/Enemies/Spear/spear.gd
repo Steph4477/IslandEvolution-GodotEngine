@@ -36,8 +36,8 @@ func set_direction(dir):
 			scale.x = -abs(scale.x)
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("Player") and body.has_method("on_hit"):
-		body.on_hit(damage)
+	if body.is_in_group("Player"):
+		body.damage_mod.on_hit(damage)
 
 	$Area2D/CollisionPolygon2D.set_deferred("disabled", true)
 	if has_node("SpearSprite"):

@@ -107,7 +107,7 @@ func attack():
 	is_attacking = true
 	velocity.x = 0
 	anim.play("attack")
-	player.on_hit(damage)
+	player.damage_mode.on_hit(damage)
 	await anim.animation_finished
 	is_attacking = false
 

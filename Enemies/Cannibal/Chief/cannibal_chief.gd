@@ -343,7 +343,7 @@ func attack_melee():
 		
 		# Appliquer les dégâts à Moko
 		if is_instance_valid(player):
-			player.on_hit(damage)
+			player.damage_mod.on_hit(damage)
 		
 		# Petit cooldown entre deux frappes
 		var t = get_tree().create_timer(attack_cooldown)
@@ -458,16 +458,12 @@ func _on_area_2d_body_exited(body):
 # =============================================================
 #                     TIMERS / CADENCEMENT
 # =============================================================
-func _on_cac_timer_timeout():
-	# On n'utilise plus le timer pour le CàC, la boucle est dans attack_melee()
-	pass
-
 func _on_bone_timer_timeout():
 	if is_dead:
 		return
 	if in_melee:
 		return
-	# On se base aussi sur la distance horizontale pour le tir
+	# Basé sur la distance horizontale pour le tir
 	if not is_attacking and horiz_distance > attack_range and horiz_distance <= bone_range:
 		bone_attack()
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://f001f0m7opwe"]
+[gd_scene load_steps=41 format=3 uid="uid://f001f0m7opwe"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
 [ext_resource type="PackedScene" uid="uid://tagnybpxlmi" path="res://Levels/Lvl1/Environement/environement.tscn" id="2_lalfn"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bf1n0fcexb05c" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.tscn" id="9_wh82l"]
 [ext_resource type="PackedScene" uid="uid://skt7pf4qgqru" path="res://Loot/Coconut/coconut.tscn" id="10_oicsw"]
 [ext_resource type="PackedScene" uid="uid://d212hegf2w8di" path="res://Loot/Banana/banana.tscn" id="11_hkrhx"]
-[ext_resource type="PackedScene" uid="uid://dhjnec07dmtmd" path="res://Player/Skills/Sprint/Sprint.tscn" id="11_jsni3"]
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
 [ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
 [ext_resource type="PackedScene" uid="uid://d3vsv1rjlngm5" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
@@ -272,9 +271,6 @@ position = Vector2(-5519, -361)
 [node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("10_oicsw")]
 position = Vector2(12, 0)
 
-[node name="Sprint" parent="Trees/Loot/CocoLoot2" instance=ExtResource("11_jsni3")]
-position = Vector2(-292, 388)
-
 [node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("11_hkrhx")]
 position = Vector2(882, -23)
 
@@ -283,6 +279,32 @@ position = Vector2(2861, -22)
 
 [node name="CocoLoot" parent="Trees/Loot" instance=ExtResource("10_oicsw")]
 position = Vector2(4882, -28)
+
+[node name="Butterfly" type="Node2D" parent="."]
+position = Vector2(3329, 1040)
+
+[node name="Butterfly1" parent="Butterfly" instance=ExtResource("16_xerpc")]
+position = Vector2(-2278, 298)
+
+[node name="Butterfly2" parent="Butterfly" instance=ExtResource("16_xerpc")]
+position = Vector2(2387, 97)
+butterfly_color = Color(0.99785334, 0.9176539, 0.9126982, 1)
+
+[node name="Butterfly3" parent="Butterfly" instance=ExtResource("16_xerpc")]
+position = Vector2(1419, 279)
+butterfly_color = Color(0.30679777, 0.024966344, 0.058257446, 1)
+
+[node name="Butterfly4" parent="Butterfly" instance=ExtResource("16_xerpc")]
+position = Vector2(386, 83)
+butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
+
+[node name="Butterfly5" parent="Butterfly" instance=ExtResource("16_xerpc")]
+position = Vector2(-629, -97)
+butterfly_color = Color(0.82884276, 0.66643363, 0.15861124, 1)
+
+[node name="Butterfly6" parent="Butterfly" instance=ExtResource("16_xerpc")]
+position = Vector2(-1231, -55)
+butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
 
 [node name="Creatures" type="Node2D" parent="."]
 position = Vector2(3329, 1040)
@@ -302,33 +324,8 @@ position = Vector2(-1070, 343)
 [node name="Mousquito2" parent="Creatures" instance=ExtResource("13_oiu73")]
 position = Vector2(980, -356)
 
-[node name="Carnivore2" parent="Creatures" instance=ExtResource("15_los52")]
+[node name="Carnivore2" parent="Creatures" groups=["Enemies"] instance=ExtResource("15_los52")]
 position = Vector2(-791, 342)
-
-[node name="Butterfly2" type="Node2D" parent="Creatures"]
-
-[node name="Butterfly2" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
-position = Vector2(2387, 97)
-butterfly_color = Color(0.99785334, 0.9176539, 0.9126982, 1)
-
-[node name="Butterfly3" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
-position = Vector2(1419, 279)
-butterfly_color = Color(0.30679777, 0.024966344, 0.058257446, 1)
-
-[node name="Butterfly4" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
-position = Vector2(386, 83)
-butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
-
-[node name="Butterfly5" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
-position = Vector2(-629, -97)
-butterfly_color = Color(0.82884276, 0.66643363, 0.15861124, 1)
-
-[node name="Butterfly6" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
-position = Vector2(-1231, -55)
-butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
-
-[node name="Butterfly" parent="Creatures/Butterfly2" instance=ExtResource("16_xerpc")]
-position = Vector2(-2278, 298)
 
 [node name="Items" type="Node2D" parent="."]
 

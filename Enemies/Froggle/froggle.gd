@@ -158,7 +158,7 @@ func attack_melee():
 	velocity.x = 0
 	anim.play("attack")
 	if not is_dead and is_instance_valid(player):
-		player.on_hit(damage)
+		player.damage_mod.on_hit(damage)
 	await anim.animation_finished
 	if is_dead:
 		return
@@ -269,15 +269,26 @@ func camera_shake(intensity, duration):
 func damage_player_over_time(total_duration, dmg_per_sec, interval):
 	if player == null:
 		return
+
 	var counter_sec = int(total_duration / interval)
+
 	for i in range(counter_sec):
 		if is_dead:
 			return
+
 		if is_instance_valid(player):
-			if distance <= drool_range and not player.is_quake_safe():
-				player.on_hit(dmg_per_sec)
+			# Pas de dégâts si Moko est en saut
+			if player.is_jumping:
+				var t0 = get_tree().create_timer(interval)
+				await t0.timeout
+				continue
+
+			if distance <= drool_range:
+				player.damage_mod.on_hit(dmg_per_sec)
+
 		var timer = get_tree().create_timer(interval)
 		await timer.timeout
+
 
 # --- Dommage et mort ---
 func on_hit(damage_taken):

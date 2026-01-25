@@ -22,7 +22,7 @@ func _on_area_2d_body_entered(body):
 		if gs.hud:
 			gs.hud.hide_breathbar()
 
-		body.start_underwater_breath()
+		body.breath_mod.start_underwater_breath()
 		body.is_swimming_under_water = true
 		body.water_current = current
 
@@ -41,7 +41,7 @@ func _on_area_2d_body_exited(body):
 		if gs.hud:
 			gs.hud.hide_breathbar()
 
-		body.stop_underwater_breath(true)
+		body.breath_mod.stop_underwater_breath(true)
 		body.is_swimming_under_water = false
 		body.water_current = Vector2.ZERO
 

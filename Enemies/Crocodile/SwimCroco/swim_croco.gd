@@ -73,7 +73,7 @@ func _on_area_2d_body_entered(body):
 	if is_attacking:
 		return
 		
-	if body.is_in_group("Player") or body.name == "Player":
+	if body.is_in_group("Player"):
 		is_attacking = true
 		velocity.x = 0
 		
@@ -107,8 +107,8 @@ func _on_area_2d_body_entered(body):
 			get_tree().current_scene.add_child(ghost_sprite)
 			
 		# Cache / tue Moko immédiatement 
-		if body.has_method("kill_by_plant"):
-			body.kill_by_plant()
+		if body.effects_mod.has_method("kill_by_plant"):
+			body.effects_mod.kill_by_plant()
 		
 		# Ghost avalé 
 		if ghost_sprite:
@@ -129,7 +129,7 @@ func _on_area_2d_body_entered(body):
 			gloups_sprite.visible = false
 		
 		# Tue Moko 
-		if body.has_method("die"):
-			body.die()
+		if body.damage_mod.has_method("die"):
+			body.damage_mod.die()
 		
 		is_attacking = false

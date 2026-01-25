@@ -83,8 +83,8 @@ func _perform_attack(target):
 	is_attacking = true
 	anim.play("attack")
 
-	if target.has_method("on_hit"):
-		target.on_hit(damage)
+	if target.damage_mod.has_method("on_hit"):
+		target.damage_mod.on_hit(damage)
 
 	await get_tree().create_timer(cooldown).timeout
 
@@ -142,5 +142,5 @@ func _on_player_changed(new_player):
 	player = new_player
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("on_hit"):
-		body.on_hit(damage)
+	if body.is_in_group("Player"):
+		body.damage_mod.on_hit(damage)

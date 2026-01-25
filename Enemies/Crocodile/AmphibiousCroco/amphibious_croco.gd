@@ -250,7 +250,7 @@ func attack_on_floor():
 		await impact_timer.timeout
 
 		if is_instance_valid(player) and not is_dead:
-			player.on_hit(damage)
+			player.damage_mod.on_hit(damage)
 
 		# attend la fin de l'anim d'attaque
 		await anim.animation_finished
@@ -284,7 +284,7 @@ func attack_swim():
 
 		# Impact immédiat
 		if is_instance_valid(player) and not is_dead:
-			player.on_hit(damage)
+			player.damage_mod.on_hit(damage)
 
 		await anim.animation_finished
 

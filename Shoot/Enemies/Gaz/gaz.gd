@@ -25,9 +25,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		has_collided = true
 		
 		# Applique l’effet au joueur
-		body.apply_gaz()
+
+		body.effects_mod.apply_gaz()
 		
 		# Applique les dégâts 
 		queue_free()
-		if body.has_method("on_hit"):
-			body.on_hit(damage)
+		if body.damage_mod.has_method("on_hit"):
+			body.damage_mod.on_hit(damage)

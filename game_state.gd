@@ -97,7 +97,7 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	await load_level("res://Levels/Lvl4/lvl_4.tscn")
+	await load_level("res://Levels/Lvl3/lvl_3.tscn")
 
 
 func _process(_delta):
@@ -243,7 +243,7 @@ func load_level(scene_path):
 		if not is_loading_save:
 			if p.has_method("reset_state"):
 				p.reset_state()
-			elif p.has_variable("pv") and p.has_variable("max_pv"):
+			else:
 				p.pv = p.max_pv
 
 		if health_bar:
@@ -268,6 +268,7 @@ func load_level(scene_path):
 			speed_bar.update_speed_bar_current(sprint_stamina)
 
 	await fade.fade_in()
+
 
 
 # ===================================================================

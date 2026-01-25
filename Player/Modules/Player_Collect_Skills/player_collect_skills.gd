@@ -6,7 +6,7 @@ func setup(player):
 	p = player
 
 # ============================================================================
-#                                     COLLECTES 
+#                                     COLLECTES
 # ============================================================================
 func collect_camouflage(amount = 1):
 	if not p.game_state:
@@ -32,7 +32,6 @@ func collect_double_jump():
 	p.game_state.double_jump_unlocked = true
 	p.show_info_popup("🦘 Double saut débloqué !")
 
-
 func collect_oxygen(amount):
 	p.breath_left += amount
 	if p.breath_left > p.max_breath:
@@ -41,8 +40,11 @@ func collect_oxygen(amount):
 	if p.breath_left > 0:
 		p.drown_timer.stop()
 
-	p.update_bubble_rate()
-	p.game_state.hud.update_breath(p.breath_left, p.max_breath)
+	if p.breath_mod:
+		p.breath_mod.update_bubble_rate()
+
+	if p.game_state and p.game_state.hud:
+		p.game_state.hud.update_breath(p.breath_left, p.max_breath)
 
 	if p.breath_left > 0 and p.breath_left <= p.panic_start:
 		if p.bubble_timer.is_stopped():
@@ -78,7 +80,6 @@ func collect_ramp():
 		hud.play_hud_anim("appear_ramp")
 
 	p.refresh_hud_buttons()
-
 
 func collect_sprint():
 	# Débloque côté GameState (source de vérité)

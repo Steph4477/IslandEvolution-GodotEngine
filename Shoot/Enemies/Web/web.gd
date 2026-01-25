@@ -31,12 +31,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		effet.get_node("AnimationPlayer").play("appear_fade")
 		
 		# Applique l’effet au joueur
-		if body.has_method("apply_web_effect"):
-			body.apply_web_effect()
+		if body.effects_mod.has_method("apply_web_effect"):
+			body.effects_mod.apply_web_effect()
 			
 		# Applique les dégâts 
 		queue_free()
-		if body.has_method("on_hit"):
-			body.on_hit(damage)
+		if body.damage_mod.has_method("on_hit"):
+			body.damage_mod.on_hit(damage)
 		
 	queue_free()
