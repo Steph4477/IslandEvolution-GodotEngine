@@ -251,12 +251,12 @@ func setup_game_state():
 		max_jump_count = 2
 
 func setup_collect_items():
-	collect_items = preload("res://Player/Modules/PlayerCollectItems/PlayerCollectItems.gd").new()
+	collect_items = preload("res://Player/Modules/Player_Collect_Items/player_collect_items.gd").new()
 	add_child(collect_items)
 	collect_items.setup(self)
 
 func setup_collect_skills():
-	collect_skills = preload("res://Player/Modules/PlayerCollectSkills/PlayerCollectSkills.gd").new()
+	collect_skills = preload("res://Player/Modules/Player_Collect_Skills/player_collect_skills.gd").new()
 	add_child(collect_skills)
 	collect_skills.setup(self)
 	
@@ -503,29 +503,6 @@ func process_ramp():
 		velocity.y += gravity * gravity_factor * get_physics_process_delta_time()
 
 
-#func collect_sprint():
-	#can_sprint = true
-	#game_state.sprint_unlocked = true
-	#game_state.sprint_stamina = game_state.sprint_stamina_max
-#
-	#if game_state.speed_bar:
-		#game_state.speed_bar.visible = true
-		#game_state.speed_bar.update_speed_bar_current(game_state.sprint_stamina)
-#
-	#if game_state.hud:
-		#var hud = game_state.hud
-		#if hud.has_node("Gamepad/Sprint"):
-			#var btn = hud.get_node("Gamepad/Sprint")
-			#btn.visible = true
-			#hud.set_button_enabled(btn, true)
-#
-		#if hud.anim.has_animation("appear_sprint"):
-			#hud.anim.play("appear_sprint")
-#
-	#show_info_popup("⚡ Tu peux maintenant sprinter avec Shift !")
-	#refresh_hud_buttons()
-
-
 func process_sprint():
 	var delta = get_physics_process_delta_time()
 
@@ -769,10 +746,6 @@ func process_camouflage():
 	if Input.is_action_just_pressed(INPUT["camouflage"]):
 		use_camouflage()
 
-
-# =================================================================================================
-#                                     COLLECTES
-# =================================================================================================
 func use_honey():
 	if not is_on_floor():
 		return
