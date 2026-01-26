@@ -71,7 +71,7 @@ func process_climb():
 
 	# on est en zone climb : on initialise le mode
 	if p.climbing_anim == "":
-		p.climbing_anim = "climb"
+		p.climbing_anim = "climb_coco"
 		p.anim.play("hang")
 		p.velocity.y = 0
 		p.is_hanging = true

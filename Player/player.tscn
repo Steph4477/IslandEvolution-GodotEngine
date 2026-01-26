@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://cbxfe41yjfrlh"]
+[gd_scene load_steps=90 format=3 uid="uid://cbxfe41yjfrlh"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/player.gd" id="1_5psm4"]
 [ext_resource type="Texture2D" uid="uid://2ymynqarqqhp" path="res://Player/Sprite/onhit/1.png" id="2_2paov"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://1g37i68fedop" path="res://Player/Sprite/jump/5.png" id="52_7v2uk"]
 [ext_resource type="Texture2D" uid="uid://bijfr33855j8b" path="res://Player/Sprite/Swim_under_water/1.png" id="53_m6nl3"]
 [ext_resource type="Texture2D" uid="uid://dj80ixvxt7a6m" path="res://Player/Sprite/Swim_under_water/2.png" id="54_8hx1r"]
+[ext_resource type="Texture2D" uid="uid://bkb4ah5m1jprh" path="res://Player/Sprite/climb/1.png" id="55_8hx1r"]
 
 [sub_resource type="Animation" id="Animation_i7max"]
 length = 0.001
@@ -541,7 +542,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_p8mbp"]
-resource_name = "climb"
+resource_name = "climb_coco"
 length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
@@ -557,11 +558,28 @@ tracks/0/keys = {
 "values": [ExtResource("3_tj6lq"), ExtResource("4_jjtta")]
 }
 
+[sub_resource type="Animation" id="Animation_kdg72"]
+resource_name = "climb"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("55_8hx1r")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
 &"RESET": SubResource("Animation_i7max"),
 &"clac": SubResource("Animation_bpa77"),
-&"climb": SubResource("Animation_p8mbp"),
+&"climb": SubResource("Animation_kdg72"),
+&"climb_coco": SubResource("Animation_p8mbp"),
 &"die": SubResource("Animation_cwkp3"),
 &"door": SubResource("Animation_ifp5e"),
 &"door_2": SubResource("Animation_qh0f6"),
