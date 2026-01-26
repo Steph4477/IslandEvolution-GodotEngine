@@ -22,7 +22,7 @@ func on_hit(damage):
 
 	p.show_damage_popup(damage)
 	p.update_can_heal()
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 	var hud = null
 	if p.game_state and p.game_state.health_bar:

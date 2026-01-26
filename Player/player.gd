@@ -45,13 +45,14 @@ var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
 var game_state
 
 # --- modules ---
+var hud_mod
 var breath_mod
 var collect_items
 var collect_skills
 var combat_mod
 var damage_mod
 var effects_mod
-var items_mod
+var heal_mod
 var movement_mod
 var skills_mod
 
@@ -193,24 +194,29 @@ func show_damage_popup(amount):
 func _ready():
 	setup_game_state()
 
+	# IMPORTANT : HUD d'abord, puis on attend qu'il soit prêt avant les autres modules
+	setup_hud_module()
+	if hud_mod:
+		await hud_mod.wait_until_ready()
+
 	setup_breath_module()
 	setup_collect_items()
 	setup_collect_skills()
 	setup_combat_module()
 	setup_damage_module()
 	setup_effects_module()
-	setup_items_module()
+	setup_heal_module()
 	setup_movement_module()
 	setup_skills_module()
 
 	camera.make_current()
 
 	await get_tree().process_frame
-	setup_hud()
-	await get_tree().process_frame
 
-	if game_state and game_state.hud and game_state.hud.has_method("update_seed_display"):
-		game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
+	# Seed display
+	if hud_mod and game_state:
+		hud_mod.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
+
 
 	if anim.current_animation == "hang":
 		anim.play("idle")
@@ -270,6 +276,11 @@ func setup_game_state():
 
 # --- Modules ---
 
+func setup_hud_module():
+	hud_mod = preload("res://Player/Modules/Player_HUD/player_hud.gd").new()
+	add_child(hud_mod)
+	hud_mod.setup(self)
+
 func setup_breath_module():
 	breath_mod = preload("res://Player/Modules/Player_Breath/player_breath.gd").new()
 	add_child(breath_mod)
@@ -300,10 +311,10 @@ func setup_effects_module():
 	add_child(effects_mod)
 	effects_mod.setup(self)
 
-func setup_items_module():
-	items_mod = preload("res://Player/Modules/Player_Items/player_items.gd").new()
-	add_child(items_mod)
-	items_mod.setup(self)
+func setup_heal_module():
+	heal_mod = preload("res://Player/Modules/Player_Heal/player_heal.gd").new()
+	add_child(heal_mod)
+	heal_mod.setup(self)
 
 func setup_movement_module():
 	movement_mod = preload("res://Player/Modules/Player_Movement/player_movement.gd").new()
@@ -314,20 +325,6 @@ func setup_skills_module():
 	skills_mod = preload("res://Player/Modules/Player_Skills/player_skills.gd").new()
 	add_child(skills_mod)
 	skills_mod.setup(self)
-
-
-func setup_hud():
-	if not game_state:
-		return
-	if not game_state.hud:
-		return
-
-	# Le HUD gère l'affichage via ses méthodes update
-	if game_state.hud.has_method("update_lives_display"):
-		game_state.hud.update_lives_display(game_state.lives)
-
-	update_all_displays()
-	refresh_hud_buttons()
 
 
 func _physics_process(delta):
@@ -342,18 +339,18 @@ func _physics_process(delta):
 
 	var was_on_floor = is_on_floor() # Suivre si on est au sol à chaque frame
 
-	# ordre volontaire : skills -> movement -> items -> combat
+	# ordre volontaire : skills -> movement -> combat -> heal 
 	if skills_mod:
 		skills_mod.process(delta)
 
 	if movement_mod:
 		movement_mod.process(delta, was_on_floor)
 
-	if items_mod:
-		items_mod.process()
-
 	if combat_mod:
 		combat_mod.process()
+
+	if heal_mod:
+		heal_mod.process()
 
 	move_and_slide()
 
@@ -392,7 +389,10 @@ func heal(amount):
 		game_state.banane_count = heal_potions.size()
 
 	banane_count = heal_potions.size()
-	update_banane_display()
+
+	if hud_mod:
+		hud_mod.update_banane_display()
+		hud_mod.refresh_hud_buttons()
 
 func update_can_heal():
 	can_heal = heal_potions.size() > 0 and pv < max_pv and not in_cooldown
@@ -478,83 +478,6 @@ func update_animation():
 			anim.play("jump2_down")
 		else:
 			anim.play("jump_down")
-
-
-# =============================================================================
-#                               HUD & Popups
-# =============================================================================
-func update_banane_display():
-	if game_state.hud.has_method("update_banane_display"):
-		game_state.hud.update_banane_display()
-
-func update_honey_display():
-	if game_state.hud.has_method("update_honey_display"):
-		game_state.hud.update_honey_display()
-
-func update_coco_display():
-	if game_state.hud.has_method("update_coco_display"):
-		game_state.hud.update_coco_display()
-
-func update_bone_display():
-	if game_state.hud.has_method("update_bone_display"):
-		game_state.hud.update_bone_display()
-
-func update_lance_display():
-	if game_state.hud.has_method("update_lance_display"):
-		game_state.hud.update_lance_display()
-
-func update_seed_display():
-	if game_state.hud.has_method("update_seed_display"):
-		game_state.hud.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
-
-func update_all_displays():
-	update_banane_display()
-	update_honey_display()
-	update_coco_display()
-	update_bone_display()
-	update_lance_display()
-	update_seed_display()
-
-func refresh_hud_buttons():
-	if not game_state or not game_state.health_bar:
-		return
-
-	var hud_parent = game_state.health_bar.get_parent()
-	if not hud_parent:
-		return
-
-	# Coco / Bone
-	if hud_parent.has_node("Gamepad/Coco"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Coco"), can_fire_coco)
-
-	if hud_parent.has_node("Gamepad/Bone"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Bone"), can_fire_bone)
-
-	# Heal
-	var can_heal_banana_btn = pv < max_pv and heal_potions.size() > 0 and not in_cooldown
-	if hud_parent.has_node("Gamepad/Health"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Health"), can_heal_banana_btn)
-
-	var can_heal_honey_btn = pv < max_pv and honey_potions.size() > 0 and not in_cooldown
-	if hud_parent.has_node("Gamepad/Honey"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Honey"), can_heal_honey_btn)
-
-	# Spear -> Camouflage (switch)
-	if hud_parent.has_node("Gamepad/Spear"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Spear"), can_fire_lance and not can_camouflage)
-
-	# Skills
-	if hud_parent.has_node("Gamepad/Camouflage"):
-		var can_btn = can_camouflage
-		if game_state.is_camouflaged:
-			can_btn = false
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Camouflage"), can_btn)
-
-	if hud_parent.has_node("Gamepad/Ramp"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Ramp"), can_ramp)
-
-	if hud_parent.has_node("Gamepad/Sprint"):
-		hud_parent.set_button_enabled(hud_parent.get_node("Gamepad/Sprint"), can_sprint)
 
 
 func _on_clac_area_body_entered(body):

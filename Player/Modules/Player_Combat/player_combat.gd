@@ -61,7 +61,7 @@ func shoot_coco():
 	p.game_state.coco_count = p.coco_count
 	p.game_state.can_fire_coco = p.can_fire_coco
 
-	p.update_coco_display()
+	p.hud_mod.update_coco_display()
 
 	p.animation_locked = true
 	p.anim.play("shoot")
@@ -75,7 +75,7 @@ func shoot_coco():
 	p.get_tree().current_scene.add_child(spell)
 
 	p.animation_locked = false
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
 func shoot_bone():
@@ -96,7 +96,7 @@ func shoot_bone():
 	p.game_state.bone_count = p.bone_count
 	p.game_state.can_fire_bone = p.can_fire_bone
 
-	p.update_bone_display()
+	p.hud_mod.update_bone_display()
 
 	p.animation_locked = true
 	p.anim.play("shoot")
@@ -110,7 +110,7 @@ func shoot_bone():
 	p.get_tree().current_scene.add_child(spell)
 
 	p.animation_locked = false
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
 func shoot_lance():
@@ -134,7 +134,7 @@ func shoot_lance():
 	p.game_state.lance_count = p.lance_count
 	p.game_state.can_fire_lance = p.can_fire_lance
 
-	p.update_lance_display()
+	p.hud_mod.update_lance_display()
 
 	p.animation_locked = true
 	p.anim.play("shoot_lance")
@@ -148,7 +148,7 @@ func shoot_lance():
 	p.get_tree().current_scene.add_child(spell)
 
 	p.animation_locked = false
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
 # ============================================================================

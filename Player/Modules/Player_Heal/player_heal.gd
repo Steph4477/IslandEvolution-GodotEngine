@@ -21,12 +21,14 @@ func process_heal():
 # --- Choix entre le jus de banane et le miel ---
 func use_heal_item():
 	if p.game_state and p.game_state.hud:
+		# Si le bouton Honey est visible, on est en mode miel
 		if p.game_state.hud.has_node("Gamepad/Honey"):
 			var honey_btn = p.game_state.hud.get_node("Gamepad/Honey")
 			if honey_btn.visible:
 				use_honey()
 				return
 
+	# Sinon on utilise le jus de banane
 	use_banane()
 
 func use_banane():
@@ -42,13 +44,13 @@ func use_banane():
 		msg = "Aucune potion !"
 
 	if msg != "":
-		p.popups_mod.info(msg)
-		await p.anim_mod.play_locked("empty")
+		p.show_info_popup(msg)
+		await p.play_anim("empty")
 		return
 
-	await p.anim_mod.play_locked("heal")
+	await p.play_anim("heal")
 
-	apply_heal(p.game_state.heal_amount)
+	p.heal(p.game_state.heal_amount)
 
 	if not p.heal_potions.is_empty():
 		p.heal_potions.pop_front()
@@ -58,11 +60,11 @@ func use_banane():
 	if p.game_state:
 		p.game_state.banane_count = p.banane_count
 
-	p.hud_mod.update_banane_display()
+	p.update_banane_display()
 
 	p.in_cooldown = true
-	refresh_can_heal()
-	p.hud_mod.refresh_buttons()
+	p.update_can_heal()
+	p.hud_mod.refresh_hud_buttons()
 	start_potion_cooldown("banane")
 
 func use_honey():
@@ -78,13 +80,13 @@ func use_honey():
 		msg = "Aucun miel !"
 
 	if msg != "":
-		p.popups_mod.info(msg)
-		await p.anim_mod.play_locked("empty")
+		p.show_info_popup(msg)
+		await p.play_anim("empty")
 		return
 
-	await p.anim_mod.play_locked("heal")
+	await p.play_anim("heal")
 
-	apply_heal(p.game_state.heal_amount)
+	p.heal(p.game_state.heal_amount)
 
 	if not p.honey_potions.is_empty():
 		p.honey_potions.pop_front()
@@ -94,24 +96,13 @@ func use_honey():
 	if p.game_state:
 		p.game_state.honey_count = p.honey_count
 
-	p.hud_mod.update_honey_display()
+	if p.game_state and p.game_state.hud and p.game_state.hud.has_method("update_honey_display"):
+		p.game_state.hud.update_honey_display()
 
 	p.in_cooldown = true
-	refresh_can_heal()
-	p.hud_mod.refresh_buttons()
+	p.update_can_heal()
+	p.hud_mod.refresh_hud_buttons()
 	start_potion_cooldown("honey")
-
-# ============================================================================
-#                               API HEAL (remplace wrappers)
-# ============================================================================
-func apply_heal(amount):
-	p.pv = clamp(p.pv + amount, 0, p.max_pv)
-
-	if p.game_state:
-		p.game_state.health_bar.set_value(p.pv)
-
-func refresh_can_heal():
-	p.can_heal = p.heal_potions.size() > 0 and p.pv < p.max_pv and not p.in_cooldown
 
 func start_potion_cooldown(item):
 	p.in_cooldown = true
@@ -130,5 +121,4 @@ func start_potion_cooldown(item):
 
 	await p.get_tree().create_timer(p.cooldown_potion).timeout
 	p.in_cooldown = false
-	refresh_can_heal()
-	p.hud_mod.refresh_buttons()
+	p.refresh_hud_buttons()

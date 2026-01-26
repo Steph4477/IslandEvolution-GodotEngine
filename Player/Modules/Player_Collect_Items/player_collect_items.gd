@@ -29,14 +29,14 @@ func collect_banane(amount = 1):
 	if hud and hud.has_method("set_button_enabled"):
 		hud.set_button_enabled(hud.get_node("Gamepad/Health"), p.can_heal)
 
-	p.update_banane_display()
+	p.hud_mod.update_banane_display()
 
 	if amount == 1:
 		p.show_info_popup("1 jus de banane récupéré !")
 	else:
 		p.show_info_popup(str(amount) + " jus de bananes récupérés !")
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 
 func collect_honey(amount = 1):
@@ -54,7 +54,7 @@ func collect_honey(amount = 1):
 	if hud and hud.has_method("anim_to_honey_mode"):
 		hud.anim_to_honey_mode()
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 
 func collect_coco(amount = 1, enable_shooting = false):
@@ -74,14 +74,14 @@ func collect_coco(amount = 1, enable_shooting = false):
 		elif hud.has_method("update_coco_display"):
 			hud.update_coco_display()
 
-	p.update_coco_display()
+	p.hud_mod.update_coco_display()
 
 	if amount == 1:
 		p.show_info_popup("1 noix de coco récupérée !")
 	else:
 		p.show_info_popup(str(amount) + " noix de coco récupérées !")
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 
 func collect_bone(amount = 1, enable_shooting = false):
@@ -101,14 +101,14 @@ func collect_bone(amount = 1, enable_shooting = false):
 	if hud2 and hud2.has_method("anim_to_bone_mode"):
 		hud2.anim_to_bone_mode()
 
-	p.update_bone_display()
+	p.hud_mod.update_bone_display()
 
 	if amount == 1:
 		p.show_info_popup("1 os récupéré !")
 	else:
 		p.show_info_popup(str(amount) + " os récupérés !")
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 
 func collect_lance(amount = 1, enable_shooting = false):
@@ -130,7 +130,7 @@ func collect_lance(amount = 1, enable_shooting = false):
 	else:
 		p.show_info_popup(str(amount) + " lances récupérées !")
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 
 func collect_seed(amount = 1):
@@ -139,8 +139,8 @@ func collect_seed(amount = 1):
 	for i in range(amount):
 		gs.add_seed_collected()
 
-	if gs.hud and gs.hud.has_method("update_seed_display"):
-		gs.hud.update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
+	if p.hud_mod.has_method("update_seed_display"):
+		p.hud_mod.update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
 	var parent = p.get_parent()
 	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
