@@ -1,7 +1,6 @@
-[gd_scene load_steps=54 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=56 format=3 uid="uid://brfjqv4fn7u7f"]
 
-[ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Interface/Hud/hud.gd" id="1_0b1lv"]
-[ext_resource type="Texture2D" uid="uid://geykfl4nhu8u" path="res://Interface/Hud/border.png" id="2_eumbl"]
+[ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Player/Modules/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" uid="uid://dl764ckbcmvqy" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://cnkc7vm4biqiy" path="res://Interface/GamePad/shoot.png" id="6_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://ddmlglu40faqi" path="res://Interface/GamePad/Pressed/shoot.png" id="7_b0qj5"]
@@ -15,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ctavmt7manvl5" path="res://Interface/GamePad/honey.png" id="12_shgqx"]
 [ext_resource type="Texture2D" uid="uid://bgbd2clr0nkjo" path="res://Interface/GamePad/Pressed/honey.png" id="13_cpk68"]
 [ext_resource type="Texture2D" uid="uid://k8plb36agpki" path="res://Interface/GamePad/Pressed/spear.png" id="13_lwpkd"]
-[ext_resource type="Texture2D" uid="uid://croid74mvw1fb" path="res://Interface/Hud/seed.png" id="13_voibu"]
+[ext_resource type="Texture2D" uid="uid://croid74mvw1fb" path="res://Player/Modules/Hud/seed.png" id="13_voibu"]
 [ext_resource type="Texture2D" uid="uid://dl7eufg3ckn6e" path="res://Interface/GamePad/camouflage.png" id="14_akioh"]
 [ext_resource type="Texture2D" uid="uid://bcbo7opbktbwb" path="res://Interface/GamePad/ramp.png" id="14_e8y56"]
 [ext_resource type="Texture2D" uid="uid://3bqredga1mej" path="res://Interface/GamePad/menu.png" id="14_tlm4v"]
@@ -28,17 +27,19 @@
 [ext_resource type="Texture2D" uid="uid://bgs6ob3c4vn6i" path="res://Interface/GamePad/break.png" id="16_smsye"]
 [ext_resource type="Texture2D" uid="uid://cbfrxhvvuqxm0" path="res://Interface/GamePad/Pressed/sprint_button.png" id="17_f7l5a"]
 [ext_resource type="Texture2D" uid="uid://bh7du3h4bnf8w" path="res://Interface/GamePad/Pressed/break.png" id="17_m6ehm"]
-[ext_resource type="Texture2D" uid="uid://dhaaggwqnjw7f" path="res://Interface/Hud/life.png" id="18_1hj8m"]
+[ext_resource type="Texture2D" uid="uid://dhaaggwqnjw7f" path="res://Player/Modules/Hud/life.png" id="18_1hj8m"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Healt_Bar/health_bar.gd" id="19_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://cp76hvpelaygs" path="res://Interface/GamePad/sprint.png" id="22_f2ifn"]
 [ext_resource type="PackedScene" uid="uid://cbx7p8yvy6gn3" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
 [ext_resource type="Texture2D" uid="uid://f2wqd7elwllu" path="res://Interface/Healt_Bar/bar_under.png" id="22_xl2wx"]
+[ext_resource type="Texture2D" uid="uid://dfr63emsnd2ja" path="res://Interface/GamePad/switch.png" id="23_3qhmc"]
 [ext_resource type="PackedScene" uid="uid://ccmd315gfailw" path="res://Interface/Cursor/game_cursor.tscn" id="23_ff868"]
 [ext_resource type="Texture2D" uid="uid://5821x68q0fyh" path="res://Interface/Healt_Bar/progress_bar.png" id="23_u63cs"]
-[ext_resource type="Texture2D" uid="uid://cln737jub7o43" path="res://Interface/Hud/honey.png" id="25_akioh"]
+[ext_resource type="Texture2D" uid="uid://djfy5uca78jdj" path="res://Interface/GamePad/Pressed/switch.png" id="24_o4sf8"]
+[ext_resource type="Texture2D" uid="uid://cln737jub7o43" path="res://Player/Modules/Hud/honey.png" id="25_akioh"]
 [ext_resource type="Texture2D" uid="uid://ce031dj4wmnff" path="res://Interface/Speed_Bar/progress_bar.png" id="27_mltuv"]
 [ext_resource type="Script" uid="uid://bdoxhgt5axy6w" path="res://Interface/Speed_Bar/speed_bar.gd" id="27_wb1yk"]
-[ext_resource type="Texture2D" uid="uid://cvxra31oja48s" path="res://Interface/Hud/break.png" id="28_m6ehm"]
+[ext_resource type="Texture2D" uid="uid://cvxra31oja48s" path="res://Player/Modules/Hud/break.png" id="28_m6ehm"]
 [ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 
 [sub_resource type="Animation" id="Animation_ccc6n"]
@@ -454,26 +455,62 @@ tracks/33/keys = {
 tracks/34/type = "value"
 tracks/34/imported = false
 tracks/34/enabled = true
-tracks/34/path = NodePath("Gamepad/Health:visible")
+tracks/34/path = NodePath("Gamepad/Health:modulate")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/35/type = "value"
 tracks/35/imported = false
 tracks/35/enabled = true
-tracks/35/path = NodePath("Gamepad/Health:modulate")
+tracks/35/path = NodePath("Gamepad/Switch:scale")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0.45, 0.45)]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Gamepad/Switch:position")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(762, 296.00003)]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Gamepad/Switch:rotation")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("Gamepad/Switch:modulate")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_nnjha"]
@@ -551,7 +588,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(780, 316), Vector2(71, 783)]
+"values": [Vector2(780, 316), Vector2(72, 665)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -614,7 +651,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(781, 335), Vector2(201, 963)]
+"values": [Vector2(781, 335), Vector2(328, 963)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -643,26 +680,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Health:visible")
+tracks/3/path = NodePath("Gamepad/Health:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Health:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_eqcma"]
@@ -791,7 +816,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(799, 316), Vector2(195, 838)]
+"values": [Vector2(799, 316), Vector2(279, 759)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -854,7 +879,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782, 307), Vector2(470, 925)]
+"values": [Vector2(782, 307), Vector2(769, 954)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1133,6 +1158,57 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_6ivel"]
+resource_name = "appear_switch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gamepad/Switch:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.11, 0.11)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gamepad/Switch:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(762, 296.00003), Vector2(447.99994, 955)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gamepad/Switch:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.283185307179586, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gamepad/Switch:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k643"]
 _data = {
 &"RESET": SubResource("Animation_ccc6n"),
@@ -1143,6 +1219,7 @@ _data = {
 &"appear_ramp": SubResource("Animation_8k643"),
 &"appear_spear": SubResource("Animation_o4sf8"),
 &"appear_sprint": SubResource("Animation_f7l5a"),
+&"appear_switch": SubResource("Animation_6ivel"),
 &"bone_appear": SubResource("Animation_f2ifn"),
 &"disappear_camouflage": SubResource("Animation_akioh"),
 &"disappear_spear": SubResource("Animation_3qhmc"),
@@ -1155,9 +1232,10 @@ script = ExtResource("1_0b1lv")
 [node name="VirtualJoystick" parent="." instance=ExtResource("2_s8lhr")]
 
 [node name="Frame" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(978, 541.5)
 scale = Vector2(1.91667, 1.50684)
-texture = ExtResource("2_eumbl")
+texture = ExtResource("23_3qhmc")
 
 [node name="Gamepad" type="Node2D" parent="."]
 
@@ -1210,10 +1288,10 @@ theme_override_font_sizes/font_size = 16
 text = "0"
 
 [node name="BananeCountLabel2" type="Label" parent="Gamepad/Health"]
-offset_left = -46.0
-offset_top = -862.0
-offset_right = -36.0
-offset_bottom = -839.0
+offset_left = -188.0
+offset_top = -859.0
+offset_right = -178.0
+offset_bottom = -836.0
 theme_override_font_sizes/font_size = 16
 text = "0"
 
@@ -1229,6 +1307,14 @@ offset_left = 920.3539
 offset_top = 707.96387
 offset_right = 930.3539
 offset_bottom = 730.96387
+theme_override_font_sizes/font_size = 150
+text = "0"
+
+[node name="HoneyCountLabel2" type="Label" parent="Gamepad/Honey"]
+offset_left = -44.24785
+offset_top = -7575.221
+offset_right = 41.75215
+offset_bottom = -7370.221
 theme_override_font_sizes/font_size = 150
 text = "0"
 
@@ -1252,10 +1338,10 @@ text = "0"
 
 [node name="coolDownCircle" type="TextureProgressBar" parent="Gamepad/Camouflage"]
 z_index = 5
-offset_left = 18.181816
-offset_top = 0.000118255615
-offset_right = 1042.1818
-offset_bottom = 1024.0001
+offset_left = -26.08699
+offset_top = -17.39118
+offset_right = 997.91296
+offset_bottom = 1006.6088
 scale = Vector2(1.0745693, 0.94911045)
 fill_mode = 5
 nine_patch_stretch = true
@@ -1287,6 +1373,14 @@ texture_normal = ExtResource("16_8k643")
 texture_pressed = ExtResource("17_f7l5a")
 action = "sprint"
 
+[node name="Switch" type="TouchScreenButton" parent="Gamepad"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(762, 296.00003)
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("23_3qhmc")
+texture_pressed = ExtResource("24_o4sf8")
+action = "switch"
+
 [node name="Menu" type="TouchScreenButton" parent="Gamepad"]
 position = Vector2(1597, 42)
 scale = Vector2(0.11, 0.11)
@@ -1302,13 +1396,13 @@ texture_pressed = ExtResource("17_m6ehm")
 action = "ui_cancel"
 
 [node name="HBoxContainerBanane" type="HBoxContainer" parent="."]
-offset_left = -1007.0
-offset_top = 358.0
-offset_right = -913.0
-offset_bottom = 432.0
+offset_left = -1002.0
+offset_top = 357.0
+offset_right = -908.0
+offset_bottom = 431.0
 
 [node name="TexturePotion" type="Node2D" parent="HBoxContainerBanane"]
-position = Vector2(345, -25)
+position = Vector2(317, -19)
 scale = Vector2(0.715505, 0.715329)
 
 [node name="TextureRectBanane" type="TextureRect" parent="HBoxContainerBanane/TexturePotion"]
@@ -1320,30 +1414,30 @@ texture = ExtResource("15_rgqxt")
 
 [node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/TexturePotion"]
 z_index = 5
-offset_left = 1013.27
-offset_top = -406.806
-offset_right = 2037.27
-offset_bottom = 617.194
+offset_left = 1016.06555
+offset_top = -408.20383
+offset_right = 2040.0656
+offset_bottom = 615.79614
 scale = Vector2(0.143016, 0.14321)
 fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("16_b0qj5")
 
 [node name="HBoxContainerHoney" type="HBoxContainer" parent="."]
-offset_left = -1007.0
-offset_top = 358.0
-offset_right = -913.0
-offset_bottom = 432.0
+offset_left = -1006.0
+offset_top = 353.0
+offset_right = -912.0
+offset_bottom = 427.0
 
 [node name="TexturePotion" type="Node2D" parent="HBoxContainerHoney"]
-position = Vector2(345, -25)
+position = Vector2(393.99994, -20)
 scale = Vector2(0.715505, 0.715329)
 
 [node name="TextureRectHoney" type="TextureRect" parent="HBoxContainerHoney/TexturePotion"]
-offset_left = 1949.6721
-offset_top = -72.69385
-offset_right = 2049.672
-offset_bottom = 33.306152
+offset_left = 1037.0298
+offset_top = -383.04053
+offset_right = 1137.0298
+offset_bottom = -277.04053
 texture = ExtResource("25_akioh")
 
 [node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerHoney/TexturePotion"]
@@ -1415,10 +1509,10 @@ offset_bottom = 40.0
 script = ExtResource("27_wb1yk")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="SpeedBar"]
-offset_left = 224.0
-offset_top = 159.0
-offset_right = 457.0
-offset_bottom = 233.0
+offset_left = 222.0
+offset_top = 134.0
+offset_right = 455.0
+offset_bottom = 208.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
@@ -1432,7 +1526,7 @@ offset_right = 213.0
 offset_bottom = 216.0
 
 [node name="TextureSprint" type="Node2D" parent="SpeedBar"]
-position = Vector2(-16, 182)
+position = Vector2(-7.000001, 154)
 scale = Vector2(0.1, 0.1)
 
 [node name="TextureRect" type="TextureRect" parent="SpeedBar/TextureSprint"]
@@ -1446,10 +1540,10 @@ texture = ExtResource("22_f2ifn")
 script = ExtResource("27_wb1yk")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="BreathBar"]
-offset_left = 226.0
-offset_top = 266.0
-offset_right = 459.0
-offset_bottom = 340.0
+offset_left = 224.0
+offset_top = 203.0
+offset_right = 457.0
+offset_bottom = 277.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
@@ -1463,8 +1557,8 @@ offset_right = 213.0
 offset_bottom = 216.0
 
 [node name="TextureBubbleAir" type="Node2D" parent="BreathBar"]
-position = Vector2(-16, 182)
-scale = Vector2(0.1, 0.1)
+position = Vector2(23, 145)
+scale = Vector2(0.08, 0.08)
 
 [node name="TextureRect" type="TextureRect" parent="BreathBar/TextureBubbleAir"]
 offset_left = 730.0
@@ -1474,10 +1568,6 @@ offset_bottom = 1704.0
 texture = ExtResource("37_eqcma")
 
 [node name="TimerChrono" parent="." instance=ExtResource("22_hny2p")]
-offset_left = 138.0
-offset_top = 145.0
-offset_right = 178.0
-offset_bottom = 185.0
 
 [node name="GameCursor" parent="." instance=ExtResource("23_ff868")]
 
@@ -1491,6 +1581,7 @@ texture = ExtResource("28_m6ehm")
 libraries = {
 &"": SubResource("AnimationLibrary_8k643")
 }
+autoplay = "appear_switch"
 
 [connection signal="pressed" from="Gamepad/Hand" to="." method="_on_hand_pressed"]
 [connection signal="pressed" from="Gamepad/Coco" to="." method="_on_coco_pressed"]
@@ -1501,5 +1592,6 @@ libraries = {
 [connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]
 [connection signal="pressed" from="Gamepad/Ramp" to="." method="_on_ramp_pressed"]
 [connection signal="pressed" from="Gamepad/Sprint" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="Gamepad/Switch" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Gamepad/Break" to="." method="_on_break_pressed"]

@@ -128,7 +128,7 @@ func lose():
 	gs.player.show_info_popup("⏳ Temps écoulé, tu vas y arriver Moko !")
 	gs.has_flower = false
 	gs.toucan_challenge_retry = true
-	gs.player.die()
+	gs.player.damage_mod.die()
 
 # ================ DIALOGUE RETENTE ================
 func retry_then_start():

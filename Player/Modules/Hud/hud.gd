@@ -427,28 +427,28 @@ func _on_menu_pressed():
 	gs.load_level("res://Levels/Lvl0/lvl_0.tscn")
 
 func _on_hand_pressed():
-	gs.player.clac_attack()
+	gs.player.combat_mod.clac_attack()
 
 func _on_coco_pressed():
-	gs.player.shoot_coco()
+	gs.player.combat_mod.shoot_coco()
 
 func _on_health_pressed():
-	gs.player.use_heal_item()
+	gs.player.heal_mod.use_heal_item()
 
 func _on_honey_pressed():
-	gs.player.use_heal_item()
+	gs.player.heal_mod.use_heal_item()
 
 func _on_spear_pressed():
-	gs.player.shoot_lance()
+	gs.player.combat_mod.shoot_lance()
 
 func _on_ramp_pressed():
 	gs.player.process_ramp()
 
 func _on_speed_pressed():
-	gs.player.process_sprint()
+	gs.player.movementprocess_sprint()
 
 func _on_bone_pressed():
-	gs.player.shoot_bone()
+	gs.player.combat_mod.shoot_bone()
 
 func _on_camouflage_pressed():
 	gs.player.use_camouflage()

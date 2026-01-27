@@ -98,7 +98,7 @@ func _on_hitbox_body_entered(body):
 	if did_hit:
 		return
 	if is_instance_valid(body) and body.is_in_group("Player"):
-		body.on_hit(damage)
+		body.damage_mod.on_hit(damage)
 		_impact_anim()
 	 # Application de l'effet gaz de moko
 	if body.has_method("apply_gaz"):
