@@ -113,12 +113,13 @@ func start_potion_cooldown(item):
 
 	if hud:
 		if item == "banane":
-			if hud.has_method("start_banane_cooldown"):
-				hud.start_banane_cooldown(p.cooldown_potion)
+			if p.has_method("start_banane_cooldown"):
+				p.start_banane_cooldown(p.cooldown_potion)
 		elif item == "honey":
 			if hud.has_method("start_honey_cooldown"):
 				hud.start_honey_cooldown(p.cooldown_potion)
 
 	await p.get_tree().create_timer(p.cooldown_potion).timeout
 	p.in_cooldown = false
-	p.refresh_hud_buttons()
+	if p.hud_mod:
+		p.hud_mod.refresh_hud_buttons()

@@ -26,7 +26,7 @@ func collect_camouflage(amount = 1):
 		if p.game_state.hud.has_method("update_camouflage_display"):
 			p.game_state.hud.update_camouflage_display()
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 func collect_double_jump():
 	p.game_state.double_jump_unlocked = true

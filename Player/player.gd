@@ -45,6 +45,7 @@ var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
 var game_state
 
 # --- modules ---
+var state_sync_mod
 var hud_mod
 var breath_mod
 var collect_items
@@ -55,6 +56,7 @@ var effects_mod
 var heal_mod
 var movement_mod
 var skills_mod
+var animation_mod
 
 var can_move = true
 var can_be_damaged = true
@@ -192,7 +194,10 @@ func show_damage_popup(amount):
 # =======================================================================
 
 func _ready():
-	setup_game_state()
+	setup_state_sync_module()
+	if state_sync_mod:
+		state_sync_mod.apply_from_gamestate()
+
 
 	# IMPORTANT : HUD d'abord, puis on attend qu'il soit prêt avant les autres modules
 	setup_hud_module()
@@ -206,6 +211,7 @@ func _ready():
 	setup_damage_module()
 	setup_effects_module()
 	setup_heal_module()
+	setup_animation_module()
 	setup_movement_module()
 	setup_skills_module()
 
@@ -234,47 +240,11 @@ func _restore_loaded_position_post_setup():
 		global_position = gs.pending_player_pos
 		gs.has_pending_load = false
 
-
-func setup_game_state():
-	game_state = get_node_or_null("/root/GameState")
-	if not game_state:
-		return
-
-	game_state.set_player(self)
-
-	banane_count = game_state.banane_count
-	honey_count = game_state.honey_count
-
-	coco_count = game_state.coco_count
-	bone_count = game_state.bone_count
-	lance_count = game_state.lance_count
-
-	# Aligné sur la logique GameState
-	seed_count = game_state.collected_seeds
-
-	can_fire_coco = game_state.can_fire_coco
-	can_fire_lance = game_state.can_fire_lance
-	can_fire_bone = game_state.can_fire_bone
-	can_camouflage = game_state.can_camouflage
-
-	can_ramp = game_state.ramp_unlocked
-	can_sprint = game_state.sprint_unlocked
-
-	# Recrée les listes (important après respawn / reload)
-	heal_potions.clear()
-	for i in range(banane_count):
-		heal_potions.append(game_state.heal_amount)
-
-	honey_potions.clear()
-	for j in range(honey_count):
-		honey_potions.append(game_state.heal_amount)
-
-	max_jump_count = 1
-	if game_state.double_jump_unlocked:
-		max_jump_count = 2
-
-
 # --- Modules ---
+func setup_state_sync_module():
+	state_sync_mod = preload("res://Player/Modules/Player_State_Sync/player_state_sync.gd").new()
+	add_child(state_sync_mod)
+	state_sync_mod.setup(self)
 
 func setup_hud_module():
 	hud_mod = preload("res://Player/Modules/Player_HUD/player_hud.gd").new()
@@ -326,6 +296,11 @@ func setup_skills_module():
 	add_child(skills_mod)
 	skills_mod.setup(self)
 
+func setup_animation_module():
+	animation_mod = preload("res://Player/Modules/Player_Animation/player_animation.gd").new()
+	add_child(animation_mod)
+	animation_mod.setup(self)
+
 
 func _physics_process(delta):
 	if not can_move:
@@ -357,9 +332,8 @@ func _physics_process(delta):
 	if movement_mod:
 		movement_mod.post_physics(was_on_floor)
 
-	update_animation()
-
-
+	if animation_mod:
+		animation_mod.process()
 
 # =======================================================================
 #                       TIMERS (connectés au Player)
@@ -404,82 +378,9 @@ func disable_controls():
 func enable_controls():
 	can_move = true
 
-
-
-# ============================================================================
-#                              ANIMATIONS
-# ============================================================================
-func update_animation():
-	if animation_locked or is_dead:
-		return
-
-	if is_swimming_under_water:
-		if anim.current_animation != "swim_under_water":
-			anim.play("swim_under_water")
-		return
-
-	if is_swimming:
-		if anim.current_animation != "swim":
-			anim.play("swim")
-		return
-
-	if is_on_liana:
-		return
-
-	if is_hanging:
-		return
-
-	if climbing_anim != "" and velocity.y != 0:
-		anim.play(climbing_anim)
-		return
-
-	if anim.current_animation == "hang":
-		return
-
-	if is_gazed:
-		if anim.current_animation != "walk_gaz":
-			anim.play("walk_gaz")
-		return
-
-	if is_on_floor() and is_sprinting and abs(velocity.x) > 0.1:
-		if anim.current_animation != "sprint":
-			anim.play("sprint")
-		return
-
-	if is_on_floor():
-		if is_pushing_or_pulling and not is_ramping:
-			anim.play("push")
-			return
-
-		if is_ramping:
-			if abs(velocity.x) > 0.1:
-				anim.play("ramp")
-			else:
-				anim.play("idle")
-		else:
-			if abs(velocity.x) > 0.1:
-				if is_gazed:
-					anim.play("walk_gaz")
-				if is_web:
-					anim.play("web_effect")
-				else:
-					anim.play("walk")
-			else:
-				anim.play("idle")
-		return
-
-	if velocity.y < 0:
-		if jump_count > 1:
-			anim.play("jump2_up")
-		else:
-			anim.play("jump_up")
-	elif velocity.y > 0:
-		if jump_count > 1:
-			anim.play("jump2_down")
-		else:
-			anim.play("jump_down")
-
-
+# =======================================================================
+#                       TIMERS (connectés au Player)
+# =======================================================================
 func _on_clac_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(clac_damage)

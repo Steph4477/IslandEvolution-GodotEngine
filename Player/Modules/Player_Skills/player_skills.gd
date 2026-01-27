@@ -111,7 +111,7 @@ func use_camouflage():
 		if p.game_state.camouflage_count == 0:
 			p.game_state.hud.switch_back_to_spear()
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 	start_camouflage()
 
@@ -128,7 +128,7 @@ func start_camouflage():
 	if p.game_state.hud and p.game_state.hud.has_method("start_camouflage_cooldown"):
 		p.game_state.hud.start_camouflage_cooldown(p.camouflage_duration)
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 	# Effet visuel
 	p.sprite.modulate = Color(1, 1, 1, 0.35)
@@ -146,4 +146,4 @@ func stop_camouflage():
 	# Retour visuel
 	p.sprite.modulate = Color(1, 1, 1, 1)
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()

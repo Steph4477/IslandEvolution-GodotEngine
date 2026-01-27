@@ -129,7 +129,7 @@ z_index = 5
 position = Vector2(-1843, 9)
 
 [node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_4foss")]
-position = Vector2(8241, 595)
+position = Vector2(3978, -1258)
 
 [node name="PlantAqua" parent="." instance=ExtResource("9_bpjiq")]
 modulate = Color(0.5367351, 0.4485007, 0.43122348, 1)

@@ -35,7 +35,11 @@ func _physics_process(_delta):
 	if not is_instance_valid(player):
 		return
 
-	var target = player.get_node("TurnAxis").global_position
+	var target= player.global_position
+
+	if player.turn_axis:
+		target = player.turn_axis.global_position
+
 	var distance = global_position.distance_to(target)
 	var direction = (target - global_position).normalized()
 

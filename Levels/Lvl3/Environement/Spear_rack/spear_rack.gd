@@ -24,7 +24,11 @@ func _on_body_entered(body):
 		
 		# Sync direct avec Moko au loot
 		gs.player.can_fire_lance = true
-		gs.player.refresh_hud_buttons()
+		if body.hud_mod:
+			body.hud_mod.refresh_hud_buttons()
+		#elif body.game_state and body.game_state.hud:
+			#body.game_state.hud.refresh_hud_buttons()
+
 		
 		gs.hud.update_lance_display()
 

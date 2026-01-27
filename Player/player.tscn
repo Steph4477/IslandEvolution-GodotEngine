@@ -89,6 +89,39 @@ tracks/0/keys = {
 "values": [ExtResource("21_bj58r"), ExtResource("22_p11ve"), ExtResource("23_17nxb"), ExtResource("23_17nxb")]
 }
 
+[sub_resource type="Animation" id="Animation_kdg72"]
+resource_name = "climb"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("55_8hx1r")]
+}
+
+[sub_resource type="Animation" id="Animation_p8mbp"]
+resource_name = "climb_coco"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("3_tj6lq"), ExtResource("4_jjtta")]
+}
+
 [sub_resource type="Animation" id="Animation_cwkp3"]
 resource_name = "die"
 length = 1.5
@@ -539,39 +572,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("39_6qokg"), ExtResource("40_i7max"), ExtResource("41_m2xt8"), ExtResource("42_y06ei")]
-}
-
-[sub_resource type="Animation" id="Animation_p8mbp"]
-resource_name = "climb_coco"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [ExtResource("3_tj6lq"), ExtResource("4_jjtta")]
-}
-
-[sub_resource type="Animation" id="Animation_kdg72"]
-resource_name = "climb"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("55_8hx1r")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
