@@ -14,7 +14,12 @@ const INPUT = {
 	"ramp": "ramping",
 	"clac": "clacing",
 	"sprint": "sprint",
-	"camouflage": "camouflage"
+	"camouflage": "camouflage",
+
+	# --- Gameplay jet ---
+	"throw_mode": "throw_mode",      # L
+	"throw_switch": "switch",        # switch
+	"throw_fire": "throw_fire"            # shoot (space chez toi)
 }
 
 @export var speed = 400
@@ -30,10 +35,10 @@ const INPUT = {
 
 # --- Dégâts de chute ---
 @export var fall_damage_enabled = true
-@export var fall_safe_limit = 1200        # en dessous => 0 dégât
-@export var fall_speed_max = 1800             # à partir de là => dégâts max
-@export var fall_damage_max = 600             # dégâts max appliqués
-@export var fall_damage_min = 50              # si on dépasse le seuil, au moins ça
+@export var fall_safe_limit = 1200
+@export var fall_speed_max = 1800
+@export var fall_damage_max = 600
+@export var fall_damage_min = 50
 
 # --- Suivie vitesse de chute ---
 var fall_speed_track = 0.0
@@ -102,7 +107,8 @@ var is_sprinting = false
 var ramp_locked = false
 var is_gazed = false
 var is_web = false
-# --- fire 
+
+# --- fire
 var can_fire_coco = false
 var can_fire_bone = false
 var can_fire_lance = false
@@ -133,8 +139,8 @@ var seed_count = 0
 var lance_count = 0
 
 # Potions séparées
-var heal_potions = []     # bananes
-var honey_potions = []    # miel
+var heal_potions = []
+var honey_potions = []
 
 var in_cooldown = false
 var can_heal = true
@@ -145,6 +151,13 @@ var current_liana = null
 # --- Caisse ---
 var can_push_pull = false
 var is_pushing_or_pulling = false
+
+# --- Gameplay jet ---
+var throw_mode = false
+var selected_throw_weapon = "coco"  # "coco" / "bone" / "lance"
+
+# --- Debug ---
+var dbg_throw = true
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
@@ -158,7 +171,7 @@ var is_pushing_or_pulling = false
 @onready var open_mouth = $Node2D/OpenMouth
 @onready var close_mouth = $Node2D/Sprite
 
-# --- HUD Labels (non utilisés directement pour l'affichage, désormais géré par le HUD) ---
+# --- HUD Labels (non utilisés directement) ---
 var label_banane
 var label_coco
 var label_bone
@@ -194,10 +207,14 @@ func show_damage_popup(amount):
 # =======================================================================
 
 func _ready():
+	game_state = get_node("/root/GameState")
+
+	if dbg_throw:
+		print("[THROW][READY] start | throw_mode=", throw_mode, " selected=", selected_throw_weapon)
+
 	setup_state_sync_module()
 	if state_sync_mod:
 		state_sync_mod.apply_from_gamestate()
-
 
 	# IMPORTANT : HUD d'abord, puis on attend qu'il soit prêt avant les autres modules
 	setup_hud_module()
@@ -223,13 +240,14 @@ func _ready():
 	if hud_mod and game_state:
 		hud_mod.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
 
+	# init HUD jet (mode OFF)
+	_update_throw_hud()
 
 	if anim.current_animation == "hang":
 		anim.play("idle")
 	is_hanging = false
 	climbing_anim = ""
 
-	# --- Restaure la dernière positon connue de Moko aprés un chargement de partie sauvegardée ---
 	_restore_loaded_position_post_setup()
 
 
@@ -239,6 +257,7 @@ func _restore_loaded_position_post_setup():
 		await get_tree().process_frame
 		global_position = gs.pending_player_pos
 		gs.has_pending_load = false
+
 
 # --- Modules ---
 func setup_state_sync_module():
@@ -270,6 +289,9 @@ func setup_combat_module():
 	combat_mod = preload("res://Player/Modules/Player_Combat/player_combat.gd").new()
 	add_child(combat_mod)
 	combat_mod.setup(self)
+
+	if dbg_throw:
+		print("[THROW][READY] combat_mod=", combat_mod)
 
 func setup_damage_module():
 	damage_mod = preload("res://Player/Modules/Player_Damage/player_damage.gd").new()
@@ -312,14 +334,16 @@ func _physics_process(delta):
 	if animation_locked:
 		return
 
-	var was_on_floor = is_on_floor() # Suivre si on est au sol à chaque frame
+	var was_on_floor = is_on_floor()
 
-	# ordre volontaire : skills -> movement -> combat -> heal 
+	# ordre : skills -> movement -> throw_inputs -> combat -> heal
 	if skills_mod:
 		skills_mod.process(delta)
 
 	if movement_mod:
 		movement_mod.process(delta, was_on_floor)
+
+	_process_throw_inputs()
 
 	if combat_mod:
 		combat_mod.process()
@@ -334,6 +358,138 @@ func _physics_process(delta):
 
 	if animation_mod:
 		animation_mod.process()
+
+
+# =======================================================================
+#                       GAMEPLAY JET
+# =======================================================================
+
+func _process_throw_inputs(): 
+	if Input.is_key_pressed(KEY_SPACE) and Input.is_action_just_pressed(INPUT["throw_fire"]):
+		print("[THROW][RAW] SPACE + action shoot just pressed")
+
+	# L : ouvre mode jet (ON seulement)
+	if Input.is_action_just_pressed(INPUT["throw_mode"]):
+		if dbg_throw:
+			print("[THROW][INPUT] throw_mode pressed (", INPUT["throw_mode"], ")")
+		enable_throw_mode()
+
+	# switch : change l’arme (même hors mode)
+	if Input.is_action_just_pressed(INPUT["throw_switch"]):
+		if dbg_throw:
+			print("[THROW][INPUT] throw_switch pressed (", INPUT["throw_switch"], ")")
+		switch_throw_weapon()
+
+	# shoot : tire si mode jet ON
+	if Input.is_action_just_pressed(INPUT["throw_fire"]):
+		if dbg_throw:
+			print("[THROW][INPUT] throw_fire pressed (", INPUT["throw_fire"], ")")
+		fire_throw_weapon()
+
+
+func enable_throw_mode():
+	# Déjà actif -> on garde ON, on reflashe juste
+	if throw_mode:
+		if dbg_throw:
+			print("[THROW] enable_throw_mode: already ON | selected=", selected_throw_weapon)
+		_flash_throw_group()
+		return
+
+	throw_mode = true
+
+	if dbg_throw:
+		print("[THROW] enable_throw_mode: ACTIVATED | selected=", selected_throw_weapon)
+
+	_update_throw_hud()
+	_flash_throw_group()
+
+
+func switch_throw_weapon():
+	var before = selected_throw_weapon
+	_cycle_throw_weapon()
+
+	if dbg_throw:
+		print("[THROW] switch_throw_weapon ", before, " -> ", selected_throw_weapon, " (throw_mode=", throw_mode, ")")
+
+	# Le carré bleu ne bouge que si mode ON
+	if throw_mode:
+		_update_throw_hud()
+
+
+func fire_throw_weapon():
+	if dbg_throw:
+		print("[THROW] fire_throw_weapon called (throw_mode=", throw_mode, " selected=", selected_throw_weapon, ")")
+
+	if not throw_mode:
+		if dbg_throw:
+			print("[THROW] fire BLOCKED: throw_mode=false")
+		return
+
+	_fire_selected_throw_weapon()
+
+
+func _cycle_throw_weapon():
+	if selected_throw_weapon == "coco":
+		selected_throw_weapon = "bone"
+	elif selected_throw_weapon == "bone":
+		selected_throw_weapon = "lance"
+	else:
+		selected_throw_weapon = "coco"
+
+	if dbg_throw:
+		print("[THROW] _cycle_throw_weapon -> selected=", selected_throw_weapon)
+
+
+func _fire_selected_throw_weapon():
+	if combat_mod == null:
+		if dbg_throw:
+			print("[THROW] _fire_selected_throw_weapon BLOCKED: combat_mod=null")
+		return
+
+	if dbg_throw:
+		print("[THROW] _fire_selected_throw_weapon OK -> ", selected_throw_weapon)
+
+	if selected_throw_weapon == "coco":
+		combat_mod.coco()
+	elif selected_throw_weapon == "bone":
+		combat_mod.bone()
+	else:
+		combat_mod.lance()
+
+
+func _get_main_hud():
+	if game_state:
+		return game_state.hud
+	return null
+
+
+func _update_throw_hud():
+	var hud = _get_main_hud()
+	if hud == null:
+		if dbg_throw:
+			print("[THROW][HUD] _update_throw_hud: HUD NULL (game_state.hud)")
+		return
+
+	if dbg_throw:
+		print("[THROW][HUD] _update_throw_hud: found HUD=", hud, " throw_mode=", throw_mode, " selected=", selected_throw_weapon)
+
+	if throw_mode:
+		hud.show_throw_mode(selected_throw_weapon)
+	else:
+		hud.hide_throw_mode()
+
+
+func _flash_throw_group():
+	var hud = _get_main_hud()
+	if hud == null:
+		if dbg_throw:
+			print("[THROW][HUD] _flash_throw_group: HUD NULL")
+		return
+
+	if dbg_throw:
+		print("[THROW][HUD] flash_throw_group()")
+	hud.flash_throw_group()
+
 
 # =======================================================================
 #                       TIMERS (connectés au Player)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene load_steps=58 format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Player/Modules/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" uid="uid://dl764ckbcmvqy" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://ce031dj4wmnff" path="res://Interface/Speed_Bar/progress_bar.png" id="27_mltuv"]
 [ext_resource type="Script" uid="uid://bdoxhgt5axy6w" path="res://Interface/Speed_Bar/speed_bar.gd" id="27_wb1yk"]
 [ext_resource type="Texture2D" uid="uid://cvxra31oja48s" path="res://Player/Modules/Hud/break.png" id="28_m6ehm"]
+[ext_resource type="Texture2D" uid="uid://vdcvg1bposri" path="res://Interface/GamePad/selected.png" id="28_rg2xt"]
 [ext_resource type="Texture2D" uid="uid://ly5xcplxnbgd" path="res://Interface/Healt_Bar/progress_bar2.png" id="33_rjgrc"]
 [ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 [ext_resource type="Texture2D" uid="uid://b5qsd8mb4hg25" path="res://Interface/Breath_Bar/progress_bar.png" id="37_rg2xt"]
@@ -47,410 +48,410 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Bone:position")
+tracks/0/path = NodePath("Gamepad/Coco:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(71, 783)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Coco:modulate")
+tracks/1/path = NodePath("Gamepad/Bone:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Bone:scale")
+tracks/2/path = NodePath("Gamepad/Bone:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Bone:rotation")
+tracks/3/path = NodePath("Gamepad/Ramp:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(201, 836)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Ramp:position")
+tracks/4/path = NodePath("Gamepad/Ramp:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(707, 920)]
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Gamepad/Ramp:scale")
+tracks/5/path = NodePath("Gamepad/Ramp:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Gamepad/Ramp:rotation")
+tracks/6/path = NodePath("Gamepad/Sprint:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(255, 739)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Gamepad/Sprint:position")
+tracks/7/path = NodePath("Gamepad/Sprint:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(588, 916)]
+"values": [0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Gamepad/Sprint:rotation")
+tracks/8/path = NodePath("Gamepad/Sprint:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Gamepad/Sprint:scale")
+tracks/9/path = NodePath("Gamepad/Honey:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Gamepad/Honey:position")
+tracks/10/path = NodePath("Gamepad/Honey:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(193, 954)]
+"values": [Vector2(0.113, 0.113)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Gamepad/Honey:rotation")
+tracks/11/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1037.0298, -383.04053)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Gamepad/Honey:scale")
+tracks/12/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:rotation")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.113, 0.113)]
+"values": [0.0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:position")
+tracks/13/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:scale")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1037.0298, -383.04053)]
+"values": [Vector2(1, 1)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:rotation")
+tracks/14/path = NodePath("Gamepad/Spear:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(77, 674)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:scale")
+tracks/15/path = NodePath("Gamepad/Spear:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Gamepad/Spear:position")
+tracks/16/path = NodePath("Gamepad/Spear:scale")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(277, 766)]
+"values": [Vector2(1, 1)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Gamepad/Spear:rotation")
+tracks/17/path = NodePath("Gamepad/Spear:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Gamepad/Spear:scale")
+tracks/18/path = NodePath("Gamepad/Coco:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(76, 780)]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Gamepad/Spear:visible")
+tracks/19/path = NodePath("Gamepad/Coco:rotation")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [6.2831855]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("Gamepad/Coco:position")
+tracks/20/path = NodePath("Gamepad/Coco:scale")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(72, 674)]
+"values": [Vector2(1, 1)]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("Gamepad/Coco:rotation")
+tracks/21/path = NodePath("Gamepad/Coco:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [6.2831855]
+"update": 1,
+"values": [true]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("Gamepad/Coco:scale")
+tracks/22/path = NodePath("Gamepad/Health:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(209, 947)]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("Gamepad/Coco:visible")
+tracks/23/path = NodePath("Gamepad/Health:rotation")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("Gamepad/Health:position")
+tracks/24/path = NodePath("Gamepad/Health:scale")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(307, 963)]
+"values": [Vector2(1, 1)]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("Gamepad/Health:rotation")
+tracks/25/path = NodePath("Gamepad/Health:modulate")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("Gamepad/Health:scale")
+tracks/26/path = NodePath("HBoxContainerHoney/TexturePotion/coolDownCircle:texture_progress")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"update": 1,
+"values": [ExtResource("16_b0qj5")]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
 tracks/27/enabled = true
-tracks/27/path = NodePath("Gamepad/Health:modulate")
+tracks/27/path = NodePath("HBoxContainerBanane/TexturePotion/coolDownCircle:value")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [100.0]
 }
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("HBoxContainerHoney/TexturePotion/coolDownCircle:texture_progress")
+tracks/28/path = NodePath("Gamepad/Camouflage:position")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("16_b0qj5")]
+"update": 0,
+"values": [Vector2(299.99997, 646)]
 }
 tracks/29/type = "value"
 tracks/29/imported = false
 tracks/29/enabled = true
-tracks/29/path = NodePath("HBoxContainerBanane/TexturePotion/coolDownCircle:value")
+tracks/29/path = NodePath("Gamepad/Switch:position")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [100.0]
+"values": [Vector2(447.99994, 955)]
 }
 tracks/30/type = "value"
 tracks/30/imported = false
 tracks/30/enabled = true
-tracks/30/path = NodePath("Gamepad/Camouflage:position")
+tracks/30/path = NodePath("Gamepad/Switch:scale")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(187, 834)]
+"values": [Vector2(0.11, 0.11)]
 }
 tracks/31/type = "value"
 tracks/31/imported = false
 tracks/31/enabled = true
-tracks/31/path = NodePath("Gamepad/Switch:position")
+tracks/31/path = NodePath("Gamepad/Switch:rotation")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(447.99994, 955)]
+"values": [0.0]
 }
 tracks/32/type = "value"
 tracks/32/imported = false
 tracks/32/enabled = true
-tracks/32/path = NodePath("Gamepad/Switch:scale")
+tracks/32/path = NodePath("Gamepad/Honey:position")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.11, 0.11)]
+"values": [Vector2(305, 943)]
 }
 tracks/33/type = "value"
 tracks/33/imported = false
 tracks/33/enabled = true
-tracks/33/path = NodePath("Gamepad/Switch:rotation")
+tracks/33/path = NodePath("Gamepad/Bone:position")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(68, 524)]
 }
 
 [sub_resource type="Animation" id="Animation_nnjha"]
@@ -528,7 +529,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(780, 316), Vector2(72, 665)]
+"values": [Vector2(780, 316), Vector2(72, 785)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -591,7 +592,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(781, 335), Vector2(328, 963)]
+"values": [Vector2(781, 335), Vector2(204, 949)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -635,74 +636,74 @@ resource_name = "appear_honey"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Honey:position")
+tracks/0/path = NodePath("Gamepad/Honey:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(753, 302), Vector2(193, 954)]
+"values": [6.2831855, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Honey:rotation")
+tracks/1/path = NodePath("Gamepad/Honey:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [6.2831855, 0.0]
+"values": [Vector2(0.45, 0.45), Vector2(0.113, 0.113)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Honey:scale")
+tracks/2/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.45, 0.45), Vector2(0.113, 0.113)]
+"values": [Vector2(1949.6721, -72.69383), Vector2(1037.0298, -383.04053)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:position")
+tracks/3/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1949.6721, -72.69383), Vector2(1037.0298, -383.04053)]
+"values": [6.2831855, 0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:rotation")
+tracks/4/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [6.2831855, 0.0]
+"values": [Vector2(7, 7), Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:scale")
+tracks/5/path = NodePath("Gamepad/Honey:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(7, 7), Vector2(1, 1)]
+"values": [Vector2(305, 943)]
 }
 
 [sub_resource type="Animation" id="Animation_8k643"]
@@ -717,7 +718,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782, 307), Vector2(580, 924)]
+"values": [Vector2(782, 307), Vector2(268, 748)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -749,62 +750,62 @@ resource_name = "appear_spear"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Spear:position")
+tracks/0/path = NodePath("Gamepad/Spear:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 0.81),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(799, 316), Vector2(279, 759), Vector2(279, 759)]
+"values": [6.2831855, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Spear:rotation")
+tracks/1/path = NodePath("Gamepad/Spear:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [6.2831855, 0.0]
+"values": [Vector2(4, 4), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Spear:scale")
+tracks/2/path = NodePath("Gamepad/Spear:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(4, 4), Vector2(1, 1)]
+"update": 1,
+"values": [true, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Spear:visible")
+tracks/3/path = NodePath("Gamepad/Spear:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Spear:modulate")
+tracks/4/path = NodePath("Gamepad/Spear:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Vector2(73, 663)]
 }
 
 [sub_resource type="Animation" id="Animation_f7l5a"]
@@ -819,7 +820,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782, 307), Vector2(769, 954)]
+"values": [Vector2(782, 307), Vector2(202, 835)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -867,10 +868,10 @@ tracks/1/path = NodePath("Gamepad/Switch:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(762, 296.00003), Vector2(447.99994, 955), Vector2(447.99994, 955)]
+"values": [Vector2(762, 296.00003), Vector2(607, 938)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -902,62 +903,62 @@ resource_name = "bone_appear"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Bone:position")
+tracks/0/path = NodePath("Gamepad/Bone:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(718.99994, 282.00003), Vector2(71, 783)]
+"values": [Vector2(5, 5), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Coco:modulate")
+tracks/1/path = NodePath("Gamepad/Bone:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [0.0, 6.2831855]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Bone:scale")
+tracks/2/path = NodePath("Gamepad/Bone/BoneCountLabel:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(5, 5), Vector2(1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Bone:rotation")
+tracks/3/path = NodePath("Gamepad/Bone:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 6.2831855]
+"values": [Vector2(68, 524)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Bone/BoneCountLabel:modulate")
+tracks/4/path = NodePath("Gamepad/Spear:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(73, 664)]
 }
 
 [sub_resource type="Animation" id="Animation_akioh"]
@@ -1166,6 +1167,10 @@ _data = {
 &"disapper_coco": SubResource("Animation_sprxf")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_rg2xt"]
+font_size = 20
+font_color = Color(1, 1, 0.9799528, 0.37)
+
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_0b1lv")
 
@@ -1174,27 +1179,27 @@ script = ExtResource("1_0b1lv")
 [node name="Gamepad" type="Node2D" parent="."]
 
 [node name="Hand" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(51, 893)
+position = Vector2(49, 909.00006)
 scale = Vector2(1, 0.998)
 texture_normal = ExtResource("6_rgqxt")
 texture_pressed = ExtResource("7_b0qj5")
 
 [node name="Coco" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(72, 674)
+position = Vector2(76, 780)
 rotation = 6.2831855
 texture_normal = ExtResource("8_b0qj5")
 texture_pressed = ExtResource("9_870gb")
 action = "ui_cancel"
 
 [node name="CocoCountLabel" type="Label" parent="Gamepad/Coco"]
-offset_left = 101.00002
-offset_top = 77.0
-offset_right = 111.00002
-offset_bottom = 100.0
+offset_left = 91.00002
+offset_top = 78.0
+offset_right = 101.00002
+offset_bottom = 101.0
 text = "0"
 
 [node name="Bone" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(71, 783)
+position = Vector2(68, 524)
 texture_normal = ExtResource("8_wb1yk")
 texture_pressed = ExtResource("9_f2ifn")
 action = "ui_cancel"
@@ -1207,46 +1212,46 @@ offset_bottom = 97.99997
 text = "0"
 
 [node name="Health" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(307, 963)
+position = Vector2(209, 947)
 texture_normal = ExtResource("8_voibu")
 texture_pressed = ExtResource("11_e8y56")
 action = "ui_accept"
 
 [node name="BananeCountLabel" type="Label" parent="Gamepad/Health"]
-offset_left = 96.0
+offset_left = 93.0
 offset_top = 71.0
-offset_right = 106.0
+offset_right = 103.0
 offset_bottom = 94.0
 theme_override_font_sizes/font_size = 16
 text = "0"
 
 [node name="Honey" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(193, 954)
+position = Vector2(305, 943)
 scale = Vector2(0.113, 0.113)
 texture_normal = ExtResource("12_shgqx")
 texture_pressed = ExtResource("13_cpk68")
 action = "ui_accept"
 
 [node name="HoneyCountLabel" type="Label" parent="Gamepad/Honey"]
-offset_left = 920.3539
-offset_top = 707.96387
-offset_right = 930.3539
-offset_bottom = 730.96387
+offset_left = 884.9557
+offset_top = 690.2653
+offset_right = 970.9557
+offset_bottom = 895.2653
 theme_override_font_sizes/font_size = 150
 text = "0"
 
 [node name="Camouflage" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(187, 834)
+position = Vector2(299.99997, 646)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("14_akioh")
 texture_pressed = ExtResource("15_eqcma")
 action = "shoot"
 
 [node name="CamouflageCountLabel" type="Label" parent="Gamepad/Camouflage"]
-offset_left = 972.7272
-offset_top = 754.5452
-offset_right = 1058.7272
-offset_bottom = 959.5452
+offset_left = 890.90955
+offset_top = 699.99976
+offset_right = 976.90955
+offset_bottom = 904.99976
 theme_override_font_sizes/font_size = 150
 text = "0"
 
@@ -1263,26 +1268,26 @@ nine_patch_stretch = true
 texture_progress = ExtResource("16_b0qj5")
 
 [node name="Spear" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(277, 766)
+position = Vector2(77, 674)
 texture_normal = ExtResource("12_s8lhr")
 texture_pressed = ExtResource("13_lwpkd")
 action = "shoot"
 
 [node name="LanceCountLabel" type="Label" parent="Gamepad/Spear"]
-offset_left = 99.0
-offset_top = 78.0
-offset_right = 109.0
-offset_bottom = 101.0
+offset_left = 88.0
+offset_top = 76.0
+offset_right = 98.0
+offset_bottom = 99.0
 text = "0"
 
 [node name="Ramp" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(707, 920)
+position = Vector2(201, 836)
 texture_normal = ExtResource("14_e8y56")
 texture_pressed = ExtResource("15_s8lhr")
 action = "ramping"
 
 [node name="Sprint" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(588, 916)
+position = Vector2(255, 739)
 texture_normal = ExtResource("16_8k643")
 texture_pressed = ExtResource("17_f7l5a")
 action = "sprint"
@@ -1307,6 +1312,14 @@ scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("16_smsye")
 texture_pressed = ExtResource("17_m6ehm")
 action = "ui_cancel"
+
+[node name="ThrowSelector" type="Sprite2D" parent="Gamepad"]
+visible = false
+modulate = Color(1, 1, 1, 0.45400003)
+z_index = 100
+position = Vector2(125.00001, 713)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("28_rg2xt")
 
 [node name="HBoxContainerBanane" type="HBoxContainer" parent="."]
 offset_left = -1002.0
@@ -1498,6 +1511,33 @@ libraries = {
 }
 autoplay = "appear_switch"
 
+[node name="Label" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 477.0
+offset_right = 152.0
+offset_bottom = 546.0
+text = "J"
+label_settings = SubResource("LabelSettings_rg2xt")
+uppercase = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 392.0
+offset_top = 629.0
+offset_right = 432.0
+offset_bottom = 698.0
+text = "k"
+label_settings = SubResource("LabelSettings_rg2xt")
+uppercase = true
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 429.0
+offset_top = 987.0
+offset_right = 469.0
+offset_bottom = 1056.0
+text = "h"
+label_settings = SubResource("LabelSettings_rg2xt")
+uppercase = true
+
 [connection signal="pressed" from="Gamepad/Hand" to="." method="_on_hand_pressed"]
 [connection signal="pressed" from="Gamepad/Coco" to="." method="_on_coco_pressed"]
 [connection signal="pressed" from="Gamepad/Bone" to="." method="_on_bone_pressed"]
@@ -1507,6 +1547,6 @@ autoplay = "appear_switch"
 [connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]
 [connection signal="pressed" from="Gamepad/Ramp" to="." method="_on_ramp_pressed"]
 [connection signal="pressed" from="Gamepad/Sprint" to="." method="_on_sprint_pressed"]
-[connection signal="pressed" from="Gamepad/Switch" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="Gamepad/Switch" to="." method="_on_switch_pressed"]
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Gamepad/Break" to="." method="_on_break_pressed"]

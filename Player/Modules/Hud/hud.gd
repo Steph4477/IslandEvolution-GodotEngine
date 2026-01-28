@@ -31,12 +31,19 @@ extends CanvasLayer
 @onready var breath_bar = get_node_or_null("BreathBar")
 @onready var breath_progress = get_node_or_null("BreathBar/TextureProgressBar")
 
+# --- UI mode jet ---
+@onready var throw_selector = get_node_or_null("Gamepad/ThrowSelector")
+@onready var throw_group_flash = get_node_or_null("Gamepad/ThrowGroupFlash")
+
 # -----------------------------
 #            VARS
 # -----------------------------
 var gs
 var bone_mode_already_unlocked = false
 var honey_mode_already_unlocked = false
+
+var throw_mode_active = false
+var selected_throw_weapon = "coco"
 
 # -----------------------------
 #            READY
@@ -84,7 +91,7 @@ func _ready():
 	update_camouflage_display()
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
-	# --- Restore états persistants (APPARITION PERSISTANTE) ---
+	# --- Restore états persistants ---
 	if gs.coco_count > 0:
 		_finalize_appear_coco()
 
@@ -119,6 +126,12 @@ func _ready():
 		breath_progress.max_value = 30
 		breath_progress.value = 30
 
+	if throw_selector:
+		throw_selector.visible = false
+	if throw_group_flash:
+		throw_group_flash.visible = false
+
+
 # -----------------------------
 #        COOLDOWNS
 # -----------------------------
@@ -146,6 +159,96 @@ func start_camouflage_cooldown(duration):
 	t.tween_property(cd, "value", 0, duration)
 	t.finished.connect(func(): cd.hide())
 
+
+# -----------------------------
+#        MODE JET HUD
+# -----------------------------
+func show_throw_mode(weapon):
+	throw_mode_active = true
+	selected_throw_weapon = weapon
+
+	if throw_selector == null:
+		return
+
+	throw_selector.visible = true
+	_update_throw_selector_position()
+
+
+func hide_throw_mode():
+	throw_mode_active = false
+
+	if throw_selector:
+		throw_selector.visible = false
+
+	if throw_group_flash:
+		throw_group_flash.visible = false
+
+
+func flash_throw_group():
+	if throw_group_flash == null:
+		return
+
+	_update_throw_group_flash_rect()
+	throw_group_flash.visible = true
+
+	await get_tree().create_timer(1.0).timeout
+	throw_group_flash.visible = false
+
+
+func _update_throw_selector_position():
+	if throw_selector == null:
+		return
+
+	var btn = _get_throw_button(selected_throw_weapon)
+	if btn == null:
+		return
+
+	var tex = btn.texture_normal
+	if tex == null:
+		return
+
+	# Centre réel du bouton
+	var tex_size = tex.get_size()
+	var local_center = tex_size * 0.5
+	var global_center = btn.global_transform * local_center
+	throw_selector.global_position = global_center
+
+	# --- Scale du carré bleu ---
+	var selector_tex = throw_selector.texture
+	if selector_tex:
+		var selector_size = selector_tex.get_size()
+
+		var pad = 6.0
+		var target_size = tex_size + Vector2(pad * 2.0, pad * 2.0)
+
+		var EXTRA_SCALE = 1.1  # 
+
+		throw_selector.scale = Vector2(
+			(target_size.x / selector_size.x) * EXTRA_SCALE,
+			(target_size.y / selector_size.y) * EXTRA_SCALE
+		)
+
+
+func _update_throw_group_flash_rect():
+	if throw_group_flash == null:
+		return
+
+	var group = $Gamepad
+	var r = group.get_global_rect()
+
+	var pad = 10.0
+	throw_group_flash.global_position = Vector2(r.position.x - pad, r.position.y - pad)
+	throw_group_flash.size = Vector2(r.size.x + pad * 2.0, r.size.y + pad * 2.0)
+
+
+func _get_throw_button(weapon):
+	if weapon == "coco":
+		return coco_button
+	if weapon == "bone":
+		return bone_button
+	return lance_button
+
+
 # -----------------------------
 #        UPDATE HUD
 # -----------------------------
@@ -165,7 +268,6 @@ func set_button_enabled(button, enabled):
 		else:
 			button.modulate = Color(1,1,1,0.4)
 
-# Chaque bouton est géré indépendamment.
 func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_sprint, can_camouflage):
 	# Coco
 	if coco_button.visible:
@@ -183,7 +285,7 @@ func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_s
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, can_camouflage)
 
-	# Banane (Health)
+	# Banane
 	if health_button.visible:
 		set_button_enabled(health_button, can_heal)
 
@@ -191,7 +293,7 @@ func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_s
 	if honey_button.visible:
 		set_button_enabled(honey_button, can_heal)
 
-	# Ramp / Sprint (visibilité pilotée par "can_*" comme avant)
+	# Ramp / Sprint
 	ramp_button.visible = can_ramp
 	set_button_enabled(ramp_button, can_ramp)
 
@@ -243,8 +345,8 @@ func update_camouflage_display():
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, gs.camouflage_count > 0)
 
+
 # --- Réspiration sous l'eau ---
-# affichage de la barre seulement aprés 1s l'entrée dans la zone de nage
 func show_breathbar():
 	breath_bar.visible = true
 
@@ -264,10 +366,10 @@ func update_breath(current, max_value):
 func stop_breath():
 	breath_bar.visible = false
 
+
 # -----------------------------
 #          APPEARS (PERSISTANTS)
 # -----------------------------
-# Au loot -> coco (ne cache rien)
 func anim_to_coco_mode():
 	update_coco_display()
 
@@ -289,7 +391,6 @@ func _finalize_appear_coco():
 	set_button_enabled(coco_button, gs.coco_count > 0)
 	update_coco_display()
 
-# Au loot -> lance (ne cache rien)
 func anim_to_spear_mode():
 	update_lance_display()
 
@@ -311,7 +412,6 @@ func _finalize_appear_spear():
 	set_button_enabled(lance_button, gs.lance_count > 0)
 	update_lance_display()
 
-# Au loot -> health (banane) (ne cache rien)
 func anim_to_health_mode():
 	update_banane_display()
 
@@ -337,7 +437,6 @@ func _finalize_appear_health():
 		banane_hbox.visible = true
 	update_banane_display()
 
-# Au loot -> honey (ne cache rien)
 func anim_to_honey_mode():
 	update_honey_display()
 
@@ -365,7 +464,6 @@ func _finalize_appear_honey():
 	set_button_enabled(honey_button, gs.honey_count > 0)
 	update_honey_display()
 
-# Au loot -> bone (ne cache rien)
 func anim_to_bone_mode():
 	update_bone_display()
 
@@ -384,23 +482,18 @@ func anim_to_bone_mode():
 	_finalize_switch_to_bone()
 
 func _finalize_switch_to_bone():
-	# IMPORTANT : on ne cache plus coco
 	coco_button.visible = true
 	bone_button.visible = true
 
 	set_button_enabled(bone_button, gs.bone_count > 0)
 	update_bone_display()
-
-	# (optionnel mais propre) au cas où tu veux refresh coco aussi
 	update_coco_display()
-
 
 func _finalize_appear_bone():
 	bone_button.visible = true
 	set_button_enabled(bone_button, gs.bone_count > 0)
 	update_bone_display()
 
-# Camouflage unlock HUD (ne cache rien)
 func unlock_camouflage_hud():
 	_finalize_appear_camouflage()
 
@@ -410,6 +503,7 @@ func unlock_camouflage_hud():
 func _finalize_appear_camouflage():
 	camouflage_button.visible = true
 	update_camouflage_display()
+
 
 # --------------------------------------
 #            BUTTONS
@@ -439,7 +533,7 @@ func _on_speed_pressed():
 	gs.player.movement_mod.process_sprint()
 
 func _on_bone_pressed():
-	gs.player.combat_mod.shoot_bone()
+	gs.player.combat_mod.process_bone()
 
 func _on_camouflage_pressed():
 	gs.player.skills_mod.process_camouflage()
