@@ -57,8 +57,8 @@ func _ready():
 	ramp_button.visible = false
 	sprint_button.visible = false
 
-	#if banane_hbox:
-		#banane_hbox.visible = false
+	if banane_hbox:
+		banane_hbox.visible = false
 	if honey_hbox:
 		honey_hbox.visible = false
 
@@ -84,26 +84,26 @@ func _ready():
 	update_camouflage_display()
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
-	# --- Restore états persistants ---
+	# --- Restore états persistants (APPARITION PERSISTANTE) ---
 	if gs.coco_count > 0:
-		_finalize_switch_to_coco()
-	
+		_finalize_appear_coco()
+
 	if gs.banane_count > 0:
-		_finalize_switch_to_health()
-	
+		_finalize_appear_health()
+
 	if gs.honey_count > 0:
 		honey_mode_already_unlocked = true
-		_finalize_switch_to_honey()
+		_finalize_appear_honey()
 
 	if gs.lance_count > 0:
-		_finalize_switch_to_spear()
+		_finalize_appear_spear()
 
 	if gs.camouflage_unlocked:
-		_finalize_switch_to_camouflage()
+		_finalize_appear_camouflage()
 
 	if gs.bone_count > 0:
 		bone_mode_already_unlocked = true
-		_finalize_switch_to_bone()
+		_finalize_appear_bone()
 
 	for b in [ramp_button, sprint_button, coco_button, lance_button, health_button, honey_button, bone_button, camouflage_button]:
 		if b:
@@ -146,7 +146,6 @@ func start_camouflage_cooldown(duration):
 	t.tween_property(cd, "value", 0, duration)
 	t.finished.connect(func(): cd.hide())
 
-
 # -----------------------------
 #        UPDATE HUD
 # -----------------------------
@@ -166,25 +165,33 @@ func set_button_enabled(button, enabled):
 		else:
 			button.modulate = Color(1,1,1,0.4)
 
+# Chaque bouton est géré indépendamment.
 func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_sprint, can_camouflage):
-	set_button_enabled(coco_button, can_fire_coco)
+	# Coco
+	if coco_button.visible:
+		set_button_enabled(coco_button, can_fire_coco)
 
-	# --- Lance ou Camouflage selon le mode ---
+	# Bone
+	if bone_button.visible:
+		set_button_enabled(bone_button, gs.bone_count > 0)
+
+	# Lance
+	if lance_button.visible:
+		set_button_enabled(lance_button, can_fire_lance)
+
+	# Camouflage
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, can_camouflage)
-		set_button_enabled(lance_button, false)
-	else:
-		set_button_enabled(lance_button, can_fire_lance)
-		set_button_enabled(camouflage_button, false)
 
-	# --- Banane ou Miel selon le mode
+	# Banane (Health)
+	if health_button.visible:
+		set_button_enabled(health_button, can_heal)
+
+	# Honey
 	if honey_button.visible:
 		set_button_enabled(honey_button, can_heal)
-		set_button_enabled(health_button, false)
-	else:
-		set_button_enabled(health_button, can_heal)
-		set_button_enabled(honey_button, false)
 
+	# Ramp / Sprint (visibilité pilotée par "can_*" comme avant)
 	ramp_button.visible = can_ramp
 	set_button_enabled(ramp_button, can_ramp)
 
@@ -200,31 +207,41 @@ func update_seed_display(collected, total):
 		label.text = "0 / 0 (0%)"
 
 func update_lance_display():
-	lance_label.text = str(gs.lance_count)
-	set_button_enabled(lance_button, gs.lance_count > 0)
+	if lance_label:
+		lance_label.text = str(gs.lance_count)
+	if lance_button.visible:
+		set_button_enabled(lance_button, gs.lance_count > 0)
 
 func update_bone_display():
-	bone_label.text = str(gs.bone_count)
-	set_button_enabled(bone_button, gs.bone_count > 0)
+	if bone_label:
+		bone_label.text = str(gs.bone_count)
+	if bone_button.visible:
+		set_button_enabled(bone_button, gs.bone_count > 0)
 
 func update_banane_display():
-	banane_label.text = str(gs.banane_count)
+	if banane_label:
+		banane_label.text = str(gs.banane_count)
 
 func update_honey_display():
-	honey_label.text = str(gs.honey_count)
+	if honey_label:
+		honey_label.text = str(gs.honey_count)
 
 func update_coco_display():
-	coco_label.text = str(gs.coco_count)
-	set_button_enabled(coco_button, gs.coco_count > 0)
+	if coco_label:
+		coco_label.text = str(gs.coco_count)
+	if coco_button.visible:
+		set_button_enabled(coco_button, gs.coco_count > 0)
 
 func update_camouflage_display():
-	camouflage_label.text = str(gs.camouflage_count)
+	if camouflage_label:
+		camouflage_label.text = str(gs.camouflage_count)
 
 	if not gs.camouflage_unlocked:
 		set_button_enabled(camouflage_button, false)
 		return
 
-	set_button_enabled(camouflage_button, gs.camouflage_count > 0)
+	if camouflage_button.visible:
+		set_button_enabled(camouflage_button, gs.camouflage_count > 0)
 
 # --- Réspiration sous l'eau ---
 # affichage de la barre seulement aprés 1s l'entrée dans la zone de nage
@@ -234,7 +251,6 @@ func show_breathbar():
 func hide_breathbar():
 	breath_bar.visible = false
 
-# --- func d'affichage de la BreathBar  ---
 func start_breath(max_value):
 	show_breathbar()
 	breath_progress.max_value = max_value
@@ -245,112 +261,111 @@ func update_breath(current, max_value):
 	breath_progress.max_value = max_value
 	breath_progress.value = clamp(current, 0, max_value)
 
-
 func stop_breath():
 	breath_bar.visible = false
 
 # -----------------------------
-#          SWITCHES
+#          APPEARS (PERSISTANTS)
 # -----------------------------
-# Au loot -> coco
+# Au loot -> coco (ne cache rien)
 func anim_to_coco_mode():
 	update_coco_display()
 
 	if coco_button.visible:
-		_finalize_switch_to_coco()
+		_finalize_appear_coco()
 		return
 
 	coco_button.visible = true
-
 	set_button_enabled(coco_button, false)
 
-	anim.play("appear_coco")
-	await anim.animation_finished
+	if anim and anim.has_animation("appear_coco"):
+		anim.play("appear_coco")
+		await anim.animation_finished
 
-	_finalize_switch_to_coco()
+	_finalize_appear_coco()
 
-# Au loot -> lance
+func _finalize_appear_coco():
+	coco_button.visible = true
+	set_button_enabled(coco_button, gs.coco_count > 0)
+	update_coco_display()
+
+# Au loot -> lance (ne cache rien)
 func anim_to_spear_mode():
 	update_lance_display()
 
 	if lance_button.visible:
-		_finalize_switch_to_spear()
+		_finalize_appear_spear()
 		return
 
 	lance_button.visible = true
 	set_button_enabled(lance_button, false)
 
-	anim.play("appear_spear")
-	await anim.animation_finished
+	if anim and anim.has_animation("appear_spear"):
+		anim.play("appear_spear")
+		await anim.animation_finished
 
-	_finalize_switch_to_spear() 
+	_finalize_appear_spear()
 
-func _finalize_switch_to_spear():
+func _finalize_appear_spear():
 	lance_button.visible = true
 	set_button_enabled(lance_button, gs.lance_count > 0)
 	update_lance_display()
 
-# Au loot-> health (banane)
+# Au loot -> health (banane) (ne cache rien)
 func anim_to_health_mode():
 	update_banane_display()
 
 	if health_button.visible:
-		_finalize_switch_to_health()
+		_finalize_appear_health()
 		return
 
-	health_button.visible = true
-	#if banane_hbox:
-		#banane_hbox.visible = true
-
-	set_button_enabled(health_button, false)
-
-	anim.play("appear_health")
-	await anim.animation_finished
-
-	_finalize_switch_to_health()
-
-func _finalize_switch_to_health():
 	health_button.visible = true
 	if banane_hbox:
 		banane_hbox.visible = true
 
+	set_button_enabled(health_button, false)
+
+	if anim and anim.has_animation("appear_health"):
+		anim.play("appear_health")
+		await anim.animation_finished
+
+	_finalize_appear_health()
+
+func _finalize_appear_health():
+	health_button.visible = true
+	if banane_hbox:
+		banane_hbox.visible = true
 	update_banane_display()
 
-func _finalize_switch_to_coco():
-	coco_button.visible = true
-
-	set_button_enabled(coco_button, gs.coco_count > 0)
-	update_coco_display()
-
-# Banane -> Honey
+# Au loot -> honey (ne cache rien)
 func anim_to_honey_mode():
 	update_honey_display()
 
 	if honey_mode_already_unlocked:
-		_finalize_switch_to_honey()
+		_finalize_appear_honey()
 		return
 
 	honey_mode_already_unlocked = true
 
 	honey_button.visible = true
-	honey_hbox.visible = true
+	if honey_hbox:
+		honey_hbox.visible = true
 	set_button_enabled(honey_button, false)
 
-	anim.play("appear_honey")
-	await anim.animation_finished
+	if anim and anim.has_animation("appear_honey"):
+		anim.play("appear_honey")
+		await anim.animation_finished
 
-	_finalize_switch_to_honey()
+	_finalize_appear_honey()
 
-func _finalize_switch_to_honey():
-	health_button.visible = false
-	banane_hbox.visible = false
+func _finalize_appear_honey():
 	honey_button.visible = true
-	honey_hbox.visible = true
+	if honey_hbox:
+		honey_hbox.visible = true
 	set_button_enabled(honey_button, gs.honey_count > 0)
 	update_honey_display()
 
-
-# Coco -> Bone
+# Au loot -> bone (ne cache rien)
 func anim_to_bone_mode():
 	update_bone_display()
 
@@ -369,65 +384,41 @@ func anim_to_bone_mode():
 	_finalize_switch_to_bone()
 
 func _finalize_switch_to_bone():
-	coco_button.visible = false
+	# IMPORTANT : on ne cache plus coco
+	coco_button.visible = true
 	bone_button.visible = true
 
 	set_button_enabled(bone_button, gs.bone_count > 0)
 	update_bone_display()
 
-# Lance -> Cammouflage 
+	# (optionnel mais propre) au cas où tu veux refresh coco aussi
+	update_coco_display()
+
+
+func _finalize_appear_bone():
+	bone_button.visible = true
+	set_button_enabled(bone_button, gs.bone_count > 0)
+	update_bone_display()
+
+# Camouflage unlock HUD (ne cache rien)
 func unlock_camouflage_hud():
-	_finalize_switch_to_camouflage()
+	_finalize_appear_camouflage()
 
-	if anim.has_animation("appear_camouflage"):
+	if anim and anim.has_animation("appear_camouflage"):
 		anim.play("appear_camouflage")
-	
-	await anim.animation_finished
-	
-	if anim.has_animation("disappear_spear"):
-		anim.play("disappear_spear")
 
-func _finalize_switch_to_camouflage():
-	lance_button.visible = false
-	set_button_enabled(lance_button, false)
-
+func _finalize_appear_camouflage():
 	camouflage_button.visible = true
 	update_camouflage_display()
 
 # --------------------------------------
-#            DESWITCH
+#            BUTTONS
 # --------------------------------------
-# camouflage -> lance
-func switch_back_to_spear():
-	# Sécurité
-	if not camouflage_button.visible:
-		return
-
-	# Anim disparition camouflage
-	if anim and anim.has_animation("disappear_camouflage"):
-		anim.play("disappear_camouflage")
-		await anim.animation_finished
-
-	# Cache camouflage
-	camouflage_button.visible = false
-	set_button_enabled(camouflage_button, false)
-
-	# Anim apparition lance
-	lance_button.visible = true
-	if anim and anim.has_animation("appear_spear"):
-		anim.play("appear_spear")
-
-	update_lance_display()
-
-
-# -----------------------------
-#           BUTTONS
-# -----------------------------
 func _on_menu_pressed():
 	gs.load_level("res://Levels/Lvl0/lvl_0.tscn")
 
 func _on_hand_pressed():
-	gs.player.combat_mod.clac_attack()
+	gs.player.combat_mod.attack()
 
 func _on_coco_pressed():
 	gs.player.combat_mod.shoot_coco()
@@ -442,19 +433,22 @@ func _on_spear_pressed():
 	gs.player.combat_mod.shoot_lance()
 
 func _on_ramp_pressed():
-	gs.player.process_ramp()
+	gs.player.skills_mod.process_ramp()
 
 func _on_speed_pressed():
-	gs.player.movementprocess_sprint()
+	gs.player.movement_mod.process_sprint()
 
 func _on_bone_pressed():
 	gs.player.combat_mod.shoot_bone()
 
 func _on_camouflage_pressed():
-	gs.player.use_camouflage()
+	gs.player.skills_mod.process_camouflage()
 
 func _on_break_pressed():
 	gs.toggle_pause()
+
+func _on_sprint_pressed():
+	gs.player.skills_mod.use_sprint()
 
 func set_pause_visual(paused):
 	break_sprite.visible = paused

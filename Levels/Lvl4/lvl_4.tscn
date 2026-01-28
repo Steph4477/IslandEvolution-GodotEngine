@@ -38,7 +38,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 50
-position = Vector2(165, -46)
+position = Vector2(200, -595)
 
 [node name="platform" type="StaticBody2D" parent="Node2D"]
 z_index = 5

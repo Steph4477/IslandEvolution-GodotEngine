@@ -11,13 +11,13 @@ func setup(player):
 #                                 PROCESS
 # ============================================================================
 func process():
-	process_shoot()
-	process_clac()
+	shoot()
+	clac()
 
 # ============================================================================
 #                                 SHOOT
 # ============================================================================
-func process_shoot():
+func shoot():
 	# lock simple pour éviter multi-await en parallèle
 	if firing_locked:
 		return
@@ -25,25 +25,25 @@ func process_shoot():
 	# Coco (shoot)
 	if Input.is_action_pressed(p.INPUT["fire"]) and p.can_fire_coco:
 		firing_locked = true
-		await shoot_coco()
+		await coco()
 		firing_locked = false
 		return
 
 	# Bone (shoot)
 	if Input.is_action_pressed(p.INPUT["fire"]) and p.can_fire_bone:
 		firing_locked = true
-		await shoot_bone()
+		await bone()
 		firing_locked = false
 		return
 
 	# Lance (shoot_spear)
 	if not p.can_camouflage and Input.is_action_pressed(p.INPUT["fire_lance"]) and p.can_fire_lance:
 		firing_locked = true
-		await shoot_lance()
+		await lance()
 		firing_locked = false
 		return
 
-func shoot_coco():
+func coco():
 	if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_hanging or p.is_on_liana or p.is_camouflaged:
 		return
 
@@ -78,7 +78,7 @@ func shoot_coco():
 	p.hud_mod.refresh_hud_buttons()
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
-func shoot_bone():
+func bone():
 	if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_hanging or p.is_on_liana or p.is_camouflaged:
 		return
 
@@ -113,7 +113,7 @@ func shoot_bone():
 	p.hud_mod.refresh_hud_buttons()
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
-func shoot_lance():
+func lance():
 	if p.can_camouflage:
 		return
 
@@ -154,11 +154,11 @@ func shoot_lance():
 # ============================================================================
 #                                 CLAC
 # ============================================================================
-func process_clac():
+func clac():
 	if Input.is_action_just_pressed(p.INPUT["clac"]):
-		await clac_attack()
+		await attack()
 
-func clac_attack():
+func attack():
 	if not p.is_on_floor():
 		return
 	if p.is_attacking or p.is_dead:
@@ -166,6 +166,7 @@ func clac_attack():
 
 	p.is_attacking = true
 	p.animation_locked = true
+
 	p.anim.play("clac")
 
 	p.get_node("ClacArea").monitoring = true

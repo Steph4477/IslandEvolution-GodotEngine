@@ -17,8 +17,7 @@ func dialogue_toucan():
 
 	# 💬 Dialogue du toucan
 	dlg.start([
-		"Durant ton parcours pour en arriver là...",
-		"Des symboles sur ton passage se sont allumés...",
+		"Des symboles se sont allumés sur ton passage ?! ...",
 		"Trouve la bonne combinaison et tu pourras sortir !"
 	])
 

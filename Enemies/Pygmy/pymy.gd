@@ -207,7 +207,7 @@ func cac_attack():
 	velocity.x = 0
 	move_and_slide()
 
-	player.on_hit(melee_damage)
+	player.damage_mod.on_hit(melee_damage)
 	await get_tree().create_timer(anim.get_animation("cac").length).timeout
 
 	is_attacking = false

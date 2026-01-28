@@ -149,7 +149,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 8
-position = Vector2(338, 793)
+position = Vector2(348, 692)
 
 [node name="Spear_rack" parent="Node2D" instance=ExtResource("3_04g0o")]
 position = Vector2(2236, 629)
@@ -372,67 +372,67 @@ shape = SubResource("RectangleShape2D_lc01g")
 z_index = 20
 position = Vector2(4559.0005, 1274.9999)
 
-[node name="Enemies" type="Node2D" parent="Node2D"]
+[node name="Creatures" type="Node2D" parent="Node2D"]
 z_index = 5
 position = Vector2(6821, 125)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
-[node name="Rat" type="Node2D" parent="Node2D/Enemies"]
+[node name="Rat" type="Node2D" parent="Node2D/Creatures"]
 
-[node name="Rat2" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+[node name="Rat2" parent="Node2D/Creatures/Rat" instance=ExtResource("16_sdx3j")]
 position = Vector2(4605.997, -1135.0117)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
-[node name="Rat3" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+[node name="Rat3" parent="Node2D/Creatures/Rat" instance=ExtResource("16_sdx3j")]
 position = Vector2(6108.9985, -371.0155)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
-[node name="Rat4" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+[node name="Rat4" parent="Node2D/Creatures/Rat" instance=ExtResource("16_sdx3j")]
 position = Vector2(4227.996, -1587.0107)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
-[node name="Rat5" parent="Node2D/Enemies/Rat" instance=ExtResource("16_sdx3j")]
+[node name="Rat5" parent="Node2D/Creatures/Rat" instance=ExtResource("16_sdx3j")]
 position = Vector2(3779.0002, 133.99042)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
-[node name="Pygmées" type="Node2D" parent="Node2D/Enemies"]
+[node name="Pygmées" type="Node2D" parent="Node2D/Creatures"]
 position = Vector2(3828, -218.01)
 
-[node name="Pygmee4" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+[node name="Pygmee4" parent="Node2D/Creatures/Pygmées" instance=ExtResource("4_rwgjh")]
 position = Vector2(-5003, -825.99)
 scale = Vector2(1, 1)
 
-[node name="Pygmee3" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+[node name="Pygmee3" parent="Node2D/Creatures/Pygmées" instance=ExtResource("4_rwgjh")]
 position = Vector2(2683, 278.9935)
 scale = Vector2(1, 1)
 
-[node name="Pygmee6" parent="Node2D/Enemies/Pygmées" instance=ExtResource("4_rwgjh")]
+[node name="Pygmee6" parent="Node2D/Creatures/Pygmées" instance=ExtResource("4_rwgjh")]
 position = Vector2(-3255.9995, 428.00854)
 scale = Vector2(1, 1)
 
-[node name="Serpents" type="Node2D" parent="Node2D/Enemies"]
+[node name="Serpents" type="Node2D" parent="Node2D/Creatures"]
 
-[node name="Serpent" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent" parent="Node2D/Creatures/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(4527.001, 92.988525)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Serpent2" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent2" parent="Node2D/Creatures/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(6351.996, -1569.0161)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Serpent3" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent3" parent="Node2D/Creatures/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(-1321.0006, -157.99667)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 
-[node name="Serpent4" parent="Node2D/Enemies/Serpents" instance=ExtResource("14_utbl0")]
+[node name="Serpent4" parent="Node2D/Creatures/Serpents" instance=ExtResource("14_utbl0")]
 position = Vector2(357.997, -1000)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)

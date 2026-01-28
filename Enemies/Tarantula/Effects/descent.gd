@@ -7,7 +7,7 @@ func _ready():
 	anim.play("descent")
 	anim.animation_finished.connect(on_animation_finished)
 
-func on_animation_finished(name):
-	if name == "descent":
+func on_animation_finished(_name):
+	if _name == "descent":
 		emit_signal("finished_descente")
 		queue_free()

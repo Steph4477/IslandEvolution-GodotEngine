@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene load_steps=42 format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bwqj4ssllvlpx" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
 [ext_resource type="PackedScene" uid="uid://bxq6vqvvu2yvy" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
 [ext_resource type="PackedScene" uid="uid://ceblgpgqa21ae" path="res://Levels/Lvl3/exit.tscn" id="26_twwc1"]
+[ext_resource type="PackedScene" uid="uid://dxu10bsv735xi" path="res://Loot/Bag/bag.tscn" id="27_twwc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -34,7 +35,7 @@ size = Vector2(152.5, 2876)
 size = Vector2(143, 2820.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(19169.441, 284.1875)
+size = Vector2(16382, 284.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(290, 572.8906)
@@ -204,7 +205,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D"]
 z_index = 10
-position = Vector2(1088, 1027)
+position = Vector2(11339, 849)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
 z_index = 5
@@ -224,7 +225,7 @@ position = Vector2(14245, 507)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
-position = Vector2(5107.7207, 1330.0938)
+position = Vector2(3714, 1330.0938)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
@@ -487,7 +488,10 @@ rotation = 0.32637656
 scale = Vector2(-0.25, 0.25)
 
 [node name="Exit" parent="." instance=ExtResource("26_twwc1")]
-position = Vector2(11940, 1048)
+position = Vector2(11798, 961)
+
+[node name="BagLoot" parent="." instance=ExtResource("27_twwc1")]
+position = Vector2(6152, 1000)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

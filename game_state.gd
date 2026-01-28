@@ -50,7 +50,7 @@ var pygmy_dialogue_seen = false
 var player_scene = preload("res://Player/player.tscn")
 var player = null
 
-var hud_scene = preload("res://Interface/Hud/hud.tscn")
+var hud_scene = preload("res://Player/Modules/Hud/Hud.tscn")
 var hud = null
 var health_bar = null
 var speed_bar = null

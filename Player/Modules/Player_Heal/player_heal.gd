@@ -60,7 +60,7 @@ func use_banane():
 	if p.game_state:
 		p.game_state.banane_count = p.banane_count
 
-	p.update_banane_display()
+	p.hud_mod.update_banane_display()
 
 	p.in_cooldown = true
 	p.update_can_heal()

@@ -79,7 +79,7 @@ func collect_ramp():
 	elif hud.has_method("play_hud_anim"):
 		hud.play_hud_anim("appear_ramp")
 
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()
 
 func collect_sprint():
 	# Débloque côté GameState (source de vérité)
@@ -109,4 +109,4 @@ func collect_sprint():
 				a.play("appear_sprint")
 
 	p.show_info_popup("⚡ Tu peux maintenant sprinter avec Shift !")
-	p.refresh_hud_buttons()
+	p.hud_mod.refresh_hud_buttons()

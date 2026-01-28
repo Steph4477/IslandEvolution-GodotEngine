@@ -94,7 +94,7 @@ func on_drown_timer_timeout():
 		return
 
 	p.bubble_timer.stop()
-	p.modules.damage.on_hit(p.drown_damage_per_second)
+	p.damage_mod.on_hit(p.drown_damage_per_second)
 
 # ============================================================================
 #                             BUBBLE RATE

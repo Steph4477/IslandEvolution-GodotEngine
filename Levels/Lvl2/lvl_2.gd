@@ -7,6 +7,25 @@ var gs
 var moko 
 var cam
 
+# === BLOQUAGE / DÉBLOQUAGE ENNEMIS ===
+func set_enemies_blocked(blocked):
+	var creatures = get_node_or_null("Creatures")
+	if not creatures:
+		return
+
+	var mode
+	if blocked:
+		mode = Node.PROCESS_MODE_DISABLED
+	else:
+		mode = Node.PROCESS_MODE_INHERIT
+
+	for e in creatures.get_children():
+		e.process_mode = mode
+
+		# stop net si CharacterBody2D (évite inertie)
+		if blocked and e is CharacterBody2D:
+			e.velocity = Vector2.ZERO
+
 func _ready():
 	$Node2D/Sound/lvl2.play()
 	await get_tree().process_frame
@@ -17,6 +36,9 @@ func _ready():
 	cam = gs.player.get_node("Camera2D")
 	cam.limit_top = -250000
 	cam.limit_right = 12000
+	
+	# === BLOQUAGE / DÉBLOQUAGE ENNEMIS ===
+	set_enemies_blocked(true)
 
 	moko = gs.player
 	moko.get_node("Node2D/Sprite").modulate = Color(0.4, 0.4, 0.4)
