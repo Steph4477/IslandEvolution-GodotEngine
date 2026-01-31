@@ -67,6 +67,8 @@ var lives = max_lives
 var current_level_path = ""
 var current_level = null
 
+var skill_selected = "ramp"
+
 # --- Symboles lvl2 ----
 var correct_symbols = []
 var selected_symbols = []

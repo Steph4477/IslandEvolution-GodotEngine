@@ -125,7 +125,7 @@ func start_camouflage():
 	p.turn_axis_parent.remove_child(p.turn_axis)
 
 	# HUD : cercle = durée du camouflage
-	if p.game_state.hud and p.game_state.hud.has_method("start_camouflage_cooldown"):
+	if p.game_state.hud and p.game_state.has_method("start_camouflage_cooldown"):
 		p.game_state.hud.start_camouflage_cooldown(p.camouflage_duration)
 
 	p.hud_mod.refresh_hud_buttons()

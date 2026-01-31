@@ -37,7 +37,7 @@ func shoot():
 		return
 
 	# Lance (shoot_spear)
-	if not p.can_camouflage and Input.is_action_pressed(p.INPUT["fire_lance"]) and p.can_fire_lance:
+	if not p.can_camouflage and Input.is_action_pressed(p.INPUT["fire"]) and p.can_fire_lance:
 		firing_locked = true
 		await lance()
 		firing_locked = false

@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var honey_button = $Gamepad/Honey
 @onready var bone_button = $Gamepad/Bone
 @onready var camouflage_button = $Gamepad/Camouflage
+@onready var h_selector = get_node_or_null("Gamepad/HSelector")
 
 @onready var pause_button = $Gamepad/Break
 @onready var break_sprite = get_node_or_null("BreakSprite")
@@ -35,6 +36,10 @@ extends CanvasLayer
 @onready var throw_selector = get_node_or_null("Gamepad/ThrowSelector")
 @onready var throw_group_flash = get_node_or_null("Gamepad/ThrowGroupFlash")
 
+# --- UI mode skill (cadre bleu autour ramp/sprint/camouflage) ---
+@onready var skill_selector = get_node_or_null("Gamepad/SkillSelector")
+
+
 # -----------------------------
 #            VARS
 # -----------------------------
@@ -44,6 +49,10 @@ var honey_mode_already_unlocked = false
 
 var throw_mode_active = false
 var selected_throw_weapon = "coco"
+
+var skill_mode_active = false
+var selected_skill = "ramp"
+
 
 # -----------------------------
 #            READY
@@ -131,6 +140,12 @@ func _ready():
 	if throw_group_flash:
 		throw_group_flash.visible = false
 
+	if skill_selector:
+		skill_selector.visible = false
+
+	if h_selector:
+		h_selector.visible = false
+
 
 # -----------------------------
 #        COOLDOWNS
@@ -160,93 +175,73 @@ func start_camouflage_cooldown(duration):
 	t.finished.connect(func(): cd.hide())
 
 
+
 # -----------------------------
-#        MODE JET HUD
+#        MODE SKILL HUD
 # -----------------------------
-func show_throw_mode(weapon):
-	throw_mode_active = true
-	selected_throw_weapon = weapon
+func set_skill_mode(_enabled):
+	skill_mode_active = _enabled
 
-	if throw_selector == null:
+	var sel = _get_skill_selector()
+	if sel:
+		sel.visible = skill_mode_active
+
+	if skill_mode_active:
+		_update_skill_selector_position()
+
+
+func set_skill_selected(skill):
+	selected_skill = skill
+
+	if skill_mode_active:
+		_update_skill_selector_position()
+
+	if skill == "ramp":
+		if ramp_button:
+			ramp_button.scale = Vector2(1.15, 1.15)
+	elif skill == "sprint":
+		if sprint_button:
+			sprint_button.scale = Vector2(1.15, 1.15)
+	elif skill == "camouflage":
+		if camouflage_button:
+			camouflage_button.scale = Vector2(1.15, 1.15)
+
+	# Cadre bleu autour du bouton sélectionné
+	if skill_mode_active:
+		_update_skill_selector_position()
+
+func _update_skill_selector_position():
+	var sel = _get_skill_selector()
+	if sel == null:
 		return
 
-	throw_selector.visible = true
-	_update_throw_selector_position()
-
-
-func hide_throw_mode():
-	throw_mode_active = false
-
-	if throw_selector:
-		throw_selector.visible = false
-
-	if throw_group_flash:
-		throw_group_flash.visible = false
-
-
-func flash_throw_group():
-	if throw_group_flash == null:
+	var spr = _get_skill_button(selected_skill) # Sprite2D
+	if spr == null:
 		return
 
-	_update_throw_group_flash_rect()
-	throw_group_flash.visible = true
+	# Centre direct (Sprite2D centered)
+	sel.global_position = spr.global_position
 
-	await get_tree().create_timer(1.0).timeout
-	throw_group_flash.visible = false
+	# Scale fixe 128x128 + 1.1
+	var target_size = Vector2(128, 128)
+	var EXTRA_SCALE = 1.1
 
-
-func _update_throw_selector_position():
-	if throw_selector == null:
+	var st = sel.texture
+	if st == null:
 		return
 
-	var btn = _get_throw_button(selected_throw_weapon)
-	if btn == null:
-		return
-
-	var tex = btn.texture_normal
-	if tex == null:
-		return
-
-	# Centre réel du bouton
-	var tex_size = tex.get_size()
-	var local_center = tex_size * 0.5
-	var global_center = btn.global_transform * local_center
-	throw_selector.global_position = global_center
-
-	# --- Scale du carré bleu ---
-	var selector_tex = throw_selector.texture
-	if selector_tex:
-		var selector_size = selector_tex.get_size()
-
-		var pad = 6.0
-		var target_size = tex_size + Vector2(pad * 2.0, pad * 2.0)
-
-		var EXTRA_SCALE = 1.1  # 
-
-		throw_selector.scale = Vector2(
-			(target_size.x / selector_size.x) * EXTRA_SCALE,
-			(target_size.y / selector_size.y) * EXTRA_SCALE
-		)
+	var s = st.get_size()
+	sel.scale = (target_size / s) * EXTRA_SCALE
 
 
-func _update_throw_group_flash_rect():
-	if throw_group_flash == null:
-		return
-
-	var group = $Gamepad
-	var r = group.get_global_rect()
-
-	var pad = 10.0
-	throw_group_flash.global_position = Vector2(r.position.x - pad, r.position.y - pad)
-	throw_group_flash.size = Vector2(r.size.x + pad * 2.0, r.size.y + pad * 2.0)
-
-
-func _get_throw_button(weapon):
-	if weapon == "coco":
-		return coco_button
-	if weapon == "bone":
-		return bone_button
-	return lance_button
+func _get_skill_button(skill):
+	if skill == "ramp":
+		return ramp_button
+	if skill == "sprint":
+		return sprint_button
+	if skill == "camouflage":
+		return camouflage_button
+	return null
 
 
 # -----------------------------
@@ -344,6 +339,129 @@ func update_camouflage_display():
 
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, gs.camouflage_count > 0)
+# ===================================================================
+#                MODE JET HUD (API appelée par switch_jet.gd)
+# ===================================================================
+
+func show_throw_mode(weapon):
+	throw_mode_active = true
+	selected_throw_weapon = weapon
+
+	if throw_selector == null:
+		return
+
+	throw_selector.visible = true
+	_update_throw_selector_position()
+
+func hide_throw_mode():
+	throw_mode_active = false
+
+	if throw_selector:
+		throw_selector.visible = false
+
+	if throw_group_flash:
+		throw_group_flash.visible = false
+
+func flash_throw_group():
+	if throw_group_flash == null:
+		return
+
+	_update_throw_group_flash_rect()
+	throw_group_flash.visible = true
+
+	await get_tree().create_timer(1.0).timeout
+	throw_group_flash.visible = false
+
+func _update_throw_selector_position():
+	if throw_selector == null:
+		return
+
+	var btn = _get_throw_button(selected_throw_weapon)
+	if btn == null:
+		return
+
+	var tex = btn.texture_normal
+	if tex == null:
+		return
+
+	# Centre réel du bouton (TouchScreenButton)
+	var tex_size = tex.get_size()
+	var local_center = tex_size * 0.5
+	var global_center = btn.global_transform * local_center
+	throw_selector.global_position = global_center
+
+	# --- Scale du carré bleu ---
+	var selector_tex = throw_selector.texture
+	if selector_tex:
+		var selector_size = selector_tex.get_size()
+
+		var pad = 6.0
+		var target_size = tex_size + Vector2(pad * 2.0, pad * 2.0)
+
+		var EXTRA_SCALE = 1.1
+		throw_selector.scale = Vector2(
+			(target_size.x / selector_size.x) * EXTRA_SCALE,
+			(target_size.y / selector_size.y) * EXTRA_SCALE
+		)
+
+func _update_throw_group_flash_rect():
+	if throw_group_flash == null:
+		return
+
+	# $Gamepad est un Control => OK get_global_rect()
+	var group = $Gamepad
+	var r = group.get_global_rect()
+
+	var pad = 10.0
+	throw_group_flash.global_position = Vector2(r.position.x - pad, r.position.y - pad)
+	throw_group_flash.size = Vector2(r.size.x + pad * 2.0, r.size.y + pad * 2.0)
+
+func _get_throw_button(weapon):
+	if weapon == "coco":
+		return coco_button
+	if weapon == "bone":
+		return bone_button
+	return lance_button
+
+func show_h_selector():
+	if h_selector:
+		h_selector.visible = true
+
+func hide_h_selector():
+	if h_selector:
+		h_selector.visible = false
+
+func _get_h_selector():
+	return h_selector
+
+func update_h_selector_position():
+	var sel = _get_h_selector()
+	if sel == null:
+		return
+
+	var player = null
+	if gs:
+		player = gs.player
+	if player == null:
+		return
+
+	var spr = _get_h_button(player.selected_heal)
+	if spr == null or not spr.visible:
+		spr = health_button
+	if spr == null or not spr.visible:
+		return
+
+	var tex = spr.texture
+	if tex == null:
+		return
+
+
+func _get_h_button(_name):
+	if _name == "health":
+		return health_button
+	if _name == "honey":
+		return honey_button
+	return null
 
 
 # --- Réspiration sous l'eau ---
@@ -497,7 +615,7 @@ func _finalize_appear_bone():
 func unlock_camouflage_hud():
 	_finalize_appear_camouflage()
 
-	if anim and anim.has_animation("appear_camouflage"):
+	if anim.has_animation("appear_camouflage"):
 		anim.play("appear_camouflage")
 
 func _finalize_appear_camouflage():
@@ -505,7 +623,7 @@ func _finalize_appear_camouflage():
 	update_camouflage_display()
 
 
-# --------------------------------------
+#---------------------------------------
 #            BUTTONS
 # --------------------------------------
 func _on_menu_pressed():
@@ -529,9 +647,6 @@ func _on_spear_pressed():
 func _on_ramp_pressed():
 	gs.player.skills_mod.process_ramp()
 
-func _on_speed_pressed():
-	gs.player.movement_mod.process_sprint()
-
 func _on_bone_pressed():
 	gs.player.combat_mod.process_bone()
 
@@ -546,3 +661,9 @@ func _on_sprint_pressed():
 
 func set_pause_visual(paused):
 	break_sprite.visible = paused
+
+# --- UI mode skill (cadre bleu autour ramp/sprint/camouflage) ---
+func _get_skill_selector():
+	if skill_selector:
+		return skill_selector
+	return throw_selector  # fallback sur ThrowSelector si pas de SkillSelector

@@ -19,7 +19,16 @@ const INPUT = {
 	# --- Gameplay jet ---
 	"throw_mode": "throw_mode",      # L
 	"throw_switch": "switch",        # switch
-	"throw_fire": "throw_fire"            # shoot (space chez toi)
+	"throw_fire": "throw_fire",      # shoot (space)
+
+	# --- Gameplay skill ---
+	"skill_mode": "skill_mode",      # K (InputMap)
+	"skill_switch": "switch",        # switch (même action que throw)
+
+	# --- Gameplay heal ---
+	"heal_mode": "heal_mode",        # H (InputMap)
+	"heal_switch": "switch",         # switch (même action que throw)
+	"heal_use": "throw_fire"         # shoot (space) -> même action que le tir
 }
 
 @export var speed = 400
@@ -30,7 +39,7 @@ const INPUT = {
 @export var max_pv = 2000
 @export var pv = max_pv
 @export var cooldown_potion = 10
-@export var heal_amount = 50  # défini dans GameState
+@export var heal_amount = 50
 @export var total_seeds_in_level = 10
 
 # --- Dégâts de chute ---
@@ -48,6 +57,10 @@ var spell_bone = preload("res://Shoot/Player/Bone/bone.tscn")
 var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
 
 var game_state
+var skill_select_mod = null
+var skill_switch_mod = null
+
+var throw_mod = null
 
 # --- modules ---
 var state_sync_mod
@@ -93,12 +106,10 @@ var swim_timer = 0.0
 
 @export var bubble_interval_normal = 1
 @export var bubble_interval_min = 0.06
-
 @export var mouth_show_time = 0.2
 
 var breath_left = 0
 var is_underwater = false
-
 var air_bubble_scene = preload("res://Effects/Aquatic_breathing/Air_bubble/air_bubble.tscn")
 
 # --- Skills ---
@@ -108,7 +119,7 @@ var ramp_locked = false
 var is_gazed = false
 var is_web = false
 
-# --- fire
+# --- fire ---
 var can_fire_coco = false
 var can_fire_bone = false
 var can_fire_lance = false
@@ -123,7 +134,7 @@ var is_camouflaged = false
 var turn_axis_parent = null
 var turn_axis_index = 0
 
-# --- Jump and double jump ---
+# --- Jump / double jump ---
 var jump_buffer = 0.0
 var did_double_jump = false
 var jump_count = 0
@@ -138,7 +149,6 @@ var honey_count = 0
 var seed_count = 0
 var lance_count = 0
 
-# Potions séparées
 var heal_potions = []
 var honey_potions = []
 
@@ -154,10 +164,19 @@ var is_pushing_or_pulling = false
 
 # --- Gameplay jet ---
 var throw_mode = false
-var selected_throw_weapon = "coco"  # "coco" / "bone" / "lance"
-
-# --- Debug ---
+var selected_throw_weapon = "coco"
 var dbg_throw = true
+
+# --- Gameplay skill ---
+var skill_mode = false
+var selected_skill = "ramp"
+var dbg_skill = true
+
+# --- Gameplay heal ---
+var heal_mode = false
+var selected_heal = "health"
+var dbg_heal = true
+var switch_heal_mod = null
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
@@ -171,17 +190,14 @@ var dbg_throw = true
 @onready var open_mouth = $Node2D/OpenMouth
 @onready var close_mouth = $Node2D/Sprite
 
-# --- HUD Labels (non utilisés directement) ---
 var label_banane
 var label_coco
 var label_bone
 var label_seed
 
-
 # =======================================================================
 #                        ULTILITAIRES
 # =======================================================================
-
 func play_anim(_name):
 	anim.play(_name)
 	animation_locked = true
@@ -201,25 +217,34 @@ func show_damage_popup(amount):
 	popup.position = Vector2(0, -30)
 	popup.show_damage(amount)
 
-
 # =======================================================================
 #                       INITIALISATION
 # =======================================================================
-
 func _ready():
 	game_state = get_node("/root/GameState")
-
-	if dbg_throw:
-		print("[THROW][READY] start | throw_mode=", throw_mode, " selected=", selected_throw_weapon)
 
 	setup_state_sync_module()
 	if state_sync_mod:
 		state_sync_mod.apply_from_gamestate()
 
-	# IMPORTANT : HUD d'abord, puis on attend qu'il soit prêt avant les autres modules
 	setup_hud_module()
 	if hud_mod:
 		await hud_mod.wait_until_ready()
+
+	# --- THROW (SWITCH JET) ---
+	throw_mod = preload("res://Player/Modules/Hud/switch_jet.gd").new()
+	add_child(throw_mod)
+	throw_mod.setup(self)
+
+	# --- SKILL (K / switch) ---
+	skill_switch_mod = preload("res://Player/Modules/switch_skill.gd").new()
+	add_child(skill_switch_mod)
+	skill_switch_mod.setup(self)
+
+	# --- HEAL (H / switch / space) ---
+	switch_heal_mod = preload("res://Player/Modules/switch_heal.gd").new()
+	add_child(switch_heal_mod)
+	switch_heal_mod.setup(self)
 
 	setup_breath_module()
 	setup_collect_items()
@@ -231,17 +256,12 @@ func _ready():
 	setup_animation_module()
 	setup_movement_module()
 	setup_skills_module()
-
 	camera.make_current()
 
 	await get_tree().process_frame
 
-	# Seed display
 	if hud_mod and game_state:
 		hud_mod.update_seed_display(game_state.collected_seeds, game_state.total_seeds_in_level)
-
-	# init HUD jet (mode OFF)
-	_update_throw_hud()
 
 	if anim.current_animation == "hang":
 		anim.play("idle")
@@ -250,14 +270,12 @@ func _ready():
 
 	_restore_loaded_position_post_setup()
 
-
 func _restore_loaded_position_post_setup():
 	var gs = get_node("/root/GameState")
 	if gs.has_pending_load:
 		await get_tree().process_frame
 		global_position = gs.pending_player_pos
 		gs.has_pending_load = false
-
 
 # --- Modules ---
 func setup_state_sync_module():
@@ -289,7 +307,6 @@ func setup_combat_module():
 	combat_mod = preload("res://Player/Modules/Player_Combat/player_combat.gd").new()
 	add_child(combat_mod)
 	combat_mod.setup(self)
-
 	if dbg_throw:
 		print("[THROW][READY] combat_mod=", combat_mod)
 
@@ -323,8 +340,16 @@ func setup_animation_module():
 	add_child(animation_mod)
 	animation_mod.setup(self)
 
-
 func _physics_process(delta):
+	if throw_mod:
+		throw_mod.update_input()
+
+	if skill_switch_mod:
+		skill_switch_mod.update_input()
+
+	if switch_heal_mod:
+		switch_heal_mod.process_input()
+
 	if not can_move:
 		velocity.x = 0
 		if anim.current_animation != "idle":
@@ -336,14 +361,8 @@ func _physics_process(delta):
 
 	var was_on_floor = is_on_floor()
 
-	# ordre : skills -> movement -> throw_inputs -> combat -> heal
-	if skills_mod:
-		skills_mod.process(delta)
-
 	if movement_mod:
 		movement_mod.process(delta, was_on_floor)
-
-	_process_throw_inputs()
 
 	if combat_mod:
 		combat_mod.process()
@@ -359,142 +378,40 @@ func _physics_process(delta):
 	if animation_mod:
 		animation_mod.process()
 
-
 # =======================================================================
-#                       GAMEPLAY JET
+#                       HUD HELPERS
 # =======================================================================
-
-func _process_throw_inputs(): 
-	if Input.is_key_pressed(KEY_SPACE) and Input.is_action_just_pressed(INPUT["throw_fire"]):
-		print("[THROW][RAW] SPACE + action shoot just pressed")
-
-	# L : ouvre mode jet (ON seulement)
-	if Input.is_action_just_pressed(INPUT["throw_mode"]):
-		if dbg_throw:
-			print("[THROW][INPUT] throw_mode pressed (", INPUT["throw_mode"], ")")
-		enable_throw_mode()
-
-	# switch : change l’arme (même hors mode)
-	if Input.is_action_just_pressed(INPUT["throw_switch"]):
-		if dbg_throw:
-			print("[THROW][INPUT] throw_switch pressed (", INPUT["throw_switch"], ")")
-		switch_throw_weapon()
-
-	# shoot : tire si mode jet ON
-	if Input.is_action_just_pressed(INPUT["throw_fire"]):
-		if dbg_throw:
-			print("[THROW][INPUT] throw_fire pressed (", INPUT["throw_fire"], ")")
-		fire_throw_weapon()
-
-
-func enable_throw_mode():
-	# Déjà actif -> on garde ON, on reflashe juste
-	if throw_mode:
-		if dbg_throw:
-			print("[THROW] enable_throw_mode: already ON | selected=", selected_throw_weapon)
-		_flash_throw_group()
-		return
-
-	throw_mode = true
-
-	if dbg_throw:
-		print("[THROW] enable_throw_mode: ACTIVATED | selected=", selected_throw_weapon)
-
-	_update_throw_hud()
-	_flash_throw_group()
-
-
-func switch_throw_weapon():
-	var before = selected_throw_weapon
-	_cycle_throw_weapon()
-
-	if dbg_throw:
-		print("[THROW] switch_throw_weapon ", before, " -> ", selected_throw_weapon, " (throw_mode=", throw_mode, ")")
-
-	# Le carré bleu ne bouge que si mode ON
-	if throw_mode:
-		_update_throw_hud()
-
-
-func fire_throw_weapon():
-	if dbg_throw:
-		print("[THROW] fire_throw_weapon called (throw_mode=", throw_mode, " selected=", selected_throw_weapon, ")")
-
-	if not throw_mode:
-		if dbg_throw:
-			print("[THROW] fire BLOCKED: throw_mode=false")
-		return
-
-	_fire_selected_throw_weapon()
-
-
-func _cycle_throw_weapon():
-	if selected_throw_weapon == "coco":
-		selected_throw_weapon = "bone"
-	elif selected_throw_weapon == "bone":
-		selected_throw_weapon = "lance"
-	else:
-		selected_throw_weapon = "coco"
-
-	if dbg_throw:
-		print("[THROW] _cycle_throw_weapon -> selected=", selected_throw_weapon)
-
-
-func _fire_selected_throw_weapon():
-	if combat_mod == null:
-		if dbg_throw:
-			print("[THROW] _fire_selected_throw_weapon BLOCKED: combat_mod=null")
-		return
-
-	if dbg_throw:
-		print("[THROW] _fire_selected_throw_weapon OK -> ", selected_throw_weapon)
-
-	if selected_throw_weapon == "coco":
-		combat_mod.coco()
-	elif selected_throw_weapon == "bone":
-		combat_mod.bone()
-	else:
-		combat_mod.lance()
-
-
 func _get_main_hud():
 	if game_state:
 		return game_state.hud
 	return null
 
-
 func _update_throw_hud():
 	var hud = _get_main_hud()
 	if hud == null:
 		if dbg_throw:
-			print("[THROW][HUD] _update_throw_hud: HUD NULL (game_state.hud)")
+			print("[THROW][HUD] HUD NULL (game_state.hud)")
 		return
 
 	if dbg_throw:
-		print("[THROW][HUD] _update_throw_hud: found HUD=", hud, " throw_mode=", throw_mode, " selected=", selected_throw_weapon)
+		print("[THROW][HUD] update: throw_mode=", throw_mode, " selected=", selected_throw_weapon)
 
 	if throw_mode:
 		hud.show_throw_mode(selected_throw_weapon)
 	else:
 		hud.hide_throw_mode()
 
-
 func _flash_throw_group():
 	var hud = _get_main_hud()
 	if hud == null:
 		if dbg_throw:
-			print("[THROW][HUD] _flash_throw_group: HUD NULL")
+			print("[THROW][HUD] flash: HUD NULL")
 		return
-
-	if dbg_throw:
-		print("[THROW][HUD] flash_throw_group()")
 	hud.flash_throw_group()
-
 
 # =======================================================================
 #                       TIMERS (connectés au Player)
 # =======================================================================
-
 func _on_breath_tick_timer_timeout():
 	if breath_mod:
 		breath_mod.on_breath_tick_timeout()
@@ -506,7 +423,6 @@ func _on_bubble_timer_timeout():
 func _on_drown_timer_timeout():
 	if breath_mod:
 		breath_mod.on_drown_timer_timeout()
-
 
 # =======================================================================
 #                               HELPERS UTILISÉS PARTOUT
@@ -534,9 +450,6 @@ func disable_controls():
 func enable_controls():
 	can_move = true
 
-# =======================================================================
-#                       TIMERS (connectés au Player)
-# =======================================================================
 func _on_clac_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(clac_damage)
