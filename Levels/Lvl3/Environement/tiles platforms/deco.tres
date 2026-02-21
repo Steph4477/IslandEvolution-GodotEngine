@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b2ljk1cgl2kj5"]
+[gd_resource type="TileSet" format=3 uid="uid://b2ljk1cgl2kj5"]
 
 [ext_resource type="Texture2D" uid="uid://bakem4letrjah" path="res://Levels/Lvl3/Environement/tiles platforms/decosheet.png" id="1_g4tug"]
 

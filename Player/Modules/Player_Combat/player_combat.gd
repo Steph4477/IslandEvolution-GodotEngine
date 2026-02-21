@@ -1,7 +1,6 @@
 extends Node
 
 var p
-
 var firing_locked = false
 
 func setup(player):
@@ -18,6 +17,10 @@ func process():
 #                                 SHOOT
 # ============================================================================
 func shoot():
+	# IMPORTANT : si un mode HUD est actif, SPACE sert au mode, pas au tir combat
+	if p.throw_mode or p.heal_mode or p.skill_mode:
+		return
+
 	# lock simple pour éviter multi-await en parallèle
 	if firing_locked:
 		return
@@ -168,7 +171,6 @@ func attack():
 	p.animation_locked = true
 
 	p.anim.play("clac")
-
 	p.get_node("ClacArea").monitoring = true
 
 	await p.anim.animation_finished
@@ -176,3 +178,15 @@ func attack():
 	p.get_node("ClacArea").monitoring = false
 	p.is_attacking = false
 	p.animation_locked = false
+
+# ============================================================================
+#                         ALIAS API (HUD)
+# ============================================================================
+func shoot_coco():
+	await coco()
+
+func process_bone():
+	await bone()
+
+func shoot_lance():
+	await lance()

@@ -12,28 +12,16 @@ func _on_body_entered(body):
 	if already_looted:
 		return
 
-	if body.name == "Player":
-		already_looted = true
+	if body.name != "Player":
+		return
 
-		gs.lance_count += lance_amount
-		gs.has_lance = true
-		gs.can_fire_lance = true
-		
-		# Collecte côté Player 
-		body.collect_items.collect_lance(lance_amount, true)
-		
-		# Sync direct avec Moko au loot
-		gs.player.can_fire_lance = true
-		if body.hud_mod:
-			body.hud_mod.refresh_hud_buttons()
-		#elif body.game_state and body.game_state.hud:
-			#body.game_state.hud.refresh_hud_buttons()
+	already_looted = true
 
-		
-		gs.hud.update_lance_display()
+	# Collecte côté Player (c'est lui qui met à jour GS + HUD)
+	body.collect_items.collect_lance(lance_amount)
 
-		# Visuel rack vide
-		$FullSprite.visible = false
+	# Visuel rack vide
+	$FullSprite.visible = false
 
-		# Désactive complètement la zone
-		$CollisionPolygon2D.disabled = true
+	# Désactive la collision APRES la frame physics (fix flushing queries)
+	$CollisionPolygon2D.call_deferred("set_disabled", true)

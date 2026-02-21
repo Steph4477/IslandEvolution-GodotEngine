@@ -59,8 +59,8 @@ var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
 var game_state
 var skill_select_mod = null
 var skill_switch_mod = null
-
 var throw_mod = null
+var switch_heal_mod = null
 
 # --- modules ---
 var state_sync_mod
@@ -175,9 +175,8 @@ var dbg_skill = true
 
 # --- Gameplay heal ---
 var heal_mode = false
-var selected_heal = "health"
+var selected_heal = "banane"   # IMPORTANT : banane / honey (pas "health")
 var dbg_heal = true
-var switch_heal_mod = null
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
@@ -218,22 +217,21 @@ func _ready():
 	setup_hud_module()
 	if hud_mod:
 		await hud_mod.wait_until_ready()
-	
-	# --- Affichage des popups ---
+
 	setup_popups_module()
-	
-	# --- THROW (SWITCH JET) ---
-	throw_mod = preload("res://Player/Modules/Hud/switch_jet.gd").new()
+
+	# --- THROW (L / switch / space) ---
+	throw_mod = preload("res://Hud/switch_jet.gd").new()
 	add_child(throw_mod)
 	throw_mod.setup(self)
 
 	# --- SKILL (K / switch) ---
-	skill_switch_mod = preload("res://Player/Modules/switch_skill.gd").new()
+	skill_switch_mod = preload("res://Hud/switch_skill.gd").new()
 	add_child(skill_switch_mod)
 	skill_switch_mod.setup(self)
 
-	# --- HEAL (H / switch / space) ---
-	switch_heal_mod = preload("res://Player/Modules/switch_heal.gd").new()
+	# --- HEAL (H / switch) ---
+	switch_heal_mod = preload("res://Hud/switch_heal.gd").new()
 	add_child(switch_heal_mod)
 	switch_heal_mod.setup(self)
 
@@ -247,6 +245,7 @@ func _ready():
 	setup_animation_module()
 	setup_movement_module()
 	setup_skills_module()
+
 	camera.make_current()
 
 	await get_tree().process_frame
@@ -344,7 +343,7 @@ func _physics_process(delta):
 		skill_switch_mod.update_input()
 
 	if switch_heal_mod:
-		switch_heal_mod.process_input()
+		switch_heal_mod.update_input()
 
 	if not can_move:
 		velocity.x = 0
@@ -356,6 +355,10 @@ func _physics_process(delta):
 		return
 
 	var was_on_floor = is_on_floor()
+
+	# >>> ICI : skills (ramp/sprint/camouflage) AVANT movement
+	if skills_mod:
+		skills_mod.process(delta)
 
 	if movement_mod:
 		movement_mod.process(delta, was_on_floor)
@@ -373,37 +376,6 @@ func _physics_process(delta):
 
 	if animation_mod:
 		animation_mod.process()
-
-# =======================================================================
-#                       HUD HELPERS
-# =======================================================================
-func _get_main_hud():
-	if game_state:
-		return game_state.hud
-	return null
-
-func _update_throw_hud():
-	var hud = _get_main_hud()
-	if hud == null:
-		if dbg_throw:
-			print("[THROW][HUD] HUD NULL (game_state.hud)")
-		return
-
-	if dbg_throw:
-		print("[THROW][HUD] update: throw_mode=", throw_mode, " selected=", selected_throw_weapon)
-
-	if throw_mode:
-		hud.show_throw_mode(selected_throw_weapon)
-	else:
-		hud.hide_throw_mode()
-
-func _flash_throw_group():
-	var hud = _get_main_hud()
-	if hud == null:
-		if dbg_throw:
-			print("[THROW][HUD] flash: HUD NULL")
-		return
-	hud.flash_throw_group()
 
 # =======================================================================
 #                       TIMERS (connectés au Player)
