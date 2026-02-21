@@ -99,7 +99,7 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	await load_level("res://Levels/Lvl2/lvl_2.tscn")
+	await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 
 
 func _process(_delta):

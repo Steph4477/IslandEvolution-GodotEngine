@@ -62,9 +62,7 @@ func _rebuild_skill_list():
 
 	if gs.ramp_unlocked:
 		skill_list.append("ramp")
-	if gs.sprint_unlocked:
-		skill_list.append("sprint")
-	if gs.camouflage_unlocked and gs.camouflage_count > 0:
+	if gs.camouflage_unlocked:
 		skill_list.append("camouflage")
 
 func _fix_skill_selection():
@@ -108,15 +106,13 @@ func _use_selected_skill():
 		return
 
 	_fix_skill_selection()
+	_update_skill_hud()
 
 	if p.selected_skill == "ramp":
 		p.skills_mod.toggle_ramp()
 		return
 
-	if p.selected_skill == "sprint":
-		p.skills_mod.use_sprint()
-		return
-
+	# camouflage
 	p.skills_mod.use_camouflage()
 
 func _get_hud():
