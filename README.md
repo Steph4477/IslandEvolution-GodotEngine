@@ -1,49 +1,199 @@
-# 🏝️ *Island Evolution – Rise of the Jungle Hero*
+# 🏝️ Island Evolution – Rise of the Jungle Hero
 
-A 2D adventure platformer made with Godot 4, where a monkey evolves by collecting armor, weapons, powers... Through a diverse world filled with corrupted creatures in a universe with a realistic cartoon style
+A modular 2D action-adventure platformer built with **Godot 4.5.1**, featuring a highly structured codebase, evolving gameplay systems, and a stylized semi-realistic cartoon universe.
 
----
-
-## 🐵 Scenario
-
-### 🌴 The Setting
-
-Lost in the heart of a mysterious archipelago, **Moko**, a cheeky young monkey, awakens on a volcanic island cursed by an ancient power. The ecosystem is in turmoil — mutated beasts and massive flora roam the land, all under the influence of the dark and twisted **Obsidian Totem**.
-
-### 🧪 Game mechanics
-
-Moko possesses a rare gift: **Totemic Evolution**.
-Every piece of loot he collects — 🍌 *tribal fruits*, 🎭 *ancestral masks*,💠 *totemic essences* or armor — grants him **new powers** and **transforms his appearance**.
-
-But beware — eevery power comes at a cost. Some loot may affect his behavior or abilities in unexpected ways…
-
-### 🧭 The Quest
-
-Help Moko:
-
-1. 🗺️ **Explore** diverse islands: lush jungles, lava caves, sunken temples, and sky-high peaks.
-2. ⚔️ **Fight** corrupted enemies like the venomous **Scormards**, ☠️ **toxic mushrooms**, and colossal **stone guardians**.
-3. 🛕 **Recover sacred artifacts** to weaken the Obsidian Totem's grip.
-4. 🔥 **Reach the final island** for an epic, transformative showdown.
+> Designed as both a playable game and a technical portfolio project showcasing modular architecture, gameplay systems, and clean state management.
 
 ---
 
-## 🌟 Core Themes
+# 🎯 Project Overview
 
-* Evolution and transformation (visual + gameplay)
-* Cartoon-style humor and vibrant aesthetics
-* A message about nature, growth, and mastering inner chaos
+Island Evolution is both a game and a technical architecture showcase.
+
+It demonstrates:
+
+- Scalable modular design  
+- Clean separation of concerns  
+- Centralized state management  
+- Advanced gameplay system integration  
+- Production-ready project organization  
 
 ---
 
-## 🕹️ Features
+# 🐵 Scenario
 
-* 🐒 **Evolving main character** — with visible transformations and new abilities
-* 💥 **Dynamic combat system** — take down a variety of enemies and minibosses
-* 🎁 **Loot-driven upgrades** — each item changes how Moko plays
-* ✨ **Smooth 2D animations** with `AnimatedSprite2D`
-* 🔥 **Particle effects**, damage, and collision systems
-* 🎨 Fully custom sprites and visual assets
+## 🌴 The Setting
+
+Lost in the heart of a mysterious archipelago, **Moko**, a young monkey, awakens on a volcanic island cursed by an ancient power.
+
+The ecosystem collapses. Creatures mutate. Ancient totems distort reality.
+
+At the center stands the twisted **Obsidian Totem**.
+
+---
+
+## 🧪 Totemic Evolution
+
+Moko evolves through loot-driven progression.
+
+Every collectible — 🍌 fruits, 🦴 bones, 🗡️ weapons, 🌀 skills, 💠 totemic essences — unlocks:
+
+- New abilities  
+- New combat options  
+- Visual transformation  
+- New interaction mechanics  
+
+Progression is systemic, not scripted.
+
+---
+
+# 🧠 Gameplay Systems
+
+## 🏃 Movement
+
+- Double jump (unlockable)
+- Sprint with stamina system
+- Ramp ability
+- Climb mechanics
+- Fall damage
+- Water current physics
+
+## 🌊 Underwater
+
+- Breath timer
+- Breath HUD bar
+- Drowning damage over time
+- Bubble visuals
+- Swimming state separation
+
+## ⚔️ Combat
+
+Selectable projectile weapons:
+
+- Coco  
+- Bone  
+- Lance  
+
+Three gameplay modes:
+
+- Throw Mode (J)
+- Skill Mode (K)
+- Heal Mode (H)
+
+Features:
+
+- Dynamic HUD selectors
+- Cooldown systems
+- Automatic deselection logic
+- Persistent unlock state
+
+## 🥷 Camouflage Skill
+
+- Consumable charges
+- Automatic revert when depleted
+- Temporary enemy targeting override
+- Integrated safely with combat states
+
+---
+
+# 🧩 Architecture
+
+## 🧱 Player Orchestrator Pattern
+
+The Player node instantiates modules:
+
+```gdscript
+module = ModuleName.new()
+module.setup(self)
+```
+
+Each module:
+
+- Has a single responsibility
+- Is isolated
+- Executes in strict order
+
+Execution flow:
+
+```
+skills → movement → items → combat → post_movement
+```
+
+This guarantees deterministic updates and avoids timing issues.
+
+---
+
+## 📦 Player Modules
+
+- PlayerMovement
+- PlayerCombat
+- PlayerSkills
+- PlayerCollectItems
+- PlayerCollectSkills
+- PlayerHUD
+- PlayerDamage
+- PlayerBreath
+- PlayerEffects
+
+---
+
+## 🌍 GameState (Global Manager)
+
+Responsible for:
+
+- Progression tracking
+- Skill unlock persistence
+- Inventory state
+- Respawn logic
+- Level transitions
+- HUD synchronization
+- Accessibility toggle
+
+Uses signal-based rebinding after respawn.
+
+---
+
+# 🧠 Enemy System (Ongoing Refactor)
+
+- EnemyBase inheritance
+- Modular capability components
+- Inspector-driven configuration
+- Zone-based detection
+- Melee / Ranged separation
+- Respawn compatibility
+
+---
+
+# 🎨 Art Pipeline
+
+All assets are custom-made.
+
+Tools used:
+
+- Adobe Photoshop (UI refinement & texture work)
+- Clip Studio Paint (sprite sheets & character design)
+
+Visual style: semi-realistic cartoon with clean outlines and detailed textures.
+
+---
+
+# 🗺 Current Levels
+
+- Jungle  
+- Temple  
+- Spider Boss  
+- Mangrove (in progress)  
+- Toucan (planned)
+
+---
+
+# ♿ Accessibility (Planned)
+
+- Directional audio cues
+- Voice announcements
+- Assisted jump system
+- Toggle via GameState
+- No gameplay advantage in normal mode
 
 ---
 
@@ -57,39 +207,44 @@ Help Moko:
 
 ---
 
-## 🔧 Installation
+# 🔧 Installation
 
-### Requirements
+## Requirements
 
-* [Godot Engine 4.x (stable)](https://godotengine.org/download)
+Godot Engine 4.5+
 
-### Clone and Run
+## Clone
 
 ```bash
 git clone https://github.com/Steph4477/video-game-with-godot-engine.git
 cd video-game-with-godot-engine
 ```
 
-1. Launch **Godot Engine**
-2. Click on **"Import"**
-3. Select the `project.godot` file in the project folder
-4. Click **"Open"** to run or edit the game
-
-> ⚠️ *This game is currently in active development. Best run using the Godot Editor.*
+Open `project.godot` in Godot Editor.
 
 ---
 
-## 📄 License
+# 🚀 Roadmap
 
-Copyright © 2025 *Island Evolution – Rise of the Jungle Hero*
-
-All rights reserved.
-
-This project and all its contents are the intellectual property of the author.
-
-You may not copy, modify, distribute, sublicense, or use any part of this project in any form, including for commercial or non-commercial purposes, without explicit written permission from the author.
-
-Unauthorized use is strictly prohibited and may lead to legal action.
-
+- EnemyBase modular refactor
+- Mangrove completion
+- Boss rework
+- Optimization pass
+- Itch.io release
 
 ---
+
+# 👤 Developer
+
+Stéphane Morel  
+Game Developer — Modular Gameplay Architecture Focus
+
+---
+
+# 📄 License
+
+Open-source for educational purposes.
+
+You may study and fork the code.
+
+You may not reuse assets or commercialize the project without permission.
