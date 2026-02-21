@@ -27,8 +27,6 @@ extends CanvasLayer
 @onready var banane_hbox = get_node_or_null("HBoxContainerBanane")
 @onready var honey_hbox = get_node_or_null("HBoxContainerHoney")
 
-@onready var anim = $AnimationPlayer
-
 @onready var breath_bar = get_node_or_null("BreathBar")
 @onready var breath_progress = get_node_or_null("BreathBar/TextureProgressBar")
 
@@ -36,23 +34,19 @@ extends CanvasLayer
 @onready var throw_selector = get_node_or_null("Gamepad/ThrowSelector")
 @onready var throw_group_flash = get_node_or_null("Gamepad/ThrowGroupFlash")
 
-# --- UI mode skill (cadre bleu autour ramp/sprint/camouflage) ---
+# --- UI mode skill ---
 @onready var skill_selector = get_node_or_null("Gamepad/SkillSelector")
-
 
 # -----------------------------
 #            VARS
 # -----------------------------
 var gs
-var bone_mode_already_unlocked = false
-var honey_mode_already_unlocked = false
 
 var throw_mode_active = false
 var selected_throw_weapon = "coco"
 
 var skill_mode_active = false
 var selected_skill = "ramp"
-
 
 # -----------------------------
 #            READY
@@ -100,36 +94,32 @@ func _ready():
 	update_camouflage_display()
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
-	# --- Restore états persistants ---
-	if gs.coco_count > 0:
-		_finalize_appear_coco()
+	# --- Restore état (VISIBILITÉ ONLY) ---
+	if gs.coco_count > 0 or gs.can_fire_coco:
+		_show_coco()
 
 	if gs.banane_count > 0:
-		_finalize_appear_health()
+		_show_health()
 
 	if gs.honey_count > 0:
-		honey_mode_already_unlocked = true
-		_finalize_appear_honey()
+		_show_honey()
 
-	if gs.lance_count > 0:
-		_finalize_appear_spear()
+	if gs.lance_count > 0 or gs.can_fire_lance:
+		_show_spear()
 
 	if gs.camouflage_unlocked:
-		_finalize_appear_camouflage()
+		_show_camouflage()
 
-	if gs.bone_count > 0:
-		bone_mode_already_unlocked = true
-		_finalize_appear_bone()
+	if gs.bone_count > 0 or gs.can_fire_bone:
+		_show_bone()
 
+	# IMPORTANT: on neutralise les TouchScreenButtons (input géré ailleurs)
 	for b in [ramp_button, sprint_button, coco_button, lance_button, health_button, honey_button, bone_button, camouflage_button]:
 		if b:
 			b.action = ""
 
 	if break_sprite:
 		break_sprite.visible = false
-
-	if breath_bar:
-		breath_bar.visible = false
 
 	if breath_progress:
 		breath_progress.max_value = 30
@@ -139,41 +129,41 @@ func _ready():
 		throw_selector.visible = false
 	if throw_group_flash:
 		throw_group_flash.visible = false
-
 	if skill_selector:
 		skill_selector.visible = false
-
 	if h_selector:
 		h_selector.visible = false
 
 
 # -----------------------------
-#        COOLDOWNS
+#        HELPERS VISIBILITÉ
 # -----------------------------
-func start_banane_cooldown(duration):
-	var cd = $HBoxContainerBanane/TexturePotion/coolDownCircle
-	cd.value = 100
-	cd.show()
-	var t = create_tween()
-	t.tween_property(cd, "value", 0, duration)
-	t.finished.connect(func(): cd.hide())
+func _show_coco():
+	coco_button.visible = true
+	set_button_enabled(coco_button, gs.coco_count > 0)
 
-func start_honey_cooldown(duration):
-	var cd = $HBoxContainerHoney/TexturePotion/coolDownCircle
-	cd.value = 100
-	cd.show()
-	var t = create_tween()
-	t.tween_property(cd, "value", 0, duration)
-	t.finished.connect(func(): cd.hide())
+func _show_bone():
+	bone_button.visible = true
+	set_button_enabled(bone_button, gs.bone_count > 0)
 
-func start_camouflage_cooldown(duration):
-	var cd = $Gamepad/Camouflage/coolDownCircle
-	cd.value = 100
-	cd.show()
-	var t = create_tween()
-	t.tween_property(cd, "value", 0, duration)
-	t.finished.connect(func(): cd.hide())
+func _show_spear():
+	lance_button.visible = true
+	set_button_enabled(lance_button, gs.lance_count > 0)
 
+func _show_health():
+	health_button.visible = true
+	if banane_hbox:
+		banane_hbox.visible = true
+
+func _show_honey():
+	honey_button.visible = true
+	if honey_hbox:
+		honey_hbox.visible = true
+	set_button_enabled(honey_button, gs.honey_count > 0)
+
+func _show_camouflage():
+	camouflage_button.visible = true
+	update_camouflage_display()
 
 
 # -----------------------------
@@ -182,57 +172,47 @@ func start_camouflage_cooldown(duration):
 func set_skill_mode(_enabled):
 	skill_mode_active = _enabled
 
-	var sel = _get_skill_selector()
-	if sel:
-		sel.visible = skill_mode_active
+	if skill_selector:
+		skill_selector.visible = skill_mode_active
 
 	if skill_mode_active:
 		_update_skill_selector_position()
-
 
 func set_skill_selected(skill):
 	selected_skill = skill
-
-	if skill_mode_active:
-		_update_skill_selector_position()
-
-	if skill == "ramp":
-		if ramp_button:
-			ramp_button.scale = Vector2(1.15, 1.15)
-	elif skill == "sprint":
-		if sprint_button:
-			sprint_button.scale = Vector2(1.15, 1.15)
-	elif skill == "camouflage":
-		if camouflage_button:
-			camouflage_button.scale = Vector2(1.15, 1.15)
-
-	# Cadre bleu autour du bouton sélectionné
 	if skill_mode_active:
 		_update_skill_selector_position()
 
 func _update_skill_selector_position():
-	var sel = _get_skill_selector()
-	if sel == null:
+	if skill_selector == null:
 		return
 
-	var spr = _get_skill_button(selected_skill) # Sprite2D
-	if spr == null:
+	var btn = _get_skill_button(selected_skill)
+	if btn == null:
 		return
 
-	# Centre direct (Sprite2D centered)
-	sel.global_position = spr.global_position
+	var tex = btn.texture_normal
+	if tex == null:
+		return
 
-	# Scale fixe 128x128 + 1.1
-	var target_size = Vector2(128, 128)
+	var tex_size = tex.get_size()
+	var local_center = tex_size * 0.5
+	var global_center = btn.global_transform * local_center
+	skill_selector.global_position = global_center
+
+	var selector_tex = skill_selector.texture
+	if selector_tex == null:
+		return
+
+	var selector_size = selector_tex.get_size()
+	var pad = 6.0
+	var target_size = tex_size + Vector2(pad * 2.0, pad * 2.0)
+
 	var EXTRA_SCALE = 1.1
-
-	var st = sel.texture
-	if st == null:
-		return
-
-	var s = st.get_size()
-	sel.scale = (target_size / s) * EXTRA_SCALE
-
+	skill_selector.scale = Vector2(
+		(target_size.x / selector_size.x) * EXTRA_SCALE,
+		(target_size.y / selector_size.y) * EXTRA_SCALE
+	)
 
 func _get_skill_button(skill):
 	if skill == "ramp":
@@ -249,6 +229,8 @@ func _get_skill_button(skill):
 # -----------------------------
 func update_lives_display(lives):
 	var life_sprites = get_node_or_null("HBoxContainerLive")
+	if life_sprites == null:
+		return
 	var arr = life_sprites.get_children()
 	for i in range(arr.size()):
 		arr[i].visible = i < lives
@@ -259,36 +241,29 @@ func set_button_enabled(button, enabled):
 		if shape:
 			shape.disabled = not enabled
 		if enabled:
-			button.modulate = Color(1,1,1,1)
+			button.modulate = Color(1, 1, 1, 1)
 		else:
-			button.modulate = Color(1,1,1,0.4)
+			button.modulate = Color(1, 1, 1, 0.4)
 
 func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_sprint, can_camouflage):
-	# Coco
 	if coco_button.visible:
 		set_button_enabled(coco_button, can_fire_coco)
 
-	# Bone
 	if bone_button.visible:
 		set_button_enabled(bone_button, gs.bone_count > 0)
 
-	# Lance
 	if lance_button.visible:
 		set_button_enabled(lance_button, can_fire_lance)
 
-	# Camouflage
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, can_camouflage)
 
-	# Banane
 	if health_button.visible:
 		set_button_enabled(health_button, can_heal)
 
-	# Honey
 	if honey_button.visible:
 		set_button_enabled(honey_button, can_heal)
 
-	# Ramp / Sprint
 	ramp_button.visible = can_ramp
 	set_button_enabled(ramp_button, can_ramp)
 
@@ -339,10 +314,11 @@ func update_camouflage_display():
 
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, gs.camouflage_count > 0)
-# ===================================================================
-#                MODE JET HUD (API appelée par switch_jet.gd)
-# ===================================================================
 
+
+# ===================================================================
+#                MODE JET HUD
+# ===================================================================
 func show_throw_mode(weapon):
 	throw_mode_active = true
 	selected_throw_weapon = weapon
@@ -384,17 +360,14 @@ func _update_throw_selector_position():
 	if tex == null:
 		return
 
-	# Centre réel du bouton (TouchScreenButton)
 	var tex_size = tex.get_size()
 	var local_center = tex_size * 0.5
 	var global_center = btn.global_transform * local_center
 	throw_selector.global_position = global_center
 
-	# --- Scale du carré bleu ---
 	var selector_tex = throw_selector.texture
 	if selector_tex:
 		var selector_size = selector_tex.get_size()
-
 		var pad = 6.0
 		var target_size = tex_size + Vector2(pad * 2.0, pad * 2.0)
 
@@ -408,7 +381,6 @@ func _update_throw_group_flash_rect():
 	if throw_group_flash == null:
 		return
 
-	# $Gamepad est un Control => OK get_global_rect()
 	var group = $Gamepad
 	var r = group.get_global_rect()
 
@@ -423,6 +395,10 @@ func _get_throw_button(weapon):
 		return bone_button
 	return lance_button
 
+
+# -----------------------------
+#        SELECTEUR HEAL (H)
+# -----------------------------
 func show_h_selector():
 	if h_selector:
 		h_selector.visible = true
@@ -431,196 +407,58 @@ func hide_h_selector():
 	if h_selector:
 		h_selector.visible = false
 
-func _get_h_selector():
-	return h_selector
-
-func update_h_selector_position():
-	var sel = _get_h_selector()
-	if sel == null:
-		return
-
-	var player = null
-	if gs:
-		player = gs.player
-	if player == null:
-		return
-
-	var spr = _get_h_button(player.selected_heal)
-	if spr == null or not spr.visible:
-		spr = health_button
-	if spr == null or not spr.visible:
-		return
-
-	var tex = spr.texture
-	if tex == null:
-		return
-
-
-func _get_h_button(_name):
-	if _name == "health":
-		return health_button
-	if _name == "honey":
-		return honey_button
-	return null
-
 
 # --- Réspiration sous l'eau ---
 func show_breathbar():
-	breath_bar.visible = true
+	if breath_bar:
+		breath_bar.visible = true
 
 func hide_breathbar():
-	breath_bar.visible = false
+	if breath_bar:
+		breath_bar.visible = false
 
 func start_breath(max_value):
 	show_breathbar()
-	breath_progress.max_value = max_value
-	breath_progress.value = max_value
+	if breath_progress:
+		breath_progress.max_value = max_value
+		breath_progress.value = max_value
 
 func update_breath(current, max_value):
 	show_breathbar()
-	breath_progress.max_value = max_value
-	breath_progress.value = clamp(current, 0, max_value)
+	if breath_progress:
+		breath_progress.max_value = max_value
+		breath_progress.value = clamp(current, 0, max_value)
 
 func stop_breath():
-	breath_bar.visible = false
+	if breath_bar:
+		breath_bar.visible = false
 
 
 # -----------------------------
-#          APPEARS (PERSISTANTS)
+#          "APPEARS" (SANS ANIM)
 # -----------------------------
 func anim_to_coco_mode():
-	update_coco_display()
-
-	if coco_button.visible:
-		_finalize_appear_coco()
-		return
-
-	coco_button.visible = true
-	set_button_enabled(coco_button, false)
-
-	if anim and anim.has_animation("appear_coco"):
-		anim.play("appear_coco")
-		await anim.animation_finished
-
-	_finalize_appear_coco()
-
-func _finalize_appear_coco():
-	coco_button.visible = true
-	set_button_enabled(coco_button, gs.coco_count > 0)
+	_show_coco()
 	update_coco_display()
 
 func anim_to_spear_mode():
-	update_lance_display()
-
-	if lance_button.visible:
-		_finalize_appear_spear()
-		return
-
-	lance_button.visible = true
-	set_button_enabled(lance_button, false)
-
-	if anim and anim.has_animation("appear_spear"):
-		anim.play("appear_spear")
-		await anim.animation_finished
-
-	_finalize_appear_spear()
-
-func _finalize_appear_spear():
-	lance_button.visible = true
-	set_button_enabled(lance_button, gs.lance_count > 0)
+	_show_spear()
 	update_lance_display()
 
 func anim_to_health_mode():
-	update_banane_display()
-
-	if health_button.visible:
-		_finalize_appear_health()
-		return
-
-	health_button.visible = true
-	if banane_hbox:
-		banane_hbox.visible = true
-
-	set_button_enabled(health_button, false)
-
-	if anim and anim.has_animation("appear_health"):
-		anim.play("appear_health")
-		await anim.animation_finished
-
-	_finalize_appear_health()
-
-func _finalize_appear_health():
-	health_button.visible = true
-	if banane_hbox:
-		banane_hbox.visible = true
+	_show_health()
 	update_banane_display()
 
 func anim_to_honey_mode():
-	update_honey_display()
-
-	if honey_mode_already_unlocked:
-		_finalize_appear_honey()
-		return
-
-	honey_mode_already_unlocked = true
-
-	honey_button.visible = true
-	if honey_hbox:
-		honey_hbox.visible = true
-	set_button_enabled(honey_button, false)
-
-	if anim and anim.has_animation("appear_honey"):
-		anim.play("appear_honey")
-		await anim.animation_finished
-
-	_finalize_appear_honey()
-
-func _finalize_appear_honey():
-	honey_button.visible = true
-	if honey_hbox:
-		honey_hbox.visible = true
-	set_button_enabled(honey_button, gs.honey_count > 0)
+	_show_honey()
 	update_honey_display()
 
 func anim_to_bone_mode():
-	update_bone_display()
-
-	if bone_mode_already_unlocked:
-		_finalize_switch_to_bone()
-		return
-
-	bone_mode_already_unlocked = true
-	bone_button.visible = true
-
-	set_button_enabled(bone_button, false)
-
-	anim.play("bone_appear")
-	await anim.animation_finished
-
-	_finalize_switch_to_bone()
-
-func _finalize_switch_to_bone():
-	coco_button.visible = true
-	bone_button.visible = true
-
-	set_button_enabled(bone_button, gs.bone_count > 0)
-	update_bone_display()
-	update_coco_display()
-
-func _finalize_appear_bone():
-	bone_button.visible = true
-	set_button_enabled(bone_button, gs.bone_count > 0)
+	_show_bone()
 	update_bone_display()
 
 func unlock_camouflage_hud():
-	_finalize_appear_camouflage()
-
-	if anim.has_animation("appear_camouflage"):
-		anim.play("appear_camouflage")
-
-func _finalize_appear_camouflage():
-	camouflage_button.visible = true
-	update_camouflage_display()
+	_show_camouflage()
 
 
 #---------------------------------------
@@ -660,10 +498,5 @@ func _on_sprint_pressed():
 	gs.player.skills_mod.use_sprint()
 
 func set_pause_visual(paused):
-	break_sprite.visible = paused
-
-# --- UI mode skill (cadre bleu autour ramp/sprint/camouflage) ---
-func _get_skill_selector():
-	if skill_selector:
-		return skill_selector
-	return throw_selector  # fallback sur ThrowSelector si pas de SkillSelector
+	if break_sprite:
+		break_sprite.visible = paused

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://brfjqv4fn7u7f"]
+[gd_scene format=3 uid="uid://brfjqv4fn7u7f"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Player/Modules/Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" uid="uid://dl764ckbcmvqy" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
@@ -44,403 +44,43 @@
 [ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 [ext_resource type="Texture2D" uid="uid://b5qsd8mb4hg25" path="res://Interface/Breath_Bar/progress_bar.png" id="37_rg2xt"]
 
-[sub_resource type="Animation" id="Animation_ccc6n"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ulwxg"]
+resource_name = "appear_bone"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Coco:modulate")
+tracks/0/path = NodePath("Gamepad/Bone:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(740.99994, 255.00009), Vector2(33, 591)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Bone:scale")
+tracks/1/path = NodePath("Gamepad/Bone:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0, 6.2831855]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Bone:rotation")
+tracks/2/path = NodePath("Gamepad/Bone:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Ramp:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(255, 742)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Ramp:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Gamepad/Ramp:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Gamepad/Sprint:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(202, 837)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Gamepad/Sprint:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Gamepad/Sprint:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Gamepad/Honey:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Gamepad/Honey:scale")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.113, 0.113)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Gamepad/Spear:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(80, 661)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Gamepad/Spear:rotation")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Gamepad/Spear:scale")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Gamepad/Spear:visible")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Gamepad/Coco:position")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(76, 780)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Gamepad/Coco:rotation")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [6.2831855]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Gamepad/Coco:scale")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("Gamepad/Coco:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Gamepad/Health:position")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(209, 947)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("Gamepad/Health:rotation")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Gamepad/Health:scale")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("Gamepad/Health:modulate")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("Gamepad/Switch:position")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(447.99994, 955)]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("Gamepad/Switch:scale")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.11, 0.11)]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("Gamepad/Switch:rotation")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/26/type = "value"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("Gamepad/Honey:position")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(305, 943)]
-}
-tracks/27/type = "value"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("Gamepad/Bone:position")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(68, 524)]
-}
-tracks/28/type = "value"
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/path = NodePath("Gamepad/Camouflage:visible")
-tracks/28/interp = 1
-tracks/28/loop_wrap = true
-tracks/28/keys = {
-"times": PackedFloat32Array(0.0009999999),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/29/type = "value"
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/path = NodePath("Gamepad/Camouflage:scale")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/keys = {
-"times": PackedFloat32Array(0.0009999999),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.11, 0.11)]
-}
-tracks/30/type = "value"
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/path = NodePath("Gamepad/Camouflage:rotation")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/keys = {
-"times": PackedFloat32Array(0, 0.0009999999),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [6.2831855, 0.0]
-}
-tracks/31/type = "value"
-tracks/31/imported = false
-tracks/31/enabled = true
-tracks/31/path = NodePath("Gamepad/Camouflage:position")
-tracks/31/interp = 1
-tracks/31/loop_wrap = true
-tracks/31/keys = {
-"times": PackedFloat32Array(0, 0.0009999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(299.99997, 646), Vector2(299.99997, 646)]
-}
-tracks/32/type = "value"
-tracks/32/imported = false
-tracks/32/enabled = true
-tracks/32/path = NodePath("HBoxContainerBanane/TexturePotion/coolDownCircle2:max_value")
-tracks/32/interp = 1
-tracks/32/loop_wrap = true
-tracks/32/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [100.0]
+"values": [Vector2(5, 5), Vector2(1.1, 1.1)]
 }
 
 [sub_resource type="Animation" id="Animation_nnjha"]
@@ -476,10 +116,10 @@ tracks/2/path = NodePath("Gamepad/Camouflage:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": []
+"values": [Vector2(0.3, 0.3), Vector2(0.12, 0.12)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -503,7 +143,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(753, 302), Vector2(300, 632)]
+"values": [Vector2(818.00006, 388), Vector2(237, 628.00006)]
 }
 
 [sub_resource type="Animation" id="Animation_r3b2g"]
@@ -518,7 +158,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(780, 316), Vector2(72, 785)]
+"values": [Vector2(780, 316), Vector2(35, 816)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -581,7 +221,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(781, 335), Vector2(204, 949)]
+"values": [Vector2(781, 335), Vector2(146, 923)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -649,50 +289,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:position")
+tracks/2/path = NodePath("Gamepad/Honey:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1949.6721, -72.69383), Vector2(1037.0298, -383.04053)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [6.2831855, 0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HBoxContainerHoney/TexturePotion/TextureRectHoney:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(7, 7), Vector2(1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Gamepad/Honey:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(305, 943)]
+"values": [Vector2(784, 293.00006), Vector2(243, 912.99994)]
 }
 
 [sub_resource type="Animation" id="Animation_8k643"]
@@ -707,7 +311,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782, 307), Vector2(268, 748)]
+"values": [Vector2(782, 307), Vector2(192, 726)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -791,10 +395,10 @@ tracks/4/path = NodePath("Gamepad/Spear:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(73, 663)]
+"values": [Vector2(790, 329), Vector2(35, 708)]
 }
 
 [sub_resource type="Animation" id="Animation_f7l5a"]
@@ -809,7 +413,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782, 307), Vector2(202, 835)]
+"values": [Vector2(782, 307), Vector2(147, 817)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -860,7 +464,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(762, 296.00003), Vector2(607, 938)]
+"values": [Vector2(762, 296.00003), Vector2(501, 914.99994)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -887,261 +491,9 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_f2ifn"]
-resource_name = "bone_appear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Bone:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(5, 5), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Bone:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.2831855]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Bone/BoneCountLabel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Bone:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(68, 524)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Spear:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(73, 664)]
-}
-
-[sub_resource type="Animation" id="Animation_akioh"]
-resource_name = "disappear_camouflage"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Camouflage:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(0.45, 0.45)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Camouflage:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [6.2831855, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Camouflage:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(187, 834), Vector2(753, 302)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Camouflage:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Camouflage:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_3qhmc"]
-resource_name = "disappear_spear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Spear:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.79),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(195, 838), Vector2(792.00006, 316.00003)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Spear:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.79),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.2831855]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Spear:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(4, 4)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Spear:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Spear:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_sprxf"]
-resource_name = "disapper_coco"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Coco:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(71, 783), Vector2(780, 316)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Coco:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [6.2831855, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Coco:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(4, 4)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Coco:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Gamepad/Coco:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k643"]
 _data = {
-&"RESET": SubResource("Animation_ccc6n"),
+&"appear_bone": SubResource("Animation_ulwxg"),
 &"appear_camouflage": SubResource("Animation_nnjha"),
 &"appear_coco": SubResource("Animation_r3b2g"),
 &"appear_health": SubResource("Animation_4fj46"),
@@ -1149,63 +501,64 @@ _data = {
 &"appear_ramp": SubResource("Animation_8k643"),
 &"appear_spear": SubResource("Animation_o4sf8"),
 &"appear_sprint": SubResource("Animation_f7l5a"),
-&"appear_switch": SubResource("Animation_6ivel"),
-&"bone_appear": SubResource("Animation_f2ifn"),
-&"disappear_camouflage": SubResource("Animation_akioh"),
-&"disappear_spear": SubResource("Animation_3qhmc"),
-&"disapper_coco": SubResource("Animation_sprxf")
+&"appear_switch": SubResource("Animation_6ivel")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_rg2xt"]
 font_size = 20
 
-[node name="Hud" type="CanvasLayer"]
+[node name="Hud" type="CanvasLayer" unique_id=1689391444]
 script = ExtResource("1_0b1lv")
 
-[node name="VirtualJoystick" parent="." instance=ExtResource("2_s8lhr")]
+[node name="VirtualJoystick" parent="." unique_id=234075380 instance=ExtResource("2_s8lhr")]
 
-[node name="Gamepad" type="Node2D" parent="."]
+[node name="Gamepad" type="Control" parent="." unique_id=1114488835]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="Hand" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(73, 919.00006)
+[node name="Hand" type="TouchScreenButton" parent="Gamepad" unique_id=503376199]
+position = Vector2(30.000015, 916.00006)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("6_rgqxt")
 texture_pressed = ExtResource("7_b0qj5")
 
-[node name="Coco" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(76, 780)
+[node name="Coco" type="TouchScreenButton" parent="Gamepad" unique_id=1026696562]
+position = Vector2(35, 816)
 rotation = 6.2831855
 texture_normal = ExtResource("8_b0qj5")
 texture_pressed = ExtResource("9_870gb")
 action = "ui_cancel"
 
-[node name="CocoCountLabel" type="Label" parent="Gamepad/Coco"]
+[node name="CocoCountLabel" type="Label" parent="Gamepad/Coco" unique_id=1191304731]
 offset_left = 91.00002
 offset_top = 78.0
 offset_right = 101.00002
 offset_bottom = 101.0
 text = "0"
 
-[node name="Bone" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(68, 524)
+[node name="Bone" type="TouchScreenButton" parent="Gamepad" unique_id=981973535]
+position = Vector2(33, 591)
+rotation = 6.2831855
+scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("8_wb1yk")
 texture_pressed = ExtResource("9_f2ifn")
 action = "ui_cancel"
 
-[node name="BoneCountLabel" type="Label" parent="Gamepad/Bone"]
-offset_left = 91.00002
-offset_top = 74.99997
-offset_right = 101.00002
-offset_bottom = 97.99997
+[node name="BoneCountLabel" type="Label" parent="Gamepad/Bone" unique_id=138850512]
+modulate = Color(1, 1, 1, 0)
+offset_left = 94.0
+offset_top = 74.99998
+offset_right = 104.0
+offset_bottom = 97.99998
 text = "0"
 
-[node name="Health" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(209, 947)
+[node name="Health" type="TouchScreenButton" parent="Gamepad" unique_id=2026643396]
+position = Vector2(146, 923)
 texture_normal = ExtResource("8_voibu")
 texture_pressed = ExtResource("11_e8y56")
 action = "ui_accept"
 
-[node name="BananeCountLabel" type="Label" parent="Gamepad/Health"]
+[node name="BananeCountLabel" type="Label" parent="Gamepad/Health" unique_id=194899525]
 offset_left = 93.0
 offset_top = 71.0
 offset_right = 103.0
@@ -1213,14 +566,14 @@ offset_bottom = 94.0
 theme_override_font_sizes/font_size = 16
 text = "0"
 
-[node name="Honey" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(305, 943)
+[node name="Honey" type="TouchScreenButton" parent="Gamepad" unique_id=943434364]
+position = Vector2(243, 912.99994)
 scale = Vector2(0.113, 0.113)
 texture_normal = ExtResource("12_shgqx")
 texture_pressed = ExtResource("13_cpk68")
 action = "ui_accept"
 
-[node name="HoneyCountLabel" type="Label" parent="Gamepad/Honey"]
+[node name="HoneyCountLabel" type="Label" parent="Gamepad/Honey" unique_id=578853337]
 offset_left = 884.9557
 offset_top = 690.2653
 offset_right = 970.9557
@@ -1228,14 +581,13 @@ offset_bottom = 895.2653
 theme_override_font_sizes/font_size = 150
 text = "0"
 
-[node name="Camouflage" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(299.99997, 646)
-rotation = 6.2831855
-scale = Vector2(0.11, 0.11)
+[node name="Camouflage" type="TouchScreenButton" parent="Gamepad" unique_id=2051500428]
+position = Vector2(237, 628.00006)
+scale = Vector2(0.12, 0.12)
 texture_normal = ExtResource("14_akioh")
 action = "ui_accept"
 
-[node name="CamouflageCountLabel" type="Label" parent="Gamepad/Camouflage"]
+[node name="CamouflageCountLabel" type="Label" parent="Gamepad/Camouflage" unique_id=320341963]
 offset_left = 890.90955
 offset_top = 699.99976
 offset_right = 976.90955
@@ -1243,7 +595,7 @@ offset_bottom = 904.99976
 theme_override_font_sizes/font_size = 150
 text = "0"
 
-[node name="coolDownCircle" type="TextureProgressBar" parent="Gamepad/Camouflage"]
+[node name="coolDownCircle" type="TextureProgressBar" parent="Gamepad/Camouflage" unique_id=1228205795]
 visible = false
 z_index = 50
 offset_left = -39.911316
@@ -1256,66 +608,68 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("16_b0qj5")
 
-[node name="Spear" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(80, 661)
+[node name="Spear" type="TouchScreenButton" parent="Gamepad" unique_id=2046174989]
+position = Vector2(35, 708)
 texture_normal = ExtResource("12_s8lhr")
 texture_pressed = ExtResource("13_lwpkd")
 action = "shoot"
 
-[node name="LanceCountLabel" type="Label" parent="Gamepad/Spear"]
+[node name="LanceCountLabel" type="Label" parent="Gamepad/Spear" unique_id=1793184165]
 offset_left = 88.0
 offset_top = 76.0
 offset_right = 98.0
 offset_bottom = 99.0
 text = "0"
 
-[node name="Ramp" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(255, 742)
+[node name="Ramp" type="TouchScreenButton" parent="Gamepad" unique_id=770319580]
+position = Vector2(192, 726)
 texture_normal = ExtResource("14_e8y56")
 texture_pressed = ExtResource("15_s8lhr")
 action = "ramping"
 
-[node name="Sprint" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(202, 837)
+[node name="Sprint" type="TouchScreenButton" parent="Gamepad" unique_id=322998859]
+position = Vector2(147, 817)
 texture_normal = ExtResource("16_8k643")
 texture_pressed = ExtResource("17_f7l5a")
 action = "sprint"
 
-[node name="Switch" type="TouchScreenButton" parent="Gamepad"]
-position = Vector2(447.99994, 955)
-scale = Vector2(0.11, 0.11)
+[node name="Switch" type="TouchScreenButton" parent="Gamepad" unique_id=411639348]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(762, 296.00003)
+rotation = 6.2831855
+scale = Vector2(0.45, 0.45)
 texture_normal = ExtResource("23_3qhmc")
 texture_pressed = ExtResource("24_o4sf8")
 action = "switch"
 
-[node name="Menu" type="TouchScreenButton" parent="Gamepad"]
+[node name="Menu" type="TouchScreenButton" parent="Gamepad" unique_id=394726589]
 position = Vector2(1597, 42)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("14_tlm4v")
 texture_pressed = ExtResource("15_ce0vt")
 action = "ui_cancel"
 
-[node name="Break" type="TouchScreenButton" parent="Gamepad"]
+[node name="Break" type="TouchScreenButton" parent="Gamepad" unique_id=255944262]
 position = Vector2(1488, 40)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("16_smsye")
 texture_pressed = ExtResource("17_m6ehm")
 action = "ui_cancel"
 
-[node name="SkillSelector" type="Sprite2D" parent="Gamepad"]
+[node name="SkillSelector" type="Sprite2D" parent="Gamepad" unique_id=1136588574]
 visible = false
 z_index = 50
 position = Vector2(328, 711)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_ulwxg")
 
-[node name="HealSelector" type="Sprite2D" parent="Gamepad"]
+[node name="HealSelector" type="Sprite2D" parent="Gamepad" unique_id=1143041508]
 visible = false
 position = Vector2(329, 971)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("28_egy6j")
 
-[node name="ThrowSelector" type="Sprite2D" parent="Gamepad"]
+[node name="ThrowSelector" type="Sprite2D" parent="Gamepad" unique_id=2020408350]
 visible = false
 modulate = Color(1, 1, 1, 0.45400003)
 z_index = 100
@@ -1323,249 +677,257 @@ position = Vector2(120, 676)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("28_rg2xt")
 
-[node name="HBoxContainerBanane" type="HBoxContainer" parent="."]
+[node name="HBoxContainerBanane" type="HBoxContainer" parent="." unique_id=837233078]
 offset_left = -1002.0
 offset_top = 357.0
 offset_right = -908.0
 offset_bottom = 431.0
 
-[node name="TexturePotion" type="Node2D" parent="HBoxContainerBanane"]
+[node name="TexturePotion" type="Node2D" parent="HBoxContainerBanane" unique_id=849512269]
 position = Vector2(307, -20)
 scale = Vector2(0.715505, 0.715329)
 
-[node name="TextureRectBanane" type="TextureRect" parent="HBoxContainerBanane/TexturePotion"]
-offset_left = 992.3061
-offset_top = -366.26505
-offset_right = 1092.3062
-offset_bottom = -264.26505
-scale = Vector2(0.8, 0.8)
+[node name="TextureRectBanane" type="TextureRect" parent="HBoxContainerBanane/TexturePotion" unique_id=600507141]
+offset_left = 1011.8726
+offset_top = -398.41803
+offset_right = 1111.8727
+offset_bottom = -296.41803
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("15_rgqxt")
 
-[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/TexturePotion"]
+[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/TexturePotion" unique_id=1759242886]
 visible = false
 z_index = 5
-offset_left = 1016.06555
-offset_top = -408.20383
-offset_right = 2040.0656
-offset_bottom = 615.79614
+offset_left = 996.49896
+offset_top = -416.59152
+offset_right = 2020.499
+offset_bottom = 607.40845
+scale = Vector2(0.1, 0.1)
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("16_b0qj5")
+
+[node name="coolDownCircle2" type="TextureProgressBar" parent="HBoxContainerBanane/TexturePotion" unique_id=841733741]
+visible = false
+z_index = 5
+offset_left = 1154.4293
+offset_top = 798.23413
+offset_right = 2444.3906
+offset_bottom = 2057.4792
 scale = Vector2(0.143016, 0.14321)
 value = 100.0
 fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("16_b0qj5")
 
-[node name="coolDownCircle2" type="TextureProgressBar" parent="HBoxContainerBanane/TexturePotion"]
-visible = false
-z_index = 5
-offset_left = 1241.0815
-offset_top = 831.7852
-offset_right = 2531.0427
-offset_bottom = 2091.0303
-scale = Vector2(0.143016, 0.14321)
-value = 100.0
-fill_mode = 5
-nine_patch_stretch = true
-texture_progress = ExtResource("16_b0qj5")
-
-[node name="HBoxContainerHoney" type="HBoxContainer" parent="."]
+[node name="HBoxContainerHoney" type="HBoxContainer" parent="." unique_id=1638888567]
 offset_left = -1006.0
 offset_top = 353.0
 offset_right = -912.0
 offset_bottom = 427.0
 
-[node name="TexturePotion" type="Node2D" parent="HBoxContainerHoney"]
+[node name="TexturePotion" type="Node2D" parent="HBoxContainerHoney" unique_id=805180826]
 position = Vector2(393.99994, -20)
 scale = Vector2(0.715505, 0.715329)
 
-[node name="TextureRectHoney" type="TextureRect" parent="HBoxContainerHoney/TexturePotion"]
-offset_left = 941.992
-offset_top = -346.69363
-offset_right = 1041.992
-offset_bottom = -240.69363
-scale = Vector2(0.6, 0.6)
+[node name="TextureRectHoney" type="TextureRect" parent="HBoxContainerHoney/TexturePotion" unique_id=62312572]
+offset_left = 986.71576
+offset_top = -394.22418
+offset_right = 1086.7158
+offset_bottom = -288.22418
+rotation = 6.2831855
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("25_akioh")
 
-[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerHoney/TexturePotion"]
+[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerHoney/TexturePotion" unique_id=1686745286]
 visible = false
 z_index = 5
-offset_left = 1013.27
-offset_top = -406.806
-offset_right = 2037.27
-offset_bottom = 617.194
+offset_left = 969.9445
+offset_top = -410.9997
+offset_right = 1993.9445
+offset_bottom = 613.0003
+scale = Vector2(0.1, 0.1)
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("16_b0qj5")
+
+[node name="coolDownCircle2" type="TextureProgressBar" parent="HBoxContainerHoney/TexturePotion" unique_id=1697254091]
+visible = false
+z_index = 5
+offset_left = 1182.3818
+offset_top = 799.63214
+offset_right = 2482.1157
+offset_bottom = 2097.925
 scale = Vector2(0.143016, 0.14321)
 value = 100.0
 fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("16_b0qj5")
 
-[node name="coolDownCircle2" type="TextureProgressBar" parent="HBoxContainerHoney/TexturePotion"]
-visible = false
-z_index = 5
-offset_left = 1269.0338
-offset_top = 840.1728
-offset_right = 2568.7676
-offset_bottom = 2138.4658
-scale = Vector2(0.143016, 0.14321)
-value = 100.0
-fill_mode = 5
-nine_patch_stretch = true
-texture_progress = ExtResource("16_b0qj5")
+[node name="HBoxContainerSeed" type="HBoxContainer" parent="." unique_id=418261100]
+offset_left = 1728.0
+offset_top = 50.0
+offset_right = 1865.0
+offset_bottom = 156.0
 
-[node name="HBoxContainerSeed" type="HBoxContainer" parent="."]
-offset_left = 1731.0
-offset_top = 51.0
-offset_right = 1868.0
-offset_bottom = 157.0
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainerSeed"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainerSeed" unique_id=1230609772]
 layout_mode = 2
 texture = ExtResource("13_voibu")
 
-[node name="SeedCountLabel" type="Label" parent="HBoxContainerSeed"]
+[node name="SeedCountLabel" type="Label" parent="HBoxContainerSeed" unique_id=1053427974]
 layout_mode = 2
 text = "0"
 
-[node name="ShowMessage" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="ShowMessage" type="Label" parent="." unique_id=1425798223]
+offset_left = 7.0
+offset_top = -28.0
+offset_right = 47.0
+offset_bottom = -5.0
 
-[node name="HBoxContainerLive" type="HBoxContainer" parent="."]
-offset_left = 548.0
-offset_top = 92.0
-offset_right = 588.0
-offset_bottom = 132.0
+[node name="HBoxContainerLive" type="HBoxContainer" parent="." unique_id=1219303423]
+offset_left = 555.0
+offset_top = 64.0
+offset_right = 595.0
+offset_bottom = 104.0
 scale = Vector2(0.15, 0.15)
 
-[node name="Life1" type="Sprite2D" parent="HBoxContainerLive"]
+[node name="Life1" type="Sprite2D" parent="HBoxContainerLive" unique_id=2020732208]
 position = Vector2(-846.6666, 59.999947)
 texture = ExtResource("18_1hj8m")
 
-[node name="Life2" type="Sprite2D" parent="HBoxContainerLive"]
+[node name="Life2" type="Sprite2D" parent="HBoxContainerLive" unique_id=1893897249]
 position = Vector2(-393.3333, 73.33328)
 texture = ExtResource("18_1hj8m")
 
-[node name="Life3" type="Sprite2D" parent="HBoxContainerLive"]
+[node name="Life3" type="Sprite2D" parent="HBoxContainerLive" unique_id=13903589]
 position = Vector2(60, 86.66661)
 texture = ExtResource("18_1hj8m")
 
-[node name="HealthBar" type="CanvasLayer" parent="."]
+[node name="HealthBar" type="CanvasLayer" parent="." unique_id=388120387]
 script = ExtResource("19_s8lhr")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar" unique_id=1104299560]
 modulate = Color(0.67481464, 0.67481464, 0.6748146, 1)
-offset_left = 145.0
-offset_top = 70.0
-offset_right = 378.0
-offset_bottom = 144.0
+offset_left = 152.0
+offset_top = 42.0
+offset_right = 385.0
+offset_bottom = 116.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
 texture_progress = ExtResource("33_rjgrc")
 
-[node name="TextureRect" type="TextureRect" parent="HealthBar"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TextureRect" type="TextureRect" parent="HealthBar" unique_id=2081965030]
+offset_left = 7.0
+offset_top = -28.0
+offset_right = 47.0
+offset_bottom = 12.0
 
-[node name="SpeedBar" type="CanvasLayer" parent="."]
+[node name="SpeedBar" type="CanvasLayer" parent="." unique_id=1206665957]
 script = ExtResource("27_wb1yk")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="SpeedBar"]
-offset_left = 145.0
-offset_top = 117.0
-offset_right = 378.0
-offset_bottom = 191.0
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SpeedBar" unique_id=224861362]
+offset_left = 152.0
+offset_top = 89.0
+offset_right = 385.0
+offset_bottom = 163.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
 texture_progress = ExtResource("27_mltuv")
 
-[node name="TextureRect" type="TextureRect" parent="SpeedBar"]
-offset_left = 48.99994
-offset_top = 180.0
-offset_right = 88.99994
-offset_bottom = 220.0
+[node name="TextureRect" type="TextureRect" parent="SpeedBar" unique_id=1797068507]
+offset_left = 55.99994
+offset_top = 152.0
+offset_right = 95.99994
+offset_bottom = 192.0
 
-[node name="TextureSprint" type="Node2D" parent="SpeedBar"]
-position = Vector2(39, 131)
+[node name="TextureSprint" type="Node2D" parent="SpeedBar" unique_id=563686409]
+position = Vector2(46, 103)
 scale = Vector2(0.08, 0.08)
 
-[node name="TextureRect" type="TextureRect" parent="SpeedBar/TextureSprint"]
-offset_left = -162.50073
-offset_top = -299.99997
-offset_right = 861.49927
-offset_bottom = 724.0
+[node name="TextureRect" type="TextureRect" parent="SpeedBar/TextureSprint" unique_id=58784419]
+offset_left = 24.99997
+offset_top = -112.499985
+offset_right = 1049.0
+offset_bottom = 911.5
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("22_f2ifn")
 
-[node name="BreathBar" type="CanvasLayer" parent="."]
+[node name="BreathBar" type="CanvasLayer" parent="." unique_id=1497953278]
 script = ExtResource("27_wb1yk")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BreathBar"]
-offset_left = 146.0
-offset_top = 161.0
-offset_right = 379.0
-offset_bottom = 235.0
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BreathBar" unique_id=991367002]
+offset_left = 153.0
+offset_top = 133.0
+offset_right = 386.0
+offset_bottom = 207.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
 texture_progress = ExtResource("37_rg2xt")
 
-[node name="TextureRect" type="TextureRect" parent="BreathBar"]
-offset_left = 48.99994
-offset_top = 180.0
-offset_right = 88.99994
-offset_bottom = 220.0
+[node name="TextureRect" type="TextureRect" parent="BreathBar" unique_id=1845578042]
+offset_left = 55.99994
+offset_top = 152.0
+offset_right = 95.99994
+offset_bottom = 192.0
 
-[node name="TextureBubbleAir" type="Node2D" parent="BreathBar"]
-position = Vector2(23, 145)
+[node name="TextureBubbleAir" type="Node2D" parent="BreathBar" unique_id=415013607]
+position = Vector2(30, 117)
 scale = Vector2(0.08, 0.08)
 
-[node name="TextureRect" type="TextureRect" parent="BreathBar/TextureBubbleAir"]
-offset_left = 224.99927
-offset_top = 287.50006
-offset_right = 1760.9993
-offset_bottom = 1311.5
+[node name="TextureRect" type="TextureRect" parent="BreathBar/TextureBubbleAir" unique_id=1713703809]
+offset_left = 262.50003
+offset_top = 425.00006
+offset_right = 1798.5
+offset_bottom = 1449.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("37_eqcma")
 
-[node name="TimerChrono" parent="." instance=ExtResource("22_hny2p")]
+[node name="TimerChrono" parent="." unique_id=524898143 instance=ExtResource("22_hny2p")]
+offset_left = 7.0
+offset_top = -28.0
+offset_right = 7.0
+offset_bottom = -28.0
 
-[node name="GameCursor" parent="." instance=ExtResource("23_ff868")]
+[node name="GameCursor" parent="." unique_id=1171943240 instance=ExtResource("23_ff868")]
 
-[node name="BreakSprite" type="Sprite2D" parent="."]
+[node name="BreakSprite" type="Sprite2D" parent="." unique_id=1262810462]
 modulate = Color(1, 1, 1, 0.31764707)
-position = Vector2(980, 553.00006)
+position = Vector2(1013.00006, 575.00006)
 scale = Vector2(0.7216797, 0.7216797)
 texture = ExtResource("28_m6ehm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_8k643")
-}
-autoplay = "appear_switch"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=836193248]
+libraries/ = SubResource("AnimationLibrary_8k643")
+autoplay = &"appear_switch"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 111.0
-offset_top = 575.0
-offset_right = 143.0
-offset_bottom = 643.0
+[node name="Label" type="Label" parent="." unique_id=1224505341]
+offset_left = 84.0
+offset_top = 563.0
+offset_right = 116.0
+offset_bottom = 631.0
 text = "J"
 label_settings = SubResource("LabelSettings_rg2xt")
 uppercase = true
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 343.0
-offset_top = 641.0
-offset_right = 383.0
-offset_bottom = 710.0
+[node name="Label2" type="Label" parent="." unique_id=1320780764]
+offset_left = 340.0
+offset_top = 604.0
+offset_right = 380.0
+offset_bottom = 673.0
 text = "k"
 label_settings = SubResource("LabelSettings_rg2xt")
 uppercase = true
 
-[node name="Label3" type="Label" parent="."]
-offset_left = 398.0
-offset_top = 959.0
-offset_right = 438.0
-offset_bottom = 1028.0
+[node name="Label3" type="Label" parent="." unique_id=2010574700]
+offset_left = 380.0
+offset_top = 958.0
+offset_right = 420.0
+offset_bottom = 1027.0
 text = "h"
 label_settings = SubResource("LabelSettings_rg2xt")
 uppercase = true
