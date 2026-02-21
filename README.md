@@ -135,6 +135,27 @@ This guarantees deterministic updates and avoids timing issues.
 - PlayerBreath
 - PlayerEffects
 
+
+# 🏗 Architecture Diagram
+
+```
+GameState
+   │
+   ├── Player (Orchestrator)
+   │       ├── PlayerMovement
+   │       ├── PlayerCombat
+   │       ├── PlayerSkills
+   │       ├── PlayerCollectItems
+   │       ├── PlayerCollectSkills
+   │       ├── PlayerDamage
+   │       ├── PlayerBreath
+   │       └── PlayerEffects
+   │
+   ├── HUD (State Reflection Only)
+   │
+   └── Enemies (Future EnemyBase)
+```
+
 ---
 
 ## 🌍 GameState (Global Manager)
