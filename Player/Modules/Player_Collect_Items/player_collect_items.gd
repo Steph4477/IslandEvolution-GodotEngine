@@ -32,9 +32,9 @@ func collect_banane(amount = 1):
 	p.hud_mod.update_banane_display()
 
 	if amount == 1:
-		p.show_info_popup("1 jus de banane récupéré !")
+		p.popups_mod.show_info("1 jus de banane récupéré !")
 	else:
-		p.show_info_popup(str(amount) + " jus de bananes récupérés !")
+		p.popups_mod.show_info(str(amount) + " jus de bananes récupérés !")
 
 	p.hud_mod.refresh_hud_buttons()
 
@@ -77,9 +77,9 @@ func collect_coco(amount = 1, enable_shooting = false):
 	p.hud_mod.update_coco_display()
 
 	if amount == 1:
-		p.show_info_popup("1 noix de coco récupérée !")
+		p.popups_mod.show_info("1 noix de coco récupérée !")
 	else:
-		p.show_info_popup(str(amount) + " noix de coco récupérées !")
+		p.popups_mod.show_info(str(amount) + " noix de coco récupérées !")
 
 	p.hud_mod.refresh_hud_buttons()
 
@@ -104,9 +104,9 @@ func collect_bone(amount = 1, enable_shooting = false):
 	p.hud_mod.update_bone_display()
 
 	if amount == 1:
-		p.show_info_popup("1 os récupéré !")
+		p.popups_mod.show_info("1 os récupéré !")
 	else:
-		p.show_info_popup(str(amount) + " os récupérés !")
+		p.popups_mod.show_info(str(amount) + " os récupérés !")
 
 	p.hud_mod.refresh_hud_buttons()
 
@@ -126,9 +126,9 @@ func collect_lance(amount = 1, enable_shooting = false):
 		hud.anim_to_spear_mode()
 
 	if amount == 1:
-		p.show_info_popup("1 lance récupérée !")
+		p.popups_mod.show_info("1 lance récupérée !")
 	else:
-		p.show_info_popup(str(amount) + " lances récupérées !")
+		p.popups_mod.show_info(str(amount) + " lances récupérées !")
 
 	p.hud_mod.refresh_hud_buttons()
 

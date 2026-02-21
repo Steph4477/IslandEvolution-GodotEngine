@@ -44,7 +44,7 @@ func use_banane():
 		msg = "Aucune potion !"
 
 	if msg != "":
-		p.show_info_popup(msg)
+		p.popups_mod.show_info_popup(msg)
 		await p.play_anim("empty")
 		return
 
@@ -80,7 +80,7 @@ func use_honey():
 		msg = "Aucun miel !"
 
 	if msg != "":
-		p.show_info_popup(msg)
+		p.popups_mod.show_info_popup(msg)
 		await p.play_anim("empty")
 		return
 

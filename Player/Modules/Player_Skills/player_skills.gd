@@ -24,11 +24,11 @@ func process_ramp():
 		p.is_ramping = not p.is_ramping
 
 		if p.is_ramping:
-			p.show_info_popup("🧎 Rampe activée !")
+			p.popups_mod.show_info_popup("🧎 Rampe activée !")
 			p.get_node("ColStand").disabled = true
 			p.get_node("ColRamp").disabled = false
 		else:
-			p.show_info_popup("🚶 Rampe désactivée !")
+			p.popups_mod.show_info_popup("🚶 Rampe désactivée !")
 			p.get_node("ColStand").disabled = false
 			p.get_node("ColRamp").disabled = true
 

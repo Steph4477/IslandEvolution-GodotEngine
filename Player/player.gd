@@ -75,6 +75,7 @@ var heal_mod
 var movement_mod
 var skills_mod
 var animation_mod
+var popups_mod
 
 var can_move = true
 var can_be_damaged = true
@@ -204,19 +205,6 @@ func play_anim(_name):
 	await anim.animation_finished
 	animation_locked = false
 
-func show_info_popup(txt):
-	var popup = get_tree().get_first_node_in_group("info_overlay_group")
-	if popup == null:
-		popup = preload("res://Interface/Popup/Info_popup/info_popup.tscn").instantiate()
-		add_child(popup)
-	popup.show_info(txt)
-
-func show_damage_popup(amount):
-	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
-	add_child(popup)
-	popup.position = Vector2(0, -30)
-	popup.show_damage(amount)
-
 # =======================================================================
 #                       INITIALISATION
 # =======================================================================
@@ -230,7 +218,10 @@ func _ready():
 	setup_hud_module()
 	if hud_mod:
 		await hud_mod.wait_until_ready()
-
+	
+	# --- Affichage des popups ---
+	setup_popups_module()
+	
 	# --- THROW (SWITCH JET) ---
 	throw_mod = preload("res://Player/Modules/Hud/switch_jet.gd").new()
 	add_child(throw_mod)
@@ -287,6 +278,11 @@ func setup_hud_module():
 	hud_mod = preload("res://Player/Modules/Player_HUD/player_hud.gd").new()
 	add_child(hud_mod)
 	hud_mod.setup(self)
+
+func setup_popups_module():
+	popups_mod = preload("res://Player/Modules/Player_Popups/player_popups.gd").new()
+	add_child(popups_mod)
+	popups_mod.setup(self)
 
 func setup_breath_module():
 	breath_mod = preload("res://Player/Modules/Player_Breath/player_breath.gd").new()

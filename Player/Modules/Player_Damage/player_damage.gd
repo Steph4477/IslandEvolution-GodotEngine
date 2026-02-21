@@ -20,7 +20,10 @@ func on_hit(damage):
 	if p.game_state and p.game_state.health_bar:
 		p.game_state.health_bar.set_value(p.pv)
 
-	p.show_damage_popup(damage)
+	# popup dégâts (DIRECT module)
+	if p.popups_mod:
+		p.popups_mod.show_damage(damage)
+
 	p.update_can_heal()
 	p.hud_mod.refresh_hud_buttons()
 
@@ -29,11 +32,11 @@ func on_hit(damage):
 		hud = p.game_state.health_bar.get_parent()
 
 	if hud and hud.has_method("set_button_enabled"):
-		var can_heal_btn = p.pv < p.max_pv and p.heal_potions.size() > 0 and not p.in_cooldown
+		var can_heal_btn = (p.pv < p.max_pv and p.heal_potions.size() > 0 and not p.in_cooldown)
 		if hud.has_node("Gamepad/Health"):
 			hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal_btn)
 
-		var can_honey_btn = p.pv < p.max_pv and p.honey_potions.size() > 0 and not p.in_cooldown
+		var can_honey_btn = (p.pv < p.max_pv and p.honey_potions.size() > 0 and not p.in_cooldown)
 		if hud.has_node("Gamepad/Honey"):
 			hud.set_button_enabled(hud.get_node("Gamepad/Honey"), can_honey_btn)
 
@@ -44,6 +47,7 @@ func on_hit(damage):
 	await p.play_anim("onhit")
 
 	p.can_be_damaged = true
+
 
 func die():
 	if p.is_dead:
@@ -78,6 +82,7 @@ func die():
 
 	if p.game_state:
 		p.game_state.load_level(next_level)
+
 
 func reset_state():
 	if p.modules and p.modules.breath:

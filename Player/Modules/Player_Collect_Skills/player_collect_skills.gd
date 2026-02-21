@@ -30,7 +30,7 @@ func collect_camouflage(amount = 1):
 
 func collect_double_jump():
 	p.game_state.double_jump_unlocked = true
-	p.show_info_popup("🦘 Double saut débloqué !")
+	p.popups_mod.show_info_popup("🦘 Double saut débloqué !")
 
 func collect_oxygen(amount):
 	p.breath_left += amount
@@ -59,7 +59,7 @@ func collect_ramp():
 	# Sync côté Player (runtime)
 	p.can_ramp = true
 
-	p.show_info_popup("🤸 Tu peux maintenant ramper avec ctrl !")
+	p.popups_mod.show_info_popup("🤸 Tu peux maintenant ramper avec ctrl !")
 
 	# HUD
 	var hud = p.game_state.hud
@@ -108,5 +108,5 @@ func collect_sprint():
 			if a.has_animation("appear_sprint"):
 				a.play("appear_sprint")
 
-	p.show_info_popup("⚡ Tu peux maintenant sprinter avec Shift !")
+	p.popups_mod.show_info_popup("⚡ Tu peux maintenant sprinter avec Shift !")
 	p.hud_mod.refresh_hud_buttons()
