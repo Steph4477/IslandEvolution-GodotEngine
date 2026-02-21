@@ -121,8 +121,6 @@ skills → movement → items → combat → post_movement
 
 This guarantees deterministic updates and avoids timing issues.
 
----
-
 ## 📦 Player Modules
 
 - PlayerMovement
