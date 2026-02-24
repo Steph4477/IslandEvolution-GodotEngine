@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dhkid0wsh71wa"]
+[gd_scene format=3 uid="uid://dhkid0wsh71wa"]
 
 [ext_resource type="Script" uid="uid://ckwclcdasehtg" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.gd" id="1_co5vm"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_01lnk"]
@@ -57,6 +57,34 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_fjx1h"]
+resource_name = "die"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("25_aecmq"), ExtResource("26_nshgc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_wdxit"]
 resource_name = "floor_attack"
 length = 0.6
@@ -88,6 +116,54 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("10_f7es7"), ExtResource("12_pvx76"), ExtResource("13_40d2c"), ExtResource("14_7isv1")]
+}
+
+[sub_resource type="Animation" id="Animation_dia8b"]
+resource_name = "onhit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("23_agtog"), ExtResource("24_qs4ym")]
+}
+
+[sub_resource type="Animation" id="Animation_b5wxv"]
+resource_name = "recoil"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("9_68bdw"), ExtResource("8_rjuuk"), ExtResource("3_g5ibj")]
+}
+
+[sub_resource type="Animation" id="Animation_2asc4"]
+resource_name = "roar"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("19_edyq1"), ExtResource("20_a0kki"), ExtResource("21_3dnty"), ExtResource("22_ppobg")]
 }
 
 [sub_resource type="Animation" id="Animation_f7es7"]
@@ -140,82 +216,6 @@ tracks/0/keys = {
 "values": [ExtResource("3_g5ibj"), ExtResource("8_rjuuk"), ExtResource("9_68bdw")]
 }
 
-[sub_resource type="Animation" id="Animation_2asc4"]
-resource_name = "roar"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rotator/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("19_edyq1"), ExtResource("20_a0kki"), ExtResource("21_3dnty"), ExtResource("22_ppobg")]
-}
-
-[sub_resource type="Animation" id="Animation_dia8b"]
-resource_name = "onhit"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rotator/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("23_agtog"), ExtResource("24_qs4ym")]
-}
-
-[sub_resource type="Animation" id="Animation_fjx1h"]
-resource_name = "die"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rotator/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("25_aecmq"), ExtResource("26_nshgc")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Rotator/Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_b5wxv"]
-resource_name = "recoil"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rotator/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("9_68bdw"), ExtResource("8_rjuuk"), ExtResource("3_g5ibj")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
 _data = {
 &"RESET": SubResource("Animation_6utxn"),
@@ -236,55 +236,53 @@ radius = 38.832977
 [sub_resource type="CircleShape2D" id="CircleShape2D_7isv1"]
 radius = 32.38827
 
-[node name="AmphibiousCroco" type="CharacterBody2D" groups=["EnemiesSwim"]]
+[node name="AmphibiousCroco" type="CharacterBody2D" unique_id=1403221519 groups=["Enemies", "EnemiesSwim"]]
 z_index = 5
 collision_layer = 8
 collision_mask = 34
 script = ExtResource("1_co5vm")
 
-[node name="HealthBar" parent="." instance=ExtResource("2_01lnk")]
+[node name="HealthBar" parent="." unique_id=67917745 instance=ExtResource("2_01lnk")]
 position = Vector2(-43, -75)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1512054370]
 position = Vector2(47.5, 51.5)
 shape = SubResource("RectangleShape2D_x2fpe")
 
-[node name="Rotator" type="Node2D" parent="."]
+[node name="Rotator" type="Node2D" parent="." unique_id=310207886]
 position = Vector2(1, -2)
 scale = Vector2(1.07, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=856781916]
 position = Vector2(-2.2359695, -16.5)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_g5ibj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1178268176]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_1lwxd")
-}
+libraries/ = SubResource("AnimationLibrary_1lwxd")
 
-[node name="SwimArea" type="Area2D" parent="Rotator" groups=["Enemies"]]
+[node name="SwimArea" type="Area2D" parent="Rotator" unique_id=1913030287 groups=["Enemies"]]
 position = Vector2(-56.07476, 2)
 scale = Vector2(0.9345794, 1)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/SwimArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/SwimArea" unique_id=1247345195]
 position = Vector2(-14, 9)
 shape = SubResource("CircleShape2D_40d2c")
 
-[node name="FloorArea" type="Area2D" parent="Rotator" groups=["Enemies"]]
+[node name="FloorArea" type="Area2D" parent="Rotator" unique_id=1205120024 groups=["Enemies"]]
 position = Vector2(-1.6191444, 0.5)
 scale = Vector2(0.9345794, 1)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/FloorArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/FloorArea" unique_id=1847632680]
 position = Vector2(-63.267517, -2.5)
 shape = SubResource("CircleShape2D_7isv1")
 
-[node name="Sound" type="Node2D" parent="."]
+[node name="Sound" type="Node2D" parent="." unique_id=1001095364]
 
-[node name="Roar" type="AudioStreamPlayer" parent="Sound"]
+[node name="Roar" type="AudioStreamPlayer" parent="Sound" unique_id=554223891]
 stream = ExtResource("27_ow40j")
 volume_db = 4.388
 bus = &"Water"
