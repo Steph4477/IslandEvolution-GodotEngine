@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://p54rd7spc8op"]
+
+[ext_resource type="Script" uid="uid://dchqq4ku8r45" path="res://Enemies/EnemyBase/enemy_base.gd" id="1_pqxwl"]
+
+[node name="EnemyBase" type="CharacterBody2D" unique_id=1046648277]
+script = ExtResource("1_pqxwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1515713339]
+
+[node name="Rotator" type="Node2D" parent="." unique_id=1518831308]
+
+[node name="Modules" type="Node2D" parent="." unique_id=244976799]
