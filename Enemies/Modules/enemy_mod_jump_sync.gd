@@ -1,0 +1,23 @@
+extends Node
+class_name EnemyModJumpSync
+
+var enemy = null
+var player_prev_on_floor = true
+
+func setup(parent_enemy):
+	enemy = parent_enemy
+
+func update():
+	var p_on_floor = enemy.player.is_on_floor()
+	var player_started_jump = false
+
+	if player_prev_on_floor and not p_on_floor and enemy.player.velocity.y < 0:
+		player_started_jump = true
+
+	player_prev_on_floor = p_on_floor
+
+	if player_started_jump and enemy.is_on_floor():
+		enemy.velocity.y = enemy.jump_velocity
+
+		if not enemy.is_shooting and not enemy.is_attacking:
+			enemy.anim.play(enemy.jump_animation_name)

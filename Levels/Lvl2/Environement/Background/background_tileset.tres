@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://bdlsfsw2hywfm"]
+[gd_resource type="TileSet" format=3 uid="uid://bdlsfsw2hywfm"]
 
 [ext_resource type="Texture2D" uid="uid://cdndgete0p1ar" path="res://Levels/Lvl2/Environement/Background/3.png" id="1_r3myk"]
 [ext_resource type="Texture2D" uid="uid://0kilquf5v0wh" path="res://Levels/Lvl2/Environement/Background/4.png" id="2_onkx3"]
