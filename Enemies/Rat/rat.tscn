@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csklsid7fjxbo"]
+[gd_scene format=3 uid="uid://csklsid7fjxbo"]
 
 [ext_resource type="Script" uid="uid://4nndo6lu3ssx" path="res://Enemies/Rat/rat.gd" id="1_e4syr"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_hmr1k"]
@@ -128,48 +128,46 @@ radius = 9.055386
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(68, 40)
 
-[node name="Rat" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Rat" type="CharacterBody2D" unique_id=385022413 groups=["Enemies"]]
 z_index = 5
 scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_e4syr")
 
-[node name="HealthBar" parent="." instance=ExtResource("2_hmr1k")]
+[node name="HealthBar" parent="." unique_id=805646277 instance=ExtResource("2_hmr1k")]
 position = Vector2(49, -87)
 rotation = 3.14159
 scale = Vector2(1, -1.00374)
 
-[node name="Rotator" type="Node2D" parent="."]
+[node name="Rotator" type="Node2D" parent="." unique_id=987581955]
 
-[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=1422480198]
 modulate = Color(0.442911, 0.442911, 0.442911, 1)
 position = Vector2(-4, -14)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
 texture = ExtResource("7_vwo2e")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" groups=["Enemies"]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1975522029 groups=["Enemies"]]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_1lwxd")
-}
-autoplay = "walk"
+libraries/ = SubResource("AnimationLibrary_1lwxd")
+autoplay = &"walk"
 
-[node name="Area2D" type="Area2D" parent="Rotator" groups=["Enemies"]]
+[node name="Area2D" type="Area2D" parent="Rotator" unique_id=1992589566 groups=["Enemies"]]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/Area2D" unique_id=1510780016]
 position = Vector2(-45, -6)
 shape = SubResource("CircleShape2D_gg55r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1172142251]
 position = Vector2(-11, -3)
 shape = SubResource("RectangleShape2D_x2fpe")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1887748393]
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1805516076]
 position = Vector2(38, -30)
 
 [connection signal="body_entered" from="Rotator/Area2D" to="." method="_on_area_2d_body_entered"]

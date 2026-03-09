@@ -107,7 +107,7 @@ func win():
 	timer.stop()
 	chrono.stop_chrono()
 	chrono.visible = false
-	gs.player.show_info_popup("✅ Défi réussi !")
+	gs.player.show_info("✅ Défi réussi !")
 	
 	# 1) Dialogue 
 	await dialogue_win_toucan()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bfnii0n8mia6o"]
+[gd_scene format=4 uid="uid://bfnii0n8mia6o"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
 [ext_resource type="PackedScene" uid="uid://lt6m53hn7ait" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
@@ -196,119 +196,119 @@ _data = {
 &"fall": SubResource("Animation_4esaq")
 }
 
-[node name="lvl3" type="Node2D"]
+[node name="lvl3" type="Node2D" unique_id=287583743]
 position = Vector2(-52, 66)
 script = ExtResource("1_73pra")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=2021178916]
 position = Vector2(21, 23)
 
-[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
+[node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 z_index = 10
-position = Vector2(5244, 292)
+position = Vector2(4741, 833)
 
-[node name="FroggleSpawn" type="Marker2D" parent="Node2D"]
+[node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
 position = Vector2(2830, 730)
 
-[node name="platform" type="StaticBody2D" parent="Node2D"]
+[node name="platform" type="StaticBody2D" parent="Node2D" unique_id=2109720575]
 z_index = 5
 position = Vector2(-4, 34)
 collision_layer = 2
 
-[node name="Border" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border" type="CollisionShape2D" parent="Node2D/platform" unique_id=564876443]
 position = Vector2(-74.75, 387)
 shape = SubResource("RectangleShape2D_ekrdk")
 
-[node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border2" type="CollisionShape2D" parent="Node2D/platform" unique_id=1166325203]
 position = Vector2(14245, 507)
 shape = SubResource("RectangleShape2D_djaxt")
 
-[node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border3" type="CollisionShape2D" parent="Node2D/platform" unique_id=1593811148]
 position = Vector2(3714, 1330.0938)
 shape = SubResource("RectangleShape2D_wsvun")
 
-[node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border4" type="CollisionShape2D" parent="Node2D/platform" unique_id=78992822]
 position = Vector2(6134.5195, -851)
 shape = SubResource("RectangleShape2D_wsvun")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform" unique_id=119263704]
 position = Vector2(524, 1467.8906)
 shape = SubResource("RectangleShape2D_hag10")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platform" unique_id=987803284]
 position = Vector2(1167, 1468.7813)
 shape = SubResource("RectangleShape2D_hag10")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/platform" unique_id=70992645]
 position = Vector2(3630, 1470)
 shape = SubResource("RectangleShape2D_hag10")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1405275903]
 position = Vector2(9915, 1010.75)
 shape = SubResource("RectangleShape2D_nqfku")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=133540081]
 position = Vector2(-676, 196)
 polygon = PackedVector2Array(5301, 818, 5381, 770, 8278, 773, 8278, 833, 5624, 812, 5066, 1074, 5139, 978)
 
-[node name="Sound" type="Node2D" parent="Node2D"]
+[node name="Sound" type="Node2D" parent="Node2D" unique_id=1740515804]
 
-[node name="WaterSound" type="AudioStreamPlayer" parent="Node2D/Sound"]
+[node name="WaterSound" type="AudioStreamPlayer" parent="Node2D/Sound" unique_id=2045638603]
 stream = ExtResource("3_06aic")
 volume_db = -4.062
 autoplay = true
 bus = &"Water"
 
-[node name="WaterSplashTree" type="AudioStreamPlayer" parent="Node2D/Sound"]
+[node name="WaterSplashTree" type="AudioStreamPlayer" parent="Node2D/Sound" unique_id=194552240]
 stream = ExtResource("3_xni6f")
 volume_db = 4.622
 bus = &"Water"
 
-[node name="BirdsSound" type="AudioStreamPlayer" parent="Node2D/Sound"]
+[node name="BirdsSound" type="AudioStreamPlayer" parent="Node2D/Sound" unique_id=290088660]
 stream = ExtResource("4_06aic")
 volume_db = 4.65
 autoplay = true
 bus = &"Birds"
 
-[node name="ChronoZone" parent="Node2D" instance=ExtResource("3_4esaq")]
+[node name="ChronoZone" parent="Node2D" unique_id=839295219 instance=ExtResource("3_4esaq")]
 z_index = 5
 position = Vector2(1176, 1214)
 scale = Vector2(5, 1)
 
-[node name="World" type="Node2D" parent="Node2D"]
+[node name="World" type="Node2D" parent="Node2D" unique_id=277901197]
 position = Vector2(-21, -23)
 
-[node name="WaterSprite" type="Sprite2D" parent="Node2D/World"]
+[node name="WaterSprite" type="Sprite2D" parent="Node2D/World" unique_id=1269696601]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_odqky")
 position = Vector2(5551.4995, 1367)
 scale = Vector2(12.222575, 2.084961)
 texture = SubResource("CanvasTexture_qaw7r")
 
-[node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World"]
+[node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World" unique_id=1630989858]
 
-[node name="SkyLayer" type="ParallaxLayer" parent="Node2D/World/WorldParallaxe"]
+[node name="SkyLayer" type="ParallaxLayer" parent="Node2D/World/WorldParallaxe" unique_id=453625317]
 z_index = -100
 position = Vector2(3225, 682)
 
-[node name="SkySprite" type="Sprite2D" parent="Node2D/World/WorldParallaxe/SkyLayer"]
+[node name="SkySprite" type="Sprite2D" parent="Node2D/World/WorldParallaxe/SkyLayer" unique_id=309829285]
 z_index = -100
 position = Vector2(-3617, -3871)
 scale = Vector2(9.79427, 8.052735)
 texture = ExtResource("8_qaw7r")
 centered = false
 
-[node name="DecorsTiles" type="Node2D" parent="Node2D/World"]
+[node name="DecorsTiles" type="Node2D" parent="Node2D/World" unique_id=1197267650]
 
-[node name="TileMapLayer0" type="TileMapLayer" parent="Node2D/World/DecorsTiles"]
+[node name="TileMapLayer0" type="TileMapLayer" parent="Node2D/World/DecorsTiles" unique_id=1947055140]
 modulate = Color(0.19315353, 0.19315353, 0.19315347, 1)
 z_index = 50
 position = Vector2(-22, 939)
 tile_map_data = PackedByteArray("AAAtACMAAgAHAAEAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAABxACMAAgADAAUAAAAPABsAAgAAAAIAAACxACAAAgAAAAIAAADHACMAAgAAAAIAAADQAB0AAgABAAIAAAByACsAAgAAAAEAAACzACAAAgAAAAEAAAD5ACgAAgAAAAEAAADwACYAAgAAAAMAAAD9ACUAAgADAAQAAAABAScAAgAAAAMAAAAHARsAAgAAAAIAAAAcASYAAgAAAAMAAAAlASMAAgAHAAEAAAAvAR8AAgAFAAIAAAA+ASIAAgAAAAMAAABIASMAAgAEAAIAAABYASYAAgAFAAIAAABpASMAAgADAAUAAABqASsAAgAAAAEAAAByAScAAgAAAAMAAACLASUAAgACAAIAAACMASUAAgACAAIAAACjAScAAgAHAAMAAACpASAAAgAAAAIAAACrASAAAgAAAAEAAAC0ASIAAgAEAAIAAAC/ASMAAgAAAAIAAADIAR0AAgABAAIAAADMASUAAgAHAAMAAADcASEAAgADAAQAAADcASIAAgADAAQAAADiASMAAgAEAAIAAADxASgAAgAAAAEAAAA=")
 tile_set = ExtResource("5_yixkb")
 
-[node name="TileMapLayer1" type="TileMapLayer" parent="Node2D/World/DecorsTiles"]
+[node name="TileMapLayer1" type="TileMapLayer" parent="Node2D/World/DecorsTiles" unique_id=1839448235]
 modulate = Color(0.26050618, 0.26050612, 0.26050606, 1)
 z_index = 40
 position = Vector2(-4, 667)
@@ -316,7 +316,7 @@ scale = Vector2(0.4, 0.4)
 tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("5_yixkb")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="Node2D/World/DecorsTiles"]
+[node name="TileMapLayer2" type="TileMapLayer" parent="Node2D/World/DecorsTiles" unique_id=473285571]
 modulate = Color(0.427493, 0.42749307, 0.42749307, 1)
 z_index = 4
 position = Vector2(-98, 590)
@@ -324,7 +324,7 @@ scale = Vector2(0.3, 0.3)
 tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAZAFkAAgAAAAIAAAAiAFQAAgAAAAIAAACSAFMAAgABAAIAAACaAE0AAgABAAIAAADVAFwAAgAAAAMAAADMAFUAAgAAAAMAAADDAGAAAgAAAAMAAAA/AFwAAgAGAAIAAABkAFQAAgAGAAIAAABGAFkAAgACAAIAAAA0AVEAAgAEAAAAAADRAGUAAgAHAAIAAAApAVMAAgAHAAIAAABaAVIAAgAHAAIAAABhAV4AAgAHAAIAAACDAVIAAgAHAAIAAACeAVcAAgAHAAIAAAC2AU4AAgAHAAIAAADjAVQAAgAHAAIAAADPAU4AAgAHAAIAAAD5AVQAAgAHAAIAAAAhAk8AAgAHAAIAAABdAk8AAgAHAAIAAAAKAlMAAgAHAAIAAAB2AlIAAgAHAAIAAAB3AlIAAgAHAAIAAACwAlEAAgAHAAIAAACxAlEAAgAHAAIAAADRAlMAAgAHAAIAAADrAlEAAgAHAAIAAADsAlAAAgAHAAIAAAASA1gAAgAHAAIAAAARA1gAAgAHAAIAAAAgA1gAAgAHAAIAAAAhA1gAAgAHAAIAAAAhA1cAAgAHAAIAAAAiA1cAAgAHAAIAAABlA1EAAgAHAAIAAACGA1YAAgAHAAIAAACvA1IAAgAHAAIAAACwA1IAAgAHAAIAAACwA1EAAgAHAAIAAADlA1gAAgAHAAIAAADmA1cAAgAHAAIAAABKA2AAAgAFAAEAAABEA1UAAgAFAAEAAAAtA10AAgAFAAEAAABiA00AAgAFAAIAAABxA0wAAgAFAAIAAABrA1AAAgAFAAIAAACZA1wAAgACAAIAAACaA1wAAgACAAIAAADlAEwAAgAGAAIAAADuAE8AAgAGAAIAAADzAEwAAgAGAAIAAADoAFIAAgAGAAIAAAD1AFUAAgAGAAIAAAArAE0AAgABAAIAAAAfAE8AAgABAAIAAAAjAEoAAgABAAIAAAAoAFUAAgABAAIAAABTAFUAAgAFAAEAAABbAFcAAgAFAAEAAABtAFYAAgAFAAEAAAB1AFcAAgAFAAEAAACAAFEAAgAFAAEAAAA/AFEAAgAFAAEAAABJAFMAAgAFAAEAAAAIAU4AAgAAAAMAAAANAVUAAgAAAAMAAAASAVEAAgAAAAMAAAAZAVUAAgAAAAMAAAAfAU4AAgAAAAMAAAAgAVwAAgAAAAMAAAATAVsAAgAAAAMAAAAcAWAAAgABAAMAAABtAU8AAgAAAAIAAAB0AVQAAgAAAAIAAACsAE8AAgAAAAIAAACzAFcAAgAAAAIAAACzAFYAAgAAAAIAAAC2AE8AAgAAAAIAAACHAGUAAgAAAAIAAABLAGoAAgAAAAIAAACbAU0AAgAFAAIAAACSAUkAAgAFAAIAAACgAUgAAgAFAAIAAADMAE0AAgAFAAIAAADXAEsAAgAFAAIAAADkAEsAAgAFAAIAAACmAEoAAgAEAAIAAACJAEoAAgAEAAIAAACXAksAAgAEAAIAAABpAk4AAgAEAAIAAABSAk4AAgAEAAIAAACYA0gAAgAEAAIAAACKA0oAAgAEAAIAAAA=")
 tile_set = ExtResource("5_yixkb")
 
-[node name="TileMapLayer3" type="TileMapLayer" parent="Node2D/World/DecorsTiles"]
+[node name="TileMapLayer3" type="TileMapLayer" parent="Node2D/World/DecorsTiles" unique_id=710713990]
 modulate = Color(1, 0.9906667, 0.99, 1)
 z_index = 2
 position = Vector2(-563, -389)
@@ -332,81 +332,79 @@ scale = Vector2(1.2, 1.2)
 tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAkADoAAgAGAAEAAAByADoAAgAGAAEAAACKADkAAgAGAAEAAAB+ADoAAgAHAAEAAABRADoAAgAHAAEAABA9ADkAAgAGAAAAAABfADkAAgAHAAAAAABpADoAAgAEAAQAAADMADkAAgAHAAAAAACwADoAAgAHAAAAAABsADkAAgAHAAAAAADUADoAAgAGAAEAAADtADkAAgAGAAAAAAABAToAAgAHAAEAABAPATkAAgAHAAAAAAAyADkAAgAHAAAAAABNADkAAgAHAAAAAACZADkAAgAGAAEAABDhADkAAgAGAAEAABA=")
 tile_set = ExtResource("5_yixkb")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Node2D/World/DecorsTiles"]
+[node name="TileMapLayer" type="TileMapLayer" parent="Node2D/World/DecorsTiles" unique_id=725966665]
 position = Vector2(2092, -789)
 tile_map_data = PackedByteArray("AACF/1kAAgAGAAQAAACl/1kAAgAHAAQAAADF/1kAAgAHAAQAABDl/1kAAgAGAAQAABAFAFkAAgAGAAQAAAAlAFkAAgAGAAQAABBFAFkAAgAHAAQAABBlAFkAAgAHAAQAAACEAFkAAgAGAAQAAACkAFkAAgAHAAQAAADEAFkAAgAHAAQAABDkAFkAAgAGAAQAABAEAVkAAgAGAAQAAAAkAVkAAgAHAAQAAABEAVkAAgAHAAQAABBkAVkAAgAHAAQAAACEAVkAAgAHAAQAABA=")
 tile_set = ExtResource("5_yixkb")
 
-[node name="SwimZone" type="Node2D" parent="Node2D/World"]
+[node name="SwimZone" type="Node2D" parent="Node2D/World" unique_id=530466928]
 script = ExtResource("10_4tc27")
 
-[node name="Area2D" type="Area2D" parent="Node2D/World/SwimZone"]
+[node name="Area2D" type="Area2D" parent="Node2D/World/SwimZone" unique_id=1266717649]
 collision_layer = 32
 collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=517564053]
 position = Vector2(212.5, 1517.125)
 shape = SubResource("RectangleShape2D_n7unt")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=1122335787]
 position = Vector2(858.5, 1518.625)
 shape = SubResource("RectangleShape2D_4tc27")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=1910255597]
 position = Vector2(2395, 1537.5)
 shape = SubResource("RectangleShape2D_sdlip")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=746719110]
 position = Vector2(4453.5, 1367)
 shape = SubResource("RectangleShape2D_06aic")
 
-[node name="CocoLoot" parent="Node2D/World" instance=ExtResource("11_6n0ay")]
+[node name="CocoLoot" parent="Node2D/World" unique_id=257516232 instance=ExtResource("11_6n0ay")]
 z_index = 6
 
-[node name="TreeBranch" parent="Node2D/World" instance=ExtResource("4_gstoe")]
+[node name="TreeBranch" parent="Node2D/World" unique_id=1768220436 instance=ExtResource("4_gstoe")]
 z_index = 5
 position = Vector2(2096, 1100)
 scale = Vector2(0.8, 0.5)
 
-[node name="Liana5" parent="Node2D/World" instance=ExtResource("11_sdlip")]
+[node name="Liana5" parent="Node2D/World" unique_id=210638943 instance=ExtResource("11_sdlip")]
 z_index = 3
 position = Vector2(3992, 248)
 scale = Vector2(0.4, 1)
 
-[node name="lianas" type="Node2D" parent="Node2D/World"]
+[node name="lianas" type="Node2D" parent="Node2D/World" unique_id=1871030560]
 z_index = 5
 position = Vector2(184, 2000)
 
-[node name="Liana" parent="Node2D/World/lianas" instance=ExtResource("11_sdlip")]
+[node name="Liana" parent="Node2D/World/lianas" unique_id=1822516732 instance=ExtResource("11_sdlip")]
 z_index = 3
 position = Vector2(1318, 270)
 scale = Vector2(0.4, 1)
 
-[node name="Liana2" parent="Node2D/World/lianas" instance=ExtResource("11_sdlip")]
+[node name="Liana2" parent="Node2D/World/lianas" unique_id=82040700 instance=ExtResource("11_sdlip")]
 z_index = 3
 position = Vector2(1945, 272)
 scale = Vector2(0.4, 1)
 
-[node name="Liana3" parent="Node2D/World/lianas" instance=ExtResource("11_sdlip")]
+[node name="Liana3" parent="Node2D/World/lianas" unique_id=1763335170 instance=ExtResource("11_sdlip")]
 z_index = 3
 position = Vector2(2558, 243)
 scale = Vector2(0.4, 1)
 
-[node name="Liana4" parent="Node2D/World/lianas" instance=ExtResource("11_sdlip")]
+[node name="Liana4" parent="Node2D/World/lianas" unique_id=1393814878 instance=ExtResource("11_sdlip")]
 z_index = 3
 position = Vector2(3156, 265)
 scale = Vector2(0.4, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/World"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/World" unique_id=188075058]
 root_node = NodePath("../lianas")
-libraries = {
-&"": SubResource("AnimationLibrary_6n0ay")
-}
+libraries/ = SubResource("AnimationLibrary_6n0ay")
 
-[node name="Nenuphars" type="Node2D" parent="Node2D/World"]
+[node name="Nenuphars" type="Node2D" parent="Node2D/World" unique_id=1596580178]
 position = Vector2(21, 23)
 
-[node name="Nenuphar" type="Sprite2D" parent="Node2D/World/Nenuphars"]
+[node name="Nenuphar" type="Sprite2D" parent="Node2D/World/Nenuphars" unique_id=790255653]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
 position = Vector2(533, 1163)
 scale = Vector2(0.8, 0.8)
@@ -415,7 +413,7 @@ hframes = 8
 vframes = 6
 frame = 18
 
-[node name="Nenuphar2" type="Sprite2D" parent="Node2D/World/Nenuphars"]
+[node name="Nenuphar2" type="Sprite2D" parent="Node2D/World/Nenuphars" unique_id=974171431]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
 position = Vector2(1158, 1167)
 scale = Vector2(0.8, 0.8)
@@ -424,7 +422,7 @@ hframes = 8
 vframes = 6
 frame = 18
 
-[node name="Nenuphar3" type="Sprite2D" parent="Node2D/World/Nenuphars"]
+[node name="Nenuphar3" type="Sprite2D" parent="Node2D/World/Nenuphars" unique_id=1791146096]
 modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
 position = Vector2(3591, 1174)
 scale = Vector2(-0.8, 0.8)
@@ -433,64 +431,64 @@ hframes = 8
 vframes = 6
 frame = 18
 
-[node name="Ennemies" type="Node2D" parent="Node2D/World"]
+[node name="Ennemies" type="Node2D" parent="Node2D/World" unique_id=578715975]
 z_index = 5
 position = Vector2(-1843, 9)
 
-[node name="SwimCrocodile" parent="Node2D/World/Ennemies" instance=ExtResource("12_12vmq")]
+[node name="SwimCrocodile" parent="Node2D/World/Ennemies" unique_id=922786221 instance=ExtResource("12_12vmq")]
 position = Vector2(3513, 1180)
 scale = Vector2(2, 2)
 
-[node name="Cannibal" parent="Node2D/World/Ennemies" instance=ExtResource("16_qaw7r")]
+[node name="Cannibal" parent="Node2D/World/Ennemies" unique_id=1707330406 instance=ExtResource("16_qaw7r")]
 position = Vector2(11033, 959)
 
-[node name="AmphibiousCroco" parent="Node2D/World/Ennemies" instance=ExtResource("17_2nymq")]
+[node name="AmphibiousCroco" parent="Node2D/World/Ennemies" unique_id=939733752 instance=ExtResource("17_2nymq")]
 position = Vector2(8429, 942)
 
-[node name="CannibalChief" parent="Node2D/World/Ennemies" instance=ExtResource("18_7qbkl")]
+[node name="CannibalChief" parent="Node2D/World/Ennemies" unique_id=837160356 instance=ExtResource("18_7qbkl")]
 position = Vector2(12524, 951)
 
-[node name="Flower" parent="Node2D/World" instance=ExtResource("14_4esaq")]
+[node name="Flower" parent="Node2D/World" unique_id=1069062389 instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
 scale = Vector2(0.5, 0.5)
 
-[node name="Village" type="Sprite2D" parent="."]
+[node name="Village" type="Sprite2D" parent="." unique_id=1938003116]
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
 z_index = 4
 position = Vector2(7028, 844)
 scale = Vector2(-1, 1)
 texture = ExtResource("17_06aic")
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="Node2D2" type="Node2D" parent="." unique_id=2039167469]
 
-[node name="Tree_perch" parent="Node2D2" instance=ExtResource("19_8n178")]
+[node name="Tree_perch" parent="Node2D2" unique_id=9919485 instance=ExtResource("19_8n178")]
 z_index = 4
 position = Vector2(5371, 460)
 scale = Vector2(1.4, 1.4)
 
-[node name="Spear_rack" parent="Node2D2" instance=ExtResource("20_xni6f")]
+[node name="Spear_rack" parent="Node2D2" unique_id=438431408 instance=ExtResource("20_xni6f")]
 z_index = 5
 position = Vector2(6901, 889)
 scale = Vector2(0.15, 0.15)
 
-[node name="HiddenTrap" parent="." instance=ExtResource("21_odqky")]
+[node name="HiddenTrap" parent="." unique_id=2101416875 instance=ExtResource("21_odqky")]
 position = Vector2(7754, 1139)
 
-[node name="BeeHive" parent="." instance=ExtResource("24_vaysu")]
+[node name="BeeHive" parent="." unique_id=2050925712 instance=ExtResource("24_vaysu")]
 z_index = 20
 position = Vector2(5592, 265)
 scale = Vector2(0.1, 0.1)
 
-[node name="Chameleon" parent="." instance=ExtResource("26_nqfku")]
+[node name="Chameleon" parent="." unique_id=2034943792 instance=ExtResource("26_nqfku")]
 z_index = 20
 position = Vector2(4996, 422)
 rotation = 0.32637656
 scale = Vector2(-0.25, 0.25)
 
-[node name="Exit" parent="." instance=ExtResource("26_twwc1")]
+[node name="Exit" parent="." unique_id=961748312 instance=ExtResource("26_twwc1")]
 position = Vector2(11798, 961)
 
-[node name="BagLoot" parent="." instance=ExtResource("27_twwc1")]
+[node name="BagLoot" parent="." unique_id=1156845004 instance=ExtResource("27_twwc1")]
 position = Vector2(6152, 1000)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
