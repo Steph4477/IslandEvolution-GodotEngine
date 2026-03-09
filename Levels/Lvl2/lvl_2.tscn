@@ -149,7 +149,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1372434146]
 z_index = 8
-position = Vector2(1209, 714)
+position = Vector2(306, 799)
 
 [node name="Spear_rack" parent="Node2D" unique_id=176207966 instance=ExtResource("3_04g0o")]
 position = Vector2(2236, 629)
@@ -400,18 +400,18 @@ position = Vector2(3779.0002, 133.99042)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
-[node name="Pygmées" type="Node2D" parent="Node2D/Creatures" unique_id=1995372841]
+[node name="Pygmys" type="Node2D" parent="Node2D/Creatures" unique_id=1995372841]
 position = Vector2(3828, -218.01)
 
-[node name="Pygmy" parent="Node2D/Creatures/Pygmées" unique_id=1783296698 instance=ExtResource("13_04g0o")]
+[node name="Pygmy" parent="Node2D/Creatures/Pygmys" unique_id=1783296698 instance=ExtResource("13_04g0o")]
 position = Vector2(2705.0002, 291.9934)
 scale = Vector2(1, 1)
 
-[node name="Pygmy2" parent="Node2D/Creatures/Pygmées" unique_id=1120375186 instance=ExtResource("13_04g0o")]
+[node name="Pygmy2" parent="Node2D/Creatures/Pygmys" unique_id=1120375186 instance=ExtResource("13_04g0o")]
 position = Vector2(-3230.9995, 429.00848)
 scale = Vector2(1, 1)
 
-[node name="Pygmy3" parent="Node2D/Creatures/Pygmées" unique_id=1379821880 instance=ExtResource("13_04g0o")]
+[node name="Pygmy3" parent="Node2D/Creatures/Pygmys" unique_id=1379821880 instance=ExtResource("13_04g0o")]
 position = Vector2(-5020.003, -849.98706)
 scale = Vector2(1, 1)
 

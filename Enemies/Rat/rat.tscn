@@ -122,9 +122,6 @@ _data = {
 &"walk": SubResource("Animation_j2nn7")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gg55r"]
-radius = 9.055386
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(68, 40)
 
@@ -154,13 +151,6 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_1lwxd")
 autoplay = &"walk"
 
-[node name="Area2D" type="Area2D" parent="Rotator" unique_id=1992589566 groups=["Enemies"]]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/Area2D" unique_id=1510780016]
-position = Vector2(-45, -6)
-shape = SubResource("CircleShape2D_gg55r")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1172142251]
 position = Vector2(-11, -3)
 shape = SubResource("RectangleShape2D_x2fpe")
@@ -170,6 +160,4 @@ shape = SubResource("RectangleShape2D_x2fpe")
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1805516076]
 position = Vector2(38, -30)
 
-[connection signal="body_entered" from="Rotator/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Rotator/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

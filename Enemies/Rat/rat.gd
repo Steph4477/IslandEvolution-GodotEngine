@@ -1,6 +1,7 @@
 extends EnemyGroundBase
 
 @export var sprint_loot_scene = preload("res://Player/Skills/Sprint/Sprint.tscn")
+@export var melee_distance = 70.0
 
 @onready var health_bar = $HealthBar/ProgressBar
 @onready var sprite = $Rotator/Sprite2D
@@ -12,7 +13,6 @@ extends EnemyGroundBase
 var melee_mod = EnemyModMelee.new()
 
 func _ready():
-
 	max_hp = 300
 	damage = 100
 	speed = 400
@@ -26,8 +26,47 @@ func _ready():
 
 	attack_timer.stop()
 
-func attack():
+func _physics_process(delta):
+	apply_gravity(delta)
 
+	if is_dead or is_attacking:
+		velocity.x = 0
+		move_and_slide()
+		return
+
+	if player:
+		target_player()
+		flip()
+		melee_mod.update_state()
+
+		if in_melee:
+			velocity.x = 0
+			if anim.current_animation != "idle":
+				anim.play("idle")
+		else:
+			move_to_target()
+	else:
+		velocity.x = 0
+		if anim.current_animation != "idle":
+			anim.play("idle")
+
+	move_and_slide()
+
+func move_to_target():
+	if distance < attack_range and dx > stop_distance:
+		velocity.x = speed
+		if anim.current_animation != "walk":
+			anim.play("walk")
+	elif distance < attack_range and dx < -stop_distance:
+		velocity.x = -speed
+		if anim.current_animation != "walk":
+			anim.play("walk")
+	else:
+		velocity.x = 0
+		if anim.current_animation != "idle":
+			anim.play("idle")
+
+func attack():
 	if is_dead:
 		return
 
@@ -35,46 +74,25 @@ func attack():
 		return
 
 	is_attacking = true
-
 	velocity.x = 0
-
 	anim.play("attack")
-
 	player.damage_mod.on_hit(damage)
-
 	await anim.animation_finished
-
 	is_attacking = false
 
 func die():
-
 	is_dead = true
 	in_melee = false
-
 	attack_timer.stop()
-
 	velocity = Vector2.ZERO
-
 	anim.play("die")
-
 	await anim.animation_finished
 
 	var loot = sprint_loot_scene.instantiate()
-
 	get_parent().add_child(loot)
-
 	loot.global_position = spawn_point.global_position
 
 	queue_free()
 
-func _on_area_2d_body_entered(body):
-
-	melee_mod.on_body_entered(body)
-
-func _on_area_2d_body_exited(body):
-
-	melee_mod.on_body_exited(body)
-
 func _on_timer_timeout():
-
 	melee_mod.on_timer_timeout()
