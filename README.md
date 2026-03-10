@@ -12,11 +12,11 @@ Island Evolution is both a game and a technical architecture showcase.
 
 It demonstrates:
 
-- Scalable modular design  
-- Clean separation of concerns  
-- Centralized state management  
-- Advanced gameplay system integration  
-- Production-ready project organization  
+- Scalable modular design
+- Clean separation of concerns
+- Centralized state management
+- Advanced gameplay system integration
+- Production-ready project organization
 
 ---
 
@@ -38,10 +38,10 @@ Moko evolves through loot-driven progression.
 
 Every collectible — 🍌 fruits, 🦴 bones, 🗡️ weapons, 🌀 skills, 💠 totemic essences — unlocks:
 
-- New abilities  
-- New combat options  
-- Visual transformation  
-- New interaction mechanics  
+- New abilities
+- New combat options
+- Visual transformation
+- New interaction mechanics
 
 Progression is systemic, not scripted.
 
@@ -70,9 +70,9 @@ Progression is systemic, not scripted.
 
 Selectable projectile weapons:
 
-- Coco  
-- Bone  
-- Lance  
+- Coco
+- Bone
+- Lance
 
 Three gameplay modes:
 
@@ -133,28 +133,86 @@ This guarantees deterministic updates and avoids timing issues.
 - PlayerBreath
 - PlayerEffects
 
-
 # 🏗 Architecture Diagram
+
+## Player
 
 ```
 GameState
    │
    ├── Player (Orchestrator)
-   │       ├── PlayerMovement
-   │       ├── PlayerCombat
-   │       ├── PlayerSkills
-   │       ├── PlayerCollectItems
-   │       ├── PlayerCollectSkills
-   │       ├── PlayerDamage
-   │       ├── PlayerBreath
-   │       └── PlayerEffects
+   │       ├── Modules
+   │       │      ├── PlayerMovement
+   │       │      ├── PlayerCombat
+   │       │      ├── PlayerSkills
+   │       │      ├── PlayerCollectItems
+   │       │      ├── PlayerCollectSkills
+   │       │      ├── PlayerDamage
+   │       │      ├── PlayerBreath
+   │       │      └── PlayerEffects
    │
-   ├── HUD (State Reflection Only)
+   ├── HUD (State reflection only)
    │
-   └── Enemies (Future EnemyBase)
+   └── Enemies (EnemyBase architecture)
 ```
 
 ---
+
+## Enemy Example
+
+```mermaid
+flowchart TD
+
+EnemyBase --> EnemyGroundBase
+
+EnemyGroundBase --> Rat
+EnemyGroundBase --> Pygmy
+
+Pygmy --> MeleeModule
+Pygmy --> ThrowModule
+Pygmy --> JumpModule
+
+Rat --> MeleeModule
+```
+
+---
+
+## Inheritance Architecture (Detailed)
+
+```mermaid
+flowchart TD
+
+    EnemyBase["enemy_base.gd
+    Handles:
+    - HP management
+    - gravity
+    - facing direction
+    - common hooks
+    - module orchestration"]
+
+    EnemyGroundBase["enemy_ground_base.gd
+    Handles:
+    - ground movement
+    - gravity + move_and_slide
+    - shared logic for ground enemies"]
+
+    Enemy["enemy scripts (rat.gd, pygmy.gd, ...)
+    Handles:
+    - specific configuration
+    - exported variables
+    - animations"]
+
+    EnemyBase --> EnemyGroundBase
+    EnemyGroundBase --> Enemy
+```
+
+---
+
+## Module Sharing (DRY Principle)
+
+- **MeleeModule** is shared between multiple enemies (Rat, Pygmy, ...).
+- Enemy abilities are implemented as **reusable modules**.
+- This architecture avoids **code duplication** and keeps enemy scripts lightweight.
 
 ## 🌍 GameState (Global Manager)
 
@@ -198,10 +256,10 @@ Visual style: semi-realistic cartoon with clean outlines and detailed textures.
 
 # 🗺 Current Levels
 
-- Jungle  
-- Temple  
-- Spider Boss  
-- Mangrove (in progress)  
+- Jungle
+- Temple
+- Spider Boss
+- Mangrove (in progress)
 - Toucan (planned)
 
 ---
@@ -217,7 +275,6 @@ Visual style: semi-realistic cartoon with clean outlines and detailed textures.
 ---
 
 ## 📷 Screenshots & Media
-
 
 🎬 Click on the image below to watch the gameplay video:
 [![Voir la vidéo](https://imgur.com/L6p97KP.png)](https://youtu.be/8XeBQ5ShogQ)
@@ -255,7 +312,7 @@ Open `project.godot` in Godot Editor.
 
 # 👤 Developer
 
-Stéphane Morel  
+Stéphane Morel
 Game Developer — Modular Gameplay Architecture Focus
 
 ---
