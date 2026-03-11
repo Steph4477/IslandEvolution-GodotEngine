@@ -182,28 +182,28 @@ Rat --> MeleeModule
 ```mermaid
 flowchart TD
 
-    EnemyBase["enemy_base.gd
+	EnemyBase["enemy_base.gd
     Handles:
     - HP management
     - gravity
     - facing direction
     - common hooks
-    - module orchestration"]
+	- module orchestration"]
 
-    EnemyGroundBase["enemy_ground_base.gd
+	EnemyGroundBase["enemy_ground_base.gd
     Handles:
     - ground movement
     - gravity + move_and_slide
-    - shared logic for ground enemies"]
+	- shared logic for ground enemies"]
 
-    Enemy["enemy scripts (rat.gd, pygmy.gd, ...)
+	Enemy["enemy scripts (rat.gd, pygmy.gd, ...)
     Handles:
     - specific configuration
     - exported variables
-    - animations"]
+	- animations"]
 
-    EnemyBase --> EnemyGroundBase
-    EnemyGroundBase --> Enemy
+	EnemyBase --> EnemyGroundBase
+	EnemyGroundBase --> Enemy
 ```
 
 ---

@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bguj7ao83li82" path="res://Enemies/Rat/3.png" id="28_qpyqf"]
 [ext_resource type="Texture2D" uid="uid://i4rdun4lr2ag" path="res://Enemies/Rat/4.png" id="29_f5yxl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(68, 40)
+
 [sub_resource type="Animation" id="Animation_gg55r"]
 length = 0.001
 tracks/0/type = "value"
@@ -122,20 +125,29 @@ _data = {
 &"walk": SubResource("Animation_j2nn7")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(68, 40)
-
 [node name="Rat" type="CharacterBody2D" unique_id=385022413 groups=["Enemies"]]
 z_index = 5
 scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_e4syr")
+speed = 100
+attack_range = 100
+stop_distance = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1172142251]
+position = Vector2(-11, -3)
+shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="HealthBar" parent="." unique_id=805646277 instance=ExtResource("2_hmr1k")]
 position = Vector2(49, -87)
 rotation = 3.14159
 scale = Vector2(1, -1.00374)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1887748393]
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1805516076]
+position = Vector2(38, -30)
 
 [node name="Rotator" type="Node2D" parent="." unique_id=987581955]
 
@@ -151,13 +163,4 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_1lwxd")
 autoplay = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1172142251]
-position = Vector2(-11, -3)
-shape = SubResource("RectangleShape2D_x2fpe")
-
-[node name="Timer" type="Timer" parent="." unique_id=1887748393]
-
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1805516076]
-position = Vector2(38, -30)
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

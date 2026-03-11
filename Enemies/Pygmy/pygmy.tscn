@@ -180,6 +180,9 @@ scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_t1248")
+speed = 100
+attack_range = 100
+stop_distance = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935019652]
 position = Vector2(-1.5, -1.5)

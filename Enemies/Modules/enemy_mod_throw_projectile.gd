@@ -6,56 +6,85 @@ var enemy = null
 func setup(parent_enemy):
 	enemy = parent_enemy
 
-func on_timer_timeout():
+func can_throw():
 	if enemy.is_dead:
-		return
+		return false
 
 	if enemy.is_attacking:
-		return
+		return false
 
 	if enemy.is_shooting:
-		return
-
-	if enemy.hit_locked:
-		return
+		return false
 
 	if enemy.in_melee:
-		return
+		return false
+
+	if enemy.distance <= enemy.melee_distance:
+		return false
+
+	if enemy.player == null:
+		enemy.refresh_player()
+		if enemy.player == null:
+			return false
+
+	if enemy.player.is_dead:
+		return false
 
 	if enemy.distance < enemy.min_shoot_distance:
-		return
+		return false
 
 	if enemy.distance > enemy.max_shoot_distance:
+		return false
+
+	return true
+
+func on_timer_timeout():
+	if not can_throw():
 		return
 
-	if enemy.player.is_dead:
-		return
+	throw_projectile()
 
-	shoot()
-
-func shoot():
-	if enemy.player.is_dead:
-		enemy.is_shooting = false
-		return
-
+func throw_projectile():
 	enemy.is_shooting = true
 	enemy.velocity.x = 0
-	enemy.anim.play(enemy.projectile_attack_animation)
+
+	if enemy.anim.current_animation != enemy.projectile_attack_animation:
+		enemy.anim.play(enemy.projectile_attack_animation)
 
 	await enemy.get_tree().create_timer(enemy.projectile_spawn_delay).timeout
 
+	if enemy.is_dead:
+		enemy.is_shooting = false
+		return
+
+	if enemy.player == null:
+		enemy.refresh_player()
+		if enemy.player == null:
+			enemy.is_shooting = false
+			return
+
+	spawn_projectile()
+
+	var anim_time = enemy.anim.get_animation(enemy.projectile_attack_animation).length
+	var remain = anim_time - enemy.projectile_spawn_delay
+
+	if remain > 0:
+		await enemy.get_tree().create_timer(remain).timeout
+
+	enemy.is_shooting = false
+
+func spawn_projectile():
 	var projectile = enemy.projectile_scene.instantiate()
-	enemy.get_parent().add_child(projectile)
+	enemy.get_tree().current_scene.add_child(projectile)
+
+	var target_pos = enemy.player.global_position
+
+	if enemy.player.has_node("TurnAxis"):
+		target_pos = enemy.player.get_node("TurnAxis").global_position
 
 	var dir = 1
-	if enemy.dx < 0:
+
+	if target_pos.x < enemy.projectile_spawn.global_position.x:
 		dir = -1
 
 	projectile.start(enemy.projectile_spawn.global_position, dir)
-
-	var attack_duration = enemy.anim.get_animation(enemy.projectile_attack_animation).length
-
-	if attack_duration > 0:
-		await enemy.get_tree().create_timer(attack_duration).timeout
-
-	enemy.is_shooting = false

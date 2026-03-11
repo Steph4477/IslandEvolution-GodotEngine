@@ -3,56 +3,159 @@ class_name EnemyBase
 
 @export var max_hp = 100
 @export var damage = 10
+@export var hit_lock_time = 0.20
+@export var attack_anim_name = "attack"
 
 var gs = null
 var player = null
 
-var pv = 0
+var hp = 0
 var is_dead = false
 var is_attacking = false
+var is_shooting = false
+var hit_locked = false
 var in_melee = false
 
-func _ready():
-	pv = max_hp
-	$HealthBar/ProgressBar.max_value = max_hp
-	$HealthBar/ProgressBar.value = pv
-	find_player()
+var health_bar = null
+var anim = null
+var spawn_point = null
+var attack_timer = null
+var projectile_timer = null
+var loot_scene = null
 
-func find_player():
+func _ready():
+	setup_common_refs()
+
 	gs = get_node("/root/GameState")
 	player = gs.player
-	gs.connect("player_updated", Callable(self, "_on_player_changed"))
+	hp = max_hp
 
-func _on_player_changed(new_player):
-	player = new_player
+	if health_bar:
+		health_bar.max_value = max_hp
+		health_bar.value = hp
 
-func on_hit(damage_taken):
+func setup_common_refs():
+	if has_node("HealthBar/ProgressBar"):
+		health_bar = $HealthBar/ProgressBar
 
+	if has_node("Rotator/AnimationPlayer"):
+		anim = $Rotator/AnimationPlayer
+
+	if has_node("SpawnPoint"):
+		spawn_point = $SpawnPoint
+
+	if has_node("AttackTimer"):
+		attack_timer = $AttackTimer
+	elif has_node("Timer"):
+		attack_timer = $Timer
+
+	if has_node("ProjectileTimer"):
+		projectile_timer = $ProjectileTimer
+	elif has_node("Rotator/ProjectileTimer"):
+		projectile_timer = $Rotator/ProjectileTimer
+
+func refresh_player():
+	if gs == null:
+		gs = get_node("/root/GameState")
+
+	player = gs.player
+
+func on_hit(amount):
 	if is_dead:
 		return
 
-	pv -= damage_taken
-	$HealthBar/ProgressBar.value = max(pv,0)
+	if hit_locked:
+		return
 
-	_show_damage_popup(damage_taken)
+	hp -= amount
 
-	if pv <= 0:
+	if health_bar:
+		health_bar.value = max(hp, 0)
+
+	_show_damage_popup(amount)
+
+	if hp <= 0:
 		die()
+		return
 
-func _show_damage_popup(amount):
+	hit_locked = true
 
-	var scene = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn")
-	var popup = scene.instantiate()
+	if anim:
+		anim.play("onhit")
 
-	$HealthBar.add_child(popup)
+	await get_tree().create_timer(hit_lock_time).timeout
+	hit_locked = false
 
-	popup.position = Vector2(0,-30)
-	popup.scale.x = 1
-	popup.show_damage(amount)
+func can_attack_player():
+	if player == null:
+		refresh_player()
+		if player == null:
+			return false
+
+	if player.is_dead:
+		in_melee = false
+		return false
+
+	if is_dead:
+		return false
+
+	if is_attacking:
+		return false
+
+	return true
+
+func do_attack_damage():
+	player.damage_mod.on_hit(damage)
+
+func attack():
+	if not can_attack_player():
+		return
+
+	is_attacking = true
+	velocity.x = 0
+
+	if anim:
+		if anim.current_animation != attack_anim_name:
+			anim.play(attack_anim_name)
+
+	do_attack_damage()
+
+	if anim:
+		await get_tree().create_timer(anim.get_animation(attack_anim_name).length).timeout
+
+	is_attacking = false
 
 func die():
+	if is_dead:
+		return
 
 	is_dead = true
+	is_attacking = false
+	is_shooting = false
+	hit_locked = false
+	in_melee = false
 	velocity = Vector2.ZERO
 
+	if attack_timer:
+		attack_timer.stop()
+
+	if projectile_timer:
+		projectile_timer.stop()
+
+	if anim:
+		anim.play("die")
+		await anim.animation_finished
+
+	if loot_scene:
+		var loot = loot_scene.instantiate()
+		get_parent().add_child(loot)
+
+		if spawn_point:
+			loot.global_position = spawn_point.global_position
+		else:
+			loot.global_position = global_position
+
 	queue_free()
+
+func _show_damage_popup(amount):
+	pass

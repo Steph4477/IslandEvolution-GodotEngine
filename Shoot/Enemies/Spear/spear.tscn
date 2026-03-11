@@ -1,31 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpc1qq773nrmd"]
+[gd_scene format=3 uid="uid://cpc1qq773nrmd"]
 
 [ext_resource type="Script" uid="uid://csrijdkls1wbw" path="res://Shoot/Enemies/Spear/spear.gd" id="1_xbsnv"]
 [ext_resource type="Texture2D" uid="uid://b6axd8gi6rmq1" path="res://Shoot/Enemies/Spear/spear.png" id="2_i14k0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyw12"]
-size = Vector2(7, 8)
+size = Vector2(8, 3)
 
-[node name="Spear" type="RigidBody2D"]
+[node name="Spear" type="RigidBody2D" unique_id=1762179316]
 z_index = 5
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_xbsnv")
 
-[node name="SpearSprite" type="Sprite2D" parent="."]
-rotation = -3.1415927
+[node name="SpearSprite" type="Sprite2D" parent="." unique_id=607642992]
 scale = Vector2(0.2, -0.2)
 texture = ExtResource("2_i14k0")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=936405961]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-47.5, -2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=612942380]
+position = Vector2(36, 1)
 shape = SubResource("RectangleShape2D_yyw12")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=809000290]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=936722029]
+position = Vector2(-16, 0)
+rotation = -3.1415927
 polygon = PackedVector2Array(-60, -11, -99, -1, -58, 8, -53, 1, -52, -8)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
