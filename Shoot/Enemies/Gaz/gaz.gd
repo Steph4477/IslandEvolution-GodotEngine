@@ -1,34 +1,58 @@
-extends CharacterBody2D
+extends RigidBody2D
 
-@export var speed := 800.0
-@export var lifetime := 10.0
-@onready var anim = $AnimationPlayer
-@onready var area = $Area2D
-var damage = 400
+@export var speed = 800.0
+@export var life_time = 10.0
+@export var damage = 400
 
-var direction: Vector2 = Vector2.ZERO
+var direction = 1
 var has_collided = false
 
 func _ready():
-	anim.play("attaque_gaz")
-	await get_tree().create_timer(lifetime).timeout
+	gravity_scale = 0
+	$AnimationPlayer.play("gaz")
+	$Area2D/CollisionShape2D.disabled = true
+
+	await get_tree().create_timer(life_time).timeout
 	queue_free()
 
-func _physics_process(_delta):
-	velocity = direction * speed
-	move_and_slide()
+func start(pos, dir):
+	global_position = pos
+	set_direction(dir)
+	$Area2D/CollisionShape2D.disabled = false
 
+func set_direction(dir):
+	direction = dir
+	linear_velocity = Vector2(speed * direction, 0)
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	queue_free()
-	if body.is_in_group("Player"):
-		has_collided = true
-		
-		# Applique l’effet au joueur
+	if has_node("Sprite2D"):
+		if direction < 0:
+			$Sprite2D.flip_h = true
+		else:
+			$Sprite2D.flip_h = false
+	else:
+		if direction < 0:
+			scale.x = -abs(scale.x)
+		else:
+			scale.x = abs(scale.x)
 
+func _on_area_2d_body_entered(body):
+	if has_collided:
+		return
+
+	if not body.is_in_group("Player"):
+		return
+
+	has_collided = true
+
+	if body.effects_mod:
 		body.effects_mod.apply_gaz()
-		
-		# Applique les dégâts 
-		queue_free()
-		if body.damage_mod.has_method("on_hit"):
-			body.damage_mod.on_hit(damage)
+
+	if body.damage_mod:
+		body.damage_mod.on_hit(damage)
+
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+
+	if has_node("Sprite2D"):
+		$Sprite2D.hide()
+
+	queue_free()

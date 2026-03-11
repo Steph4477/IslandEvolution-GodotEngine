@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bxg7s54g6pc3h" path="res://Levels/Lvl2/Environement/Door/door.tscn" id="12_vjssa"]
 [ext_resource type="PackedScene" uid="uid://bq5xrcnp2ugvj" path="res://Enemies/Pygmy/pygmy.tscn" id="13_04g0o"]
 [ext_resource type="PackedScene" uid="uid://jkvq258v3ett" path="res://ItemsDecors/Box_Platform/box_platform.tscn" id="13_ifea3"]
+[ext_resource type="PackedScene" uid="uid://cqgayeu31gcvt" path="res://Enemies/Snake/snake_refacto.tscn" id="14_04g0o"]
 [ext_resource type="PackedScene" uid="uid://dwmxjd71e5ibl" path="res://Levels/Lvl2/Environement/Background/Tiles/tileMapWall.tscn" id="14_a6f7x"]
 [ext_resource type="PackedScene" uid="uid://c8gltlvsgbgh2" path="res://Enemies/Snake/snake.tscn" id="14_utbl0"]
 [ext_resource type="PackedScene" uid="uid://dlbee1ryeyvmv" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/tileMapPlatform.tscn" id="15_3p2tf"]
@@ -436,6 +437,9 @@ scale = Vector2(0.6, -0.6)
 position = Vector2(357.997, -1000)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
+
+[node name="Snake" parent="Node2D/Creatures/Serpents" unique_id=88320707 instance=ExtResource("14_04g0o")]
+position = Vector2(4203.0024, 872.9893)
 
 [node name="BagsLoot" type="Node2D" parent="Node2D" unique_id=402662949]
 z_index = 20

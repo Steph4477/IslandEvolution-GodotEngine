@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ds8xt7te3yx5j"]
+[gd_scene format=3 uid="uid://ds8xt7te3yx5j"]
 
 [ext_resource type="Script" uid="uid://bhk73j7pugrbo" path="res://Shoot/Enemies/Gaz/gaz.gd" id="1_qfa8b"]
 [ext_resource type="Texture2D" uid="uid://dcwbqpydoagjw" path="res://Shoot/Enemies/Gaz/gaz.png" id="2_mdf05"]
@@ -43,7 +43,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_0swx6"]
-resource_name = "attaque_gaz"
+resource_name = "gaz"
 length = 1.5
 loop_mode = 1
 tracks/0/type = "value"
@@ -86,7 +86,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oed41"]
 _data = {
 &"RESET": SubResource("Animation_yt74o"),
-&"attaque_gaz": SubResource("Animation_0swx6")
+&"gaz": SubResource("Animation_0swx6")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bydea"]
@@ -95,32 +95,30 @@ radius = 5.97944
 [sub_resource type="CircleShape2D" id="CircleShape2D_xepjl"]
 radius = 15.493
 
-[node name="GazSerpent" type="CharacterBody2D"]
+[node name="GazSerpent" type="RigidBody2D" unique_id=1660559815]
 z_index = 5
 collision_layer = 8
 script = ExtResource("1_qfa8b")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=250849335]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_mdf05")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_oed41")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1086290492]
+libraries/ = SubResource("AnimationLibrary_oed41")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1569842109]
 scale = Vector2(2.52, 1.76)
 shape = SubResource("CircleShape2D_bydea")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1265060118]
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=416815234 groups=["Enemies"]]
 scale = Vector2(0.560001, 0.360001)
 collision_layer = 8
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=220656743]
 scale = Vector2(2.84, 4.36)
 shape = SubResource("CircleShape2D_xepjl")
 

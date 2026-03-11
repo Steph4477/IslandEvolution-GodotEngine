@@ -26,7 +26,7 @@ func _ready():
 	speed = 100
 	gravity = 1000
 	attack_range = 99999
-	stop_distance = 20
+	stop_distance = 40
 	attack_anim_name = "cac"
 	loot_scene = loot_lance_scene
 
@@ -57,8 +57,7 @@ func _physics_process(delta):
 	melee_mod.update_state()
 
 	if hit_locked:
-		velocity.x = 0
-		move_and_slide()
+		stop_and_slide()
 		return
 
 	if not is_on_floor():
@@ -70,18 +69,15 @@ func _physics_process(delta):
 		return
 
 	if is_attacking:
-		velocity.x = 0
-		move_and_slide()
+		stop_and_slide()
 		return
 
 	if in_melee:
-		velocity.x = 0
-		move_and_slide()
+		stop_and_slide()
 		return
 
 	if is_shooting:
-		velocity.x = 0
-		move_and_slide()
+		stop_and_slide()
 		return
 
 	if distance <= chase_distance:
@@ -89,11 +85,8 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	velocity.x = 0
-	move_and_slide()
-
-	if anim.current_animation != "idle":
-		anim.play("idle")
+	stop_and_slide()
+	play_idle()
 
 func die():
 	in_melee = false
