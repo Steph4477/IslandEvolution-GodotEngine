@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bba8xps638ghn"]
 
+[ext_resource type="PackedScene" uid="uid://cqgayeu31gcvt" path="res://Enemies/Snake/snake.tscn" id="13_7ij1m"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(313.271, 30.1528)
 
@@ -14,7 +16,7 @@ size = Vector2(312.20395, 53.526)
 [node name="Node2D" type="Node2D" parent="." unique_id=1402871080]
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=157147786]
-position = Vector2(179, 1300)
+position = Vector2(2307, 1205)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=582993913]
 
@@ -44,3 +46,7 @@ shape = SubResource("RectangleShape2D_t3xnj")
 position = Vector2(34756.457, 12353.302)
 scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
+
+[node name="Snake" parent="." unique_id=88320707 instance=ExtResource("13_7ij1m")]
+position = Vector2(3160, 1174)
+scale = Vector2(-0.6, 0.6)

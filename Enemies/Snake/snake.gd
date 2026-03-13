@@ -6,13 +6,13 @@ extends EnemyGroundBase
 
 var fire_gaz = false
 var fire_interval = 2.0
-var melee_distance = 100.0
-var chase_distance = 360.0
-var min_shoot_distance = 150.0
-var max_shoot_distance = 260.0
+var melee_distance = 200.0
+var chase_distance = 460.0
+var min_shoot_distance = 201.0
+var max_shoot_distance = 360.0
 
-var patrol_speed = 80.0
-var patrol_change_interval = 2.0
+var patrol_speed = 120.0
+var patrol_change_interval = 1.0
 
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
@@ -146,7 +146,6 @@ func update_shoot_zone():
 		projectile_timer.start()
 
 	stop_and_slide()
-	play_idle()
 
 func update_chase_zone():
 	is_patrolling = false
