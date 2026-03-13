@@ -1,4 +1,5 @@
 extends RefCounted
+class_name EnemyModFlightPatrol
 
 var enemy = null
 var patrol_direction = Vector2.ZERO

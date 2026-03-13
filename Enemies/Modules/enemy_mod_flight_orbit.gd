@@ -1,4 +1,5 @@
 extends RefCounted
+class_name EnemyModFlightOrbit
 
 var enemy = null
 

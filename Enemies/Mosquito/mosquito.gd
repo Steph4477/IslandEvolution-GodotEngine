@@ -1,7 +1,7 @@
 extends EnemyFlightBase
 
 @export var speed = 200
-@export var attack_range = 2000
+@export var attack_range = 800
 @export var attack_contact_radius = 24.0
 @export var cooldown = 0.8
 @export var patrol_speed = 80
@@ -23,9 +23,9 @@ const PHASE_CHARGE = 2
 
 var phase = PHASE_PATROL
 
-var patrol_mod = preload("res://Enemies/Modules/enemy_mod_flight_patrol.gd").new()
-var orbit_mod = preload("res://Enemies/Modules/enemy_mod_flight_orbit.gd").new()
-var charge_mod = preload("res://Enemies/Modules/enemy_mod_flight_charge.gd").new()
+var patrol_mod = EnemyModFlightPatrol.new()
+var orbit_mod = EnemyModFlightOrbit.new()
+var charge_mod = EnemyModFlightCharge.new()
 
 func _ready():
 	max_hp = 20
