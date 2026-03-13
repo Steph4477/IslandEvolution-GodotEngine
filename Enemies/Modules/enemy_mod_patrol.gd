@@ -7,6 +7,12 @@ func setup(parent_enemy):
 	enemy = parent_enemy
 
 func start():
+	if enemy == null:
+		return
+
+	if not is_instance_valid(enemy):
+		return
+
 	change_direction()
 
 	if enemy.patrol_timer:
@@ -14,6 +20,12 @@ func start():
 		enemy.patrol_timer.start()
 
 func update_movement():
+	if enemy == null:
+		return
+
+	if not is_instance_valid(enemy):
+		return
+
 	if enemy.is_dead:
 		enemy.velocity.x = 0
 		return
@@ -25,6 +37,12 @@ func update_movement():
 	enemy.velocity.x = enemy.patrol_direction * enemy.patrol_speed
 
 func change_direction():
+	if enemy == null:
+		return
+
+	if not is_instance_valid(enemy):
+		return
+
 	enemy.is_patrol_paused = true
 	enemy.velocity.x = 0
 
@@ -34,8 +52,14 @@ func change_direction():
 
 	await enemy.get_tree().create_timer(2.0).timeout
 
-	#if enemy.is_dead:
-		#return
+	if enemy == null:
+		return
+
+	if not is_instance_valid(enemy):
+		return
+
+	if enemy.is_dead:
+		return
 
 	enemy.is_patrol_paused = false
 
@@ -46,8 +70,13 @@ func change_direction():
 	else:
 		enemy.patrol_direction = 1
 
-
 func on_timer_timeout():
+	if enemy == null:
+		return
+
+	if not is_instance_valid(enemy):
+		return
+
 	if enemy.is_dead:
 		return
 

@@ -114,14 +114,13 @@ func attack():
 	is_attacking = true
 	velocity.x = 0
 
-	if anim:
-		if anim.current_animation != attack_anim_name:
+
+	if anim.current_animation != attack_anim_name:
 			anim.play(attack_anim_name)
 
 	do_attack_damage()
 
-	if anim:
-		await get_tree().create_timer(anim.get_animation(attack_anim_name).length).timeout
+	await get_tree().create_timer(anim.get_animation(attack_anim_name).length).timeout
 
 	is_attacking = false
 
@@ -138,24 +137,14 @@ func die():
 
 	if attack_timer:
 		attack_timer.stop()
-
+	
 	if projectile_timer:
 		projectile_timer.stop()
 
-	if anim:
-		anim.play("die")
-		await anim.animation_finished
-
-	if loot_scene:
-		var loot = loot_scene.instantiate()
-		get_parent().add_child(loot)
-
-		if spawn_point:
-			loot.global_position = spawn_point.global_position
-		else:
-			loot.global_position = global_position
+	anim.play("die")
+	await anim.animation_finished
 
 	queue_free()
 
-func _show_damage_popup(amount):
+func _show_damage_popup(_amount):
 	pass

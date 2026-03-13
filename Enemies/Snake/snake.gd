@@ -1,173 +1,219 @@
-extends CharacterBody2D
+extends EnemyGroundBase
 
-@export var max_hp = 400
-@export var speed = 200
-@export var attack_range = 500
-@export var cooldown = 1.5
-@export var damage = 200
-@export var patrol_speed = 80
-@export var patrol_change_interval = 2.0
+@export var projectile_scene = preload("res://Shoot/Enemies/Gaz/gaz.tscn")
+@export var projectile_spawn_delay = 0.40
+@export var projectile_attack_animation = "attack"
 
-@onready var health_bar = $HealthBar/ProgressBar
-@onready var muzzle = $FlipNode/Muzzle
-@onready var timer = $Timer
-@onready var anim = $AnimationPlayer
-@onready var sprite = $Sprite
+var fire_gaz = false
+var fire_interval = 2.0
+var melee_distance = 100.0
+var chase_distance = 360.0
+var min_shoot_distance = 150.0
+var max_shoot_distance = 260.0
 
-const GRAVITY = 2000
+var patrol_speed = 80.0
+var patrol_change_interval = 2.0
+
+var melee_mod = EnemyModMelee.new()
+var throw_mod = EnemyModThrowProjectile.new()
+var patrol_mod = EnemyModPatrol.new()
+
+var projectile_spawn = null
+var patrol_timer = null
 
 var is_patrolling = true
 var is_patrol_paused = false
-var patrol_direction = Vector2.ZERO
-var can_shoot = true
-var is_attacking = false
-var has_shot = false
-var is_dead = false
-var pv = max_hp
-var player
-var projectile = preload("res://Shoot/Enemies/Gaz/gaz.tscn")
-var custom_velocity = Vector2.ZERO
+var patrol_direction = 1
 
 func _ready():
-	pv = max_hp
-	find_and_bind_player()
-	start_patrol()
+	max_hp = 400
+	damage = 200
+	speed = 200
+	gravity = 2000
+	attack_range = 99999
+	stop_distance = 40
+	attack_anim_name = "attack"
+
+	super._ready()
+
+	projectile_spawn = $Rotator/ProjectileSpawn
+	patrol_timer = $PatrolTimer
+
+	melee_mod.setup(self)
+	throw_mod.setup(self)
+	patrol_mod.setup(self)
+
+	if attack_timer:
+		attack_timer.wait_time = 1.0
+		attack_timer.stop()
+
+	if projectile_timer:
+		projectile_timer.wait_time = fire_interval
+		projectile_timer.start()
+
+	if patrol_timer:
+		patrol_timer.wait_time = patrol_change_interval
+		patrol_timer.start()
+
+	patrol_mod.start()
 
 func _physics_process(delta):
-	if not is_instance_valid(player) or is_attacking or is_dead:
+	if is_dead:
 		return
 
 	apply_gravity(delta)
+	target_player()
+	melee_mod.update_state()
+	update_flip()
 
-	var target = player.get_node("TurnAxis").global_position
-	var distance = global_position.distance_to(target)
+	if hit_locked:
+		stop_and_slide()
+		return
 
-	if distance <= attack_range:
-		is_patrolling = false
-		var direction = (target - global_position).normalized()
-		custom_velocity.x = direction.x * speed
+	if not is_on_floor():
+		update_air_state()
+		return
+
+	if is_attacking:
+		stop_and_slide()
+		return
+
+	if in_melee:
+		update_melee_state()
+		return
+
+	if is_shooting:
+		update_shooting_state()
+		return
+
+	if distance >= min_shoot_distance and distance <= max_shoot_distance:
+		update_shoot_zone()
+		return
+
+	if distance > max_shoot_distance and distance <= chase_distance:
+		update_chase_zone()
+		return
+
+	update_patrol_zone()
+
+func update_flip():
+	if is_patrolling:
+		if patrol_direction < 0:
+			$Rotator.scale.x = -base_scale_x
+		else:
+			$Rotator.scale.x = base_scale_x
 	else:
-		is_patrolling = true
-		if is_patrol_paused:
-			custom_velocity.x = 0
-		else:
-			custom_velocity.x = patrol_direction.x * patrol_speed
+		super.flip()
 
-	# Flip du sprite
-	if custom_velocity.x < 0:
-		sprite.scale.x = abs(sprite.scale.x)
-		$FlipNode.position.x = -abs($FlipNode.position.x)
-	elif custom_velocity.x > 0:
-		sprite.scale.x = -abs(sprite.scale.x)
-		$FlipNode.position.x = abs($FlipNode.position.x)
-
-	# Attaque 
-	if distance <= attack_range and can_shoot:
-		custom_velocity.x = 0
-		await attack_and_shoot()
-
-	set_velocity(custom_velocity)
-
-	# Animations
-	if not is_attacking:
-		if is_patrolling:
-			if is_patrol_paused:
-				if anim.current_animation != "idle":
-					anim.play("idle")
-			else:
-				if anim.current_animation != "patrol":
-					anim.play("patrol")
-		else:
-			if anim.current_animation != "walk":
-				anim.play("walk")
+func update_air_state():
+	if not is_shooting and not is_attacking:
+		if anim.current_animation != "idle":
+			anim.play("idle")
 
 	move_and_slide()
-	custom_velocity = velocity
 
-func change_patrol_direction():
-	is_patrol_paused = true
-	custom_velocity.x = 0
-	anim.play("idle")
+func update_melee_state():
+	is_patrolling = false
+	fire_gaz = false
 
-	await get_tree().create_timer(2.0).timeout  # Pause avant direction
+	if patrol_timer:
+		patrol_timer.stop()
 
-	is_patrol_paused = false
-	var direction = randf_range(-1.0, 1.0)
-	patrol_direction = Vector2(direction, 0).normalized()
+	if projectile_timer:
+		projectile_timer.stop()
 
-func start_patrol():
-	change_patrol_direction()
-	timer.wait_time = patrol_change_interval
-	timer.start()
+	stop_and_slide()
 
-func _on_timer_timeout():
-	if is_patrolling:
-		change_patrol_direction()
+func update_shooting_state():
+	is_patrolling = false
 
-func apply_gravity(delta):
-	if not is_on_floor():
-		custom_velocity.y += GRAVITY * delta
+	if patrol_timer:
+		patrol_timer.stop()
+
+	stop_and_slide()
+
+func update_shoot_zone():
+	is_patrolling = false
+
+	if patrol_timer:
+		patrol_timer.stop()
+
+	if not fire_gaz:
+		fire_gaz = true
+		throw_mod.on_timer_timeout()
+
+	if projectile_timer and projectile_timer.is_stopped():
+		projectile_timer.start()
+
+	stop_and_slide()
+	play_idle()
+
+func update_chase_zone():
+	is_patrolling = false
+	fire_gaz = false
+
+	if patrol_timer and patrol_timer.is_stopped():
+		patrol_timer.start()
+
+	if projectile_timer:
+		projectile_timer.stop()
+
+	move_to_target()
+	move_and_slide()
+
+func update_patrol_zone():
+	is_patrolling = true
+	fire_gaz = false
+
+	if patrol_timer and patrol_timer.is_stopped():
+		patrol_timer.start()
+
+	if projectile_timer:
+		projectile_timer.stop()
+
+	patrol_mod.update_movement()
+	move_and_slide()
+
+	if abs(velocity.x) > 0:
+		if anim.current_animation != "patrol":
+			anim.play("patrol")
 	else:
-		custom_velocity.y = 0
-
-func attack_and_shoot():
-	can_shoot = false
-	is_attacking = true
-	has_shot = false
-
-	anim.play("attaque")
-	await anim.animation_finished
-
-	shoot_projectile()
-	is_attacking = false
-
-func shoot_projectile():
-	if has_shot:
-		return
-	has_shot = true
-
-	var instance = projectile.instantiate()
-	get_tree().current_scene.add_child(instance)
-	instance.global_position = muzzle.global_position
-	instance.direction = Vector2.LEFT if sprite.scale.x > 0 else Vector2.RIGHT
-
-	await get_tree().create_timer(cooldown).timeout
-	can_shoot = true
-
-func on_hit(damage_taken):
-	pv -= damage_taken
-	if health_bar:
-		health_bar.max_value = max_hp
-		health_bar.value = pv
-	show_damage_popup(damage_taken)
-
-func show_damage_popup(amount):
-	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
-	add_child(popup)
-	popup.position = Vector2(0, -30)
-	popup.show_damage(amount)
-	if pv <= 0:
-		die()
+		if anim.current_animation != "idle":
+			anim.play("idle")
 
 func die():
-	is_dead = true
-	await get_tree().process_frame
-	anim.play("die")
+	in_melee = false
+	is_patrolling = false
+	is_patrol_paused = false
 
-	var anim_duration = anim.get_animation("die").length
-	await get_tree().create_timer(anim_duration).timeout
+	if patrol_timer:
+		patrol_timer.stop()
 
-	queue_free()
+	if projectile_timer:
+		projectile_timer.stop()
 
-func find_and_bind_player():
-	var gs = get_node_or_null("/root/GameState")
-	if gs:
-		player = gs.player
-		gs.connect("player_updated", Callable(self, "_on_player_changed"))
+	super.die()
 
-func _on_player_changed(new_player):
-	player = new_player
+func _on_attack_timer_timeout():
+	melee_mod.on_timer_timeout()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("on_hit"):
-		body.on_hit(damage)
+func _on_projectile_timer_timeout():
+	if is_dead:
+		return
+
+	if in_melee:
+		return
+
+	if is_attacking:
+		return
+
+	if distance < min_shoot_distance:
+		return
+
+	if distance > max_shoot_distance:
+		return
+
+	throw_mod.on_timer_timeout()
+
+func _on_patrol_timer_timeout():
+	patrol_mod.on_timer_timeout()
