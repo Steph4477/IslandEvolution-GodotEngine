@@ -80,7 +80,7 @@ func on_hit(amount):
 
 	hit_locked = true
 
-	if anim:
+	if anim and anim.has_animation("onhit"):
 		anim.play("onhit")
 
 	await get_tree().create_timer(hit_lock_time).timeout
