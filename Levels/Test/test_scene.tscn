@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bba8xps638ghn"]
 
-[ext_resource type="PackedScene" uid="uid://cqgayeu31gcvt" path="res://Enemies/Snake/snake.tscn" id="13_7ij1m"]
+[ext_resource type="PackedScene" uid="uid://cyglsdydp0fhr" path="res://Enemies/Mosquito/mosquito.tscn" id="14_5nmbs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(313.271, 30.1528)
@@ -47,6 +47,5 @@ position = Vector2(34756.457, 12353.302)
 scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
-[node name="Snake" parent="." unique_id=88320707 instance=ExtResource("13_7ij1m")]
-position = Vector2(3160, 1174)
-scale = Vector2(-0.6, 0.6)
+[node name="Mosquito" parent="." unique_id=55077267 instance=ExtResource("14_5nmbs")]
+position = Vector2(3194, 1163)

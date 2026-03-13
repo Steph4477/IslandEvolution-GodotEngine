@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyglsdydp0fhr"]
+[gd_scene format=3 uid="uid://cyglsdydp0fhr"]
 
 [ext_resource type="Script" uid="uid://dlwtrnoi7mm54" path="res://Enemies/Mosquito/mosquito.gd" id="1_r0nwy"]
 [ext_resource type="PackedScene" uid="uid://nx7n3qyhsmbr" path="res://Enemies/health_bar.tscn" id="2_2vk4j"]
@@ -14,15 +14,12 @@
 radius = 8.333333
 height = 50.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r0nwy"]
-radius = 5.270463
-
 [sub_resource type="Animation" id="Animation_27a47"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
+tracks/0/path = NodePath("Rotator/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,13 +30,13 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_b0e3j"]
-resource_name = "attaque"
+resource_name = "attack"
 length = 0.6
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
+tracks/0/path = NodePath("Rotator/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +52,7 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
+tracks/0/path = NodePath("Rotator/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,7 +64,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/path = NodePath("Rotator/Sprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -83,7 +80,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
+tracks/0/path = NodePath("Rotator/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -100,7 +97,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
+tracks/0/path = NodePath("Rotator/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -113,49 +110,41 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kcxtp"]
 _data = {
 &"RESET": SubResource("Animation_27a47"),
-&"attaque": SubResource("Animation_b0e3j"),
+&"attack": SubResource("Animation_b0e3j"),
 &"die": SubResource("Animation_jin1k"),
 &"flight": SubResource("Animation_l6bps"),
 &"patrol": SubResource("Animation_r0nwy")
 }
 
-[node name="Moustique" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Mosquito" type="CharacterBody2D" unique_id=55077267 groups=["Enemies"]]
 scale = Vector2(0.6, 0.6)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_r0nwy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=390658406]
+wait_time = 0.5
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1637278042]
 position = Vector2(1.6666667, -18.333332)
 rotation = 1.7680185
 shape = SubResource("CapsuleShape2D_bvse5")
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
-position = Vector2(30.682, 39.089)
-collision_layer = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-72.34866, -35.75567)
-shape = SubResource("CircleShape2D_r0nwy")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
-[node name="HealthBar" parent="." instance=ExtResource("2_2vk4j")]
+[node name="HealthBar" parent="." unique_id=1390649355 instance=ExtResource("2_2vk4j")]
 position = Vector2(-61, -158)
 scale = Vector2(1.07101, 1.11)
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-1.6666666, -29.999994)
+[node name="Rotator" type="Node2D" parent="." unique_id=1340815091]
+
+[node name="Sprite" type="Sprite2D" parent="Rotator" unique_id=823019334]
+position = Vector2(-1.6666666, -29.999996)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_27a47")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kcxtp")
-}
-autoplay = "patrol"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=170573413]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_kcxtp")
+autoplay = &"patrol"
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
