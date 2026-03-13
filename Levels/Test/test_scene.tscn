@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bba8xps638ghn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
+size = Vector2(313.271, 30.1528)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3xnj"]
+size = Vector2(9.84062, 18.7567)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmo30"]
+size = Vector2(312.20395, 53.526)
+
+[node name="TestScene" type="Node2D" unique_id=14692302]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1402871080]
+
+[node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=157147786]
+position = Vector2(179, 1300)
+
+[node name="Platforms" type="Node2D" parent="." unique_id=582993913]
+
+[node name="PlatformsCollision" type="StaticBody2D" parent="Platforms" unique_id=429266205]
+position = Vector2(734, -1811)
+scale = Vector2(0.089149, 0.144557)
+collision_layer = 2
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=939198654]
+light_mask = 4
+position = Vector2(34156.305, 23061.8)
+scale = Vector2(283.80304, 14.7983)
+shape = SubResource("RectangleShape2D_dvpsw")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=727281810]
+position = Vector2(-8244.62, 17698.9)
+scale = Vector2(123.511, -685.622)
+shape = SubResource("RectangleShape2D_t3xnj")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1917582074]
+position = Vector2(76611.3, 17446.4)
+rotation = -3.14159
+scale = Vector2(144.607, 694.703)
+shape = SubResource("RectangleShape2D_t3xnj")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=891455532]
+position = Vector2(34756.457, 12353.302)
+scale = Vector2(283.80304, 14.7983)
+shape = SubResource("RectangleShape2D_pmo30")
