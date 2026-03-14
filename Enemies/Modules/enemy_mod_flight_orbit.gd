@@ -35,7 +35,7 @@ func update(delta):
 
 	var dir = (orbit_pos - enemy.global_position).normalized()
 
-	enemy.flight_velocity = dir * enemy.speed
+	enemy.flight_velocity = dir * enemy.chase_speed
 	enemy.play_flight_anim("flight")
 
 func is_finished():

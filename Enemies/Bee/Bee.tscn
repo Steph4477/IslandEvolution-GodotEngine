@@ -1,20 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://brco1kpm5dfx"]
+[gd_scene format=3 uid="uid://brco1kpm5dfx"]
 
 [ext_resource type="Script" uid="uid://ch0xkoiyeyjhm" path="res://Enemies/Bee/bee.gd" id="1_307ui"]
 [ext_resource type="Texture2D" uid="uid://b0x2yxwa83cyf" path="res://Enemies/Bee/bee_spriteSheet.png" id="3_fivhf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r0nwy"]
-radius = 56.666664
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1fhx"]
-radius = 11.0454
+radius = 28.944391
 
 [sub_resource type="Animation" id="Animation_27a47"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rotator/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +26,7 @@ resource_name = "attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rotator/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +42,7 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("Rotator/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +59,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Rotator/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,25 +77,41 @@ _data = {
 &"flight": SubResource("Animation_l6bps")
 }
 
-[node name="Bee" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Bee" type="CharacterBody2D" unique_id=1417830833 groups=["Enemies"]]
 scale = Vector2(0.6, 0.6)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_307ui")
+chase_speed = null
+attack_range = null
+contact_attack_radius = null
+cooldown = null
+patrol_speed = null
+patrol_change_interval = null
+orbit_radius_x = null
+orbit_radius_y = null
+orbit_angular_speed = null
+orbit_duration = null
+osc_radial_amplitude = null
+osc_radial_frequency = null
+osc_angle_amplitude = null
+osc_angle_frequency = null
+swarm_count = null
+swarm_spawn_radius = null
+swarm_orbit_step_x = null
+swarm_orbit_step_y = null
+max_hp = null
+damage = null
+hit_lock_time = null
+attack_anim_name = null
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
-position = Vector2(30.682, 39.089)
-collision_layer = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-35.682, -69.089)
-shape = SubResource("CircleShape2D_r0nwy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=186847227]
 position = Vector2(-2, -29)
 shape = SubResource("CircleShape2D_g1fhx")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Rotator" type="Node2D" parent="." unique_id=1194129736]
+
+[node name="Sprite" type="Sprite2D" parent="Rotator" unique_id=813652879]
 position = Vector2(-1, -34)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_fivhf")
@@ -106,9 +119,6 @@ hframes = 2
 vframes = 2
 frame = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kcxtp")
-}
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1405677807]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_kcxtp")
