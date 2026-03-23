@@ -164,15 +164,34 @@ GameState
 flowchart TD
 
 EnemyBase --> EnemyGroundBase
+EnemyBase --> EnemyFlightBase
 
 EnemyGroundBase --> Rat
 EnemyGroundBase --> Pygmy
+EnemyGroundBase --> Snake
+EnemyFlightBase --> Mosquito
+EnemyFlightBase --> Bee
 
 Pygmy --> MeleeModule
 Pygmy --> ThrowModule
 Pygmy --> JumpModule
 
 Rat --> MeleeModule
+
+Snake --> MeleeModule
+Snake --> PatrolModule
+Snake --> ThrowModule
+
+Mosquito --> FlightPatrolModule
+Mosquito --> FlightOrbitModule
+Mosquito --> FlightChargeModule
+
+Bee --> FlightPatrolModule
+Bee --> FlightOrbitModule
+Bee --> FlightChargeModule
+Bee --> FlightSwarmModule
+
+
 ```
 
 ---
