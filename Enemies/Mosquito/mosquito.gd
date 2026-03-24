@@ -1,8 +1,8 @@
 extends EnemyFlightBase
 
-@export var speed = 200
+@export var chase_speed = 200
 @export var attack_range = 800
-@export var attack_contact_radius = 24.0
+@export var contact_attack_radius = 24.0
 @export var cooldown = 0.8
 @export var patrol_speed = 80
 @export var patrol_change_interval = 2.0
@@ -23,6 +23,12 @@ const PHASE_CHARGE = 2
 
 var phase = PHASE_PATROL
 
+var base_orbit_radius_x = 90.0
+var base_orbit_radius_y = 55.0
+
+var speed = 0.0
+var attack_contact_radius = 0.0
+
 var patrol_mod = EnemyModFlightPatrol.new()
 var orbit_mod = EnemyModFlightOrbit.new()
 var charge_mod = EnemyModFlightCharge.new()
@@ -31,6 +37,54 @@ func _ready():
 	max_hp = 20
 	damage = 200
 	attack_anim_name = "attack"
+
+	if chase_speed == null:
+		chase_speed = 200
+
+	if attack_range == null:
+		attack_range = 800
+
+	if contact_attack_radius == null:
+		contact_attack_radius = 24.0
+
+	if cooldown == null:
+		cooldown = 0.8
+
+	if patrol_speed == null:
+		patrol_speed = 80
+
+	if patrol_change_interval == null:
+		patrol_change_interval = 2.0
+
+	if orbit_radius_x == null:
+		orbit_radius_x = 90.0
+
+	if orbit_radius_y == null:
+		orbit_radius_y = 55.0
+
+	if orbit_angular_speed == null:
+		orbit_angular_speed = 6.0
+
+	if orbit_duration == null:
+		orbit_duration = 1.2
+
+	if osc_radial_amplitude == null:
+		osc_radial_amplitude = 6.0
+
+	if osc_radial_frequency == null:
+		osc_radial_frequency = 10.0
+
+	if osc_angle_amplitude == null:
+		osc_angle_amplitude = 0.12
+
+	if osc_angle_frequency == null:
+		osc_angle_frequency = 7.0
+
+	base_orbit_radius_x = orbit_radius_x
+	base_orbit_radius_y = orbit_radius_y
+
+	speed = chase_speed
+	attack_contact_radius = contact_attack_radius
 
 	super._ready()
 
@@ -57,6 +111,12 @@ func _physics_process(delta):
 	move_flight()
 	check_attack_hit()
 
+func get_target_position():
+	if player.has_node("TurnAxis"):
+		return player.get_node("TurnAxis").global_position
+
+	return player.global_position
+
 func update_phase(delta):
 	var distance = get_target_distance()
 
@@ -73,7 +133,6 @@ func update_phase(delta):
 
 	if phase == PHASE_CHARGE:
 		update_charge_state()
-		return
 
 func update_patrol_state():
 	if phase != PHASE_PATROL:
@@ -85,12 +144,16 @@ func update_patrol_state():
 
 func start_orbit_state():
 	phase = PHASE_ORBIT
+	orbit_radius_x = base_orbit_radius_x
+	orbit_radius_y = base_orbit_radius_y
 	orbit_mod.start()
 
 func update_orbit_state(delta):
 	if is_attacking:
 		return
 
+	orbit_radius_x = base_orbit_radius_x
+	orbit_radius_y = base_orbit_radius_y
 	orbit_mod.update(delta)
 
 	if orbit_mod.is_finished():
@@ -116,7 +179,7 @@ func perform_attack():
 	is_attacking = true
 	stop_flight()
 
-	if anim.current_animation != "attack":
+	if anim != null and anim.current_animation != "attack":
 		anim.play("attack")
 
 	do_attack_damage()
@@ -128,6 +191,18 @@ func perform_attack():
 	if not is_dead:
 		phase = PHASE_ORBIT
 		orbit_mod.start()
+
+func on_hit(amount):
+	if is_dead:
+		return
+
+	super.on_hit(amount)
+
+func die():
+	if is_dead:
+		return
+
+	super.die()
 
 func _on_timer_timeout():
 	if phase == PHASE_PATROL:
