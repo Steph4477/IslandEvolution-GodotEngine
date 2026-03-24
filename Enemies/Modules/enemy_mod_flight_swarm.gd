@@ -21,7 +21,13 @@ func build_swarm():
 
 	var parent = enemy.get_parent()
 
-	for i in range(1, enemy.swarm_count):
+	var count = enemy.swarm_count
+	if count == null:
+		count = 1
+
+	count = int(count)
+
+	for i in range(1, count):
 		var clone = enemy.duplicate()
 
 		clone.is_swarm_clone = true
@@ -33,6 +39,8 @@ func build_swarm():
 		clone.attack_range = enemy.attack_range
 		clone.contact_attack_radius = enemy.contact_attack_radius
 		clone.cooldown = enemy.cooldown
+		clone.patrol_speed = enemy.patrol_speed
+		clone.patrol_change_interval = enemy.patrol_change_interval
 
 		clone.base_orbit_radius_x = enemy.base_orbit_radius_x
 		clone.base_orbit_radius_y = enemy.base_orbit_radius_y
@@ -54,16 +62,26 @@ func build_swarm():
 
 		parent.add_child(clone)
 		clone.global_position = enemy.global_position + get_spawn_offset(i)
-		clone.apply_swarm_orbit_values()
 
 		members.append(clone)
 
 	current_attack_index = 0
 
 func get_spawn_offset(slot):
-	var angle_step = TAU / enemy.swarm_count
+	var count = enemy.swarm_count
+	if count == null:
+		count = 1
+
+	count = int(count)
+
+	var radius = enemy.swarm_spawn_radius
+	if radius == null:
+		radius = 0.0
+
+	var angle_step = TAU / count
 	var angle = angle_step * slot
-	return Vector2(cos(angle), sin(angle)) * enemy.swarm_spawn_radius
+
+	return Vector2(cos(angle), sin(angle)) * radius
 
 func can_member_attack(member):
 	cleanup_dead()
@@ -95,7 +113,6 @@ func notify_member_attack_finished(member):
 
 func unregister_member(member):
 	var idx = members.find(member)
-
 	if idx == -1:
 		return
 
