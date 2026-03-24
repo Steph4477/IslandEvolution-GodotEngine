@@ -1,8 +1,8 @@
 extends EnemyFlightBase
 
-@export var speed = 200
+@export var chase_speed = 200
 @export var attack_range = 800
-@export var attack_contact_radius = 24.0
+@export var contact_attack_radius = 24.0
 @export var cooldown = 0.8
 @export var patrol_speed = 80
 @export var patrol_change_interval = 2.0
@@ -23,12 +23,9 @@ const PHASE_CHARGE = 2
 
 var phase = PHASE_PATROL
 
-<<<<<<< HEAD
 var speed = 0.0
 var attack_contact_radius = 0.0
 
-=======
->>>>>>> parent of fc4cec7 (fix(mosquito): Suppression du module swarm et alignement avec le comportement de l’abeille)
 var patrol_mod = EnemyModFlightPatrol.new()
 var orbit_mod = EnemyModFlightOrbit.new()
 var charge_mod = EnemyModFlightCharge.new()
@@ -37,11 +34,8 @@ func _ready():
 	max_hp = 20
 	damage = 200
 	attack_anim_name = "attack"
-<<<<<<< HEAD
 	speed = chase_speed
 	attack_contact_radius = contact_attack_radius
-=======
->>>>>>> parent of fc4cec7 (fix(mosquito): Suppression du module swarm et alignement avec le comportement de l’abeille)
 
 	super._ready()
 
@@ -67,14 +61,11 @@ func _physics_process(delta):
 	move_flight()
 	check_attack_hit()
 
-<<<<<<< HEAD
 func get_target_position():
 	if player.has_node("TurnAxis"):
 		return player.get_node("TurnAxis").global_position
 	return player.global_position
 
-=======
->>>>>>> parent of fc4cec7 (fix(mosquito): Suppression du module swarm et alignement avec le comportement de l’abeille)
 func update_phase(delta):
 	var distance = get_target_distance()
 
@@ -94,13 +85,8 @@ func update_phase(delta):
 		return
 
 	if phase == PHASE_CHARGE:
-<<<<<<< HEAD
 		if not is_attacking:
 			charge_mod.update()
-=======
-		update_charge_state()
-		return
->>>>>>> parent of fc4cec7 (fix(mosquito): Suppression du module swarm et alignement avec le comportement de l’abeille)
 
 func update_patrol_state():
 	if phase != PHASE_PATROL:
@@ -110,28 +96,6 @@ func update_patrol_state():
 	if not is_attacking:
 		patrol_mod.update()
 
-<<<<<<< HEAD
-=======
-func start_orbit_state():
-	phase = PHASE_ORBIT
-	orbit_mod.start()
-
-func update_orbit_state(delta):
-	if is_attacking:
-		return
-
-	orbit_mod.update(delta)
-
-	if orbit_mod.is_finished():
-		phase = PHASE_CHARGE
-
-func update_charge_state():
-	if is_attacking:
-		return
-
-	charge_mod.update()
-
->>>>>>> parent of fc4cec7 (fix(mosquito): Suppression du module swarm et alignement avec le comportement de l’abeille)
 func check_attack_hit():
 	if phase != PHASE_CHARGE:
 		return
@@ -146,7 +110,7 @@ func perform_attack():
 	is_attacking = true
 	stop_flight()
 
-	if anim.current_animation != "attack":
+	if anim != null and anim.current_animation != "attack":
 		anim.play("attack")
 
 	do_attack_damage()
@@ -159,7 +123,6 @@ func perform_attack():
 		phase = PHASE_ORBIT
 		orbit_mod.start()
 
-<<<<<<< HEAD
 func on_hit(amount):
 	if is_dead:
 		return
@@ -170,8 +133,6 @@ func die():
 		return
 	super.die()
 
-=======
->>>>>>> parent of fc4cec7 (fix(mosquito): Suppression du module swarm et alignement avec le comportement de l’abeille)
 func _on_timer_timeout():
 	if phase == PHASE_PATROL:
 		patrol_mod.on_timer_timeout()
