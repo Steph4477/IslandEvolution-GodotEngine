@@ -296,7 +296,7 @@ Visual style: semi-realistic cartoon with clean outlines and detailed textures.
 ## 📷 Screenshots & Media
 
 🎬 Click on the image below to watch the gameplay video:
-[![Voir la vidéo](https://imgur.com/L6p97KP.png)](https://youtu.be/8XeBQ5ShogQ)
+[![Voir la vidéo](https://imgur.com/7ZsaJ4U.png)](https://youtu.be/xK7tqyqGYgM)
 
 ![Mon image](https://imgur.com/IR5p9SY.png)
 
