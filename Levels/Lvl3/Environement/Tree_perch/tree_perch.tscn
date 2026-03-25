@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1q1ij1egetju"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Texture2D" uid="uid://rahb7go75tvt" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.png" id="1_1mhcq"]
-[ext_resource type="Script" uid="uid://csuvlk5tu2pfu" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.gd" id="1_m1g1l"]
-[ext_resource type="Texture2D" uid="uid://dj4acjlnx8a62" path="res://Levels/Lvl3/Environement/Tree_perch/z-index0.png" id="2_m1g1l"]
-[ext_resource type="Texture2D" uid="uid://c7usraw8x4k28" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch_open.png" id="2_tt4of"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.png" id="1_1mhcq"]
+[ext_resource type="Script" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.gd" id="1_m1g1l"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Tree_perch/z-index0.png" id="2_m1g1l"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch_open.png" id="2_tt4of"]
 
 [sub_resource type="Animation" id="Animation_57j43"]
 length = 0.001

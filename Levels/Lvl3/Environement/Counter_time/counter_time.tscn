@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://clyph7fwf5be6"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Texture2D" uid="uid://cdvjrtoyhy4gk" path="res://Levels/Lvl3/Environement/Counter_time/1.png" id="1_r4agt"]
-[ext_resource type="Script" uid="uid://k2bknx31u25d" path="res://Levels/Lvl3/Environement/Counter_time/counter_time.gd" id="1_sbun5"]
-[ext_resource type="Texture2D" uid="uid://b66senphn5q6o" path="res://Levels/Lvl3/Environement/Counter_time/2.png" id="2_sbun5"]
-[ext_resource type="Texture2D" uid="uid://dw187dsirnwtc" path="res://Levels/Lvl3/Environement/Counter_time/3.png" id="3_0j0le"]
-[ext_resource type="Texture2D" uid="uid://da2yangd0k3w2" path="res://Levels/Lvl3/Environement/Counter_time/4.png" id="4_32vh0"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Counter_time/1.png" id="1_r4agt"]
+[ext_resource type="Script" path="res://Levels/Lvl3/Environement/Counter_time/counter_time.gd" id="1_sbun5"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Counter_time/2.png" id="2_sbun5"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Counter_time/3.png" id="3_0j0le"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Counter_time/4.png" id="4_32vh0"]
 
 [sub_resource type="Animation" id="Animation_sbun5"]
 length = 0.001

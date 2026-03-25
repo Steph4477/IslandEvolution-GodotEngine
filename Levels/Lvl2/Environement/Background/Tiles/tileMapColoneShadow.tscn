@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=4 uid="uid://b6c1pngk06uxp"]
+[gd_scene load_steps=3 format=4]
 
-[ext_resource type="Script" uid="uid://cxw36pnglwt2i" path="res://Levels/Lvl2/Environement/Background/Tiles/tile_map.gd" id="1_or13q"]
-[ext_resource type="TileSet" uid="uid://bdlsfsw2hywfm" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="2_vm8rx"]
+[ext_resource type="Script" path="res://Levels/Lvl2/Environement/Background/Tiles/tile_map.gd" id="1_or13q"]
+[ext_resource type="TileSet" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="2_vm8rx"]
 
 [node name="TileMapColonShadow" type="Node2D"]
 modulate = Color(0.192157, 0.192157, 0.192157, 0.243137)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://etkf807l8n5e"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" uid="uid://dxfidt764bcqk" path="res://Levels/Lvl1/Environement/parallax_layer_ciel.gd" id="1_xs1ef"]
-[ext_resource type="Texture2D" uid="uid://q072nybkifbr" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="2_eje0a"]
+[ext_resource type="Script" path="res://Levels/Lvl1/Environement/parallax_layer_ciel.gd" id="1_xs1ef"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="2_eje0a"]
 
 [node name="ParalaxeCiel" type="Node2D"]
 modulate = Color(0.7385896, 0.7385896, 0.7385896, 1)

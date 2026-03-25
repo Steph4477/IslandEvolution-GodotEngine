@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://8dohrfquocyx"]
+[gd_scene load_steps=15 format=3]
 
-[ext_resource type="Script" uid="uid://bitms1f1gj3xe" path="res://Enemies/CarnivorousPlant/carnivorous.gd" id="1_0gcrn"]
-[ext_resource type="Texture2D" uid="uid://dubtbiowgdp18" path="res://Enemies/CarnivorousPlant/close.png" id="1_7q224"]
-[ext_resource type="Texture2D" uid="uid://ljld8piww8or" path="res://Enemies/CarnivorousPlant/open.png" id="2_0gcrn"]
-[ext_resource type="Texture2D" uid="uid://clrpibq5d51v0" path="res://Enemies/CarnivorousPlant/little_stem.png" id="3_fba38"]
-[ext_resource type="Texture2D" uid="uid://diu25nekrcv25" path="res://Enemies/CarnivorousPlant/burp.png" id="4_fba38"]
+[ext_resource type="Script" path="res://Enemies/CarnivorousPlant/carnivorous.gd" id="1_0gcrn"]
+[ext_resource type="Texture2D" path="res://Enemies/CarnivorousPlant/close.png" id="1_7q224"]
+[ext_resource type="Texture2D" path="res://Enemies/CarnivorousPlant/open.png" id="2_0gcrn"]
+[ext_resource type="Texture2D" path="res://Enemies/CarnivorousPlant/little_stem.png" id="3_fba38"]
+[ext_resource type="Texture2D" path="res://Enemies/CarnivorousPlant/burp.png" id="4_fba38"]
 
 [sub_resource type="Animation" id="Animation_fba38"]
 length = 0.001

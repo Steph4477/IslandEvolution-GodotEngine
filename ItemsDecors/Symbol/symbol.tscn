@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bldp8xpxjsett"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" uid="uid://rkr1tqhcoaa7" path="res://ItemsDecors/Symbol/symbol.gd" id="1_rnyai"]
+[ext_resource type="Script" path="res://ItemsDecors/Symbol/symbol.gd" id="1_rnyai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5eos"]
 size = Vector2(15.669969, 13.109882)

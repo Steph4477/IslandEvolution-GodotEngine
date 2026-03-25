@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl7iooyaapupd"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" uid="uid://c5u2da8x2lxq3" path="res://Shoot/Player/Bone/bone.gd" id="1_6ggyv"]
-[ext_resource type="Texture2D" uid="uid://ddvdg6tpqe0it" path="res://Shoot/Enemies/Bone/bone.png" id="2_ijnjo"]
+[ext_resource type="Script" path="res://Shoot/Player/Bone/bone.gd" id="1_6ggyv"]
+[ext_resource type="Texture2D" path="res://Shoot/Enemies/Bone/bone.png" id="2_ijnjo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja31b"]
 radius = 5.894992

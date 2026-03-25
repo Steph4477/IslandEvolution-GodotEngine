@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c300db1fbxq6y"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Texture2D" uid="uid://bnwdimru5t04j" path="res://Player/Skills/DoubleJump/ball.png" id="1_fsxl6"]
-[ext_resource type="Script" uid="uid://ugryriri6fl8" path="res://Player/Skills/DoubleJump/double_jump.gd" id="1_teu2d"]
-[ext_resource type="Texture2D" uid="uid://b3ew0ukbscxsu" path="res://Player/Skills/DoubleJump/1.png" id="4_lt5js"]
+[ext_resource type="Texture2D" path="res://Player/Skills/DoubleJump/ball.png" id="1_fsxl6"]
+[ext_resource type="Script" path="res://Player/Skills/DoubleJump/double_jump.gd" id="1_teu2d"]
+[ext_resource type="Texture2D" path="res://Player/Skills/DoubleJump/1.png" id="4_lt5js"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibyih"]
 radius = 14.317822

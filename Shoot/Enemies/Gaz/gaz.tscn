@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ds8xt7te3yx5j"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://bhk73j7pugrbo" path="res://Shoot/Enemies/Gaz/gaz.gd" id="1_qfa8b"]
-[ext_resource type="Texture2D" uid="uid://dcwbqpydoagjw" path="res://Shoot/Enemies/Gaz/gaz.png" id="2_mdf05"]
+[ext_resource type="Script" path="res://Shoot/Enemies/Gaz/gaz.gd" id="1_qfa8b"]
+[ext_resource type="Texture2D" path="res://Shoot/Enemies/Gaz/gaz.png" id="2_mdf05"]
 
 [sub_resource type="Animation" id="Animation_yt74o"]
 length = 0.001

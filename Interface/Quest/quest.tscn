@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4ed8cr5fgetb"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" uid="uid://b6642kvuswl8v" path="res://Interface/Quest/quest.gd" id="1_i7muu"]
-[ext_resource type="Texture2D" uid="uid://c2iclt61bhsnh" path="res://Interface/Quest/2.png" id="2_p3qo8"]
-[ext_resource type="Texture2D" uid="uid://c5h5hy0my4imd" path="res://Interface/Quest/3.png" id="2_thikh"]
-[ext_resource type="Texture2D" uid="uid://430x8edhnhbl" path="res://Interface/Quest/1.png" id="3_xyq5x"]
+[ext_resource type="Script" path="res://Interface/Quest/quest.gd" id="1_i7muu"]
+[ext_resource type="Texture2D" path="res://Interface/Quest/2.png" id="2_p3qo8"]
+[ext_resource type="Texture2D" path="res://Interface/Quest/3.png" id="2_thikh"]
+[ext_resource type="Texture2D" path="res://Interface/Quest/1.png" id="3_xyq5x"]
 
 [sub_resource type="Animation" id="Animation_rrnmn"]
 length = 0.001

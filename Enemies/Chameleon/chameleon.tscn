@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxq6vqvvu2yvy"]
+[gd_scene load_steps=13 format=3]
 
-[ext_resource type="Script" uid="uid://c2yvarawiiqqw" path="res://Enemies/Chameleon/chameleon.gd" id="1_jyexr"]
-[ext_resource type="Texture2D" uid="uid://dx44f6qdv403v" path="res://Enemies/Chameleon/1.png" id="1_nwt3p"]
-[ext_resource type="Texture2D" uid="uid://c5yxeng0k7pek" path="res://Enemies/Chameleon/2.png" id="2_jyexr"]
-[ext_resource type="Texture2D" uid="uid://cbuhvmhyt0tdr" path="res://Enemies/Chameleon/3.png" id="3_dohme"]
-[ext_resource type="Texture2D" uid="uid://ddeydifqblypp" path="res://Enemies/Chameleon/4.png" id="4_ge73u"]
-[ext_resource type="Texture2D" uid="uid://txgq0ki4s3us" path="res://Player/Skills/Camouflage/camouflage.png" id="7_dohme"]
+[ext_resource type="Script" path="res://Enemies/Chameleon/chameleon.gd" id="1_jyexr"]
+[ext_resource type="Texture2D" path="res://Enemies/Chameleon/1.png" id="1_nwt3p"]
+[ext_resource type="Texture2D" path="res://Enemies/Chameleon/2.png" id="2_jyexr"]
+[ext_resource type="Texture2D" path="res://Enemies/Chameleon/3.png" id="3_dohme"]
+[ext_resource type="Texture2D" path="res://Enemies/Chameleon/4.png" id="4_ge73u"]
+[ext_resource type="Texture2D" path="res://Player/Skills/Camouflage/camouflage.png" id="7_dohme"]
 
 [sub_resource type="Animation" id="Animation_3ye6a"]
 length = 0.001

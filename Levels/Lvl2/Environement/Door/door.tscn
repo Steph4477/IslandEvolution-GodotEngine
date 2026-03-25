@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxg7s54g6pc3h"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" uid="uid://cndbe5xn6w044" path="res://Levels/Lvl2/Environement/Door/door.gd" id="1_80iex"]
-[ext_resource type="Texture2D" uid="uid://dro0n5gbrrds5" path="res://Levels/Lvl2/Environement/Door/door.png" id="2_stmkj"]
+[ext_resource type="Script" path="res://Levels/Lvl2/Environement/Door/door.gd" id="1_80iex"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Door/door.png" id="2_stmkj"]
 
 [sub_resource type="Animation" id="Animation_yh81q"]
 length = 0.001

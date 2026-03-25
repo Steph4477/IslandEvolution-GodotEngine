@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dviceyy1bf0xf"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" uid="uid://d4nde0lcury4j" path="res://Effects/Aquatic_breathing/Plants/air_bubble.gd" id="1_crv1t"]
-[ext_resource type="Texture2D" uid="uid://3fi0p14jqvf" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="2_82hev"]
+[ext_resource type="Script" path="res://Effects/Aquatic_breathing/Plants/air_bubble.gd" id="1_crv1t"]
+[ext_resource type="Texture2D" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="2_82hev"]
 
 [sub_resource type="Curve2D" id="Curve2D_bgpav"]
 _data = {

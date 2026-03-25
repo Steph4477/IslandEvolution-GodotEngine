@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci5h0g428xork"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" uid="uid://dlic6u5t768n4" path="res://ItemsDecors/Bridge/Crank/crank.gd" id="1_8fd66"]
-[ext_resource type="Texture2D" uid="uid://bn572scgkg85" path="res://ItemsDecors/Bridge/Crank/crank.png" id="1_8iib5"]
+[ext_resource type="Script" path="res://ItemsDecors/Bridge/Crank/crank.gd" id="1_8fd66"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Bridge/Crank/crank.png" id="1_8iib5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fd66"]
 radius = 389.08224

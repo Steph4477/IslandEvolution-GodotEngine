@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://t6efq7471rm8"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" uid="uid://dn4alqj0u0tck" path="res://Levels/Lvl3/Environement/Tree_branch/tree_branch.gd" id="1_4ojmy"]
-[ext_resource type="Texture2D" uid="uid://dud3jweeagsby" path="res://Levels/Lvl3/Environement/Tree_branch/treebranch1.png" id="2_4ojmy"]
-[ext_resource type="Texture2D" uid="uid://d001ww4qk6qhp" path="res://Levels/Lvl3/Environement/Tree_branch/treebranch.png" id="3_40f3g"]
+[ext_resource type="Script" path="res://Levels/Lvl3/Environement/Tree_branch/tree_branch.gd" id="1_4ojmy"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Tree_branch/treebranch1.png" id="2_4ojmy"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Tree_branch/treebranch.png" id="3_40f3g"]
 
 [node name="TreeBranch" type="Node2D"]
 script = ExtResource("1_4ojmy")

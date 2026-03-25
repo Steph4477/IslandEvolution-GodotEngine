@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://du0o733kb7eqe"]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource type="Texture2D" uid="uid://c0nc2vd8s6i68" path="res://Loot/Seed/6.png" id="1_hbtv3"]
-[ext_resource type="Script" uid="uid://6soyf4e0ebx8" path="res://Loot/Seed/seed.gd" id="1_x2l1k"]
-[ext_resource type="Texture2D" uid="uid://ftg5n7qgwt4h" path="res://Loot/Seed/1.png" id="2_x2l1k"]
-[ext_resource type="Texture2D" uid="uid://1n55cvl70gtk" path="res://Loot/Seed/2.png" id="3_5j80i"]
-[ext_resource type="Texture2D" uid="uid://3fddotpe54au" path="res://Loot/Seed/3.png" id="4_xku5p"]
-[ext_resource type="Texture2D" uid="uid://cujglmgn7lwm8" path="res://Loot/Seed/4.png" id="5_lyv6y"]
-[ext_resource type="Texture2D" uid="uid://cy7kbme1ban27" path="res://Loot/Seed/5.png" id="6_crf6w"]
+[ext_resource type="Texture2D" path="res://Loot/Seed/6.png" id="1_hbtv3"]
+[ext_resource type="Script" path="res://Loot/Seed/seed.gd" id="1_x2l1k"]
+[ext_resource type="Texture2D" path="res://Loot/Seed/1.png" id="2_x2l1k"]
+[ext_resource type="Texture2D" path="res://Loot/Seed/2.png" id="3_5j80i"]
+[ext_resource type="Texture2D" path="res://Loot/Seed/3.png" id="4_xku5p"]
+[ext_resource type="Texture2D" path="res://Loot/Seed/4.png" id="5_lyv6y"]
+[ext_resource type="Texture2D" path="res://Loot/Seed/5.png" id="6_crf6w"]
 
 [sub_resource type="Animation" id="Animation_sjx6a"]
 length = 0.001

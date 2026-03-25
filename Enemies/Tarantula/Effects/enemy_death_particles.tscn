@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://swmol5435jt3"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Texture2D" uid="uid://qtvktejbnymm" path="res://Enemies/Tarantula/Effects/particles.png" id="1_geybv"]
+[ext_resource type="Texture2D" path="res://Enemies/Tarantula/Effects/particles.png" id="1_geybv"]
 
 [node name="Node2D" type="Node2D"]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbx7p8yvy6gn3"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://ba5dxh8cnh2hl" path="res://Interface/Timer_Chrono/timer_chrono.gd" id="1_vd6vy"]
+[ext_resource type="Script" path="res://Interface/Timer_Chrono/timer_chrono.gd" id="1_vd6vy"]
 
 [node name="TimerChrono" type="Control"]
 layout_mode = 3

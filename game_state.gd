@@ -99,8 +99,8 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	await load_level("res://Levels/Test/test_scene.tscn")
-
+	#await load_level("res://Levels/Test/test_scene.tscn")
+	await load_level("res://Levels/Lvl1/lvl_1.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("break"):

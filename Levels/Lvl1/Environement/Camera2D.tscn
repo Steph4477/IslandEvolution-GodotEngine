@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dh25cejpkfp3j"]
+[gd_scene format=3]
 
 [node name="Camera2D" type="Camera2D"]
 limit_smoothed = true

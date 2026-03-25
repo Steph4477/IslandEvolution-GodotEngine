@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhjnec07dmtmd"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" uid="uid://bybwycgtm2vov" path="res://Player/Skills/Sprint/sprint.gd" id="1_u5lv6"]
-[ext_resource type="Texture2D" uid="uid://c867xu8pgxr8j" path="res://Player/Skills/Sprint/1.png" id="2_xmopm"]
+[ext_resource type="Script" path="res://Player/Skills/Sprint/sprint.gd" id="1_u5lv6"]
+[ext_resource type="Texture2D" path="res://Player/Skills/Sprint/1.png" id="2_xmopm"]
 
 [sub_resource type="Animation" id="Animation_sjx6a"]
 length = 0.001

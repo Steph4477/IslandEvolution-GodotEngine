@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ekkwdt7bcqfu"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" uid="uid://clknygbf50kpn" path="res://Enemies/Butterfly/butterfly.gd" id="1_ca0hv"]
-[ext_resource type="Texture2D" uid="uid://rw65nv7kcond" path="res://Enemies/Butterfly/Sprite/1.png" id="4_o2dpk"]
-[ext_resource type="Texture2D" uid="uid://bm5v83h1ckvnv" path="res://Enemies/Butterfly/Sprite/2.png" id="5_06kue"]
-[ext_resource type="Texture2D" uid="uid://cpd68dxlpdgcg" path="res://Enemies/Butterfly/Sprite/idle.png" id="5_jfxu4"]
-[ext_resource type="Texture2D" uid="uid://dsjt2ielqoul8" path="res://Enemies/Butterfly/Sprite/3.png" id="6_jt551"]
+[ext_resource type="Script" path="res://Enemies/Butterfly/butterfly.gd" id="1_ca0hv"]
+[ext_resource type="Texture2D" path="res://Enemies/Butterfly/Sprite/1.png" id="4_o2dpk"]
+[ext_resource type="Texture2D" path="res://Enemies/Butterfly/Sprite/2.png" id="5_06kue"]
+[ext_resource type="Texture2D" path="res://Enemies/Butterfly/Sprite/idle.png" id="5_jfxu4"]
+[ext_resource type="Texture2D" path="res://Enemies/Butterfly/Sprite/3.png" id="6_jt551"]
 
 [sub_resource type="Animation" id="Animation_l6bps"]
 resource_name = "flight"

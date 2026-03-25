@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dujtfl8q5or8"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Texture2D" uid="uid://fhxmkm63nlew" path="res://Player/Skills/Abs/abs.png" id="2_83vsj"]
+[ext_resource type="Texture2D" path="res://Player/Skills/Abs/abs.png" id="2_83vsj"]
 
 [sub_resource type="Resource" id="Resource_bk0rb"]
 metadata/__load_path__ = "res://area_2d.gd"

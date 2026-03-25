@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://lt6m53hn7ait"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" uid="uid://bbig80f62uyqw" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.gd" id="1_774ca"]
+[ext_resource type="Script" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.gd" id="1_774ca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqi2f"]
 size = Vector2(59, 7.942829)

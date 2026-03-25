@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxdl03sy2f1ou"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" uid="uid://df8a61dcrms74" path="res://Enemies/Toucan/toucan_health_bar.gd" id="1_w82yo"]
+[ext_resource type="Script" path="res://Enemies/Toucan/toucan_health_bar.gd" id="1_w82yo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msolp"]
 

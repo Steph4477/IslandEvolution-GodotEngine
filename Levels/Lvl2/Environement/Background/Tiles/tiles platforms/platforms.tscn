@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=4 uid="uid://cnk8orwaxhf4l"]
+[gd_scene load_steps=3 format=4]
 
-[ext_resource type="TileSet" uid="uid://bdlsfsw2hywfm" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="1_8rlpo"]
+[ext_resource type="TileSet" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="1_8rlpo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvf4m"]
 

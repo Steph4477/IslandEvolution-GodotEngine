@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cnty8c00xit1y"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://ba7mwcqj14x7u" path="res://Loot/Spear/spear.gd" id="1_p2kqn"]
-[ext_resource type="Texture2D" uid="uid://b6axd8gi6rmq1" path="res://Shoot/Enemies/Spear/spear.png" id="2_ja6jw"]
+[ext_resource type="Script" path="res://Loot/Spear/spear.gd" id="1_p2kqn"]
+[ext_resource type="Texture2D" path="res://Shoot/Enemies/Spear/spear.png" id="2_ja6jw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3a4u"]
 size = Vector2(0.30919, 7.68626)

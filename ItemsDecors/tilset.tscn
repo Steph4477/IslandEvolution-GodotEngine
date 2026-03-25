@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1u0xxu8finvw"]
+[gd_scene load_steps=3 format=3]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_601ls"]
 0:0/0 = 0

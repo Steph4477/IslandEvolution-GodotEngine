@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c62ygv7nqh2vg"]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://Interface/Dialogue/pyg_dialogue.gd" id="1_nud0n"]
 [ext_resource type="Texture2D" path="res://Enemies/Pygmy/Idle/1.png" id="4_nud0n"]

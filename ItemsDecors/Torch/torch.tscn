@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxxgitsp1x75c"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Texture2D" uid="uid://bn6hrcffyidc1" path="res://ItemsDecors/Torch/light_halo_circle.png" id="1_epjmm"]
-[ext_resource type="Texture2D" uid="uid://bi6rljbw0w1wl" path="res://ItemsDecors/Torch/arm.png" id="2_xs22i"]
-[ext_resource type="Texture2D" uid="uid://celxtkk1mrp87" path="res://ItemsDecors/Torch/flame.png" id="3_r44cd"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Torch/light_halo_circle.png" id="1_epjmm"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Torch/arm.png" id="2_xs22i"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Torch/flame.png" id="3_r44cd"]
 
 [sub_resource type="Animation" id="Animation_ochkp"]
 resource_name = "Flame"

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://8cborn5jckxg"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" uid="uid://d3pkbdjkvkmt3" path="res://Effects/SpeedWind/speed_wind.gd" id="1_n6f2s"]
-[ext_resource type="Texture2D" uid="uid://curs6y5m1b1ku" path="res://Effects/SpeedWind/speed.png" id="2_xruil"]
+[ext_resource type="Script" path="res://Effects/SpeedWind/speed_wind.gd" id="1_n6f2s"]
+[ext_resource type="Texture2D" path="res://Effects/SpeedWind/speed.png" id="2_xruil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnqpd"]
 size = Vector2(2463, 201)

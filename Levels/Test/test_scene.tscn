@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bba8xps638ghn"]
+[gd_scene format=3]
 
-[ext_resource type="PackedScene" uid="uid://brco1kpm5dfx" path="res://Enemies/Bee/bee.tscn" id="1_g514y"]
+[ext_resource type="PackedScene" path="res://Enemies/Bee/Bee.tscn" id="1_g514y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(313.271, 30.1528)
@@ -48,4 +48,4 @@ scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
 [node name="Bee" parent="." unique_id=1417830833 instance=ExtResource("1_g514y")]
-position = Vector2(3293, 1199)
+position = Vector2(3224, 1120)

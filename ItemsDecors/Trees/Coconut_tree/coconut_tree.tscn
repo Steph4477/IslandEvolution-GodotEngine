@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cev5rxsibfue3"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" uid="uid://j7ave7ddv36k" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.gd" id="1_it4j1"]
-[ext_resource type="Texture2D" uid="uid://2hivv8hkoqwv" path="res://ItemsDecors/Trees/Coconut_tree/1.png" id="2_koarn"]
+[ext_resource type="Script" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.gd" id="1_it4j1"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Trees/Coconut_tree/1.png" id="2_koarn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
 size = Vector2(4.094144, 461.3263)

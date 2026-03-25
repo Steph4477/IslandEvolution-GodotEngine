@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://jkvq258v3ett"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" uid="uid://s745gfka1dvn" path="res://ItemsDecors/Box_Platform/box_platform.gd" id="1_pw6g8"]
-[ext_resource type="Texture2D" uid="uid://bw11iep13hnld" path="res://ItemsDecors/Box_Platform/box_platform.png" id="2_pw6g8"]
+[ext_resource type="Script" path="res://ItemsDecors/Box_Platform/box_platform.gd" id="1_pw6g8"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Box_Platform/box_platform.png" id="2_pw6g8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o78yy"]
 size = Vector2(123, 170)

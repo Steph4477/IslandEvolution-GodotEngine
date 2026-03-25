@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://crg5gcarnxwcf"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" uid="uid://depoa6xt4cvl" path="res://ItemsDecors/Bridge/bridge.gd" id="1_lvakd"]
-[ext_resource type="PackedScene" uid="uid://dpp35yirigbph" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="1_nl1ov"]
-[ext_resource type="Texture2D" uid="uid://bfwphcgvb8stw" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="2_lvakd"]
-[ext_resource type="PackedScene" uid="uid://ci5h0g428xork" path="res://ItemsDecors/Bridge/Crank/crank.tscn" id="4_2xfxl"]
+[ext_resource type="Script" path="res://ItemsDecors/Bridge/bridge.gd" id="1_lvakd"]
+[ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="1_nl1ov"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="2_lvakd"]
+[ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/Crank/crank.tscn" id="4_2xfxl"]
 
 [sub_resource type="Animation" id="Animation_pccnt"]
 length = 0.001

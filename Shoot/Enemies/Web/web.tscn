@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dygr7hu10mfub"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" uid="uid://bj8f56nomjww3" path="res://Shoot/Enemies/Web/web.gd" id="1_jv0dl"]
-[ext_resource type="Texture2D" uid="uid://b0uf3qtdnxxii" path="res://Shoot/Enemies/Web/web.png" id="2_jv0dl"]
-[ext_resource type="Texture2D" uid="uid://bb7p84cglgrf5" path="res://Shoot/Enemies/Web/web1.png" id="3_xepjl"]
-[ext_resource type="Texture2D" uid="uid://b0y1p8jqrx8h5" path="res://Shoot/Enemies/Web/web2.png" id="4_3lbob"]
+[ext_resource type="Script" path="res://Shoot/Enemies/Web/web.gd" id="1_jv0dl"]
+[ext_resource type="Texture2D" path="res://Shoot/Enemies/Web/web.png" id="2_jv0dl"]
+[ext_resource type="Texture2D" path="res://Shoot/Enemies/Web/web1.png" id="3_xepjl"]
+[ext_resource type="Texture2D" path="res://Shoot/Enemies/Web/web2.png" id="4_3lbob"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g75qk"]
 animations = [{

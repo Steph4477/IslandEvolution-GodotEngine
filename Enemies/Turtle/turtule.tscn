@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://duom0ifpb0oms"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" uid="uid://d27fbfveiuhwc" path="res://Enemies/Common/swimDecor.gd" id="1_3n41t"]
-[ext_resource type="Texture2D" uid="uid://dg8a7md8jst02" path="res://Enemies/Turtle/turtule.png" id="2_dochb"]
+[ext_resource type="Script" path="res://Enemies/Common/swimDecor.gd" id="1_3n41t"]
+[ext_resource type="Texture2D" path="res://Enemies/Turtle/turtule.png" id="2_dochb"]
 
 [sub_resource type="Animation" id="Animation_u1v26"]
 length = 0.001

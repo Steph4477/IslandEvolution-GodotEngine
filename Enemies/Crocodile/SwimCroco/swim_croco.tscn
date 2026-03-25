@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3eigelsea7jk"]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource type="Script" uid="uid://66d8g5h3efbw" path="res://Enemies/Crocodile/SwimCroco/swim_croco.gd" id="1_vsmij"]
-[ext_resource type="Texture2D" uid="uid://cd1wxp8b2f0t1" path="res://Enemies/Crocodile/SwimCroco/attack/1.png" id="3_6tjv3"]
-[ext_resource type="Texture2D" uid="uid://tm07wwig22" path="res://Enemies/Crocodile/SwimCroco/attack/2.png" id="4_m3d28"]
-[ext_resource type="Texture2D" uid="uid://d14k0ukwu7dgb" path="res://Enemies/Rat/idle.png" id="5_1i23n"]
-[ext_resource type="Texture2D" uid="uid://d0db0avqj0qlq" path="res://Enemies/Crocodile/SwimCroco/gloups.png" id="5_vsmij"]
+[ext_resource type="Script" path="res://Enemies/Crocodile/SwimCroco/swim_croco.gd" id="1_vsmij"]
+[ext_resource type="Texture2D" path="res://Enemies/Crocodile/SwimCroco/attack/1.png" id="3_6tjv3"]
+[ext_resource type="Texture2D" path="res://Enemies/Crocodile/SwimCroco/attack/2.png" id="4_m3d28"]
+[ext_resource type="Texture2D" path="res://Enemies/Rat/idle.png" id="5_1i23n"]
+[ext_resource type="Texture2D" path="res://Enemies/Crocodile/SwimCroco/gloups.png" id="5_vsmij"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(34, 29)

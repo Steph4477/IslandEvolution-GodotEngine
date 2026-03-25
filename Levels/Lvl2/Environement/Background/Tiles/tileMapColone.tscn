@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=4 uid="uid://wtf74815khkx"]
+[gd_scene load_steps=3 format=4]
 
-[ext_resource type="Script" uid="uid://cxw36pnglwt2i" path="res://Levels/Lvl2/Environement/Background/Tiles/tile_map.gd" id="1_0px5i"]
-[ext_resource type="TileSet" uid="uid://bdlsfsw2hywfm" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="2_ry8c0"]
+[ext_resource type="Script" path="res://Levels/Lvl2/Environement/Background/Tiles/tile_map.gd" id="1_0px5i"]
+[ext_resource type="TileSet" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="2_ry8c0"]
 
 [node name="TileMapColone" type="Node2D"]
 z_index = 10

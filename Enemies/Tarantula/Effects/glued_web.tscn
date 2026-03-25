@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cobg74te505u8"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" uid="uid://dfwc54dnovclx" path="res://Enemies/Tarantula/Effects/glued_web.gd" id="1_f7i34"]
-[ext_resource type="Texture2D" uid="uid://ckchsj07lgcg2" path="res://Enemies/Tarantula/Effects/web.png" id="2_k06t2"]
+[ext_resource type="Script" path="res://Enemies/Tarantula/Effects/glued_web.gd" id="1_f7i34"]
+[ext_resource type="Texture2D" path="res://Enemies/Tarantula/Effects/web.png" id="2_k06t2"]
 
 [sub_resource type="Animation" id="Animation_bn57y"]
 length = 0.001

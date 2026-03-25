@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b45qavoaep4q2"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" uid="uid://bhfypmgfvej4e" path="res://ItemsDecors/KillZone/kill_zone.gd" id="1_qy71m"]
+[ext_resource type="Script" path="res://ItemsDecors/KillZone/kill_zone.gd" id="1_qy71m"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(14540.221, 123.004)

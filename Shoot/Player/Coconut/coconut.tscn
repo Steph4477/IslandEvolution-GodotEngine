@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://tof0c1grgaav"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" uid="uid://chdjuk11cxt2j" path="res://Shoot/Player/Coconut/coconut.gd" id="1_3fuhs"]
-[ext_resource type="Texture2D" uid="uid://ljjnpel77xw0" path="res://Shoot/Player/Coconut/coconut.png" id="2_3fuhs"]
+[ext_resource type="Script" path="res://Shoot/Player/Coconut/coconut.gd" id="1_3fuhs"]
+[ext_resource type="Texture2D" path="res://Shoot/Player/Coconut/coconut.png" id="2_3fuhs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja31b"]
 

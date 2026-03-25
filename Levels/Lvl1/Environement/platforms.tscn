@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=4 uid="uid://chd4s1iv4x63r"]
+[gd_scene load_steps=3 format=4]
 
-[ext_resource type="TileSet" uid="uid://bebiblu7xcc5j" path="res://Levels/Lvl1/Environement/platform.tres" id="6_pyk3s"]
+[ext_resource type="TileSet" path="res://Levels/Lvl1/Environement/platform.tres" id="6_pyk3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvf4m"]
 

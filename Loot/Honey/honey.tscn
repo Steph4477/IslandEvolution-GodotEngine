@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1s7eeygvitm0"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" uid="uid://buxm1ymq7od6y" path="res://Loot/Honey/honey.gd" id="1_e4h8j"]
-[ext_resource type="Texture2D" uid="uid://dvabqv4un1wii" path="res://Loot/Honey/honey.png" id="2_e4h8j"]
+[ext_resource type="Script" path="res://Loot/Honey/honey.gd" id="1_e4h8j"]
+[ext_resource type="Texture2D" path="res://Loot/Honey/honey.png" id="2_e4h8j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4h8j"]
 radius = 25.0

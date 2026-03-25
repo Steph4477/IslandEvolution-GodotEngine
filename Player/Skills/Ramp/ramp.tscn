@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt1swvyby7uno"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" uid="uid://blulirpwsxbc5" path="res://Player/Skills/Ramp/ramp.gd" id="1_mu85d"]
-[ext_resource type="Texture2D" uid="uid://bokx2r1gf7yvd" path="res://Player/Skills/Ramp/1.png" id="2_v811h"]
-[ext_resource type="Texture2D" uid="uid://4x4mecndv2km" path="res://Player/Skills/Ramp/2.png" id="3_q702e"]
+[ext_resource type="Script" path="res://Player/Skills/Ramp/ramp.gd" id="1_mu85d"]
+[ext_resource type="Texture2D" path="res://Player/Skills/Ramp/1.png" id="2_v811h"]
+[ext_resource type="Texture2D" path="res://Player/Skills/Ramp/2.png" id="3_q702e"]
 
 [sub_resource type="Animation" id="Animation_sjx6a"]
 length = 0.001

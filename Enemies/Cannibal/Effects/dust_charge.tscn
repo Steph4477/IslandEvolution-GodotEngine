@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh0jcnet3py38"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Texture2D" uid="uid://b12lgi7t52gni" path="res://Enemies/Cannibal/Effects/dust_charge.png" id="1_26r7v"]
+[ext_resource type="Texture2D" path="res://Enemies/Cannibal/Effects/dust_charge.png" id="1_26r7v"]
 
 [sub_resource type="Animation" id="Animation_26r7v"]
 resource_name = "fade"

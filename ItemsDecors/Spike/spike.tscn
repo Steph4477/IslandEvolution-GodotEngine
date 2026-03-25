@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bi56b8q1a6s16"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Texture2D" uid="uid://djhj0vkorer2l" path="res://ItemsDecors/Spike/3.png" id="1_l2d7g"]
-[ext_resource type="Texture2D" uid="uid://c3p7b2x5p0krh" path="res://ItemsDecors/Spike/2.png" id="2_d6hta"]
-[ext_resource type="Texture2D" uid="uid://dycg76fharsxs" path="res://ItemsDecors/Spike/1.png" id="3_3axfj"]
-[ext_resource type="Script" uid="uid://521qvx867xvi" path="res://ItemsDecors/Spike/spike.gd" id="4_l2d7g"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Spike/3.png" id="1_l2d7g"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Spike/2.png" id="2_d6hta"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Spike/1.png" id="3_3axfj"]
+[ext_resource type="Script" path="res://ItemsDecors/Spike/spike.gd" id="4_l2d7g"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(599.44, 123.004)

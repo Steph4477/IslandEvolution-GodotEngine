@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=4 uid="uid://ct7cfs6fktu4n"]
+[gd_scene load_steps=3 format=4]
 
-[ext_resource type="TileSet" uid="uid://bfcsdx5quq108" path="res://Levels/Lvl1/Environement/forest_tileset.tres" id="1_4p213"]
-[ext_resource type="TileSet" uid="uid://clw7lupsfvkkw" path="res://Levels/Lvl1/Environement/tiles.tres" id="2_fkcea"]
+[ext_resource type="TileSet" path="res://Levels/Lvl1/Environement/forest_tileset.tres" id="1_4p213"]
+[ext_resource type="TileSet" path="res://Levels/Lvl1/Environement/tiles.tres" id="2_fkcea"]
 
 [node name="Foret" type="Node2D"]
 

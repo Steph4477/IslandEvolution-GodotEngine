@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4nftk6ff2hsq"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Texture2D" uid="uid://dt7tg07x3vl0y" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.png" id="1_1seyq"]
-[ext_resource type="Script" uid="uid://dpxkpr1v62pck" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.gd" id="1_g1j6f"]
-[ext_resource type="Texture2D" uid="uid://b4pp7i2iq0fl2" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack_empty.png" id="3_xqw3l"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.png" id="1_1seyq"]
+[ext_resource type="Script" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.gd" id="1_g1j6f"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack_empty.png" id="3_xqw3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1j6f"]
 size = Vector2(702, 915)

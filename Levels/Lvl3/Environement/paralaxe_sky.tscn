@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b10wuhuwjnuav"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Texture2D" uid="uid://crybqf08ti5l4" path="res://Levels/Lvl3/Environement/sky.png" id="2_5tben"]
-[ext_resource type="Texture2D" uid="uid://dalnwtv7im3vl" path="res://Levels/Lvl1/Environement/halo.png" id="3_3e7te"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/sky.png" id="2_5tben"]
+[ext_resource type="Texture2D" path="res://Levels/Lvl1/Environement/halo.png" id="3_3e7te"]
 
 [node name="ParalaxeCielLvl3" type="Node2D"]
 

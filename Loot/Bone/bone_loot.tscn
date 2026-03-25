@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3pait8vbsc3"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" uid="uid://bkwtmouqcacme" path="res://Loot/Bone/bone_loot.gd" id="1_rk3tx"]
-[ext_resource type="Texture2D" uid="uid://ddvdg6tpqe0it" path="res://Shoot/Enemies/Bone/bone.png" id="2_xju6l"]
+[ext_resource type="Script" path="res://Loot/Bone/bone_loot.gd" id="1_rk3tx"]
+[ext_resource type="Texture2D" path="res://Shoot/Enemies/Bone/bone.png" id="2_xju6l"]
 
 [sub_resource type="Animation" id="Animation_xju6l"]
 length = 0.001

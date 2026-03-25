@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvjyrbrnxvol8"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" uid="uid://d27fbfveiuhwc" path="res://Enemies/Common/swimDecor.gd" id="1_llb38"]
-[ext_resource type="Texture2D" uid="uid://bepfbhmpi2ogs" path="res://Enemies/Fish/fish.png" id="2_p6gxy"]
+[ext_resource type="Script" path="res://Enemies/Common/swimDecor.gd" id="1_llb38"]
+[ext_resource type="Texture2D" path="res://Enemies/Fish/fish.png" id="2_p6gxy"]
 
 [sub_resource type="Animation" id="Animation_u1v26"]
 length = 0.001

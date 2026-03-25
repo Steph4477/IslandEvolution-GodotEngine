@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://c2h3f7cwjc1n5"]
+[gd_scene load_steps=4 format=4]
 
-[ext_resource type="TileSet" uid="uid://bdlsfsw2hywfm" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="1_h3ohk"]
-[ext_resource type="Script" uid="uid://cxw36pnglwt2i" path="res://Levels/Lvl2/Environement/Background/Tiles/tile_map.gd" id="1_smvnu"]
+[ext_resource type="TileSet" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="1_h3ohk"]
+[ext_resource type="Script" path="res://Levels/Lvl2/Environement/Background/Tiles/tile_map.gd" id="1_smvnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvf4m"]
 
