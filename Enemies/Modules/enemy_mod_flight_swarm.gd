@@ -137,7 +137,9 @@ func can_take_swarm_hit():
 		return false
 
 	hit_locked = true
-	enemy.call_deferred("_unlock_swarm_hit")
+
+
+	enemy.call_deferred("unlock_swarm_hit")
 	return true
 
 func unlock_swarm_hit():

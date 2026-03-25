@@ -107,7 +107,7 @@ func win():
 	timer.stop()
 	chrono.stop_chrono()
 	chrono.visible = false
-	gs.player.show_info("✅ Défi réussi !")
+	gs.player.popups_mod.show_info("✅ Défi réussi !")
 	
 	# 1) Dialogue 
 	await dialogue_win_toucan()
@@ -125,7 +125,7 @@ func lose():
 	timer.stop()
 	chrono.stop_chrono()
 	chrono.visible = false
-	gs.player.show_info_popup("⏳ Temps écoulé, tu vas y arriver Moko !")
+	gs.player.popups_mod.show_info("⏳ Temps écoulé, tu vas y arriver Moko !")
 	gs.has_flower = false
 	gs.toucan_challenge_retry = true
 	gs.player.damage_mod.die()

@@ -1,6 +1,6 @@
-[gd_scene load_steps=41 format=3]
+[gd_scene format=3 uid="uid://d37am0jyminnf"]
 
-[ext_resource type="Script" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
+[ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/environement.tscn" id="2_lalfn"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/tileForet.tscn" id="3_mpeth"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/Door/lvl2/Exit.tscn" id="4_na1bk"]
@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
 [ext_resource type="PackedScene" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
 [ext_resource type="PackedScene" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
-[ext_resource type="Script" path="res://Levels/Lvl1/Environement/seeds.gd" id="18_p8qu6"]
+[ext_resource type="Script" uid="uid://o41uset6a6qr" path="res://Levels/Lvl1/Environement/seeds.gd" id="18_p8qu6"]
 [ext_resource type="PackedScene" path="res://Loot/Seed/seed.tscn" id="19_hs4kr"]
-[ext_resource type="AudioStream" path="res://sounds/lvl1.mp3" id="20_qky26"]
+[ext_resource type="AudioStream" uid="uid://db12ei3cw5sxd" path="res://sounds/lvl1.mp3" id="20_qky26"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
 [ext_resource type="PackedScene" path="res://Interface/Quest/quest.tscn" id="22_2hr7n"]
 
@@ -79,22 +79,22 @@ size = Vector2(312.797, 53.526)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myamh"]
 size = Vector2(5.4567, 20)
 
-[node name="lvl1" type="Node2D"]
+[node name="lvl1" type="Node2D" unique_id=354594342]
 script = ExtResource("1_mebys")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=474005028]
 
-[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
+[node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
 position = Vector2(179, 1300)
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="." unique_id=1107236498]
 position = Vector2(3329, 1040)
 
-[node name="ParalaxeCiel" parent="Background" instance=ExtResource("2_lalfn")]
+[node name="ParalaxeCiel" parent="Background" unique_id=300711010 instance=ExtResource("2_lalfn")]
 position = Vector2(1173, -1770)
 scale = Vector2(3.28, 1)
 
-[node name="SunLight2D" type="DirectionalLight2D" parent="Background"]
+[node name="SunLight2D" type="DirectionalLight2D" parent="Background" unique_id=2117109705]
 position = Vector2(-1680, -751)
 rotation = 0.785398
 scale = Vector2(1.5, 1.5)
@@ -106,253 +106,250 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 4.0
 
-[node name="Forest" parent="Background" instance=ExtResource("3_mpeth")]
+[node name="Forest" parent="Background" unique_id=1951585968 instance=ExtResource("3_mpeth")]
 position = Vector2(-3329, -1040)
 
-[node name="Exit" parent="." instance=ExtResource("4_na1bk")]
+[node name="Exit" parent="." unique_id=550448380 instance=ExtResource("4_na1bk")]
 position = Vector2(7196, 1331)
 
-[node name="Arrows" type="Node2D" parent="."]
+[node name="Arrows" type="Node2D" parent="." unique_id=83345912]
 position = Vector2(3068, 1446)
 scale = Vector2(0.635458, 0.141613)
 
-[node name="Arrow1" parent="Arrows" instance=ExtResource("5_jneuh")]
+[node name="Arrow1" parent="Arrows" unique_id=155893927 instance=ExtResource("5_jneuh")]
 position = Vector2(-6.29467, 42.369)
 scale = Vector2(1, 1)
 
-[node name="Arrow2" parent="Arrows" instance=ExtResource("5_jneuh")]
+[node name="Arrow2" parent="Arrows" unique_id=758725078 instance=ExtResource("5_jneuh")]
 position = Vector2(-1852.21, -7.06152)
 rotation = -3.14158
 scale = Vector2(0.397965, -1.02986)
 skew = -1.0848e-05
 
-[node name="Platforms" type="Node2D" parent="."]
+[node name="Platforms" type="Node2D" parent="." unique_id=1549227537]
 
-[node name="PlatformsTiles" parent="Platforms" instance=ExtResource("6_gchcg")]
+[node name="PlatformsTiles" parent="Platforms" unique_id=1750417989 instance=ExtResource("6_gchcg")]
 position = Vector2(825, 369)
 
-[node name="PlatformsCollision" type="StaticBody2D" parent="Platforms"]
+[node name="PlatformsCollision" type="StaticBody2D" parent="Platforms" unique_id=1173081895]
 position = Vector2(734, -1811)
 scale = Vector2(0.089149, 0.144557)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=682810030]
 position = Vector2(14393.9, 21967.1)
 rotation = -3.14159
 scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_wajbs")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1878674279]
 light_mask = 4
 position = Vector2(34156.3, 23061.8)
 scale = Vector2(283.803, 14.7983)
 shape = SubResource("RectangleShape2D_dvpsw")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=555667]
 position = Vector2(23174.7, 18145.1)
 scale = Vector2(217.988, 8.30556)
 shape = SubResource("RectangleShape2D_am3co")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=78601811]
 position = Vector2(14358, 21133.5)
 scale = Vector2(992.862, 8.2334)
 shape = SubResource("RectangleShape2D_ofnsq")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1872796002]
 position = Vector2(22950.3, 19639.3)
 scale = Vector2(401.261, 7.01483)
 shape = SubResource("RectangleShape2D_e63vn")
 
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=265071110]
 position = Vector2(33561.8, 16796.1)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_vc1ff")
 
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=437177044]
 position = Vector2(11318.1, 21970.6)
 scale = Vector2(300.999, -7.56021)
 shape = SubResource("RectangleShape2D_kgp0u")
 
-[node name="CollisionShape2D20" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1110045396]
 position = Vector2(37695.332, 18183.139)
 scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_lr8k6")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=542489724]
 position = Vector2(-8244.62, 17698.9)
 scale = Vector2(123.511, -685.622)
 shape = SubResource("RectangleShape2D_t3xnj")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=232197234]
 position = Vector2(76611.3, 17446.4)
 rotation = -3.14159
 scale = Vector2(144.607, 694.703)
 shape = SubResource("RectangleShape2D_t3xnj")
 
-[node name="CollisionShape2D30" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D30" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1852318435]
 position = Vector2(27134.3, 16879.2)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_cvxqb")
 
-[node name="CollisionShape2D31" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D31" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=408281495]
 position = Vector2(16646.3, 19750)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_26k7p")
 
-[node name="CollisionShape2D24" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D24" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=3642631]
 position = Vector2(23036.7, 20148.3)
 scale = Vector2(282.291, 10.4812)
 shape = SubResource("RectangleShape2D_0og2l")
 
-[node name="CollisionShape2D26" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D26" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=767446134]
 position = Vector2(23023.2, 21655.8)
 scale = Vector2(282.291, 10.4812)
 shape = SubResource("RectangleShape2D_kcd4a")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=552635228]
 position = Vector2(19932.9, 18539.4)
 rotation = -3.14159
 scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_uhs03")
 
-[node name="CollisionShape2D25" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D25" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1016564404]
 position = Vector2(41554.03, 19210.4)
 scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_avxqp")
 
-[node name="CollisionShape2D27" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D27" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1629477325]
 position = Vector2(41621.3, 21479.4)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_mlm52")
 
-[node name="CollisionShape2D28" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D28" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1259879072]
 position = Vector2(41576, 22375.2)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_0804m")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1764908885]
 position = Vector2(34840.6, 12353.3)
 scale = Vector2(283.803, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
-[node name="CollisionShape2D29" type="CollisionShape2D" parent="Platforms/PlatformsCollision"]
+[node name="CollisionShape2D29" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=334011898]
 position = Vector2(65362.5, 20338)
 scale = Vector2(222.011, 12.5199)
 shape = SubResource("RectangleShape2D_myamh")
 
-[node name="MobilePlatForm1" parent="Platforms" instance=ExtResource("7_wpu1g")]
+[node name="MobilePlatForm1" parent="Platforms" unique_id=1983112277 instance=ExtResource("7_wpu1g")]
 position = Vector2(6356, 1311)
 speed = 200.0
 direction = 1
 
-[node name="MobilePlatForm2" parent="Platforms" instance=ExtResource("7_wpu1g")]
+[node name="MobilePlatForm2" parent="Platforms" unique_id=851967852 instance=ExtResource("7_wpu1g")]
 position = Vector2(4708, 1089)
 speed = 300.0
 distance = 1800.0
 
-[node name="Trees" type="Node2D" parent="."]
+[node name="Trees" type="Node2D" parent="." unique_id=2136015294]
 position = Vector2(6144, 1425)
 
-[node name="Coconut" parent="Trees" instance=ExtResource("8_n1s4q")]
+[node name="Coconut" parent="Trees" unique_id=539869301 instance=ExtResource("8_n1s4q")]
 position = Vector2(-675, 56)
 
-[node name="Coconut2" parent="Trees" instance=ExtResource("8_n1s4q")]
+[node name="Coconut2" parent="Trees" unique_id=1960314878 instance=ExtResource("8_n1s4q")]
 position = Vector2(-5550, 85)
 
-[node name="Bananier" parent="Trees" instance=ExtResource("9_wh82l")]
+[node name="Bananier" parent="Trees" unique_id=1737612719 instance=ExtResource("9_wh82l")]
 position = Vector2(-4701, -362)
 
-[node name="Bananier2" parent="Trees" instance=ExtResource("9_wh82l")]
+[node name="Bananier2" parent="Trees" unique_id=204370001 instance=ExtResource("9_wh82l")]
 position = Vector2(-2723, -363)
 
-[node name="Loot" type="Node2D" parent="Trees"]
+[node name="Loot" type="Node2D" parent="Trees" unique_id=617090188]
 position = Vector2(-5519, -361)
 
-[node name="CocoLoot2" parent="Trees/Loot" instance=ExtResource("10_oicsw")]
+[node name="CocoLoot2" parent="Trees/Loot" unique_id=667419175 instance=ExtResource("10_oicsw")]
 position = Vector2(12, 0)
 
-[node name="BananaLoot" parent="Trees/Loot" instance=ExtResource("11_hkrhx")]
+[node name="BananaLoot" parent="Trees/Loot" unique_id=470617441 instance=ExtResource("11_hkrhx")]
 position = Vector2(882, -23)
 
-[node name="BananaLoot2" parent="Trees/Loot" instance=ExtResource("11_hkrhx")]
+[node name="BananaLoot2" parent="Trees/Loot" unique_id=2014532649 instance=ExtResource("11_hkrhx")]
 position = Vector2(2861, -22)
 
-[node name="CocoLoot" parent="Trees/Loot" instance=ExtResource("10_oicsw")]
+[node name="CocoLoot" parent="Trees/Loot" unique_id=1314676657 instance=ExtResource("10_oicsw")]
 position = Vector2(4882, -28)
 
-[node name="Butterfly" type="Node2D" parent="."]
+[node name="Butterfly" type="Node2D" parent="." unique_id=380073951]
 position = Vector2(3329, 1040)
 
-[node name="Butterfly1" parent="Butterfly" instance=ExtResource("16_xerpc")]
+[node name="Butterfly1" parent="Butterfly" unique_id=1994102652 instance=ExtResource("16_xerpc")]
 position = Vector2(-2278, 298)
 
-[node name="Butterfly2" parent="Butterfly" instance=ExtResource("16_xerpc")]
+[node name="Butterfly2" parent="Butterfly" unique_id=1680537455 instance=ExtResource("16_xerpc")]
 position = Vector2(2387, 97)
 butterfly_color = Color(0.99785334, 0.9176539, 0.9126982, 1)
 
-[node name="Butterfly3" parent="Butterfly" instance=ExtResource("16_xerpc")]
+[node name="Butterfly3" parent="Butterfly" unique_id=709357037 instance=ExtResource("16_xerpc")]
 position = Vector2(1419, 279)
 butterfly_color = Color(0.30679777, 0.024966344, 0.058257446, 1)
 
-[node name="Butterfly4" parent="Butterfly" instance=ExtResource("16_xerpc")]
+[node name="Butterfly4" parent="Butterfly" unique_id=991427257 instance=ExtResource("16_xerpc")]
 position = Vector2(386, 83)
 butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
 
-[node name="Butterfly5" parent="Butterfly" instance=ExtResource("16_xerpc")]
+[node name="Butterfly5" parent="Butterfly" unique_id=618754538 instance=ExtResource("16_xerpc")]
 position = Vector2(-629, -97)
 butterfly_color = Color(0.82884276, 0.66643363, 0.15861124, 1)
 
-[node name="Butterfly6" parent="Butterfly" instance=ExtResource("16_xerpc")]
+[node name="Butterfly6" parent="Butterfly" unique_id=1153317459 instance=ExtResource("16_xerpc")]
 position = Vector2(-1231, -55)
 butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
 
-[node name="Creatures" type="Node2D" parent="."]
+[node name="Creatures" type="Node2D" parent="." unique_id=1013611793]
 position = Vector2(3329, 1040)
 
-[node name="Snake" parent="Creatures" instance=ExtResource("12_d0a2k")]
+[node name="Snake" parent="Creatures" unique_id=831124287 instance=ExtResource("12_d0a2k")]
 position = Vector2(627, 389)
 
-[node name="Mousquito" parent="Creatures" instance=ExtResource("13_oiu73")]
+[node name="Mousquito" parent="Creatures" unique_id=1197171326 instance=ExtResource("13_oiu73")]
 position = Vector2(2843, 40)
 
-[node name="Toucan" parent="Creatures" instance=ExtResource("14_li3ov")]
+[node name="Toucan" parent="Creatures" unique_id=512843782 instance=ExtResource("14_li3ov")]
 position = Vector2(487, -159)
 
-[node name="Carnivore" parent="Creatures" instance=ExtResource("15_los52")]
+[node name="Carnivore" parent="Creatures" unique_id=967292307 instance=ExtResource("15_los52")]
 position = Vector2(-1070, 343)
 
-[node name="Mousquito2" parent="Creatures" instance=ExtResource("13_oiu73")]
+[node name="Mousquito2" parent="Creatures" unique_id=156221535 instance=ExtResource("13_oiu73")]
 position = Vector2(980, -356)
 
-[node name="Carnivore2" parent="Creatures" groups=["Enemies"] instance=ExtResource("15_los52")]
+[node name="Carnivore2" parent="Creatures" unique_id=1637013469 groups=["Enemies"] instance=ExtResource("15_los52")]
 position = Vector2(-791, 342)
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Items" type="Node2D" parent="." unique_id=1086633539]
 
-[node name="Seeds" type="Node2D" parent="Items"]
+[node name="Seeds" type="Node2D" parent="Items" unique_id=1818313655]
 position = Vector2(6128, 1255)
 script = ExtResource("18_p8qu6")
 
-[node name="Seed3" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
-position = Vector2(432, -170)
-
-[node name="Seed4" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
+[node name="Seed4" parent="Items/Seeds" unique_id=1191230243 instance=ExtResource("19_hs4kr")]
 position = Vector2(-2033, -469)
 
-[node name="Seed5" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
+[node name="Seed5" parent="Items/Seeds" unique_id=1170338854 instance=ExtResource("19_hs4kr")]
 position = Vector2(-3907, -262)
 
-[node name="Seed6" parent="Items/Seeds" instance=ExtResource("19_hs4kr")]
+[node name="Seed6" parent="Items/Seeds" unique_id=1727442955 instance=ExtResource("19_hs4kr")]
 position = Vector2(-3326, -491)
 
-[node name="Sound" type="Node2D" parent="."]
+[node name="Sound" type="Node2D" parent="." unique_id=1907351730]
 
-[node name="lvl1" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="lvl1" type="AudioStreamPlayer2D" parent="Sound" unique_id=1778967354]
 position = Vector2(1226, 1228)
 stream = ExtResource("20_qky26")
 volume_db = 4.837
 
-[node name="Totem" parent="." instance=ExtResource("21_t7ttw")]
+[node name="Totem" parent="." unique_id=209721126 instance=ExtResource("21_t7ttw")]
 position = Vector2(3767, 550)
 
-[node name="QuestBox" parent="." instance=ExtResource("22_2hr7n")]
+[node name="QuestBox" parent="." unique_id=1634934958 instance=ExtResource("22_2hr7n")]

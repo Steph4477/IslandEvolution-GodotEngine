@@ -34,7 +34,7 @@ func collect_camouflage(amount = 1):
 
 func collect_double_jump():
 	p.game_state.double_jump_unlocked = true
-	p.popups_mod.show_info_popup("🦘 Double saut débloqué !")
+	p.popups_mod.show_info("🦘 Double saut débloqué !")
 
 
 func collect_oxygen(amount):

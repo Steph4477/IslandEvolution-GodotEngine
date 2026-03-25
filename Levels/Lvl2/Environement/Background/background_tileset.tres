@@ -1,12 +1,12 @@
-[gd_resource type="TileSet" format=3]
+[gd_resource type="TileSet" format=3 uid="uid://cemt1gubeih8b"]
 
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Background/3.png" id="1_r3myk"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Background/4.png" id="2_onkx3"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Background/5.png" id="3_s5or1"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/1.png" id="5_onkx3"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Background/1.png" id="5_x8kpv"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/2.png" id="6_s5or1"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/3.png" id="7_l2wmy"]
+[ext_resource type="Texture2D" uid="uid://c2f5o7ikyseog" path="res://Levels/Lvl2/Environement/Background/3.png" id="1_r3myk"]
+[ext_resource type="Texture2D" uid="uid://dtynnexa68rik" path="res://Levels/Lvl2/Environement/Background/4.png" id="2_onkx3"]
+[ext_resource type="Texture2D" uid="uid://cacwq3467pe3l" path="res://Levels/Lvl2/Environement/Background/5.png" id="3_s5or1"]
+[ext_resource type="Texture2D" uid="uid://bt80bejcv5fr5" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/1.png" id="5_onkx3"]
+[ext_resource type="Texture2D" uid="uid://bh3njax0j017b" path="res://Levels/Lvl2/Environement/Background/1.png" id="5_x8kpv"]
+[ext_resource type="Texture2D" uid="uid://dy74e40lnkyqc" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/2.png" id="6_s5or1"]
+[ext_resource type="Texture2D" uid="uid://d3km4dspd0p2y" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/3.png" id="7_l2wmy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gcdyl"]
 texture = ExtResource("1_r3myk")
