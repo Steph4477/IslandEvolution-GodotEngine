@@ -162,8 +162,10 @@ func spawn_loot():
 		return
 
 	var loot = scene.instantiate()
+	get_tree().current_scene.add_child(loot)
 	loot.global_position = global_position
-	get_parent().add_child(loot)
+
+	loot.z_index = 100
 
 func _show_damage_popup(_amount):
 	pass
