@@ -6,6 +6,9 @@ class_name EnemyBase
 @export var hit_lock_time = 0.20
 @export var attack_anim_name = "attack"
 
+@export var drop_loot_enabled = false
+@export var loot_scene = null
+
 var gs = null
 var player = null
 
@@ -21,7 +24,6 @@ var anim = null
 var spawn_point = null
 var attack_timer = null
 var projectile_timer = null
-var loot_scene = null
 
 func _ready():
 	setup_common_refs()
@@ -114,9 +116,8 @@ func attack():
 	is_attacking = true
 	velocity.x = 0
 
-
 	if anim.current_animation != attack_anim_name:
-			anim.play(attack_anim_name)
+		anim.play(attack_anim_name)
 
 	do_attack_damage()
 
@@ -137,14 +138,27 @@ func die():
 
 	if attack_timer:
 		attack_timer.stop()
-	
+
 	if projectile_timer:
 		projectile_timer.stop()
 
-	anim.play("die")
-	await anim.animation_finished
+	if anim and anim.has_animation("die"):
+		anim.play("die")
+		await anim.animation_finished
 
+	spawn_loot()
 	queue_free()
+
+func spawn_loot():
+	if not drop_loot_enabled:
+		return
+
+	if loot_scene == null:
+		return
+
+	var loot = loot_scene.instantiate()
+	loot.global_position = global_position
+	get_parent().add_child(loot)
 
 func _show_damage_popup(_amount):
 	pass
