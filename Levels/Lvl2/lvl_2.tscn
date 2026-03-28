@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" path="res://Enemies/Snake/snake.tscn" id="14_utbl0"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/tileMapPlatform.tscn" id="15_3p2tf"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Moving_Platform/Rock/rock.tscn" id="15_a6f7x"]
-[ext_resource type="PackedScene" path="res://Enemies/Rat/rat.tscn" id="16_sdx3j"]
+[ext_resource type="PackedScene" uid="uid://bosgcqxhm1lmu" path="res://Enemies/Rat/rat.tscn" id="16_sdx3j"]
 [ext_resource type="Texture2D" uid="uid://berthi4xbc0vx" path="res://ItemsDecors/Symbol/Turn_off/bowl.png" id="17_kxq3y"]
 [ext_resource type="PackedScene" path="res://Loot/Seed/seed.tscn" id="17_mnvun"]
 [ext_resource type="Texture2D" uid="uid://dmrct5ausn1rt" path="res://Levels/Lvl2/Accessory/rack.png" id="18_dadqh"]
@@ -149,7 +149,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1372434146]
 z_index = 8
-position = Vector2(8673, 748)
+position = Vector2(1234, 96)
 
 [node name="Spear_rack" parent="Node2D" unique_id=176207966 instance=ExtResource("3_04g0o")]
 position = Vector2(2236, 629)
@@ -385,11 +385,6 @@ position = Vector2(4605.997, -1135.0117)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
-[node name="Rat3" parent="Node2D/Creatures/Rat" unique_id=1398062740 instance=ExtResource("16_sdx3j")]
-position = Vector2(6108.9985, -371.0155)
-rotation = 3.1415927
-scale = Vector2(-1, -1)
-
 [node name="Rat4" parent="Node2D/Creatures/Rat" unique_id=810136926 instance=ExtResource("16_sdx3j")]
 position = Vector2(4227.996, -1587.0107)
 rotation = 3.1415927
@@ -400,20 +395,28 @@ position = Vector2(3779.0002, 133.99042)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
 
+[node name="Rat" parent="Node2D/Creatures/Rat" unique_id=385022413 instance=ExtResource("16_sdx3j")]
+position = Vector2(5425.0024, 860.9862)
+
 [node name="Pygmys" type="Node2D" parent="Node2D/Creatures" unique_id=1995372841]
 position = Vector2(3828, -218.01)
-
-[node name="Pygmy" parent="Node2D/Creatures/Pygmys" unique_id=1783296698 instance=ExtResource("13_04g0o")]
-position = Vector2(2705.0002, 291.9934)
-scale = Vector2(1, 1)
 
 [node name="Pygmy2" parent="Node2D/Creatures/Pygmys" unique_id=1120375186 instance=ExtResource("13_04g0o")]
 position = Vector2(-3230.9995, 429.00848)
 scale = Vector2(1, 1)
+drop_loot_enabled = true
+loot_scene_path = "res://Loot/Spear/spear.tscn"
 
 [node name="Pygmy3" parent="Node2D/Creatures/Pygmys" unique_id=1379821880 instance=ExtResource("13_04g0o")]
 position = Vector2(-5020.003, -849.98706)
 scale = Vector2(1, 1)
+drop_loot_enabled = true
+loot_scene_path = "res://Loot/Spear/spear.tscn"
+
+[node name="Pygmy" parent="Node2D/Creatures/Pygmys" unique_id=1783296698 instance=ExtResource("13_04g0o")]
+position = Vector2(2632.0002, 252.99362)
+drop_loot_enabled = true
+loot_scene_path = "res://Loot/Spear/spear.tscn"
 
 [node name="Snakes" type="Node2D" parent="Node2D/Creatures" unique_id=1130178387]
 
