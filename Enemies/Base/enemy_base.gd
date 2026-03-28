@@ -7,7 +7,7 @@ class_name EnemyBase
 @export var attack_anim_name = "attack"
 
 @export var drop_loot_enabled = false
-@export var loot_scene = null
+@export_file("*.tscn") var loot_scene_path = ""
 
 var gs = null
 var player = null
@@ -153,10 +153,15 @@ func spawn_loot():
 	if not drop_loot_enabled:
 		return
 
-	if loot_scene == null:
+	if loot_scene_path == "":
 		return
 
-	var loot = loot_scene.instantiate()
+	var scene = load(loot_scene_path)
+
+	if scene == null:
+		return
+
+	var loot = scene.instantiate()
 	loot.global_position = global_position
 	get_parent().add_child(loot)
 
