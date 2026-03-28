@@ -1,6 +1,5 @@
 extends EnemyGroundBase
 
-@export var sprint_loot_scene = preload("res://Player/Skills/Sprint/Sprint.tscn")
 @export var melee_distance = 70.0
 
 var melee_mod = EnemyModMelee.new()
@@ -13,7 +12,6 @@ func _ready():
 	stop_distance = 40
 	gravity = 2000
 	attack_anim_name = "attack"
-	loot_scene = sprint_loot_scene
 
 	super._ready()
 	setup_common_refs()
