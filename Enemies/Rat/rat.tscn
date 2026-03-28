@@ -135,7 +135,7 @@ speed = 100
 attack_range = 100
 stop_distance = 0
 drop_loot_enabled = true
-loot_scene_path = "res://Player/Skills/Sprint/Sprint.tscn"
+loot_scene_path = "uid://cggxcitfp164h"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1172142251]
 position = Vector2(-11, -3)
