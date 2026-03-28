@@ -12,8 +12,6 @@ var min_shoot_distance = 300.0
 var max_shoot_distance = 2000.0
 var jump_velocity = -600.0
 
-var loot_lance_scene = preload("res://Loot/Spear/spear.tscn")
-
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
 var jump_mod = EnemyModJumpSync.new()
@@ -28,7 +26,6 @@ func _ready():
 	attack_range = 99999
 	stop_distance = 40
 	attack_anim_name = "cac"
-	loot_scene = loot_lance_scene
 
 	super._ready()
 
