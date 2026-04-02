@@ -5,26 +5,27 @@ extends EnemyFlightBase
 @export var contact_attack_radius = 24.0
 @export var cooldown = 0.8
 @export var patrol_speed = 80
-@export var patrol_change_interval = 2.0
-
-@export var orbit_radius_x = 90.0
-@export var orbit_radius_y = 55.0
-@export var orbit_angular_speed = 6.0
-@export var orbit_duration = 1.2
-
-@export var osc_radial_amplitude = 6.0
-@export var osc_radial_frequency = 10.0
-@export var osc_angle_amplitude = 0.12
-@export var osc_angle_frequency = 7.0
-
 @export var swarm_count = 3
-@export var swarm_spawn_radius = 50.0
-@export var swarm_orbit_step_x = 28.0
-@export var swarm_orbit_step_y = 18.0
 
 const PHASE_PATROL = 0
 const PHASE_ORBIT = 1
 const PHASE_CHARGE = 2
+
+var patrol_change_interval = 2.0
+
+var orbit_radius_x = 90.0
+var orbit_radius_y = 55.0
+var orbit_angular_speed = 6.0
+var orbit_duration = 1.2
+
+var osc_radial_amplitude = 6.0
+var osc_radial_frequency = 10.0
+var osc_angle_amplitude = 0.12
+var osc_angle_frequency = 7.0
+
+var swarm_spawn_radius = 50.0
+var swarm_orbit_step_x = 28.0
+var swarm_orbit_step_y = 18.0
 
 var phase = PHASE_PATROL
 
@@ -35,6 +36,7 @@ var swarm_slot = 0
 var is_swarm_clone = false
 var spawn_swarm_on_ready = true
 var swarm_controller = null
+var spawned_by_hive = false
 
 var speed = 0.0
 var attack_contact_radius = 0.0
@@ -43,6 +45,7 @@ var patrol_mod = EnemyModFlightPatrol.new()
 var orbit_mod = EnemyModFlightOrbit.new()
 var charge_mod = EnemyModFlightCharge.new()
 var swarm_mod = EnemyModFlightSwarm.new()
+
 
 func _ready():
 	max_hp = 20
@@ -63,6 +66,9 @@ func _ready():
 
 	if patrol_speed == null:
 		patrol_speed = 80
+
+	if swarm_count == null:
+		swarm_count = 3
 
 	if patrol_change_interval == null:
 		patrol_change_interval = 2.0
@@ -91,9 +97,6 @@ func _ready():
 	if osc_angle_frequency == null:
 		osc_angle_frequency = 7.0
 
-	if swarm_count == null:
-		swarm_count = 3
-
 	if swarm_spawn_radius == null:
 		swarm_spawn_radius = 50.0
 
@@ -103,11 +106,20 @@ func _ready():
 	if swarm_orbit_step_y == null:
 		swarm_orbit_step_y = 18.0
 
+	if swarm_slot == null:
+		swarm_slot = 0
+
 	base_orbit_radius_x = orbit_radius_x
 	base_orbit_radius_y = orbit_radius_y
 
 	speed = chase_speed
 	attack_contact_radius = contact_attack_radius
+
+	if is_swarm_clone:
+		drop_loot_enabled = false
+
+	if spawned_by_hive:
+		drop_loot_enabled = false
 
 	super._ready()
 
@@ -127,9 +139,11 @@ func _ready():
 	if not is_swarm_clone and spawn_swarm_on_ready:
 		call_deferred("_build_swarm_deferred")
 
+
 func _build_swarm_deferred():
 	if not is_dead:
 		swarm_mod.build_swarm()
+
 
 func _physics_process(delta):
 	if is_dead:
@@ -148,11 +162,6 @@ func _physics_process(delta):
 	move_flight()
 	check_attack_hit()
 
-func get_target_position():
-	if player.has_node("TurnAxis"):
-		return player.get_node("TurnAxis").global_position
-
-	return player.global_position
 
 func update_phase(delta):
 	var distance = get_target_distance()
@@ -171,6 +180,7 @@ func update_phase(delta):
 	if phase == PHASE_CHARGE:
 		update_charge_state()
 
+
 func update_patrol_state():
 	if phase != PHASE_PATROL:
 		phase = PHASE_PATROL
@@ -179,10 +189,12 @@ func update_patrol_state():
 	if not is_attacking:
 		patrol_mod.update()
 
+
 func start_orbit_state():
 	phase = PHASE_ORBIT
 	apply_swarm_orbit_values()
 	orbit_mod.start()
+
 
 func update_orbit_state(delta):
 	if is_attacking:
@@ -197,11 +209,13 @@ func update_orbit_state(delta):
 		else:
 			orbit_mod.start()
 
+
 func update_charge_state():
 	if is_attacking:
 		return
 
 	charge_mod.update()
+
 
 func check_attack_hit():
 	if phase != PHASE_CHARGE:
@@ -215,6 +229,7 @@ func check_attack_hit():
 
 	if charge_mod.can_hit():
 		perform_attack()
+
 
 func perform_attack():
 	is_attacking = true
@@ -234,41 +249,52 @@ func perform_attack():
 		phase = PHASE_ORBIT
 		orbit_mod.start()
 
+
 func can_swarm_attack_now():
 	if swarm_controller == null:
 		return true
 
 	return swarm_controller.can_member_attack(self)
 
+
 func notify_swarm_attack_finished():
 	if swarm_controller != null:
 		swarm_controller.notify_member_attack_finished(self)
 
+
 func apply_swarm_orbit_values():
-	orbit_radius_x = base_orbit_radius_x + (float(swarm_slot) * swarm_orbit_step_x)
-	orbit_radius_y = base_orbit_radius_y + (float(swarm_slot) * swarm_orbit_step_y)
+	var step_x = swarm_orbit_step_x
+	var step_y = swarm_orbit_step_y
+	var slot = swarm_slot
+
+	if step_x == null:
+		step_x = 28.0
+
+	if step_y == null:
+		step_y = 18.0
+
+	if slot == null:
+		slot = 0
+
+	orbit_radius_x = base_orbit_radius_x + (float(slot) * step_x)
+	orbit_radius_y = base_orbit_radius_y + (float(slot) * step_y)
+
 
 func on_hit(amount):
 	if is_dead:
 		return
 
-	if swarm_controller != null and not swarm_controller.can_take_swarm_hit():
-		return
+	if swarm_controller != null:
+		if not swarm_controller.try_take_swarm_hit():
+			return
 
 	super.on_hit(amount)
 
-func _unlock_swarm_hit():
-	if swarm_controller != null:
-		swarm_controller.unlock_swarm_hit()
 
-func die():
-	if is_dead:
-		return
-
+func _exit_tree():
 	if swarm_controller != null:
 		swarm_controller.unregister_member(self)
 
-	super.die()
 
 func _on_timer_timeout():
 	if phase == PHASE_PATROL:

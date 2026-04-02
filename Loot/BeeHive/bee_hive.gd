@@ -13,9 +13,9 @@ func _on_area_2d_body_entered(body):
 		spawn_timer.start()
 
 func _on_spawn_timer_timeout():
-	# Spawn des abeilles
 	for i in range(bee_count):
 		var bee = bee_scene.instantiate()
+		bee.spawned_by_hive = true
 		get_parent().add_child(bee)
 
 		var offset = Vector2(
@@ -26,7 +26,6 @@ func _on_spawn_timer_timeout():
 		bee.global_position = global_position + offset
 		bee.z_index = 20
 
-	# Spawn du miel (une seule fois)
 	var loot = honey_loot_scene.instantiate()
 	get_parent().add_child(loot)
 	loot.global_position = global_position

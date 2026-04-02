@@ -7,8 +7,10 @@ var current_attack_index = 0
 var hit_locked = false
 var has_built_swarm = false
 
+
 func setup(owner):
 	enemy = owner
+
 
 func build_swarm():
 	if has_built_swarm:
@@ -20,13 +22,13 @@ func build_swarm():
 	members.append(enemy)
 
 	var parent = enemy.get_parent()
+	var count = 1
 
-	var count = enemy.swarm_count
-	if count == null:
+	if enemy.swarm_count != null:
+		count = int(enemy.swarm_count)
+
+	if count < 1:
 		count = 1
-
-	count = int(count)
-
 	for i in range(1, count):
 		var clone = enemy.duplicate()
 
@@ -41,9 +43,6 @@ func build_swarm():
 		clone.cooldown = enemy.cooldown
 		clone.patrol_speed = enemy.patrol_speed
 		clone.patrol_change_interval = enemy.patrol_change_interval
-
-		clone.base_orbit_radius_x = enemy.base_orbit_radius_x
-		clone.base_orbit_radius_y = enemy.base_orbit_radius_y
 
 		clone.orbit_radius_x = enemy.base_orbit_radius_x
 		clone.orbit_radius_y = enemy.base_orbit_radius_y
@@ -60,59 +59,50 @@ func build_swarm():
 		clone.swarm_orbit_step_x = enemy.swarm_orbit_step_x
 		clone.swarm_orbit_step_y = enemy.swarm_orbit_step_y
 
+		var angle = (TAU / float(count)) * float(i)
+		var offset = Vector2(cos(angle), sin(angle)) * enemy.swarm_spawn_radius
+
 		parent.add_child(clone)
-		clone.global_position = enemy.global_position + get_spawn_offset(i)
+		clone.global_position = enemy.global_position + offset
 
 		members.append(clone)
 
-	current_attack_index = 0
-
-func get_spawn_offset(slot):
-	var count = enemy.swarm_count
-	if count == null:
-		count = 1
-
-	count = int(count)
-
-	var radius = enemy.swarm_spawn_radius
-	if radius == null:
-		radius = 0.0
-
-	var angle_step = TAU / count
-	var angle = angle_step * slot
-
-	return Vector2(cos(angle), sin(angle)) * radius
 
 func can_member_attack(member):
-	cleanup_dead()
+	_cleanup_members()
 
 	if members.is_empty():
-		return false
+		return true
 
 	if current_attack_index >= members.size():
 		current_attack_index = 0
 
 	return members[current_attack_index] == member
 
+
 func notify_member_attack_finished(member):
-	cleanup_dead()
+	_cleanup_members()
 
 	if members.is_empty():
+		current_attack_index = 0
 		return
+
+	var idx = members.find(member)
+
+	if idx == -1:
+		if current_attack_index >= members.size():
+			current_attack_index = 0
+		return
+
+	current_attack_index = idx + 1
 
 	if current_attack_index >= members.size():
 		current_attack_index = 0
 
-	if members[current_attack_index] != member:
-		return
-
-	current_attack_index += 1
-
-	if current_attack_index >= members.size():
-		current_attack_index = 0
 
 func unregister_member(member):
 	var idx = members.find(member)
+
 	if idx == -1:
 		return
 
@@ -124,23 +114,37 @@ func unregister_member(member):
 	if current_attack_index >= members.size():
 		current_attack_index = 0
 
-func cleanup_dead():
-	for i in range(members.size() - 1, -1, -1):
-		if not is_instance_valid(members[i]):
-			members.remove_at(i)
 
-	if current_attack_index >= members.size():
-		current_attack_index = 0
-
-func can_take_swarm_hit():
+func try_take_swarm_hit():
 	if hit_locked:
 		return false
 
 	hit_locked = true
-
-
-	enemy.call_deferred("unlock_swarm_hit")
+	_unlock_swarm_hit_deferred()
 	return true
 
-func unlock_swarm_hit():
+
+func _unlock_swarm_hit_deferred():
+	if enemy == null:
+		hit_locked = false
+		return
+
+	if not is_instance_valid(enemy):
+		hit_locked = false
+		return
+
+	await enemy.get_tree().create_timer(0.15).timeout
 	hit_locked = false
+
+
+func _cleanup_members():
+	var valid_members = []
+
+	for member in members:
+		if member != null and is_instance_valid(member):
+			valid_members.append(member)
+
+	members = valid_members
+
+	if current_attack_index >= members.size():
+		current_attack_index = 0

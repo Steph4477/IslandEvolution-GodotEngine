@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
-[ext_resource type="PackedScene" uid="uid://bosgcqxhm1lmu" path="res://Enemies/Rat/rat.tscn" id="1_yoe4u"]
+[ext_resource type="PackedScene" path="res://Enemies/Bee/Bee.tscn" id="1_yoe4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(313.271, 30.1528)
@@ -47,5 +47,31 @@ position = Vector2(34756.457, 12353.302)
 scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
-[node name="Rat" parent="." unique_id=385022413 instance=ExtResource("1_yoe4u")]
+[node name="Bee" parent="." unique_id=1417830833 instance=ExtResource("1_yoe4u")]
 position = Vector2(3588, 1107)
+rotation = 3.1415927
+scale = Vector2(0.6, -0.6)
+chase_speed = 200
+attack_range = 800
+contact_attack_radius = 24.0
+cooldown = 0.8
+patrol_speed = 80
+patrol_change_interval = 2.0
+orbit_radius_x = 90.0
+orbit_radius_y = 55.0
+orbit_angular_speed = 6.0
+orbit_duration = 1.2
+osc_radial_amplitude = 6.0
+osc_radial_frequency = 10.0
+osc_angle_amplitude = 0.12
+osc_angle_frequency = 7.0
+swarm_count = 3
+swarm_spawn_radius = 50.0
+swarm_orbit_step_x = 28.0
+swarm_orbit_step_y = 18.0
+max_hp = 100
+damage = 10
+hit_lock_time = 0.2
+attack_anim_name = "attack"
+drop_loot_enabled = true
+loot_scene_path = "res://Loot/Honey/honey.tscn"
