@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://odqp6c1akesl"]
 
-[ext_resource type="Script" path="res://Shoot/Enemies/Spear/spear.gd" id="1_xbsnv"]
-[ext_resource type="Texture2D" path="res://Shoot/Enemies/Spear/spear.png" id="2_i14k0"]
+[ext_resource type="Script" uid="uid://csrijdkls1wbw" path="res://Shoot/Enemies/Spear/spear.gd" id="1_xbsnv"]
+[ext_resource type="Texture2D" uid="uid://rgysxhr1dxge" path="res://Shoot/Enemies/Spear/spear.png" id="2_i14k0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyw12"]
 size = Vector2(8, 3)
@@ -15,8 +15,6 @@ script = ExtResource("1_xbsnv")
 [node name="SpearSprite" type="Sprite2D" parent="." unique_id=607642992]
 scale = Vector2(0.2, -0.2)
 texture = ExtResource("2_i14k0")
-
-[node name="Timer" type="Timer" parent="." unique_id=936405961]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=612942380]
 position = Vector2(36, 1)
