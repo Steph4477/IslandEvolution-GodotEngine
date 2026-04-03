@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://cbf6yslv1hayf"]
 
-[ext_resource type="Script" path="res://Loot/Bone/bone_loot.gd" id="1_rk3tx"]
-[ext_resource type="Texture2D" path="res://Shoot/Enemies/Bone/bone.png" id="2_xju6l"]
+[ext_resource type="Script" uid="uid://bkwtmouqcacme" path="res://Loot/Bone/bone_loot.gd" id="1_rk3tx"]
+[ext_resource type="Texture2D" uid="uid://ckctlsigp4gtr" path="res://Shoot/Enemies/Bone/bone.png" id="2_xju6l"]
 
 [sub_resource type="Animation" id="Animation_xju6l"]
 length = 0.001
@@ -32,7 +32,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_rk3tx"]
 resource_name = "appear"
-length = 3.0
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -73,35 +73,33 @@ point_count = 11
 [sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
 radius = 3.47464
 
-[node name="BoneLoot" type="Node2D"]
+[node name="BoneLoot" type="Node2D" unique_id=332645160]
 z_index = 5
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_rk3tx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_v4hj0")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=484195239]
+libraries/ = SubResource("AnimationLibrary_v4hj0")
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=2091477448]
 position = Vector2(62, -180)
 curve = SubResource("Curve2D_rk3tx")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1863328421]
 position = Vector2(-6, 132)
 rotation = -0.7055682
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" unique_id=83751617]
 position = Vector2(231.78261, -46.89267)
 rotation = 2.934564
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D" unique_id=1069407894]
 position = Vector2(238.4363, 4.809868)
 rotation = -3.14159
 scale = Vector2(16.1668, -18.3068)
 shape = SubResource("CircleShape2D_52bb4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1803464264]
 position = Vector2(-3.3879852, -8.803879)
 rotation = -1.150172
 scale = Vector2(0.49999997, 0.49999997)
