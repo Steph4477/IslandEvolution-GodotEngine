@@ -10,9 +10,10 @@ var cam
 # === BLOQUAGE / DÉBLOQUAGE ENNEMIS ===
 func set_enemies_blocked(blocked):
 	var creatures = get_node_or_null("Creatures")
+	
 	if not creatures:
 		return
-
+	
 	var mode
 	if blocked:
 		mode = Node.PROCESS_MODE_DISABLED
@@ -48,36 +49,36 @@ func _ready():
 	gs.connect("all_seeds_collected", Callable(self, "_on_all_seeds_collected"))
 
 	## --- Si déjà vu -> pas de dialogue ni de focus, mais on garde l'effet ---
-	#if gs.toucan_dialogue_seen:
-		#_set_digicode_symbols(gs)
-		#gs.player.can_move = true
-		#return
-#
-	## --- Dialogue Toucan d’intro ---
-	#await get_tree().process_frame
-	#var dlg = dialogue_scene.instantiate()
-	#dlg.name = "DialogueUI"
-	#add_child(dlg)
-	#dlg.start([
-		#"J'ai faim, Moko.",
-		#"Trouve-moi 5 graines...",
-		#"Et peut-être que je pourrai t'aider..."
-	#])
-	#await dlg.finished
-#
-	## --- Marque comme vu ---
-	#gs.toucan_dialogue_seen = true
+	if gs.toucan_dialogue_seen:
+		_set_digicode_symbols(gs)
+		gs.player.can_move = true
+		return
 
-	## --- Focus sur le digicode ---
-	#await focus_camera_on_node("Node2D/Digicode")
-	#await get_tree().create_timer(1).timeout
-	#await return_camera_to_player()
+	# --- Dialogue Toucan d’intro ---
+	await get_tree().process_frame
+	var dlg = dialogue_scene.instantiate()
+	dlg.name = "DialogueUI"
+	add_child(dlg)
+	dlg.start([
+		"J'ai faim, Moko.",
+		"Trouve-moi 5 graines...",
+		"Et peut-être que je pourrai t'aider..."
+	])
+	await dlg.finished
+#
+	# --- Marque comme vu ---
+	gs.toucan_dialogue_seen = true
+
+	# --- Focus sur le digicode ---
+	await focus_camera_on_node("Node2D/Digicode")
+	await get_tree().create_timer(1).timeout
+	await return_camera_to_player()
 #
 	# --- Débloque Moko ---
 	moko.can_move = true
 #
-	## --- Pose les symboles ---
-	#_set_digicode_symbols(gs)
+	# --- Pose les symboles ---
+	_set_digicode_symbols(gs)
 
 # ======================================================
 #         Quand toutes les graines sont ramassées
