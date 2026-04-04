@@ -16,10 +16,10 @@
 [ext_resource type="PackedScene" path="res://ItemsDecors/Liana/Liana.tscn" id="11_sdlip"]
 [ext_resource type="PackedScene" path="res://Enemies/Crocodile/SwimCroco/swim_croco.tscn" id="12_12vmq"]
 [ext_resource type="PackedScene" path="res://Loot/Flower/flower.tscn" id="14_4esaq"]
-[ext_resource type="PackedScene" path="res://Enemies/Cannibal/cannibal.tscn" id="16_qaw7r"]
+[ext_resource type="PackedScene" uid="uid://4nolvckgjic0" path="res://Enemies/Cannibal/cannibal.tscn" id="16_qaw7r"]
 [ext_resource type="PackedScene" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_2nymq"]
 [ext_resource type="Texture2D" uid="uid://nwr2jb4bn8tx" path="res://Levels/Lvl3/Environement/tiles platforms/village.png" id="17_06aic"]
-[ext_resource type="PackedScene" path="res://Enemies/Cannibal/Chief/cannibal_chief.tscn" id="18_7qbkl"]
+[ext_resource type="PackedScene" uid="uid://cotk7yb4xyueu" path="res://Enemies/Cannibal/Chief/cannibal_chief.tscn" id="18_7qbkl"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
@@ -205,7 +205,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 z_index = 10
-position = Vector2(4875, 846)
+position = Vector2(4820, 811)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -439,14 +439,16 @@ position = Vector2(-1843, 9)
 position = Vector2(3513, 1180)
 scale = Vector2(2, 2)
 
-[node name="Cannibal" parent="Node2D/World/Ennemies" unique_id=1707330406 instance=ExtResource("16_qaw7r")]
-position = Vector2(9173, 936)
-
 [node name="AmphibiousCroco" parent="Node2D/World/Ennemies" unique_id=939733752 instance=ExtResource("17_2nymq")]
 position = Vector2(8429, 942)
 
 [node name="CannibalChief" parent="Node2D/World/Ennemies" unique_id=837160356 instance=ExtResource("18_7qbkl")]
 position = Vector2(12524, 951)
+appear_distance = 800.0
+attack_range = 200
+
+[node name="Cannibal" parent="Node2D/World/Ennemies" unique_id=708931693 instance=ExtResource("16_qaw7r")]
+position = Vector2(9356, 902)
 
 [node name="Flower" parent="Node2D/World" unique_id=1069062389 instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="11_2ivwu"]
 [ext_resource type="Texture2D" uid="uid://bo8vcypul5n4v" path="res://ItemsDecors/Symbol/Turn_off/lion.png" id="12_ureso"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Door/door.tscn" id="12_vjssa"]
-[ext_resource type="PackedScene" path="res://Enemies/Pygmy/pygmy.tscn" id="13_04g0o"]
+[ext_resource type="PackedScene" uid="uid://bws7kkotjh64q" path="res://Enemies/Pygmy/pygmy.tscn" id="13_04g0o"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Box_Platform/box_platform.tscn" id="13_ifea3"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Background/Tiles/tileMapWall.tscn" id="14_a6f7x"]
 [ext_resource type="PackedScene" path="res://Enemies/Snake/snake.tscn" id="14_utbl0"]
@@ -149,7 +149,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1372434146]
 z_index = 8
-position = Vector2(1234, 96)
+position = Vector2(288, 774)
 
 [node name="Spear_rack" parent="Node2D" unique_id=176207966 instance=ExtResource("3_04g0o")]
 position = Vector2(2236, 629)
