@@ -67,14 +67,14 @@ func coco():
 	p.hud_mod.update_coco_display()
 
 	p.animation_locked = true
-	p.anim.play("shoot")
+	p.anim.play("shootPoint")
 	await p.anim.animation_finished
 
 	var spell = p.spell_coco.instantiate()
 	var dir = 1
 	if p.sprite.scale.x < 0:
 		dir = -1
-	spell.start(p.get_node("TurnAxis/CastPoint").global_position, dir)
+	spell.start(p.get_node("ShootPoint").global_position, dir)
 	p.get_tree().current_scene.add_child(spell)
 
 	p.animation_locked = false
@@ -102,14 +102,14 @@ func bone():
 	p.hud_mod.update_bone_display()
 
 	p.animation_locked = true
-	p.anim.play("shoot")
+	p.anim.play("ShootPoint")
 	await p.anim.animation_finished
 
 	var spell = p.spell_bone.instantiate()
 	var dir = 1
 	if p.sprite.scale.x < 0:
 		dir = -1
-	spell.start(p.get_node("TurnAxis/CastPoint").global_position, dir)
+	spell.start(p.get_node("ShootPoint").global_position, dir)
 	p.get_tree().current_scene.add_child(spell)
 
 	p.animation_locked = false
@@ -147,7 +147,7 @@ func lance():
 	var dir = 1
 	if p.sprite.scale.x < 0:
 		dir = -1
-	spell.start(p.get_node("TurnAxis/CastPoint").global_position, dir)
+	spell.start(p.get_node("Shoot").global_position, dir)
 	p.get_tree().current_scene.add_child(spell)
 
 	p.animation_locked = false
