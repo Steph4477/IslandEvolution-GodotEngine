@@ -1,4 +1,4 @@
-extends Node
+extends RefCounted
 class_name EnemyModThrowProjectile
 
 var enemy = null
@@ -19,15 +19,16 @@ func can_throw():
 	if enemy.in_melee:
 		return false
 
-	if enemy.distance <= enemy.melee_distance:
+	if enemy.target == null:
 		return false
 
-	if enemy.player == null:
-		enemy.refresh_player()
-		if enemy.player == null:
-			return false
+	if not is_instance_valid(enemy.target):
+		return false
 
-	if enemy.player.is_dead:
+	if enemy.target.is_dead:
+		return false
+
+	if enemy.distance <= enemy.melee_distance:
 		return false
 
 	if enemy.distance < enemy.min_shoot_distance:
@@ -57,11 +58,17 @@ func throw_projectile():
 		enemy.is_shooting = false
 		return
 
-	if enemy.player == null:
-		enemy.refresh_player()
-		if enemy.player == null:
-			enemy.is_shooting = false
-			return
+	if enemy.target == null:
+		enemy.is_shooting = false
+		return
+
+	if not is_instance_valid(enemy.target):
+		enemy.is_shooting = false
+		return
+
+	if enemy.target.is_dead:
+		enemy.is_shooting = false
+		return
 
 	spawn_projectile()
 
@@ -77,10 +84,10 @@ func spawn_projectile():
 	var projectile = enemy.projectile_scene.instantiate()
 	enemy.get_tree().current_scene.add_child(projectile)
 
-	var target_pos = enemy.player.global_position
+	var target_pos = enemy.target.global_position
 
-	if enemy.player.has_node("TurnAxis"):
-		target_pos = enemy.player.get_node("TurnAxis").global_position
+	if enemy.target.has_node("TurnAxis"):
+		target_pos = enemy.target.get_node("TurnAxis").global_position
 
 	var dir = 1
 
