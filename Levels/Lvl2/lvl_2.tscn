@@ -383,17 +383,15 @@ scale = Vector2(1, -1)
 [node name="Rat2" parent="Node2D/Creatures/Rat" unique_id=1921163262 instance=ExtResource("16_sdx3j")]
 position = Vector2(4605.997, -1135.0117)
 rotation = 3.1415927
-scale = Vector2(-1, -1)
+speed = 400
 
 [node name="Rat4" parent="Node2D/Creatures/Rat" unique_id=810136926 instance=ExtResource("16_sdx3j")]
 position = Vector2(4227.996, -1587.0107)
 rotation = 3.1415927
-scale = Vector2(-1, -1)
 
 [node name="Rat5" parent="Node2D/Creatures/Rat" unique_id=1334385683 instance=ExtResource("16_sdx3j")]
 position = Vector2(3779.0002, 133.99042)
 rotation = 3.1415927
-scale = Vector2(-1, -1)
 
 [node name="Rat" parent="Node2D/Creatures/Rat" unique_id=385022413 instance=ExtResource("16_sdx3j")]
 position = Vector2(5425.0024, 860.9862)
