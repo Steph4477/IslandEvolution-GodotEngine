@@ -56,9 +56,3 @@ func update():
 	var to_target = target_position - e.global_position
 	e.dx = to_target.x
 	e.distance = to_target.length()
-
-	if e.release_enabled:
-		if e.distance > e.release_distance:
-			e.target = null
-			e.dx = 0
-			e.distance = 999999
