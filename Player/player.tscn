@@ -610,10 +610,10 @@ _data = {
 size = Vector2(137, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvbbp"]
-size = Vector2(106.66666, 365.24823)
+size = Vector2(46.66664, 365.24823)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v2uk"]
-size = Vector2(100, 141.84393)
+size = Vector2(43.333313, 141.84393)
 
 [node name="Player" type="CharacterBody2D" unique_id=1482889488 groups=["Player"]]
 z_index = 10
@@ -647,7 +647,7 @@ libraries/ = SubResource("AnimationLibrary_p7kcq")
 position = Vector2(164.16666, 61.666664)
 
 [node name="TurnAxis" type="Marker2D" parent="." unique_id=770474976]
-position = Vector2(139.99998, 117.99999)
+position = Vector2(136, 99.99999)
 rotation = 0.785398
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1847097831]
@@ -682,12 +682,12 @@ position = Vector2(125.5, 118)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="ColStand" type="CollisionShape2D" parent="." unique_id=1265538359 groups=["Player"]]
-position = Vector2(135, 93.5)
+position = Vector2(136, 92.00001)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_uvbbp")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." unique_id=1451828545 groups=["Player"]]
-position = Vector2(135, 125)
+position = Vector2(135.5, 125)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_7v2uk")
 
