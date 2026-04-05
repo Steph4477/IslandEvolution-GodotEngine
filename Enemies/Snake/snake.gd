@@ -14,9 +14,12 @@ var max_shoot_distance = 360.0
 var patrol_speed = 120.0
 var patrol_change_interval = 1.0
 
+var target
+
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
 var patrol_mod = EnemyModPatrol.new()
+var target_mod = EnemyModTarget.new()
 
 var projectile_spawn = null
 var patrol_timer = null
@@ -42,6 +45,7 @@ func _ready():
 	melee_mod.setup(self)
 	throw_mod.setup(self)
 	patrol_mod.setup(self)
+	target_mod.setup(self)
 
 	if attack_timer:
 		attack_timer.wait_time = 1.0
@@ -62,7 +66,15 @@ func _physics_process(delta):
 		return
 
 	apply_gravity(delta)
-	target_player()
+
+	if player == null:
+		refresh_player()
+
+	target_mod.update()
+
+	if target != null:
+		player = target
+
 	melee_mod.update_state()
 	update_flip()
 
@@ -184,6 +196,7 @@ func die():
 	in_melee = false
 	is_patrolling = false
 	is_patrol_paused = false
+	target = null
 
 	if patrol_timer:
 		patrol_timer.stop()
