@@ -1,11 +1,11 @@
 extends EnemyBase
 class_name EnemyGroundBase
 
-@export var speed = 200
+@export var speed = 350
 @export var attack_range = 300
-@export var stop_distance = 40
 @export var gravity = 2000
 
+var stop_distance = 40
 var dx = 0
 var distance = 0
 var base_scale_x = 1
