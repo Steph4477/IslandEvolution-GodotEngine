@@ -133,7 +133,6 @@ collision_mask = 2
 script = ExtResource("1_e4syr")
 speed = 100
 attack_range = 100
-stop_distance = 0
 drop_loot_enabled = true
 loot_scene_path = "uid://cggxcitfp164h"
 
