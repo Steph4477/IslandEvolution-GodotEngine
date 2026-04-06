@@ -23,7 +23,7 @@ func setup_fire():
 	# =========================
 	# TEXTURE
 	# =========================
-	# Utilise une texture flamme soft, mais évite un coeur blanc trop massif.
+	# Utilise une texture
 	p.texture = preload("res://Effects/Fire/fire.png")
 
 	# =========================
@@ -67,7 +67,7 @@ func setup_fire():
 	canvas_mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	p.material = canvas_mat
 
-	# Très important : baisse globale pour éviter la surexposition.
+	# Baisse globale pour éviter la surexposition.
 	p.modulate = Color(1.0, 0.82, 0.62, 0.42)
 
 	p.emitting = true
