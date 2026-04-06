@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://beak66b0odeha"]
+
+[ext_resource type="Script" uid="uid://dfmx7r7tl7471" path="res://Effects/Fire/fire.gd" id="1_h7e6p"]
+[ext_resource type="Texture2D" uid="uid://bqi6e3l5b61ed" path="res://Effects/Fire/fire.png" id="2_wwqtk"]
+
+[node name="Fire" type="Node2D" unique_id=102366546]
+position = Vector2(894, 590)
+script = ExtResource("1_h7e6p")
+
+[node name="Flame" type="GPUParticles2D" parent="." unique_id=78067916]
+texture = ExtResource("2_wwqtk")

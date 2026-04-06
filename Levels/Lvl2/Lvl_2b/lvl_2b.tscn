@@ -1,23 +1,23 @@
-[gd_scene load_steps=27 format=3]
+[gd_scene format=3 uid="uid://btmfmbtgq5lrr"]
 
-[ext_resource type="Script" path="res://Levels/Lvl2/Lvl_2b/lvl_2b.gd" id="1_ribhp"]
+[ext_resource type="Script" uid="uid://c2w24rymygghn" path="res://Levels/Lvl2/Lvl_2b/lvl_2b.gd" id="1_ribhp"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Background/Tiles/tileMap.tscn" id="3_sbfsf"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Torch/torch.tscn" id="6_dntyv"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="7_s1ddb"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Cliff/1.png" id="7_sbfsf"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="8_dntyv"]
-[ext_resource type="AudioStream" path="res://sounds/lvl2.ogg" id="10_uikls"]
+[ext_resource type="Texture2D" uid="uid://bmtf5s61pn0yo" path="res://Levels/Lvl2/Environement/Cliff/1.png" id="7_sbfsf"]
+[ext_resource type="Texture2D" uid="uid://b1mxnmvvpabo4" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="8_dntyv"]
+[ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="10_uikls"]
 [ext_resource type="PackedScene" path="res://Enemies/Tarantula/tarantula.tscn" id="11_6sncs"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Accessory/web.png" id="11_fyxfs"]
+[ext_resource type="Texture2D" uid="uid://hg8mtdcl1ndv" path="res://Levels/Lvl2/Accessory/web.png" id="11_fyxfs"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="11_gr680"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Accessory/web1.png" id="11_sbfsf"]
+[ext_resource type="Texture2D" uid="uid://dj1o6yasqb48h" path="res://Levels/Lvl2/Accessory/web1.png" id="11_sbfsf"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Lvl_2b/exit.tscn" id="15_jdw5o"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="17_jdw5o"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Lvl_2b/exit/z-index10.png" id="18_uikls"]
+[ext_resource type="Texture2D" uid="uid://5ms27nx7k6rp" path="res://Levels/Lvl2/Lvl_2b/exit/z-index10.png" id="18_uikls"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="18_w1c1k"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Lvl_2b/exit/halo_z-index10.png" id="19_gr680"]
+[ext_resource type="Texture2D" uid="uid://do5uhl3cs36a0" path="res://Levels/Lvl2/Lvl_2b/exit/halo_z-index10.png" id="19_gr680"]
 [ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="19_grbhh"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Lvl_2b/exit/z-index0.png" id="20_4s17o"]
+[ext_resource type="Texture2D" uid="uid://bu34beoslp2lx" path="res://Levels/Lvl2/Lvl_2b/exit/z-index0.png" id="20_4s17o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 1491)
@@ -43,20 +43,20 @@ size = Vector2(490, 48.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1c1k"]
 size = Vector2(182.5, 1260)
 
-[node name="lvl2b" type="Node2D"]
+[node name="lvl2b" type="Node2D" unique_id=1426909367]
 script = ExtResource("1_ribhp")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=1325019958]
 modulate = Color(0.46618086, 0.4661808, 0.4661808, 1)
 position = Vector2(-65, -1453)
 
-[node name="SpawnPoint" type="Marker2D" parent="Node2D"]
+[node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1742229482]
 position = Vector2(76, 1375)
 
-[node name="Background" type="Node2D" parent="Node2D"]
+[node name="Background" type="Node2D" parent="Node2D" unique_id=1230901932]
 position = Vector2(8313, 1319)
 
-[node name="SunLight2D" type="DirectionalLight2D" parent="Node2D/Background"]
+[node name="SunLight2D" type="DirectionalLight2D" parent="Node2D/Background" unique_id=165497067]
 position = Vector2(-1680, -751)
 rotation = 0.785398
 scale = Vector2(1.5, 1.5)
@@ -68,175 +68,176 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 4.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Background"]
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Background" unique_id=1762359068]
 
-[node name="TileMap" parent="Node2D" instance=ExtResource("3_sbfsf")]
+[node name="TileMap" parent="Node2D" unique_id=207768215 instance=ExtResource("3_sbfsf")]
 position = Vector2(3878, 609)
 
-[node name="Bridge" type="Node2D" parent="Node2D"]
+[node name="Bridge" type="Node2D" parent="Node2D" unique_id=169212682]
 modulate = Color(0.5449743, 0.54497427, 0.54497427, 1)
-position = Vector2(3959.0002, 1906)
+position = Vector2(4238, 1913)
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Ropes" type="Sprite2D" parent="Node2D/Bridge"]
+[node name="Ropes" type="Sprite2D" parent="Node2D/Bridge" unique_id=1236781197]
 modulate = Color(0.39688927, 0.39688927, 0.39688924, 1)
 z_index = 5
 position = Vector2(1387.3484, 510.72424)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("8_dntyv")
 
-[node name="CliffL" type="Sprite2D" parent="Node2D/Bridge"]
+[node name="CliffL" type="Sprite2D" parent="Node2D/Bridge" unique_id=206072045]
 position = Vector2(-506, 671)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("7_sbfsf")
 
-[node name="CliffR" type="Sprite2D" parent="Node2D/Bridge"]
+[node name="CliffR" type="Sprite2D" parent="Node2D/Bridge" unique_id=1672467702]
 position = Vector2(2979.9998, 619)
 rotation = -3.1415925
 scale = Vector2(0.99999994, -0.99999994)
 texture = ExtResource("7_sbfsf")
 
-[node name="DisappearingPlatform20" type="Node2D" parent="Node2D/Bridge"]
+[node name="DisappearingPlatform20" type="Node2D" parent="Node2D/Bridge" unique_id=1181404550]
 
-[node name="DisappearingPlatform18" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform18" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=421190845 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(-155, 0)
 
-[node name="DisappearingPlatform" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1832807168 instance=ExtResource("7_s1ddb")]
 z_index = 3
 
-[node name="DisappearingPlatform2" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform2" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1285087526 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(152.00024, 0)
 
-[node name="DisappearingPlatform3" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform3" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=765004498 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(306, 0.00012207031)
 
-[node name="DisappearingPlatform4" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform4" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1231062558 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(459.00024, 0)
 
-[node name="DisappearingPlatform5" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform5" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1115678012 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(612.99976, 0.00012207031)
 
-[node name="DisappearingPlatform6" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform6" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1116649734 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(766.00024, -0.00012207031)
 
-[node name="DisappearingPlatform7" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform7" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1321156342 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(919.00024, 0)
 
-[node name="DisappearingPlatform8" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform8" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=926232905 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(1076.0002, 0)
 
-[node name="DisappearingPlatform9" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform9" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=913764314 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(1229.0002, 0.00012207031)
 
-[node name="DisappearingPlatform10" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform10" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1198128397 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(1381.0002, 0.00012207031)
 
-[node name="DisappearingPlatform11" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform11" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=602382508 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(1535.0002, 0)
 
-[node name="DisappearingPlatform12" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform12" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=931121719 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(1688.0002, 0.00012207031)
 
-[node name="DisappearingPlatform13" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform13" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=846618059 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(1842.0002, 0.00012207031)
 
-[node name="DisappearingPlatform14" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform14" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1922605622 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(1995.0002, -0.00012207031)
 
-[node name="DisappearingPlatform15" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform15" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=853082831 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(2148.0002, 0)
 
-[node name="DisappearingPlatform16" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform16" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1184006146 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(2305.0002, -1.9998779)
 
-[node name="DisappearingPlatform17" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform17" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=590299781 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(2457.0002, -2.000122)
 
-[node name="DisappearingPlatform19" parent="Node2D/Bridge/DisappearingPlatform20" instance=ExtResource("7_s1ddb")]
+[node name="DisappearingPlatform19" parent="Node2D/Bridge/DisappearingPlatform20" unique_id=1477859346 instance=ExtResource("7_s1ddb")]
 z_index = 3
 position = Vector2(2609.0002, -2)
 
-[node name="platform" type="StaticBody2D" parent="Node2D"]
+[node name="platform" type="StaticBody2D" parent="Node2D" unique_id=847580707]
+visible = false
 collision_layer = 2
 
-[node name="Border" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border" type="CollisionShape2D" parent="Node2D/platform" unique_id=612447267]
 position = Vector2(-74.75, 922.5)
 shape = SubResource("RectangleShape2D_ekrdk")
 
-[node name="Border5" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border5" type="CollisionShape2D" parent="Node2D/platform" unique_id=546859779]
 position = Vector2(7087, 1913.5)
 shape = SubResource("RectangleShape2D_uikls")
 
-[node name="Border6" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border6" type="CollisionShape2D" parent="Node2D/platform" unique_id=484630420]
 position = Vector2(3365.5, 2505.5)
 shape = SubResource("RectangleShape2D_0pdjv")
 
-[node name="Border2" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border2" type="CollisionShape2D" parent="Node2D/platform" unique_id=1347328771]
 position = Vector2(6916, 2520.0313)
 shape = SubResource("RectangleShape2D_djaxt")
 
-[node name="Border3" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border3" type="CollisionShape2D" parent="Node2D/platform" unique_id=93469266]
 position = Vector2(1735, 1564)
 shape = SubResource("RectangleShape2D_wsvun")
 
-[node name="Border4" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="Border4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1934212984]
 position = Vector2(3482, 233)
 shape = SubResource("RectangleShape2D_gr680")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform" unique_id=488361697]
 position = Vector2(3600, 1905.75)
 shape = SubResource("RectangleShape2D_57xq1")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/platform" unique_id=15547376]
 position = Vector2(6815, 1907)
 shape = SubResource("RectangleShape2D_57xq1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platform"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/platform" unique_id=1174747298]
 position = Vector2(2843, 793)
 shape = SubResource("RectangleShape2D_w1c1k")
 
-[node name="Sound" type="Node2D" parent="Node2D"]
+[node name="Sound" type="Node2D" parent="Node2D" unique_id=814979184]
 
-[node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound"]
+[node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound" unique_id=1909559798]
 stream = ExtResource("10_uikls")
 volume_db = 8.0
 autoplay = true
 
-[node name="BagLoot" parent="Node2D" instance=ExtResource("11_gr680")]
+[node name="BagLoot" parent="Node2D" unique_id=1216696063 instance=ExtResource("11_gr680")]
 z_index = 25
 position = Vector2(582, 1435)
 
-[node name="ExitTempleTrunk" type="Node2D" parent="."]
+[node name="ExitTempleTrunk" type="Node2D" parent="." unique_id=1851394753]
 z_index = 3
 position = Vector2(-87, 23)
 rotation = -0.008726646
 scale = Vector2(0.6, 0.6)
 
-[node name="Index10" type="Sprite2D" parent="ExitTempleTrunk"]
+[node name="Index10" type="Sprite2D" parent="ExitTempleTrunk" unique_id=1060731683]
 z_index = 10
 position = Vector2(4503, -288)
 rotation = 0.08726646
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_uikls")
 
-[node name="Light" type="Sprite2D" parent="ExitTempleTrunk"]
+[node name="Light" type="Sprite2D" parent="ExitTempleTrunk" unique_id=1791633640]
 modulate = Color(0.7019608, 0.47843137, 0.6039216, 0.5568628)
 z_index = 10
 position = Vector2(4509, -291)
@@ -244,50 +245,51 @@ rotation = 0.08726646
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_gr680")
 
-[node name="Index0" type="Sprite2D" parent="ExitTempleTrunk"]
+[node name="Index0" type="Sprite2D" parent="ExitTempleTrunk" unique_id=1207017034]
 position = Vector2(4503, -286)
 rotation = 0.08726646
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("20_4s17o")
 
-[node name="mygale" parent="." instance=ExtResource("11_6sncs")]
+[node name="mygale" parent="." unique_id=362681451 instance=ExtResource("11_6sncs")]
 position = Vector2(2445, -375)
 
-[node name="TorchGroup" type="Node2D" parent="."]
+[node name="TorchGroup" type="Node2D" parent="." unique_id=493003693]
 position = Vector2(21, 23)
 
-[node name="SlowTorch" parent="TorchGroup" instance=ExtResource("6_dntyv")]
+[node name="SlowTorch" parent="TorchGroup" unique_id=1743031450 instance=ExtResource("6_dntyv")]
 position = Vector2(608, -1504)
 
-[node name="spider" type="Node2D" parent="."]
+[node name="spider" type="Node2D" parent="." unique_id=102497285]
 position = Vector2(-12, -3058)
 
-[node name="2" type="Sprite2D" parent="spider"]
+[node name="2" type="Sprite2D" parent="spider" unique_id=1621361887]
 position = Vector2(1040, 2440)
 scale = Vector2(0.35231248, 0.39450002)
 texture = ExtResource("11_sbfsf")
 
-[node name="1" type="Sprite2D" parent="spider"]
+[node name="1" type="Sprite2D" parent="spider" unique_id=1599436461]
 z_index = 50
 position = Vector2(1171.2501, 2651)
 scale = Vector2(0.34581247, 0.39450002)
 texture = ExtResource("11_fyxfs")
 
-[node name="4" type="Sprite2D" parent="spider"]
+[node name="4" type="Sprite2D" parent="spider" unique_id=1632592865]
 z_index = 50
 position = Vector2(1159, 2410)
 scale = Vector2(0.4236875, 0.39450002)
 texture = ExtResource("11_fyxfs")
 
-[node name="Exit" parent="." instance=ExtResource("15_jdw5o")]
+[node name="Exit" parent="." unique_id=1521611996 instance=ExtResource("15_jdw5o")]
+visible = false
 position = Vector2(2945.0002, 609)
 scale = Vector2(5, 8)
 
-[node name="Toucan" parent="." instance=ExtResource("17_jdw5o")]
+[node name="Toucan" parent="." unique_id=479073134 instance=ExtResource("17_jdw5o")]
 position = Vector2(5140, -1012)
 
-[node name="ParalaxeCiel" parent="." instance=ExtResource("18_w1c1k")]
+[node name="ParalaxeCiel" parent="." unique_id=606126652 instance=ExtResource("18_w1c1k")]
 
-[node name="LifeLoot" parent="." instance=ExtResource("19_grbhh")]
+[node name="LifeLoot" parent="." unique_id=167285483 instance=ExtResource("19_grbhh")]
 position = Vector2(6738, 399)
 scale = Vector2(0.1, 0.1)
