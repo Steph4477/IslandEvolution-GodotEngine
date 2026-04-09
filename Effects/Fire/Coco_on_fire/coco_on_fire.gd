@@ -3,16 +3,11 @@ extends Node2D
 @onready var flame_core = $FlameCore
 @onready var flame_glow = $FlameGlow
 
-var current_velocity = Vector2.ZERO
-
 func _ready():
 	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 
 	_setup_flame_core()
 	_setup_flame_glow()
-
-func _physics_process(_delta):
-	_update_parent_velocity()
 
 func _setup_flame_core():
 	flame_core.process_material = _make_core_material()
@@ -20,19 +15,6 @@ func _setup_flame_core():
 func _setup_flame_glow():
 	flame_glow.process_material = _make_glow_material()
 
-func _update_parent_velocity():
-	current_velocity = Vector2.ZERO
-
-	if get_parent() == null:
-		return
-
-	if "linear_velocity" in get_parent():
-		current_velocity = get_parent().linear_velocity
-		return
-
-	if "velocity" in get_parent():
-		current_velocity = get_parent().velocity
-		return
 
 func _make_core_material():
 	var particle_mat = ParticleProcessMaterial.new()
