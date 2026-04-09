@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dmocvfeiwacuh"]
+
+[ext_resource type="Script" uid="uid://c2a3h3sr7dqxy" path="res://Effects/Fire/Coco_on_fire/coco_on_fire.gd" id="1_8tfhr"]
+[ext_resource type="Texture2D" uid="uid://prru1blps5e3" path="res://Effects/Fire/Coco_on_fire/fire.png" id="2_wm0dg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tffrp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c53l0"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2glos"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -1, 0)
+
+[node name="CocoOnFire" type="Node2D" unique_id=532651315]
+script = ExtResource("1_8tfhr")
+
+[node name="FlameCore" type="GPUParticles2D" parent="." unique_id=1623479366]
+physics_interpolation_mode = 2
+z_index = 1
+material = SubResource("ShaderMaterial_tffrp")
+scale = Vector2(0.5, 0.5)
+amount = 70
+texture = ExtResource("2_wm0dg")
+lifetime = 0.45
+preprocess = 0.85
+randomness = 0.25
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_c53l0")
+
+[node name="FlameGlow" type="GPUParticles2D" parent="." unique_id=76904460]
+z_index = 2
+position = Vector2(0, 6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wm0dg")
+lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_2glos")
