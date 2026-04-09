@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dham6lrjq1oyk"]
+
+[ext_resource type="Script" uid="uid://bai5fmblc8o4f" path="res://Effects/Fire/Fire_impact/fire_impact.gd" id="1_hg5uh"]
+[ext_resource type="Texture2D" uid="uid://prru1blps5e3" path="res://Effects/Fire/Coco_on_fire/fire.png" id="2_jdby3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ekuou"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hg5uh"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="FireImpact" type="Node2D" unique_id=1221697052]
+script = ExtResource("1_hg5uh")
+
+[node name="Burst" type="GPUParticles2D" parent="." unique_id=665890196]
+z_index = 30
+emitting = false
+amount = 26
+texture = ExtResource("2_jdby3")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+fixed_fps = 0
+interpolate = false
+visibility_rect = Rect2(-300, -300, 600, 600)
+process_material = SubResource("ParticleProcessMaterial_ekuou")
+
+[node name="Glow" type="GPUParticles2D" parent="." unique_id=896805891]
+self_modulate = Color(1, 0.72156864, 0.41568628, 0.53333336)
+emitting = false
+amount = 12
+texture = ExtResource("2_jdby3")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 0.15
+fixed_fps = 0
+interpolate = false
+visibility_rect = Rect2(-300, -300, 600, 600)
+process_material = SubResource("ParticleProcessMaterial_hg5uh")
