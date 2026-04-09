@@ -67,7 +67,7 @@ func coco():
 	p.hud_mod.update_coco_display()
 
 	p.animation_locked = true
-	p.anim.play("shootPoint")
+	p.anim.play("shoot")
 	await p.anim.animation_finished
 
 	var spell = p.spell_coco.instantiate()
