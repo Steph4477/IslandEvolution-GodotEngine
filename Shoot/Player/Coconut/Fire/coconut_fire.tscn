@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c8csteemkd67v"]
+
+[ext_resource type="Script" uid="uid://chdjuk11cxt2j" path="res://Shoot/Player/Coconut/coconut.gd" id="1_6lslv"]
+[ext_resource type="Texture2D" uid="uid://o3s6a5ensgq2" path="res://Shoot/Player/Coconut/coconut.png" id="2_llx3a"]
+[ext_resource type="PackedScene" uid="uid://dmocvfeiwacuh" path="res://Effects/Fire/Coco_on_fire/coco_on_fire.tscn" id="3_yrbkw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpx3p"]
+radius = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ha48a"]
+
+[node name="Coco" type="RigidBody2D" unique_id=830297305]
+z_index = 5
+collision_mask = 10
+contact_monitor = true
+script = ExtResource("1_6lslv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245178653]
+scale = Vector2(1, 0.99999994)
+shape = SubResource("CircleShape2D_bpx3p")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=108446297]
+z_index = 10
+position = Vector2(0.759033, 2.65039)
+rotation = -3.10394
+scale = Vector2(0.5, 0.408)
+texture = ExtResource("2_llx3a")
+offset = Vector2(1.99504, 4.08113)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=567993378 groups=["Player"]]
+scale = Vector2(1, 0.9999999)
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1126221382]
+scale = Vector2(1.8, 1.8)
+shape = SubResource("CircleShape2D_ha48a")
+
+[node name="CocoOnFire" parent="." unique_id=532651315 instance=ExtResource("3_yrbkw")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
