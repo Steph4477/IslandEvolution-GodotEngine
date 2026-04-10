@@ -14,7 +14,7 @@ func _ready():
 	bar.max_value = 100
 	bar.value = 100
 
-func show_buff(duration):
+func show_buff(_duration):
 	visible = true
 	bar.max_value = 100
 	bar.value = 100
