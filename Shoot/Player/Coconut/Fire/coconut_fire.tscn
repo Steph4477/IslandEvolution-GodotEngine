@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8csteemkd67v"]
 
-[ext_resource type="Script" uid="uid://chdjuk11cxt2j" path="res://Shoot/Player/Coconut/coconut.gd" id="1_6lslv"]
+[ext_resource type="Script" uid="uid://c41c7kd8m1g7l" path="res://Shoot/Player/Coconut/Fire/coconut_fire.gd" id="1_va8yu"]
 [ext_resource type="Texture2D" uid="uid://o3s6a5ensgq2" path="res://Shoot/Player/Coconut/coconut.png" id="2_llx3a"]
 [ext_resource type="PackedScene" uid="uid://dmocvfeiwacuh" path="res://Effects/Fire/Coco_on_fire/coco_on_fire.tscn" id="3_yrbkw"]
 
@@ -9,11 +9,11 @@ radius = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ha48a"]
 
-[node name="Coco" type="RigidBody2D" unique_id=830297305]
+[node name="Coconut_fire" type="RigidBody2D" unique_id=830297305]
 z_index = 5
 collision_mask = 10
 contact_monitor = true
-script = ExtResource("1_6lslv")
+script = ExtResource("1_va8yu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245178653]
 scale = Vector2(1, 0.99999994)

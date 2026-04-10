@@ -2,47 +2,51 @@
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/GamePad/shoot.png" id="6_rgqxt"]
-[ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/GamePad/Pressed/shoot.png" id="7_b0qj5"]
-[ext_resource type="Texture2D" uid="uid://wctveqj65ef2" path="res://Interface/GamePad/coconut.png" id="8_b0qj5"]
-[ext_resource type="Texture2D" uid="uid://d4f3cla5rw51a" path="res://Interface/GamePad/healing_potion.png" id="8_voibu"]
-[ext_resource type="Texture2D" uid="uid://58np8hxbmkm4" path="res://Interface/GamePad/bone.png" id="8_wb1yk"]
-[ext_resource type="Texture2D" uid="uid://fdwo43lodgvx" path="res://Interface/GamePad/Pressed/coconut.png" id="9_870gb"]
-[ext_resource type="Texture2D" uid="uid://dmx7wjx23g2q4" path="res://Interface/GamePad/Pressed/bone.png" id="9_f2ifn"]
-[ext_resource type="Texture2D" uid="uid://cm88yvdqfa0gs" path="res://Interface/GamePad/Pressed/healing_potion.png" id="11_e8y56"]
-[ext_resource type="Texture2D" uid="uid://b7nwjlbtcglym" path="res://Interface/GamePad/spear.png" id="12_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://dup2mdftq525r" path="res://Interface/GamePad/honey.png" id="12_shgqx"]
-[ext_resource type="Texture2D" uid="uid://bfcjcvh3cnw0o" path="res://Interface/GamePad/Pressed/honey.png" id="13_cpk68"]
-[ext_resource type="Texture2D" uid="uid://dpgxrklqpc18c" path="res://Interface/GamePad/Pressed/spear.png" id="13_lwpkd"]
+[ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/gamePad/shoot.png" id="6_rgqxt"]
+[ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/gamePad/Pressed/shoot.png" id="7_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://wctveqj65ef2" path="res://Interface/gamePad/coconut.png" id="8_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://d4f3cla5rw51a" path="res://Interface/gamePad/healing_potion.png" id="8_voibu"]
+[ext_resource type="Texture2D" uid="uid://58np8hxbmkm4" path="res://Interface/gamePad/bone.png" id="8_wb1yk"]
+[ext_resource type="Texture2D" uid="uid://fdwo43lodgvx" path="res://Interface/gamePad/Pressed/coconut.png" id="9_870gb"]
+[ext_resource type="Texture2D" uid="uid://dmx7wjx23g2q4" path="res://Interface/gamePad/Pressed/bone.png" id="9_f2ifn"]
+[ext_resource type="Texture2D" uid="uid://cm88yvdqfa0gs" path="res://Interface/gamePad/Pressed/healing_potion.png" id="11_e8y56"]
+[ext_resource type="Texture2D" uid="uid://b7nwjlbtcglym" path="res://Interface/gamePad/spear.png" id="12_s8lhr"]
+[ext_resource type="Texture2D" uid="uid://dup2mdftq525r" path="res://Interface/gamePad/honey.png" id="12_shgqx"]
+[ext_resource type="Texture2D" uid="uid://bfcjcvh3cnw0o" path="res://Interface/gamePad/Pressed/honey.png" id="13_cpk68"]
+[ext_resource type="Texture2D" uid="uid://dpgxrklqpc18c" path="res://Interface/gamePad/Pressed/spear.png" id="13_lwpkd"]
 [ext_resource type="Texture2D" uid="uid://b7ajtexcqueku" path="res://Hud/seed.png" id="13_voibu"]
-[ext_resource type="Texture2D" uid="uid://bit3b0ilwyaje" path="res://Interface/GamePad/camouflage.png" id="14_akioh"]
-[ext_resource type="Texture2D" uid="uid://6fxh5qhlk01j" path="res://Interface/GamePad/ramp.png" id="14_e8y56"]
-[ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/GamePad/menu.png" id="14_tlm4v"]
-[ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/GamePad/Pressed/menu.png" id="15_ce0vt"]
-[ext_resource type="Texture2D" uid="uid://0ba0f02kisk1" path="res://Interface/GamePad/potion.png" id="15_rgqxt"]
-[ext_resource type="Texture2D" uid="uid://dc4iqjhcmy6kl" path="res://Interface/GamePad/Pressed/ramp.png" id="15_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://cb16gwwsbvmu1" path="res://Interface/GamePad/sprint_button.png" id="16_8k643"]
-[ext_resource type="Texture2D" uid="uid://cr54ip0rjb5nh" path="res://Interface/GamePad/cooldown_popo2.png" id="16_b0qj5"]
-[ext_resource type="Texture2D" uid="uid://g105usenq00p" path="res://Interface/GamePad/break.png" id="16_smsye"]
-[ext_resource type="Texture2D" uid="uid://dg30guwabvgev" path="res://Interface/GamePad/Pressed/sprint_button.png" id="17_f7l5a"]
-[ext_resource type="Texture2D" uid="uid://t8rigotc1j62" path="res://Interface/GamePad/Pressed/break.png" id="17_m6ehm"]
+[ext_resource type="Texture2D" uid="uid://bit3b0ilwyaje" path="res://Interface/gamePad/camouflage.png" id="14_akioh"]
+[ext_resource type="Texture2D" uid="uid://6fxh5qhlk01j" path="res://Interface/gamePad/ramp.png" id="14_e8y56"]
+[ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/gamePad/menu.png" id="14_tlm4v"]
+[ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/gamePad/Pressed/menu.png" id="15_ce0vt"]
+[ext_resource type="Texture2D" uid="uid://0ba0f02kisk1" path="res://Interface/gamePad/potion.png" id="15_rgqxt"]
+[ext_resource type="Texture2D" uid="uid://dc4iqjhcmy6kl" path="res://Interface/gamePad/Pressed/ramp.png" id="15_s8lhr"]
+[ext_resource type="Texture2D" uid="uid://cb16gwwsbvmu1" path="res://Interface/gamePad/sprint_button.png" id="16_8k643"]
+[ext_resource type="Texture2D" uid="uid://cr54ip0rjb5nh" path="res://Interface/gamePad/cooldown_popo2.png" id="16_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://g105usenq00p" path="res://Interface/gamePad/break.png" id="16_smsye"]
+[ext_resource type="Texture2D" uid="uid://dg30guwabvgev" path="res://Interface/gamePad/Pressed/sprint_button.png" id="17_f7l5a"]
+[ext_resource type="Texture2D" uid="uid://t8rigotc1j62" path="res://Interface/gamePad/Pressed/break.png" id="17_m6ehm"]
 [ext_resource type="Texture2D" uid="uid://dqs3b2dptcmqx" path="res://Hud/life.png" id="18_1hj8m"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Healt_Bar/health_bar.gd" id="19_s8lhr"]
-[ext_resource type="Texture2D" uid="uid://gynxfgu6u88u" path="res://Interface/GamePad/sprint.png" id="22_f2ifn"]
+[ext_resource type="Texture2D" uid="uid://gynxfgu6u88u" path="res://Interface/gamePad/sprint.png" id="22_f2ifn"]
 [ext_resource type="PackedScene" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
-[ext_resource type="Texture2D" uid="uid://jdg5q4ytqgxl" path="res://Interface/GamePad/switch.png" id="23_3qhmc"]
+[ext_resource type="Texture2D" uid="uid://jdg5q4ytqgxl" path="res://Interface/gamePad/switch.png" id="23_3qhmc"]
 [ext_resource type="PackedScene" path="res://Interface/Cursor/game_cursor.tscn" id="23_ff868"]
-[ext_resource type="Texture2D" uid="uid://dd2g75kqskfxu" path="res://Interface/GamePad/Pressed/switch.png" id="24_o4sf8"]
+[ext_resource type="Texture2D" uid="uid://dd2g75kqskfxu" path="res://Interface/gamePad/Pressed/switch.png" id="24_o4sf8"]
 [ext_resource type="Texture2D" uid="uid://civywlo7n80ma" path="res://Hud/honey.png" id="25_akioh"]
 [ext_resource type="Texture2D" uid="uid://btm5j6wwh6x37" path="res://Interface/Speed_Bar/progress_bar.png" id="27_mltuv"]
-[ext_resource type="Texture2D" uid="uid://bmox2fkkm4s10" path="res://Interface/GamePad/selectedG.png" id="27_ulwxg"]
+[ext_resource type="Texture2D" uid="uid://bmox2fkkm4s10" path="res://Interface/gamePad/selectedG.png" id="27_ulwxg"]
 [ext_resource type="Script" uid="uid://bdoxhgt5axy6w" path="res://Interface/Speed_Bar/speed_bar.gd" id="27_wb1yk"]
-[ext_resource type="Texture2D" uid="uid://beiex388t0xhp" path="res://Interface/GamePad/selectedY.png" id="28_egy6j"]
+[ext_resource type="Texture2D" uid="uid://beiex388t0xhp" path="res://Interface/gamePad/selectedY.png" id="28_egy6j"]
 [ext_resource type="Texture2D" uid="uid://4eeskkiqb3uk" path="res://Hud/break.png" id="28_m6ehm"]
-[ext_resource type="Texture2D" uid="uid://cw8mb1xkodc5u" path="res://Interface/GamePad/selected.png" id="28_rg2xt"]
+[ext_resource type="Texture2D" uid="uid://cw8mb1xkodc5u" path="res://Interface/gamePad/selected.png" id="28_rg2xt"]
 [ext_resource type="Texture2D" uid="uid://jajk5i7vupby" path="res://Interface/Healt_Bar/progress_bar2.png" id="33_rjgrc"]
+[ext_resource type="Script" uid="uid://bf67m6j36omgj" path="res://Hud/bar_slot.gd" id="36_k3kan"]
 [ext_resource type="Texture2D" uid="uid://c3waywbrqy860" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 [ext_resource type="Texture2D" uid="uid://b5niu77ancmy6" path="res://Interface/Breath_Bar/progress_bar.png" id="37_rg2xt"]
+[ext_resource type="Script" uid="uid://dbxy0leaaep4o" path="res://Hud/breath_bar.gd" id="39_63x2m"]
+[ext_resource type="Texture2D" uid="uid://badnwx43ud68l" path="res://Hud/fire.png" id="44_wxm5k"]
+[ext_resource type="Script" uid="uid://cj01grb1f4s7r" path="res://Hud/fire_buff.gd" id="45_k3kan"]
 
 [sub_resource type="Animation" id="Animation_sby4j"]
 length = 0.001
@@ -1091,10 +1095,10 @@ script = ExtResource("19_s8lhr")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar" unique_id=1104299560]
 modulate = Color(0.67481464, 0.67481464, 0.6748146, 1)
-offset_left = 152.0
-offset_top = 42.0
-offset_right = 385.0
-offset_bottom = 116.0
+offset_left = 149.0
+offset_top = 50.0
+offset_right = 399.0
+offset_bottom = 110.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
@@ -1106,67 +1110,92 @@ offset_top = -28.0
 offset_right = 47.0
 offset_bottom = 12.0
 
-[node name="SpeedBar" type="CanvasLayer" parent="." unique_id=1206665957]
-script = ExtResource("27_wb1yk")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="SpeedBar" unique_id=224861362]
-offset_left = 152.0
-offset_top = 89.0
-offset_right = 385.0
-offset_bottom = 163.0
-max_value = 2000.0
-value = 2000.0
-nine_patch_stretch = true
-texture_progress = ExtResource("27_mltuv")
-
-[node name="TextureRect" type="TextureRect" parent="SpeedBar" unique_id=1797068507]
-offset_left = 55.99994
-offset_top = 152.0
-offset_right = 95.99994
-offset_bottom = 192.0
-
-[node name="TextureSprint" type="Node2D" parent="SpeedBar" unique_id=563686409]
-position = Vector2(46, 103)
-scale = Vector2(0.08, 0.08)
-
-[node name="TextureRect" type="TextureRect" parent="SpeedBar/TextureSprint" unique_id=58784419]
-offset_left = 24.99997
-offset_top = -112.499985
-offset_right = 1049.0
-offset_bottom = 911.5
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("22_f2ifn")
-
-[node name="BreathBar" type="CanvasLayer" parent="." unique_id=1497953278]
-script = ExtResource("27_wb1yk")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BreathBar" unique_id=991367002]
-offset_left = 153.0
-offset_top = 133.0
+[node name="BarSlot" type="VBoxContainer" parent="." unique_id=1375780569]
+offset_left = 86.0
+offset_top = 95.0
 offset_right = 386.0
-offset_bottom = 207.0
+offset_bottom = 295.0
+theme_override_constants/separation = 40
+script = ExtResource("36_k3kan")
+
+[node name="BreathBar" type="Control" parent="BarSlot" unique_id=1242778458]
+layout_mode = 2
+script = ExtResource("39_63x2m")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BreathBar" unique_id=991367002]
+layout_mode = 0
+offset_left = 63.0
+offset_top = -6.0
+offset_right = 313.0
+offset_bottom = 54.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
 texture_progress = ExtResource("37_rg2xt")
 
-[node name="TextureRect" type="TextureRect" parent="BreathBar" unique_id=1845578042]
-offset_left = 55.99994
-offset_top = 152.0
-offset_right = 95.99994
-offset_bottom = 192.0
-
-[node name="TextureBubbleAir" type="Node2D" parent="BreathBar" unique_id=415013607]
-position = Vector2(30, 117)
+[node name="TextureBubbleAir" type="Node2D" parent="BarSlot/BreathBar" unique_id=415013607]
+position = Vector2(21, 93.99999)
 scale = Vector2(0.08, 0.08)
 
-[node name="TextureRect" type="TextureRect" parent="BreathBar/TextureBubbleAir" unique_id=1713703809]
-offset_left = 262.50003
-offset_top = 425.00006
-offset_right = 1798.5
-offset_bottom = 1449.0
+[node name="TextureRect" type="TextureRect" parent="BarSlot/BreathBar/TextureBubbleAir" unique_id=1713703809]
+offset_left = -250.0
+offset_top = -1125.0
+offset_right = 1286.0
+offset_bottom = -101.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("37_eqcma")
+
+[node name="BuffContainer" type="HBoxContainer" parent="BarSlot" unique_id=227980198]
+layout_mode = 2
+
+[node name="FireBuff" type="Control" parent="BarSlot/BuffContainer" unique_id=937312727]
+layout_mode = 2
+script = ExtResource("45_k3kan")
+
+[node name="TextureRect" type="TextureRect" parent="BarSlot/BuffContainer/FireBuff" unique_id=1626433841]
+layout_mode = 0
+offset_left = 6.0000005
+offset_right = 1030.0
+offset_bottom = 1024.0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("44_wxm5k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BuffContainer/FireBuff" unique_id=1113580750]
+layout_mode = 0
+offset_left = 62.999992
+offset_top = -5.9999924
+offset_right = 313.0
+offset_bottom = 54.000008
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("37_rg2xt")
+
+[node name="SpeedBar" type="Control" parent="BarSlot" unique_id=159593055]
+layout_mode = 2
+script = ExtResource("27_wb1yk")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/SpeedBar" unique_id=224861362]
+layout_mode = 0
+offset_left = 62.999992
+offset_top = -4.9999924
+offset_right = 313.0
+offset_bottom = 55.0
+max_value = 2000.0
+value = 2000.0
+nine_patch_stretch = true
+texture_progress = ExtResource("27_mltuv")
+
+[node name="TextureSprint" type="Node2D" parent="BarSlot/SpeedBar" unique_id=563686409]
+position = Vector2(44, 95)
+scale = Vector2(0.08, 0.08)
+
+[node name="TextureRect" type="TextureRect" parent="BarSlot/SpeedBar/TextureSprint" unique_id=58784419]
+offset_left = -562.5
+offset_top = -1287.5
+offset_right = 461.5
+offset_bottom = -263.49976
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("22_f2ifn")
 
 [node name="TimerChrono" parent="." unique_id=524898143 instance=ExtResource("22_hny2p")]
 offset_left = 7.0

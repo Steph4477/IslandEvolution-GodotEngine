@@ -17,6 +17,7 @@ func process(delta):
 	process_ramp()
 	process_sprint(delta)
 	process_camouflage()
+	process_fire_buff()
 
 # ============================================================================
 #                                 RAMP
@@ -48,7 +49,6 @@ func toggle_ramp():
 	await p.get_tree().create_timer(0.2).timeout
 	p.ramp_locked = false
 
-	# (ta logique de déplacement ramp reste ici)
 	if p.is_ramping:
 		var rdir = Input.get_action_strength(p.INPUT["right"]) - Input.get_action_strength(p.INPUT["left"])
 		p.velocity.x = rdir * p.speed * 0.4
@@ -66,7 +66,6 @@ func process_sprint(delta):
 		sprint_button_active = false
 		return
 
-	# bloqué dans ces états
 	if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_on_liana:
 		p.is_sprinting = false
 		if p.game_state.sprint_stamina < p.game_state.sprint_stamina_max:
@@ -97,7 +96,6 @@ func process_sprint(delta):
 		p.game_state.speed_bar.update_speed_bar_current(p.game_state.sprint_stamina)
 
 func use_sprint():
-	# toggle pour bouton / selector (clavier garde son propre input)
 	if not p.game_state:
 		return
 	if not p.game_state.sprint_unlocked:
@@ -139,16 +137,13 @@ func start_camouflage():
 	p.is_camouflaged = true
 	p.game_state.is_camouflaged = true
 
-	# Sauvegarde état TurnAxis
 	saved_turnaxis_local_pos = p.turn_axis.position
 	saved_turnaxis_top_level = p.turn_axis.top_level
 
-	# Leurre : TurnAxis devient "indépendant" du player et reste figé
 	p.turn_axis.top_level = true
 	p.turn_axis.global_position = p.turn_axis.global_position
 	p.turn_axis.visible = false
 
-	# Visuel
 	p.sprite.modulate.a = 0.5
 
 	await p.get_tree().create_timer(p.camouflage_duration).timeout
@@ -158,12 +153,26 @@ func stop_camouflage():
 	p.is_camouflaged = false
 	p.game_state.is_camouflaged = false
 
-	# Restaure TurnAxis (redevient enfant normal du player)
 	p.turn_axis.top_level = saved_turnaxis_top_level
 	p.turn_axis.position = saved_turnaxis_local_pos
 	p.turn_axis.visible = true
 
-	# Visuel
 	p.sprite.modulate.a = 1.0
 
 	p.hud_mod.refresh_hud_buttons()
+
+# ============================================================================
+#                                 FIRE BUFF
+# ============================================================================
+func process_fire_buff():
+	if Input.is_action_just_pressed(p.INPUT["fire_buff"]):
+		use_fire_buff()
+
+func use_fire_buff():
+	if p.fire_buff_active:
+		return
+	if p.fire_buff_mod == null:
+		return
+
+	p.fire_buff_mod.activate_fire_buff()
+	p.popups_mod.show_info("🔥 Buff feu activé !")

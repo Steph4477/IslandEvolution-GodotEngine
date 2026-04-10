@@ -15,9 +15,10 @@ const INPUT = {
 	"clac": "clacing",
 	"sprint": "sprint",
 	"camouflage": "camouflage",
+	"fire_buff": "fire_buff",        # F (InputMap)
 
 	# --- Gameplay jet ---
-	"throw_mode": "throw_mode",      # L
+	"throw_mode": "throw_mode",      # L (InputMap)
 	"throw_switch": "switch",        # switch
 	"throw_fire": "throw_fire",      # shoot (space)
 
@@ -372,7 +373,6 @@ func _physics_process(delta):
 
 	var was_on_floor = is_on_floor()
 
-	# >>> ICI : skills (ramp/sprint/camouflage) AVANT movement
 	if skills_mod:
 		skills_mod.process(delta)
 

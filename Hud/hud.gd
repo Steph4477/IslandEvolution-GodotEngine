@@ -25,19 +25,20 @@ extends CanvasLayer
 @onready var banane_hbox = get_node_or_null("HBoxContainerBanane")
 @onready var honey_hbox = get_node_or_null("HBoxContainerHoney")
 
-@onready var breath_bar = get_node_or_null("BreathBar")
-@onready var breath_progress = get_node_or_null("BreathBar/TextureProgressBar")
+@onready var bar_slot = $BarSlot
+@onready var breath_bar = $BarSlot/BreathBar
+@onready var breath_progress = $BarSlot/BreathBar/TextureProgressBar
+@onready var speed_bar = $BarSlot/SpeedBar
+@onready var buff_container = $BarSlot/BuffContainer
+@onready var fire_buff = $BarSlot/BuffContainer/FireBuff
 
-# --- Selectors ---
 @onready var skill_selector = $Gamepad/SkillSelector
 @onready var heal_selector = $Gamepad/HealSelector
 @onready var throw_selector = $Gamepad/ThrowSelector
 
-# --- Cooldowns (1 seul / TextureProgressBar) ---
 @onready var banane_cooldown = $HBoxContainerBanane/TexturePotion/coolDownCircle
 @onready var honey_cooldown = $HBoxContainerHoney/TexturePotion/coolDownCircle
 
-# --- AnimPlayers par bouton ---
 @onready var anim_coco = get_node_or_null("Gamepad/Coco/AnimCoco")
 @onready var anim_spear = get_node_or_null("Gamepad/Spear/AnimSpear")
 @onready var anim_bone = get_node_or_null("Gamepad/Bone/AnimBone")
@@ -76,7 +77,6 @@ func _ready():
 	gs = get_node("/root/GameState")
 	gs.hud = self
 
-	# --- Visibilités initiales ---
 	coco_button.visible = false
 	bone_button.visible = false
 	lance_button.visible = false
@@ -92,6 +92,10 @@ func _ready():
 		honey_hbox.visible = false
 
 	hide_breathbar()
+	_hide_all_buffs()
+
+	if speed_bar and speed_bar.has_method("hide_bar"):
+		speed_bar.hide_bar()
 
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(sprint_button, false)
@@ -111,7 +115,6 @@ func _ready():
 	update_camouflage_display()
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
-	# --- Restore visuels depuis GameState ---
 	if gs.coco_count > 0 or gs.can_fire_coco:
 		_show_coco()
 		update_coco_display()
@@ -136,7 +139,6 @@ func _ready():
 		_show_bone()
 		update_bone_display()
 
-	# Neutralise TSB
 	for b in [ramp_button, sprint_button, coco_button, lance_button, health_button, honey_button, bone_button, camouflage_button]:
 		b.action = ""
 
@@ -153,6 +155,9 @@ func _ready():
 
 	banane_cooldown.visible = false
 	honey_cooldown.visible = false
+
+	if bar_slot and bar_slot.has_method("refresh_layout"):
+		bar_slot.refresh_layout()
 
 
 func _process(delta):
@@ -202,6 +207,38 @@ func _show_honey():
 func _show_camouflage():
 	camouflage_button.visible = true
 	update_camouflage_display()
+
+
+# -----------------------------
+#        BUFF HUD
+# -----------------------------
+func _hide_all_buffs():
+	if fire_buff and fire_buff.has_method("hide_buff"):
+		fire_buff.hide_buff()
+
+	if buff_container:
+		buff_container.visible = false
+
+	if bar_slot and bar_slot.has_method("hide_buffs"):
+		bar_slot.hide_buffs()
+
+func show_fire_buff(duration):
+	if fire_buff and fire_buff.has_method("show_buff"):
+		fire_buff.show_buff(duration)
+
+	if bar_slot and bar_slot.has_method("show_buffs"):
+		bar_slot.show_buffs()
+
+func hide_fire_buff():
+	if fire_buff and fire_buff.has_method("hide_buff"):
+		fire_buff.hide_buff()
+
+	if bar_slot and bar_slot.has_method("hide_buffs"):
+		bar_slot.hide_buffs()
+
+func update_fire_buff_timer(time_left, duration):
+	if fire_buff and fire_buff.has_method("update_timer"):
+		fire_buff.update_timer(time_left, duration)
 
 
 # -----------------------------
@@ -439,32 +476,35 @@ func start_honey_cooldown(duration):
 
 # --- Respiration sous l'eau ---
 func show_breathbar():
-	if breath_bar:
-		breath_bar.visible = true
+	if breath_bar and breath_bar.has_method("show_bar"):
+		breath_bar.show_bar()
+
+	if bar_slot and bar_slot.has_method("show_breath"):
+		bar_slot.show_breath()
 
 func hide_breathbar():
-	if breath_bar:
-		breath_bar.visible = false
+	if breath_bar and breath_bar.has_method("hide_bar"):
+		breath_bar.hide_bar()
+
+	if bar_slot and bar_slot.has_method("hide_breath"):
+		bar_slot.hide_breath()
 
 func start_breath(max_value):
-	show_breathbar()
 	if breath_progress:
 		breath_progress.max_value = max_value
 		breath_progress.value = max_value
 
 func update_breath(current, max_value):
-	show_breathbar()
 	if breath_progress:
 		breath_progress.max_value = max_value
 		breath_progress.value = clamp(current, 0, max_value)
 
 func stop_breath():
-	if breath_bar:
-		breath_bar.visible = false
+	hide_breathbar()
 
 
 # ============================================================================
-#        RETROCOMPAT : APPEAR / ANIM_TO (utilisés par tes collectes)
+#        RETROCOMPAT : APPEAR / ANIM_TO
 # ============================================================================
 func appear_coco():
 	_show_coco()
@@ -485,7 +525,6 @@ func appear_spear():
 	update_lance_display()
 	if anim_spear:
 		anim_spear.stop()
-		print("[HUD] AnimSpear anims=", anim_spear.get_animation_list())
 		anim_spear.play("appear_spear")
 
 func anim_to_coco_mode():

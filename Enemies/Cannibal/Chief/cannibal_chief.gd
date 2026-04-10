@@ -26,7 +26,6 @@ var jump_velocity = -600.0
 
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
-var jump_mod = EnemyModJumpSync.new()
 var charge_mod = EnemyModWildCharge.new()
 
 var projectile_spawn = null
@@ -59,7 +58,6 @@ func _ready():
 
 	melee_mod.setup(self)
 	throw_mod.setup(self)
-	jump_mod.setup(self)
 	charge_mod.setup(self)
 
 	if attack_timer:
@@ -89,7 +87,6 @@ func _physics_process(delta):
 			stop_and_slide()
 			return
 
-	jump_mod.update()
 	melee_mod.update_state()
 	charge_mod.update(delta)
 

@@ -2,9 +2,11 @@ extends RigidBody2D
 
 @export var speed = 1000
 @export var life_time = 3.0
-@export var damage = 100
+@export var damage = 200
 
 var direction = 1
+
+const FIRE_IMPACT_SCENE = preload("res://Effects/Fire/Fire_impact/fire_impact.tscn")
 
 func start(pos, dir):
 	direction = dir
@@ -27,5 +29,10 @@ func _self_destruct():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Enemies") and body.has_method("on_hit"):
 		body.on_hit(damage)
+
+	var impact = FIRE_IMPACT_SCENE.instantiate()
+	get_tree().current_scene.add_child(impact)
+	impact.global_position = global_position + Vector2(direction * 8, -6)
+	impact.play_impact()
 
 	queue_free()

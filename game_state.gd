@@ -54,6 +54,8 @@ var hud_scene = preload("res://Hud/Hud.tscn")
 var hud = null
 var health_bar = null
 var speed_bar = null
+var breath_bar = null
+var fire_buff_bar = null
 
 var fade_scene = preload("res://Effects/Fade/fade.tscn")
 var fade = null
@@ -101,7 +103,8 @@ func _ready():
 	await get_tree().process_frame
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
-	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	await load_level("res://Levels/Lvl4/lvl_4.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("break"):
