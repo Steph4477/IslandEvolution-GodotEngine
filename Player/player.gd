@@ -56,6 +56,10 @@ var spell_coco = preload("res://Shoot/Player/Coconut/coconut.tscn")
 var spell_bone = preload("res://Shoot/Player/Bone/bone.tscn")
 var spell_lance = preload("res://Shoot/Player/Spear/spear.tscn")
 
+var spell_coco_fire = preload("res://Shoot/Player/Coconut/Fire/coconut_fire.tscn")
+var spell_bone_fire = preload("res://Shoot/Player/Bone/Fire/bone_fire.tscn")
+var spell_lance_fire = preload("res://Shoot/Player/Spear/Fire/spear_fire.tscn")
+
 var game_state
 var skill_select_mod = null
 var skill_switch_mod = null
@@ -76,6 +80,7 @@ var movement_mod
 var skills_mod
 var animation_mod
 var popups_mod
+var fire_buff_mod
 
 var can_move = true
 var can_be_damaged = true
@@ -126,6 +131,10 @@ var can_fire_bone = false
 var can_fire_lance = false
 var rate_of_fire = 0.4
 var is_attacking = false
+
+# --- fire buff ---
+var fire_buff_active = false
+@export var fire_buff_duration = 8.0
 
 # --- Camouflage ---
 var can_camouflage = false
@@ -217,8 +226,9 @@ func _ready():
 	setup_hud_module()
 	if hud_mod:
 		await hud_mod.wait_until_ready()
-
+	
 	setup_popups_module()
+	
 
 	# --- THROW (L / switch / space) ---
 	throw_mod = preload("res://Hud/switch_jet.gd").new()
@@ -241,6 +251,7 @@ func _ready():
 	setup_combat_module()
 	setup_damage_module()
 	setup_effects_module()
+	setup_fire_buff_module()
 	setup_heal_module()
 	setup_animation_module()
 	setup_movement_module()
@@ -315,6 +326,11 @@ func setup_effects_module():
 	add_child(effects_mod)
 	effects_mod.setup(self)
 
+func setup_fire_buff_module():
+	fire_buff_mod = preload("res://Player/Modules/Player_Fire_Buff/player_fire_buff.gd").new()
+	add_child(fire_buff_mod)
+	fire_buff_mod.setup(self)
+	
 func setup_heal_module():
 	heal_mod = preload("res://Player/Modules/Player_Heal/player_heal.gd").new()
 	add_child(heal_mod)
