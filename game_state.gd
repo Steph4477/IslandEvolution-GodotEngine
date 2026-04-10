@@ -103,8 +103,8 @@ func _ready():
 	await get_tree().process_frame
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
-	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
-	await load_level("res://Levels/Lvl4/lvl_4.tscn")
+	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("break"):
@@ -222,7 +222,7 @@ func load_level(scene_path):
 			add_child(hud)
 			hud.process_mode = Node.PROCESS_MODE_ALWAYS
 			health_bar = hud.get_node("HealthBar")
-			speed_bar = hud.get_node("SpeedBar")
+			speed_bar = hud.get_node("BarSlot/SpeedBar")
 
 		hud.visible = true
 
