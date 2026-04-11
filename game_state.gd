@@ -56,6 +56,7 @@ var health_bar = null
 var speed_bar = null
 var breath_bar = null
 var fire_buff_bar = null
+var fire_buff_unlocked = false
 
 var fade_scene = preload("res://Effects/Fade/fade.tscn")
 var fade = null
@@ -319,7 +320,8 @@ func save_game():
 	data["sprint_unlocked"] = sprint_unlocked
 	data["double_jump_unlocked"] = double_jump_unlocked
 	data["ramp_unlocked"] = ramp_unlocked
-
+	data["fire_buff_unlocked"] = fire_buff_unlocked
+	
 	data["has_key"] = has_key
 	data["has_lance"] = has_lance
 	data["has_flower"] = has_flower
@@ -378,7 +380,8 @@ func apply_save_data(data):
 	sprint_unlocked = data.get("sprint_unlocked", false)
 	double_jump_unlocked = data.get("double_jump_unlocked", false)
 	ramp_unlocked = data.get("ramp_unlocked", false)
-
+	fire_buff_unlocked = data.get("fire_buff_unlocked", false)
+	
 	has_key = data.get("has_key", false)
 	has_lance = data.get("has_lance", false)
 	has_flower = data.get("has_flower", false)
