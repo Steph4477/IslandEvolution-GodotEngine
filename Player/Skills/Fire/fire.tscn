@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://qx5rwduvnvd7"]
+
+[ext_resource type="Script" uid="uid://bf1gxh43xvdwj" path="res://Player/Skills/Fire/fire.gd" id="1_8puik"]
+[ext_resource type="Texture2D" uid="uid://chkrovf2tr8up" path="res://Player/Skills/Fire/1.png" id="2_8puik"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibyih"]
+radius = 14.317822
+
+[node name="Fire" type="Node2D" unique_id=24103310]
+script = ExtResource("1_8puik")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1085829716]
+position = Vector2(-0.89290524, -2.678009)
+rotation = 0.10801172
+
+[node name="Col" type="CollisionShape2D" parent="Area2D" unique_id=2142144568]
+position = Vector2(0.61278796, 1.509851)
+shape = SubResource("CircleShape2D_ibyih")
+
+[node name="Fire" type="Sprite2D" parent="." unique_id=755380644]
+z_index = 5
+position = Vector2(-0.8929072, -2.6780071)
+rotation = 0.4636476
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_8puik")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
