@@ -30,6 +30,8 @@ func apply_from_gamestate():
 	p.can_ramp = p.game_state.ramp_unlocked
 	p.can_sprint = p.game_state.sprint_unlocked
 
+	p.fire_buff_active = false
+
 	# Recrée les listes après respawn / reload
 	p.heal_potions.clear()
 	for i in range(p.banane_count):
