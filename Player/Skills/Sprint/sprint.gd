@@ -15,8 +15,6 @@ func dialogue_toucan():
 	var moko = gs.player
 	
 	moko.can_move = false
-	var anim = moko.get_node("Node2D/Anim")
-	anim.play("idle")
 	
 	var dlg = dialogue_scene.instantiate()
 	get_tree().root.add_child(dlg)

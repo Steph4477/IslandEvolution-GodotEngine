@@ -362,6 +362,11 @@ func _physics_process(delta):
 	if switch_heal_mod:
 		switch_heal_mod.update_input()
 
+	if animation_locked:
+		velocity.x = 0
+		move_and_slide()
+		return
+
 	if not can_move:
 		velocity.x = 0
 		if anim.current_animation != "idle":

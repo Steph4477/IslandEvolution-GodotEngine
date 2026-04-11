@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/exit.tscn" id="26_twwc1"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="27_twwc1"]
+[ext_resource type="PackedScene" uid="uid://cggxcitfp164h" path="res://Player/Skills/Sprint/sprint.tscn" id="28_h3eyb"]
+[ext_resource type="PackedScene" uid="uid://qx5rwduvnvd7" path="res://Player/Skills/Fire/fire.tscn" id="28_sagna"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -205,7 +207,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 z_index = 10
-position = Vector2(4820, 811)
+position = Vector2(4765, 856)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -492,6 +494,14 @@ position = Vector2(11798, 961)
 
 [node name="BagLoot" parent="." unique_id=1156845004 instance=ExtResource("27_twwc1")]
 position = Vector2(6152, 1000)
+
+[node name="Sprint" parent="." unique_id=69020274 instance=ExtResource("28_h3eyb")]
+z_index = 15
+position = Vector2(4986, 992)
+
+[node name="Fire" parent="." unique_id=24103310 instance=ExtResource("28_sagna")]
+position = Vector2(5131, 991)
+scale = Vector2(2, 2)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

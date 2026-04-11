@@ -76,6 +76,7 @@ func collect_sprint():
 	var first = not p.game_state.sprint_unlocked
 
 	p.game_state.sprint_unlocked = true
+	await p.play_anim("sprint_buff")
 	p.game_state.sprint_stamina = p.game_state.sprint_stamina_max
 	p.can_sprint = true
 

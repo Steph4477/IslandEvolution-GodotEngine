@@ -17,15 +17,15 @@
 [ext_resource type="Texture2D" uid="uid://bgsvxehy3s05l" path="res://Player/Sprite/gaz/walk_gaz1.png" id="13_p7kcq"]
 [ext_resource type="Texture2D" uid="uid://c3cv7i60vltr1" path="res://Player/Sprite/gaz/walk_gaz3.png" id="14_vbwkl"]
 [ext_resource type="Texture2D" uid="uid://5w5jxrr750c" path="res://Player/Sprite/walk/2.png" id="15_rbgwy"]
-[ext_resource type="Texture2D" uid="uid://db28b015047ue" path="res://Player/Sprite/fire/1.png" id="16_qpoj2"]
+[ext_resource type="Texture2D" uid="uid://db28b015047ue" path="res://Player/Sprite/fire_skill/1.png" id="16_qpoj2"]
 [ext_resource type="Texture2D" uid="uid://n5ee10vrrw3u" path="res://Player/Sprite/ramp/1.png" id="16_rbgwy"]
-[ext_resource type="Texture2D" uid="uid://busn6ygkffbo2" path="res://Player/Sprite/fire/2.png" id="17_3e3ym"]
+[ext_resource type="Texture2D" uid="uid://busn6ygkffbo2" path="res://Player/Sprite/fire_skill/2.png" id="17_3e3ym"]
 [ext_resource type="Texture2D" uid="uid://boi2ft4qsgfap" path="res://Player/Sprite/ramp/2.png" id="17_typba"]
-[ext_resource type="Texture2D" uid="uid://dij5ggu6g0siq" path="res://Player/Sprite/fire/3.png" id="18_gxi5p"]
+[ext_resource type="Texture2D" uid="uid://dij5ggu6g0siq" path="res://Player/Sprite/fire_skill/3.png" id="18_gxi5p"]
 [ext_resource type="Texture2D" uid="uid://hdtwlkt4dllu" path="res://Player/Sprite/hang/1.png" id="18_p8mbp"]
 [ext_resource type="Texture2D" uid="uid://bck8xmt4dfuqo" path="res://Player/Sprite/heal/1.png" id="19_btooi"]
 [ext_resource type="Texture2D" uid="uid://dv1wd4lh81on2" path="res://Player/Sprite/hang/2.png" id="19_efgfv"]
-[ext_resource type="Texture2D" uid="uid://d1ah2tlma37xv" path="res://Player/Sprite/fire/4.png" id="19_yxu6j"]
+[ext_resource type="Texture2D" uid="uid://d1ah2tlma37xv" path="res://Player/Sprite/fire_skill/4.png" id="19_yxu6j"]
 [ext_resource type="Texture2D" uid="uid://bb2566qraacud" path="res://Player/Sprite/heal/2.png" id="20_l6ey7"]
 [ext_resource type="Texture2D" uid="uid://bwnsb4jkh74ow" path="res://Player/Sprite/hang/3.png" id="20_ms575"]
 [ext_resource type="Texture2D" uid="uid://cyo6xytkc15ey" path="res://Player/Sprite/heal/3.png" id="21_8x7wp"]
@@ -52,9 +52,13 @@
 [ext_resource type="Texture2D" uid="uid://db3q1di0fxyvo" path="res://Player/Sprite/swim/2.png" id="44_e2pw6"]
 [ext_resource type="Texture2D" uid="uid://cahhnyax416lm" path="res://Player/Sprite/swim/3.png" id="45_jaf6r"]
 [ext_resource type="Texture2D" uid="uid://50l612u7febw" path="res://Player/Sprite/swim/4.png" id="46_any7n"]
+[ext_resource type="Texture2D" uid="uid://254uxjdxhgts" path="res://Player/Sprite/sprint_skill/1.png" id="47_3e3ym"]
+[ext_resource type="Texture2D" uid="uid://nacrdr0tya04" path="res://Player/Sprite/sprint_skill/2.png" id="48_mdkl3"]
 [ext_resource type="Texture2D" uid="uid://dnmf7kpe3scog" path="res://Player/Sprite/shoot_lance/1.png" id="48_uvbbp"]
 [ext_resource type="Texture2D" uid="uid://ipox05hx2c0w" path="res://Player/Sprite/shoot_lance/2.png" id="49_7v2uk"]
+[ext_resource type="Texture2D" uid="uid://n1nwmocpl0q2" path="res://Player/Sprite/sprint_skill/3.png" id="49_68syb"]
 [ext_resource type="Texture2D" uid="uid://cyrouiu0lkffc" path="res://Player/Sprite/shoot_lance/3.png" id="50_m6nl3"]
+[ext_resource type="Texture2D" uid="uid://c8y36tl6o0ufu" path="res://Player/Sprite/sprint_skill/4.png" id="50_x0uyb"]
 [ext_resource type="Texture2D" uid="uid://c3o5qqxuveny4" path="res://Player/Sprite/shoot_lance/4.png" id="51_8hx1r"]
 [ext_resource type="Texture2D" uid="uid://ba78ku8211oqi" path="res://Player/Sprite/jump/6.png" id="51_uvbbp"]
 [ext_resource type="Texture2D" uid="uid://bd3uqjee7o7up" path="res://Player/Sprite/jump/5.png" id="52_7v2uk"]
@@ -492,6 +496,22 @@ tracks/0/keys = {
 "values": [ExtResource("6_tj6lq"), ExtResource("15_rbgwy"), ExtResource("6_tj6lq"), ExtResource("15_rbgwy"), ExtResource("6_tj6lq"), ExtResource("15_rbgwy")]
 }
 
+[sub_resource type="Animation" id="Animation_68syb"]
+resource_name = "sprint_buff"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8333333, 1.0333333, 1.2333333, 1.4333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("47_3e3ym"), ExtResource("48_mdkl3"), ExtResource("49_68syb"), ExtResource("50_x0uyb"), ExtResource("47_3e3ym"), ExtResource("48_mdkl3"), ExtResource("49_68syb"), ExtResource("50_x0uyb")]
+}
+
 [sub_resource type="Animation" id="Animation_r4aas"]
 resource_name = "strong"
 length = 0.6
@@ -619,6 +639,7 @@ _data = {
 &"shoot": SubResource("Animation_dyo71"),
 &"shoot_lance": SubResource("Animation_qas3k"),
 &"sprint": SubResource("Animation_c4i3b"),
+&"sprint_buff": SubResource("Animation_68syb"),
 &"strong": SubResource("Animation_r4aas"),
 &"swim": SubResource("Animation_i0d2o"),
 &"swim_under_water": SubResource("Animation_ntwt4"),
