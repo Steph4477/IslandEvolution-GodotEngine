@@ -71,7 +71,7 @@ func coco():
 	await p.anim.animation_finished
 
 	var scene = p.spell_coco
-	if p.fire_buff_active:
+	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
 		scene = p.spell_coco_fire
 
 	var spell = scene.instantiate()
@@ -110,7 +110,7 @@ func bone():
 	await p.anim.animation_finished
 
 	var scene = p.spell_bone
-	if p.fire_buff_active:
+	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
 		scene = p.spell_bone_fire
 
 	var spell = scene.instantiate()
@@ -152,7 +152,7 @@ func lance():
 	await p.anim.animation_finished
 
 	var scene = p.spell_lance
-	if p.fire_buff_active:
+	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
 		scene = p.spell_lance_fire
 
 	var spell = scene.instantiate()
