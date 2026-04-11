@@ -169,6 +169,10 @@ func process_fire_buff():
 		use_fire_buff()
 
 func use_fire_buff():
+	if not p.game_state:
+		return
+	if not p.game_state.fire_buff_unlocked:
+		return
 	if p.fire_buff_active:
 		return
 	if p.fire_buff_mod == null:
