@@ -97,6 +97,7 @@ func collect_fire():
 	var first = not p.game_state.fire_buff_unlocked
 
 	p.game_state.fire_buff_unlocked = true
+	await p.play_anim("fire_buff")
 
 	if first:
 		p.popups_mod.show_info("🔥 Tu peux maintenant utiliser le buff feu !")

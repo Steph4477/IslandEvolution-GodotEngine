@@ -17,11 +17,15 @@
 [ext_resource type="Texture2D" uid="uid://bgsvxehy3s05l" path="res://Player/Sprite/gaz/walk_gaz1.png" id="13_p7kcq"]
 [ext_resource type="Texture2D" uid="uid://c3cv7i60vltr1" path="res://Player/Sprite/gaz/walk_gaz3.png" id="14_vbwkl"]
 [ext_resource type="Texture2D" uid="uid://5w5jxrr750c" path="res://Player/Sprite/walk/2.png" id="15_rbgwy"]
+[ext_resource type="Texture2D" uid="uid://db28b015047ue" path="res://Player/Sprite/fire/1.png" id="16_qpoj2"]
 [ext_resource type="Texture2D" uid="uid://n5ee10vrrw3u" path="res://Player/Sprite/ramp/1.png" id="16_rbgwy"]
+[ext_resource type="Texture2D" uid="uid://busn6ygkffbo2" path="res://Player/Sprite/fire/2.png" id="17_3e3ym"]
 [ext_resource type="Texture2D" uid="uid://boi2ft4qsgfap" path="res://Player/Sprite/ramp/2.png" id="17_typba"]
+[ext_resource type="Texture2D" uid="uid://dij5ggu6g0siq" path="res://Player/Sprite/fire/3.png" id="18_gxi5p"]
 [ext_resource type="Texture2D" uid="uid://hdtwlkt4dllu" path="res://Player/Sprite/hang/1.png" id="18_p8mbp"]
 [ext_resource type="Texture2D" uid="uid://bck8xmt4dfuqo" path="res://Player/Sprite/heal/1.png" id="19_btooi"]
 [ext_resource type="Texture2D" uid="uid://dv1wd4lh81on2" path="res://Player/Sprite/hang/2.png" id="19_efgfv"]
+[ext_resource type="Texture2D" uid="uid://d1ah2tlma37xv" path="res://Player/Sprite/fire/4.png" id="19_yxu6j"]
 [ext_resource type="Texture2D" uid="uid://bb2566qraacud" path="res://Player/Sprite/heal/2.png" id="20_l6ey7"]
 [ext_resource type="Texture2D" uid="uid://bwnsb4jkh74ow" path="res://Player/Sprite/hang/3.png" id="20_ms575"]
 [ext_resource type="Texture2D" uid="uid://cyo6xytkc15ey" path="res://Player/Sprite/heal/3.png" id="21_8x7wp"]
@@ -244,6 +248,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [ExtResource("35_6qokg"), ExtResource("36_i7max")]
+}
+
+[sub_resource type="Animation" id="Animation_mdkl3"]
+resource_name = "fire_buff"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("16_qpoj2"), ExtResource("17_3e3ym"), ExtResource("18_gxi5p"), ExtResource("19_yxu6j")]
 }
 
 [sub_resource type="Animation" id="Animation_kse80"]
@@ -584,6 +604,7 @@ _data = {
 &"door": SubResource("Animation_ifp5e"),
 &"door_2": SubResource("Animation_qh0f6"),
 &"empty": SubResource("Animation_e2pw6"),
+&"fire_buff": SubResource("Animation_mdkl3"),
 &"hang": SubResource("Animation_kse80"),
 &"heal": SubResource("Animation_y06ei"),
 &"idle": SubResource("Animation_i1uru"),
