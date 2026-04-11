@@ -92,3 +92,14 @@ func collect_sprint():
 
 	p.popups_mod.show_info("⚡ Tu peux maintenant sprinter avec Shift !")
 	p.hud_mod.refresh_hud_buttons()
+
+func collect_fire():
+	var first = not p.game_state.fire_buff_unlocked
+
+	p.game_state.fire_buff_unlocked = true
+
+	if first:
+		p.popups_mod.show_info("🔥 Tu peux maintenant utiliser le buff feu !")
+
+	if p.hud_mod:
+		p.hud_mod.refresh_hud_buttons()
