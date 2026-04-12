@@ -133,5 +133,8 @@ func collect_seed(amount = 1):
 
 
 func collect_wood():
+	if p.game_state.wood_collected:
+		return
+
 	p.game_state.wood_collected = true
 	print("Bois récupéré")
