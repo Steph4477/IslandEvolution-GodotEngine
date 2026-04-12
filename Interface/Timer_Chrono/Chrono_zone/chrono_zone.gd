@@ -116,6 +116,12 @@ func win():
 	if not gs.fire_recipe_dialog_shown:
 		gs.fire_recipe_dialog_shown = true
 		await dialogue_win_toucan()
+	
+	gs.fire_craft_revealed = true
+	
+	if gs.hud:
+		gs.hud.appear_fire_craft_quest()
+		gs.hud.update_fire_craft_checklist()
 
 	gs.focus_cam_frog = true
 	emit_signal("challenge_win")

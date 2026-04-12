@@ -48,6 +48,19 @@ extends CanvasLayer
 @onready var anim_ramp = get_node_or_null("Gamepad/Ramp/AnimRamp")
 @onready var anim_sprint = get_node_or_null("Gamepad/Sprint/AnimSprint")
 
+# --- Craft fire_skill ---
+@onready var fire_craft_checklist = get_node_or_null("FireCraftChecklist")
+
+@onready var wood_check = get_node_or_null("FireCraftChecklist/WoodRow/Check")
+@onready var stone_check = get_node_or_null("FireCraftChecklist/StoneRow/Check")
+@onready var recipe_check = get_node_or_null("FireCraftChecklist/RecipeRow/Check")
+@onready var altar_check = get_node_or_null("FireCraftChecklist/AltarRow/Check")
+
+@onready var wood_label_checklist = get_node_or_null("FireCraftChecklist/WoodRow/Label")
+@onready var stone_label_checklist = get_node_or_null("FireCraftChecklist/StoneRow/Label")
+@onready var recipe_label_checklist = get_node_or_null("FireCraftChecklist/RecipeRow/Label")
+@onready var altar_label_checklist = get_node_or_null("FireCraftChecklist/AltarRow/Label")
+
 # -----------------------------
 #            VARS
 # -----------------------------
@@ -90,6 +103,18 @@ func _ready():
 		banane_hbox.visible = false
 	if honey_hbox:
 		honey_hbox.visible = false
+
+	if fire_craft_checklist:
+		fire_craft_checklist.visible = false
+
+	#if wood_label_checklist:
+		#wood_label_checklist.text = "Bois"
+	#if stone_label_checklist:
+		#stone_label_checklist.text = "Pierre"
+	#if recipe_label_checklist:
+		#recipe_label_checklist.text = "Recette"
+	#if altar_label_checklist:
+		#altar_label_checklist.text = "Trouver l'autel"
 
 	hide_breathbar()
 	_hide_all_buffs()
@@ -159,6 +184,7 @@ func _ready():
 	if bar_slot and bar_slot.has_method("refresh_layout"):
 		bar_slot.refresh_layout()
 
+	update_fire_craft_checklist()
 
 func _process(delta):
 	if banane_cd_left > 0.0:
@@ -456,6 +482,42 @@ func update_camouflage_display():
 
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, gs.camouflage_count > 0)
+
+# --- Affichage quest craft_fire_skill
+func update_fire_craft_checklist():
+	if fire_craft_checklist == null:
+		return
+
+	if not gs.fire_craft_revealed:
+		fire_craft_checklist.visible = false
+		return
+
+	fire_craft_checklist.visible = true
+
+	update_check_texture(wood_check, gs.wood_collected)
+	update_check_texture(stone_check, gs.stone_collected)
+	update_check_texture(recipe_check, gs.fire_recipe_unlocked)
+	update_check_texture(altar_check, false)
+
+func update_check_texture(check_node, is_valid):
+	if check_node == null:
+		return
+
+	if is_valid:
+		check_node.texture = preload("res://Items/CheckBox/valid.png")
+	else:
+		check_node.texture = preload("res://Items/CheckBox/empty.png")
+
+func appear_fire_craft_quest():
+	if fire_craft_checklist:
+		fire_craft_checklist.visible = true
+
+	var anim = get_node_or_null("FireCraftChecklist/AnimationPlayer")
+	if anim:
+		anim.play("appear_fire_craft_quest")
+		await anim.animation_finished
+
+	update_fire_craft_checklist()
 
 
 # -----------------------------

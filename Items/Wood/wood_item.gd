@@ -9,4 +9,9 @@ func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		collected = true
 		body.collect_items.collect_wood()
+
+		var gs = get_node("/root/GameState")
+		if gs.hud:
+			gs.hud.update_fire_craft_checklist()
+
 		queue_free()

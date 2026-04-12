@@ -95,6 +95,7 @@ var wood_collected = false
 var stone_collected = false
 var fire_recipe_unlocked = false
 var fire_recipe_dialog_shown = false
+var fire_craft_revealed = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -335,6 +336,7 @@ func save_game():
 	data["stone_collected"] = stone_collected
 	data["fire_recipe_unlocked"] = fire_recipe_unlocked
 	data["fire_recipe_dialog_shown"] = fire_recipe_dialog_shown
+	data["fire_craft_revealed"] = fire_craft_revealed
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -400,6 +402,7 @@ func apply_save_data(data):
 	stone_collected = data.get("stone_collected", false)
 	fire_recipe_unlocked = data.get("fire_recipe_unlocked", false)
 	fire_recipe_dialog_shown = data.get("fire_recipe_dialog_shown", false)
+	fire_craft_revealed = data.get("fire_craft_revealed", false)
 
 	# Recharge du niveau sauvegardé
 	await load_level(pending_level_path)
@@ -508,6 +511,7 @@ func reinitialise():
 	fire_recipe_dialog_shown = false
 	wood_collected = false
 	stone_collected = false
+	fire_craft_revealed = false
 
 	if hud:
 		var gamepad = hud.get_node("Gamepad")
