@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cl7qxeo241o6d"]
+
+[ext_resource type="Script" uid="uid://diorefpruvi1p" path="res://Items/Stone/stone_item.gd" id="1_181iw"]
+[ext_resource type="Texture2D" uid="uid://d2vvqqt2owvgu" path="res://Items/Stone/stone_item.png" id="2_181iw"]
+
+[node name="StoneItem" type="Area2D" unique_id=1848008734]
+script = ExtResource("1_181iw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=49510399]
+texture = ExtResource("2_181iw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=264922223]
+polygon = PackedVector2Array(-379, 55, -262, -88, -81, -202, 6, -246, 143, -195, 296, -109, 380, 35, 413, 125, 250, 209, 36, 242, -145, 226, -298, 186, -419, 135)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

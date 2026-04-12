@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
+[ext_resource type="PackedScene" uid="uid://cl7qxeo241o6d" path="res://Items/Stone/stone_item.tscn" id="1_g514y"]
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="1_yoe4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
@@ -47,5 +48,8 @@ position = Vector2(34756.457, 12353.302)
 scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
-[node name="WoodItem" parent="." unique_id=1848008734 instance=ExtResource("1_yoe4u")]
+[node name="StoneItem" parent="." unique_id=1848008734 instance=ExtResource("1_g514y")]
+position = Vector2(2728, 1347)
+
+[node name="WoodItem" parent="." unique_id=545583979 instance=ExtResource("1_yoe4u")]
 position = Vector2(1867, 1374)

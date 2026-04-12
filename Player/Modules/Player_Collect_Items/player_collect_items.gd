@@ -138,3 +138,6 @@ func collect_wood():
 
 	p.game_state.wood_collected = true
 	print("Bois récupéré")
+
+func collect_stone():
+	print("Pierre récupérée… cela pourrait servir")
