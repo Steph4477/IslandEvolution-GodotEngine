@@ -130,3 +130,7 @@ func collect_seed(amount = 1):
 	var parent = p.get_parent()
 	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
 		await parent.focus_camera_on_totem_with_anim(gs.collected_seeds)
+
+
+func collect_wood():
+	print("Bois récupéré")
