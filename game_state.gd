@@ -92,6 +92,7 @@ signal digicode_ok
 
 # --- Craft skill_fire ---
 var wood_collected = false
+var stone_collected = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -327,7 +328,9 @@ func save_game():
 	data["has_key"] = has_key
 	data["has_lance"] = has_lance
 	data["has_flower"] = has_flower
+	
 	data["wood_collected"] = wood_collected
+	data["stone_collected"] = stone_collected
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -388,7 +391,9 @@ func apply_save_data(data):
 	has_key = data.get("has_key", false)
 	has_lance = data.get("has_lance", false)
 	has_flower = data.get("has_flower", false)
+	
 	wood_collected = data.get("wood_collected", false)
+	stone_collected = data.get("stone_collected", false)
 
 	# Recharge du niveau sauvegardé
 	await load_level(pending_level_path)
