@@ -94,6 +94,7 @@ signal digicode_ok
 var wood_collected = false
 var stone_collected = false
 var fire_recipe_unlocked = false
+var fire_recipe_dialog_shown = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -333,6 +334,7 @@ func save_game():
 	data["wood_collected"] = wood_collected
 	data["stone_collected"] = stone_collected
 	data["fire_recipe_unlocked"] = fire_recipe_unlocked
+	data["fire_recipe_dialog_shown"] = fire_recipe_dialog_shown
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -396,6 +398,8 @@ func apply_save_data(data):
 	
 	wood_collected = data.get("wood_collected", false)
 	stone_collected = data.get("stone_collected", false)
+	fire_recipe_unlocked = data.get("fire_recipe_unlocked", false)
+	fire_recipe_dialog_shown = data.get("fire_recipe_dialog_shown", false)
 
 	# Recharge du niveau sauvegardé
 	await load_level(pending_level_path)
@@ -501,6 +505,7 @@ func reinitialise():
 	can_camouflage = false
 	
 	fire_recipe_unlocked = false
+	fire_recipe_dialog_shown = false
 	wood_collected = false
 	stone_collected = false
 

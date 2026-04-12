@@ -7,16 +7,15 @@ signal challenge_win
 @export var dialogue_lines = [
 	"Hé Moko !",
 	"Balance-toi vite entre les lianes...",
-	"Ramène-moi une fleur de nénuphar",
+	"Ramène-moi une fleur de nénuphar.",
 	"Reviens ici pour valider !",
 	"Le chrono démarre maintenant !"
 ]
 
 @export var dialogue_win = [
-	"Oui Moko tu as réussi !",
-	"Merci j'ai enfin ma fleur,",
-	"depuis le temps que j'en rêvais !",
-	"Maintenant, attention aux secousses !😊"
+	"Merci Moko, tu as réussi !",
+	"Bois + pierre + autel de craft.",
+	"Tu pourras apprivoiser le feu."
 ]
 
 @export var reset_on_start = true
@@ -107,20 +106,20 @@ func win():
 	timer.stop()
 	chrono.stop_chrono()
 	chrono.visible = false
+
 	if not gs.fire_recipe_unlocked:
 		gs.fire_recipe_unlocked = true
 		gs.player.popups_mod.show_info("📜 Recette récupérée")
 	else:
 		gs.player.popups_mod.show_info("✅ Défi réussi !")
-	
-	# 1) Dialogue 
-	await dialogue_win_toucan()
-	
-	# 2) On demande le focus grenouille (via gs) et on prévient lvl3
+
+	if not gs.fire_recipe_dialog_shown:
+		gs.fire_recipe_dialog_shown = true
+		await dialogue_win_toucan()
+
 	gs.focus_cam_frog = true
 	emit_signal("challenge_win")
-	
-	# 3) On supprime la scène
+
 	if is_instance_valid(self):
 		queue_free()
 
