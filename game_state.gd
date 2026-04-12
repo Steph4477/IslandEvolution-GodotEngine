@@ -90,6 +90,8 @@ signal flower_collected
 signal player_updated(new_player)
 signal digicode_ok
 
+# --- Craft skill_fire ---
+var wood_collected = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -102,9 +104,9 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	#await load_level("res://Levels/Test/test_scene.tscn")
+	await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
-	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 
 func _process(_delta):
@@ -325,6 +327,7 @@ func save_game():
 	data["has_key"] = has_key
 	data["has_lance"] = has_lance
 	data["has_flower"] = has_flower
+	data["wood_collected"] = wood_collected
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -385,6 +388,7 @@ func apply_save_data(data):
 	has_key = data.get("has_key", false)
 	has_lance = data.get("has_lance", false)
 	has_flower = data.get("has_flower", false)
+	wood_collected = data.get("wood_collected", false)
 
 	# Recharge du niveau sauvegardé
 	await load_level(pending_level_path)
