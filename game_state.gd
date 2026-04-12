@@ -499,6 +499,10 @@ func reinitialise():
 	can_fire_lance = false
 	can_fire_bone = false
 	can_camouflage = false
+	
+	fire_recipe_unlocked = false
+	wood_collected = false
+	stone_collected = false
 
 	if hud:
 		var gamepad = hud.get_node("Gamepad")
