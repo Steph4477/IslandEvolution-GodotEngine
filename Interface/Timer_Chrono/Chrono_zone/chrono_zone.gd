@@ -107,7 +107,11 @@ func win():
 	timer.stop()
 	chrono.stop_chrono()
 	chrono.visible = false
-	gs.player.popups_mod.show_info("✅ Défi réussi !")
+	if not gs.fire_recipe_unlocked:
+		gs.fire_recipe_unlocked = true
+		gs.player.popups_mod.show_info("📜 Recette récupérée")
+	else:
+		gs.player.popups_mod.show_info("✅ Défi réussi !")
 	
 	# 1) Dialogue 
 	await dialogue_win_toucan()

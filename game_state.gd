@@ -93,6 +93,7 @@ signal digicode_ok
 # --- Craft skill_fire ---
 var wood_collected = false
 var stone_collected = false
+var fire_recipe_unlocked = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -331,6 +332,7 @@ func save_game():
 	
 	data["wood_collected"] = wood_collected
 	data["stone_collected"] = stone_collected
+	data["fire_recipe_unlocked"] = fire_recipe_unlocked
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
