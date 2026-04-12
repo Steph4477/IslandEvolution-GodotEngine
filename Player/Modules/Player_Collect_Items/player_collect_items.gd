@@ -137,11 +137,13 @@ func collect_wood():
 		return
 
 	p.game_state.wood_collected = true
-	print("Bois récupéré")
+
+	p.popups_mod.show_info("Bois récupéré")
 
 func collect_stone():
 	if p.game_state.stone_collected:
 		return
 
 	p.game_state.stone_collected = true
-	print("Pierre récupérée… cela pourrait servir")
+
+	p.popups_mod.show_info("Cette pierre pourrait servir…")
