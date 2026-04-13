@@ -4,6 +4,7 @@ var player_in_zone = false
 var player = null
 var game_state
 var is_crafting = false
+var missing_feedback_locked = false
 
 @onready var anim_player = $AnimationPlayer
 
@@ -27,7 +28,19 @@ func try_craft():
 	if can_craft_fire():
 		start_craft_animation()
 	else:
-		print("craft refusé")
+		show_missing_elements_feedback()
+
+func show_missing_elements_feedback():
+	if missing_feedback_locked:
+		return
+
+	missing_feedback_locked = true
+
+	if player:
+		player.popups_mod.show_info("Il manque des éléments...")
+
+	await get_tree().create_timer(2.0).timeout
+	missing_feedback_locked = false
 
 func start_craft_animation():
 	is_crafting = true
@@ -39,12 +52,10 @@ func _on_area_2d_body_entered(body):
 		player = body
 		body.popups_mod.show_info('Appuie sur "E" pour utiliser l’autel')
 
-
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("Player"):
 		player_in_zone = false
 		player = null
-
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "craft_fire":
