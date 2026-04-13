@@ -506,6 +506,7 @@ func reinitialise():
 	can_fire_lance = false
 	can_fire_bone = false
 	can_camouflage = false
+	fire_buff_unlocked = false
 	
 	fire_recipe_unlocked = false
 	fire_recipe_dialog_shown = false
