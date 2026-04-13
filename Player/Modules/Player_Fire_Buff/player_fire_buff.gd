@@ -56,3 +56,12 @@ func is_fire_buff_active():
 
 func _on_fire_buff_timeout():
 	disable_fire_buff()
+
+func unlock_fire_skill():
+	if p.game_state.fire_buff_unlocked:
+		return
+
+	p.game_state.fire_buff_unlocked = true
+
+	if p.popups_mod:
+		p.popups_mod.show_info("Skill feu débloqué")

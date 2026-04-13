@@ -52,4 +52,5 @@ func _on_animation_player_animation_finished(anim_name):
 		on_craft_animation_finished()
 
 func on_craft_animation_finished():
-	print("fin animation craft")
+	if player:
+		player.fire_buff_mod.unlock_fire_skill()
