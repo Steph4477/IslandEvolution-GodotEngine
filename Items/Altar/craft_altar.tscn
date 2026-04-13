@@ -31,7 +31,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_g42ta"]
-resource_name = "ritual"
+resource_name = "craft_fire"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -49,7 +49,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wec7v"]
 _data = {
 &"RESET": SubResource("Animation_eh73i"),
-&"ritual": SubResource("Animation_g42ta")
+&"craft_fire": SubResource("Animation_g42ta")
 }
 
 [node name="CraftAltar" type="Node2D" unique_id=989838508]
@@ -69,3 +69,4 @@ libraries/ = SubResource("AnimationLibrary_wec7v")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

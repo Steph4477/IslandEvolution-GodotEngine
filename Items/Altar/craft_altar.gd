@@ -3,6 +3,9 @@ extends Node2D
 var player_in_zone = false
 var player = null
 var game_state
+var is_crafting = false
+
+@onready var anim_player = $AnimationPlayer
 
 func _ready():
 	game_state = get_node("/root/GameState")
@@ -18,11 +21,17 @@ func can_craft_fire():
 	return false
 
 func try_craft():
+	if is_crafting:
+		return
+
 	if can_craft_fire():
-		print("craft autorisé")
+		start_craft_animation()
 	else:
 		print("craft refusé")
 
+func start_craft_animation():
+	is_crafting = true
+	anim_player.play("craft_fire")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
@@ -35,3 +44,12 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group("Player"):
 		player_in_zone = false
 		player = null
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "craft_fire":
+		is_crafting = false
+		on_craft_animation_finished()
+
+func on_craft_animation_finished():
+	print("fin animation craft")
