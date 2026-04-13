@@ -64,4 +64,4 @@ func unlock_fire_skill():
 	p.game_state.fire_buff_unlocked = true
 
 	if p.popups_mod:
-		p.popups_mod.show_info("Skill feu débloqué")
+		p.popups_mod.show_info("🔥 Skill feu débloqué")
