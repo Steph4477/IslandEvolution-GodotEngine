@@ -65,3 +65,6 @@ func unlock_fire_skill():
 
 	if p.popups_mod:
 		p.popups_mod.show_info("🔥 Skill feu débloqué")
+	
+	if p.game_state and p.game_state.hud:
+		p.game_state.hud.disappear_fire_craft_quest()

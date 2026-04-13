@@ -107,15 +107,6 @@ func _ready():
 	if fire_craft_checklist:
 		fire_craft_checklist.visible = false
 
-	#if wood_label_checklist:
-		#wood_label_checklist.text = "Bois"
-	#if stone_label_checklist:
-		#stone_label_checklist.text = "Pierre"
-	#if recipe_label_checklist:
-		#recipe_label_checklist.text = "Recette"
-	#if altar_label_checklist:
-		#altar_label_checklist.text = "Trouver l'autel"
-
 	hide_breathbar()
 	_hide_all_buffs()
 
@@ -497,7 +488,7 @@ func update_fire_craft_checklist():
 	update_check_texture(wood_check, gs.wood_collected)
 	update_check_texture(stone_check, gs.stone_collected)
 	update_check_texture(recipe_check, gs.fire_recipe_unlocked)
-	update_check_texture(altar_check, false)
+	update_check_texture(altar_check, gs.fire_altar_found)
 
 func update_check_texture(check_node, is_valid):
 	if check_node == null:
@@ -519,6 +510,11 @@ func appear_fire_craft_quest():
 
 	update_fire_craft_checklist()
 
+func disappear_fire_craft_quest():
+	var anim = get_node_or_null("FireCraftChecklist/AnimationPlayer")
+	if anim:
+		anim.play("disappear_fire_craft_quest")
+		print("play disappear_quest_craft")
 
 # -----------------------------
 #        COOLDOWN API

@@ -1,16 +1,19 @@
 extends Node2D
 
-@onready var col = $Area2D/Col
-@onready var sprite = $Fire
-
 var gs
 var collected = false
+@onready var col = $Path2D/PathFollow2D/Area2D/CollisionShape2D
 
 func _ready():
 	gs = get_node("/root/GameState")
 
 	if gs.fire_buff_unlocked:
 		queue_free()
+	
+	col.disabled = true
+
+	await get_tree().create_timer(0.8).timeout
+	col.disabled = false
 
 func _on_area_2d_body_entered(body):
 	if collected:
