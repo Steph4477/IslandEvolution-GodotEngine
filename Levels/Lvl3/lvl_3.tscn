@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://8jpfie1x1si8"]
 
 [ext_resource type="Script" uid="uid://cfayp8qj6px75" path="res://Levels/Lvl3/lvl_3.gd" id="1_73pra"]
-[ext_resource type="PackedScene" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
+[ext_resource type="PackedScene" uid="uid://crq1euajh7iso" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="3_4esaq"]
 [ext_resource type="AudioStream" uid="uid://xw852443pndg" path="res://sounds/lvl3/water.ogg" id="3_06aic"]
 [ext_resource type="Texture2D" uid="uid://crv22dn0dkwrj" path="res://Levels/Lvl3/Environement/tiles platforms/decosheet.png" id="3_o2qeu"]
 [ext_resource type="AudioStream" uid="uid://cabcmhgbenj1w" path="res://sounds/water_splash_tree.ogg" id="3_xni6f"]
@@ -27,8 +27,7 @@
 [ext_resource type="PackedScene" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/exit.tscn" id="26_twwc1"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="27_twwc1"]
-[ext_resource type="PackedScene" uid="uid://cggxcitfp164h" path="res://Player/Skills/Sprint/sprint.tscn" id="28_h3eyb"]
-[ext_resource type="PackedScene" uid="uid://qx5rwduvnvd7" path="res://Player/Skills/Fire/fire.tscn" id="28_sagna"]
+[ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/craft_altar.tscn" id="28_sagna"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -37,13 +36,13 @@ size = Vector2(152.5, 2876)
 size = Vector2(143, 2820.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(16382, 284.1875)
+size = Vector2(25775.48, 284.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(290, 572.8906)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqfku"]
-size = Vector2(4118, 83.5)
+size = Vector2(3996, 83.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odqky"]
 shader = ExtResource("5_xni6f")
@@ -64,6 +63,9 @@ size = Vector2(2214, 611)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06aic"]
 size = Vector2(1499, 324)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3eyb"]
+size = Vector2(1981, 150)
 
 [sub_resource type="Animation" id="Animation_gstoe"]
 length = 0.001
@@ -207,7 +209,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 z_index = 10
-position = Vector2(4765, 856)
+position = Vector2(518, 248)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -223,7 +225,7 @@ position = Vector2(-74.75, 387)
 shape = SubResource("RectangleShape2D_ekrdk")
 
 [node name="Border2" type="CollisionShape2D" parent="Node2D/platform" unique_id=1166325203]
-position = Vector2(14245, 507)
+position = Vector2(23702, 94)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform" unique_id=1593811148]
@@ -231,7 +233,7 @@ position = Vector2(3714, 1330.0938)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform" unique_id=78992822]
-position = Vector2(6134.5195, -851)
+position = Vector2(10831.26, -851)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform" unique_id=119263704]
@@ -247,12 +249,18 @@ position = Vector2(3630, 1470)
 shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1405275903]
-position = Vector2(9915, 1010.75)
+position = Vector2(9854, 1010.75)
 shape = SubResource("RectangleShape2D_nqfku")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=1806785334]
+polygon = PackedVector2Array(11854, 964, 12176, 1146, 11854, 1048)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=133540081]
 position = Vector2(-676, 196)
 polygon = PackedVector2Array(5301, 818, 5381, 770, 8278, 773, 8278, 833, 5624, 812, 5066, 1074, 5139, 978)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=1719473825]
+polygon = PackedVector2Array(14005, 1206, 14475, 1030, 15280, 870, 15492, 874, 15761, 941, 21483, 941, 21786, 1184, 15037, 1210)
 
 [node name="Sound" type="Node2D" parent="Node2D" unique_id=1740515804]
 
@@ -284,8 +292,8 @@ position = Vector2(-21, -23)
 [node name="WaterSprite" type="Sprite2D" parent="Node2D/World" unique_id=1269696601]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_odqky")
-position = Vector2(5551.4995, 1367)
-scale = Vector2(12.222575, 2.084961)
+position = Vector2(13458.501, 2705.4224)
+scale = Vector2(22.250477, 7.460152)
 texture = SubResource("CanvasTexture_qaw7r")
 
 [node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/World" unique_id=1630989858]
@@ -361,6 +369,10 @@ shape = SubResource("RectangleShape2D_sdlip")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=746719110]
 position = Vector2(4453.5, 1367)
 shape = SubResource("RectangleShape2D_06aic")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=1639978179]
+position = Vector2(13139.5, 1275)
+shape = SubResource("RectangleShape2D_h3eyb")
 
 [node name="CocoLoot" parent="Node2D/World" unique_id=257516232 instance=ExtResource("11_6n0ay")]
 z_index = 6
@@ -442,7 +454,10 @@ position = Vector2(3513, 1180)
 scale = Vector2(2, 2)
 
 [node name="AmphibiousCroco" parent="Node2D/World/Ennemies" unique_id=939733752 instance=ExtResource("17_2nymq")]
-position = Vector2(8429, 942)
+position = Vector2(16457, 932)
+max_hp = 2000
+speed = 400
+attack_range = 1000
 
 [node name="CannibalChief" parent="Node2D/World/Ennemies" unique_id=837160356 instance=ExtResource("18_7qbkl")]
 position = Vector2(12524, 951)
@@ -452,6 +467,26 @@ attack_range = 200
 [node name="Cannibal" parent="Node2D/World/Ennemies" unique_id=708931693 instance=ExtResource("16_qaw7r")]
 position = Vector2(9356, 902)
 
+[node name="Cannibal2" parent="Node2D/World/Ennemies" unique_id=1776202316 instance=ExtResource("16_qaw7r")]
+position = Vector2(18789, 862)
+min_shoot_distance = 400.0
+attack_range = 500
+
+[node name="Cannibal3" parent="Node2D/World/Ennemies" unique_id=1130625183 instance=ExtResource("16_qaw7r")]
+position = Vector2(19739, 883)
+min_shoot_distance = 500.0
+attack_range = 1000
+
+[node name="Cannibal4" parent="Node2D/World/Ennemies" unique_id=881252677 instance=ExtResource("16_qaw7r")]
+position = Vector2(20627, 871)
+min_shoot_distance = 400.0
+attack_range = 1500
+
+[node name="Cannibal5" parent="Node2D/World/Ennemies" unique_id=77513344 instance=ExtResource("16_qaw7r")]
+position = Vector2(21350, 889)
+min_shoot_distance = 400.0
+attack_range = 1500
+
 [node name="Flower" parent="Node2D/World" unique_id=1069062389 instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
 scale = Vector2(0.5, 0.5)
@@ -460,6 +495,13 @@ scale = Vector2(0.5, 0.5)
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
 z_index = 4
 position = Vector2(7028, 844)
+scale = Vector2(-1, 1)
+texture = ExtResource("17_06aic")
+
+[node name="Village2" type="Sprite2D" parent="." unique_id=1604489932]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+z_index = 4
+position = Vector2(16638, 856)
 scale = Vector2(-1, 1)
 texture = ExtResource("17_06aic")
 
@@ -490,18 +532,24 @@ rotation = 0.32637656
 scale = Vector2(-0.25, 0.25)
 
 [node name="Exit" parent="." unique_id=961748312 instance=ExtResource("26_twwc1")]
-position = Vector2(11798, 961)
+position = Vector2(21721, 1125)
+scale = Vector2(1, 0.8)
 
 [node name="BagLoot" parent="." unique_id=1156845004 instance=ExtResource("27_twwc1")]
 position = Vector2(6152, 1000)
 
-[node name="Sprint" parent="." unique_id=69020274 instance=ExtResource("28_h3eyb")]
-z_index = 15
-position = Vector2(4986, 992)
+[node name="BagLoot2" parent="." unique_id=1352850771 instance=ExtResource("27_twwc1")]
+position = Vector2(6152, 1000)
 
-[node name="Fire" parent="." unique_id=24103310 instance=ExtResource("28_sagna")]
-position = Vector2(5131, 991)
-scale = Vector2(2, 2)
+[node name="BagLoot3" parent="." unique_id=1754575156 instance=ExtResource("27_twwc1")]
+position = Vector2(16078, 969)
+
+[node name="BagLoot4" parent="." unique_id=189804655 instance=ExtResource("27_twwc1")]
+position = Vector2(16078, 969)
+
+[node name="CraftAltar" parent="." unique_id=989838508 instance=ExtResource("28_sagna")]
+z_index = 5
+position = Vector2(14576, 253)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]
