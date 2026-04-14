@@ -5,15 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cxttsri5isc2e" path="res://Items/Altar/2.png" id="2_7gr88"]
 [ext_resource type="Texture2D" uid="uid://c6t4xdh5m8ce1" path="res://Items/Altar/3.png" id="3_v3tro"]
 [ext_resource type="Texture2D" uid="uid://d3o08jtnv5uf2" path="res://Items/Altar/4.png" id="4_8sa1v"]
-[ext_resource type="Texture2D" uid="uid://dndt6lxhy3vx1" path="res://Items/Altar/5.png" id="5_v5p4i"]
-[ext_resource type="Texture2D" uid="uid://dxgdf1px5f8sb" path="res://Items/Altar/6.png" id="6_b7j0b"]
-[ext_resource type="Texture2D" uid="uid://bueakek4ke8c1" path="res://Items/Altar/7.png" id="7_vmhxt"]
-[ext_resource type="Texture2D" uid="uid://be7ughntvrsqw" path="res://Items/Altar/8.png" id="8_s87li"]
-[ext_resource type="Texture2D" uid="uid://b6jpfsxowf0bb" path="res://Items/Altar/9.png" id="9_gecn3"]
-[ext_resource type="Texture2D" uid="uid://ee4gym1m8ta8" path="res://Items/Altar/10.png" id="10_ci6ia"]
+[ext_resource type="PackedScene" uid="uid://bcleaa6gwlx7s" path="res://Items/Altar/fire.tscn" id="12_v3tro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqxwx"]
-size = Vector2(84, 153.5)
+size = Vector2(55, 153.5)
 
 [sub_resource type="Animation" id="Animation_eh73i"]
 length = 0.001
@@ -29,10 +24,46 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("1_yqxwx")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireLeft:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FireRight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FireTop:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_g42ta"]
 resource_name = "craft_fire"
-length = 2.0
+length = 1.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,10 +71,46 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_yqxwx"), ExtResource("2_7gr88"), ExtResource("3_v3tro"), ExtResource("4_8sa1v"), ExtResource("5_v5p4i"), ExtResource("6_b7j0b"), ExtResource("7_vmhxt"), ExtResource("8_s87li"), ExtResource("9_gecn3"), ExtResource("10_ci6ia")]
+"values": [ExtResource("1_yqxwx"), ExtResource("2_7gr88"), ExtResource("3_v3tro"), ExtResource("4_8sa1v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireLeft:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FireRight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FireTop:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wec7v"]
@@ -56,16 +123,52 @@ _data = {
 script = ExtResource("1_7gr88")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=657885720]
+position = Vector2(814, 367)
 texture = ExtResource("1_yqxwx")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=843639088]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1220033537]
-position = Vector2(0, 332.75)
+position = Vector2(837.5, 706)
 shape = SubResource("RectangleShape2D_yqxwx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1607896439]
 libraries/ = SubResource("AnimationLibrary_wec7v")
+
+[node name="FireTop" type="Node2D" parent="." unique_id=2053606330]
+position = Vector2(193, -43)
+
+[node name="2" parent="FireTop" unique_id=1504087929 instance=ExtResource("12_v3tro")]
+position = Vector2(818, 353)
+color = Color(0.88235295, 0.28627452, 0.13725491, 0.4509804)
+radius = 40
+
+[node name="1" parent="FireTop" unique_id=296579739 instance=ExtResource("12_v3tro")]
+position = Vector2(818, 370)
+
+[node name="FireLeft" type="Node2D" parent="." unique_id=1765328215]
+position = Vector2(-125.000015, -153)
+scale = Vector2(1.2, 1.3)
+
+[node name="2" parent="FireLeft" unique_id=2107376780 instance=ExtResource("12_v3tro")]
+position = Vector2(818, 353)
+color = Color(0.88235295, 0.28627452, 0.13725491, 0.4509804)
+radius = 40
+
+[node name="1" parent="FireLeft" unique_id=1356080770 instance=ExtResource("12_v3tro")]
+position = Vector2(818, 370)
+
+[node name="FireRight" type="Node2D" parent="." unique_id=1992544032]
+position = Vector2(263, -153)
+scale = Vector2(1.2, 1.3)
+
+[node name="2" parent="FireRight" unique_id=575346635 instance=ExtResource("12_v3tro")]
+position = Vector2(818, 353)
+color = Color(0.88235295, 0.28627452, 0.13725491, 0.4509804)
+radius = 40
+
+[node name="1" parent="FireRight" unique_id=1146522447 instance=ExtResource("12_v3tro")]
+position = Vector2(818, 370)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

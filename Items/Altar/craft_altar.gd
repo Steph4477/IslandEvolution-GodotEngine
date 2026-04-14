@@ -7,11 +7,18 @@ var is_crafting = false
 var missing_feedback_locked = false
 var fire_skill_scene = preload("res://Player/Skills/Fire/fire.tscn")
 var fire_skill_spawned = false
+var fire_spawn_position = Vector2.ZERO
 
 @onready var anim_player = $AnimationPlayer
+@onready var fire_top = $FireTop
+@onready var fire_left = $FireLeft
+@onready var fire_right = $FireRight
 
 func _ready():
 	game_state = get_node("/root/GameState")
+	fire_top.visible = false
+	fire_left.visible = false
+	fire_right.visible = false
 
 func _process(_delta):
 	if player_in_zone and Input.is_action_just_pressed("interact"):
@@ -46,6 +53,11 @@ func show_missing_elements_feedback():
 
 func start_craft_animation():
 	is_crafting = true
+	fire_spawn_position = global_position + Vector2(0, -40)
+
+	if player:
+		fire_spawn_position = player.global_position + Vector2(0, -40)
+
 	anim_player.play("craft_fire")
 
 func spawn_fire_skill():
@@ -56,14 +68,14 @@ func spawn_fire_skill():
 
 	var fire_skill = fire_skill_scene.instantiate()
 	get_parent().add_child(fire_skill)
-	fire_skill.global_position = player.global_position + Vector2(0, -40)
+	fire_skill.global_position = fire_spawn_position
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		player_in_zone = true
 		player = body
 		body.popups_mod.show_info('Appuie sur "E" pour utiliser l’autel')
-		
+
 		if not game_state.fire_altar_found:
 			game_state.fire_altar_found = true
 			if game_state.hud:

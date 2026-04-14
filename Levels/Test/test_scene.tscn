@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cl7qxeo241o6d" path="res://Items/Stone/stone_item.tscn" id="1_g514y"]
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="1_yoe4u"]
-[ext_resource type="PackedScene" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="2_urigi"]
+[ext_resource type="PackedScene" uid="uid://crq1euajh7iso" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="2_urigi"]
 [ext_resource type="PackedScene" path="res://Loot/Flower/flower.tscn" id="3_sdklp"]
+[ext_resource type="PackedScene" uid="uid://bws7kkotjh64q" path="res://Enemies/Pygmy/pygmy.tscn" id="5_8wqyy"]
 [ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/craft_altar.tscn" id="5_sdklp"]
+[ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(313.271, 30.1528)
@@ -20,7 +22,7 @@ size = Vector2(312.20395, 53.526)
 [node name="Node2D" type="Node2D" parent="." unique_id=1402871080]
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=157147786]
-position = Vector2(1218, 1269)
+position = Vector2(1204, 1111)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=582993913]
 
@@ -60,10 +62,31 @@ position = Vector2(3598.0002, 1448)
 scale = Vector2(5, 1)
 
 [node name="Flower" parent="ChronoZone" unique_id=918285250 instance=ExtResource("3_sdklp")]
-position = Vector2(142.39995, -53)
+position = Vector2(102.19995, -53)
 
 [node name="WoodItem" parent="." unique_id=545583979 instance=ExtResource("1_yoe4u")]
 position = Vector2(1867, 1374)
 
+[node name="Pygmy" parent="." unique_id=1783296698 instance=ExtResource("5_8wqyy")]
+position = Vector2(7351, 1387)
+rotation = 3.1415927
+scale = Vector2(-1, -1)
+melee_distance = 30.0
+min_shoot_distance = 200.0
+attack_range = 300
+max_hp = 10000
+
 [node name="CraftAltar" parent="." unique_id=989838508 instance=ExtResource("5_sdklp")]
-position = Vector2(5305, 1144)
+position = Vector2(4109, 736)
+
+[node name="BagLoot" parent="." unique_id=1555895627 instance=ExtResource("7_t726j")]
+position = Vector2(4787, 1445)
+
+[node name="BagLoot2" parent="." unique_id=1955692160 instance=ExtResource("7_t726j")]
+position = Vector2(4787, 1445)
+
+[node name="BagLoot3" parent="." unique_id=772055628 instance=ExtResource("7_t726j")]
+position = Vector2(4787, 1445)
+
+[node name="BagLoot4" parent="." unique_id=1954630383 instance=ExtResource("7_t726j")]
+position = Vector2(4787, 1445)
