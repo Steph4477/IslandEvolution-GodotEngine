@@ -2,18 +2,25 @@
 
 [ext_resource type="Texture2D" uid="uid://caywu46dv00ck" path="res://Items/Wood/wood_item.png" id="1_0irbs"]
 [ext_resource type="Script" uid="uid://bp14fs2covl8d" path="res://Items/Wood/wood_item.gd" id="1_6k5p6"]
+[ext_resource type="PackedScene" uid="uid://bpriod280brtp" path="res://Effects/Particles_Loot/paticles_loot.tscn" id="3_cis52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cis52"]
-size = Vector2(407, 199)
+size = Vector2(56, 25)
 
 [node name="WoodItem" type="Area2D" unique_id=1848008734]
 script = ExtResource("1_6k5p6")
 
+[node name="ParticlesLoot" parent="." unique_id=2107376780 instance=ExtResource("3_cis52")]
+position = Vector2(-9, -24)
+scale = Vector2(0.5, 0.5)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=49510399]
+position = Vector2(-5.5, 3)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_0irbs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=84897015]
-position = Vector2(5.5, 0.5)
+position = Vector2(-5, 4.5)
 shape = SubResource("RectangleShape2D_cis52")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

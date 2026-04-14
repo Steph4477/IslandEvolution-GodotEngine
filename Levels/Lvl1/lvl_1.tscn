@@ -344,8 +344,7 @@ position = Vector2(-3907, -262)
 position = Vector2(-3326, -491)
 
 [node name="WoodItem" parent="Items" unique_id=1848008734 instance=ExtResource("19_jsni3")]
-position = Vector2(4402, 927)
-scale = Vector2(0.15, 0.15)
+position = Vector2(4407, 926)
 
 [node name="Sound" type="Node2D" parent="." unique_id=1907351730]
 

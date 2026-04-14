@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bpriod280brtp"]
+
+[ext_resource type="Texture2D" uid="uid://cpbq3ev14x584" path="res://Effects/Fire/glow_soft.png" id="1_hl3x2"]
+
+[sub_resource type="GDScript" id="GDScript_4ygaf"]
+script/source = "extends Node2D
+
+
+@onready var embers = $Embers
+
+@export var color = Color(1.0, 0.286, 0.161, 0.451)
+@export var radius = 28
+@export var glow_texture = preload(\"res://Effects/Fire/flame_soft2.png\")
+
+func _ready():
+	setup_embers(embers)
+
+# ============================================================================
+#                                EMBERS
+# ============================================================================
+func setup_embers(e):
+	e.texture = glow_texture
+	e.amount = 120
+	e.lifetime = 1.0
+	e.one_shot = false
+	e.explosiveness = 0
+	e.randomness = 1.0
+	e.local_coords = true
+	e.process_material = make_embers_material()
+
+# ============================================================================
+#                                MATERIALS
+# ============================================================================
+func make_embers_material():
+	var mat = ParticleProcessMaterial.new()
+
+	mat.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
+	mat.emission_sphere_radius = radius
+
+	mat.direction = Vector3(0, -1, 0)
+	#mat.spread = 105.0
+
+	mat.initial_velocity_min = 8.0
+	mat.initial_velocity_max = 20.0
+
+	mat.gravity = Vector3(0, -1.0, 0)
+
+	mat.scale_min = 0.01
+	mat.scale_max = 0.06
+
+	mat.color = color
+
+	mat.turbulence_enabled = true
+	mat.turbulence_noise_strength = 0.1
+	mat.turbulence_noise_scale = 0.55
+	mat.turbulence_noise_speed_random = 0.5
+
+	return mat
+"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hl3x2"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 128.0
+inherit_velocity_ratio = 100.0
+spread = 40.0
+gravity = Vector3(0, -1, 0)
+
+[node name="ParticlesLoot" type="Node2D" unique_id=2107376780]
+position = Vector2(0, 10)
+script = SubResource("GDScript_4ygaf")
+color = Color(1, 1, 1, 0.20392157)
+radius = 100
+glow_texture = ExtResource("1_hl3x2")
+
+[node name="Embers" type="GPUParticles2D" parent="." unique_id=393721448]
+amount = 2
+lifetime = 4.56
+interpolate = false
+fract_delta = false
+visibility_rect = Rect2(-100, -100, 50, -600)
+process_material = SubResource("ParticleProcessMaterial_hl3x2")
