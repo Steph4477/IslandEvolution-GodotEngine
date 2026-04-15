@@ -26,75 +26,92 @@ var gs
 var chrono
 var timer
 var started = false
+var in_intro = false
 
 func _ready():
 	gs = get_node("/root/GameState")
 	timer = $Timer
-	
-	# Récup chrono HUD (attend que le HUD existe)
+
+	if gs.fire_recipe_unlocked:
+		queue_free()
+		return
+
 	while gs.hud == null:
 		await get_tree().process_frame
+
 	chrono = gs.hud.get_node("TimerChrono")
 
 func _physics_process(_delta):
-	# Si Moko meurt pendant le défi → stop + retry
-	if started and gs.player.is_dead:
+	if started and gs.player and gs.player.is_dead:
 		started = false
 		timer.stop()
 		chrono.stop_chrono()
 		chrono.visible = false
 		gs.toucan_challenge_retry = true
 
-# ================== ZONE ==================
-func _on_zone_body_entered(_body):
-	# Si la scène a été supprimée → rien ne se relance
+func _on_zone_body_entered(body):
+	if not body.is_in_group("Player"):
+		return
+
 	if not is_instance_valid(self):
 		return
-		
-	# Relance 3,2,1 si un retry est prévu
+
+	if in_intro:
+		return
+
+	if gs.fire_recipe_unlocked:
+		return
+
 	if gs.toucan_challenge_retry:
 		gs.toucan_challenge_retry = false
 		await retry_then_start()
 		return
-		
-	# Démarrage si pas lancé
+
 	if not started:
 		if gs.toucan_dialogue_seen:
 			start()
 		else:
+			in_intro = true
 			await intro_then_start()
 			gs.toucan_dialogue_seen = true
+			in_intro = false
 		return
-		
-	# Défi en cours : valider si fleur + temps restant
+
 	if gs.has_flower:
 		if timer.time_left > 0 or chrono.time_left > 0:
 			win()
 		else:
 			lose()
 
-func _on_zone_body_exited(_body):
+func _on_zone_body_exited(body):
+	if not body.is_in_group("Player"):
+		return
+
 	if stop_on_exit:
 		timer.stop()
 		chrono.stop_chrono()
+
 	if hide_on_exit:
 		chrono.visible = false
 
-# ================== FLUX ==================
 func intro_then_start():
 	gs.player.can_move = false
 	await get_tree().process_frame
+
 	var dlg = dialogue_scene.instantiate()
 	add_child(dlg)
 	dlg.start(dialogue_lines)
 	await dlg.finished
+
 	gs.player.can_move = true
 	start()
 
 func start():
 	gs.has_flower = false
+
 	if reset_on_start:
 		chrono.reset_chrono()
+
 	chrono.visible = true
 	chrono.start_chrono()
 	timer.stop()
@@ -116,9 +133,9 @@ func win():
 	if not gs.fire_recipe_dialog_shown:
 		gs.fire_recipe_dialog_shown = true
 		await dialogue_win_toucan()
-	
+
 	gs.fire_craft_revealed = true
-	
+
 	if gs.hud:
 		gs.hud.appear_fire_craft_quest()
 		gs.hud.update_fire_craft_checklist()
@@ -134,46 +151,49 @@ func lose():
 	timer.stop()
 	chrono.stop_chrono()
 	chrono.visible = false
-	gs.player.popups_mod.show_info("⏳ Temps écoulé, tu vas y arriver Moko !")
 	gs.has_flower = false
 	gs.toucan_challenge_retry = true
+	gs.player.popups_mod.show_info("⏳ Temps écoulé, tu vas y arriver Moko !")
 	gs.player.damage_mod.die()
 
-# ================ DIALOGUE RETENTE ================
 func retry_then_start():
 	gs.player.can_move = false
 	await get_tree().process_frame
+
 	var dlg = dialogue_scene.instantiate()
 	add_child(dlg)
 	dlg.start(["Retente !"])
 	await dlg.finished
+
 	gs.player.can_move = true
 	counter_time_start()
 
-# ======== COMPTE A REBOURD RETENTE =============
 func counter_time_start():
 	gs.player.can_move = false
 	await get_tree().process_frame
+
 	var cptanim = counter_time.instantiate()
 	add_child(cptanim)
+
 	await get_tree().create_timer(1.6).timeout
 	gs.player.can_move = true
 	start()
 
-# =============== DIALOGUE WIN =====================
 func dialogue_win_toucan():
 	gs.player.can_move = false
 	await get_tree().process_frame
+
 	var dlg = dialogue_scene.instantiate()
-	dlg.challenge_win = true # informe le dialogue qu’on est dans un win pour afficher la fleur
+	dlg.challenge_win = true
 	add_child(dlg)
 	dlg.start(dialogue_win)
 	await dlg.finished
+
 	gs.player.can_move = true
 
-# ================ TIMER ==================
 func _on_timer_timeout():
 	if not started:
 		return
+
 	if not gs.has_flower:
 		lose()
