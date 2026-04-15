@@ -444,7 +444,7 @@ func lose_life():
 		if hud:
 			hud.update_lives_display(lives)
 
-		reinitialise()
+		reset_after_death()
 
 		sprint_stamina = sprint_stamina_max
 		if speed_bar:
@@ -452,6 +452,41 @@ func lose_life():
 
 		request_reload_after_delay(0.5)
 
+func reset_after_death():
+	banane_count = 0
+	honey_count = 0
+	coco_count = 0
+	bone_count = 0
+	seed_count = 0
+	lance_count = 0
+	camouflage_count = 0
+
+	can_fire_coco = false
+	can_fire_lance = false
+	can_fire_bone = false
+	can_camouflage = false
+
+	get_tree().paused = false
+	is_paused = false
+	if hud and hud.has_method("set_pause_visual"):
+		hud.set_pause_visual(false)
+
+	if hud:
+		var gamepad = hud.get_node("Gamepad")
+		hud.set_button_enabled(gamepad.get_node("Coco"), false)
+		hud.set_button_enabled(gamepad.get_node("Bone"), false)
+		hud.set_button_enabled(gamepad.get_node("Spear"), false)
+		hud.set_button_enabled(gamepad.get_node("Health"), false)
+		hud.set_button_enabled(gamepad.get_node("Honey"), false)
+		hud.set_button_enabled(gamepad.get_node("Camouflage"), false)
+
+		hud.update_seed_display(0, total_seeds_in_level)
+		hud.update_lance_display()
+		hud.update_banane_display()
+		hud.update_honey_display()
+		hud.update_coco_display()
+		hud.update_bone_display()
+		hud.update_camouflage_display()
 
 func request_reload_after_delay(delay = 0.5):
 	await get_tree().create_timer(delay).timeout
