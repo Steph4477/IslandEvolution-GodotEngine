@@ -44,7 +44,10 @@ func on_hit(damage):
 		await die()
 		return
 
-	await p.play_anim("onhit")
+	if p.is_swimming:
+		await p.play_anim("onhit_swim")
+	else:
+		await p.play_anim("onhit")
 
 	p.can_be_damaged = true
 

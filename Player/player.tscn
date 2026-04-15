@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://cr3avmor8xjtl" path="res://Player/Sprite/shoot/4.png" id="34_c4i3b"]
 [ext_resource type="Texture2D" uid="uid://bql5gonj60ve3" path="res://Player/Sprite/empty/1.png" id="35_6qokg"]
 [ext_resource type="Texture2D" uid="uid://ee5yhbkx6sey" path="res://Player/Sprite/gaz/walk_gaz2.png" id="35_l6ey7"]
+[ext_resource type="Texture2D" uid="uid://c1yfrwrdsisxm" path="res://Player/Sprite/onhit/swim/1.png" id="35_x0uyb"]
 [ext_resource type="Texture2D" uid="uid://cv8umt7keage0" path="res://Player/Sprite/empty/2.png" id="36_i7max"]
 [ext_resource type="Texture2D" uid="uid://cd447qx5fnim4" path="res://Player/Sprite/idle/4.png" id="36_qh0f6"]
 [ext_resource type="Texture2D" uid="uid://cyvt124r833wr" path="res://Player/Sprite/idle/1.png" id="38_7clvs"]
@@ -401,6 +402,22 @@ tracks/0/keys = {
 "values": [ExtResource("39_r4aas")]
 }
 
+[sub_resource type="Animation" id="Animation_pqfba"]
+resource_name = "onhit_swim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("35_x0uyb")]
+}
+
 [sub_resource type="Animation" id="Animation_7x5p2"]
 resource_name = "pull"
 tracks/0/type = "value"
@@ -633,6 +650,7 @@ _data = {
 &"jump_down": SubResource("Animation_typba"),
 &"jump_up": SubResource("Animation_rbgwy"),
 &"onhit": SubResource("Animation_6qokg"),
+&"onhit_swim": SubResource("Animation_pqfba"),
 &"pull": SubResource("Animation_7x5p2"),
 &"push": SubResource("Animation_2paov"),
 &"ramp": SubResource("Animation_ms575"),
@@ -676,7 +694,7 @@ texture = ExtResource("2_8hx1r")
 
 [node name="Sprite" type="Sprite2D" parent="Node2D" unique_id=1543697993]
 modulate = Color(1, 1, 1, 0.9785716)
-position = Vector2(150, 71.6667)
+position = Vector2(142.50002, 52.499996)
 rotation = 6.1934304
 scale = Vector2(0.19565926, 0.19565926)
 texture = ExtResource("2_2paov")
