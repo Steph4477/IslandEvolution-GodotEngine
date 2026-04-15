@@ -22,9 +22,10 @@ func _ready():
 	# --- Limite caméra & assombrissement ---
 	await get_tree().process_frame
 	gs = get_node("/root/GameState")
+
 	cam = gs.player.get_node("Camera2D")
-	cam.limit_top = -250000
-	cam.limit_right = 15000
+	cam.limit_top = -230000
+	cam.limit_right = 23000
 	
 	# Position initiale de l’anim “fall” à 0.0
 	if anim.has_animation("fall"):
