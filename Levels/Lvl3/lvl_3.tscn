@@ -17,9 +17,8 @@
 [ext_resource type="PackedScene" path="res://Enemies/Crocodile/SwimCroco/swim_croco.tscn" id="12_12vmq"]
 [ext_resource type="PackedScene" path="res://Loot/Flower/flower.tscn" id="14_4esaq"]
 [ext_resource type="PackedScene" uid="uid://4nolvckgjic0" path="res://Enemies/Cannibal/cannibal.tscn" id="16_qaw7r"]
-[ext_resource type="PackedScene" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_2nymq"]
+[ext_resource type="PackedScene" uid="uid://dhw0x3rjrwjfs" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_2nymq"]
 [ext_resource type="Texture2D" uid="uid://nwr2jb4bn8tx" path="res://Levels/Lvl3/Environement/tiles platforms/village.png" id="17_06aic"]
-[ext_resource type="PackedScene" uid="uid://cotk7yb4xyueu" path="res://Enemies/Cannibal/Chief/cannibal_chief.tscn" id="18_7qbkl"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
@@ -27,6 +26,7 @@
 [ext_resource type="PackedScene" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/exit.tscn" id="26_twwc1"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="27_twwc1"]
+[ext_resource type="PackedScene" path="res://Player/Skills/DoubleJump/double_jump.tscn" id="28_h3eyb"]
 [ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/craft_altar.tscn" id="28_sagna"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
@@ -201,7 +201,6 @@ _data = {
 }
 
 [node name="lvl3" type="Node2D" unique_id=287583743]
-position = Vector2(-81, 66)
 script = ExtResource("1_73pra")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=2021178916]
@@ -209,7 +208,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 z_index = 10
-position = Vector2(518, 248)
+position = Vector2(430, 735)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -253,7 +252,8 @@ position = Vector2(9854, 1010.75)
 shape = SubResource("RectangleShape2D_nqfku")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=1806785334]
-polygon = PackedVector2Array(11854, 964, 12176, 1146, 11854, 1048)
+position = Vector2(-2, 5)
+polygon = PackedVector2Array(11854, 964, 12248, 1186, 11854, 1048)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=133540081]
 position = Vector2(-676, 196)
@@ -304,8 +304,8 @@ position = Vector2(3225, 682)
 
 [node name="SkySprite" type="Sprite2D" parent="Node2D/World/WorldParallaxe/SkyLayer" unique_id=309829285]
 z_index = -100
-position = Vector2(-3617, -3871)
-scale = Vector2(9.79427, 8.052735)
+position = Vector2(-3450, -7186)
+scale = Vector2(16.201822, 10.399415)
 texture = ExtResource("8_qaw7r")
 centered = false
 
@@ -347,6 +347,46 @@ position = Vector2(2092, -789)
 tile_map_data = PackedByteArray("AACF/1kAAgAGAAQAAACl/1kAAgAHAAQAAADF/1kAAgAHAAQAABDl/1kAAgAGAAQAABAFAFkAAgAGAAQAAAAlAFkAAgAGAAQAABBFAFkAAgAHAAQAABBlAFkAAgAHAAQAAACEAFkAAgAGAAQAAACkAFkAAgAHAAQAAADEAFkAAgAHAAQAABDkAFkAAgAGAAQAABAEAVkAAgAGAAQAAAAkAVkAAgAHAAQAAABEAVkAAgAHAAQAABBkAVkAAgAHAAQAAACEAVkAAgAHAAQAABA=")
 tile_set = ExtResource("5_yixkb")
 
+[node name="DecorsTiles2" type="Node2D" parent="Node2D/World" unique_id=998598794]
+position = Vector2(23836, 4)
+scale = Vector2(-1, 1)
+
+[node name="TileMapLayer0" type="TileMapLayer" parent="Node2D/World/DecorsTiles2" unique_id=1652968524]
+modulate = Color(0.19315353, 0.19315353, 0.19315347, 1)
+z_index = 50
+position = Vector2(-22, 939)
+tile_map_data = PackedByteArray("AAAtACMAAgAHAAEAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAABxACMAAgADAAUAAAAPABsAAgAAAAIAAACxACAAAgAAAAIAAADHACMAAgAAAAIAAADQAB0AAgABAAIAAAByACsAAgAAAAEAAACzACAAAgAAAAEAAAD5ACgAAgAAAAEAAADwACYAAgAAAAMAAAD9ACUAAgADAAQAAAABAScAAgAAAAMAAAAHARsAAgAAAAIAAAAcASYAAgAAAAMAAAAlASMAAgAHAAEAAAAvAR8AAgAFAAIAAAA+ASIAAgAAAAMAAABIASMAAgAEAAIAAABYASYAAgAFAAIAAABpASMAAgADAAUAAABqASsAAgAAAAEAAAByAScAAgAAAAMAAACLASUAAgACAAIAAACMASUAAgACAAIAAACjAScAAgAHAAMAAACpASAAAgAAAAIAAACrASAAAgAAAAEAAAC0ASIAAgAEAAIAAAC/ASMAAgAAAAIAAADIAR0AAgABAAIAAADMASUAAgAHAAMAAADcASEAAgADAAQAAADcASIAAgADAAQAAADiASMAAgAEAAIAAADxASgAAgAAAAEAAAA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer1" type="TileMapLayer" parent="Node2D/World/DecorsTiles2" unique_id=17350814]
+modulate = Color(0.26050618, 0.26050612, 0.26050606, 1)
+z_index = 40
+position = Vector2(-4, 667)
+scale = Vector2(0.4, 0.4)
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Node2D/World/DecorsTiles2" unique_id=1718019010]
+modulate = Color(0.427493, 0.42749307, 0.42749307, 1)
+z_index = 4
+position = Vector2(-98, 590)
+scale = Vector2(0.3, 0.3)
+tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAZAFkAAgAAAAIAAAAiAFQAAgAAAAIAAACSAFMAAgABAAIAAACaAE0AAgABAAIAAADVAFwAAgAAAAMAAADMAFUAAgAAAAMAAADDAGAAAgAAAAMAAAA/AFwAAgAGAAIAAABkAFQAAgAGAAIAAABGAFkAAgACAAIAAAA0AVEAAgAEAAAAAADRAGUAAgAHAAIAAAApAVMAAgAHAAIAAABaAVIAAgAHAAIAAABhAV4AAgAHAAIAAACDAVIAAgAHAAIAAACeAVcAAgAHAAIAAAC2AU4AAgAHAAIAAADjAVQAAgAHAAIAAADPAU4AAgAHAAIAAAD5AVQAAgAHAAIAAAAhAk8AAgAHAAIAAABdAk8AAgAHAAIAAAAKAlMAAgAHAAIAAAB2AlIAAgAHAAIAAAB3AlIAAgAHAAIAAACwAlEAAgAHAAIAAACxAlEAAgAHAAIAAADRAlMAAgAHAAIAAADrAlEAAgAHAAIAAADsAlAAAgAHAAIAAAASA1gAAgAHAAIAAAARA1gAAgAHAAIAAAAgA1gAAgAHAAIAAAAhA1gAAgAHAAIAAAAhA1cAAgAHAAIAAAAiA1cAAgAHAAIAAABlA1EAAgAHAAIAAACGA1YAAgAHAAIAAACvA1IAAgAHAAIAAACwA1IAAgAHAAIAAACwA1EAAgAHAAIAAADlA1gAAgAHAAIAAADmA1cAAgAHAAIAAABKA2AAAgAFAAEAAABEA1UAAgAFAAEAAAAtA10AAgAFAAEAAABiA00AAgAFAAIAAABxA0wAAgAFAAIAAABrA1AAAgAFAAIAAACZA1wAAgACAAIAAACaA1wAAgACAAIAAADlAEwAAgAGAAIAAADuAE8AAgAGAAIAAADzAEwAAgAGAAIAAADoAFIAAgAGAAIAAAD1AFUAAgAGAAIAAAArAE0AAgABAAIAAAAfAE8AAgABAAIAAAAjAEoAAgABAAIAAAAoAFUAAgABAAIAAABTAFUAAgAFAAEAAABbAFcAAgAFAAEAAABtAFYAAgAFAAEAAAB1AFcAAgAFAAEAAACAAFEAAgAFAAEAAAA/AFEAAgAFAAEAAABJAFMAAgAFAAEAAAAIAU4AAgAAAAMAAAANAVUAAgAAAAMAAAASAVEAAgAAAAMAAAAZAVUAAgAAAAMAAAAfAU4AAgAAAAMAAAAgAVwAAgAAAAMAAAATAVsAAgAAAAMAAAAcAWAAAgABAAMAAABtAU8AAgAAAAIAAAB0AVQAAgAAAAIAAACsAE8AAgAAAAIAAACzAFcAAgAAAAIAAACzAFYAAgAAAAIAAAC2AE8AAgAAAAIAAACHAGUAAgAAAAIAAABLAGoAAgAAAAIAAACbAU0AAgAFAAIAAACSAUkAAgAFAAIAAACgAUgAAgAFAAIAAADMAE0AAgAFAAIAAADXAEsAAgAFAAIAAADkAEsAAgAFAAIAAACmAEoAAgAEAAIAAACJAEoAAgAEAAIAAACXAksAAgAEAAIAAABpAk4AAgAEAAIAAABSAk4AAgAEAAIAAACYA0gAAgAEAAIAAACKA0oAAgAEAAIAAAA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="Node2D/World/DecorsTiles2" unique_id=751236468]
+modulate = Color(1, 0.9906667, 0.99, 1)
+z_index = 2
+position = Vector2(-563, -389)
+scale = Vector2(1.2, 1.2)
+tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAkADoAAgAGAAEAAAByADoAAgAGAAEAAACKADkAAgAGAAEAAAB+ADoAAgAHAAEAAABRADoAAgAHAAEAABA9ADkAAgAGAAAAAABfADkAAgAHAAAAAABpADoAAgAEAAQAAADMADkAAgAHAAAAAACwADoAAgAHAAAAAABsADkAAgAHAAAAAADUADoAAgAGAAEAAADtADkAAgAGAAAAAAABAToAAgAHAAEAABAPATkAAgAHAAAAAAAyADkAAgAHAAAAAABNADkAAgAHAAAAAACZADkAAgAGAAEAABDhADkAAgAGAAEAABA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Node2D/World/DecorsTiles2" unique_id=596141247]
+position = Vector2(2092, -789)
+tile_map_data = PackedByteArray("AACF/1kAAgAGAAQAAACl/1kAAgAHAAQAAADF/1kAAgAHAAQAABDl/1kAAgAGAAQAABAFAFkAAgAGAAQAAAAlAFkAAgAGAAQAABBFAFkAAgAHAAQAABBlAFkAAgAHAAQAAACEAFkAAgAGAAQAAACkAFkAAgAHAAQAAADEAFkAAgAHAAQAABDkAFkAAgAGAAQAABAEAVkAAgAGAAQAAAAkAVkAAgAHAAQAAABEAVkAAgAHAAQAABBkAVkAAgAHAAQAAACEAVkAAgAHAAQAABA=")
+tile_set = ExtResource("5_yixkb")
+
 [node name="SwimZone" type="Node2D" parent="Node2D/World" unique_id=530466928]
 script = ExtResource("10_4tc27")
 
@@ -382,37 +422,57 @@ z_index = 5
 position = Vector2(2096, 1100)
 scale = Vector2(0.8, 0.5)
 
-[node name="Liana5" parent="Node2D/World" unique_id=210638943 instance=ExtResource("11_sdlip")]
+[node name="Liana7" parent="Node2D/World" unique_id=545184550 instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(3987, 162)
+position = Vector2(12690, 245)
 scale = Vector2(0.4, 1)
 
-[node name="lianas" type="Node2D" parent="Node2D/World" unique_id=1871030560]
+[node name="Liana8" parent="Node2D/World" unique_id=37587017 instance=ExtResource("11_sdlip")]
+z_index = 3
+position = Vector2(13241, 254)
+scale = Vector2(0.4, 1)
+
+[node name="Liana9" parent="Node2D/World" unique_id=1044953259 instance=ExtResource("11_sdlip")]
+z_index = 3
+position = Vector2(13706, 256)
+scale = Vector2(0.4, 1)
+
+[node name="Liana5" parent="Node2D/World" unique_id=210638943 instance=ExtResource("11_sdlip")]
+z_index = 3
+position = Vector2(4002, 253)
+scale = Vector2(0.4, 1)
+
+[node name="Liana6" parent="Node2D/World" unique_id=1341740517 instance=ExtResource("11_sdlip")]
+z_index = 5
+position = Vector2(756, 241)
+scale = Vector2(0.4, 1)
+
+[node name="ItemChronoLianas" type="Node2D" parent="Node2D/World" unique_id=1871030560]
 z_index = 5
 position = Vector2(184, 2000)
 
-[node name="Liana" parent="Node2D/World/lianas" unique_id=1822516732 instance=ExtResource("11_sdlip")]
+[node name="Liana" parent="Node2D/World/ItemChronoLianas" unique_id=1822516732 instance=ExtResource("11_sdlip")]
 z_index = 3
 position = Vector2(1318, 270)
 scale = Vector2(0.4, 1)
 
-[node name="Liana2" parent="Node2D/World/lianas" unique_id=82040700 instance=ExtResource("11_sdlip")]
+[node name="Liana2" parent="Node2D/World/ItemChronoLianas" unique_id=82040700 instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(1945, 272)
+position = Vector2(1972, 280)
 scale = Vector2(0.4, 1)
 
-[node name="Liana3" parent="Node2D/World/lianas" unique_id=1763335170 instance=ExtResource("11_sdlip")]
+[node name="Liana3" parent="Node2D/World/ItemChronoLianas" unique_id=1763335170 instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(2558, 243)
+position = Vector2(2541, 265)
 scale = Vector2(0.4, 1)
 
-[node name="Liana4" parent="Node2D/World/lianas" unique_id=1393814878 instance=ExtResource("11_sdlip")]
+[node name="Liana4" parent="Node2D/World/ItemChronoLianas" unique_id=1393814878 instance=ExtResource("11_sdlip")]
 z_index = 3
-position = Vector2(3156, 265)
+position = Vector2(3135, 261)
 scale = Vector2(0.4, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/World" unique_id=188075058]
-root_node = NodePath("../lianas")
+root_node = NodePath("../ItemChronoLianas")
 libraries/ = SubResource("AnimationLibrary_6n0ay")
 
 [node name="Nenuphars" type="Node2D" parent="Node2D/World" unique_id=1596580178]
@@ -459,13 +519,11 @@ max_hp = 2000
 speed = 400
 attack_range = 1000
 
-[node name="CannibalChief" parent="Node2D/World/Ennemies" unique_id=837160356 instance=ExtResource("18_7qbkl")]
-position = Vector2(12524, 951)
-appear_distance = 800.0
-attack_range = 200
-
 [node name="Cannibal" parent="Node2D/World/Ennemies" unique_id=708931693 instance=ExtResource("16_qaw7r")]
 position = Vector2(9356, 902)
+
+[node name="Cannibal6" parent="Node2D/World/Ennemies" unique_id=1443868190 instance=ExtResource("16_qaw7r")]
+position = Vector2(12534, 912)
 
 [node name="Cannibal2" parent="Node2D/World/Ennemies" unique_id=1776202316 instance=ExtResource("16_qaw7r")]
 position = Vector2(18789, 862)
@@ -550,6 +608,9 @@ position = Vector2(16078, 969)
 [node name="CraftAltar" parent="." unique_id=989838508 instance=ExtResource("28_sagna")]
 z_index = 5
 position = Vector2(14576, 253)
+
+[node name="DoubleJump" parent="." unique_id=906714641 instance=ExtResource("28_h3eyb")]
+position = Vector2(11791, 1006)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]
