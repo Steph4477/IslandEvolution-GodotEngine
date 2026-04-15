@@ -1,34 +1,34 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dhw0x3rjrwjfs"]
 
-[ext_resource type="Script" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.gd" id="1_co5vm"]
+[ext_resource type="Script" uid="uid://ckwclcdasehtg" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.gd" id="1_co5vm"]
 [ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="2_01lnk"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/1.png" id="3_g5ibj"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Swim/2.png" id="5_dqd2x"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Swim/1.png" id="6_3j4w1"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Attack/1.png" id="6_xna87"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Attack/2.png" id="7_g0r8q"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/2.png" id="8_rjuuk"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/3.png" id="9_68bdw"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/1.png" id="10_f7es7"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/3.png" id="12_pvx76"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/4.png" id="13_40d2c"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Attack_Swim/1.png" id="13_b5wxv"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/5.png" id="14_7isv1"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Attack_Swim/2.png" id="14_ow40j"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Attack_Swim/3.png" id="15_mx0r3"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Attack_Swim/4.png" id="16_0vl1x"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Roar/1.png" id="19_edyq1"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Roar/2.png" id="20_a0kki"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Roar/3.png" id="21_3dnty"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Roar/4.png" id="22_ppobg"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/One_Hit/1.png" id="23_agtog"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/One_Hit/2.png" id="24_qs4ym"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Die/1.png" id="25_aecmq"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/AmphibiousCroco/Die/2.png" id="26_nshgc"]
-[ext_resource type="AudioStream" path="res://sounds/roar_croco.ogg" id="27_ow40j"]
+[ext_resource type="Texture2D" uid="uid://dfqam5nlg7owo" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/1.png" id="3_g5ibj"]
+[ext_resource type="Texture2D" uid="uid://fnb20qi81ebb" path="res://Enemies/Crocodile/AmphibiousCroco/Swim/2.png" id="5_dqd2x"]
+[ext_resource type="Texture2D" uid="uid://m87mxwrt76sl" path="res://Enemies/Crocodile/AmphibiousCroco/Swim/1.png" id="6_3j4w1"]
+[ext_resource type="Texture2D" uid="uid://wby31ajgnfnh" path="res://Enemies/Crocodile/AmphibiousCroco/Attack/1.png" id="6_xna87"]
+[ext_resource type="Texture2D" uid="uid://dp8evsfc25eo1" path="res://Enemies/Crocodile/AmphibiousCroco/Attack/2.png" id="7_g0r8q"]
+[ext_resource type="Texture2D" uid="uid://b2ngy66ymcxes" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/2.png" id="8_rjuuk"]
+[ext_resource type="Texture2D" uid="uid://panyjhnd8d72" path="res://Enemies/Crocodile/AmphibiousCroco/Walk/3.png" id="9_68bdw"]
+[ext_resource type="Texture2D" uid="uid://ds21ud0lxx861" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/1.png" id="10_f7es7"]
+[ext_resource type="Texture2D" uid="uid://bhx2vt5w05r0x" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/3.png" id="12_pvx76"]
+[ext_resource type="Texture2D" uid="uid://cmwog4pblp05w" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/4.png" id="13_40d2c"]
+[ext_resource type="Texture2D" uid="uid://cfcjxw3msme7w" path="res://Enemies/Crocodile/AmphibiousCroco/Attack_Swim/1.png" id="13_b5wxv"]
+[ext_resource type="Texture2D" uid="uid://cknxugbhn5arx" path="res://Enemies/Crocodile/AmphibiousCroco/Idle/5.png" id="14_7isv1"]
+[ext_resource type="Texture2D" uid="uid://kps65eov53yk" path="res://Enemies/Crocodile/AmphibiousCroco/Attack_Swim/2.png" id="14_ow40j"]
+[ext_resource type="Texture2D" uid="uid://dr7062vip4hsf" path="res://Enemies/Crocodile/AmphibiousCroco/Attack_Swim/3.png" id="15_mx0r3"]
+[ext_resource type="Texture2D" uid="uid://gnwne4gf6kjc" path="res://Enemies/Crocodile/AmphibiousCroco/Attack_Swim/4.png" id="16_0vl1x"]
+[ext_resource type="Texture2D" uid="uid://dncqrngbx2mu1" path="res://Enemies/Crocodile/AmphibiousCroco/Roar/1.png" id="19_edyq1"]
+[ext_resource type="Texture2D" uid="uid://rru1ld6sgy3a" path="res://Enemies/Crocodile/AmphibiousCroco/Roar/2.png" id="20_a0kki"]
+[ext_resource type="Texture2D" uid="uid://d0rkxgdx5jtxc" path="res://Enemies/Crocodile/AmphibiousCroco/Roar/3.png" id="21_3dnty"]
+[ext_resource type="Texture2D" uid="uid://ciauwhqbisdr2" path="res://Enemies/Crocodile/AmphibiousCroco/Roar/4.png" id="22_ppobg"]
+[ext_resource type="Texture2D" uid="uid://b70mauuvn81aq" path="res://Enemies/Crocodile/AmphibiousCroco/One_Hit/1.png" id="23_agtog"]
+[ext_resource type="Texture2D" uid="uid://b5n3tvdiltbcc" path="res://Enemies/Crocodile/AmphibiousCroco/One_Hit/2.png" id="24_qs4ym"]
+[ext_resource type="Texture2D" uid="uid://cpwlsv4vhf42w" path="res://Enemies/Crocodile/AmphibiousCroco/Die/1.png" id="25_aecmq"]
+[ext_resource type="Texture2D" uid="uid://hri1cwmvbpv3" path="res://Enemies/Crocodile/AmphibiousCroco/Die/2.png" id="26_nshgc"]
+[ext_resource type="AudioStream" uid="uid://x8505bhqtxei" path="res://sounds/roar_croco.ogg" id="27_ow40j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(109, 21)
+size = Vector2(109, 94)
 
 [sub_resource type="Animation" id="Animation_6utxn"]
 length = 0.001
@@ -234,7 +234,7 @@ _data = {
 radius = 38.832977
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7isv1"]
-radius = 32.38827
+radius = 56.568542
 
 [node name="AmphibiousCroco" type="CharacterBody2D" unique_id=1403221519 groups=["Enemies", "EnemiesSwim"]]
 z_index = 5
@@ -246,7 +246,7 @@ script = ExtResource("1_co5vm")
 position = Vector2(-43, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1512054370]
-position = Vector2(47.5, 51.5)
+position = Vector2(47.5, 15)
 shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="Rotator" type="Node2D" parent="." unique_id=310207886]
@@ -277,7 +277,7 @@ scale = Vector2(0.9345794, 1)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/FloorArea" unique_id=1847632680]
-position = Vector2(-63.267517, -2.5)
+position = Vector2(-42.267517, 13.5)
 shape = SubResource("CircleShape2D_7isv1")
 
 [node name="Sound" type="Node2D" parent="." unique_id=1001095364]
