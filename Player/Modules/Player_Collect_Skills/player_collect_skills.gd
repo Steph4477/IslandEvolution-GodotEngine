@@ -104,6 +104,7 @@ func collect_fire():
 		p.popups_mod.show_info("🔥 Tu peux maintenant utiliser le buff feu !")
 
 	if p.game_state.hud:
+		p.game_state.hud.appear_fire()
 		p.game_state.hud.disappear_fire_craft_quest()
 
 	if p.hud_mod:

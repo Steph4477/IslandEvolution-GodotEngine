@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var honey_button = $Gamepad/Honey
 @onready var bone_button = $Gamepad/Bone
 @onready var camouflage_button = $Gamepad/Camouflage
+@onready var fire_button = $Gamepad/Fire
 
 @onready var pause_button = $Gamepad/Break
 @onready var break_sprite = get_node_or_null("BreakSprite")
@@ -45,8 +46,10 @@ extends CanvasLayer
 @onready var anim_potion = get_node_or_null("Gamepad/Health/AnimPotion")
 @onready var anim_honey = get_node_or_null("Gamepad/Honey/AnimHoney")
 @onready var anim_camouflage = get_node_or_null("Gamepad/Camouflage/AnimCamouflage")
+@onready var anim_fire = get_node_or_null("Gamepad/Fire/AnimFire")
 @onready var anim_ramp = get_node_or_null("Gamepad/Ramp/AnimRamp")
 @onready var anim_sprint = get_node_or_null("Gamepad/Sprint/AnimSprint")
+
 
 # --- Craft fire_skill ---
 @onready var fire_craft_checklist = get_node_or_null("FireCraftChecklist")
@@ -97,6 +100,7 @@ func _ready():
 	health_button.visible = false
 	honey_button.visible = false
 	ramp_button.visible = false
+	fire_button.visible = false
 	sprint_button.visible = false
 
 	if banane_hbox:
@@ -121,6 +125,7 @@ func _ready():
 	set_button_enabled(honey_button, false)
 	set_button_enabled(bone_button, false)
 	set_button_enabled(camouflage_button, false)
+	set_button_enabled(fire_button, false)
 
 	update_lives_display(gs.lives)
 	update_lance_display()
@@ -129,6 +134,7 @@ func _ready():
 	update_honey_display()
 	update_coco_display()
 	update_camouflage_display()
+	update_fire_display()
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
 	if gs.coco_count > 0 or gs.can_fire_coco:
@@ -151,11 +157,15 @@ func _ready():
 		_show_camouflage()
 		update_camouflage_display()
 
+	if gs.fire_buff_unlocked:
+		_show_fire()
+		update_fire_display()
+	
 	if gs.bone_count > 0 or gs.can_fire_bone:
 		_show_bone()
 		update_bone_display()
 
-	for b in [ramp_button, sprint_button, coco_button, lance_button, health_button, honey_button, bone_button, camouflage_button]:
+	for b in [ramp_button, sprint_button, coco_button, lance_button, health_button, honey_button, bone_button, camouflage_button, fire_button]:
 		b.action = ""
 
 	if break_sprite:
@@ -225,6 +235,9 @@ func _show_camouflage():
 	camouflage_button.visible = true
 	update_camouflage_display()
 
+func _show_fire():
+	fire_button.visible = true
+	update_fire_display()
 
 # -----------------------------
 #        BUFF HUD
@@ -404,7 +417,7 @@ func set_button_enabled(button, enabled):
 	else:
 		button.modulate = Color(1, 1, 1, 0.4)
 
-func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_sprint, can_camouflage):
+func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_sprint, can_camouflage, can_fire):
 	if coco_button.visible:
 		set_button_enabled(coco_button, can_fire_coco)
 
@@ -416,6 +429,9 @@ func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_s
 
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, can_camouflage)
+	
+	if fire_button.visible:
+		set_button_enabled(fire_button, can_fire)
 
 	if health_button.visible:
 		set_button_enabled(health_button, can_heal)
@@ -473,6 +489,14 @@ func update_camouflage_display():
 
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, gs.camouflage_count > 0)
+
+func update_fire_display():
+	if not gs.fire_buff_unlocked:
+		set_button_enabled(fire_button, false)
+		return
+
+	fire_button.visible = true
+	set_button_enabled(fire_button, true)
 
 # --- Affichage quest craft_fire_skill
 func update_fire_craft_checklist():
@@ -641,6 +665,13 @@ func appear_camouflage():
 		anim_camouflage.stop()
 		anim_camouflage.play("appear_camouflage")
 
+func appear_fire():
+	_show_fire()
+	update_fire_display()
+	if anim_fire:
+		anim_fire.stop()
+		anim_fire.play("appear_fire")
+
 func anim_to_health_mode():
 	appear_health()
 
@@ -649,6 +680,7 @@ func anim_to_honey_mode():
 
 func unlock_camouflage_hud():
 	appear_camouflage()
+
 
 
 #---------------------------------------
@@ -690,3 +722,6 @@ func _on_sprint_pressed():
 func set_pause_visual(paused):
 	if break_sprite:
 		break_sprite.visible = paused
+
+func _on_fire_pressed():
+	gs.player.fire_buff_mod.activate_fire_buff()
