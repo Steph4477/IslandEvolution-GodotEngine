@@ -140,7 +140,7 @@ scale = Vector2(-0.6, 0.6)
 
 [node name="Fish" parent="." unique_id=359079616 instance=ExtResource("10_g7isx")]
 z_index = 10
-position = Vector2(823, 766)
+position = Vector2(826, 850)
 scale = Vector2(2, 2)
 speed = 280.0
 fish_color = Color(0.78072584, 0.67546225, 0.13169536, 1)
@@ -164,8 +164,10 @@ tile_set = ExtResource("11_fqw1p")
 [node name="Pyranha" parent="." unique_id=1783296698 instance=ExtResource("13_mgvxc")]
 modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
 z_index = 15
-position = Vector2(594, 675)
+position = Vector2(1930, 455.99997)
 scale = Vector2(0.7, 0.7)
+chase_speed = 660.0
+attack_range = 1250.0
 
 [connection signal="area_exited" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Node2D/World/UnderSwimZone/Area2D" to="Node2D/World/UnderSwimZone" method="_on_area_2d_body_entered"]

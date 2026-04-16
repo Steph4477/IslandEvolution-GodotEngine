@@ -2,12 +2,18 @@ extends EnemyBase
 class_name EnemySwimBase
 
 @export var swim_speed = 120.0
+@export var chase_speed = 160.0
+@export var attack_range = 250.0
 @export var min_change_time = 1.5
 @export var max_change_time = 3.5
 
 var dir = Vector2.ZERO
 var min_bound = Vector2.ZERO
 var max_bound = Vector2.ZERO
+
+var dx = 0
+var distance = 999999
+var target = null
 
 var rotator
 var patrol_timer
@@ -20,73 +26,46 @@ func _ready():
 	patrol_timer = $PatrolTimer
 	bounds_shape = $Bounds/CollisionShape2D
 
-	update_bounds()
-	set_random_swim_dir()
+	setup_swim_bounds()
 
-# =========================
-# MOVE
-# =========================
-func move_swim(delta):
-	global_position += dir * swim_speed * delta
-	clamp_to_bounds()
+func setup_swim_bounds():
+	var rect = bounds_shape.shape.get_rect()
+	min_bound = bounds_shape.global_position + rect.position * bounds_shape.global_scale
+	max_bound = min_bound + rect.size * bounds_shape.global_scale
 
-# =========================
-# DIR
-# =========================
-func set_random_swim_dir():
-	var x = randf() * 2 - 1
-	var y = randf() * 2 - 1
-	dir = Vector2(x, y).normalized()
+func chase_target():
+	if target == null:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 
-# =========================
-# BOUNDS
-# =========================
-func update_bounds():
-	var ext = bounds_shape.shape.extents
-	var center = bounds_shape.global_position
+	var target_position = target.global_position
 
-	min_bound = center - ext
-	max_bound = center + ext
+	if target.has_node("TurnAxis"):
+		target_position = target.get_node("TurnAxis").global_position
 
-func clamp_to_bounds():
-	var touched = false
+	var to_target = target_position - global_position
 
-	if global_position.x < min_bound.x:
-		global_position.x = min_bound.x
-		touched = true
-	elif global_position.x > max_bound.x:
-		global_position.x = max_bound.x
-		touched = true
+	if to_target == Vector2.ZERO:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 
-	if global_position.y < min_bound.y:
-		global_position.y = min_bound.y
-		touched = true
-	elif global_position.y > max_bound.y:
-		global_position.y = max_bound.y
-		touched = true
+	var chase_dir = to_target.normalized()
+	velocity = chase_dir * chase_speed
+	move_and_slide()
 
-	if touched:
-		set_random_swim_dir()
-
-# =========================
-# FLIP
-# =========================
-func update_flip():
-	if dir.x < -0.1:
+	if chase_dir.x < 0:
 		rotator.scale.x = -1
-	elif dir.x > 0.1:
+	elif chase_dir.x > 0:
 		rotator.scale.x = 1
 
-# =========================
-# ANIM
-# =========================
 func play_swim():
-	if anim.current_animation != "swim":
-		anim.play("swim")
+	if anim:
+		if anim.current_animation != "swim":
+			anim.play("swim")
 
-# =========================
-# TIMER
-# =========================
-func _on_patrol_timer_timeout():
-	set_random_swim_dir()
-	patrol_timer.start()
+func play_chase():
+	if anim:
+		if anim.current_animation != "chase":
+			anim.play("chase")

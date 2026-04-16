@@ -1,25 +1,50 @@
-extends Node
+extends RefCounted
 class_name EnemyModSwimPatrol
 
-var enemy
+var e = null
 
-func setup(e):
-	enemy = e
+func setup(enemy):
+	e = enemy
+	randomize()
+	pick_direction()
 
-func start():
-	enemy.set_random_swim_dir()
-	enemy.play_swim()
-	enemy.patrol_timer.start()
+func process(delta):
+	e.velocity = e.dir * e.swim_speed
+	e.move_and_slide()
 
-func update():
-	if enemy.is_dead:
-		return
+	if e.dir.x < 0:
+		e.rotator.scale.x = -1
+	elif e.dir.x > 0:
+		e.rotator.scale.x = 1
 
-	if enemy.dir == Vector2.ZERO:
-		enemy.set_random_swim_dir()
+	clamp_bounds()
 
-	enemy.play_swim()
+func on_timeout():
+	pick_direction()
 
-func on_timer_timeout():
-	enemy.set_random_swim_dir()
-	enemy.patrol_timer.start()
+func pick_direction():
+	e.dir = Vector2(
+		randf_range(-1.0, 1.0),
+		randf_range(-1.0, 1.0)
+	).normalized()
+
+func clamp_bounds():
+	var pos = e.global_position
+
+	if pos.x < e.min_bound.x:
+		pos.x = e.min_bound.x
+		e.dir.x = abs(e.dir.x)
+
+	if pos.x > e.max_bound.x:
+		pos.x = e.max_bound.x
+		e.dir.x = -abs(e.dir.x)
+
+	if pos.y < e.min_bound.y:
+		pos.y = e.min_bound.y
+		e.dir.y = abs(e.dir.y)
+
+	if pos.y > e.max_bound.y:
+		pos.y = e.max_bound.y
+		e.dir.y = -abs(e.dir.y)
+
+	e.global_position = pos

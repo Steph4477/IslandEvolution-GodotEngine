@@ -1,20 +1,37 @@
 extends EnemySwimBase
+class_name Pyranha
 
-var patrol = EnemyModSwimPatrol.new()
+var target_mod
+var patrol_mod
 
 func _ready():
 	super._ready()
 
-	patrol.setup(self)
-	patrol.start()
+	target_mod = EnemyModTarget.new()
+	target_mod.setup(self)
+
+	patrol_mod = EnemyModSwimPatrol.new()
+	patrol_mod.setup(self)
 
 func _physics_process(delta):
 	if is_dead:
 		return
 
-	patrol.update()
-	move_swim(delta)
-	update_flip()
+	# refresh player
+	if player == null or not is_instance_valid(player):
+		refresh_player()
+
+	# update target
+	target_mod.update()
+
+	# décision simple
+	if target != null:
+		chase_target()
+		play_chase()
+	else:
+		patrol_mod.process(delta)
+
+		play_swim()
 
 func _on_patrol_timer_timeout():
-	patrol.on_timer_timeout()
+	patrol_mod.on_timeout()

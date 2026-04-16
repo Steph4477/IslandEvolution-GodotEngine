@@ -714,7 +714,7 @@ texture = ExtResource("2_8hx1r")
 
 [node name="Sprite" type="Sprite2D" parent="Node2D" unique_id=1543697993]
 modulate = Color(1, 1, 1, 0.9785716)
-position = Vector2(142.50002, 52.499996)
+position = Vector2(142.49998, 70)
 rotation = 6.1934304
 scale = Vector2(0.19565926, 0.19565926)
 texture = ExtResource("2_2paov")
@@ -752,7 +752,6 @@ stream = ExtResource("12_5vkkw")
 volume_db = -6.287
 
 [node name="ClacArea" type="Area2D" parent="." unique_id=1323133612]
-visible = false
 position = Vector2(26, -44)
 collision_mask = 8
 monitoring = false
@@ -763,13 +762,11 @@ position = Vector2(125.5, 118)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="ColStand" type="CollisionShape2D" parent="." unique_id=1265538359 groups=["Player"]]
-visible = false
 position = Vector2(136, 92.00001)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_uvbbp")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." unique_id=1451828545 groups=["Player"]]
-visible = false
 position = Vector2(135.5, 125)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_7v2uk")
