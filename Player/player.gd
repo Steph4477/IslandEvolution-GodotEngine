@@ -364,6 +364,10 @@ func _physics_process(delta):
 
 	if animation_locked:
 		velocity.x = 0
+
+		if is_jumping and not is_swimming and not is_swimming_under_water and climbing_anim == "":
+			velocity.y += gravity * gravity_factor * delta
+
 		move_and_slide()
 		return
 

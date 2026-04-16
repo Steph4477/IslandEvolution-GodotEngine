@@ -26,7 +26,7 @@ func shoot():
 		return
 
 	# Coco (shoot)
-	if Input.is_action_pressed(p.INPUT["fire"]) and p.can_fire_coco:
+	if Input.is_action_just_pressed(p.INPUT["fire"]) and p.can_fire_coco:
 		firing_locked = true
 		await coco()
 		firing_locked = false
@@ -67,7 +67,12 @@ func coco():
 	p.hud_mod.update_coco_display()
 
 	p.animation_locked = true
-	p.anim.play("shoot")
+
+	if p.is_on_floor():
+		p.anim.play("shoot")
+	else:
+		p.anim.play("jump_shoot")
+
 	await p.anim.animation_finished
 
 	var scene = p.spell_coco
@@ -106,7 +111,12 @@ func bone():
 	p.hud_mod.update_bone_display()
 
 	p.animation_locked = true
-	p.anim.play("shoot")
+
+	if p.is_on_floor():
+		p.anim.play("shoot")
+	else:
+		p.anim.play("jump_shoot")
+
 	await p.anim.animation_finished
 
 	var scene = p.spell_bone
@@ -148,7 +158,12 @@ func lance():
 	p.hud_mod.update_lance_display()
 
 	p.animation_locked = true
-	p.anim.play("shoot_lance")
+
+	if p.is_on_floor():
+		p.anim.play("shoot")
+	else:
+		p.anim.play("jump_shoot")
+
 	await p.anim.animation_finished
 
 	var scene = p.spell_lance

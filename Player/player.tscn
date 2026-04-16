@@ -37,9 +37,12 @@
 [ext_resource type="Texture2D" uid="uid://bl3dynq7ateyc" path="res://Player/Sprite/shoot/2.png" id="25_fnfic"]
 [ext_resource type="Texture2D" uid="uid://bq2ul4chnxt6k" path="res://Player/Sprite/shoot/3.png" id="26_bpa77"]
 [ext_resource type="Texture2D" uid="uid://b0um45dd27vem" path="res://Player/Sprite/jump/2.png" id="29_6qokg"]
+[ext_resource type="Texture2D" uid="uid://c077v6vf1dkyd" path="res://Player/Sprite/shoot/Jump_Shoot/1.png" id="33_pqfba"]
 [ext_resource type="Texture2D" uid="uid://cr3avmor8xjtl" path="res://Player/Sprite/shoot/4.png" id="34_c4i3b"]
+[ext_resource type="Texture2D" uid="uid://qc1mhefsxors" path="res://Player/Sprite/shoot/Jump_Shoot/2.png" id="34_lgaa7"]
 [ext_resource type="Texture2D" uid="uid://bql5gonj60ve3" path="res://Player/Sprite/empty/1.png" id="35_6qokg"]
 [ext_resource type="Texture2D" uid="uid://ee5yhbkx6sey" path="res://Player/Sprite/gaz/walk_gaz2.png" id="35_l6ey7"]
+[ext_resource type="Texture2D" uid="uid://dltx4ugifdvo8" path="res://Player/Sprite/shoot/Jump_Shoot/3.png" id="35_lfyh2"]
 [ext_resource type="Texture2D" uid="uid://c1yfrwrdsisxm" path="res://Player/Sprite/onhit/swim/1.png" id="35_x0uyb"]
 [ext_resource type="Texture2D" uid="uid://cv8umt7keage0" path="res://Player/Sprite/empty/2.png" id="36_i7max"]
 [ext_resource type="Texture2D" uid="uid://cd447qx5fnim4" path="res://Player/Sprite/idle/4.png" id="36_qh0f6"]
@@ -370,6 +373,22 @@ tracks/0/keys = {
 "values": [ExtResource("2_l6ey7"), ExtResource("2_l6ey7")]
 }
 
+[sub_resource type="Animation" id="Animation_soeee"]
+resource_name = "jump_shoot"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("33_pqfba"), ExtResource("34_lgaa7"), ExtResource("35_lfyh2")]
+}
+
 [sub_resource type="Animation" id="Animation_rbgwy"]
 resource_name = "jump_up"
 length = 0.8
@@ -648,6 +667,7 @@ _data = {
 &"jump2_down": SubResource("Animation_8hx1r"),
 &"jump2_up": SubResource("Animation_m6nl3"),
 &"jump_down": SubResource("Animation_typba"),
+&"jump_shoot": SubResource("Animation_soeee"),
 &"jump_up": SubResource("Animation_rbgwy"),
 &"onhit": SubResource("Animation_6qokg"),
 &"onhit_swim": SubResource("Animation_pqfba"),
@@ -732,6 +752,7 @@ stream = ExtResource("12_5vkkw")
 volume_db = -6.287
 
 [node name="ClacArea" type="Area2D" parent="." unique_id=1323133612]
+visible = false
 position = Vector2(26, -44)
 collision_mask = 8
 monitoring = false
@@ -742,11 +763,13 @@ position = Vector2(125.5, 118)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="ColStand" type="CollisionShape2D" parent="." unique_id=1265538359 groups=["Player"]]
+visible = false
 position = Vector2(136, 92.00001)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_uvbbp")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." unique_id=1451828545 groups=["Player"]]
+visible = false
 position = Vector2(135.5, 125)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_7v2uk")
