@@ -69,3 +69,8 @@ func play_chase():
 	if anim:
 		if anim.current_animation != "chase":
 			anim.play("chase")
+
+func play_attack():
+	if anim:
+		if anim.current_animation != "attack":
+			anim.play("attack")
