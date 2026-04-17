@@ -207,7 +207,7 @@ radius = 33.24154
 
 [node name="Pyranha" type="CharacterBody2D" unique_id=1783296698 groups=["Enemies"]]
 scale = Vector2(-1, 1)
-collision_layer = 0
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_e17d3")
 damage = 200
