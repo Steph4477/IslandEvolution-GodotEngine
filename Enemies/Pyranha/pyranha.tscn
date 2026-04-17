@@ -222,6 +222,8 @@ rotation = 3.14159
 scale = Vector2(1, -1.00374)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1028431766]
+wait_time = 3.0
+one_shot = true
 
 [node name="PatrolTimer" type="Timer" parent="." unique_id=821133057]
 
