@@ -119,6 +119,14 @@ var breath_left = 0
 var is_underwater = false
 var air_bubble_scene = preload("res://Effects/Aquatic_breathing/Air_bubble/air_bubble.tscn")
 
+# --- Coup de boule sous l'eau ---
+@export var headbutt_damage = 200
+@export var headbutt_speed = 300
+@export var headbutt_duration = 0.4
+@export var headbutt_cooldown = 1.5
+var is_headbutting = false
+var can_headbutt = true
+
 # --- Skills ---
 var can_sprint = false
 var is_sprinting = false
@@ -362,6 +370,11 @@ func _physics_process(delta):
 	if switch_heal_mod:
 		switch_heal_mod.update_input()
 
+	if is_headbutting:
+		velocity.y = 0
+		move_and_slide()
+		return
+
 	if animation_locked:
 		velocity.x = 0
 
@@ -446,3 +459,8 @@ func enable_controls():
 func _on_clac_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(clac_damage)
+
+
+func _on_headbutt_area_body_entered(body):
+	if body and body.has_method("on_hit"):
+		body.on_hit(headbutt_damage)

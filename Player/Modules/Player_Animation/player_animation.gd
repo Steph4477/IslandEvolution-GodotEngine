@@ -9,7 +9,15 @@ func process():
 	if p == null:
 		return
 
-	if p.animation_locked or p.is_dead:
+	if p.is_dead:
+		return
+
+	if p.is_headbutting:
+		if p.anim.current_animation != "headbutt_swim":
+			p.anim.play("headbutt_swim")
+		return
+
+	if p.animation_locked:
 		return
 
 	# --- Underwater swim ---

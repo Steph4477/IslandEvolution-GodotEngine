@@ -32,7 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://cf85wnyqp84u8" path="res://Player/Sprite/clac/1.png" id="21_bj58r"]
 [ext_resource type="Texture2D" uid="uid://bt8laly4vshu" path="res://Player/Sprite/clac/2.png" id="22_p11ve"]
 [ext_resource type="Texture2D" uid="uid://cgaip42j73g0g" path="res://Player/Sprite/clac/3.png" id="23_17nxb"]
+[ext_resource type="Texture2D" uid="uid://bms8e7k3fegex" path="res://Player/Sprite/Headbutt_Swim/1.png" id="23_o5r0w"]
 [ext_resource type="Texture2D" uid="uid://bt51umtg0sqg" path="res://Player/Sprite/shoot/1.png" id="24_17nxb"]
+[ext_resource type="Texture2D" uid="uid://cq7ks2ykokjty" path="res://Player/Sprite/Headbutt_Swim/2.png" id="24_qns6m"]
 [ext_resource type="Texture2D" uid="uid://coka4l72cwoqs" path="res://Player/Sprite/idle/3.png" id="24_y06ei"]
 [ext_resource type="Texture2D" uid="uid://bl3dynq7ateyc" path="res://Player/Sprite/shoot/2.png" id="25_fnfic"]
 [ext_resource type="Texture2D" uid="uid://bq2ul4chnxt6k" path="res://Player/Sprite/shoot/3.png" id="26_bpa77"]
@@ -289,6 +291,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [ExtResource("18_p8mbp"), ExtResource("19_efgfv"), ExtResource("20_ms575")]
+}
+
+[sub_resource type="Animation" id="Animation_ac8n6"]
+resource_name = "headbutt_swim"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("23_o5r0w"), ExtResource("24_qns6m")]
 }
 
 [sub_resource type="Animation" id="Animation_y06ei"]
@@ -662,6 +680,7 @@ _data = {
 &"empty": SubResource("Animation_e2pw6"),
 &"fire_buff": SubResource("Animation_mdkl3"),
 &"hang": SubResource("Animation_kse80"),
+&"headbutt_swim": SubResource("Animation_ac8n6"),
 &"heal": SubResource("Animation_y06ei"),
 &"idle": SubResource("Animation_i1uru"),
 &"jump2_down": SubResource("Animation_8hx1r"),
@@ -688,6 +707,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x5p2"]
 size = Vector2(137, 122)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5r0w"]
+radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvbbp"]
 size = Vector2(46.66664, 365.24823)
@@ -761,6 +783,16 @@ monitorable = false
 position = Vector2(125.5, 118)
 shape = SubResource("RectangleShape2D_7x5p2")
 
+[node name="HeadbuttArea" type="Area2D" parent="." unique_id=1302658323]
+position = Vector2(26, -44)
+collision_mask = 8
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadbuttArea" unique_id=1420474861]
+position = Vector2(159, 161)
+shape = SubResource("CircleShape2D_o5r0w")
+
 [node name="ColStand" type="CollisionShape2D" parent="." unique_id=1265538359 groups=["Player"]]
 position = Vector2(136, 92.00001)
 scale = Vector2(0.3, 0.282)
@@ -781,6 +813,7 @@ position = Vector2(177, 125)
 [node name="DrownTimer" type="Timer" parent="." unique_id=1850105644]
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]
+[connection signal="body_entered" from="HeadbuttArea" to="." method="_on_headbutt_area_body_entered"]
 [connection signal="timeout" from="BreathTickTimer" to="." method="_on_breath_tick_timer_timeout"]
 [connection signal="timeout" from="BubbleTimer" to="." method="_on_bubble_timer_timeout"]
 [connection signal="timeout" from="DrownTimer" to="." method="_on_drown_timer_timeout"]

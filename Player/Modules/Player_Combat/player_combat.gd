@@ -182,11 +182,61 @@ func lance():
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
 # ============================================================================
-#                                 CLAC
+#                           CLAC / HEADBUTT
 # ============================================================================
 func clac():
-	if Input.is_action_just_pressed(p.INPUT["clac"]):
-		await attack()
+	if not Input.is_action_just_pressed(p.INPUT["clac"]):
+		return
+
+	if p.is_swimming_under_water:
+		await headbutt()
+		return
+
+	await attack()
+		
+func headbutt():
+	if not p.is_swimming_under_water:
+		return
+
+	if p.is_dead:
+		return
+
+	if p.is_attacking or p.is_headbutting:
+		return
+
+	if not p.can_headbutt:
+		return
+
+	p.can_headbutt = false
+	p.is_attacking = true
+	p.is_headbutting = true
+
+	p.get_node("HeadbuttArea").monitoring = true
+
+	var dir = 1
+	if p.sprite.scale.x < 0:
+		dir = -1
+
+	var elapsed = 0.0
+
+	while elapsed < p.headbutt_duration:
+		p.velocity.x = dir * p.headbutt_speed
+		p.velocity.y = 0
+
+		if p.anim.current_animation != "headbutt_swim":
+			p.anim.play("headbutt_swim")
+
+		await p.get_tree().physics_frame
+		elapsed += p.get_physics_process_delta_time()
+
+	p.get_node("HeadbuttArea").monitoring = false
+	p.velocity.x = 0
+	p.velocity.y = 0
+	p.is_headbutting = false
+	p.is_attacking = false
+
+	await p.get_tree().create_timer(p.headbutt_cooldown).timeout
+	p.can_headbutt = true
 
 func attack():
 	if not p.is_on_floor():
