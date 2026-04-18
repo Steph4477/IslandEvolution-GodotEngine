@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://rv3fi47cssge"]
 
-[ext_resource type="Script" path="res://Interface/Popup/Damage_popup/damage_popup.gd" id="1_r37x8"]
+[ext_resource type="Script" uid="uid://bhms2yd6ohg68" path="res://Interface/Popup/Damage_popup/damage_popup.gd" id="1_r37x8"]
 
-[node name="DamageLabel" type="Label"]
+[node name="DamageLabel" type="Label" unique_id=90073941]
+offset_right = 1.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
 script = ExtResource("1_r37x8")

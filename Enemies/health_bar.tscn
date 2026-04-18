@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://dapglwcq0g0b4"]
 
 [sub_resource type="GDScript" id="GDScript_msolp"]
 script/source = "extends Node2D
@@ -22,10 +22,10 @@ func set_red_fill() -> void:
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msolp"]
 
-[node name="HealthBar" type="Node2D"]
+[node name="HealthBar" type="Node2D" unique_id=1252633794]
 script = SubResource("GDScript_msolp")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1571053690]
 offset_right = 100.0
 offset_bottom = 10.0
 theme_override_styles/background = SubResource("StyleBoxFlat_msolp")

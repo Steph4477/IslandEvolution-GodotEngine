@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://u7kbwv2cd8dt"]
 
 [ext_resource type="Script" uid="uid://b4j130lgtb0pv" path="res://Enemies/Pyranha/pyranha.gd" id="1_e17d3"]
-[ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="2_6hidg"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_6hidg"]
 [ext_resource type="Texture2D" uid="uid://qowdi0svfyn3" path="res://Enemies/Pyranha/Swim/1.png" id="3_nqen0"]
 [ext_resource type="Texture2D" uid="uid://coisptbpr045u" path="res://Enemies/Pyranha/Attack/1.png" id="4_7c78b"]
 [ext_resource type="Texture2D" uid="uid://dcgc40mb7yvxk" path="res://Enemies/Pyranha/Attack/2.png" id="5_1r7cx"]
@@ -213,9 +213,9 @@ position = Vector2(-1.5, -1.5)
 shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="HealthBar" parent="." unique_id=613024852 instance=ExtResource("2_6hidg")]
-position = Vector2(49, -87)
+position = Vector2(-52, -89.99999)
 rotation = 3.14159
-scale = Vector2(1, -1.00374)
+scale = Vector2(-1, -1.004)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1028431766]
 wait_time = 3.0

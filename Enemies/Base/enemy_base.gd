@@ -25,6 +25,8 @@ var spawn_point = null
 var attack_timer = null
 var projectile_timer = null
 
+var hb = null
+
 func _ready():
 	setup_common_refs()
 
@@ -167,5 +169,9 @@ func spawn_loot():
 
 	loot.z_index = 100
 
-func _show_damage_popup(_amount):
-	pass
+func _show_damage_popup(amount):
+	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
+	hb = health_bar.get_parent()
+	hb.add_child(popup)
+	popup.position = Vector2(0, -20)
+	popup.show_damage(amount)

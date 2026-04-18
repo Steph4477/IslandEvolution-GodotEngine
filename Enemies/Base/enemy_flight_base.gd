@@ -75,9 +75,3 @@ func can_flight_attack_player():
 
 func do_attack_damage():
 	player.damage_mod.on_hit(damage)
-
-func _show_damage_popup(amount):
-	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
-	add_child(popup)
-	popup.position = Vector2(0, -30)
-	popup.show_damage(amount)
