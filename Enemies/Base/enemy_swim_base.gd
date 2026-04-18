@@ -8,30 +8,40 @@ class_name EnemySwimBase
 @export var max_change_time = 3.5
 
 var dir = Vector2.ZERO
-var min_bound = Vector2.ZERO
-var max_bound = Vector2.ZERO
-
 var dx = 0
 var distance = 999999
 var target = null
 
 var rotator
 var patrol_timer
-var bounds_shape
 
 func _ready():
 	super._ready()
 
 	rotator = $Rotator
 	patrol_timer = $PatrolTimer
-	bounds_shape = $Bounds/CollisionShape2D
 
-	setup_swim_bounds()
+func handle_swim_collision():
+	if get_slide_collision_count() == 0:
+		return
 
-func setup_swim_bounds():
-	var rect = bounds_shape.shape.get_rect()
-	min_bound = bounds_shape.global_position + rect.position * bounds_shape.global_scale
-	max_bound = min_bound + rect.size * bounds_shape.global_scale
+	var collision = get_slide_collision(0)
+	var normal = collision.get_normal()
+
+	dir = dir.bounce(normal).normalized()
+
+	if dir == Vector2.ZERO:
+		dir = -velocity.normalized()
+
+	if dir == Vector2.ZERO:
+		dir = Vector2.LEFT
+
+	velocity = Vector2.ZERO
+
+	if dir.x < 0:
+		rotator.scale.x = -1
+	elif dir.x > 0:
+		rotator.scale.x = 1
 
 func chase_target():
 	if target == null:
@@ -54,6 +64,7 @@ func chase_target():
 	var chase_dir = to_target.normalized()
 	velocity = chase_dir * chase_speed
 	move_and_slide()
+	handle_swim_collision()
 
 	if chase_dir.x < 0:
 		rotator.scale.x = -1

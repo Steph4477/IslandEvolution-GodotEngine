@@ -27,9 +27,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(97, 141)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e17d3"]
-size = Vector2(2950, 489)
-
 [sub_resource type="Animation" id="Animation_bxf4e"]
 length = 0.001
 tracks/0/type = "value"
@@ -143,7 +140,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_qxyy8"]
 resource_name = "onhit"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -227,12 +223,6 @@ one_shot = true
 
 [node name="PatrolTimer" type="Timer" parent="." unique_id=821133057]
 
-[node name="Bounds" type="Area2D" parent="." unique_id=1095168486]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1736873069]
-position = Vector2(-1, 82)
-shape = SubResource("RectangleShape2D_e17d3")
-
 [node name="Rotator" type="Node2D" parent="." unique_id=193147394]
 scale = Vector2(-1, 1)
 
@@ -258,7 +248,5 @@ shape = SubResource("CircleShape2D_8re8j")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
-[connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
-[connection signal="body_exited" from="Bounds" to="." method="_on_bounds_body_exited"]
 [connection signal="body_entered" from="Rotator/AttackZone" to="." method="_on_attack_zone_body_entered"]
 [connection signal="body_exited" from="Rotator/AttackZone" to="." method="_on_attack_zone_body_exited"]
