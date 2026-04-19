@@ -4,7 +4,6 @@ class_name Pyranha
 @export var attack_interval = 1.0
 @export var hit_time = 0.6
 
-var patrol_mod
 var is_onhit_playing = false
 
 func _ready():
@@ -13,8 +12,7 @@ func _ready():
 	if attack_timer:
 		attack_timer.wait_time = attack_interval
 
-	patrol_mod = EnemyModSwimPatrol.new()
-	patrol_mod.setup(self)
+	setup_patrol()
 
 func _physics_process(delta):
 	if is_dead:
@@ -23,7 +21,7 @@ func _physics_process(delta):
 	if player == null or not is_instance_valid(player):
 		refresh_player()
 
-	update_target()
+	refresh_swim_target()
 
 	if is_onhit_playing:
 		velocity = Vector2.ZERO
@@ -39,24 +37,7 @@ func _physics_process(delta):
 
 		return
 
-	if target != null:
-		chase_target()
-		play_chase()
-	else:
-		patrol_mod.process(delta)
-		play_swim()
-
-func update_target():
-	target = null
-
-	if player == null:
-		return
-
-	if player.is_dead:
-		return
-
-	if player.is_swimming_under_water:
-		target = player
+	process_swim_state(delta)
 
 func on_hit(amount):
 	if is_dead:
@@ -118,7 +99,10 @@ func attack():
 	is_attacking = false
 
 func _on_patrol_timer_timeout():
-	patrol_mod.on_timeout()
+	if patrol_mod:
+		patrol_mod.on_timeout()
+
+	restart_patrol_timer()
 
 func _on_attack_zone_body_entered(body):
 	if is_dead:

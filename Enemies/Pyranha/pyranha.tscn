@@ -199,13 +199,14 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8re8j"]
-radius = 33.24154
+radius = 17.029387
 
 [node name="Pyranha" type="CharacterBody2D" unique_id=1783296698 groups=["Enemies"]]
 scale = Vector2(-1, 1)
 collision_layer = 8
-collision_mask = 2
+collision_mask = 1026
 script = ExtResource("1_e17d3")
+detection_range = 550.0
 damage = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935019652]
@@ -240,10 +241,11 @@ texture = ExtResource("3_nqen0")
 position = Vector2(-131, -8)
 
 [node name="AttackZone" type="Area2D" parent="Rotator" unique_id=1797538751]
+position = Vector2(-21, -1)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/AttackZone" unique_id=1781777010]
-position = Vector2(31, -3)
+position = Vector2(50, 1)
 shape = SubResource("CircleShape2D_8re8j")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
