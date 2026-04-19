@@ -3,7 +3,7 @@ class_name EnemySwimBase
 
 @export var swim_speed = 120.0
 @export var chase_speed = 160.0
-@export var attack_range = 250.0
+@export var detection_range = 250.0
 @export var min_change_time = 1.5
 @export var max_change_time = 3.5
 
@@ -14,12 +14,53 @@ var target = null
 
 var rotator
 var patrol_timer
+var patrol_mod
 
 func _ready():
 	super._ready()
 
 	rotator = $Rotator
 	patrol_timer = $PatrolTimer
+
+func setup_patrol():
+	patrol_mod = EnemyModSwimPatrol.new()
+	patrol_mod.setup(self)
+	patrol_mod.on_timeout()
+
+	if patrol_timer:
+		patrol_timer.wait_time = randf_range(min_change_time, max_change_time)
+		patrol_timer.start()
+
+func refresh_swim_target():
+	target = null
+
+	if player == null:
+		return
+
+	if player.is_dead:
+		return
+
+	if not player.is_swimming_under_water:
+		return
+
+	distance = global_position.distance_to(player.global_position)
+
+	if distance <= detection_range:
+		target = player
+
+func process_swim_state(delta):
+	if target != null:
+		chase_target()
+		play_chase()
+	else:
+		if patrol_mod:
+			patrol_mod.process(delta)
+		play_swim()
+
+func restart_patrol_timer():
+	if patrol_timer:
+		patrol_timer.wait_time = randf_range(min_change_time, max_change_time)
+		patrol_timer.start()
 
 func handle_swim_collision():
 	if get_slide_collision_count() == 0:
