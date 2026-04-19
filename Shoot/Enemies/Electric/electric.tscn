@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://58n78svf3dvk"]
+
+[ext_resource type="Script" uid="uid://ddqy2ndfaqf33" path="res://Shoot/Enemies/Electric/electric.gd" id="1_1xobr"]
+[ext_resource type="Texture2D" uid="uid://d2oqt1j77m706" path="res://Shoot/Enemies/Electric/electric.png" id="2_1xobr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sduuu"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7cf1"]
+
+[node name="Electric" type="RigidBody2D" unique_id=1762179316]
+z_index = 5
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_1xobr")
+speed = 500
+damage = 50
+homing_time = 0.8
+turn_speed = 3.0
+
+[node name="ElectricSprite" type="Sprite2D" parent="." unique_id=607642992]
+scale = Vector2(0.2, -0.2)
+texture = ExtResource("2_1xobr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=809000290]
+collision_layer = 8
+collision_mask = 1025
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1821737982]
+position = Vector2(5, -1)
+shape = SubResource("CircleShape2D_sduuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1295715240]
+position = Vector2(5, -1)
+shape = SubResource("CircleShape2D_j7cf1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
