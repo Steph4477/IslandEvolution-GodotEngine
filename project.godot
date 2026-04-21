@@ -278,3 +278,4 @@ pointing/handheld/orientation=1
 2d_physics/layer_7="Ritual"
 2d_physics/layer_9="spellP"
 2d_physics/layer_10="box"
+2d_physics/layer_11="col_enemies"

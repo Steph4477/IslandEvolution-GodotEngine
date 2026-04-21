@@ -92,11 +92,15 @@ signal digicode_ok
 
 # --- Craft skill_fire ---
 var wood_collected = false
+var leaf_collected = false
 var stone_collected = false
 var fire_recipe_unlocked = false
 var fire_recipe_dialog_shown = false
+var air_recipe_dialog_shown = false
 var fire_craft_revealed = false
+var air_craft_revaled = false
 var fire_altar_found = false
+var air_altar_found = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -333,6 +337,7 @@ func save_game():
 	data["has_lance"] = has_lance
 	data["has_flower"] = has_flower
 	
+	data["leaf_collected"] = leaf_collected
 	data["wood_collected"] = wood_collected
 	data["stone_collected"] = stone_collected
 	data["fire_recipe_unlocked"] = fire_recipe_unlocked
@@ -400,6 +405,7 @@ func apply_save_data(data):
 	has_lance = data.get("has_lance", false)
 	has_flower = data.get("has_flower", false)
 	
+	leaf_collected = data.get("leaf_collected", false)
 	wood_collected = data.get("wood_collected", false)
 	stone_collected = data.get("stone_collected", false)
 	fire_recipe_unlocked = data.get("fire_recipe_unlocked", false)
@@ -548,6 +554,7 @@ func reinitialise():
 	
 	fire_recipe_unlocked = false
 	fire_recipe_dialog_shown = false
+	leaf_collected = false
 	wood_collected = false
 	stone_collected = false
 	fire_craft_revealed = false

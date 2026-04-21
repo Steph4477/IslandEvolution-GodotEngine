@@ -53,12 +53,13 @@ extends CanvasLayer
 
 # --- Craft fire_skill ---
 @onready var fire_craft_checklist = get_node_or_null("FireCraftChecklist")
-
+@onready var air_craft_checklist = get_node_or_null("AirCraftChecklist")
+@onready var leaf_check = get_node_or_null("AirCraftChecklist/LeafRow/Check")
 @onready var wood_check = get_node_or_null("FireCraftChecklist/WoodRow/Check")
 @onready var stone_check = get_node_or_null("FireCraftChecklist/StoneRow/Check")
 @onready var recipe_check = get_node_or_null("FireCraftChecklist/RecipeRow/Check")
 @onready var altar_check = get_node_or_null("FireCraftChecklist/AltarRow/Check")
-
+@onready var air_label_checklist = get_node_or_null("AirCraftChecklist/LeafRow/Label")
 @onready var wood_label_checklist = get_node_or_null("FireCraftChecklist/WoodRow/Label")
 @onready var stone_label_checklist = get_node_or_null("FireCraftChecklist/StoneRow/Label")
 @onready var recipe_label_checklist = get_node_or_null("FireCraftChecklist/RecipeRow/Label")
@@ -497,6 +498,23 @@ func update_fire_display():
 
 	fire_button.visible = true
 	set_button_enabled(fire_button, true)
+
+
+# --- Affichage quest craft_air_skill
+func update_air_craft_checklist():
+	if air_craft_checklist == null:
+		return
+
+	if not gs.air_craft_revaled:
+		air_craft_checklist.visible = false
+		return
+
+	air_craft_checklist.visible = true
+
+	update_check_texture(leaf_check, gs.leaf_collected)
+	update_check_texture(stone_check, gs.stone_collected)
+	update_check_texture(recipe_check, gs.air_recipe_unlocked)
+	update_check_texture(altar_check, gs.air_altar_found)
 
 # --- Affichage quest craft_fire_skill
 func update_fire_craft_checklist():
