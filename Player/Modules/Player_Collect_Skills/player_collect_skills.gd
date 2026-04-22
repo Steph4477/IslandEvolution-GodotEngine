@@ -109,3 +109,19 @@ func collect_fire():
 
 	if p.hud_mod:
 		p.hud_mod.refresh_hud_buttons()
+
+func collect_air():
+	var first = not p.game_state.air_buff_unlocked
+
+	p.game_state.air_buff_unlocked = true
+	await p.play_anim("air_buff")
+
+	if first:
+		p.popups_mod.show_info(" 🌀Tu peux maintenant utiliser le buff air !")
+
+	if p.game_state.hud:
+		p.game_state.hud.appear_air()
+		p.game_state.hud.disappear_air_craft_quest()
+
+	if p.hud_mod:
+		p.hud_mod.refresh_hud_buttons()

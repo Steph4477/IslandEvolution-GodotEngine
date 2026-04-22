@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cmelrut05scrr"]
+
+[ext_resource type="Script" uid="uid://cpp221d62d4pr" path="res://Items/Idole_Air/idole_air_item.gd" id="1_635tl"]
+[ext_resource type="PackedScene" uid="uid://bpriod280brtp" path="res://Effects/Particles_Loot/paticles_loot.tscn" id="2_635tl"]
+[ext_resource type="Texture2D" uid="uid://d0tm0wn323r1r" path="res://Items/Idole_Air/1.png" id="4_o0p0p"]
+[ext_resource type="Texture2D" uid="uid://cn83bte3ii2hv" path="res://Items/Idole_Air/2.png" id="5_oc15w"]
+[ext_resource type="Texture2D" uid="uid://cjfhwenscrnn4" path="res://Items/Idole_Air/3.png" id="6_h6hso"]
+[ext_resource type="Texture2D" uid="uid://dmg5ecn1fmh1w" path="res://Items/Idole_Air/4.png" id="7_ebl78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cis52"]
+size = Vector2(86, 25)
+
+[sub_resource type="Animation" id="Animation_qyh3g"]
+resource_name = "appear_air"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_o0p0p"), ExtResource("5_oc15w"), ExtResource("6_h6hso"), ExtResource("7_ebl78")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbsaj"]
+_data = {
+&"appear_air": SubResource("Animation_qyh3g")
+}
+
+[node name="IdoleAirItem" type="Area2D" unique_id=1848008734]
+script = ExtResource("1_635tl")
+
+[node name="ParticlesLoot" parent="." unique_id=2107376780 instance=ExtResource("2_635tl")]
+position = Vector2(-9, -24)
+scale = Vector2(0.5, 0.5)
+
+[node name="FullSprite" type="Sprite2D" parent="." unique_id=49510399]
+position = Vector2(-5.5, 3)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_o0p0p")
+
+[node name="EmptySprite" type="Sprite2D" parent="." unique_id=258680525]
+position = Vector2(-5.5, 3)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_o0p0p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=84897015]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_cis52")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1647550448]
+libraries/ = SubResource("AnimationLibrary_gbsaj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

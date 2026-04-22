@@ -140,6 +140,14 @@ func collect_leaf():
 
 	p.popups_mod.show_info("Feuille volante récupéré")
 
+func collect_idole():
+	if p.game_state.idole_collected:
+		return
+
+	p.game_state.idole_collected = true
+
+	p.popups_mod.show_info("Idole du vent récupéré")
+
 # --- Craft skill_fire
 func collect_wood():
 	if p.game_state.wood_collected:
