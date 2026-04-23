@@ -1,15 +1,24 @@
 extends Node
 
 var p
+var is_interacting = false
 
 func setup(player):
 	p = player
+
+func set_interact(value):
+	is_interacting = value
 
 func process():
 	if p == null:
 		return
 
 	if p.is_dead:
+		return
+
+	if is_interacting:
+		if p.anim.current_animation != "push":
+			p.anim.play("push")
 		return
 
 	if p.is_headbutting:
@@ -73,7 +82,6 @@ func process():
 
 		# walk / idle
 		if abs(p.velocity.x) > 0.1:
-			# garde exactement ta logique (gaz/web)
 			if p.is_gazed:
 				p.anim.play("walk_gaz")
 			if p.is_web:
