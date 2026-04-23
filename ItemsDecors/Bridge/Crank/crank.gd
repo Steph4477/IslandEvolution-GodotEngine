@@ -5,7 +5,11 @@ signal activated
 @onready var anim = $AnimationPlayer
 @onready var col = $CollisionShape2D
 
-var gs 
+var gs
+var player_in_zone = false
+var player = null
+var is_activated = false
+var is_using = false
 
 func _ready():
 	visible = false
@@ -17,31 +21,64 @@ func _ready():
 
 func _on_all_seeds_collected():
 	visible = true
-	set_deferred("monitoring", true) # physique → deferred
-	col.set_deferred("disabled", false) # physique (moteur de collision) → deferred
-	show_info_popup("✅ Manivelle débloquée !")
+	set_deferred("monitoring", true)
+	col.set_deferred("disabled", false)
+
+	if gs.player and gs.player.popups_mod:
+		gs.player.popups_mod.show_info("✅ Manivelle débloquée !")
 
 func _process(_delta):
+	if not player_in_zone:
+		return
+
+	if is_activated:
+		return
+
+	if is_using:
+		return
+
 	if Input.is_action_just_pressed("interact"):
 		activate()
 
 func activate():
+	if is_activated:
+		return
+
+	if is_using:
+		return
+
+	is_using = true
+	player_in_zone = false
+
+	if player:
+		player.animation_mod.set_interact(true)
+
 	if anim and anim.has_animation("turn"):
 		anim.play("turn")
-	show_info_popup("Pont activé !")
-	emit_signal("activated")  # envoie au Bridge parent
+
+	await get_tree().create_timer(0.5).timeout
+
+	if player:
+		player.animation_mod.set_interact(false)
+		player.popups_mod.show_info("Pont activé !")
+	
+	$ParticlesLoot.visible = false
+
+	emit_signal("activated")
+
+	is_activated = true
+	is_using = false
+	set_deferred("monitoring", false)
+	col.set_deferred("disabled", true)
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		show_info_popup("Appuie sur 'E' pour interagir")
+		player_in_zone = true
+		player = body
+		player.popups_mod.show_info("Appuie sur 'E' pour interagir")
 
 func _on_body_exited(body):
 	if body.is_in_group("Player"):
-		show_info_popup("")
-
-func show_info_popup(txt):
-	var popup = get_tree().get_first_node_in_group("info_overlay_group")
-	if popup == null:
-		popup = preload("res://Interface/Popup/Info_popup/info_popup.tscn").instantiate()
-		get_tree().root.add_child(popup)
-	popup.show_info(txt)
+		body.popups_mod.show_info("")
+		player_in_zone = false
+		player = null
