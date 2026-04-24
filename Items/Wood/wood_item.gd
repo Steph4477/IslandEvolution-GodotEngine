@@ -5,7 +5,7 @@ var collected = false
 func _ready():
 	var gs = get_node("/root/GameState")
 
-	if gs.leaf_collected:
+	if gs.wood_collected:
 		queue_free()
 
 func _on_body_entered(body):
@@ -14,10 +14,10 @@ func _on_body_entered(body):
 
 	if body.is_in_group("Player"):
 		collected = true
-		body.collect_items.collect_leaf()
+		body.collect_items.collect_wood()
 
 		var gs = get_node("/root/GameState")
 		if gs.hud:
-			gs.hud.update_air_craft_checklist()
+			gs.hud.update_fire_craft_checklist()
 
 		queue_free()
