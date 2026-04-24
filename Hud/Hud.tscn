@@ -864,7 +864,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RecipeRow:visible")
+tracks/1/path = NodePath("RecipeFireRow:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -876,7 +876,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AltarRow:visible")
+tracks/2/path = NodePath("AltarFireRow:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -952,7 +952,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RecipeRow:visible")
+tracks/1/path = NodePath("RecipeFireRow:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -964,7 +964,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AltarRow:visible")
+tracks/2/path = NodePath("AltarFireRow:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1040,7 +1040,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RecipeRow:visible")
+tracks/1/path = NodePath("RecipeFireRow:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1052,7 +1052,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AltarRow:visible")
+tracks/2/path = NodePath("AltarFireRow:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1669,10 +1669,10 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "Pierre"
 
-[node name="RecipeRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=676973476]
+[node name="RecipeFireRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=676973476]
 layout_mode = 2
 
-[node name="Check" type="TextureRect" parent="FireCraftChecklist/RecipeRow" unique_id=1975173592]
+[node name="Check" type="TextureRect" parent="FireCraftChecklist/RecipeFireRow" unique_id=1975173592]
 custom_minimum_size = Vector2(72, 40)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1681,15 +1681,15 @@ texture = ExtResource("48_ogbjv")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="FireCraftChecklist/RecipeRow" unique_id=921834859]
+[node name="Label" type="Label" parent="FireCraftChecklist/RecipeFireRow" unique_id=921834859]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "Recette"
 
-[node name="AltarRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=2058270676]
+[node name="AltarFireRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=2058270676]
 layout_mode = 2
 
-[node name="Check" type="TextureRect" parent="FireCraftChecklist/AltarRow" unique_id=1826419777]
+[node name="Check" type="TextureRect" parent="FireCraftChecklist/AltarFireRow" unique_id=1826419777]
 custom_minimum_size = Vector2(72, 40)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1698,7 +1698,7 @@ texture = ExtResource("48_ogbjv")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="FireCraftChecklist/AltarRow" unique_id=1925881865]
+[node name="Label" type="Label" parent="FireCraftChecklist/AltarFireRow" unique_id=1925881865]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "Trouver l'autel"
@@ -1740,12 +1740,12 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="AirCraftChecklist/LeafRow" unique_id=84827856]
 modulate = Color(0.0035191667, 0.0035191681, 0.0035191672, 1)
 layout_mode = 2
-text = "Bois"
+text = "Feuille"
 
-[node name="RecipeRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=203916892]
+[node name="IdoleRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=1720062037]
 layout_mode = 2
 
-[node name="Check" type="TextureRect" parent="AirCraftChecklist/RecipeRow" unique_id=261877694]
+[node name="Check" type="TextureRect" parent="AirCraftChecklist/IdoleRow" unique_id=784547537]
 custom_minimum_size = Vector2(72, 40)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1754,15 +1754,32 @@ texture = ExtResource("48_ogbjv")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="AirCraftChecklist/RecipeRow" unique_id=1802495259]
+[node name="Label" type="Label" parent="AirCraftChecklist/IdoleRow" unique_id=1147991609]
+modulate = Color(0.0035191667, 0.0035191681, 0.0035191672, 1)
+layout_mode = 2
+text = "Idole du vent"
+
+[node name="RecipeAirRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=203916892]
+layout_mode = 2
+
+[node name="Check" type="TextureRect" parent="AirCraftChecklist/RecipeAirRow" unique_id=261877694]
+custom_minimum_size = Vector2(72, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("48_ogbjv")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="AirCraftChecklist/RecipeAirRow" unique_id=1802495259]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "Recette"
 
-[node name="AltarRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=1336512531]
+[node name="AltarAirRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=1336512531]
 layout_mode = 2
 
-[node name="Check" type="TextureRect" parent="AirCraftChecklist/AltarRow" unique_id=1081273734]
+[node name="Check" type="TextureRect" parent="AirCraftChecklist/AltarAirRow" unique_id=1081273734]
 custom_minimum_size = Vector2(72, 40)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1771,7 +1788,7 @@ texture = ExtResource("48_ogbjv")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="AirCraftChecklist/AltarRow" unique_id=1749814662]
+[node name="Label" type="Label" parent="AirCraftChecklist/AltarAirRow" unique_id=1749814662]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "Trouver l'autel"

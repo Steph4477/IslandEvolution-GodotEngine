@@ -53,17 +53,24 @@ extends CanvasLayer
 
 # --- Craft fire_skill ---
 @onready var fire_craft_checklist = get_node_or_null("FireCraftChecklist")
-@onready var air_craft_checklist = get_node_or_null("AirCraftChecklist")
-@onready var leaf_check = get_node_or_null("AirCraftChecklist/LeafRow/Check")
 @onready var wood_check = get_node_or_null("FireCraftChecklist/WoodRow/Check")
 @onready var stone_check = get_node_or_null("FireCraftChecklist/StoneRow/Check")
-@onready var recipe_check = get_node_or_null("FireCraftChecklist/RecipeRow/Check")
-@onready var altar_check = get_node_or_null("FireCraftChecklist/AltarRow/Check")
-@onready var air_label_checklist = get_node_or_null("AirCraftChecklist/LeafRow/Label")
+@onready var recipe_fire_check = get_node_or_null("FireCraftChecklist/RecipeFireRow/Check")
+@onready var altar_fire_check = get_node_or_null("FireCraftChecklist/AltarFireRow/Check")
 @onready var wood_label_checklist = get_node_or_null("FireCraftChecklist/WoodRow/Label")
 @onready var stone_label_checklist = get_node_or_null("FireCraftChecklist/StoneRow/Label")
-@onready var recipe_label_checklist = get_node_or_null("FireCraftChecklist/RecipeRow/Label")
-@onready var altar_label_checklist = get_node_or_null("FireCraftChecklist/AltarRow/Label")
+@onready var recipe_fire_label_checklist = get_node_or_null("FireCraftChecklist/RecipeRow/Label")
+@onready var altar_fire_label_checklist = get_node_or_null("FireCraftChecklist/AltarRow/Label")
+
+@onready var air_craft_checklist = get_node_or_null("AirCraftChecklist")
+@onready var leaf_check = get_node_or_null("AirCraftChecklist/LeafRow/Check")
+@onready var idole_check = get_node_or_null("AirCraftChecklist/IdoleRow/Check")
+@onready var recipe_air_check = get_node_or_null("FireCraftChecklist/RecipeAirRow/Check")
+@onready var altar_air_check = get_node_or_null("FireCraftChecklist/AltarAirRow/Check")
+@onready var leaf_label_checklist = get_node_or_null("AirCraftChecklist/LeafRow/Label")
+@onready var idole_label_checklist = get_node_or_null("AirCraftChecklist/idoleRow/Label")
+@onready var recipe_air_label_checklist = get_node_or_null("AirCraftChecklist/RecipeAirRow/Label")
+@onready var altar_air_label_checklist = get_node_or_null("AirCraftChecklist/AltarAirRow/Label")
 
 # -----------------------------
 #            VARS
@@ -111,6 +118,9 @@ func _ready():
 
 	if fire_craft_checklist:
 		fire_craft_checklist.visible = false
+	
+	if air_craft_checklist:
+		air_craft_checklist.visible = false
 
 	hide_breathbar()
 	_hide_all_buffs()
@@ -512,9 +522,9 @@ func update_air_craft_checklist():
 	air_craft_checklist.visible = true
 
 	update_check_texture(leaf_check, gs.leaf_collected)
-	update_check_texture(stone_check, gs.stone_collected)
-	update_check_texture(recipe_check, gs.air_recipe_unlocked)
-	update_check_texture(altar_check, gs.air_altar_found)
+	update_check_texture(idole_check, gs.stone_collected)
+	update_check_texture(recipe_air_check, gs.air_recipe_unlocked)
+	update_check_texture(altar_air_check, gs.air_altar_found)
 
 # --- Affichage quest craft_fire_skill
 func update_fire_craft_checklist():
@@ -529,8 +539,8 @@ func update_fire_craft_checklist():
 
 	update_check_texture(wood_check, gs.wood_collected)
 	update_check_texture(stone_check, gs.stone_collected)
-	update_check_texture(recipe_check, gs.fire_recipe_unlocked)
-	update_check_texture(altar_check, gs.fire_altar_found)
+	update_check_texture(recipe_fire_check, gs.fire_recipe_unlocked)
+	update_check_texture(altar_fire_check, gs.fire_altar_found)
 
 func update_check_texture(check_node, is_valid):
 	if check_node == null:
