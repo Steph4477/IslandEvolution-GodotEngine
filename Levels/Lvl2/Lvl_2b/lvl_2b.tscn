@@ -17,7 +17,9 @@
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="18_w1c1k"]
 [ext_resource type="Texture2D" uid="uid://do5uhl3cs36a0" path="res://Levels/Lvl2/Lvl_2b/exit/halo_z-index10.png" id="19_gr680"]
 [ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="19_grbhh"]
+[ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/craft_altar.tscn" id="19_j0i8j"]
 [ext_resource type="Texture2D" uid="uid://bu34beoslp2lx" path="res://Levels/Lvl2/Lvl_2b/exit/z-index0.png" id="20_4s17o"]
+[ext_resource type="PackedScene" path="res://Player/Skills/Ramp/ramp.tscn" id="20_a28gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 1491)
@@ -32,7 +34,7 @@ size = Vector2(121, 1899)
 size = Vector2(196, 1205.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(3814, 186.375)
+size = Vector2(4354, 186.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gr680"]
 size = Vector2(7305, 108)
@@ -86,8 +88,8 @@ scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("8_dntyv")
 
 [node name="CliffL" type="Sprite2D" parent="Node2D/Bridge" unique_id=206072045]
-position = Vector2(-506, 671)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-290, 1063.0001)
+scale = Vector2(1.2107526, 1.3555882)
 texture = ExtResource("7_sbfsf")
 
 [node name="CliffR" type="Sprite2D" parent="Node2D/Bridge" unique_id=1672467702]
@@ -193,7 +195,7 @@ position = Vector2(6916, 2520.0313)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform" unique_id=93469266]
-position = Vector2(1735, 1564)
+position = Vector2(2005, 1564)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1934212984]
@@ -292,3 +294,9 @@ position = Vector2(5140, -1012)
 [node name="LifeLoot" parent="." unique_id=167285483 instance=ExtResource("19_grbhh")]
 position = Vector2(6738, 399)
 scale = Vector2(0.1, 0.1)
+
+[node name="CraftAltar" parent="." unique_id=989838508 instance=ExtResource("19_j0i8j")]
+position = Vector2(2752, -699)
+
+[node name="Ramp" parent="." unique_id=2130327660 instance=ExtResource("20_a28gk")]
+position = Vector2(420, -26)
