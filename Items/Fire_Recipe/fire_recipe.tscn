@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://bccahuot3n8ev"]
+
+[ext_resource type="Script" uid="uid://0sm5e1jryr6a" path="res://Items/Fire_Recipe/fire_recipe.gd" id="1_fvdrw"]
+[ext_resource type="Texture2D" uid="uid://uyqg31xgkcne" path="res://Items/Fire_Recipe/fire_recipe.png" id="2_qigob"]
+
+[sub_resource type="Animation" id="Animation_poutx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6840419]
+}
+
+[sub_resource type="Animation" id="Animation_qyh3g"]
+resource_name = "appear_recipe"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6840419, -1.3124876]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbsaj"]
+_data = {
+&"RESET": SubResource("Animation_poutx"),
+&"appear_recipe": SubResource("Animation_qyh3g")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_f51v4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -6, 132, 0, 0, 0, 0, 48, 86, 0, 0, 0, 0, 76, 74, 0, 0, 0, 0, 108, 76, 0, 0, 0, 0, 126, 94, 0, 0, 0, 0, 124, 138, 0, 0, 0, 0, 116, 194, 0, 0, 0, 0, 152, 148, 0, 0, 0, 0, 174, 144, 0, 0, 0, 0, 190, 156, 0, 0, 0, 0, 204, 208)
+}
+point_count = 11
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atrkw"]
+radius = 3.47464
+
+[node name="FireRecipe" type="Node2D" unique_id=78160736]
+script = ExtResource("1_fvdrw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1647550448]
+libraries/ = SubResource("AnimationLibrary_gbsaj")
+autoplay = &"appear_recipe"
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1995578396]
+position = Vector2(62, -180)
+curve = SubResource("Curve2D_f51v4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1912100901]
+position = Vector2(-6, 132)
+rotation = -0.7055682
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" unique_id=1066585995]
+position = Vector2(231.78261, -46.89267)
+rotation = 2.934564
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D" unique_id=277242759]
+position = Vector2(238.4363, 4.809868)
+rotation = -3.14159
+scale = Vector2(16.1668, -18.3068)
+shape = SubResource("CircleShape2D_atrkw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=49510399]
+position = Vector2(-4.7683716e-07, 1.4305115e-06)
+rotation = 0.6840419
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qigob")
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -164,3 +164,9 @@ func collect_stone():
 	p.game_state.stone_collected = true
 
 	p.popups_mod.show_info("Cette pierre pourrait servir…")
+
+func collect_fire_recipe():
+	if p.game_state.fire_craft_revealed:
+		return
+	
+	p.game_state.fire_craft_revealed = true
