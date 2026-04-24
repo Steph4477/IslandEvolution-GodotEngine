@@ -65,12 +65,12 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_f51v4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -6, 132, 0, 0, 0, 0, 48, 86, 0, 0, 0, 0, 76, 74, 0, 0, 0, 0, 108, 76, 0, 0, 0, 0, 126, 94, 0, 0, 0, 0, 124, 138, 0, 0, 0, 0, 116, 194, 0, 0, 0, 0, 152, 148, 0, 0, 0, 0, 174, 144, 0, 0, 0, 0, 190, 156, 0, 0, 0, 0, 204, 208)
+"points": PackedVector2Array(0, 0, 0, 0, -6, 132, 0, 0, 0, 0, 48, 86, 0, 0, 0, 0, 76, 74, 0, 0, 0, 0, 108, 76, 0, 0, 0, 0, 126, 94, 0, 0, 0, 0, 124, 138, 0, 0, 0, 0, 116, 194, 0, 0, 0, 0, 152, 148, 0, 0, 0, 0, 174, 144, 0, 0, 0, 0, 190, 156, 0, 0, 0, 0, 211, 232)
 }
 point_count = 11
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_atrkw"]
-radius = 3.47464
+radius = 1.544147
 
 [node name="FireRecipe" type="Node2D" unique_id=78160736]
 script = ExtResource("1_fvdrw")
@@ -100,7 +100,7 @@ shape = SubResource("CircleShape2D_atrkw")
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=49510399]
 position = Vector2(-4.7683716e-07, 1.4305115e-06)
 rotation = 0.6840419
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_qigob")
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_body_entered"]

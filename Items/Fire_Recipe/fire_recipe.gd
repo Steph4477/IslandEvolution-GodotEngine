@@ -62,6 +62,7 @@ func dialogue_win_toucan():
 	var dlg = dialogue_scene.instantiate()
 	dlg.challenge_win = true
 	add_child(dlg)
+	dlg.get_node("Flower").visible = false
 	dlg.start(dialogue_win)
 	await dlg.finished
 
