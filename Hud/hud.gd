@@ -65,10 +65,10 @@ extends CanvasLayer
 @onready var air_craft_checklist = get_node_or_null("AirCraftChecklist")
 @onready var leaf_check = get_node_or_null("AirCraftChecklist/LeafRow/Check")
 @onready var idole_check = get_node_or_null("AirCraftChecklist/IdoleRow/Check")
-@onready var recipe_air_check = get_node_or_null("FireCraftChecklist/RecipeAirRow/Check")
-@onready var altar_air_check = get_node_or_null("FireCraftChecklist/AltarAirRow/Check")
+@onready var recipe_air_check = get_node_or_null("AirCraftChecklist/RecipeAirRow/Check")
+@onready var altar_air_check = get_node_or_null("AirCraftChecklist/AltarAirRow/Check")
 @onready var leaf_label_checklist = get_node_or_null("AirCraftChecklist/LeafRow/Label")
-@onready var idole_label_checklist = get_node_or_null("AirCraftChecklist/idoleRow/Label")
+@onready var idole_label_checklist = get_node_or_null("AirCraftChecklist/IdoleRow/Label")
 @onready var recipe_air_label_checklist = get_node_or_null("AirCraftChecklist/RecipeAirRow/Label")
 @onready var altar_air_label_checklist = get_node_or_null("AirCraftChecklist/AltarAirRow/Label")
 
@@ -197,6 +197,7 @@ func _ready():
 		bar_slot.refresh_layout()
 
 	update_fire_craft_checklist()
+	update_air_craft_checklist()
 
 func _process(delta):
 	if banane_cd_left > 0.0:

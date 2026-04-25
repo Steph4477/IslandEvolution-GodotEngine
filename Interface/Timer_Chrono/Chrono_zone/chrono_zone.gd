@@ -31,7 +31,7 @@ func _ready():
 	gs = get_node("/root/GameState")
 	timer = $Timer
 
-	if gs.fire_recipe_unlocked:
+	if gs.air_recipe_unlocked:
 		queue_free()
 		return
 
@@ -123,7 +123,7 @@ func win():
 	chrono.stop_chrono()
 	chrono.visible = false
 
-	if not gs.fire_recipe_unlocked:
+	if not gs.air_recipe_unlocked:
 		gs.air_recipe_unlocked = true
 		gs.player.popups_mod.show_info("📜 Recette récupérée")
 	else:

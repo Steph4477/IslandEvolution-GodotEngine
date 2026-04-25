@@ -24,7 +24,7 @@ func _ready():
 	gs = get_node("/root/GameState")
 
 	cam = gs.player.get_node("Camera2D")
-	cam.limit_top = -230000
+	#cam.limit_top = -200
 	cam.limit_right = 23000
 	
 	# Position initiale de l’anim “fall” à 0.0

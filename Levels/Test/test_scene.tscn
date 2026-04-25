@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
-[ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/Fire/craft_altar_fire.tscn" id="3_uvrdr"]
 [ext_resource type="PackedScene" path="res://Loot/Flower/flower.tscn" id="6_3k6jo"]
+[ext_resource type="PackedScene" uid="uid://bv3clh3sf8uoe" path="res://Items/Altar/Air/craft_altar_air.tscn" id="6_uvrdr"]
 [ext_resource type="PackedScene" uid="uid://crq1euajh7iso" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="7_ey73w"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
 [ext_resource type="PackedScene" uid="uid://cmelrut05scrr" path="res://Items/Idole_Air/idole_air_item.tscn" id="8_vefbu"]
@@ -61,9 +61,6 @@ position = Vector2(1435, 1461)
 [node name="BagLoot3" parent="." unique_id=772055628 instance=ExtResource("7_t726j")]
 position = Vector2(1435, 1461)
 
-[node name="CraftAltar" parent="." unique_id=989838508 instance=ExtResource("3_uvrdr")]
-position = Vector2(1209, 776)
-
 [node name="Flower" parent="." unique_id=1654835609 instance=ExtResource("6_3k6jo")]
 position = Vector2(2558, 1413)
 
@@ -75,3 +72,6 @@ position = Vector2(2987, 1392)
 
 [node name="LeafItem" parent="." unique_id=461046401 instance=ExtResource("9_4khab")]
 position = Vector2(2785, 1408)
+
+[node name="CraftAltarAir" parent="." unique_id=989838508 instance=ExtResource("6_uvrdr")]
+position = Vector2(2671, 765)

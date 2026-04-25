@@ -117,10 +117,10 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	#await load_level("res://Levels/Test/test_scene.tscn")
+	await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
-	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 
 func _process(_delta):
@@ -449,11 +449,11 @@ func gain_life():
 		if hud:
 			hud.update_lives_display(lives)
 		if player:
-			player.show_info_popup("❤️ +1 vie (" + str(lives) + "/" + str(max_lives) + ")")
+			player.popups_mod.show_info("❤️ +1 vie (" + str(lives) + "/" + str(max_lives) + ")")
 		return true
 	else:
 		if player:
-			player.show_info_popup("❤️ Vies déjà au maximum (" + str(max_lives) + ")")
+			player.popups_mod.show_info("❤️ Vies déjà au maximum (" + str(max_lives) + ")")
 		return false
 
 

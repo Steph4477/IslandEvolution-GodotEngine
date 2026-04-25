@@ -1950,7 +1950,6 @@ layout_mode = 2
 text = "Pierre"
 
 [node name="RecipeFireRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=676973476]
-visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="FireCraftChecklist/RecipeFireRow" unique_id=1975173592]
@@ -1968,7 +1967,6 @@ layout_mode = 2
 text = "Recette"
 
 [node name="AltarFireRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=2058270676]
-visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="FireCraftChecklist/AltarFireRow" unique_id=1826419777]
@@ -2042,7 +2040,6 @@ layout_mode = 2
 text = "Idole du vent"
 
 [node name="RecipeAirRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=203916892]
-visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="AirCraftChecklist/RecipeAirRow" unique_id=261877694]

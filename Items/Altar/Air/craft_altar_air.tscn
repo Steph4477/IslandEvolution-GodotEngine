@@ -136,7 +136,6 @@ shape = SubResource("RectangleShape2D_yqxwx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1607896439]
 libraries/ = SubResource("AnimationLibrary_wec7v")
-autoplay = &"craft_fire"
 
 [node name="FireTop" type="Node2D" parent="." unique_id=2053606330]
 position = Vector2(193, -43)
