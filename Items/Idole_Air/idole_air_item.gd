@@ -20,6 +20,11 @@ func _ready():
 		emptySprite.visible = true
 		collected = true
 		set_deferred("monitoring", false)
+		
+		gs.player.collect_items.collect_idole()
+		
+		if gs.hud:
+			gs.hud.update_air_craft_checklist()
 
 func _on_body_entered(body):
 	if body.is_in_group("Player") and not collected and not is_collecting:
@@ -28,7 +33,7 @@ func _on_body_entered(body):
 		player_in_zone = true
 		player = body
 		anim.play("appear_air")
-
+		
 		if player.popups_mod:
 			player.popups_mod.show_info("Appuie sur 'E' pour récupérer l'idole de l'air")
 

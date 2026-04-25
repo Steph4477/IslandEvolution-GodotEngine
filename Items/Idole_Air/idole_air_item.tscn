@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmg5ecn1fmh1w" path="res://Items/Idole_Air/4.png" id="7_ebl78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cis52"]
-size = Vector2(255, 87.5)
+size = Vector2(255, 126.5)
 
 [sub_resource type="Animation" id="Animation_o0p0p"]
 length = 0.001
@@ -67,7 +67,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_o0p0p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=84897015]
-position = Vector2(-0.5, 47.25)
+position = Vector2(-0.5, 66.75)
 shape = SubResource("RectangleShape2D_cis52")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1647550448]
