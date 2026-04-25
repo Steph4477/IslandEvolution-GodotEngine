@@ -4,6 +4,7 @@ var collected = false
 var player_in_zone = false
 var player = null
 var is_collecting = false
+var locked_player_position = Vector2.ZERO
 
 @onready var anim = $AnimationPlayer
 @onready var fullSprite = $FullSprite
@@ -40,19 +41,22 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.is_in_group("Player"):
 		player_in_zone = false
-		player = null
+
+		if not is_collecting:
+			player = null
 
 		if not collected and not is_collecting:
 			anim.stop()
 		
 		anim.play("RESET")
-		
 
 func _process(_delta):
-	if not player_in_zone:
+	if is_collecting and player != null:
+		player.velocity = Vector2.ZERO
+		player.global_position = locked_player_position
 		return
 
-	if is_collecting:
+	if not player_in_zone:
 		return
 
 	if Input.is_action_just_pressed("interact"):
@@ -67,11 +71,15 @@ func collect():
 
 	is_collecting = true
 	player_in_zone = false
+	locked_player_position = player.global_position
 
 	anim.stop()
 
+	player.velocity = Vector2.ZERO
 	player.animation_mod.set_interact(true)
+
 	await player.anim.animation_finished
+
 	player.animation_mod.set_interact(false)
 
 	$ParticlesLoot.visible = false
