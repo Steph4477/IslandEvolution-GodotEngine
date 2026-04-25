@@ -87,7 +87,7 @@ _data = {
 point_count = 33
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dca6"]
-radius = 0.37845924
+radius = 1.3340583
 
 [node name="LeafItem" type="Node2D" unique_id=78160736]
 script = ExtResource("1_d4pmw")
@@ -98,7 +98,6 @@ libraries/ = SubResource("AnimationLibrary_gbsaj")
 [node name="Path2D" type="Path2D" parent="." unique_id=1074444117]
 position = Vector2(146.00003, -426.00006)
 rotation = 1.5839561
-scale = Vector2(8, 8)
 curve = SubResource("Curve2D_d4pmw")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1832635010]
@@ -111,10 +110,10 @@ rotation = -1.4346792
 scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=49510399]
-position = Vector2(-8.641383, -6.308819)
+position = Vector2(-19.54776, -1.6585464)
 rotation = 0.6840419
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("3_d4pmw")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_lcfog")
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" unique_id=1945631309]
 position = Vector2(-2.411985, -18.993658)
@@ -122,7 +121,7 @@ rotation = -0.20702605
 scale = Vector2(16.1668, -18.306805)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D" unique_id=1524457944]
-position = Vector2(-0.021419257, -0.58652157)
+position = Vector2(-0.044173166, -0.6043853)
 scale = Vector2(0.99999994, 0.9999999)
 shape = SubResource("CircleShape2D_2dca6")
 
