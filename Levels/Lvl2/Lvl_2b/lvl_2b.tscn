@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="18_w1c1k"]
 [ext_resource type="Texture2D" uid="uid://do5uhl3cs36a0" path="res://Levels/Lvl2/Lvl_2b/exit/halo_z-index10.png" id="19_gr680"]
 [ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="19_grbhh"]
-[ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/craft_altar.tscn" id="19_j0i8j"]
+[ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/Fire/craft_altar_fire.tscn" id="19_j0i8j"]
 [ext_resource type="Texture2D" uid="uid://bu34beoslp2lx" path="res://Levels/Lvl2/Lvl_2b/exit/z-index0.png" id="20_4s17o"]
 [ext_resource type="PackedScene" path="res://Player/Skills/Ramp/ramp.tscn" id="20_a28gk"]
 

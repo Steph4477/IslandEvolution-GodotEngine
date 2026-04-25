@@ -92,14 +92,18 @@ signal digicode_ok
 
 # --- Craft skill_fire ---
 var wood_collected = false
-var leaf_collected = false
 var stone_collected = false
 var fire_recipe_unlocked = false
 var fire_recipe_dialog_shown = false
-var air_recipe_dialog_shown = false
 var fire_craft_revealed = false
-var air_craft_revaled = false
 var fire_altar_found = false
+
+# --- Craft skill_air ---
+var leaf_collected = false
+var idole_collected = false
+var air_recipe_unlocked = false
+var air_recipe_dialog_shown = false
+var air_craft_revealed = false
 var air_altar_found = false
 
 func _ready():
@@ -115,8 +119,9 @@ func _ready():
 	await get_tree().process_frame
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
-	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
-	await load_level("res://Levels/Lvl4/lvl_4.tscn")
+	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
+	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("break"):
@@ -337,13 +342,19 @@ func save_game():
 	data["has_lance"] = has_lance
 	data["has_flower"] = has_flower
 	
-	data["leaf_collected"] = leaf_collected
 	data["wood_collected"] = wood_collected
 	data["stone_collected"] = stone_collected
 	data["fire_recipe_unlocked"] = fire_recipe_unlocked
 	data["fire_recipe_dialog_shown"] = fire_recipe_dialog_shown
 	data["fire_craft_revealed"] = fire_craft_revealed
 	data["fire_altar_found"] = fire_altar_found
+	
+	data["leaf_collected"] = leaf_collected
+	data["idole_collected"] = idole_collected
+	data["air_recipe_unlocked"] = air_recipe_unlocked
+	data["air_recipe_dialog_shown"] = air_recipe_dialog_shown
+	data["air_craft_revealed"] = air_craft_revealed
+	data["air_altar_found"] = air_altar_found
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -405,13 +416,19 @@ func apply_save_data(data):
 	has_lance = data.get("has_lance", false)
 	has_flower = data.get("has_flower", false)
 	
-	leaf_collected = data.get("leaf_collected", false)
 	wood_collected = data.get("wood_collected", false)
 	stone_collected = data.get("stone_collected", false)
 	fire_recipe_unlocked = data.get("fire_recipe_unlocked", false)
 	fire_recipe_dialog_shown = data.get("fire_recipe_dialog_shown", false)
 	fire_craft_revealed = data.get("fire_craft_revealed", false)
 	fire_altar_found = data.get("fire_altar_found", false)
+
+	leaf_collected = data.get("leaf_collected", false)
+	idole_collected = data.get("idole_collected", false)
+	air_recipe_unlocked = data.get("air_recipe_unlocked", false)
+	air_recipe_dialog_shown = data.get("air_recipe_dialog_shown", false)
+	air_craft_revealed = data.get("air_craft_revealed", false)
+	air_altar_found = data.get("air_altar_found", false)
 
 	# Recharge du niveau sauvegardé
 	await load_level(pending_level_path)
@@ -552,13 +569,19 @@ func reinitialise():
 	can_camouflage = false
 	fire_buff_unlocked = false
 	
-	fire_recipe_unlocked = false
-	fire_recipe_dialog_shown = false
-	leaf_collected = false
 	wood_collected = false
 	stone_collected = false
+	fire_recipe_unlocked = false
+	fire_recipe_dialog_shown = false
 	fire_craft_revealed = false
 	fire_altar_found = false
+	
+	leaf_collected = false
+	idole_collected = false
+	air_recipe_dialog_shown = false
+	air_recipe_unlocked = false
+	air_craft_revealed = false
+	air_altar_found = false
 
 	if hud:
 		var gamepad = hud.get_node("Gamepad")

@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
+[ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/Fire/craft_altar_fire.tscn" id="3_uvrdr"]
+[ext_resource type="PackedScene" path="res://Loot/Flower/flower.tscn" id="6_3k6jo"]
+[ext_resource type="PackedScene" uid="uid://crq1euajh7iso" path="res://Interface/Timer_Chrono/Chrono_zone/chrono_zone.tscn" id="7_ey73w"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
+[ext_resource type="PackedScene" uid="uid://cmelrut05scrr" path="res://Items/Idole_Air/idole_air_item.tscn" id="8_vefbu"]
+[ext_resource type="PackedScene" uid="uid://2akkjxxylblh" path="res://Items/Leaf/leaf_item.tscn" id="9_4khab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(313.271, 30.1528)
@@ -32,7 +37,7 @@ scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_dvpsw")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=727281810]
-position = Vector2(-8244.62, 17698.9)
+position = Vector2(-8188.5386, 17937.56)
 scale = Vector2(123.511, -685.622)
 shape = SubResource("RectangleShape2D_t3xnj")
 
@@ -48,13 +53,25 @@ scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
 [node name="BagLoot" parent="." unique_id=1555895627 instance=ExtResource("7_t726j")]
-position = Vector2(1442, 1381)
+position = Vector2(1435, 1461)
 
 [node name="BagLoot2" parent="." unique_id=1955692160 instance=ExtResource("7_t726j")]
-position = Vector2(1442, 1381)
+position = Vector2(1435, 1461)
 
 [node name="BagLoot3" parent="." unique_id=772055628 instance=ExtResource("7_t726j")]
-position = Vector2(1442, 1381)
+position = Vector2(1435, 1461)
 
-[node name="BagLoot4" parent="." unique_id=1954630383 instance=ExtResource("7_t726j")]
-position = Vector2(1442, 1381)
+[node name="CraftAltar" parent="." unique_id=989838508 instance=ExtResource("3_uvrdr")]
+position = Vector2(1209, 776)
+
+[node name="Flower" parent="." unique_id=1654835609 instance=ExtResource("6_3k6jo")]
+position = Vector2(2558, 1413)
+
+[node name="ChronoZone" parent="." unique_id=1560497206 instance=ExtResource("7_ey73w")]
+position = Vector2(2417, 1479)
+
+[node name="IdoleAirItem" parent="." unique_id=1590480496 instance=ExtResource("8_vefbu")]
+position = Vector2(2987, 1392)
+
+[node name="LeafItem" parent="." unique_id=461046401 instance=ExtResource("9_4khab")]
+position = Vector2(2785, 1408)

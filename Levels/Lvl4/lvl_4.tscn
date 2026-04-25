@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cv7e5m764uq3u" path="res://Levels/Lvl1/Environement/sky.png" id="8_p4ey0"]
 [ext_resource type="PackedScene" path="res://Effects/Aquatic_breathing/Plants/plant_aqua.tscn" id="9_bpjiq"]
 [ext_resource type="PackedScene" uid="uid://bygq5su8mgrtq" path="res://Enemies/Fish/fish.tscn" id="10_g7isx"]
-[ext_resource type="TileSet" uid="uid://7u7ot5b4g7n6" path="res://Levels/Lvl3/Environement/tiles platforms/deco.tres" id="11_fqw1p"]
+[ext_resource type="TileSet" uid="uid://7u7ot5b4g7n6" path="res://Levels/Lvl3/Environement/tiles_platforms/deco.tres" id="11_fqw1p"]
 [ext_resource type="PackedScene" path="res://Enemies/Turtle/turtule.tscn" id="11_mgvxc"]
 [ext_resource type="PackedScene" uid="uid://u7kbwv2cd8dt" path="res://Enemies/Pyranha/pyranha.tscn" id="13_mgvxc"]
 [ext_resource type="PackedScene" uid="uid://w4ebnq3m4hvc" path="res://Enemies/Eel/Eel.tscn" id="14_2brib"]
