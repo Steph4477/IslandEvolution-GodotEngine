@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" format=3 uid="uid://7u7ot5b4g7n6"]
 
-[ext_resource type="Texture2D" uid="uid://crv22dn0dkwrj" path="res://Levels/Lvl3/Environement/tiles_platforms/decosheet.png" id="1_g4tug"]
+[ext_resource type="Texture2D" uid="uid://crv22dn0dkwrj" path="res://Levels/Lvl3/Environement/tiles_platforms/decosheet.png" id="1_nioyk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g4tug"]
-texture = ExtResource("1_g4tug")
+texture = ExtResource("1_nioyk")
 texture_region_size = Vector2i(512, 512)
 0:1/0 = 0
 1:1/0 = 0
