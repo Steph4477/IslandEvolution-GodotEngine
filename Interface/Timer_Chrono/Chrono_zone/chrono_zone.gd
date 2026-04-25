@@ -8,14 +8,13 @@ signal challenge_win
 	"Hé Moko !",
 	"Balance-toi vite entre les lianes...",
 	"Ramène-moi une fleur de nénuphar.",
-	"Reviens ici pour valider !",
+	"Reviens ici pour valider je te recompenserai !",
 	"Le chrono démarre maintenant !"
 ]
 
 @export var dialogue_win = [
 	"Merci Moko, tu as réussi !",
-	"Bois + pierre + autel de craft.",
-	"Tu pourras apprivoiser le feu."
+	"Tiens, voici ta récompense."
 ]
 
 @export var reset_on_start = true
@@ -59,7 +58,7 @@ func _on_zone_body_entered(body):
 	if in_intro:
 		return
 
-	if gs.fire_recipe_unlocked:
+	if gs.air_recipe_unlocked:
 		return
 
 	if gs.toucan_challenge_retry:
@@ -125,20 +124,20 @@ func win():
 	chrono.visible = false
 
 	if not gs.fire_recipe_unlocked:
-		gs.fire_recipe_unlocked = true
+		gs.air_recipe_unlocked = true
 		gs.player.popups_mod.show_info("📜 Recette récupérée")
 	else:
 		gs.player.popups_mod.show_info("✅ Défi réussi !")
 
-	if not gs.fire_recipe_dialog_shown:
-		gs.fire_recipe_dialog_shown = true
+	if not gs.air_recipe_dialog_shown:
+		gs.air_recipe_dialog_shown = true
 		await dialogue_win_toucan()
 
-	gs.fire_craft_revealed = true
+	gs.air_craft_revealed = true
 
 	if gs.hud:
-		gs.hud.appear_fire_craft_quest()
-		gs.hud.update_fire_craft_checklist()
+		gs.hud.appear_air_craft_quest()
+		gs.hud.update_air_craft_checklist()
 
 	gs.focus_cam_frog = true
 	emit_signal("challenge_win")
