@@ -1,16 +1,16 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene format=3 uid="uid://di6bb11m8xram"]
 
-[ext_resource type="Script" path="res://Enemies/Crocodile/SwimCroco/swim_croco.gd" id="1_vsmij"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/SwimCroco/attack/1.png" id="3_6tjv3"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/SwimCroco/attack/2.png" id="4_m3d28"]
-[ext_resource type="Texture2D" path="res://Enemies/Rat/idle.png" id="5_1i23n"]
-[ext_resource type="Texture2D" path="res://Enemies/Crocodile/SwimCroco/gloups.png" id="5_vsmij"]
+[ext_resource type="Script" uid="uid://66d8g5h3efbw" path="res://Enemies/Crocodile/SwimCroco/swim_croco.gd" id="1_vsmij"]
+[ext_resource type="Texture2D" uid="uid://ch8wl6e7sftc2" path="res://Enemies/Crocodile/SwimCroco/attack/1.png" id="3_6tjv3"]
+[ext_resource type="Texture2D" uid="uid://cigllf6xsy0gy" path="res://Enemies/Crocodile/SwimCroco/attack/2.png" id="4_m3d28"]
+[ext_resource type="Texture2D" uid="uid://bcr6m2l2ajka6" path="res://Enemies/Rat/idle.png" id="5_1i23n"]
+[ext_resource type="Texture2D" uid="uid://8csplmctc1wu" path="res://Enemies/Crocodile/SwimCroco/gloups.png" id="5_vsmij"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(34, 29)
+size = Vector2(76, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsmij"]
-size = Vector2(77, 32)
+size = Vector2(93, 32)
 
 [sub_resource type="Animation" id="Animation_6utxn"]
 length = 0.001
@@ -65,45 +65,43 @@ _data = {
 &"idle": SubResource("Animation_4jfus")
 }
 
-[node name="SwimCrocodile" type="CharacterBody2D" groups=["Enemies"]]
+[node name="SwimCrocodile" type="CharacterBody2D" unique_id=1925823438 groups=["Enemies"]]
 z_index = 5
 collision_layer = 8
-collision_mask = 35
+collision_mask = 34
 script = ExtResource("1_vsmij")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -11.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638276417]
+position = Vector2(3, 31.5)
 shape = SubResource("RectangleShape2D_x2fpe")
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=782462957 groups=["Enemies"]]
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=71283325]
 position = Vector2(2.5, -21)
 shape = SubResource("RectangleShape2D_vsmij")
 
-[node name="GloupsSprite" type="Sprite2D" parent="."]
+[node name="GloupsSprite" type="Sprite2D" parent="." unique_id=490479109]
 position = Vector2(69.000015, -67.00001)
 rotation = 0.35604715
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_vsmij")
 
-[node name="Rotator" type="Node2D" parent="."]
+[node name="Rotator" type="Node2D" parent="." unique_id=1631376389]
 position = Vector2(40, -54)
 scale = Vector2(1.07, 1)
 
-[node name="Muzzle" type="Marker2D" parent="Rotator"]
+[node name="Muzzle" type="Marker2D" parent="Rotator" unique_id=683665835]
 position = Vector2(-15.887848, 33)
 
-[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=1763692024]
 position = Vector2(-38, 37)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_6tjv3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1295298111]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_1lwxd")
-}
+libraries/ = SubResource("AnimationLibrary_1lwxd")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
