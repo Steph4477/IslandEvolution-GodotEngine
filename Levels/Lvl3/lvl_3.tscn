@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="27_twwc1"]
 [ext_resource type="PackedScene" path="res://Player/Skills/DoubleJump/double_jump.tscn" id="28_h3eyb"]
 [ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/craft_altar.tscn" id="28_sagna"]
+[ext_resource type="PackedScene" uid="uid://2akkjxxylblh" path="res://Items/Leaf/leaf_item.tscn" id="29_h3eyb"]
+[ext_resource type="PackedScene" uid="uid://cmelrut05scrr" path="res://Items/Idole_Air/idole_air_item.tscn" id="30_g17ky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 2876)
@@ -208,7 +210,7 @@ position = Vector2(21, 23)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 z_index = 10
-position = Vector2(430, 735)
+position = Vector2(7944, 748)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -611,6 +613,15 @@ position = Vector2(14576, 253)
 
 [node name="DoubleJump" parent="." unique_id=906714641 instance=ExtResource("28_h3eyb")]
 position = Vector2(11791, 1006)
+
+[node name="LeafItem" parent="." unique_id=78160736 instance=ExtResource("29_h3eyb")]
+z_index = 5
+position = Vector2(11551, 1011)
+
+[node name="IdoleAirItem" parent="." unique_id=1848008734 instance=ExtResource("30_g17ky")]
+z_index = 4
+position = Vector2(8388, 901)
+scale = Vector2(0.8, 0.8)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]
