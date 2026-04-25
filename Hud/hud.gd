@@ -510,23 +510,20 @@ func update_fire_display():
 	set_button_enabled(fire_button, true)
 
 
-# --- Affichage quest craft_air_skill
-func update_air_craft_checklist():
-	if air_craft_checklist == null:
+######################################################################
+#              QUETES MAITRISE DES ELEMENTS                          #
+######################################################################
+# --- Ultilitaire pour check les objectifs de quete accomplies
+func update_check_texture(check_node, is_valid):
+	if check_node == null:
 		return
 
-	if not gs.air_craft_revaled:
-		air_craft_checklist.visible = false
-		return
+	if is_valid:
+		check_node.texture = preload("res://Items/CheckBox/valid.png")
+	else:
+		check_node.texture = preload("res://Items/CheckBox/empty.png")
 
-	air_craft_checklist.visible = true
-
-	update_check_texture(leaf_check, gs.leaf_collected)
-	update_check_texture(idole_check, gs.stone_collected)
-	update_check_texture(recipe_air_check, gs.air_recipe_unlocked)
-	update_check_texture(altar_air_check, gs.air_altar_found)
-
-# --- Affichage quest craft_fire_skill
+# --- Quête maitrise du feu
 func update_fire_craft_checklist():
 	if fire_craft_checklist == null:
 		return
@@ -541,15 +538,6 @@ func update_fire_craft_checklist():
 	update_check_texture(stone_check, gs.stone_collected)
 	update_check_texture(recipe_fire_check, gs.fire_recipe_unlocked)
 	update_check_texture(altar_fire_check, gs.fire_altar_found)
-
-func update_check_texture(check_node, is_valid):
-	if check_node == null:
-		return
-
-	if is_valid:
-		check_node.texture = preload("res://Items/CheckBox/valid.png")
-	else:
-		check_node.texture = preload("res://Items/CheckBox/empty.png")
 
 func appear_fire_craft_quest():
 	if fire_craft_checklist:
@@ -566,7 +554,38 @@ func disappear_fire_craft_quest():
 	var anim = get_node_or_null("FireCraftChecklist/AnimationPlayer")
 	if anim:
 		anim.play("disappear_fire_craft_quest")
-		print("play disappear_quest_craft")
+
+# --- Quête maitrise de l'air
+func update_air_craft_checklist():
+	if air_craft_checklist == null:
+		return
+
+	if not gs.air_craft_revealed:
+		air_craft_checklist.visible = false
+		return
+
+	air_craft_checklist.visible = true
+
+	update_check_texture(leaf_check, gs.leaf_collected)
+	update_check_texture(idole_check, gs.idole_collected)
+	update_check_texture(recipe_air_check, gs.air_recipe_unlocked)
+	update_check_texture(altar_air_check, gs.air_altar_found)
+
+func appear_air_craft_quest():
+	if air_craft_checklist:
+		air_craft_checklist.visible = true
+
+	var anim = get_node_or_null("AirCraftChecklist/AnimationPlayer")
+	if anim:
+		anim.play("appear_air_craft_quest")
+		await anim.animation_finished
+
+	update_air_craft_checklist()
+
+func disappear_air_craft_quest():
+	var anim = get_node_or_null("AirCraftChecklist/AnimationPlayer")
+	if anim:
+		anim.play("disappear_air_craft_quest")
 
 # -----------------------------
 #        COOLDOWN API
