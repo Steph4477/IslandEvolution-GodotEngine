@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene format=3 uid="uid://c7vh70a2fcrkf"]
 
-[ext_resource type="Script" path="res://Enemies/Chameleon/chameleon.gd" id="1_jyexr"]
-[ext_resource type="Texture2D" path="res://Enemies/Chameleon/1.png" id="1_nwt3p"]
-[ext_resource type="Texture2D" path="res://Enemies/Chameleon/2.png" id="2_jyexr"]
-[ext_resource type="Texture2D" path="res://Enemies/Chameleon/3.png" id="3_dohme"]
-[ext_resource type="Texture2D" path="res://Enemies/Chameleon/4.png" id="4_ge73u"]
-[ext_resource type="Texture2D" path="res://Player/Skills/Camouflage/camouflage.png" id="7_dohme"]
+[ext_resource type="Script" uid="uid://c2yvarawiiqqw" path="res://Enemies/Chameleon/chameleon.gd" id="1_jyexr"]
+[ext_resource type="Texture2D" uid="uid://dujiwfb5cshkk" path="res://Enemies/Chameleon/1.png" id="1_nwt3p"]
+[ext_resource type="Texture2D" uid="uid://cccodt6tnlded" path="res://Enemies/Chameleon/2.png" id="2_jyexr"]
+[ext_resource type="Texture2D" uid="uid://c0lggco3tupqr" path="res://Enemies/Chameleon/3.png" id="3_dohme"]
+[ext_resource type="Texture2D" uid="uid://d2cl36l8j8dpv" path="res://Enemies/Chameleon/4.png" id="4_ge73u"]
+[ext_resource type="Texture2D" uid="uid://ysp8gf54t7ba" path="res://Player/Skills/Camouflage/camouflage.png" id="7_dohme"]
 
 [sub_resource type="Animation" id="Animation_3ye6a"]
 length = 0.001
@@ -160,47 +160,48 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyexr"]
-radius = 28.01785
+radius = 20.032585
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyexr"]
 size = Vector2(438, 283)
 
-[node name="Chameleon" type="Node2D"]
+[node name="Chameleon" type="Node2D" unique_id=1185185535]
 script = ExtResource("1_jyexr")
 
-[node name="ChameleonSprite" type="Sprite2D" parent="."]
+[node name="ChameleonSprite" type="Sprite2D" parent="." unique_id=598665797]
+modulate = Color(1, 0.8235294, 0.3764706, 1)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_nwt3p")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1601558411]
 root_node = NodePath("../ChameleonSprite")
-libraries = {
-&"": SubResource("AnimationLibrary_wftd7")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_wftd7")
+autoplay = &"idle"
 
-[node name="WindowTimer" type="Timer" parent="."]
+[node name="WindowTimer" type="Timer" parent="." unique_id=92576908]
 wait_time = 0.3
 one_shot = true
 
-[node name="CycleTimer" type="Timer" parent="."]
+[node name="CycleTimer" type="Timer" parent="." unique_id=928240224]
 wait_time = 1.2
 
-[node name="Camouflage" type="Node2D" parent="."]
+[node name="Camouflage" type="Node2D" parent="." unique_id=1398639794]
+position = Vector2(12, 26)
 
-[node name="CamouflageArea" type="Area2D" parent="Camouflage"]
+[node name="CamouflageArea" type="Area2D" parent="Camouflage" unique_id=466031122]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camouflage/CamouflageArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camouflage/CamouflageArea" unique_id=1158911597]
 position = Vector2(-138, -97)
 shape = SubResource("CircleShape2D_jyexr")
 
-[node name="SkillSprite" type="Sprite2D" parent="Camouflage"]
+[node name="SkillSprite" type="Sprite2D" parent="Camouflage" unique_id=1453171604]
 position = Vector2(-4.9999995, -93.99999)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_dohme")
 
-[node name="LootZone" type="Area2D" parent="."]
+[node name="LootZone" type="Area2D" parent="." unique_id=1978349693]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LootZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LootZone" unique_id=608581815]
 position = Vector2(-43, -131.5)
 shape = SubResource("RectangleShape2D_jyexr")
 
