@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://bv3clh3sf8uoe"]
 
 [ext_resource type="Script" uid="uid://75tgq4mtg3hl" path="res://Items/Altar/Air/craft_altar_air.gd" id="1_4o0w6"]
-[ext_resource type="Texture2D" uid="uid://di7w2yk0o71y1" path="res://Items/Altar/1.png" id="2_ul8ed"]
 [ext_resource type="Texture2D" uid="uid://xxfu5bspwm1" path="res://Items/Altar/Air/1.png" id="3_ul8ed"]
 [ext_resource type="Texture2D" uid="uid://c5146431tcrne" path="res://Items/Altar/Air/2.png" id="4_ppqe3"]
-[ext_resource type="Texture2D" uid="uid://36n1pht1rucq" path="res://Items/Altar/Air/3.png" id="5_qstik"]
-[ext_resource type="Texture2D" uid="uid://drf758ns2rbnt" path="res://Items/Altar/Air/4.png" id="6_0lyhc"]
 [ext_resource type="PackedScene" uid="uid://bcleaa6gwlx7s" path="res://Items/Altar/Fire/fire.tscn" id="6_knuyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqxwx"]
-size = Vector2(55, 153.5)
+size = Vector2(16, 276.75)
 
-[sub_resource type="Animation" id="Animation_eh73i"]
+[sub_resource type="Animation" id="Animation_307dy"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -23,43 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ul8ed")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FireLeft:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FireRight:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FireTop:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [ExtResource("3_ul8ed")]
 }
 
 [sub_resource type="Animation" id="Animation_g42ta"]
@@ -72,10 +33,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("3_ul8ed"), ExtResource("4_ppqe3"), ExtResource("5_qstik"), ExtResource("6_0lyhc")]
+"values": [ExtResource("3_ul8ed"), ExtResource("4_ppqe3")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -101,22 +62,10 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FireTop:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wec7v"]
 _data = {
-&"RESET": SubResource("Animation_eh73i"),
+&"RESET": SubResource("Animation_307dy"),
 &"craft_fire": SubResource("Animation_g42ta")
 }
 
@@ -124,47 +73,40 @@ _data = {
 script = ExtResource("1_4o0w6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=657885720]
+modulate = Color(0.8329021, 0.83290213, 0.83290213, 1)
 position = Vector2(831, 597)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_ul8ed")
+texture = ExtResource("3_ul8ed")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=843639088]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1220033537]
-position = Vector2(837.5, 706)
+position = Vector2(836, 767.625)
 shape = SubResource("RectangleShape2D_yqxwx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1607896439]
 libraries/ = SubResource("AnimationLibrary_wec7v")
 
-[node name="FireTop" type="Node2D" parent="." unique_id=2053606330]
-position = Vector2(193, -43)
-
-[node name="2" parent="FireTop" unique_id=1504087929 instance=ExtResource("6_knuyg")]
-position = Vector2(818, 353)
-color = Color(0.040865563, 0.58142847, 0.68064827, 0.4509804)
-radius = 40
-
-[node name="1" parent="FireTop" unique_id=296579739 instance=ExtResource("6_knuyg")]
-position = Vector2(818, 370)
-color = Color(0.039215688, 0.5803922, 0.68235296, 0.4509804)
-
 [node name="FireLeft" type="Node2D" parent="." unique_id=1765328215]
-position = Vector2(-125.000015, -153)
-scale = Vector2(1.2, 1.3)
+visible = false
+position = Vector2(-1193, -433.00003)
+scale = Vector2(1.5, 1.5)
 
 [node name="2" parent="FireLeft" unique_id=2107376780 instance=ExtResource("6_knuyg")]
-position = Vector2(818, 353)
+position = Vector2(1334.6666, 546.8461)
+scale = Vector2(0.99999994, 1)
 color = Color(0.039215688, 0.5803922, 0.68235296, 0.4509804)
 radius = 40
 
-[node name="1" parent="FireLeft" unique_id=1356080770 instance=ExtResource("6_knuyg")]
-position = Vector2(818, 370)
+[node name="1" parent="FireLeft" unique_id=963392716 instance=ExtResource("6_knuyg")]
+position = Vector2(1334.6666, 563.8461)
+scale = Vector2(0.99999994, 1)
 color = Color(0.039215688, 0.5803922, 0.68235296, 0.4509804)
 
 [node name="FireRight" type="Node2D" parent="." unique_id=1992544032]
-position = Vector2(263, -153)
-scale = Vector2(1.2, 1.3)
+visible = false
+position = Vector2(199.00002, -154)
+scale = Vector2(1.5, 1.5)
 
 [node name="2" parent="FireRight" unique_id=575346635 instance=ExtResource("6_knuyg")]
 position = Vector2(818, 353)

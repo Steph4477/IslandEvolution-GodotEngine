@@ -10,13 +10,11 @@ var air_skill_spawned = false
 var air_spawn_position = Vector2.ZERO
 
 @onready var anim_player = $AnimationPlayer
-@onready var fire_top = $FireTop
 @onready var fire_left = $FireLeft
 @onready var fire_right = $FireRight
 
 func _ready():
 	gs = get_node("/root/GameState")
-	fire_top.visible = false
 	fire_left.visible = false
 	fire_right.visible = false
 

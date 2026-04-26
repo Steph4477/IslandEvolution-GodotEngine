@@ -22,8 +22,6 @@ func _ready():
 		collected = true
 		set_deferred("monitoring", false)
 		
-		gs.player.collect_items.collect_idole()
-		
 		if gs.hud:
 			gs.hud.update_air_craft_checklist()
 

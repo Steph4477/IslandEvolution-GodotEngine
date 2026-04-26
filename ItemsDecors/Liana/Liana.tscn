@@ -1,26 +1,27 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://cii2fg46a1ewu"]
 
-[ext_resource type="Script" path="res://ItemsDecors/Liana/Liana.gd" id="1_u3s76"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Liana/Liana.png" id="2_3i2xa"]
+[ext_resource type="Script" uid="uid://cwsg343g1eodr" path="res://ItemsDecors/Liana/Liana.gd" id="1_u3s76"]
+[ext_resource type="Texture2D" uid="uid://dc1ubqyplnjuk" path="res://ItemsDecors/Liana/Liana.png" id="2_3i2xa"]
 
-[node name="Liana" type="Node2D"]
+[node name="Liana" type="Node2D" unique_id=411276915]
 script = ExtResource("1_u3s76")
 
-[node name="Pivot" type="Node2D" parent="."]
+[node name="Pivot" type="Node2D" parent="." unique_id=273295386]
 position = Vector2(4, 1)
 
-[node name="Rope" type="Sprite2D" parent="Pivot"]
-position = Vector2(5, 460)
+[node name="Rope" type="Sprite2D" parent="Pivot" unique_id=631927105]
+position = Vector2(5, 284.5)
+scale = Vector2(1, 1.3427734)
 texture = ExtResource("2_3i2xa")
 
-[node name="Area2D" type="Area2D" parent="Pivot"]
+[node name="Area2D" type="Area2D" parent="Pivot" unique_id=1968996185]
 position = Vector2(6, 469)
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Pivot/Area2D"]
-polygon = PackedVector2Array(-32, -490, -26, -432, -23, -375, -23, -316, -17, -265, -8, -209, 8, -152, 24, -81, 29, -17, 31, 35, 15, 107, -12, 184, -26, 255, -17, 258, -7, 258, 2, 244, 7, 227, 60, 85, 66, -54, 32, -185, 7, -327, 10, -511)
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Pivot/Area2D" unique_id=1553398533]
+polygon = PackedVector2Array(-15, -844, -13, -655, 4, -441, 23, -379, 35, -309, 41, -245, 44, -154, 37, -86, 16, -15, 7, 38, -5, 98, -20, 158, -20, 224, -5, 324, 19, 467, -2, 264, -12, 193, 9, 69, 44, -55, 55, -207, 43, -331, 15, -438, 1, -521, -4, -644, -9, -845)
 
-[node name="Grip" type="Node2D" parent="Pivot"]
-position = Vector2(-3, 706)
+[node name="Grip" type="Node2D" parent="Pivot" unique_id=75460564]
+position = Vector2(-5, 728)
 
 [connection signal="body_entered" from="Pivot/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Pivot/Area2D" to="." method="_on_area_2d_body_exited"]

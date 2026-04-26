@@ -170,8 +170,15 @@ func spawn_loot():
 	loot.z_index = 100
 
 func _show_damage_popup(amount):
+	if health_bar == null:
+		return
+
+	var hb_parent = health_bar.get_parent()
+	if hb_parent == null:
+		return
+
 	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
-	hb = health_bar.get_parent()
-	hb.add_child(popup)
+	hb_parent.add_child(popup)
+
 	popup.position = Vector2(0, -20)
 	popup.show_damage(amount)

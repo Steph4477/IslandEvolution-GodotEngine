@@ -24,8 +24,12 @@ func _ready():
 	gs = get_node("/root/GameState")
 
 	cam = gs.player.get_node("Camera2D")
-	#cam.limit_top = -200
-	cam.limit_right = 23000
+	cam.enabled = true
+	cam.make_current()
+
+	cam.limit_top = -150
+	cam.limit_right = 22000
+	cam.limit_bottom = 1400
 	
 	# Position initiale de l’anim “fall” à 0.0
 	if anim.has_animation("fall"):
@@ -67,7 +71,7 @@ func _on_chrono_zone_challenge_win():
 	if gs.player:
 		var frog = get_node_or_null("Froggle")
 		if frog and cam:
-			cam.global_position = frog.global_position
+			cam.position = frog.global_position - gs.player.global_position
 			await get_tree().create_timer(1.0).timeout
 			
 			var original_zoom = cam.zoom
@@ -101,7 +105,7 @@ func _on_chrono_zone_challenge_win():
 				cam.global_position.y -= dy
 				await get_tree().process_frame
 				
-			cam.global_position = gs.player.global_position
+			cam.position = Vector2.ZERO
 		
 	# Débloque moko après le focus 
 	player.can_move = prev_can_move
