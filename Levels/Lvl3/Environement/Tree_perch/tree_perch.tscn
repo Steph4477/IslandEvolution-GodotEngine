@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene format=3 uid="uid://dbqxuv0ffeqjo"]
 
-[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.png" id="1_1mhcq"]
-[ext_resource type="Script" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.gd" id="1_m1g1l"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Tree_perch/z-index0.png" id="2_m1g1l"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch_open.png" id="2_tt4of"]
+[ext_resource type="Texture2D" uid="uid://dcmyakr63v2h5" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.png" id="1_1mhcq"]
+[ext_resource type="Script" uid="uid://csuvlk5tu2pfu" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.gd" id="1_m1g1l"]
+[ext_resource type="Texture2D" uid="uid://cb5pjmgis17wo" path="res://Levels/Lvl3/Environement/Tree_perch/z-index0.png" id="2_m1g1l"]
+[ext_resource type="Texture2D" uid="uid://bfo7n4c7ikirp" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch_open.png" id="2_tt4of"]
 
 [sub_resource type="Animation" id="Animation_57j43"]
 length = 0.001
@@ -59,54 +59,47 @@ _data = {
 &"fade": SubResource("Animation_yphk1")
 }
 
-[node name="Tree_perch" type="Node2D"]
+[node name="Tree_perch" type="Node2D" unique_id=1488773112]
 script = ExtResource("1_m1g1l")
 
-[node name="Door" type="Sprite2D" parent="."]
-position = Vector2(4, -2)
+[node name="Door" type="Sprite2D" parent="." unique_id=807276985]
+z_index = 3
+position = Vector2(4, -5)
 texture = ExtResource("2_m1g1l")
 
-[node name="Full" type="Sprite2D" parent="."]
-z_index = 2
+[node name="Full" type="Sprite2D" parent="." unique_id=239060357]
+z_index = 10
 position = Vector2(4, -3)
 texture = ExtResource("1_1mhcq")
 
-[node name="Open" type="Sprite2D" parent="."]
+[node name="Open" type="Sprite2D" parent="." unique_id=992057231]
 position = Vector2(4, -3)
 texture = ExtResource("2_tt4of")
 
-[node name="Root" type="Sprite2D" parent="."]
-z_index = 20
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1604075967]
+libraries/ = SubResource("AnimationLibrary_syslc")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_syslc")
-}
-
-[node name="Area2D" type="StaticBody2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=285032940]
 z_index = 30
 collision_layer = 2
 collision_mask = 9
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=15795518]
 polygon = PackedVector2Array(-210, 5, -169, -23, -137, -28, -102, -26, -66, -7, -35, 24, -49, 80, -64, 304, -322, -39, -297, -32, -267, -28, -239, -4)
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D" unique_id=1650491472]
 position = Vector2(-54, -68)
 polygon = PackedVector2Array(80, -108, 117, -93, 147, -119, 151, -101, 177, -100, 171, -182, 37, -146)
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D" unique_id=1576221947]
 polygon = PackedVector2Array(104, -53, 128, -74, 158, -85, 189, -85, 211, -79, 231, -72, 145, -1, 116, 67, 122, 207, 196, 300, 37, 300, 24, 214, 26, 172, 33, 123, 61, 56, 80, 3)
 
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Area2D"]
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" unique_id=886932860]
 polygon = PackedVector2Array(4, -58, 15, -60, 13, -94, -4, -127, -37, -156, -17, -185, -119, -177, -77, -114)
 
-[node name="door" type="Area2D" parent="."]
-visible = false
+[node name="door" type="Area2D" parent="." unique_id=1141750671]
 
-[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="door"]
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="door" unique_id=348143303]
 position = Vector2(-26, 412.75)
 polygon = PackedVector2Array(-65, -13.75, 74, -13.75, 64, -100.75, 53, -175.75, 53, -239.75, 65, -305.75, 136, -464.75, 138, -511.75, 137, -537.75, 130, -559.75, 123, -578.75, 102, -569.75, 83, -549.75, 72, -549.75, 62, -571.75, 45, -589.75, 29, -592.75, 12, -606.75, -6, -622.75, -28, -619.75, -24, -596.75, -12, -567.75, 11, -550.75, 26, -528.75, 35, -508.75, 36, -488.75, 32, -451.75, 16, -423.75, -4, -380.75, -19, -354.75, -31, -325.75, -37, -280.75, -40, -229.75, -41, -175.75, -47, -141.75, -55, -108.75, -63, -56.75)
 
