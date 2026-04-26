@@ -57,6 +57,8 @@ var speed_bar = null
 var breath_bar = null
 var fire_buff_bar = null
 var fire_buff_unlocked = false
+var air_buff_bar = null
+var air_buff_unlocked = false
 
 var fade_scene = preload("res://Effects/Fade/fade.tscn")
 var fade = null
@@ -117,10 +119,10 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	#await load_level("res://Levels/Test/test_scene.tscn")
+	await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
-	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 
 func _process(_delta):
@@ -337,6 +339,7 @@ func save_game():
 	data["double_jump_unlocked"] = double_jump_unlocked
 	data["ramp_unlocked"] = ramp_unlocked
 	data["fire_buff_unlocked"] = fire_buff_unlocked
+	data["air_buff_unlocked"] = air_buff_unlocked
 	
 	data["has_key"] = has_key
 	data["has_lance"] = has_lance
@@ -411,6 +414,7 @@ func apply_save_data(data):
 	double_jump_unlocked = data.get("double_jump_unlocked", false)
 	ramp_unlocked = data.get("ramp_unlocked", false)
 	fire_buff_unlocked = data.get("fire_buff_unlocked", false)
+	air_buff_unlocked = data.get("air_buff_unlocked", false)
 	
 	has_key = data.get("has_key", false)
 	has_lance = data.get("has_lance", false)
@@ -568,6 +572,7 @@ func reinitialise():
 	can_fire_bone = false
 	can_camouflage = false
 	fire_buff_unlocked = false
+	air_buff_unlocked = false
 	
 	wood_collected = false
 	stone_collected = false

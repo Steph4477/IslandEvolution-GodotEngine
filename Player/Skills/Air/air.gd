@@ -7,7 +7,7 @@ var collected = false
 func _ready():
 	gs = get_node("/root/GameState")
 
-	if gs.fire_buff_unlocked:
+	if gs.air_buff_unlocked:
 		queue_free()
 	
 	col.disabled = true
@@ -21,5 +21,5 @@ func _on_area_2d_body_entered(body):
 
 	if body.is_in_group("Player"):
 		collected = true
-		body.collect_skills.collect_fire()
+		body.collect_skills.collect_air()
 		queue_free()

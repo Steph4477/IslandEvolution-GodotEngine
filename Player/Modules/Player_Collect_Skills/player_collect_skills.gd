@@ -114,7 +114,7 @@ func collect_air():
 	var first = not p.game_state.air_buff_unlocked
 
 	p.game_state.air_buff_unlocked = true
-	await p.play_anim("air_buff")
+	#await p.play_anim("air_buff")
 
 	if first:
 		p.popups_mod.show_info(" 🌀Tu peux maintenant utiliser le buff air !")

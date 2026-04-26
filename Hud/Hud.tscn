@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://c3waywbrqy860" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 [ext_resource type="Texture2D" uid="uid://b5niu77ancmy6" path="res://Interface/Breath_Bar/progress_bar.png" id="37_rg2xt"]
 [ext_resource type="Script" uid="uid://dbxy0leaaep4o" path="res://Hud/breath_bar.gd" id="39_63x2m"]
+[ext_resource type="Script" uid="uid://cwkyllyodjga4" path="res://Hud/air_buff.gd" id="44_legcx"]
 [ext_resource type="Texture2D" uid="uid://badnwx43ud68l" path="res://Hud/fire.png" id="44_wxm5k"]
 [ext_resource type="Script" uid="uid://cj01grb1f4s7r" path="res://Hud/fire_buff.gd" id="45_k3kan"]
 [ext_resource type="Texture2D" uid="uid://kdvis4b0nio7" path="res://Items/CheckBox/1.png" id="48_4dmrg"]
@@ -564,48 +565,8 @@ _data = {
 &"appear_camouflage": SubResource("Animation_legcx")
 }
 
-[sub_resource type="Animation" id="Animation_6yi51"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(147, 807)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_dd24r"]
-resource_name = "appear_fire"
+resource_name = "appear_air"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -616,7 +577,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(749, 302), Vector2(139.00002, 800)]
+"values": [Vector2(749, 302), Vector2(253, 803)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -645,8 +606,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_avv0v"]
 _data = {
-&"RESET": SubResource("Animation_6yi51"),
-&"appear_fire": SubResource("Animation_dd24r")
+&"appear_air": SubResource("Animation_dd24r")
 }
 
 [sub_resource type="Animation" id="Animation_63qk1"]
@@ -1591,12 +1551,24 @@ action = "ramping"
 libraries/ = SubResource("AnimationLibrary_avv0v")
 
 [node name="Fire" type="TouchScreenButton" parent="Gamepad" unique_id=1019016283]
-position = Vector2(147, 807)
+position = Vector2(139.00002, 800)
+rotation = 6.2831855
+scale = Vector2(0.120000005, 0.120000005)
 texture_normal = ExtResource("19_mhl4i")
 texture_pressed = ExtResource("20_legcx")
 action = "fire_buff"
 
 [node name="AnimFire" type="AnimationPlayer" parent="Gamepad/Fire" unique_id=1102742554]
+libraries/ = SubResource("AnimationLibrary_avv0v")
+
+[node name="Air" type="TouchScreenButton" parent="Gamepad" unique_id=1695551520]
+position = Vector2(749, 302)
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("19_mhl4i")
+texture_pressed = ExtResource("20_legcx")
+action = "fire_buff"
+
+[node name="AnimAir" type="AnimationPlayer" parent="Gamepad/Air" unique_id=1222352846]
 libraries/ = SubResource("AnimationLibrary_avv0v")
 
 [node name="Sprint" type="TouchScreenButton" parent="Gamepad" unique_id=322998859]
@@ -1828,6 +1800,28 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("44_wxm5k")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BuffContainer/FireBuff" unique_id=1113580750]
+layout_mode = 0
+offset_left = 62.999992
+offset_top = -5.9999924
+offset_right = 313.0
+offset_bottom = 54.000008
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("37_rg2xt")
+
+[node name="AirBuff" type="Control" parent="BarSlot/BuffContainer" unique_id=1981313556]
+layout_mode = 2
+script = ExtResource("44_legcx")
+
+[node name="TextureRect" type="TextureRect" parent="BarSlot/BuffContainer/AirBuff" unique_id=1519570993]
+layout_mode = 0
+offset_left = 6.0000005
+offset_right = 1030.0
+offset_bottom = 1024.0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("44_wxm5k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BuffContainer/AirBuff" unique_id=1654771645]
 layout_mode = 0
 offset_left = 62.999992
 offset_top = -5.9999924
@@ -2097,6 +2091,7 @@ texture = ExtResource("52_wfxx7")
 [connection signal="pressed" from="Gamepad/Camouflage" to="." method="_on_camouflage_pressed"]
 [connection signal="pressed" from="Gamepad/Ramp" to="." method="_on_ramp_pressed"]
 [connection signal="pressed" from="Gamepad/Fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="Gamepad/Air" to="." method="_on_fire_pressed"]
 [connection signal="pressed" from="Gamepad/Sprint" to="." method="_on_sprint_pressed"]
 [connection signal="pressed" from="Gamepad/Switch" to="." method="_on_switch_pressed"]
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]

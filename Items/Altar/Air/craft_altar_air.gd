@@ -5,7 +5,7 @@ var player = null
 var gs
 var is_crafting = false
 var missing_feedback_locked = false
-var air_skill_scene = preload("res://Player/Skills/Fire/fire.tscn")
+var air_skill_scene = preload("res://Player/Skills/Air/air.tscn")
 var air_skill_spawned = false
 var air_spawn_position = Vector2.ZERO
 

@@ -21,7 +21,7 @@ size = Vector2(312.20395, 53.526)
 [node name="Node2D" type="Node2D" parent="." unique_id=1402871080]
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=157147786]
-position = Vector2(1204, 1111)
+position = Vector2(2248, 1166)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=582993913]
 
@@ -68,10 +68,10 @@ position = Vector2(2558, 1413)
 position = Vector2(2417, 1479)
 
 [node name="IdoleAirItem" parent="." unique_id=1590480496 instance=ExtResource("8_vefbu")]
-position = Vector2(2987, 1392)
+position = Vector2(2915, 1398)
 
 [node name="LeafItem" parent="." unique_id=461046401 instance=ExtResource("9_4khab")]
 position = Vector2(2785, 1408)
 
 [node name="CraftAltarAir" parent="." unique_id=989838508 instance=ExtResource("6_uvrdr")]
-position = Vector2(2671, 765)
+position = Vector2(2698, 671)

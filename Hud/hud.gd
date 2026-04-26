@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var bone_button = $Gamepad/Bone
 @onready var camouflage_button = $Gamepad/Camouflage
 @onready var fire_button = $Gamepad/Fire
+@onready var air_button = $Gamepad/Air
 
 @onready var pause_button = $Gamepad/Break
 @onready var break_sprite = get_node_or_null("BreakSprite")
@@ -32,6 +33,7 @@ extends CanvasLayer
 @onready var speed_bar = $BarSlot/SpeedBar
 @onready var buff_container = $BarSlot/BuffContainer
 @onready var fire_buff = $BarSlot/BuffContainer/FireBuff
+@onready var air_buff = $BarSlot/BuffContainer/AirBuff
 
 @onready var skill_selector = $Gamepad/SkillSelector
 @onready var heal_selector = $Gamepad/HealSelector
@@ -47,6 +49,7 @@ extends CanvasLayer
 @onready var anim_honey = get_node_or_null("Gamepad/Honey/AnimHoney")
 @onready var anim_camouflage = get_node_or_null("Gamepad/Camouflage/AnimCamouflage")
 @onready var anim_fire = get_node_or_null("Gamepad/Fire/AnimFire")
+@onready var anim_air = get_node_or_null("Gamepad/Air/AnimAir")
 @onready var anim_ramp = get_node_or_null("Gamepad/Ramp/AnimRamp")
 @onready var anim_sprint = get_node_or_null("Gamepad/Sprint/AnimSprint")
 
@@ -109,6 +112,7 @@ func _ready():
 	honey_button.visible = false
 	ramp_button.visible = false
 	fire_button.visible = false
+	air_button.visible = false
 	sprint_button.visible = false
 
 	if banane_hbox:
@@ -137,7 +141,8 @@ func _ready():
 	set_button_enabled(bone_button, false)
 	set_button_enabled(camouflage_button, false)
 	set_button_enabled(fire_button, false)
-
+	set_button_enabled(air_button, false)
+	
 	update_lives_display(gs.lives)
 	update_lance_display()
 	update_bone_display()
@@ -146,6 +151,7 @@ func _ready():
 	update_coco_display()
 	update_camouflage_display()
 	update_fire_display()
+	update_air_display()
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
 	if gs.coco_count > 0 or gs.can_fire_coco:
@@ -171,6 +177,10 @@ func _ready():
 	if gs.fire_buff_unlocked:
 		_show_fire()
 		update_fire_display()
+
+	if gs.air_buff_unlocked:
+		_show_air()
+		update_air_display()
 	
 	if gs.bone_count > 0 or gs.can_fire_bone:
 		_show_bone()
@@ -250,6 +260,10 @@ func _show_camouflage():
 func _show_fire():
 	fire_button.visible = true
 	update_fire_display()
+
+func _show_air():
+	air_button.visible = true
+	update_air_display()
 
 # -----------------------------
 #        BUFF HUD
@@ -510,6 +524,14 @@ func update_fire_display():
 	fire_button.visible = true
 	set_button_enabled(fire_button, true)
 
+func update_air_display():
+	if not gs.air_buff_unlocked:
+		set_button_enabled(air_button, false)
+		return
+
+	air_button.visible = true
+	set_button_enabled(air_button, true)
+
 
 ######################################################################
 #              QUETES MAITRISE DES ELEMENTS                          #
@@ -719,6 +741,13 @@ func appear_fire():
 	if anim_fire:
 		anim_fire.stop()
 		anim_fire.play("appear_fire")
+
+func appear_air():
+	_show_air()
+	update_air_display()
+	if anim_air:
+		anim_air.stop()
+		anim_air.play("appear_air")
 
 func anim_to_health_mode():
 	appear_health()
