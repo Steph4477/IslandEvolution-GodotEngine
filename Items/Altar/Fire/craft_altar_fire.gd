@@ -14,6 +14,7 @@ var fire_spawn_position = Vector2.ZERO
 @onready var fire_left = $FireLeft
 @onready var fire_right = $FireRight
 
+
 func _ready():
 	game_state = get_node("/root/GameState")
 	fire_top.visible = false

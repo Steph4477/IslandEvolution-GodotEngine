@@ -117,6 +117,9 @@ radius = 40
 position = Vector2(818, 370)
 color = Color(0.039215688, 0.5803922, 0.68235296, 0.4509804)
 
+[node name="SpawnSkill" type="Marker2D" parent="." unique_id=825542756]
+position = Vector2(846, 660)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

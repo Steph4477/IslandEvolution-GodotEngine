@@ -51,11 +51,7 @@ func show_missing_elements_feedback():
 
 func start_craft_animation():
 	is_crafting = true
-	air_spawn_position = global_position + Vector2(0, -40)
-
-	if player:
-		air_spawn_position = player.global_position + Vector2(0, -40)
-
+	air_spawn_position = $SpawnSkill.global_position
 	anim_player.play("craft_fire")
 
 func spawn_air_skill():
