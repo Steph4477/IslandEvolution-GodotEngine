@@ -2,7 +2,7 @@ extends Node2D
 
 var player_in_zone = false
 var player = null
-var game_state
+var gs
 var is_crafting = false
 var missing_feedback_locked = false
 var fire_skill_scene = preload("res://Player/Skills/Fire/fire.tscn")
@@ -10,14 +10,11 @@ var fire_skill_spawned = false
 var fire_spawn_position = Vector2.ZERO
 
 @onready var anim_player = $AnimationPlayer
-@onready var fire_top = $FireTop
 @onready var fire_left = $FireLeft
 @onready var fire_right = $FireRight
 
-
 func _ready():
-	game_state = get_node("/root/GameState")
-	fire_top.visible = false
+	gs = get_node("/root/GameState")
 	fire_left.visible = false
 	fire_right.visible = false
 
@@ -26,7 +23,7 @@ func _process(_delta):
 		try_craft()
 
 func can_craft_fire():
-	if game_state.wood_collected and game_state.stone_collected and game_state.fire_recipe_unlocked:
+	if gs.wood_collected and gs.stone_collected and gs.fire_recipe_unlocked:
 		return true
 
 	return false
@@ -54,11 +51,7 @@ func show_missing_elements_feedback():
 
 func start_craft_animation():
 	is_crafting = true
-	fire_spawn_position = global_position + Vector2(0, -40)
-
-	if player:
-		fire_spawn_position = player.global_position + Vector2(0, -40)
-
+	fire_spawn_position = $SpawnSkill.global_position
 	anim_player.play("craft_fire")
 
 func spawn_fire_skill():
@@ -77,10 +70,10 @@ func _on_area_2d_body_entered(body):
 		player = body
 		body.popups_mod.show_info('Appuie sur "E" pour utiliser l’autel')
 
-		if not game_state.fire_altar_found:
-			game_state.fire_altar_found = true
-			if game_state.hud:
-				game_state.hud.update_fire_craft_checklist()
+		if not gs.fire_altar_found:
+			gs.fire_altar_found = true
+			if gs.hud:
+				gs.hud.update_fire_craft_checklist()
 
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("Player"):
