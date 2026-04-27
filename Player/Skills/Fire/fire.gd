@@ -2,9 +2,11 @@ extends Node2D
 
 var gs
 var collected = false
-@onready var col = $Path2D/PathFollow2D/Area2D/CollisionShape2D
+@onready var col = $Area2D/CollisionShape2D
+@onready var anim = $AnimationPlayer
 
 func _ready():
+	anim.play("appear_skill_fire")
 	gs = get_node("/root/GameState")
 
 	if gs.fire_buff_unlocked:
