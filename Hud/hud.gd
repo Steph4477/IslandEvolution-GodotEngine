@@ -186,7 +186,7 @@ func _ready():
 		_show_bone()
 		update_bone_display()
 
-	for b in [ramp_button, sprint_button, coco_button, lance_button, health_button, honey_button, bone_button, camouflage_button, fire_button]:
+	for b in [ramp_button, sprint_button, coco_button, lance_button, health_button, honey_button, bone_button, camouflage_button, fire_button, air_button]:
 		b.action = ""
 
 	if break_sprite:
@@ -278,6 +278,7 @@ func _hide_all_buffs():
 	if bar_slot and bar_slot.has_method("hide_buffs"):
 		bar_slot.hide_buffs()
 
+# --- Fire ---
 func show_fire_buff(duration):
 	if fire_buff and fire_buff.has_method("show_buff"):
 		fire_buff.show_buff(duration)
@@ -295,6 +296,25 @@ func hide_fire_buff():
 func update_fire_buff_timer(time_left, duration):
 	if fire_buff and fire_buff.has_method("update_timer"):
 		fire_buff.update_timer(time_left, duration)
+
+# --- Air ---
+func show_air_buff(duration):
+	if air_buff and air_buff.has_method("show_buff"):
+		air_buff.show_buff(duration)
+
+	if bar_slot and bar_slot.has_method("show_buffs"):
+		bar_slot.show_buffs()
+
+func hide_air_buff():
+	if air_buff and air_buff.has_method("hide_buff"):
+		air_buff.hide_buff()
+
+	if bar_slot and bar_slot.has_method("hide_buffs"):
+		bar_slot.hide_buffs()
+
+func update_air_buff_timer(time_left, duration):
+	if air_buff and air_buff.has_method("update_timer"):
+		air_buff.update_timer(time_left, duration)
 
 
 # -----------------------------
@@ -802,3 +822,6 @@ func set_pause_visual(paused):
 
 func _on_fire_pressed():
 	gs.player.fire_buff_mod.activate_fire_buff()
+
+func _on_air_pressed():
+	gs.player.air_buff_mod.activate_air_buff()
