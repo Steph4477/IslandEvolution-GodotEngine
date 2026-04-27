@@ -16,6 +16,7 @@ const INPUT = {
 	"sprint": "sprint",
 	"camouflage": "camouflage",
 	"fire_buff": "fire_buff",        # F (InputMap)
+	"air_buff": "air_buff",          # A (InputMap)
 
 	# --- Gameplay jet ---
 	"throw_mode": "throw_mode",      # L (InputMap)
@@ -82,6 +83,7 @@ var skills_mod
 var animation_mod
 var popups_mod
 var fire_buff_mod
+var air_buff_mod
 
 var can_move = true
 var can_be_damaged = true
@@ -144,6 +146,10 @@ var is_attacking = false
 # --- fire buff ---
 var fire_buff_active = false
 @export var fire_buff_duration = 8.0
+
+# --- air buff ---
+var air_buff_active = false
+@export var air_buff_duration = 8.0
 
 # --- Camouflage ---
 var can_camouflage = false
@@ -261,6 +267,7 @@ func _ready():
 	setup_damage_module()
 	setup_effects_module()
 	setup_fire_buff_module()
+	setup_air_buff_module()
 	setup_heal_module()
 	setup_animation_module()
 	setup_movement_module()
@@ -339,7 +346,12 @@ func setup_fire_buff_module():
 	fire_buff_mod = preload("res://Player/Modules/Player_Fire_Buff/player_fire_buff.gd").new()
 	add_child(fire_buff_mod)
 	fire_buff_mod.setup(self)
-	
+
+func setup_air_buff_module():
+	air_buff_mod = preload("res://Player/Modules/Player_Air_Buff/player_air_buff.gd").new()
+	add_child(air_buff_mod)
+	air_buff_mod.setup(self)
+
 func setup_heal_module():
 	heal_mod = preload("res://Player/Modules/Player_Heal/player_heal.gd").new()
 	add_child(heal_mod)

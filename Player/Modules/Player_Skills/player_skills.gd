@@ -162,8 +162,9 @@ func stop_camouflage():
 	p.hud_mod.refresh_hud_buttons()
 
 # ============================================================================
-#                                 FIRE BUFF
+#                                 BUFF
 # ============================================================================
+# --- Fire ___
 func process_fire_buff():
 	if Input.is_action_just_pressed(p.INPUT["fire_buff"]):
 		use_fire_buff()
@@ -180,3 +181,21 @@ func use_fire_buff():
 
 	p.fire_buff_mod.activate_fire_buff()
 	p.popups_mod.show_info("🔥 Buff feu activé !")
+
+# --- Air ---
+func process_air_buff():
+	if Input.is_action_just_pressed(p.INPUT["air_buff"]):
+		use_fire_buff()
+
+func use_air_buff():
+	if not p.game_state:
+		return
+	if not p.game_state.air_buff_unlocked:
+		return
+	if p.air_buff_active:
+		return
+	if p.air_buff_mod == null:
+		return
+
+	p.air_buff_mod.activate_air_buff()
+	p.popups_mod.show_info("🌀 Buff air activé !")
