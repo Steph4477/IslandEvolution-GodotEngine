@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://cidw4mqlr5wka" path="res://Interface/gamePad/fire.png" id="19_mhl4i"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Healt_Bar/health_bar.gd" id="19_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://bcjanwneyrma" path="res://Interface/gamePad/Pressed/fire.png" id="20_legcx"]
+[ext_resource type="Texture2D" uid="uid://8xhj4q35rg10" path="res://Interface/gamePad/air.png" id="21_63qk1"]
+[ext_resource type="Texture2D" uid="uid://b0wt351ycqkuj" path="res://Interface/gamePad/Pressed/air.png" id="22_dd24r"]
 [ext_resource type="Texture2D" uid="uid://gynxfgu6u88u" path="res://Interface/gamePad/sprint.png" id="22_f2ifn"]
 [ext_resource type="PackedScene" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
 [ext_resource type="Texture2D" uid="uid://jdg5q4ytqgxl" path="res://Interface/gamePad/switch.png" id="23_3qhmc"]
@@ -50,6 +52,7 @@
 [ext_resource type="Script" uid="uid://cwkyllyodjga4" path="res://Hud/air_buff.gd" id="44_legcx"]
 [ext_resource type="Texture2D" uid="uid://badnwx43ud68l" path="res://Hud/fire.png" id="44_wxm5k"]
 [ext_resource type="Script" uid="uid://cj01grb1f4s7r" path="res://Hud/fire_buff.gd" id="45_k3kan"]
+[ext_resource type="Texture2D" uid="uid://11niotdcwhpk" path="res://Hud/air.png" id="47_dd24r"]
 [ext_resource type="Texture2D" uid="uid://kdvis4b0nio7" path="res://Items/CheckBox/1.png" id="48_4dmrg"]
 [ext_resource type="Texture2D" uid="uid://b4cce4aifqhnv" path="res://Items/CheckBox/empty.png" id="48_ogbjv"]
 [ext_resource type="Texture2D" uid="uid://73im6p421lte" path="res://Items/CheckBox/3.png" id="49_4dmrg"]
@@ -480,48 +483,9 @@ _data = {
 &"appear_honey": SubResource("Animation_wfxx7")
 }
 
-[sub_resource type="Animation" id="Animation_eqavf"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(201, 710)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.12, 0.12)]
-}
-
 [sub_resource type="Animation" id="Animation_legcx"]
 resource_name = "appear_camouflage"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -532,7 +496,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(818.00006, 388), Vector2(201, 710)]
+"values": [Vector2(818.00006, 388), Vector2(1606, 774)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -556,17 +520,16 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.12, 0.12)]
+"values": [Vector2(0.3, 0.3), Vector2(0.11, 0.11)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x6mpx"]
 _data = {
-&"RESET": SubResource("Animation_eqavf"),
 &"appear_camouflage": SubResource("Animation_legcx")
 }
 
-[sub_resource type="Animation" id="Animation_dd24r"]
-resource_name = "appear_air"
+[sub_resource type="Animation" id="Animation_eqavf"]
+resource_name = "appear_ramp"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -577,7 +540,52 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(749, 302), Vector2(253, 803)]
+"values": [Vector2(748, 299), Vector2(1576, 896)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.2831855, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ll21l"]
+_data = {
+&"appear_ramp": SubResource("Animation_eqavf")
+}
+
+[sub_resource type="Animation" id="Animation_dd24r"]
+resource_name = "appear_fire"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(729, 294), Vector2(137.99998, 801)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -601,16 +609,15 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.45, 0.45), Vector2(0.12, 0.12)]
+"values": [Vector2(0.43, 0.43), Vector2(0.12, 0.12)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_avv0v"]
 _data = {
-&"appear_air": SubResource("Animation_dd24r")
+&"appear_fire": SubResource("Animation_dd24r")
 }
 
 [sub_resource type="Animation" id="Animation_63qk1"]
-resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -622,7 +629,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(618, 915)]
+"values": [Vector2(729, 294)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -646,7 +653,53 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.43, 0.43)]
+}
+
+[sub_resource type="Animation" id="Animation_6yi51"]
+resource_name = "appear_air"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(729, 294), Vector2(200, 692)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.43, 0.43), Vector2(0.12, 0.12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1uhjb"]
+_data = {
+&"RESET": SubResource("Animation_63qk1"),
+&"appear_air": SubResource("Animation_6yi51")
 }
 
 [sub_resource type="Animation" id="Animation_ll21l"]
@@ -661,7 +714,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782, 307), Vector2(1567, 907)]
+"values": [Vector2(782, 307), Vector2(1744, 733)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -690,7 +743,6 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6yi51"]
 _data = {
-&"RESET": SubResource("Animation_63qk1"),
 &"appear_sprint": SubResource("Animation_ll21l")
 }
 
@@ -1463,12 +1515,11 @@ texture_normal = ExtResource("8_wb1yk")
 texture_pressed = ExtResource("9_f2ifn")
 action = "ui_cancel"
 
-[node name="BoneCountLabel" type="Label" parent="Gamepad/Bone" unique_id=138850512]
-modulate = Color(1, 1, 1, 0)
-offset_left = 94.0
-offset_top = 74.99998
-offset_right = 104.0
-offset_bottom = 97.99998
+[node name="BoneCountLabel" type="Label" parent="Gamepad/Bone" unique_id=798739666]
+offset_left = 96.36365
+offset_top = 80.00004
+offset_right = 106.36365
+offset_bottom = 103.00004
 text = "0"
 
 [node name="AnimBone" type="AnimationPlayer" parent="Gamepad/Bone" unique_id=1107833409]
@@ -1512,8 +1563,9 @@ text = "0"
 libraries/ = SubResource("AnimationLibrary_wu565")
 
 [node name="Camouflage" type="TouchScreenButton" parent="Gamepad" unique_id=2051500428]
-position = Vector2(201, 710)
-scale = Vector2(0.12, 0.12)
+position = Vector2(818.00006, 388)
+rotation = 6.2831855
+scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("14_akioh")
 action = "ui_accept"
 
@@ -1528,10 +1580,10 @@ text = "0"
 [node name="coolDownCircle" type="TextureProgressBar" parent="Gamepad/Camouflage" unique_id=1228205795]
 visible = false
 z_index = 50
-offset_left = -39.911316
-offset_top = -46.086803
-offset_right = 984.0886
-offset_bottom = 1125.5509
+offset_left = -50.000046
+offset_top = -50.000175
+offset_right = 973.9999
+offset_bottom = 1121.6376
 scale = Vector2(1.0745693, 0.94911045)
 value = 100.0
 fill_mode = 5
@@ -1542,18 +1594,17 @@ texture_progress = ExtResource("16_b0qj5")
 libraries/ = SubResource("AnimationLibrary_x6mpx")
 
 [node name="Ramp" type="TouchScreenButton" parent="Gamepad" unique_id=770319580]
-position = Vector2(147, 807)
+position = Vector2(1576, 896)
 texture_normal = ExtResource("14_e8y56")
 texture_pressed = ExtResource("15_s8lhr")
 action = "ramping"
 
-[node name="AnimRamp" type="AnimationPlayer" parent="Gamepad/Ramp" unique_id=1654074173]
-libraries/ = SubResource("AnimationLibrary_avv0v")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gamepad/Ramp" unique_id=701637377]
+libraries/ = SubResource("AnimationLibrary_ll21l")
 
 [node name="Fire" type="TouchScreenButton" parent="Gamepad" unique_id=1019016283]
-position = Vector2(139.00002, 800)
-rotation = 6.2831855
-scale = Vector2(0.120000005, 0.120000005)
+position = Vector2(729, 294)
+scale = Vector2(0.43, 0.43)
 texture_normal = ExtResource("19_mhl4i")
 texture_pressed = ExtResource("20_legcx")
 action = "fire_buff"
@@ -1562,17 +1613,19 @@ action = "fire_buff"
 libraries/ = SubResource("AnimationLibrary_avv0v")
 
 [node name="Air" type="TouchScreenButton" parent="Gamepad" unique_id=1695551520]
-position = Vector2(749, 302)
-scale = Vector2(0.45, 0.45)
-texture_normal = ExtResource("19_mhl4i")
-texture_pressed = ExtResource("20_legcx")
-action = "fire_buff"
+position = Vector2(729, 294)
+scale = Vector2(0.43, 0.43)
+texture_normal = ExtResource("21_63qk1")
+texture_pressed = ExtResource("22_dd24r")
+action = "air_buff"
 
-[node name="AnimAir" type="AnimationPlayer" parent="Gamepad/Air" unique_id=1222352846]
-libraries/ = SubResource("AnimationLibrary_avv0v")
+[node name="AnimAir" type="AnimationPlayer" parent="Gamepad/Air" unique_id=689361633]
+libraries/ = SubResource("AnimationLibrary_1uhjb")
 
 [node name="Sprint" type="TouchScreenButton" parent="Gamepad" unique_id=322998859]
-position = Vector2(618, 915)
+position = Vector2(782, 307)
+rotation = 6.2831855
+scale = Vector2(4, 4)
 texture_normal = ExtResource("16_8k643")
 texture_pressed = ExtResource("17_f7l5a")
 action = "sprint"
@@ -1815,17 +1868,18 @@ script = ExtResource("44_legcx")
 
 [node name="TextureRect" type="TextureRect" parent="BarSlot/BuffContainer/AirBuff" unique_id=1519570993]
 layout_mode = 0
-offset_left = 6.0000005
-offset_right = 1030.0
-offset_bottom = 1024.0
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("44_wxm5k")
+offset_left = -13.0
+offset_top = -17.0
+offset_right = 1011.0
+offset_bottom = 1007.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("47_dd24r")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BuffContainer/AirBuff" unique_id=1654771645]
 layout_mode = 0
-offset_left = 62.999992
+offset_left = 58.999992
 offset_top = -5.9999924
-offset_right = 313.0
+offset_right = 309.0
 offset_bottom = 54.000008
 value = 100.0
 nine_patch_stretch = true
@@ -1900,13 +1954,10 @@ label_settings = SubResource("LabelSettings_rg2xt")
 uppercase = true
 
 [node name="FireCraftChecklist" type="VBoxContainer" parent="." unique_id=511074019]
-visible = false
-offset_left = 804.0
-offset_top = 440.0
-offset_right = 1003.9924
-offset_bottom = 624.00214
-rotation = -6.2831855
-scale = Vector2(2, 2)
+offset_left = 1556.0
+offset_top = 239.0
+offset_right = 1755.9924
+offset_bottom = 423.00208
 theme_override_constants/separation = 6
 
 [node name="WoodRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=79236682]
@@ -2091,7 +2142,7 @@ texture = ExtResource("52_wfxx7")
 [connection signal="pressed" from="Gamepad/Camouflage" to="." method="_on_camouflage_pressed"]
 [connection signal="pressed" from="Gamepad/Ramp" to="." method="_on_ramp_pressed"]
 [connection signal="pressed" from="Gamepad/Fire" to="." method="_on_fire_pressed"]
-[connection signal="pressed" from="Gamepad/Air" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="Gamepad/Air" to="." method="_on_air_pressed"]
 [connection signal="pressed" from="Gamepad/Sprint" to="." method="_on_sprint_pressed"]
 [connection signal="pressed" from="Gamepad/Switch" to="." method="_on_switch_pressed"]
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]
