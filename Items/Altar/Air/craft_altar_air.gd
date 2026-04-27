@@ -9,14 +9,16 @@ var air_skill_scene = preload("res://Player/Skills/Air/air.tscn")
 var air_skill_spawned = false
 var air_spawn_position = Vector2.ZERO
 
-@onready var anim_player = $AnimationPlayer
-@onready var fire_left = $FireLeft
-@onready var fire_right = $FireRight
+@onready var tornad_anim = $TornadAnim
+@onready var craft_anim = $CraftAnim
+@onready var left_tornad = $LeftTornad
+@onready var right_tornad = $RightTornad
+@onready var spawn_skill = $SpawnSkill
 
 func _ready():
 	gs = get_node("/root/GameState")
-	fire_left.visible = false
-	fire_right.visible = false
+	left_tornad.visible = false
+	right_tornad.visible = false
 
 func _process(_delta):
 	if player_in_zone and Input.is_action_just_pressed("interact"):
@@ -30,6 +32,9 @@ func can_craft_air():
 
 func try_craft():
 	if is_crafting:
+		return
+
+	if air_skill_spawned:
 		return
 
 	if can_craft_air():
@@ -51,8 +56,18 @@ func show_missing_elements_feedback():
 
 func start_craft_animation():
 	is_crafting = true
-	air_spawn_position = $SpawnSkill.global_position
-	anim_player.play("craft_fire")
+	air_spawn_position = spawn_skill.global_position
+
+	left_tornad.visible = true
+	tornad_anim.play("tornad_spin")
+
+	await get_tree().create_timer(0.4).timeout
+
+	craft_anim.play("craft_fire")
+
+	await get_tree().create_timer(0.4).timeout
+
+	right_tornad.visible = true
 
 func spawn_air_skill():
 	if air_skill_spawned:
@@ -80,7 +95,7 @@ func _on_area_2d_body_exited(body):
 		player_in_zone = false
 		player = null
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_craft_anim_animation_finished(anim_name):
 	if anim_name == "craft_fire":
 		is_crafting = false
 		on_craft_animation_finished()

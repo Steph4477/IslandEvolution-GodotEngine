@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://bv3clh3sf8uoe"]
 
 [ext_resource type="Script" uid="uid://75tgq4mtg3hl" path="res://Items/Altar/Air/craft_altar_air.gd" id="1_4o0w6"]
+[ext_resource type="Texture2D" uid="uid://cp6quuaf221up" path="res://Items/Altar/Air/Tornad/1.png" id="3_ppqe3"]
 [ext_resource type="Texture2D" uid="uid://xxfu5bspwm1" path="res://Items/Altar/Air/1.png" id="3_ul8ed"]
 [ext_resource type="Texture2D" uid="uid://c5146431tcrne" path="res://Items/Altar/Air/2.png" id="4_ppqe3"]
-[ext_resource type="PackedScene" uid="uid://bcleaa6gwlx7s" path="res://Items/Altar/Fire/fire.tscn" id="6_knuyg"]
+[ext_resource type="Texture2D" uid="uid://c514pib2e540c" path="res://Items/Altar/Air/Tornad/2.png" id="5_qstik"]
+[ext_resource type="Texture2D" uid="uid://dhtahmlqou2xw" path="res://Items/Altar/Air/Tornad/3.png" id="6_0lyhc"]
+[ext_resource type="Texture2D" uid="uid://dew4i8otvnyom" path="res://Items/Altar/Air/Tornad/4.png" id="7_knuyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqxwx"]
 size = Vector2(113, 276.75)
@@ -13,7 +16,81 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Altar:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ul8ed")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftTornad:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ppqe3")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightTornad:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ppqe3")]
+}
+
+[sub_resource type="Animation" id="Animation_dpetd"]
+resource_name = "tornad_spin"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftTornad:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_ppqe3"), ExtResource("5_qstik"), ExtResource("6_0lyhc"), ExtResource("7_knuyg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightTornad:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_ppqe3"), ExtResource("5_qstik"), ExtResource("6_0lyhc"), ExtResource("7_knuyg")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wec7v"]
+_data = {
+&"RESET": SubResource("Animation_307dy"),
+&"tornad_spin": SubResource("Animation_dpetd")
+}
+
+[sub_resource type="Animation" id="Animation_ul8ed"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Altar:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,60 +100,46 @@ tracks/0/keys = {
 "values": [ExtResource("3_ul8ed")]
 }
 
-[sub_resource type="Animation" id="Animation_g42ta"]
+[sub_resource type="Animation" id="Animation_ppqe3"]
 resource_name = "craft_fire"
-length = 1.4
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Altar:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("3_ul8ed"), ExtResource("4_ppqe3")]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FireLeft:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FireRight:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wec7v"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qstik"]
 _data = {
-&"RESET": SubResource("Animation_307dy"),
-&"craft_fire": SubResource("Animation_g42ta")
+&"RESET": SubResource("Animation_ul8ed"),
+&"craft_fire": SubResource("Animation_ppqe3")
 }
 
 [node name="CraftAltarAir" type="Node2D" unique_id=989838508]
 script = ExtResource("1_4o0w6")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=657885720]
+[node name="Altar" type="Sprite2D" parent="." unique_id=657885720]
 modulate = Color(0.8329021, 0.83290213, 0.83290213, 1)
 position = Vector2(831, 597)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_ul8ed")
+
+[node name="LeftTornad" type="Sprite2D" parent="." unique_id=1376432998]
+position = Vector2(525, 571)
+scale = Vector2(0.35, 0.27)
+texture = ExtResource("3_ppqe3")
+
+[node name="RightTornad" type="Sprite2D" parent="." unique_id=1101910303]
+position = Vector2(1147, 570.00006)
+scale = Vector2(0.35, 0.27)
+texture = ExtResource("3_ppqe3")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=843639088]
 
@@ -84,42 +147,15 @@ texture = ExtResource("3_ul8ed")
 position = Vector2(841.5, 767.625)
 shape = SubResource("RectangleShape2D_yqxwx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1607896439]
+[node name="TornadAnim" type="AnimationPlayer" parent="." unique_id=1607896439]
 libraries/ = SubResource("AnimationLibrary_wec7v")
-
-[node name="FireLeft" type="Node2D" parent="." unique_id=1765328215]
-visible = false
-position = Vector2(-1193, -433.00003)
-scale = Vector2(1.5, 1.5)
-
-[node name="2" parent="FireLeft" unique_id=2107376780 instance=ExtResource("6_knuyg")]
-position = Vector2(1334.6666, 546.8461)
-scale = Vector2(0.99999994, 1)
-color = Color(0.039215688, 0.5803922, 0.68235296, 0.4509804)
-radius = 40
-
-[node name="1" parent="FireLeft" unique_id=963392716 instance=ExtResource("6_knuyg")]
-position = Vector2(1334.6666, 563.8461)
-scale = Vector2(0.99999994, 1)
-color = Color(0.039215688, 0.5803922, 0.68235296, 0.4509804)
-
-[node name="FireRight" type="Node2D" parent="." unique_id=1992544032]
-visible = false
-position = Vector2(199.00002, -154)
-scale = Vector2(1.5, 1.5)
-
-[node name="2" parent="FireRight" unique_id=575346635 instance=ExtResource("6_knuyg")]
-position = Vector2(818, 353)
-color = Color(0.039215688, 0.5803922, 0.68235296, 0.4509804)
-radius = 40
-
-[node name="1" parent="FireRight" unique_id=1146522447 instance=ExtResource("6_knuyg")]
-position = Vector2(818, 370)
-color = Color(0.039215688, 0.5803922, 0.68235296, 0.4509804)
 
 [node name="SpawnSkill" type="Marker2D" parent="." unique_id=825542756]
 position = Vector2(846, 660)
 
+[node name="CraftAnim" type="AnimationPlayer" parent="." unique_id=1866785792]
+libraries/ = SubResource("AnimationLibrary_qstik")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="CraftAnim" to="." method="_on_craft_anim_animation_finished"]
