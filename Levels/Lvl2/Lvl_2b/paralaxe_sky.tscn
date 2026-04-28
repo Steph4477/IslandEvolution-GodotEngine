@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://0nnxjschrg38"]
 
-[ext_resource type="Script" path="res://Levels/Lvl1/Environement/parallax_layer_ciel.gd" id="1_xs1ef"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="2_eje0a"]
+[ext_resource type="Script" uid="uid://dxfidt764bcqk" path="res://Levels/Lvl1/Environement/parallax_layer_ciel.gd" id="1_xs1ef"]
+[ext_resource type="Texture2D" uid="uid://b2rojenu8t6kv" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="2_eje0a"]
 
-[node name="ParalaxeCiel" type="Node2D"]
+[node name="ParalaxeCiel" type="Node2D" unique_id=634175650]
 modulate = Color(0.7385896, 0.7385896, 0.7385896, 1)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=375898716]
 
-[node name="ParallaxLayer_ciel" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer_ciel" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1020591321]
 position = Vector2(789, -4319)
 scale = Vector2(0.5, 0.5)
 motion_scale = Vector2(0.1, 0.1)
 script = ExtResource("1_xs1ef")
 
-[node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_ciel"]
-position = Vector2(462, 10024)
+[node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_ciel" unique_id=1316084023]
+position = Vector2(1990, 10272.001)
 scale = Vector2(5.22005, 4.46484)
 texture = ExtResource("2_eje0a")
