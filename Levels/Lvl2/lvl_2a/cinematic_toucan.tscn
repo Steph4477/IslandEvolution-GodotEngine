@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cipl0ejt1mo1h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8506"]
+bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)
+
+[node name="CinematicToucan" type="Node2D" unique_id=1292113916]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2118893613]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=372999689]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Box" type="Panel" parent="." unique_id=912011851]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 66.0
+offset_top = 831.0
+offset_right = 66.0
+offset_bottom = 1051.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8506")
+
+[node name="MarginContainer" type="MarginContainer" parent="Box" unique_id=1320734871]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 40.0
+offset_right = 1499.0
+offset_bottom = 163.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Text" type="RichTextLabel" parent="Box/MarginContainer" unique_id=1210367008]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1495431345]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1685050383]

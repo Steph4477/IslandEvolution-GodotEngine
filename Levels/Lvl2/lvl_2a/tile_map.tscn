@@ -1,0 +1,43 @@
+[gd_scene format=4 uid="uid://quhodd6dw16j"]
+
+[ext_resource type="TileSet" uid="uid://cemt1gubeih8b" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="1_ljkky"]
+
+[sub_resource type="GDScript" id="GDScript_v3f2j"]
+script/source = "extends Node2D
+
+#@onready var tilemap := $TileMapLayer
+#@onready var player := get_node(\"/root/GameState/player\")  # adapte ce chemin si besoin
+#
+#func _ready():
+	#tilemap.scale = Vector2(1.0 / 3.0, 1.0 / 3.0)
+#
+	## Repositionner le TileMap sous les pieds du joueur
+	#tilemap.global_position = player.global_position
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvf4m"]
+
+[node name="TileMap" type="Node2D" unique_id=461574970]
+scale = Vector2(1, -1)
+script = SubResource("GDScript_v3f2j")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1179294818]
+scale = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=984521392]
+scale = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_dvf4m")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1028111031]
+position = Vector2(-7002, -366)
+rotation = 3.1415927
+scale = Vector2(-1, 1)
+tile_map_data = PackedByteArray("AAC/AR0AEQAAAAAAAADKAf3/AQAAAAAAAADUAR0AEQAAAAAAAADpAfP/EQAAAAAAAADpAQgAEwAAAAAAAADpAR0AEQAAAAAAAAD+AfP/EQAAAAAAAAD+AQgAEgAAAAAAABD+AR0AEQAAAAAAAAATAvP/EQAAAAAAAAATAggAEgAAAAAAAAATAh0AEQAAAAAAAAAoAvP/EQAAAAAAAAAoAggAEwAAAAAAAAAoAh0AEQAAAAAAAAA9AvP/EQAAAAAAAAA9AggAEgAAAAAAABA9Ah0AEQAAAAAAAABSAvP/EQAAAAAAAABSAggAEgAAAAAAAABSAh0AEQAAAAAAAAA=")
+tile_set = ExtResource("1_ljkky")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1074956439]
+z_index = 3
+position = Vector2(-2195, 112)
+scale = Vector2(-1, 1)
+tile_map_data = PackedByteArray("AADb/sT/BgAAAAAAAADb/tz/BgAAAAAAAADb/vT/BgAAAAAAAADf/rb/CAAAAAAAADD0/rb/CAAAAAAAADAJ/7b/CAAAAAAAADAe/7b/CAAAAAAAADAz/7b/CAAAAAAAADBI/7b/CAAAAAAAADBd/7b/CAAAAAAAADBy/7b/CAAAAAAAADB0/8X/BgAAAAAAAAB0/93/BgAAAAAAAAB0//X/BgAAAAAAAAA=")
+tile_set = ExtResource("1_ljkky")

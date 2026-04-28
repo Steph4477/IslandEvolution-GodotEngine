@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://b0fg4xa2sdcx8"]
+
+[ext_resource type="Script" uid="uid://dr55tn71k7w0e" path="res://Levels/Lvl2/lvl_2a/lvl_2a.gd" id="1_36v5b"]
+[ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="3_fftrx"]
+[ext_resource type="PackedScene" path="res://ItemsDecors/Torch/torch.tscn" id="4_nennu"]
+[ext_resource type="PackedScene" uid="uid://0nnxjschrg38" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="5_6d4ot"]
+[ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/Fire/craft_altar_fire.tscn" id="6_ogfxi"]
+[ext_resource type="PackedScene" uid="uid://quhodd6dw16j" path="res://Levels/Lvl2/lvl_2a/tile_map.tscn" id="7_36v5b"]
+[ext_resource type="PackedScene" uid="uid://bccahuot3n8ev" path="res://Items/Fire_Recipe/fire_recipe.tscn" id="7_sl4rp"]
+[ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="8_sl4rp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
+size = Vector2(152.5, 1491)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
+size = Vector2(3079, 186.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr680"]
+size = Vector2(3065, 146)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekue3"]
+bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)
+
+[node name="lvl2a" type="Node2D" unique_id=1426909367]
+script = ExtResource("1_36v5b")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1325019958]
+modulate = Color(0.60933006, 0.6093302, 0.60932994, 1)
+position = Vector2(-65, -1453)
+
+[node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1742229482]
+position = Vector2(329, 2096)
+
+[node name="Background" type="Node2D" parent="Node2D" unique_id=1230901932]
+position = Vector2(8313, 1319)
+
+[node name="SunLight2D" type="DirectionalLight2D" parent="Node2D/Background" unique_id=165497067]
+position = Vector2(-8237, 115.999756)
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+color = Color(1, 0.8627451, 0, 1)
+energy = 1.6
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Background" unique_id=1762359068]
+
+[node name="platform" type="StaticBody2D" parent="Node2D" unique_id=847580707]
+position = Vector2(2750, 1120)
+collision_layer = 2
+
+[node name="Border" type="CollisionShape2D" parent="Node2D/platform" unique_id=612447267]
+position = Vector2(-2709, 889)
+shape = SubResource("RectangleShape2D_ekrdk")
+
+[node name="Border3" type="CollisionShape2D" parent="Node2D/platform" unique_id=93469266]
+position = Vector2(-1257, 1470)
+shape = SubResource("RectangleShape2D_wsvun")
+
+[node name="Border4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1934212984]
+position = Vector2(-1262.5, 252)
+shape = SubResource("RectangleShape2D_gr680")
+
+[node name="Sound" type="Node2D" parent="Node2D" unique_id=814979184]
+
+[node name="lvl2" type="AudioStreamPlayer2D" parent="Node2D/Sound" unique_id=1909559798]
+stream = ExtResource("3_fftrx")
+volume_db = 8.0
+autoplay = true
+
+[node name="TorchGroup" type="Node2D" parent="." unique_id=493003693]
+position = Vector2(61, 795)
+
+[node name="SlowTorch" parent="TorchGroup" unique_id=1743031450 instance=ExtResource("4_nennu")]
+position = Vector2(608, -1504)
+
+[node name="ParalaxeCiel" parent="." unique_id=606126652 instance=ExtResource("5_6d4ot")]
+position = Vector2(-5, -137)
+
+[node name="CraftAltar" parent="." unique_id=989838508 instance=ExtResource("6_ogfxi")]
+z_index = 4
+position = Vector2(962, 252)
+
+[node name="TileMap" parent="." unique_id=461574970 instance=ExtResource("7_36v5b")]
+
+[node name="Box" type="Panel" parent="." unique_id=1670283223]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 689.0
+offset_top = -201.0
+offset_right = 689.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekue3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Box" unique_id=575754312]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 40.0
+offset_right = 1499.0
+offset_bottom = 163.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Text" type="RichTextLabel" parent="Box/MarginContainer" unique_id=652605024]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+bbcode_enabled = true
+scroll_active = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=114276473]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=144478817]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FireRecipe" parent="." unique_id=78160736 instance=ExtResource("7_sl4rp")]
+z_index = 5
+position = Vector2(359, 979)
+
+[node name="Exit" parent="." unique_id=538880673 instance=ExtResource("8_sl4rp")]
+z_index = 20
+position = Vector2(2613.9998, -180.99998)
+rotation = 1.5707964
+scale = Vector2(1.6, 0.8)
+next_scene_path = "res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn"

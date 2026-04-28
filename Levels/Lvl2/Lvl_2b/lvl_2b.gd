@@ -8,36 +8,36 @@ func _ready():
 
 	var gs = get_node("/root/GameState")
 
-	# Caméra + assombrissement (toujours faits)
+	# Caméra + assombrissement Moko
 	if gs.player:
 		var cam = gs.player.get_node("Camera2D")
-		cam.limit_top = -250000
-		cam.limit_right = 12000
-
+		cam.limit_bottom = 1100
+		cam.limit_right = 3300
+		
 		var moko = gs.player
 		moko.get_node("Node2D/Sprite").modulate = Color(0.4, 0.4, 0.4)
-		moko.can_move = false
-
-	# Déjà vu dans cette partie ? -> pas de dialogue, on redonne le contrôle et on garde l'assombrissement
-	if gs.pygmy_dialogue_seen:
-		if gs.player:
-			gs.player.can_move = true
-		return
-
-	# Dialogue Pygmée (une seule fois)
-	await get_tree().process_frame
-	await get_tree().create_timer(3).timeout
-
-	var dlg = dialogue_scene.instantiate()
-	dlg.name = "DialogueUI"
-	add_child(dlg)
-	await get_tree().process_frame
-	dlg.start()
-	await dlg.finished
-
-	# Marque comme vu
-	gs.pygmy_dialogue_seen = true
-
-	# Redonne le contrôle
-	if gs.player:
-		gs.player.can_move = true
+		#moko.can_move = false
+#
+	## Déjà vu dans cette partie ? -> pas de dialogue, on redonne le contrôle et on garde l'assombrissement
+	#if gs.pygmy_dialogue_seen:
+		#if gs.player:
+			#gs.player.can_move = true
+		#return
+#
+	## Dialogue Pygmée (une seule fois)
+	#await get_tree().process_frame
+	#await get_tree().create_timer(3).timeout
+#
+	#var dlg = dialogue_scene.instantiate()
+	#dlg.name = "DialogueUI"
+	#add_child(dlg)
+	#await get_tree().process_frame
+	#dlg.start()
+	#await dlg.finished
+#
+	## Marque comme vu
+	#gs.pygmy_dialogue_seen = true
+#
+	## Redonne le contrôle
+	#if gs.player:
+		#gs.player.can_move = true
