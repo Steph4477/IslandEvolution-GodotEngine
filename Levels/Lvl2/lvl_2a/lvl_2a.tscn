@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://0nnxjschrg38" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="5_6d4ot"]
 [ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/Fire/craft_altar_fire.tscn" id="6_ogfxi"]
 [ext_resource type="PackedScene" uid="uid://quhodd6dw16j" path="res://Levels/Lvl2/lvl_2a/tile_map.tscn" id="7_36v5b"]
-[ext_resource type="PackedScene" uid="uid://bccahuot3n8ev" path="res://Items/Fire_Recipe/fire_recipe.tscn" id="7_sl4rp"]
+[ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="8_fftrx"]
 [ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="8_sl4rp"]
+[ext_resource type="PackedScene" uid="uid://cl7qxeo241o6d" path="res://Items/Stone/stone_item.tscn" id="9_nennu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 1491)
@@ -29,16 +30,16 @@ modulate = Color(0.60933006, 0.6093302, 0.60932994, 1)
 position = Vector2(-65, -1453)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1742229482]
-position = Vector2(329, 2096)
+position = Vector2(891, 2338)
 
 [node name="Background" type="Node2D" parent="Node2D" unique_id=1230901932]
 position = Vector2(8313, 1319)
 
 [node name="SunLight2D" type="DirectionalLight2D" parent="Node2D/Background" unique_id=165497067]
-position = Vector2(-8237, 115.999756)
+position = Vector2(-8241, 116)
 rotation = 0.785398
 scale = Vector2(1.5, 1.5)
-color = Color(1, 0.8627451, 0, 1)
+color = Color(0.9931062, 0.9015515, 0.82338625, 1)
 energy = 1.6
 blend_mode = 2
 shadow_enabled = true
@@ -125,13 +126,21 @@ scroll_active = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="FireRecipe" parent="." unique_id=78160736 instance=ExtResource("7_sl4rp")]
-z_index = 5
-position = Vector2(359, 979)
-
 [node name="Exit" parent="." unique_id=538880673 instance=ExtResource("8_sl4rp")]
 z_index = 20
 position = Vector2(2613.9998, -180.99998)
 rotation = 1.5707964
 scale = Vector2(1.6, 0.8)
 next_scene_path = "res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn"
+
+[node name="IntroToucanSpawn" type="Marker2D" parent="." unique_id=489263013]
+position = Vector2(374, 331)
+
+[node name="WoodItem" parent="." unique_id=1848008734 instance=ExtResource("8_fftrx")]
+z_index = 5
+position = Vector2(1066, 991)
+
+[node name="StoneItem" parent="." unique_id=127423239 instance=ExtResource("9_nennu")]
+z_index = 5
+position = Vector2(1160, 995)
+scale = Vector2(0.1, 0.1)
