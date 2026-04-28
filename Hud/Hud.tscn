@@ -1634,6 +1634,7 @@ action = "sprint"
 libraries/ = SubResource("AnimationLibrary_6yi51")
 
 [node name="Switch" type="TouchScreenButton" parent="Gamepad" unique_id=411639348]
+visible = false
 position = Vector2(501, 914.99994)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("23_3qhmc")
