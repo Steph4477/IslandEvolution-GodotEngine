@@ -32,7 +32,7 @@ func _ready():
 
 	duration_bubble = anim.current_animation_position
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = dir * speed
 	move_and_slide()
 	handle_collision()

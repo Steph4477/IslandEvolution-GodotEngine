@@ -8,7 +8,7 @@ func setup(enemy):
 	randomize()
 	pick_direction()
 
-func process(delta):
+func process(_delta):
 	e.velocity = e.dir * e.swim_speed
 	e.move_and_slide()
 	e.handle_swim_collision()
