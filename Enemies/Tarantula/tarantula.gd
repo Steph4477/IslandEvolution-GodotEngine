@@ -28,7 +28,7 @@ var death_requested = false
 var DeathEffect = preload("res://Enemies/Tarantula/effects/enemy_death_particles.tscn")
 var projectile = preload("res://Shoot/Enemies/Web/web.tscn")
 var ToilePlafond = preload("res://Enemies/Tarantula/effects/descent.tscn")
-var recipe_loot_scene = preload("res://Items/Fire_Recipe/fire_recipe.tscn")
+var ramp_loot = preload("res://Player/Skills/Ramp/ramp.tscn")
 
 func _ready():
 	while scene_camera == null:
@@ -205,7 +205,7 @@ func _do_die():
 	cpu_particles.emitting = true
 
 	# loot ramp
-	var loot = recipe_loot_scene.instantiate()
+	var loot = ramp_loot.instantiate()
 	loot.global_position = global_position
 	get_parent().add_child(loot)
 

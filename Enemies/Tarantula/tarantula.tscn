@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene format=3 uid="uid://p1ewpn30hpnw"]
 
-[ext_resource type="Script" path="res://Enemies/Tarantula/tarantula.gd" id="1_g1fhx"]
-[ext_resource type="Texture2D" path="res://Enemies/Tarantula/attack2.png" id="2_mvlt6"]
-[ext_resource type="Texture2D" path="res://Enemies/Tarantula/attack.png" id="2_tlaig"]
-[ext_resource type="Texture2D" path="res://Enemies/Tarantula/idle.png" id="3_mvlt6"]
-[ext_resource type="Texture2D" path="res://Enemies/Tarantula/walk1.png" id="4_sxn7g"]
-[ext_resource type="Texture2D" path="res://Enemies/Tarantula/walk2.png" id="5_g1fhx"]
-[ext_resource type="Texture2D" path="res://Enemies/Tarantula/Effects/particles.png" id="8_mvlt6"]
-[ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="9_kg14j"]
+[ext_resource type="Script" uid="uid://jojs3i2towy0" path="res://Enemies/Tarantula/tarantula.gd" id="1_g1fhx"]
+[ext_resource type="Texture2D" uid="uid://b4c5nu7ke0y0b" path="res://Enemies/Tarantula/attack2.png" id="2_mvlt6"]
+[ext_resource type="Texture2D" uid="uid://ccjsu0sixw62r" path="res://Enemies/Tarantula/attack.png" id="2_tlaig"]
+[ext_resource type="Texture2D" uid="uid://bgq8mj7dd1blw" path="res://Enemies/Tarantula/idle.png" id="3_mvlt6"]
+[ext_resource type="Texture2D" uid="uid://oc47wohtfwqb" path="res://Enemies/Tarantula/walk1.png" id="4_sxn7g"]
+[ext_resource type="Texture2D" uid="uid://b454s8xt8v5d4" path="res://Enemies/Tarantula/walk2.png" id="5_g1fhx"]
+[ext_resource type="Texture2D" uid="uid://biyfvpjsi35u4" path="res://Enemies/Tarantula/Effects/particles.png" id="8_mvlt6"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="9_kg14j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q0aj"]
 size = Vector2(101.079, 79.9778)
@@ -64,49 +64,49 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Tarantula" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Tarantula" type="CharacterBody2D" unique_id=1228259155 groups=["Enemies"]]
 z_index = 5
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_g1fhx")
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=87439869 groups=["Enemies"]]
 position = Vector2(-3, 5)
 collision_layer = 8
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1429778438]
 position = Vector2(-16, -35)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_4q0aj")
 
-[node name="FlipNode" type="Node2D" parent="."]
+[node name="FlipNode" type="Node2D" parent="." unique_id=952593486]
 position = Vector2(-20, -26)
 
-[node name="Muzzle" type="Marker2D" parent="FlipNode"]
+[node name="Muzzle" type="Marker2D" parent="FlipNode" unique_id=2080624031]
 position = Vector2(-176, 20.000008)
 rotation = 0.785398
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1435802898]
 wait_time = 0.5
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1029579919]
 position = Vector2(-17, -47)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_g1fhx")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1490812227]
 position = Vector2(-11, -32)
 scale = Vector2(0.6, 0.636)
 sprite_frames = SubResource("1")
 animation = &"slide"
 
-[node name="HealthBar" parent="." instance=ExtResource("9_kg14j")]
+[node name="HealthBar" parent="." unique_id=40465691 instance=ExtResource("9_kg14j")]
 position = Vector2(-107, -185)
 scale = Vector2(1.84, 1)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=241523840]
 position = Vector2(-11, -42)
 emitting = false
 amount = 50
