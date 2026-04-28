@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var next_scene_path: String = "res://Levels/Lvl3/lvl_3.tscn"
+@export var next_scene_path = "res://Levels/Lvl3/lvl_3.tscn"
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body):
 	if body.name != "Player":
 		return
 	change_scene()
