@@ -1,14 +1,5 @@
 extends Node2D
 
-@export var dialogue_scene = preload("res://Interface/Dialogue/toucan_dialogue.tscn")
-
-@export var dialogue_win = [
-	"Merci Moko, tu as trouvé la recette !",
-	"Tu as déjà le bois et la pierre.",
-	"Maintenant, trouve l'autel du feu.",
-	"Tu pourras crafter ta maîtrise du feu."
-]
-
 var collected = false
 var gs
 
@@ -51,19 +42,5 @@ func _on_area_2d_body_entered(body):
 
 		if not gs.fire_recipe_dialog_shown:
 			gs.fire_recipe_dialog_shown = true
-			await dialogue_win_toucan()
 
 		queue_free()
-
-func dialogue_win_toucan():
-	gs.player.can_move = false
-	await get_tree().process_frame
-
-	var dlg = dialogue_scene.instantiate()
-	dlg.challenge_win = true
-	add_child(dlg)
-	dlg.get_node("Flower").visible = false
-	dlg.start(dialogue_win)
-	await dlg.finished
-
-	gs.player.can_move = true

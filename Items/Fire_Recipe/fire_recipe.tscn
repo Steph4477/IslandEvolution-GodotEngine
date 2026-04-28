@@ -73,6 +73,7 @@ point_count = 11
 radius = 1.544147
 
 [node name="FireRecipe" type="Node2D" unique_id=78160736]
+z_index = 50
 script = ExtResource("1_fvdrw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1647550448]
