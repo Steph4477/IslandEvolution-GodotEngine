@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bmtf5s61pn0yo" path="res://Levels/Lvl2/Environement/Cliff/1.png" id="4_r0stp"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="5_k5re1"]
 [ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="6_s15ql"]
+[ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="9_jo6m1"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="16_irelo"]
 [ext_resource type="PackedScene" uid="uid://0nnxjschrg38" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="17_18q4f"]
 [ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="18_8psaq"]
@@ -196,3 +197,7 @@ position = Vector2(9, 9)
 [node name="LifeLoot" parent="." unique_id=167285483 instance=ExtResource("18_8psaq")]
 position = Vector2(4400, 1828)
 scale = Vector2(0.2, 0.2)
+
+[node name="Exit" parent="." unique_id=538880673 instance=ExtResource("9_jo6m1")]
+position = Vector2(147, 2141)
+scale = Vector2(5.4, 5.4)
