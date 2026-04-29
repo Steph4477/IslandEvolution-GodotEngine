@@ -23,7 +23,7 @@ func _ready():
 		sprite = $Rotator/Sprite2D
 
 func apply_gravity(delta):
-	if is_on_floor():
+	if is_on_floor() and velocity.y >= 0:
 		velocity.y = 0
 	else:
 		velocity.y += gravity * delta
