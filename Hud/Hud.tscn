@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bbkkqkve01w52"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Hud/hud.gd" id="1_0b1lv"]
-[ext_resource type="PackedScene" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
+[ext_resource type="PackedScene" uid="uid://3etkaqelcp02" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/gamePad/shoot.png" id="6_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/gamePad/Pressed/shoot.png" id="7_b0qj5"]
 [ext_resource type="Texture2D" uid="uid://wctveqj65ef2" path="res://Interface/gamePad/coconut.png" id="8_b0qj5"]
@@ -483,20 +483,59 @@ _data = {
 &"appear_honey": SubResource("Animation_wfxx7")
 }
 
+[sub_resource type="Animation" id="Animation_oa44v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.2831855]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.11, 0.11)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(745, 318)]
+}
+
 [sub_resource type="Animation" id="Animation_legcx"]
 resource_name = "appear_camouflage"
 length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(818.00006, 388), Vector2(1606, 774)]
+"values": [Vector2(0.4, 0.4), Vector2(0.11, 0.11)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -508,24 +547,40 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [6.2831855, 0.0]
+"values": [0.0, 6.2831855]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.11, 0.11)]
+"values": [Vector2(745, 318), Vector2(1432, 910)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x6mpx"]
 _data = {
+&"RESET": SubResource("Animation_oa44v"),
 &"appear_camouflage": SubResource("Animation_legcx")
+}
+
+[sub_resource type="Animation" id="Animation_o1dn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1556, 925)]
 }
 
 [sub_resource type="Animation" id="Animation_eqavf"]
@@ -533,14 +588,14 @@ resource_name = "appear_ramp"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(748, 299), Vector2(1576, 896)]
+"values": [Vector2(2, 2), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -557,18 +612,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(1, 1)]
+"values": [Vector2(841, 381), Vector2(1320, 915)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ll21l"]
 _data = {
+&"RESET": SubResource("Animation_o1dn3"),
 &"appear_ramp": SubResource("Animation_eqavf")
 }
 
@@ -702,6 +758,33 @@ _data = {
 &"appear_air": SubResource("Animation_6yi51")
 }
 
+[sub_resource type="Animation" id="Animation_jnynh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1275, 915)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_ll21l"]
 resource_name = "appear_sprint"
 tracks/0/type = "value"
@@ -714,7 +797,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782, 307), Vector2(1744, 733)]
+"values": [Vector2(782, 307), Vector2(1200, 915)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -743,6 +826,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6yi51"]
 _data = {
+&"RESET": SubResource("Animation_jnynh"),
 &"appear_sprint": SubResource("Animation_ll21l")
 }
 
@@ -1458,6 +1542,7 @@ _data = {
 script = ExtResource("1_0b1lv")
 
 [node name="VirtualJoystick" parent="." unique_id=234075380 instance=ExtResource("2_s8lhr")]
+position = Vector2(1800, 938.99994)
 
 [node name="Gamepad" type="Control" parent="." unique_id=1114488835]
 layout_mode = 3
@@ -1563,17 +1648,17 @@ text = "0"
 libraries/ = SubResource("AnimationLibrary_wu565")
 
 [node name="Camouflage" type="TouchScreenButton" parent="Gamepad" unique_id=2051500428]
-position = Vector2(818.00006, 388)
+position = Vector2(745, 318)
 rotation = 6.2831855
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("14_akioh")
 action = "ui_accept"
 
 [node name="CamouflageCountLabel" type="Label" parent="Gamepad/Camouflage" unique_id=320341963]
-offset_left = 890.90955
-offset_top = 699.99976
-offset_right = 976.90955
-offset_bottom = 904.99976
+offset_left = 945.4561
+offset_top = 700.00024
+offset_right = 1031.456
+offset_bottom = 905.00024
 theme_override_font_sizes/font_size = 150
 text = "0"
 
@@ -1594,12 +1679,14 @@ texture_progress = ExtResource("16_b0qj5")
 libraries/ = SubResource("AnimationLibrary_x6mpx")
 
 [node name="Ramp" type="TouchScreenButton" parent="Gamepad" unique_id=770319580]
-position = Vector2(1576, 896)
+position = Vector2(1073, 915)
 texture_normal = ExtResource("14_e8y56")
 texture_pressed = ExtResource("15_s8lhr")
+passby_press = true
 action = "ramping"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Gamepad/Ramp" unique_id=701637377]
+[node name="AnimRamp" type="AnimationPlayer" parent="Gamepad/Ramp" unique_id=701637377]
+reset_on_save = false
 libraries/ = SubResource("AnimationLibrary_ll21l")
 
 [node name="Fire" type="TouchScreenButton" parent="Gamepad" unique_id=1019016283]
@@ -1623,9 +1710,7 @@ action = "air_buff"
 libraries/ = SubResource("AnimationLibrary_1uhjb")
 
 [node name="Sprint" type="TouchScreenButton" parent="Gamepad" unique_id=322998859]
-position = Vector2(782, 307)
-rotation = 6.2831855
-scale = Vector2(4, 4)
+position = Vector2(1275, 915)
 texture_normal = ExtResource("16_8k643")
 texture_pressed = ExtResource("17_f7l5a")
 action = "sprint"
