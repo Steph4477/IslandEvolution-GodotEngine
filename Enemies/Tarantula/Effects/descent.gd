@@ -1,5 +1,5 @@
 extends Node2D
-signal finished_descente
+signal finished_descent
 
 @onready var anim = $AnimationPlayer
 
@@ -9,5 +9,5 @@ func _ready():
 
 func on_animation_finished(_name):
 	if _name == "descent":
-		emit_signal("finished_descente")
+		emit_signal("finished_descent")
 		queue_free()

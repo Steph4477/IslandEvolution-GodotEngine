@@ -1,232 +1,233 @@
-extends CharacterBody2D
+extends EnemyGroundBase
 
-@export var max_hp = 300
-@export var speed = 70
-@export var attack_range = 1000
-@export var cooldown = 2
-@export var damage = 50
+@export var melee_distance = 80
+@export var min_shoot_distance = 100
+@export var max_shoot_distance = 1000
+@export var projectile_spawn_delay = 0.6
+@export var projectile_timer_time = 2.0
+@export var patrol_speed = 50
+@export var patrol_change_interval = 3.0
+@export var jump_velocity = -550
+@export var chase_speed_multiplier = 4
 
-@onready var health_bar = $HealthBar/ProgressBar
-@onready var anim_sprite = $AnimatedSprite
-@onready var muzzle = $FlipNode/Muzzle
-@onready var timer = $Timer
-@onready var scene_camera
+var target = null
 
-const GRAVITY = 2000
+var projectile_attack_animation = "attack"
+var projectile_spawn = null
+var projectile_scene = preload("res://Shoot/Enemies/Web/web.tscn")
 
-var can_shoot = true
-var is_attacking = false
-var has_shot = false
-var frozen = false
-var stone_coco = false
-var pv = 0
-var player = null
+var patrol_mod = EnemyModPatrol.new()
+var target_mod = EnemyModTarget.new()
+var melee_mod = EnemyModMelee.new()
+var throw_mod = EnemyModThrowProjectile.new()
+var jump_mod = EnemyModJumpSync.new()
 
-var is_dead = false
+var patrol_timer = null
+var patrol_direction = 1
+var is_patrolling = true
+var is_patrol_paused = false
+
+var jump_animation_name = "jump"
+var scene_camera = null
 var death_requested = false
 
-var DeathEffect = preload("res://Enemies/Tarantula/effects/enemy_death_particles.tscn")
-var projectile = preload("res://Shoot/Enemies/Web/web.tscn")
-var ToilePlafond = preload("res://Enemies/Tarantula/effects/descent.tscn")
-var ramp_loot = preload("res://Player/Skills/Ramp/ramp.tscn")
+var death_effect = preload("res://Enemies/Tarantula/effects/enemy_death_particles.tscn")
+var descent_intro = preload("res://Enemies/Tarantula/effects/descent.tscn")
 
 func _ready():
-	while scene_camera == null:
-		await get_tree().process_frame
-		scene_camera = get_viewport().get_camera_2d()
+	attack_anim_name = "attack"
 
-	pv = max_hp
-	find_and_bind_player()
+	super._ready()
 
-	anim_sprite.frame_changed.connect(shoot_projectile)
+	projectile_spawn = $Rotator/Muzzle
+	patrol_timer = $PatrolTimer
 
-	# Phase d'apparition suspendue
+	target_mod.setup(self)
+	melee_mod.setup(self)
+	throw_mod.setup(self)
+	patrol_mod.setup(self)
+	jump_mod.setup(self)
+
 	await play_plafond_intro()
+
+	projectile_timer.wait_time = projectile_timer_time
+	projectile_timer.start()
+
+	patrol_mod.start()
+	set_physics_process(true)
 
 func _physics_process(delta):
 	if is_dead:
 		return
 
-	if not is_instance_valid(player) or is_attacking:
+	if is_attacking:
+		move_and_slide()
 		return
 
-	apply_gravity(delta)
-
-	var direction = (player.global_position - global_position).normalized()
-	velocity.x = direction.x * speed
-
-	# flip sans ternaire
-	if direction.x > 0:
-		anim_sprite.flip_h = true
-		$FlipNode.scale.x = -1
-	else:
-		anim_sprite.flip_h = false
-		$FlipNode.scale.x = 1
-
-	# anim sans ternaire
-	if velocity.x != 0:
-		anim_sprite.play("walk")
-	else:
-		anim_sprite.play("idle")
-
-	var target = null
-	if player and player.has_node("TurnAxis"):
-		target = player.get_node("TurnAxis")
-
-	var distance = 999999
-	if target:
-		distance = global_position.distance_to(target.global_position)
-	else:
-		distance = global_position.distance_to(player.global_position)
-
-	if distance < attack_range and can_shoot:
+	if is_shooting:
+		apply_gravity(delta)
 		velocity.x = 0
-		await attack_and_shoot()
+		move_and_slide()
+		return
+
+	refresh_player()
+	target_mod.update()
+	melee_mod.update_state()
+	jump_mod.update()
+	update_projectile_animation()
+	shoot_while_jumping()
+
+	apply_gravity(delta)
+	flip()
+	update_movement()
 
 	move_and_slide()
 
-func apply_gravity(delta):
-	if not is_on_floor():
-		velocity.y += GRAVITY * delta
+func update_movement():
+	if target == null:
+		is_patrolling = true
+		is_patrol_paused = false
+		patrol_mod.update_movement()
+		play_patrol_animation()
 	else:
-		velocity.y = 0
+		is_patrolling = false
+		chase_target()
+
+func play_patrol_animation():
+	if velocity.x != 0:
+		if anim.current_animation != "walk":
+			anim.play("walk")
+	else:
+		play_idle()
+
+func shoot_while_jumping():
+	if is_on_floor():
+		return
+
+	if target == null:
+		return
+
+	if in_melee:
+		return
+
+	throw_mod.on_timer_timeout()
+
+func update_projectile_animation():
+	if is_on_floor():
+		projectile_attack_animation = "attack"
+	else:
+		projectile_attack_animation = "jump"
 
 func play_plafond_intro():
+	refresh_player()
+	await get_tree().process_frame
+	player.can_move = false
+	
 	visible = false
 	set_physics_process(false)
 
-	# 1. Centrer temporairement la caméra sur la mygale
+	while scene_camera == null:
+		await get_tree().process_frame
+		scene_camera = get_viewport().get_camera_2d()
+
+	scene_camera.zoom = Vector2(1.2, 1.2)
 	scene_camera.global_position = global_position
 
-	# 2. Ajouter la toile qui descend
-	var effet_toile = ToilePlafond.instantiate()
-	effet_toile.global_position = global_position + Vector2(0, -354)
-	get_parent().add_child(effet_toile)
+	var intro_effect = descent_intro.instantiate()
+	intro_effect.global_position = global_position + Vector2(0, -354)
+	get_parent().add_child(intro_effect)
 
-	# 3. Attendre la fin de l'effet
-	await effet_toile.finished_descente
+	await intro_effect.finished_descent
 
-	# 4. Réactiver la mygale
 	global_position += Vector2(0, 250)
 	visible = true
+	$Rotator.visible = true
+	anim.play("idle")
+
 	set_physics_process(true)
 
-	# 5. Restituer le contrôle de la caméra au joueur
-	var player_camera = player.get_node_or_null("Camera2D")
-	if player_camera:
-		player_camera.make_current()
-		await get_tree().process_frame
-		player_camera.global_position = player.global_position
+	refresh_player()
+	await get_tree().create_timer(1.5).timeout
 
-func attack_and_shoot():
-	if is_dead:
+	var player_camera = player.get_node("Camera2D")
+	player_camera.make_current()
+	player_camera.zoom = Vector2(1, 1)
+
+	await get_tree().process_frame
+	player_camera.global_position = player.global_position
+	player.can_move = true
+
+func chase_target():
+	var current_speed = speed
+
+	if distance > attack_range:
+		current_speed = speed * chase_speed_multiplier
+
+	if distance <= max_shoot_distance and distance >= min_shoot_distance:
+		velocity.x = 0
 		return
 
-	can_shoot = false
+	if dx > stop_distance:
+		velocity.x = current_speed
+		anim.play("walk")
+	elif dx < -stop_distance:
+		velocity.x = -current_speed
+		anim.play("walk")
+	else:
+		velocity.x = 0
+		play_idle()
+
+func attack():
+	if not can_attack_player():
+		return
+
 	is_attacking = true
-	has_shot = false
-	anim_sprite.play("attaque")
+	velocity.x = 0
+	anim.play(attack_anim_name)
 
-	var frames = anim_sprite.sprite_frames.get_frame_count("attaque")
-	var anim_speed = anim_sprite.sprite_frames.get_animation_speed("attaque")
-	var anim_duration = frames / anim_speed
+	await get_tree().create_timer(anim.get_animation(attack_anim_name).length).timeout
 
-	await get_tree().create_timer(anim_duration).timeout
+	do_attack_damage()
 	is_attacking = false
 
-func shoot_projectile():
-	if is_dead:
-		return
-
-	if anim_sprite.animation != "attaque":
-		return
-
-	var current_frame = anim_sprite.frame
-	var total_frames = anim_sprite.sprite_frames.get_frame_count("attaque")
-
-	if current_frame == total_frames - 1 and not has_shot:
-		has_shot = true
-
-		var instance = projectile.instantiate()
-		get_parent().add_child(instance)
-		instance.global_position = muzzle.global_position
-
-		# direction sans ternaire
-		if anim_sprite.flip_h:
-			instance.direction = Vector2.RIGHT
-		else:
-			instance.direction = Vector2.LEFT
-
-		await get_tree().create_timer(cooldown).timeout
-		can_shoot = true
-
-func on_hit(damage_taken):
-	if is_dead:
-		return
-
-	pv -= damage_taken
-
-	if health_bar:
-		health_bar.max_value = max_hp
-		health_bar.value = pv
-
-	show_damage_popup(damage_taken)
-
-func show_damage_popup(amount):
-	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
-	add_child(popup)
-	popup.position = Vector2(0, -500)
-	popup.show_damage(amount)
-
-	if pv <= 0:
-		request_die()
-
-# ✅ IMPORTANT : on ne tue JAMAIS direct dans un flush de physique
-func request_die():
+func die():
 	if death_requested:
 		return
+
 	death_requested = true
 	call_deferred("_do_die")
 
 func _do_die():
 	if is_dead:
 		return
+
 	is_dead = true
+	is_attacking = false
+	is_shooting = false
+	hit_locked = false
+	in_melee = false
+	velocity = Vector2.ZERO
 
-	visible = false
-	set_physics_process(false)
-	set_process(false)
+	attack_timer.stop()
+	projectile_timer.stop()
+	patrol_timer.stop()
 
-	var particles = DeathEffect.instantiate()
+	anim.play("die")
+	await anim.animation_finished
+
+	var particles = death_effect.instantiate()
 	particles.global_position = global_position
 	get_parent().add_child(particles)
+	particles.get_node("CPUParticles2D").emitting = true
 
-	var cpu_particles = particles.get_node("CPUParticles2D")
-	cpu_particles.emitting = true
-
-	# loot ramp
-	var loot = ramp_loot.instantiate()
-	loot.global_position = global_position
-	get_parent().add_child(loot)
-
+	spawn_loot()
 	queue_free()
 
-func find_and_bind_player():
-	var gs = get_node_or_null("/root/GameState")
-	if gs:
-		player = gs.player
-		gs.connect("player_updated", Callable(self, "_on_player_changed"))
+func _on_timer_timeout():
+	melee_mod.on_timer_timeout()
 
-func _on_player_changed(new_player):
-	player = new_player
+func _on_projectile_timer_timeout():
+	throw_mod.on_timer_timeout()
 
-# ⚠️ Renomme aussi le signal dans l’inspecteur (ancien: _on_Area2D_body_entered)
-func _on_area_2d_body_entered(body):
-	if is_dead:
-		return
-
-	if body.is_in_group("Player") and not is_attacking:
-		velocity.x = 0
-		await attack_and_shoot()
-		if body.damage_mod and body.damage_mod.has_method("on_hit"):
-			body.damage_mod.on_hit(damage)
+func _on_patrol_timer_timeout():
+	patrol_mod.on_timer_timeout()
