@@ -11,7 +11,7 @@ const INPUT = {
 	"fire": "shoot",
 	"fire_lance": "shoot_spear",
 	"heal": "heal",
-	"ramp": "ramping",
+	"ramping": "ramping",
 	"clac": "clacing",
 	"sprint": "sprint",
 	"camouflage": "camouflage",

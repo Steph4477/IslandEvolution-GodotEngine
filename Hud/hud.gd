@@ -802,13 +802,13 @@ func _on_spear_pressed():
 	gs.player.combat_mod.shoot_lance()
 
 func _on_ramp_pressed():
-	gs.player.skills_mod.process_ramp()
+	gs.player.skills_mod.toggle_ramp()
 
 func _on_bone_pressed():
 	gs.player.combat_mod.process_bone()
 
 func _on_camouflage_pressed():
-	gs.player.skills_mod.process_camouflage()
+	gs.player.skills_mod.use_camouflage()
 
 func _on_break_pressed():
 	gs.toggle_pause()

@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://0ba0f02kisk1" path="res://Interface/gamePad/potion.png" id="15_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://dc4iqjhcmy6kl" path="res://Interface/gamePad/Pressed/ramp.png" id="15_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://cb16gwwsbvmu1" path="res://Interface/gamePad/sprint_button.png" id="16_8k643"]
+[ext_resource type="Texture2D" uid="uid://txkt8qoe6htt" path="res://Interface/gamePad/Pressed/camouflage.png" id="16_avv0v"]
 [ext_resource type="Texture2D" uid="uid://cr54ip0rjb5nh" path="res://Interface/gamePad/cooldown_popo2.png" id="16_b0qj5"]
 [ext_resource type="Texture2D" uid="uid://g105usenq00p" path="res://Interface/gamePad/break.png" id="16_smsye"]
 [ext_resource type="Texture2D" uid="uid://dg30guwabvgev" path="res://Interface/gamePad/Pressed/sprint_button.png" id="17_f7l5a"]
@@ -1652,7 +1653,8 @@ position = Vector2(745, 318)
 rotation = 6.2831855
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("14_akioh")
-action = "ui_accept"
+texture_pressed = ExtResource("16_avv0v")
+action = "camouflage"
 
 [node name="CamouflageCountLabel" type="Label" parent="Gamepad/Camouflage" unique_id=320341963]
 offset_left = 945.4561

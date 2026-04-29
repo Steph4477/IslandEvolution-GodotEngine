@@ -23,11 +23,11 @@ func process(delta):
 #                                 RAMP
 # ============================================================================
 func process_ramp():
-	if p.can_ramp and Input.is_action_just_pressed(p.INPUT["ramp"]) and p.is_on_floor() and not p.ramp_locked:
+	if p.can_ramp and Input.is_action_just_pressed(p.INPUT["ramping"]) and p.is_on_floor() and not p.ramp_locked:
 		toggle_ramp()
 
 func toggle_ramp():
-	if not p.can_ramp:
+	if not p.can_ramp :
 		return
 	if not p.is_on_floor():
 		return
