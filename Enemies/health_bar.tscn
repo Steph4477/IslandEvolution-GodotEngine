@@ -3,20 +3,42 @@
 [sub_resource type="GDScript" id="GDScript_msolp"]
 script/source = "extends Node2D
 
-@export var max_value := 100
-@onready var bar := $ProgressBar
 
-func _ready() -> void:
+# --- Config ---
+@export var max_value = 100
+
+# --- Nodes ---
+@onready var bar = $ProgressBar
+
+
+func _ready():
 	bar.max_value = max_value
 	bar.value = max_value
 	set_red_fill()
 
-func set_value(v: int) -> void:
+
+# ============================================================================
+#                               UPDATE VALUE
+# ============================================================================
+func set_value(v):
 	bar.value = clamp(v, 0, max_value)
 
-func set_red_fill() -> void:
-	var red_fill := StyleBoxFlat.new()
-	red_fill.bg_color = Color(1.0, 0.0, 0.0)  # Rouge vif
+
+# ============================================================================
+#                               SYNC MAX HP
+# ============================================================================
+func set_max(v):
+	max_value = v
+	bar.max_value = max_value
+	bar.value = max_value
+
+
+# ============================================================================
+#                               STYLE
+# ============================================================================
+func set_red_fill():
+	var red_fill = StyleBoxFlat.new()
+	red_fill.bg_color = Color(1.0, 0.0, 0.0)
 	bar.add_theme_stylebox_override(\"fill\", red_fill)
 "
 

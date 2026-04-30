@@ -64,6 +64,28 @@ func refresh_player():
 
 	player = gs.player
 
+##########################################################################
+#                             ATTAQUE                                    #
+########################################################################## 
+					
+func can_attack_player():
+	if player == null:
+		refresh_player()
+		if player == null:
+			return false
+
+	if player.is_dead:
+		in_melee = false
+		return false
+
+	if is_dead:
+		return false
+
+	if is_attacking:
+		return false
+
+	return true
+
 func on_hit(amount):
 	if is_dead:
 		return
@@ -90,24 +112,6 @@ func on_hit(amount):
 	await get_tree().create_timer(hit_lock_time).timeout
 	hit_locked = false
 
-func can_attack_player():
-	if player == null:
-		refresh_player()
-		if player == null:
-			return false
-
-	if player.is_dead:
-		in_melee = false
-		return false
-
-	if is_dead:
-		return false
-
-	if is_attacking:
-		return false
-
-	return true
-
 func do_attack_damage():
 	player.damage_mod.on_hit(damage)
 
@@ -126,6 +130,25 @@ func attack():
 	await get_tree().create_timer(anim.get_animation(attack_anim_name).length).timeout
 
 	is_attacking = false
+
+# --- Popup dégâts ---
+func _show_damage_popup(amount):
+	if health_bar == null:
+		return
+
+	var hb_parent = health_bar.get_parent()
+	if hb_parent == null:
+		return
+
+	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
+	hb_parent.add_child(popup)
+
+	popup.position = Vector2(0, -20)
+	popup.show_damage(amount)
+
+##########################################################################
+#                             DIE                                        #
+########################################################################## 
 
 func die():
 	if is_dead:
@@ -168,17 +191,3 @@ func spawn_loot():
 	loot.global_position = global_position
 
 	loot.z_index = 100
-
-func _show_damage_popup(amount):
-	if health_bar == null:
-		return
-
-	var hb_parent = health_bar.get_parent()
-	if hb_parent == null:
-		return
-
-	var popup = preload("res://Interface/Popup/Damage_popup/damage_popup.tscn").instantiate()
-	hb_parent.add_child(popup)
-
-	popup.position = Vector2(0, -20)
-	popup.show_damage(amount)
