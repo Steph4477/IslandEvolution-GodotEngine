@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @export var speed = 1000
 @export var life_time = 3.0
-@export var damage = 200
+@export var damage = 250
 
 var direction = 1
 
