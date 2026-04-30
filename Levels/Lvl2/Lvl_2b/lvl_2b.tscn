@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="10_uikls"]
 [ext_resource type="PackedScene" uid="uid://p1ewpn30hpnw" path="res://Enemies/Tarantula/tarantula.tscn" id="11_6sncs"]
 [ext_resource type="Texture2D" uid="uid://hg8mtdcl1ndv" path="res://Levels/Lvl2/Accessory/web.png" id="11_fyxfs"]
-[ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="11_gr680"]
 [ext_resource type="Texture2D" uid="uid://dj1o6yasqb48h" path="res://Levels/Lvl2/Accessory/web1.png" id="11_sbfsf"]
 [ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="13_csm35"]
 [ext_resource type="Texture2D" uid="uid://5ms27nx7k6rp" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/z-index10.png" id="18_uikls"]
@@ -83,10 +82,6 @@ shape = SubResource("RectangleShape2D_w1c1k")
 stream = ExtResource("10_uikls")
 volume_db = 8.0
 autoplay = true
-
-[node name="BagLoot" parent="Node2D" unique_id=1216696063 instance=ExtResource("11_gr680")]
-z_index = 25
-position = Vector2(582, 1435)
 
 [node name="ExitTempleTrunk" type="Node2D" parent="." unique_id=1851394753]
 z_index = 3

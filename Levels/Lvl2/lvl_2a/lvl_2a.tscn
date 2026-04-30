@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="8_fftrx"]
 [ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="8_sl4rp"]
 [ext_resource type="PackedScene" uid="uid://cl7qxeo241o6d" path="res://Items/Stone/stone_item.tscn" id="9_nennu"]
+[ext_resource type="PackedScene" uid="uid://5ifnsceh6ylv" path="res://Loot/Coconut/Pile/pile.tscn" id="10_nennu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 1491)
@@ -142,5 +143,9 @@ position = Vector2(1066, 991)
 
 [node name="StoneItem" parent="." unique_id=127423239 instance=ExtResource("9_nennu")]
 z_index = 5
-position = Vector2(1160, 995)
-scale = Vector2(0.1, 0.1)
+position = Vector2(1196, 988)
+
+[node name="Pile" parent="." unique_id=477987675 instance=ExtResource("10_nennu")]
+z_index = 3
+position = Vector2(1377, 969.00006)
+scale = Vector2(0.6, 0.6)
