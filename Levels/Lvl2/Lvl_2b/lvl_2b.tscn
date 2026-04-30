@@ -116,7 +116,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("20_4s17o")
 
 [node name="TorchGroup" type="Node2D" parent="." unique_id=493003693]
-position = Vector2(365, 1018)
+position = Vector2(-104, 979)
 
 [node name="SlowTorch" parent="TorchGroup" unique_id=1743031450 instance=ExtResource("6_dntyv")]
 position = Vector2(608, -1504)
@@ -150,23 +150,23 @@ scale = Vector2(1.8, 2)
 next_scene_path = "res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn"
 
 [node name="Tarantula" parent="." unique_id=1228259155 instance=ExtResource("11_6sncs")]
-position = Vector2(2608, 251)
+position = Vector2(2611, 182)
 scale = Vector2(0.5, 0.5)
 speed = 450
 
 [node name="AddSpawns" type="Node2D" parent="." unique_id=847106123]
 
 [node name="SpawnAdd1" type="Marker2D" parent="AddSpawns" unique_id=303099463]
-position = Vector2(2361, 203)
+position = Vector2(2364, 134)
 
 [node name="SpawnAdd2" type="Marker2D" parent="AddSpawns" unique_id=536805938]
-position = Vector2(2078, 201)
+position = Vector2(2081, 132)
 
 [node name="SpawnAdd3" type="Marker2D" parent="AddSpawns" unique_id=239149023]
-position = Vector2(2870, 201)
+position = Vector2(2873, 132)
 
 [node name="SpawnAdd4" type="Marker2D" parent="AddSpawns" unique_id=843400192]
-position = Vector2(1820, 195)
+position = Vector2(1823, 126)
 
 [node name="SpawnAdd5" type="Marker2D" parent="AddSpawns" unique_id=597541361]
-position = Vector2(1548, 197)
+position = Vector2(1551, 128)
