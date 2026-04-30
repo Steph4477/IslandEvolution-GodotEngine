@@ -150,23 +150,28 @@ scale = Vector2(1.8, 2)
 next_scene_path = "res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn"
 
 [node name="Tarantula" parent="." unique_id=1228259155 instance=ExtResource("11_6sncs")]
-position = Vector2(2683, 184)
+position = Vector2(1726, 180)
 scale = Vector2(0.5, 0.5)
 speed = 450
+max_hp = 2000
+damage = 1
 
 [node name="AddSpawns" type="Node2D" parent="." unique_id=847106123]
 
 [node name="SpawnAdd1" type="Marker2D" parent="AddSpawns" unique_id=303099463]
-position = Vector2(2364, 134)
+position = Vector2(1407, 130)
 
 [node name="SpawnAdd2" type="Marker2D" parent="AddSpawns" unique_id=536805938]
-position = Vector2(2081, 132)
+position = Vector2(1124, 128)
 
 [node name="SpawnAdd3" type="Marker2D" parent="AddSpawns" unique_id=239149023]
-position = Vector2(2873, 132)
+position = Vector2(1916, 128)
 
 [node name="SpawnAdd4" type="Marker2D" parent="AddSpawns" unique_id=843400192]
-position = Vector2(1823, 126)
+position = Vector2(866, 122)
 
 [node name="SpawnAdd5" type="Marker2D" parent="AddSpawns" unique_id=597541361]
-position = Vector2(1551, 128)
+position = Vector2(594, 124)
+
+[node name="CeilingPoint" type="Node2D" parent="." unique_id=288659299]
+position = Vector2(1542, 178)

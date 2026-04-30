@@ -11,7 +11,7 @@ func _ready():
 	# Caméra + assombrissement Moko
 	if gs.player:
 		var cam = gs.player.get_node("Camera2D")
-		cam.limit_bottom = 1090
+		cam.limit_bottom = 1240
 		cam.limit_right = 3300
 		
 		var moko = gs.player
