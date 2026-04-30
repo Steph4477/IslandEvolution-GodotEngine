@@ -47,7 +47,7 @@ var scene_camera = null
 var death_requested = false
 
 var death_effect = preload("res://Enemies/Tarantula/effects/enemy_death_particles.tscn")
-var descent_intro = preload("res://Enemies/Tarantula/effects/descent.tscn")
+var clim = preload("res://Enemies/Tarantula/Effects/ClimAdd/clim_Add.tscn")
 
 
 # ============================================================================
@@ -112,16 +112,22 @@ func play_plafond_intro():
 		await get_tree().process_frame
 		scene_camera = get_viewport().get_camera_2d()
 
-	scene_camera.zoom = Vector2(1.2, 1.2)
+	scene_camera.zoom = Vector2(1, 1)
+
 	scene_camera.global_position = global_position
 
-	var intro_effect = descent_intro.instantiate()
-	intro_effect.global_position = global_position + Vector2(0, -354)
-	get_parent().add_child(intro_effect)
+	var effect = clim.instantiate()
+	effect.global_position = global_position
+	get_parent().add_child(effect)
 
-	await intro_effect.finished_descent
+	effect.start_clim_down()
 
-	global_position += Vector2(0, 250)
+	visible = false
+	set_physics_process(false)
+
+	await effect.finished_clim_down
+
+	global_position += Vector2(0, 700)
 	visible = true
 	$Rotator.visible = true
 	anim.play("idle")
@@ -138,7 +144,6 @@ func play_plafond_intro():
 	await get_tree().process_frame
 	player_camera.global_position = player.global_position
 	player.can_move = true
-
 
 # ============================================================================
 #                               MOVEMENT
