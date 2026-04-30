@@ -8,14 +8,14 @@ signal finished_clim_up
 
 func start_clim_down():
 	cam.make_current()
-	anim.play("clim_down")
+	anim.play("clim_down_local")
 
 func start_clim_up():
 	cam.make_current()
 	anim.play("clim_up")
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "clim_down":
+	if anim_name == "clim_down_local":
 		finished_clim_down.emit()
 		queue_free()
 

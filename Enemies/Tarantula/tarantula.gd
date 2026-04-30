@@ -150,7 +150,7 @@ func play_plafond_intro():
 	set_physics_process(false)
 
 	await effect.finished_clim_down
-	global_position += Vector2(0, 250)
+	global_position += Vector2(0, 450)
 	visible = true
 	$Rotator.visible = true
 	anim.play("idle")
@@ -162,7 +162,6 @@ func play_plafond_intro():
 
 	var player_camera = player.get_node("Camera2D")
 	player_camera.make_current()
-	#player_camera.zoom = Vector2(1, 1)
 
 	await get_tree().process_frame
 	player_camera.global_position = player.global_position
