@@ -58,14 +58,6 @@ func coco():
 	if p.coco_count <= 0:
 		return
 
-	p.coco_count -= 1
-	p.can_fire_coco = p.coco_count > 0
-
-	p.game_state.coco_count = p.coco_count
-	p.game_state.can_fire_coco = p.can_fire_coco
-
-	p.hud_mod.update_coco_display()
-
 	p.animation_locked = true
 
 	if p.is_on_floor():
@@ -83,8 +75,17 @@ func coco():
 	var dir = 1
 	if p.sprite.scale.x < 0:
 		dir = -1
+
 	spell.start(p.get_node("ShootPoint").global_position, dir)
 	p.get_tree().current_scene.add_child(spell)
+
+	p.coco_count -= 1
+	p.can_fire_coco = p.coco_count > 0
+
+	p.game_state.coco_count = p.coco_count
+	p.game_state.can_fire_coco = p.can_fire_coco
+
+	p.hud_mod.update_coco_display()
 
 	p.animation_locked = false
 	p.hud_mod.refresh_hud_buttons()
@@ -260,10 +261,25 @@ func attack():
 #                         ALIAS API (HUD)
 # ============================================================================
 func shoot_coco():
+	if firing_locked:
+		return
+
+	firing_locked = true
 	await coco()
+	firing_locked = false
 
 func process_bone():
+	if firing_locked:
+		return
+
+	firing_locked = true
 	await bone()
+	firing_locked = false
 
 func shoot_lance():
+	if firing_locked:
+		return
+
+	firing_locked = true
 	await lance()
+	firing_locked = false
