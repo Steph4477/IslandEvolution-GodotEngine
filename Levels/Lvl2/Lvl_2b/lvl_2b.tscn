@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="11_gr680"]
 [ext_resource type="Texture2D" uid="uid://dj1o6yasqb48h" path="res://Levels/Lvl2/Accessory/web1.png" id="11_sbfsf"]
 [ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="13_csm35"]
-[ext_resource type="PackedScene" path="res://Player/Skills/Ramp/ramp.tscn" id="13_u6y20"]
-[ext_resource type="PackedScene" uid="uid://c7vh70a2fcrkf" path="res://Enemies/Chameleon/chameleon.tscn" id="14_u6y20"]
-[ext_resource type="PackedScene" uid="uid://cggxcitfp164h" path="res://Player/Skills/Sprint/sprint.tscn" id="15_xsoyn"]
 [ext_resource type="Texture2D" uid="uid://5ms27nx7k6rp" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/z-index10.png" id="18_uikls"]
 [ext_resource type="Texture2D" uid="uid://do5uhl3cs36a0" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/halo_z-index10.png" id="19_gr680"]
 [ext_resource type="Texture2D" uid="uid://bu34beoslp2lx" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/z-index0.png" id="20_4s17o"]
@@ -157,11 +154,19 @@ position = Vector2(2635, 561)
 scale = Vector2(0.5, 0.5)
 speed = 450
 
-[node name="Ramp" parent="." unique_id=2088835483 instance=ExtResource("13_u6y20")]
-position = Vector2(293, 953)
+[node name="AddSpawns" type="Node2D" parent="." unique_id=847106123]
 
-[node name="Chameleon" parent="." unique_id=1185185535 instance=ExtResource("14_u6y20")]
-position = Vector2(466, 1007)
+[node name="SpawnAdd1" type="Marker2D" parent="AddSpawns" unique_id=303099463]
+position = Vector2(2388, 513)
 
-[node name="Sprint" parent="." unique_id=69020274 instance=ExtResource("15_xsoyn")]
-position = Vector2(747, 939)
+[node name="SpawnAdd2" type="Marker2D" parent="AddSpawns" unique_id=536805938]
+position = Vector2(2105, 511)
+
+[node name="SpawnAdd3" type="Marker2D" parent="AddSpawns" unique_id=239149023]
+position = Vector2(2897, 511)
+
+[node name="SpawnAdd4" type="Marker2D" parent="AddSpawns" unique_id=843400192]
+position = Vector2(1847, 505)
+
+[node name="SpawnAdd5" type="Marker2D" parent="AddSpawns" unique_id=597541361]
+position = Vector2(1575, 507)
