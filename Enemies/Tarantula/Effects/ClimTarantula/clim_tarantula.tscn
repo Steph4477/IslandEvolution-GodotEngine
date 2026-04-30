@@ -4,6 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://djkweyt2ewhqf" path="res://Enemies/Tarantula/Effects/glued_web.png" id="2_jjo8r"]
 [ext_resource type="Texture2D" uid="uid://cjtjkb38gflek" path="res://Enemies/Tarantula/Effects/ClimTarantula/clim_web.png" id="3_6xf1m"]
 [ext_resource type="Texture2D" uid="uid://oiw4fyjvupuv" path="res://Enemies/Tarantula/Effects/ClimTarantula/clim_tarantula.png" id="4_im1s2"]
+[ext_resource type="Texture2D" uid="uid://drk2wjrmw2x5i" path="res://Enemies/Tarantula/Effects/1.png" id="5_7qmi2"]
+[ext_resource type="Texture2D" uid="uid://budaguf72o5h6" path="res://Enemies/Tarantula/Effects/cocoon.png" id="6_qlcqq"]
+[ext_resource type="Texture2D" uid="uid://byatlvtxvymyp" path="res://Enemies/Tarantula/Effects/2.png" id="7_d5kup"]
+[ext_resource type="Texture2D" uid="uid://cma6l7ynf680a" path="res://Enemies/Tarantula/Effects/3.png" id="8_5k5ts"]
+[ext_resource type="Texture2D" uid="uid://ceiy165abh0q8" path="res://Enemies/Tarantula/Effects/4.png" id="9_vkgvf"]
 
 [sub_resource type="Animation" id="Animation_jjo8r"]
 length = 0.001
@@ -46,26 +51,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tarantula/Camera2D:position")
+tracks/3/path = NodePath("Cocoon:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(10.000001, 36.66667)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Tarantula/Camera2D:zoom")
+tracks/4/path = NodePath("Cocoon:texture")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"update": 1,
+"values": [ExtResource("6_qlcqq")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cocoon:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_k5b8u"]
@@ -131,10 +148,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(4, 4), Vector2(1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cocoon:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_qrb5l"]
 resource_name = "clim_up_local"
-length = 2.2
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -195,12 +224,66 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(1.5, 1.5), Vector2(3, 3)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cocoon:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.6, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cocoon:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_xtgkv"]
+resource_name = "heal"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cocoon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666663, 0.46666664, 0.8666667, 1.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_7qmi2"), ExtResource("7_d5kup"), ExtResource("8_5k5ts"), ExtResource("9_vkgvf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cocoon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9333333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.627451, 0.79607844, 0.35686275, 0.6862745), Color(1, 1, 1, 1), Color(0.627451, 0.79607844, 0.35686275, 0.6862745)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6xf1m"]
 _data = {
 &"RESET": SubResource("Animation_jjo8r"),
 &"clim_down_local": SubResource("Animation_k5b8u"),
-&"clim_up_local": SubResource("Animation_qrb5l")
+&"clim_up_local": SubResource("Animation_qrb5l"),
+&"heal": SubResource("Animation_xtgkv")
 }
 
 [node name="ClimTarantula" type="Node2D" unique_id=334273822]
@@ -223,6 +306,12 @@ texture = ExtResource("4_im1s2")
 [node name="Camera2D" type="Camera2D" parent="Tarantula" unique_id=1919730624]
 position = Vector2(10.000001, 36.66667)
 scale = Vector2(3.333333, 3.333333)
+zoom = Vector2(4, 4)
+
+[node name="Cocoon" type="Sprite2D" parent="." unique_id=1467004337]
+position = Vector2(-54.99999, 549.99994)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_qlcqq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=990421673]
 libraries/ = SubResource("AnimationLibrary_6xf1m")

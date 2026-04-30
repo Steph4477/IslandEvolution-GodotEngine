@@ -14,7 +14,7 @@ extends EnemyGroundBase
 @export var add_phase_hp_ratio = 0.5
 @export var ceiling_offset = -300
 @export var ceiling_move_speed = 4
-@export var regen_per_second = 5
+@export var regen_per_second = 50
 
 # --- Target ---
 var target = null
@@ -51,10 +51,11 @@ var add_scene = preload("res://Enemies/Tarantula/addTarantula.tscn")
 var add_spawns = []
 var spawned_adds = []
 
-var add_phase_used = false
+var next_add_phase_hp = 0
 var is_in_add_phase = false
 var ceiling_point = null
 var on_ceiling = false
+var ceiling_effect = null
 var ground_position = Vector2.ZERO
 
 
@@ -81,6 +82,7 @@ func _ready():
 
 	patrol_mod.start()
 	set_physics_process(true)
+	next_add_phase_hp = hp * add_phase_hp_ratio
 
 
 func _physics_process(delta):
@@ -267,14 +269,15 @@ func setup_add_spawns():
 	for spawn in root.get_children():
 		add_spawns.append(spawn)
 
-
 func update_add_phase_trigger():
-	if add_phase_used:
+	if is_in_add_phase:
 		return
 
-	if hp <= max_hp * add_phase_hp_ratio:
-		start_add_phase()
+	if hp <= 0:
+		return
 
+	if hp <= next_add_phase_hp:
+		start_add_phase()
 
 # ============================================================================
 #                               ADD PHASE START
@@ -284,7 +287,6 @@ func start_add_phase():
 	if is_in_add_phase:
 		return
 
-	add_phase_used = true
 	is_in_add_phase = true
 	is_attacking = false
 	is_shooting = false
@@ -311,24 +313,28 @@ func start_add_phase():
 # ============================================================================
 
 func go_to_ceiling():
-	var effect = clim.instantiate()
-	effect.global_position = ceiling_point.global_position
-	get_parent().add_child(effect)
+	ceiling_effect = clim.instantiate()
+	ceiling_effect.global_position = ceiling_point.global_position
+	get_parent().add_child(ceiling_effect)
 
 	visible = false
 	$Rotator.visible = false
 	set_physics_process(false)
 
-	effect.start_clim_up()
+	ceiling_effect.start_clim_up()
 
-	await effect.finished_clim_up
+	await ceiling_effect.finished_clim_up
 
-	global_position = ground_position + Vector2(0, ceiling_offset)
+	global_position = ceiling_point.global_position
 	on_ceiling = true
 	set_physics_process(true)
 
 
 func go_back_to_ground():
+	if ceiling_effect:
+		ceiling_effect.queue_free()
+		ceiling_effect = null
+
 	var effect = clim.instantiate()
 	effect.global_position = ceiling_point.global_position
 	get_parent().add_child(effect)
@@ -424,6 +430,7 @@ func end_add_phase():
 	patrol_mod.start()
 
 	anim.play("idle")
+	next_add_phase_hp = hp * add_phase_hp_ratio
 
 
 # ============================================================================
