@@ -53,13 +53,14 @@ var spawned_adds = []
 
 var add_phase_used = false
 var is_in_add_phase = false
-var is_on_ceiling = false
+var ceiling_point = null
+var on_ceiling = false
 var ground_position = Vector2.ZERO
 
 
 func _ready():
 	attack_anim_name = "attack"
-
+	ceiling_point = get_parent().get_node("CeilingPoint")
 	super._ready()
 
 	projectile_spawn = $Rotator/Muzzle
@@ -80,10 +81,6 @@ func _ready():
 
 	patrol_mod.start()
 	set_physics_process(true)
-
-	# --- TEST TEMPORAIRE ADD PHASE ---
-	await get_tree().create_timer(1.0).timeout
-	start_add_phase()
 
 
 func _physics_process(delta):
@@ -141,7 +138,7 @@ func play_plafond_intro():
 	scene_camera.global_position = global_position
 
 	var effect = clim.instantiate()
-	effect.global_position = global_position
+	effect.global_position = ceiling_point.global_position
 	get_parent().add_child(effect)
 
 	effect.start_clim_down()
@@ -314,23 +311,41 @@ func start_add_phase():
 # ============================================================================
 
 func go_to_ceiling():
-	var target_pos = ground_position + Vector2(0, ceiling_offset)
+	var effect = clim.instantiate()
+	effect.global_position = ceiling_point.global_position
+	get_parent().add_child(effect)
 
-	while global_position.y > target_pos.y:
-		global_position.y -= ceiling_move_speed
-		await get_tree().process_frame
+	visible = false
+	$Rotator.visible = false
+	set_physics_process(false)
 
-	global_position = target_pos
-	is_on_ceiling = true
+	effect.start_clim_up()
+
+	await effect.finished_clim_up
+
+	global_position = ground_position + Vector2(0, ceiling_offset)
+	on_ceiling = true
+	set_physics_process(true)
 
 
 func go_back_to_ground():
-	while global_position.y < ground_position.y:
-		global_position.y += ceiling_move_speed
-		await get_tree().process_frame
+	var effect = clim.instantiate()
+	effect.global_position = ceiling_point.global_position
+	get_parent().add_child(effect)
+
+	visible = false
+	$Rotator.visible = false
+	set_physics_process(false)
+
+	effect.start_clim_down()
+
+	await effect.finished_clim_down
 
 	global_position = ground_position
-	is_on_ceiling = false
+	visible = true
+	$Rotator.visible = true
+	on_ceiling = false
+	set_physics_process(true)
 
 
 # ============================================================================

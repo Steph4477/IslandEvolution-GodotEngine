@@ -46,66 +46,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tarantula/Camera2D:zoom")
+tracks/3/path = NodePath("Tarantula/Camera2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(10.000001, 36.66667)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Tarantula/Camera2D:position")
+tracks/4/path = NodePath("Tarantula/Camera2D:zoom")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(10.000001, 36.66667)]
-}
-
-[sub_resource type="Animation" id="Animation_pyt7t"]
-resource_name = "clim_down"
-length = 2.2666667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Web:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.274, 40)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Web:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-5, 145), Vector2(-4.9999995, 1665)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tarantula:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(5.9604645e-08, 205), Vector2(-5.000001, 3185)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_k5b8u"]
@@ -150,30 +110,30 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tarantula/Camera2D:zoom")
+tracks/3/path = NodePath("Tarantula/Camera2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 2.02),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(1.5, 1.5)]
+"values": [Vector2(10.000001, 36.66667), Vector2(-596.6667, -843.3333)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Tarantula/Camera2D:position")
+tracks/4/path = NodePath("Tarantula/Camera2D:zoom")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(10.000001, 36.66667), Vector2(-20, -549.9999)]
+"values": [Vector2(4, 4), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_ki08e"]
-resource_name = "clim_up"
+[sub_resource type="Animation" id="Animation_qrb5l"]
+resource_name = "clim_up_local"
 length = 2.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -211,13 +171,36 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-5, 2930), Vector2(-10, 1600), Vector2(1, 327)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tarantula/Camera2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(56.666653, -746.6665), Vector2(26.000004, 328.66663)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tarantula/Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(3, 3)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6xf1m"]
 _data = {
 &"RESET": SubResource("Animation_jjo8r"),
-&"clim_down": SubResource("Animation_pyt7t"),
 &"clim_down_local": SubResource("Animation_k5b8u"),
-&"clim_up": SubResource("Animation_ki08e")
+&"clim_up_local": SubResource("Animation_qrb5l")
 }
 
 [node name="ClimTarantula" type="Node2D" unique_id=334273822]

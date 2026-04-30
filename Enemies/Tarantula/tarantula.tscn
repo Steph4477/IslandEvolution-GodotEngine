@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://hn334258ghtt" path="res://Enemies/Tarantula/Onhit/Fire/2.png" id="27_oxu2x"]
 [ext_resource type="Texture2D" uid="uid://c6b0c7lwe0gt1" path="res://Enemies/Tarantula/Onhit/Fire/4.png" id="28_2dfum"]
 [ext_resource type="Texture2D" uid="uid://c4cffpm0ic7tv" path="res://Enemies/Tarantula/Onhit/Fire/3.png" id="29_eo1f0"]
-[ext_resource type="Texture2D" uid="uid://bl821go232lwh" path="res://Enemies/Tarantula/Walk/1.png" id="30_mpenu"]
 [ext_resource type="Texture2D" uid="uid://c3l6pgp6t8bia" path="res://Enemies/Tarantula/Walk/2.png" id="31_vf41f"]
 [ext_resource type="Texture2D" uid="uid://bhff6vvrdcjrd" path="res://Enemies/Tarantula/Walk/3.png" id="32_ljhn5"]
 
@@ -199,7 +198,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mhkfo"]
 resource_name = "walk"
-length = 0.6
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -208,10 +207,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("30_mpenu"), ExtResource("31_vf41f"), ExtResource("32_ljhn5")]
+"values": [ExtResource("31_vf41f"), ExtResource("32_ljhn5")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r3y02"]
