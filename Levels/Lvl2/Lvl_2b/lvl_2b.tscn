@@ -33,7 +33,7 @@ modulate = Color(0.60933006, 0.6093302, 0.60932994, 1)
 position = Vector2(279, -458)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1742229482]
-position = Vector2(-75, 1097)
+position = Vector2(-78, 1295)
 
 [node name="Background" type="Node2D" parent="Node2D" unique_id=1230901932]
 position = Vector2(8313, 1319)
@@ -150,7 +150,7 @@ scale = Vector2(1.8, 2)
 next_scene_path = "res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn"
 
 [node name="Tarantula" parent="." unique_id=1228259155 instance=ExtResource("11_6sncs")]
-position = Vector2(2611, 182)
+position = Vector2(2683, 184)
 scale = Vector2(0.5, 0.5)
 speed = 450
 
