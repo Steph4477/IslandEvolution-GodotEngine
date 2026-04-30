@@ -1,52 +1,32 @@
 extends EnemyGroundBase
 
-# ============================================================================
-#                               EXPORTS
-# ============================================================================
-
+# --- Export ---
 @export var melee_distance = 80
 @export var patrol_speed = 50
 @export var patrol_change_interval = 3.0
 @export var jump_velocity = -450
 @export var chase_speed_multiplier = 3
 
-
-# ============================================================================
-#                               TARGET
-# ============================================================================
-
+# --- Target ---
 var target = null
 
-
-# ============================================================================
-#                               MODULES
-# ============================================================================
-
+# --- Modules
 var patrol_mod = EnemyModPatrol.new()
 var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()
 var jump_mod = EnemyModJumpSync.new()
 
-
-# ============================================================================
-#                               PATROL
-# ============================================================================
-
+# --- Patrol
 var patrol_timer = null
 var patrol_direction = 1
 var is_patrolling = true
 var is_patrol_paused = false
 
-
-# ============================================================================
-#                               INTRO / DEATH
-# ============================================================================
-
+# -- death 
 var jump_animation_name = "jump"
 var scene_camera = null
 var death_requested = false
 
-var death_effect = preload("res://Enemies/Tarantula/effects/enemy_death_particles.tscn")
 var clim = preload("res://Enemies/Tarantula/Effects/ClimAdd/clim_Add.tscn")
 
 
@@ -101,20 +81,8 @@ func _physics_process(delta):
 # ============================================================================
 
 func play_plafond_intro():
-	refresh_player()
-	await get_tree().process_frame
-	player.can_move = false
-	
 	visible = false
 	set_physics_process(false)
-
-	while scene_camera == null:
-		await get_tree().process_frame
-		scene_camera = get_viewport().get_camera_2d()
-
-	scene_camera.zoom = Vector2(1, 1)
-
-	scene_camera.global_position = global_position
 
 	var effect = clim.instantiate()
 	effect.global_position = global_position
@@ -122,8 +90,14 @@ func play_plafond_intro():
 
 	effect.start_clim_down()
 
-	visible = false
-	set_physics_process(false)
+	await effect.finished_clim_down
+
+	global_position += Vector2(0, 700)
+	visible = true
+	$Rotator.visible = true
+	anim.play("idle")
+
+	set_physics_process(true)
 
 	await effect.finished_clim_down
 
@@ -143,7 +117,6 @@ func play_plafond_intro():
 
 	await get_tree().process_frame
 	player_camera.global_position = player.global_position
-	player.can_move = true
 
 # ============================================================================
 #                               MOVEMENT
@@ -234,11 +207,6 @@ func _do_die():
 
 	anim.play("die")
 	await anim.animation_finished
-
-	var particles = death_effect.instantiate()
-	particles.global_position = global_position
-	get_parent().add_child(particles)
-	particles.get_node("CPUParticles2D").emitting = true
 
 	queue_free()
 
