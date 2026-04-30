@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://cgb75m8btf2k7"]
 
-[ext_resource type="Script" path="res://Shoot/Player/Bone/bone.gd" id="1_6ggyv"]
-[ext_resource type="Texture2D" path="res://Shoot/Enemies/Bone/bone.png" id="2_ijnjo"]
+[ext_resource type="Script" uid="uid://c5u2da8x2lxq3" path="res://Shoot/Player/Bone/bone.gd" id="1_6ggyv"]
+[ext_resource type="Texture2D" uid="uid://ckctlsigp4gtr" path="res://Shoot/Enemies/Bone/bone.png" id="2_ijnjo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ja31b"]
 radius = 5.894992
@@ -10,32 +10,32 @@ height = 16.837599
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpx3p"]
 radius = 0.0
 
-[node name="Bone" type="RigidBody2D"]
+[node name="Bone" type="RigidBody2D" unique_id=1197587565]
 z_index = 5
 collision_layer = 256
 collision_mask = 74
 contact_monitor = true
 script = ExtResource("1_6ggyv")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1468567864]
 position = Vector2(0.759033, 2.65039)
 rotation = -1.4748032
 scale = Vector2(0.2, 0.163)
 texture = ExtResource("2_ijnjo")
 offset = Vector2(1.99504, 4.08113)
 
-[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=1538820355 groups=["Player"]]
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=47976586]
 position = Vector2(-9, 2)
 rotation = -1.3834321
 shape = SubResource("CapsuleShape2D_ja31b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1112912470]
 shape = SubResource("CircleShape2D_bpx3p")
 
-[node name="LifeTimer" type="Timer" parent="."]
+[node name="LifeTimer" type="Timer" parent="." unique_id=1801155335]
 wait_time = 3.0
 one_shot = true
 autostart = true

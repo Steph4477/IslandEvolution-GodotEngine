@@ -68,9 +68,7 @@ spread = 40.0
 gravity = Vector3(0, -1, 0)
 
 [node name="ParticlesLoot" type="Node2D" unique_id=2107376780]
-position = Vector2(0, 10)
 script = SubResource("GDScript_4ygaf")
-color = Color(1, 1, 1, 0.20392157)
 radius = 100
 glow_texture = ExtResource("1_hl3x2")
 
