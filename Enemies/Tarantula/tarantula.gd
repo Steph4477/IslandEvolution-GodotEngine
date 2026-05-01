@@ -30,6 +30,7 @@ var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
 var jump_mod = EnemyModJumpSync.new()
+var dodge_mod = EnemyModDodgeJump.new()
 
 #--- Patrol ---
 var patrol_timer = null
@@ -72,6 +73,7 @@ func _ready():
 	throw_mod.setup(self)
 	patrol_mod.setup(self)
 	jump_mod.setup(self)
+	dodge_mod.setup(self)
 
 	setup_add_spawns()
 
@@ -93,6 +95,11 @@ func _physics_process(delta):
 
 	if is_in_add_phase:
 		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+
+	if dodge_mod.is_dodging:
+		apply_gravity(delta)
 		move_and_slide()
 		return
 
@@ -361,11 +368,7 @@ func go_back_to_ground():
 func spawn_adds():
 	spawned_adds.clear()
 
-	print("SPAWNS FOUND: ", add_spawns.size())
-
 	for spawn in add_spawns:
-		print("SPAWN ADD: ", spawn.name, " POS: ", spawn.global_position)
-
 		var add = add_scene.instantiate()
 		add.global_position = spawn.global_position
 		get_parent().add_child(add)
@@ -432,6 +435,23 @@ func end_add_phase():
 	anim.play("idle")
 	next_add_phase_hp = hp * add_phase_hp_ratio
 
+# ============================================================================
+#                               ON HIT / DODGE
+# ============================================================================
+
+func on_hit(amount):
+	if is_dead:
+		return
+
+	if hit_locked:
+		return
+
+	if is_in_add_phase:
+		super.on_hit(amount)
+		return
+
+	dodge_mod.register_hit()
+	super.on_hit(amount)
 
 # ============================================================================
 #                               DEATH

@@ -237,6 +237,7 @@ script = ExtResource("1_g1fhx")
 min_shoot_distance = 80
 jump_velocity = -1200
 chase_speed_multiplier = 3
+add_phase_hp_ratio = 0.3
 speed = 100
 attack_range = 1000
 max_hp = 10
