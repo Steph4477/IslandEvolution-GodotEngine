@@ -11,6 +11,7 @@ var direction = Vector2.ZERO
 var has_collided = false
 var is_web = true
 
+
 func start(spawn_position, dir):
 	global_position = spawn_position
 
@@ -19,14 +20,17 @@ func start(spawn_position, dir):
 	else:
 		direction = Vector2.RIGHT
 
+
 func _ready():
 	sprite.play("web_attack")
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
+
 func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
+
 
 func _on_area_2d_body_entered(body):
 	if has_collided:
@@ -48,5 +52,9 @@ func _on_area_2d_body_entered(body):
 
 		if body.damage_mod.has_method("on_hit"):
 			body.damage_mod.on_hit(damage)
+
+		var gs = get_node("/root/GameState")
+		if gs.hud:
+			gs.hud.spawn_hud_dirt()
 
 		queue_free()

@@ -94,7 +94,16 @@ var banane_cd_total = 1.0
 var honey_cd_left = 0.0
 var honey_cd_total = 1.0
 
+#--- Mode Dirt ---
+@export var dirt_spot_scene: PackedScene
+@export var dirt_texture: Texture2D
+@export var dirt_clean_delay = 15.0
+@export var dirt_min_scale = 0.6
+@export var dirt_max_scale = 1.2
+@export var dirt_min_rotation = -20
+@export var dirt_max_rotation = 20
 
+@onready var dirt_layer = $DirtRoot/DirtLayer
 # -----------------------------
 #            READY
 # -----------------------------
@@ -208,6 +217,7 @@ func _ready():
 
 	update_fire_craft_checklist()
 	update_air_craft_checklist()
+
 
 func _process(delta):
 	if banane_cd_left > 0.0:
@@ -673,7 +683,63 @@ func update_breath(current, max_value):
 
 func stop_breath():
 	hide_breathbar()
+# ============================================================================
+#        SALISSURE HUD
+# ============================================================================
+func spawn_hud_dirt(texture = null):
 
+	# 1. Choix de la texture
+	if texture == null:
+		texture = dirt_texture
+
+	if texture == null:
+		return
+
+	# 2. Création du dirt
+	var dirt = dirt_spot_scene.instantiate()
+	dirt_layer.add_child(dirt)
+
+	# 3. Récupération tailles
+	var screen_size = get_viewport().get_visible_rect().size
+	var texture_size = texture.get_size()
+
+	# 4. Découpage écran en 3x3
+	var grid_columns = 3
+	var grid_rows = 3
+
+	var cell_width = screen_size.x / grid_columns
+	var cell_height = screen_size.y / grid_rows
+
+	# 5. Choix d'une case random
+	var random_col = randi() % grid_columns
+	var random_row = randi() % grid_rows
+
+	# 6. Zone de spawn dans la case
+	var min_x = random_col * cell_width
+	var max_x = min_x + cell_width - texture_size.x
+
+	var min_y = random_row * cell_height
+	var max_y = min_y + cell_height - texture_size.y
+
+	# 7. Position finale random dans la case
+	var random_x = randf_range(min_x, max_x)
+	var random_y = randf_range(min_y, max_y)
+
+	dirt.position = Vector2(random_x, random_y)
+
+	# 8. Variations visuelles
+	var random_scale = randf_range(dirt_min_scale, dirt_max_scale)
+	dirt.scale = Vector2(random_scale, random_scale)
+
+	var random_rotation = randf_range(dirt_min_rotation, dirt_max_rotation)
+	dirt.rotation_degrees = random_rotation
+
+	# 9. Setup du dirt
+	dirt.texture = texture
+	dirt.clean_delay = dirt_clean_delay
+
+	# 10. Lancement animation
+	dirt.start()
 
 # ============================================================================
 #        RETROCOMPAT : APPEAR / ANIM_TO

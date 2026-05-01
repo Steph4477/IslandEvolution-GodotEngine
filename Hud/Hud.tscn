@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbkkqkve01w52"]
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Hud/hud.gd" id="1_0b1lv"]
+[ext_resource type="PackedScene" uid="uid://cdnl4r3q0ukwv" path="res://Hud/Modules/dirt_spot.tscn" id="2_ll21l"]
 [ext_resource type="PackedScene" uid="uid://3etkaqelcp02" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/gamePad/shoot.png" id="6_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/gamePad/Pressed/shoot.png" id="7_b0qj5"]
@@ -59,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://73im6p421lte" path="res://Items/CheckBox/3.png" id="49_4dmrg"]
 [ext_resource type="Texture2D" uid="uid://bnw3t35o22tdy" path="res://Items/CheckBox/2.png" id="51_hsv3q"]
 [ext_resource type="Texture2D" uid="uid://btvi5xn63t8my" path="res://Items/CheckBox/seal.png" id="52_wfxx7"]
+[ext_resource type="Texture2D" uid="uid://co4ty4kifftog" path="res://Hud/Modules/Textures/web_dirt_big.png" id="61_ll21l"]
 
 [sub_resource type="Animation" id="Animation_jcaq3"]
 resource_name = "RESET"
@@ -1541,6 +1543,26 @@ _data = {
 
 [node name="Hud" type="CanvasLayer" unique_id=1689391444]
 script = ExtResource("1_0b1lv")
+dirt_spot_scene = ExtResource("2_ll21l")
+dirt_texture = ExtResource("61_ll21l")
+
+[node name="DirtRoot" type="Control" parent="." unique_id=1997896801]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DirtLayer" type="TextureRect" parent="DirtRoot" unique_id=766570943]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="VirtualJoystick" parent="." unique_id=234075380 instance=ExtResource("2_s8lhr")]
 position = Vector2(1800, 938.99994)
