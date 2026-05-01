@@ -235,6 +235,8 @@ z_index = 5
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_fxjh5")
+speed = 450
+attack_range = 1000
 
 [node name="HealthBar" parent="." unique_id=1252633794 instance=ExtResource("2_vfx0c")]
 position = Vector2(-16, -34)
@@ -258,11 +260,9 @@ position = Vector2(6.000003, 16.000002)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_g1fhx")
 
-[node name="PatrolTimer" type="Timer" parent="." unique_id=1390522385]
-wait_time = 0.5
-autostart = true
-
 [node name="Timer" type="Timer" parent="." unique_id=2064142539]
+
+[node name="PatrolTimer" type="Timer" parent="." unique_id=1062284602]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=241523840]
 position = Vector2(-11, -42)
@@ -280,5 +280,5 @@ damping_max = 30.0
 scale_amount_min = 0.5
 scale_amount_max = 0.5
 
-[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

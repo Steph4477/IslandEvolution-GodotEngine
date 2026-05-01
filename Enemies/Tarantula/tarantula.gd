@@ -16,6 +16,10 @@ extends EnemyGroundBase
 @export var ceiling_move_speed = 4
 @export var regen_per_second = 50
 
+@export var add_spawn_offset_x = 220
+@export var add_spawn_interval_min = 0.35
+@export var add_spawn_interval_max = 1.0
+
 # --- Target ---
 var target = null
 
@@ -61,6 +65,8 @@ var ground_position = Vector2.ZERO
 
 
 func _ready():
+	randomize()
+
 	attack_anim_name = "attack"
 	ceiling_point = get_parent().get_node("CeilingPoint")
 	super._ready()
@@ -143,7 +149,6 @@ func play_plafond_intro():
 		await get_tree().process_frame
 		scene_camera = get_viewport().get_camera_2d()
 
-	#scene_camera.zoom = Vector2(1.2, 1.2)
 	scene_camera.global_position = global_position
 
 	var effect = clim.instantiate()
@@ -156,6 +161,7 @@ func play_plafond_intro():
 	set_physics_process(false)
 
 	await effect.finished_clim_down
+
 	global_position += Vector2(0, 450)
 	visible = true
 	$Rotator.visible = true
@@ -267,7 +273,7 @@ func attack():
 # ============================================================================
 #                               ADD PHASE SETUP
 # ============================================================================
-# --- Add Spawn Setup ---
+
 func setup_add_spawns():
 	var root = get_parent().get_node_or_null("AddSpawns")
 	if root == null:
@@ -275,6 +281,7 @@ func setup_add_spawns():
 
 	for spawn in root.get_children():
 		add_spawns.append(spawn)
+
 
 func update_add_phase_trigger():
 	if is_in_add_phase:
@@ -285,6 +292,7 @@ func update_add_phase_trigger():
 
 	if hp <= next_add_phase_hp:
 		start_add_phase()
+
 
 # ============================================================================
 #                               ADD PHASE START
@@ -310,7 +318,7 @@ func start_add_phase():
 
 	await go_to_ceiling()
 
-	spawn_adds()
+	await spawn_adds()
 
 	start_regen_loop()
 
@@ -370,10 +378,16 @@ func spawn_adds():
 
 	for spawn in add_spawns:
 		var add = add_scene.instantiate()
-		add.global_position = spawn.global_position
+		var offset_x = randf_range(-add_spawn_offset_x, add_spawn_offset_x)
+
+		add.global_position = spawn.global_position + Vector2(offset_x, 0)
 		get_parent().add_child(add)
 
 		spawned_adds.append(add)
+
+		var delay = randf_range(add_spawn_interval_min, add_spawn_interval_max)
+		await get_tree().create_timer(delay).timeout
+
 
 # ============================================================================
 #                               HEALTH BAR
@@ -381,6 +395,7 @@ func spawn_adds():
 
 func update_health_bar():
 	health_bar.set_value(hp)
+
 
 # ============================================================================
 #                               REGEN
@@ -435,6 +450,7 @@ func end_add_phase():
 	anim.play("idle")
 	next_add_phase_hp = hp * add_phase_hp_ratio
 
+
 # ============================================================================
 #                               ON HIT / DODGE
 # ============================================================================
@@ -452,6 +468,7 @@ func on_hit(amount):
 
 	dodge_mod.register_hit()
 	super.on_hit(amount)
+
 
 # ============================================================================
 #                               DEATH
