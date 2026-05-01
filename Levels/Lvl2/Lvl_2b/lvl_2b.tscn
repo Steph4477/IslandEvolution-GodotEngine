@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://p1ewpn30hpnw" path="res://Enemies/Tarantula/tarantula.tscn" id="11_6sncs"]
 [ext_resource type="Texture2D" uid="uid://hg8mtdcl1ndv" path="res://Levels/Lvl2/Accessory/web.png" id="11_fyxfs"]
 [ext_resource type="Texture2D" uid="uid://dj1o6yasqb48h" path="res://Levels/Lvl2/Accessory/web1.png" id="11_sbfsf"]
+[ext_resource type="PackedScene" uid="uid://5ifnsceh6ylv" path="res://Loot/Coconut/Pile/pile.tscn" id="12_v5rf0"]
 [ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="13_csm35"]
 [ext_resource type="Texture2D" uid="uid://5ms27nx7k6rp" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/z-index10.png" id="18_uikls"]
 [ext_resource type="Texture2D" uid="uid://do5uhl3cs36a0" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/halo_z-index10.png" id="19_gr680"]
@@ -170,3 +171,6 @@ position = Vector2(594, 124)
 
 [node name="CeilingPoint" type="Node2D" parent="." unique_id=288659299]
 position = Vector2(1542, 178)
+
+[node name="Pile" parent="." unique_id=477987675 instance=ExtResource("12_v5rf0")]
+position = Vector2(388, 965)
