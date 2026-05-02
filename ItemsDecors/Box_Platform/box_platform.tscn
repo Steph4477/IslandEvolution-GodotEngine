@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://dwnbcbj2h3dfe"]
 
-[ext_resource type="Script" path="res://ItemsDecors/Box_Platform/box_platform.gd" id="1_pw6g8"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Box_Platform/box_platform.png" id="2_pw6g8"]
+[ext_resource type="Script" uid="uid://s745gfka1dvn" path="res://ItemsDecors/Box_Platform/box_platform.gd" id="1_pw6g8"]
+[ext_resource type="Texture2D" uid="uid://dvrafvl3seilc" path="res://ItemsDecors/Box_Platform/box_platform.png" id="2_pw6g8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o78yy"]
 size = Vector2(123, 170)
@@ -9,32 +9,34 @@ size = Vector2(123, 170)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prpvf"]
 size = Vector2(161, 131)
 
-[node name="BoxPlatform" type="RigidBody2D"]
+[node name="BoxPlatform" type="RigidBody2D" unique_id=2126630427]
+collision_layer = 512
+collision_mask = 128
 mass = 500.0
 sleeping = true
 lock_rotation = true
 script = ExtResource("1_pw6g8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1379814653]
 z_index = 1
 texture = ExtResource("2_pw6g8")
 
-[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+[node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=764333625]
 modulate = Color(0, 0, 0, 0.239216)
-position = Vector2(122, -6.5)
+position = Vector2(102, -9)
 scale = Vector2(1, 0.905)
 texture = ExtResource("2_pw6g8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2054058168]
 position = Vector2(-4.5, 8)
 shape = SubResource("RectangleShape2D_o78yy")
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=437885276]
 position = Vector2(-11, 66)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1518283601]
 position = Vector2(6.5, -59.5)
 shape = SubResource("RectangleShape2D_prpvf")
 

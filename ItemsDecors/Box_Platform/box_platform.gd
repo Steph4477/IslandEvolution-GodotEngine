@@ -20,7 +20,7 @@ func _physics_process(_delta):
 	if not player:
 		return
 
-	if pushing and Input.is_action_pressed("push_pull"):
+	if pushing and Input.is_action_pressed("interact"):
 		freeze = false
 		collision_layer = 1
 		sleeping = false
@@ -37,7 +37,7 @@ func _on_area_2d_body_entered(body):
 		pushing = true
 		if "can_push_pull" in body:
 			body.can_push_pull = true
-		show_info_popup('Maintiens la touche "p" pour pousser ou tirer la caisse')
+		show_info_popup('Maintiens la touche "E" pour pousser ou tirer la caisse')
 
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("Player"):
