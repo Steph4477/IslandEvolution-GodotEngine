@@ -33,7 +33,7 @@ func post_physics(was_on_floor):
 #                           MOUVEMENTS
 # ============================================================================
 func update_push_pull_state():
-	p.is_pushing_or_pulling = p.can_push_pull and Input.is_action_pressed("push_pull")
+	p.is_pushing_or_pulling = p.can_push_pull and Input.is_action_pressed("interact")
 
 func move_horizontal():
 	if p.is_on_liana:
