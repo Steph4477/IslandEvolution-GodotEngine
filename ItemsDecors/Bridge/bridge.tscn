@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://da0iejmapb6go"]
 
-[ext_resource type="Script" path="res://ItemsDecors/Bridge/bridge.gd" id="1_lvakd"]
+[ext_resource type="Script" uid="uid://depoa6xt4cvl" path="res://ItemsDecors/Bridge/bridge.gd" id="1_lvakd"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="1_nl1ov"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="2_lvakd"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/Crank/crank.tscn" id="4_2xfxl"]
+[ext_resource type="Texture2D" uid="uid://b1mxnmvvpabo4" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="2_lvakd"]
+[ext_resource type="PackedScene" uid="uid://dc7jpqg8bkvhh" path="res://ItemsDecors/Bridge/Crank/crank.tscn" id="4_2xfxl"]
 
 [sub_resource type="Animation" id="Animation_pccnt"]
 length = 0.001
@@ -39,103 +39,102 @@ _data = {
 &"lower": SubResource("Animation_2xfxl")
 }
 
-[node name="Bridge" type="Node2D"]
+[node name="Bridge" type="Node2D" unique_id=1096230188]
 modulate = Color(0.5449743, 0.54497427, 0.54497427, 1)
 rotation = 0.07853982
 scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("1_lvakd")
 
-[node name="Rope_Platform" type="Node2D" parent="."]
+[node name="Rope_Platform" type="Node2D" parent="." unique_id=427239307]
 
-[node name="DisappearingPlatform20" type="Node2D" parent="Rope_Platform"]
+[node name="DisappearingPlatform20" type="Node2D" parent="Rope_Platform" unique_id=954519921]
 
-[node name="DisappearingPlatform18" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform18" parent="Rope_Platform/DisappearingPlatform20" unique_id=371014295 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(-155, 0)
+disappear_delay = 0.1
 
-[node name="DisappearingPlatform" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform" parent="Rope_Platform/DisappearingPlatform20" unique_id=1142232297 instance=ExtResource("1_nl1ov")]
 z_index = 3
 
-[node name="DisappearingPlatform2" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform2" parent="Rope_Platform/DisappearingPlatform20" unique_id=1880448183 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(152.00024, 0)
 
-[node name="DisappearingPlatform3" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform3" parent="Rope_Platform/DisappearingPlatform20" unique_id=814401908 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(306, 0.00012207031)
 
-[node name="DisappearingPlatform4" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform4" parent="Rope_Platform/DisappearingPlatform20" unique_id=179046417 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(459.00024, 0)
 
-[node name="DisappearingPlatform5" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform5" parent="Rope_Platform/DisappearingPlatform20" unique_id=1292289101 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(612.99976, 0.00012207031)
 
-[node name="DisappearingPlatform6" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform6" parent="Rope_Platform/DisappearingPlatform20" unique_id=1459747308 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(766.00024, -0.00012207031)
 
-[node name="DisappearingPlatform7" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform7" parent="Rope_Platform/DisappearingPlatform20" unique_id=1692710883 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(919.00024, 0)
 
-[node name="DisappearingPlatform8" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform8" parent="Rope_Platform/DisappearingPlatform20" unique_id=1162069621 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(1076.0002, 0)
 
-[node name="DisappearingPlatform9" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform9" parent="Rope_Platform/DisappearingPlatform20" unique_id=389537996 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(1229.0002, 0.00012207031)
 
-[node name="DisappearingPlatform10" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform10" parent="Rope_Platform/DisappearingPlatform20" unique_id=1917181972 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(1381.0002, 0.00012207031)
 
-[node name="DisappearingPlatform11" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform11" parent="Rope_Platform/DisappearingPlatform20" unique_id=1817591843 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(1535.0002, 0)
 
-[node name="DisappearingPlatform12" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform12" parent="Rope_Platform/DisappearingPlatform20" unique_id=954905260 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(1688.0002, 0.00012207031)
 
-[node name="DisappearingPlatform13" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform13" parent="Rope_Platform/DisappearingPlatform20" unique_id=1237539310 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(1842.0002, 0.00012207031)
 
-[node name="DisappearingPlatform14" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform14" parent="Rope_Platform/DisappearingPlatform20" unique_id=1099391005 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(1995.0002, -0.00012207031)
 
-[node name="DisappearingPlatform15" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform15" parent="Rope_Platform/DisappearingPlatform20" unique_id=1961869162 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(2148.0002, 0)
 
-[node name="DisappearingPlatform16" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform16" parent="Rope_Platform/DisappearingPlatform20" unique_id=541981452 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(2305.1172, 0.1430428)
 
-[node name="DisappearingPlatform17" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform17" parent="Rope_Platform/DisappearingPlatform20" unique_id=1622245996 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(2458.5872, 0.10181427)
 
-[node name="DisappearingPlatform19" parent="Rope_Platform/DisappearingPlatform20" instance=ExtResource("1_nl1ov")]
+[node name="DisappearingPlatform19" parent="Rope_Platform/DisappearingPlatform20" unique_id=810060752 instance=ExtResource("1_nl1ov")]
 z_index = 3
 position = Vector2(2611.06, 0.13902688)
 
-[node name="Ropes" type="Sprite2D" parent="Rope_Platform"]
+[node name="Ropes" type="Sprite2D" parent="Rope_Platform" unique_id=1192150151]
 modulate = Color(0.39688927, 0.39688927, 0.39688924, 1)
 z_index = 15
 position = Vector2(1387.3485, 510.72427)
 texture = ExtResource("2_lvakd")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tdahh")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1792137139]
+libraries/ = SubResource("AnimationLibrary_tdahh")
 
-[node name="Crank" parent="." instance=ExtResource("4_2xfxl")]
+[node name="Crank" parent="." unique_id=487959438 instance=ExtResource("4_2xfxl")]
 position = Vector2(-431.71133, 7.896022)
 scale = Vector2(0.2, 0.2)
 

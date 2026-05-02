@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var disappear_delay: float = 0.3
+@export var disappear_delay = 0.2
 
 @onready var anim_player = $AnimationPlayer
 @onready var collision = $CollisionShape2D
@@ -16,12 +16,12 @@ func _ready():
 	left_piece.visible = false
 	right_piece.visible = false
 
-func _on_detector_body_entered(body: Node2D) -> void:
+func _on_detector_body_entered(body):
 	if body.is_in_group("Player"):
 		anim_player.play("crack")
 		timer.start()
 
-func _on_timer_timeout() -> void:
+func _on_timer_timeout():
 	collision.disabled = true
 	anim_player.play("disappear")
 	await anim_player.animation_finished

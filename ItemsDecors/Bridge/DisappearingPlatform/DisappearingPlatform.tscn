@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene format=3 uid="uid://dsnkgl7du6i1b"]
 
-[ext_resource type="Script" path="res://ItemsDecors/Bridge/DisappearingPlatform/disappearing_platform.gd" id="1_8ex6m"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank_left.png" id="3_oavne"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank_right.png" id="4_kxkem"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank1.png" id="5_oavne"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank2.png" id="6_kxkem"]
+[ext_resource type="Script" uid="uid://b6j2hgd4tc4n2" path="res://ItemsDecors/Bridge/DisappearingPlatform/disappearing_platform.gd" id="1_8ex6m"]
+[ext_resource type="Texture2D" uid="uid://cnqkc0di1ck2d" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank_left.png" id="3_oavne"]
+[ext_resource type="Texture2D" uid="uid://myl0kmilj7f" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank_right.png" id="4_kxkem"]
+[ext_resource type="Texture2D" uid="uid://jpjvu0c51iob" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank1.png" id="5_oavne"]
+[ext_resource type="Texture2D" uid="uid://dbnsvl27u4k36" path="res://ItemsDecors/Bridge/DisappearingPlatform/wooden_plank2.png" id="6_kxkem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh2qs"]
 size = Vector2(158, 41)
@@ -146,39 +146,37 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oavne"]
 size = Vector2(157, 56)
 
-[node name="DisappearingPlatform" type="StaticBody2D"]
+[node name="DisappearingPlatform" type="StaticBody2D" unique_id=123531531]
 collision_layer = 2
 script = ExtResource("1_8ex6m")
 
-[node name="Visual" type="Node2D" parent="."]
+[node name="Visual" type="Node2D" parent="." unique_id=407315283]
 scale = Vector2(0.2, 0.2)
 
-[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=2096311454]
 visible = false
 texture = ExtResource("5_oavne")
 
-[node name="Sprite2D_Left" type="Sprite2D" parent="Visual"]
+[node name="Sprite2D_Left" type="Sprite2D" parent="Visual" unique_id=1715673435]
 texture = ExtResource("3_oavne")
 
-[node name="Sprite2D_Right" type="Sprite2D" parent="Visual"]
+[node name="Sprite2D_Right" type="Sprite2D" parent="Visual" unique_id=1685833815]
 texture = ExtResource("4_kxkem")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1037847524]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_dh2qs")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1257362662]
 root_node = NodePath("../Visual/Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_htdie")
-}
+libraries/ = SubResource("AnimationLibrary_htdie")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1690451644]
 wait_time = 0.4
 
-[node name="Detector" type="Area2D" parent="."]
+[node name="Detector" type="Area2D" parent="." unique_id=1678162243]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=1096517840]
 visible = false
 position = Vector2(0.5, -6)
 shape = SubResource("RectangleShape2D_oavne")
