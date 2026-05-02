@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bws7kkotjh64q"]
 
 [ext_resource type="Script" uid="uid://dr4k1xhrav40" path="res://Enemies/Pygmy/pygmy.gd" id="1_t1248"]
-[ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="2_4ryc8"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_4ryc8"]
 [ext_resource type="Texture2D" uid="uid://c2qq35av75rox" path="res://Enemies/Pygmy/Attack/1.png" id="3_dixvw"]
 [ext_resource type="Texture2D" uid="uid://bsayeb3cieg34" path="res://Enemies/Pygmy/Attack/2.png" id="4_50y7t"]
 [ext_resource type="Texture2D" uid="uid://dwrl2e8y0l63u" path="res://Enemies/Pygmy/Attack/3.png" id="5_djcmy"]
@@ -180,9 +180,12 @@ scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_t1248")
+min_shoot_distance = 70.0
+max_shoot_distance = 500.0
 speed = 100
-attack_range = 100
-stop_distance = 0
+attack_range = 500
+drop_loot_enabled = true
+loot_scene_path = "res://Loot/Spear/spear.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935019652]
 position = Vector2(-1.5, -1.5)
@@ -208,9 +211,9 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_1lwxd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=880529227]
-position = Vector2(-22, -18)
+position = Vector2(26, -18)
 rotation = 3.14159
-scale = Vector2(-0.25, -0.25)
+scale = Vector2(0.25, -0.25)
 texture = ExtResource("26_x8q6o")
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=999428820]

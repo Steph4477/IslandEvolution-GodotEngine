@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bosgcqxhm1lmu"]
 
 [ext_resource type="Script" uid="uid://4nndo6lu3ssx" path="res://Enemies/Rat/rat.gd" id="1_e4syr"]
-[ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="2_hmr1k"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_hmr1k"]
 [ext_resource type="Texture2D" uid="uid://xb727g02o6bt" path="res://Enemies/Rat/die.png" id="7_vwo2e"]
 [ext_resource type="Texture2D" uid="uid://dskb63qdcm3xt" path="res://Enemies/Rat/attack.png" id="8_e055m"]
 [ext_resource type="Texture2D" uid="uid://bcr6m2l2ajka6" path="res://Enemies/Rat/idle.png" id="9_gg55r"]
@@ -156,7 +156,7 @@ position = Vector2(38, -30)
 modulate = Color(0.442911, 0.442911, 0.442911, 1)
 position = Vector2(-4, -14)
 rotation = 3.14159
-scale = Vector2(-0.25, -0.25)
+scale = Vector2(0.25, -0.25)
 texture = ExtResource("7_vwo2e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1975522029 groups=["Enemies"]]
