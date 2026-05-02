@@ -1,21 +1,19 @@
-[gd_scene format=3 uid="uid://cjmloyqfl4l73"]
+[gd_scene format=4 uid="uid://cjmloyqfl4l73"]
 
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://Levels/Lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="Script" uid="uid://cr1lum0yb4uny" path="res://Levels/Lvl2/Environement/torch.gd" id="4_3p2tf"]
-[ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Background/Tiles/tileMapColone.tscn" id="4_ah614"]
+[ext_resource type="TileSet" uid="uid://cemt1gubeih8b" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="6_04g0o"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Torch/torch.tscn" id="6_ochkp"]
-[ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Background/Tiles/tileMapColoneShadow.tscn" id="7_mnvun"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/bridge.tscn" id="9_5rcsp"]
+[ext_resource type="PackedScene" uid="uid://da0iejmapb6go" path="res://ItemsDecors/Bridge/bridge.tscn" id="9_5rcsp"]
 [ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="10_ochkp"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/KillZone/kill_zone.tscn" id="11_0vnxp"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="11_2ivwu"]
 [ext_resource type="Texture2D" uid="uid://bo8vcypul5n4v" path="res://ItemsDecors/Symbol/Turn_off/lion.png" id="12_ureso"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Door/door.tscn" id="12_vjssa"]
 [ext_resource type="PackedScene" uid="uid://bws7kkotjh64q" path="res://Enemies/Pygmy/pygmy.tscn" id="13_04g0o"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Box_Platform/box_platform.tscn" id="13_ifea3"]
-[ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Background/Tiles/tileMapWall.tscn" id="14_a6f7x"]
+[ext_resource type="PackedScene" uid="uid://dwnbcbj2h3dfe" path="res://ItemsDecors/Box_Platform/box_platform.tscn" id="13_ifea3"]
 [ext_resource type="PackedScene" path="res://Enemies/Snake/snake.tscn" id="14_utbl0"]
-[ext_resource type="PackedScene" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/tileMapPlatform.tscn" id="15_3p2tf"]
+[ext_resource type="PackedScene" uid="uid://bffag14gtl54m" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/tileMapPlatform.tscn" id="15_3p2tf"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Moving_Platform/Rock/rock.tscn" id="15_a6f7x"]
 [ext_resource type="PackedScene" uid="uid://bosgcqxhm1lmu" path="res://Enemies/Rat/rat.tscn" id="16_sdx3j"]
 [ext_resource type="Texture2D" uid="uid://berthi4xbc0vx" path="res://ItemsDecors/Symbol/Turn_off/bowl.png" id="17_kxq3y"]
@@ -41,103 +39,77 @@
 [ext_resource type="Texture2D" uid="uid://cy2mdmts7yrik" path="res://Levels/Lvl2/Accessory/urn2.png" id="32_3kq7q"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Symbol/symbol.tscn" id="36_ureso"]
 [ext_resource type="PackedScene" uid="uid://cl7qxeo241o6d" path="res://Items/Stone/stone_item.tscn" id="39_5rcsp"]
+[ext_resource type="PackedScene" uid="uid://0nnxjschrg38" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="41_7462l"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/digicode.tscn" id="43_04g0o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
-size = Vector2(86.75, 3228)
+size = Vector2(203.375, 2607)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(3338, 171.188)
+size = Vector2(5030, 171.188)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rcsp"]
-size = Vector2(105, 114.79498)
+size = Vector2(105, 133.79495)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifea3"]
-size = Vector2(1221.0049, 33)
+size = Vector2(1252.5024, 77.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6f7x"]
-size = Vector2(1079, 36)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2tf"]
-size = Vector2(680, 51.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxp1h"]
-size = Vector2(655, 33)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnvun"]
-size = Vector2(858.85, 75.0146)
+size = Vector2(1766.5, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dadqh"]
-size = Vector2(763, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmwbq"]
-size = Vector2(789.5, 20)
+size = Vector2(1080.5, 71)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nkff"]
-size = Vector2(658, 29)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yvr4"]
-size = Vector2(378.5, 32)
+size = Vector2(1365, 77.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huc8a"]
-size = Vector2(1318, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnsbv"]
-size = Vector2(603, 20)
+size = Vector2(1671, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdx3j"]
-size = Vector2(1321, 31)
+size = Vector2(1733.5, 83)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2552o"]
-size = Vector2(268.5, 20)
+size = Vector2(678, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwkd"]
-size = Vector2(982.25, 35)
+size = Vector2(1392, 85.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6vc5"]
-size = Vector2(790, 29)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnr68"]
-size = Vector2(763, 23.5)
+size = Vector2(1379, 73.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vatd7"]
-size = Vector2(1123, 38)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mp3u"]
-size = Vector2(950.5, 13.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpmwo"]
-size = Vector2(1310, 8.5)
+size = Vector2(1710.5, 77.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vnxp"]
-size = Vector2(4349, 136.5)
+size = Vector2(4459.25, 151.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwf5r"]
-size = Vector2(603.5, 10.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ow1"]
-size = Vector2(1315.5, 11.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_myagb"]
-size = Vector2(946.5, 25.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s36pp"]
-size = Vector2(363, 12.5)
+size = Vector2(734.5, 73)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ogd"]
-size = Vector2(948.5, 28.5)
+size = Vector2(1652.625, 93.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7vye"]
-size = Vector2(647, 31.5)
+size = Vector2(1030.25, 60.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kq7q"]
-size = Vector2(508, 83)
+size = Vector2(1689, 83)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2btv"]
-size = Vector2(89, 3345)
+size = Vector2(255.5, 2776.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lc01g"]
-size = Vector2(10430, 131)
+size = Vector2(11773, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esj3h"]
+size = Vector2(74, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7462l"]
+size = Vector2(76, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04g0o"]
+size = Vector2(70, 72)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bwf5r"]
 
@@ -148,228 +120,212 @@ script = ExtResource("1_vnrni")
 position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1372434146]
-z_index = 8
-position = Vector2(9800, 999)
+z_index = 30
+position = Vector2(-12, 899)
 
 [node name="Tiles" type="Node2D" parent="Node2D" unique_id=1203558698]
-
-[node name="TileMap" parent="Node2D/Tiles" unique_id=1510637295 instance=ExtResource("14_a6f7x")]
-position = Vector2(226, 2092)
-
-[node name="TileMapWall" parent="Node2D/Tiles" unique_id=329547240 instance=ExtResource("14_a6f7x")]
-z_index = 1
-position = Vector2(276, 84)
-
-[node name="TileMapColone" parent="Node2D/Tiles" unique_id=455660034 instance=ExtResource("4_ah614")]
-position = Vector2(-518, 800)
-
-[node name="TileMapColonShadow" parent="Node2D/Tiles" unique_id=1535690387 instance=ExtResource("7_mnvun")]
-z_index = 2
-position = Vector2(-593, 803)
-script = null
+position = Vector2(1327, -54)
 
 [node name="TileMapPlatform" parent="Node2D/Tiles" unique_id=1586543601 instance=ExtResource("15_3p2tf")]
+z_index = 0
 position = Vector2(-526, 799)
 
-[node name="PushPlatforms" type="Node2D" parent="Node2D" unique_id=99272779]
-z_index = 5
-position = Vector2(2499, 106)
+[node name="TileMapColone16" type="TileMapLayer" parent="Node2D/Tiles" unique_id=515412872]
+z_index = 25
+position = Vector2(-3744, -1159)
+scale = Vector2(1.00067, 1.00227)
+tile_map_data = PackedByteArray("AADDAIEABgAAAAAAAADDAGsAAAAAAAAAAAAVAYEABgAAAAAAAAAVAWsAAAAAAAAAAABNAYIAAAAAAAAAAACJAYIAAAAAAAAAAACoAYIAAAAAAAAAAACoAWkAAgAAAAAAAABjAWkAAgAAAAAAAADDAFIAAgAAAAAAAAAVAVIAAgAAAAAAAADDADoAAgAAAAAAAADtADoAAgAAAAAAAABjAVEAAgAAAAAAAAB8AVEAAgAAAAAAAACpAU8ABgAAAAAAAACpATkABgAAAAAAAAB8ATgAAgAAAAAAAAA=")
+tile_set = ExtResource("6_04g0o")
 
-[node name="PushPlatform1" parent="Node2D/PushPlatforms" unique_id=1131473802 instance=ExtResource("13_ifea3")]
-position = Vector2(-2218, -337)
-
-[node name="PushPlatform2" parent="Node2D/PushPlatforms" unique_id=1189169315 instance=ExtResource("13_ifea3")]
-position = Vector2(14, 86)
-mass = 5000.0
-
-[node name="PushPlatform" parent="Node2D/PushPlatforms" unique_id=120980728 instance=ExtResource("13_ifea3")]
-position = Vector2(-1868, 861)
-
-[node name="PushPlatform3" parent="Node2D/PushPlatforms" unique_id=1333420319 instance=ExtResource("13_ifea3")]
-position = Vector2(3833, 1023)
-
-[node name="PushPlatform5" parent="Node2D/PushPlatforms" unique_id=1474711 instance=ExtResource("13_ifea3")]
-position = Vector2(3701, -179)
-
-[node name="PushPlatform6" parent="Node2D/PushPlatforms" unique_id=519430926 instance=ExtResource("13_ifea3")]
-position = Vector2(5440, -1422)
-gravity_scale = 3.0
+[node name="TileMapColone17" type="TileMapLayer" parent="Node2D/Tiles" unique_id=570630585]
+z_index = 25
+position = Vector2(12679, -1036)
+scale = Vector2(-1.001, 1.002)
+tile_map_data = PackedByteArray("AADDAIEABgAAAAAAAADDAGsAAAAAAAAAAAAVAYEABgAAAAAAAAAVAWsAAAAAAAAAAABNAYIAAAAAAAAAAACJAYIAAAAAAAAAAACoAYIAAAAAAAAAAACoAWkAAgAAAAAAAABjAWkAAgAAAAAAAADDAFIAAgAAAAAAAAAVAVIAAgAAAAAAAADDADoAAgAAAAAAAADtADoAAgAAAAAAAABjAVEAAgAAAAAAAAB8AVEAAgAAAAAAAACpAU8ABgAAAAAAAACpATkABgAAAAAAAAB8ATgAAgAAAAAAAAA=")
+tile_set = ExtResource("6_04g0o")
 
 [node name="Platforms" type="Node2D" parent="Node2D" unique_id=148291040]
+z_index = 50
 
 [node name="MobilePlatForms" type="Node2D" parent="Node2D/Platforms" unique_id=1276771527]
 z_index = 3
 position = Vector2(221, 138)
 
 [node name="MobilePlatForm1" parent="Node2D/Platforms/MobilePlatForms" unique_id=80861551 instance=ExtResource("15_a6f7x")]
-position = Vector2(1411, -421)
+position = Vector2(2347, 40)
 scale = Vector2(1.2, 1.2)
 speed = 700.0
 distance = 1100.0
 
 [node name="MobilePlatForm2" parent="Node2D/Platforms/MobilePlatForms" unique_id=719775434 instance=ExtResource("15_a6f7x")]
-position = Vector2(7320.0005, -318)
+position = Vector2(8545, -207)
 scale = Vector2(1.2, 1.2)
 speed = 700.0
 distance = 1200.0
 
 [node name="MobilePlatForm3" parent="Node2D/Platforms/MobilePlatForms" unique_id=1768093953 instance=ExtResource("15_a6f7x")]
-position = Vector2(6819, -698)
+position = Vector2(8823, -198)
 scale = Vector2(1.2, 1.2)
 speed = 400.0
 distance = 300.0
 
 [node name="MobilePlatForm4" parent="Node2D/Platforms/MobilePlatForms" unique_id=2114845408 instance=ExtResource("15_a6f7x")]
-position = Vector2(942, -908)
+position = Vector2(2765, -83)
 scale = Vector2(1.2, 1.2)
 speed = 400.0
 distance = 230.0
 
-[node name="Bridge" parent="Node2D/Platforms" unique_id=87750588 instance=ExtResource("9_5rcsp")]
-z_index = 3
-position = Vector2(3642.0002, -1500)
-
 [node name="platforms" type="StaticBody2D" parent="Node2D/Platforms" unique_id=1610192597]
-z_index = 3
-position = Vector2(201, -399)
+position = Vector2(212, -437)
 collision_layer = 2
 
 [node name="Border" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1205353012]
-position = Vector2(-174, -60)
+position = Vector2(-516, 270)
 shape = SubResource("RectangleShape2D_ekrdk")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1579334720]
-position = Vector2(1392, 1544.59)
+position = Vector2(1915, 1554)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=411200266]
-position = Vector2(3009, 1499.3975)
+position = Vector2(4481, 1460)
 shape = SubResource("RectangleShape2D_5rcsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=812855171]
-position = Vector2(2395.5024, 691.5)
+position = Vector2(3684.2512, 706.25)
 shape = SubResource("RectangleShape2D_ifea3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=166709072]
-position = Vector2(1826.5, 1110)
+position = Vector2(3558.75, 1098.5)
 shape = SubResource("RectangleShape2D_a6f7x")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=687337850]
-position = Vector2(2086, -967.25)
-shape = SubResource("RectangleShape2D_3p2tf")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1965287412]
-position = Vector2(2088.5, -144.5)
-shape = SubResource("RectangleShape2D_vxp1h")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1026735480]
-visible = false
-position = Vector2(11363.7, -2136.44)
-rotation = 1.56791
-shape = SubResource("RectangleShape2D_mnvun")
-
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=397877383]
-position = Vector2(485, -563)
+position = Vector2(884.75, -44.5)
 shape = SubResource("RectangleShape2D_dadqh")
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=602258199]
-position = Vector2(494.25, -979)
-shape = SubResource("RectangleShape2D_vmwbq")
-
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=2094052276]
-position = Vector2(2086, -564.5)
+position = Vector2(4170.5, -72.75)
 shape = SubResource("RectangleShape2D_6nkff")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=105661621]
-position = Vector2(958.75, -143)
-shape = SubResource("RectangleShape2D_8yvr4")
-
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=297861870]
-position = Vector2(530, 269)
+position = Vector2(1252.5, 338.5)
 shape = SubResource("RectangleShape2D_huc8a")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=290157293]
-position = Vector2(2077.5, 268)
-shape = SubResource("RectangleShape2D_hnsbv")
-
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=58288091]
-position = Vector2(494.5, 690.5)
+position = Vector2(1248.25, 727.5)
 shape = SubResource("RectangleShape2D_sdx3j")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1749833477]
-position = Vector2(2868.75, 399)
+position = Vector2(3337, 320)
 shape = SubResource("RectangleShape2D_2552o")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=2082502073]
-position = Vector2(8058.88, -814.5)
+position = Vector2(7450, 836.25)
 shape = SubResource("RectangleShape2D_kjwkd")
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1203954488]
-position = Vector2(6340.5, -818)
+position = Vector2(7056.5, 50.25)
 shape = SubResource("RectangleShape2D_r6vc5")
 
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=642908510]
-position = Vector2(6340, -402.25)
-shape = SubResource("RectangleShape2D_dnr68")
-
 [node name="CollisionShape2D26" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=2104998560]
-position = Vector2(7676, 1271.5)
+position = Vector2(7594.75, 1221.125)
 shape = SubResource("RectangleShape2D_vatd7")
 
-[node name="CollisionShape2D27" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1889021377]
-position = Vector2(8085.75, 839.75)
-shape = SubResource("RectangleShape2D_7mp3u")
-
-[node name="CollisionShape2D23" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1675630743]
-position = Vector2(6356.5, 842.25)
-shape = SubResource("RectangleShape2D_wpmwo")
-
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=135122519]
-position = Vector2(7887.5, 1691.25)
+position = Vector2(8982.375, 1667.625)
 shape = SubResource("RectangleShape2D_0vnxp")
 
 [node name="CollisionShape2D28" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1011337977]
-position = Vector2(7921.75, 420.25)
+position = Vector2(7856.25, 439.5)
 shape = SubResource("RectangleShape2D_bwf5r")
 
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=867110719]
-position = Vector2(6369.25, 422.75)
-shape = SubResource("RectangleShape2D_v1ow1")
-
-[node name="CollisionShape2D21" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1729717116]
-position = Vector2(8060.75, 13.75)
-shape = SubResource("RectangleShape2D_myagb")
-
-[node name="CollisionShape2D20" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=149246184]
-position = Vector2(6803, 7.25)
-shape = SubResource("RectangleShape2D_s36pp")
-
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1573627717]
-position = Vector2(8068.75, -401.75)
+position = Vector2(9901.6875, 852.1875)
 shape = SubResource("RectangleShape2D_y8ogd")
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1284904136]
-position = Vector2(8243.5, -1219.25)
+position = Vector2(10273.875, 64)
 shape = SubResource("RectangleShape2D_t7vye")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1328134084]
-position = Vector2(2984, -983.5)
+position = Vector2(9938.5, 459)
 shape = SubResource("RectangleShape2D_3kq7q")
 
-[node name="CollisionShape2D24" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1457519854]
-position = Vector2(10105.5, 67.5)
+[node name="BorderR" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1457519854]
+position = Vector2(11082.75, 341.25)
 shape = SubResource("RectangleShape2D_p2btv")
 
-[node name="CollisionShape2D31" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=677587538]
-position = Vector2(4927, -1657.5)
+[node name="BorderH" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=677587538]
+position = Vector2(5291.5, -997)
 shape = SubResource("RectangleShape2D_lc01g")
 
-[node name="KillZone" parent="Node2D/Platforms" unique_id=1604553674 instance=ExtResource("11_0vnxp")]
-z_index = 20
-position = Vector2(4559.0005, 1274.9999)
+[node name="FallPush" type="StaticBody2D" parent="Node2D/Platforms/platforms" unique_id=1541549221]
+collision_layer = 128
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=2033135920]
+position = Vector2(379, 279)
+shape = SubResource("RectangleShape2D_esj3h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=1328357024]
+position = Vector2(2132, 279)
+shape = SubResource("RectangleShape2D_7462l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=881189681]
+position = Vector2(2986, 269)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=1880744413]
+position = Vector2(3731, 264)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=1152424469]
+position = Vector2(6688, 1143)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=495646870]
+position = Vector2(8487, 1185)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=1247066769]
+position = Vector2(9056, 412)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=2076032512]
+position = Vector2(10811, 426)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=1903187808]
+position = Vector2(6702, 1563)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="PushPlatforms" type="Node2D" parent="Node2D/Platforms/platforms" unique_id=99272779]
+z_index = 15
+position = Vector2(2012, 566)
+
+[node name="PushPlatform1" parent="Node2D/Platforms/platforms/PushPlatforms" unique_id=1131473802 instance=ExtResource("13_ifea3")]
+position = Vector2(-965, -362)
+
+[node name="PushPlatform2" parent="Node2D/Platforms/platforms/PushPlatforms" unique_id=1189169315 instance=ExtResource("13_ifea3")]
+z_index = 5
+position = Vector2(1316, -386)
+mass = 5000.0
+
+[node name="PushPlatform" parent="Node2D/Platforms/platforms/PushPlatforms" unique_id=120980728 instance=ExtResource("13_ifea3")]
+position = Vector2(-551, 817)
+
+[node name="PushPlatform3" parent="Node2D/Platforms/platforms/PushPlatforms" unique_id=1333420319 instance=ExtResource("13_ifea3")]
+position = Vector2(5822, 926)
+
+[node name="PushPlatform5" parent="Node2D/Platforms/platforms/PushPlatforms" unique_id=1474711 instance=ExtResource("13_ifea3")]
+position = Vector2(7271, -245)
+
+[node name="PushPlatform6" parent="Node2D/Platforms/platforms/PushPlatforms" unique_id=519430926 instance=ExtResource("13_ifea3")]
+position = Vector2(5733, 526)
+gravity_scale = 3.0
 
 [node name="Creatures" type="Node2D" parent="Node2D" unique_id=1229538504]
-z_index = 5
+z_index = 22
 position = Vector2(6821, 125)
 rotation = 3.14159
 scale = Vector2(1, -1)
@@ -377,97 +333,126 @@ scale = Vector2(1, -1)
 [node name="Rats" type="Node2D" parent="Node2D/Creatures" unique_id=726350793]
 
 [node name="Rat" parent="Node2D/Creatures/Rats" unique_id=385022413 instance=ExtResource("16_sdx3j")]
-position = Vector2(5425.0024, 860.9862)
+position = Vector2(5425.002, 882.9862)
+scale = Vector2(1, 1)
 
 [node name="Rat2" parent="Node2D/Creatures/Rats" unique_id=918561300 instance=ExtResource("16_sdx3j")]
-position = Vector2(4306.999, -324.01093)
+position = Vector2(5133.999, -297.01303)
+scale = Vector2(1, 1)
 
 [node name="Rat3" parent="Node2D/Creatures/Rats" unique_id=894757124 instance=ExtResource("16_sdx3j")]
-position = Vector2(4292.997, -1153.0109)
+position = Vector2(3493.9993, -309.00885)
+scale = Vector2(1, 1)
 
 [node name="Rat4" parent="Node2D/Creatures/Rats" unique_id=1007794946 instance=ExtResource("16_sdx3j")]
-position = Vector2(101.99951, -183.00024)
+position = Vector2(-547.9995, 191.0014)
+scale = Vector2(1, 1)
 
 [node name="Rat5" parent="Node2D/Creatures/Rats" unique_id=1552802944 instance=ExtResource("16_sdx3j")]
 position = Vector2(-1953.9976, 996.0049)
+scale = Vector2(1, 1)
 
 [node name="Rat6" parent="Node2D/Creatures/Rats" unique_id=1805843549 instance=ExtResource("16_sdx3j")]
-position = Vector2(199.00293, 1000.9995)
+position = Vector2(-235.00162, -595.9994)
+scale = Vector2(1, 1)
 
 [node name="Pygmys" type="Node2D" parent="Node2D/Creatures" unique_id=1995372841]
 position = Vector2(3828, -218.01)
 
 [node name="Pygmy2" parent="Node2D/Creatures/Pygmys" unique_id=1120375186 instance=ExtResource("13_04g0o")]
-position = Vector2(-3230.9995, 429.00848)
+position = Vector2(-1169.0001, 236.00323)
 scale = Vector2(1, 1)
-drop_loot_enabled = true
-loot_scene_path = "res://Loot/Spear/spear.tscn"
 
 [node name="Pygmy3" parent="Node2D/Creatures/Pygmys" unique_id=1379821880 instance=ExtResource("13_04g0o")]
-position = Vector2(-5020.003, -849.98706)
+position = Vector2(-4992.9976, 1162.013)
 scale = Vector2(1, 1)
-drop_loot_enabled = true
-loot_scene_path = "res://Loot/Spear/spear.tscn"
 
 [node name="Pygmy" parent="Node2D/Creatures/Pygmys" unique_id=1783296698 instance=ExtResource("13_04g0o")]
-position = Vector2(2632.0002, 252.99362)
-drop_loot_enabled = true
-loot_scene_path = "res://Loot/Spear/spear.tscn"
+position = Vector2(1101.0002, 261.9975)
+scale = Vector2(1, 1)
 
 [node name="Snakes" type="Node2D" parent="Node2D/Creatures" unique_id=1130178387]
 
 [node name="Snake" parent="Node2D/Creatures/Snakes" unique_id=88320707 instance=ExtResource("14_utbl0")]
-position = Vector2(-1333.0006, -166.99663)
+position = Vector2(-1330.0007, -204.99664)
 
 [node name="Snake2" parent="Node2D/Creatures/Snakes" unique_id=1230557295 instance=ExtResource("14_utbl0")]
-position = Vector2(353.9978, -1002.0009)
+position = Vector2(-2994.9995, 191.0076)
 
 [node name="Snake3" parent="Node2D/Creatures/Snakes" unique_id=1924301690 instance=ExtResource("14_utbl0")]
-position = Vector2(6341.996, -1583.0161)
+position = Vector2(3161.0022, 852.99194)
 
 [node name="Snake4" parent="Node2D/Creatures/Snakes" unique_id=1951045511 instance=ExtResource("14_utbl0")]
 position = Vector2(4519.0005, 93.988525)
 
-[node name="Items" type="Node2D" parent="Node2D" unique_id=2082419262]
+[node name="Items" type="Node2D" parent="Node2D" unique_id=1309033006]
+
+[node name="KillZone" parent="Node2D/Items" unique_id=1604553674 instance=ExtResource("11_0vnxp")]
+z_index = 20
+position = Vector2(5765, 1109.0001)
+scale = Vector2(0.155, 0.196)
+
+[node name="StoneItem" parent="Node2D/Items" unique_id=1848008734 instance=ExtResource("39_5rcsp")]
+z_index = 20
+position = Vector2(7328.0005, -483)
+scale = Vector2(1.03, 1.03)
+
+[node name="Exit" parent="Node2D/Items" unique_id=287702359 instance=ExtResource("12_vjssa")]
+z_index = 3
+position = Vector2(9417.001, 724.00006)
+rotation = -0.000533727
+scale = Vector2(1.2, 1.2)
+next_scene_path = "res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn"
+
+[node name="Bridge" parent="Node2D/Items" unique_id=87750588 instance=ExtResource("9_5rcsp")]
+z_index = 10
+position = Vector2(4981.0005, -626)
+rotation = 0.0
+scale = Vector2(0.65, 0.65)
+
+[node name="Digicode" parent="Node2D/Items" unique_id=654459137 instance=ExtResource("43_04g0o")]
+z_index = 3
+position = Vector2(8917, 699)
+scale = Vector2(0.1, 0.1)
+
+[node name="Seeds" type="Node2D" parent="Node2D/Items" unique_id=605894754]
+z_index = 25
+position = Vector2(1522, -238)
+
+[node name="Seed3" parent="Node2D/Items/Seeds" unique_id=2062480420 instance=ExtResource("17_mnvun")]
+position = Vector2(2312, 57)
+
+[node name="Seed4" parent="Node2D/Items/Seeds" unique_id=645056776 instance=ExtResource("17_mnvun")]
+position = Vector2(-673, 467)
+
+[node name="Seed5" parent="Node2D/Items/Seeds" unique_id=2051998444 instance=ExtResource("17_mnvun")]
+position = Vector2(1597, 846)
 
 [node name="BagsLoot" type="Node2D" parent="Node2D/Items" unique_id=402662949]
 z_index = 20
 position = Vector2(225, 37)
 
 [node name="BagLoot1" parent="Node2D/Items/BagsLoot" unique_id=1907262240 instance=ExtResource("11_2ivwu")]
-position = Vector2(1679, 991)
+position = Vector2(1670, 935)
 
 [node name="BagLoot3" parent="Node2D/Items/BagsLoot" unique_id=2060154543 instance=ExtResource("11_2ivwu")]
-position = Vector2(1007, 209)
+position = Vector2(1269, 157)
 
 [node name="BagLoot" parent="Node2D/Items/BagsLoot" unique_id=790495718 instance=ExtResource("11_2ivwu")]
-position = Vector2(1945, -210)
+position = Vector2(1988, -236.00002)
 
 [node name="BagLoot6" parent="Node2D/Items/BagsLoot" unique_id=1474910735 instance=ExtResource("11_2ivwu")]
 z_index = 3
-position = Vector2(7597, 782)
+position = Vector2(7614.0005, 648)
 
 [node name="BagLoot7" parent="Node2D/Items/BagsLoot" unique_id=1749209553 instance=ExtResource("11_2ivwu")]
-position = Vector2(8415, 368)
+position = Vector2(8086, 1054)
 
 [node name="BagLoot8" parent="Node2D/Items/BagsLoot" unique_id=1702578405 instance=ExtResource("11_2ivwu")]
-position = Vector2(6094, -887.00006)
+position = Vector2(9642, -119)
 
 [node name="BagLoot9" parent="Node2D/Items/BagsLoot" unique_id=1986451545 instance=ExtResource("11_2ivwu")]
-position = Vector2(8471, -470)
-
-[node name="Seeds" type="Node2D" parent="Node2D/Items" unique_id=605894754]
-z_index = 3
-position = Vector2(1485, -237)
-
-[node name="Seed3" parent="Node2D/Items/Seeds" unique_id=2062480420 instance=ExtResource("17_mnvun")]
-position = Vector2(677, 469)
-
-[node name="Seed4" parent="Node2D/Items/Seeds" unique_id=645056776 instance=ExtResource("17_mnvun")]
-position = Vector2(-911, 472)
-
-[node name="Seed5" parent="Node2D/Items/Seeds" unique_id=2051998444 instance=ExtResource("17_mnvun")]
-position = Vector2(342, 866)
+position = Vector2(4146, -650)
 
 [node name="Symbols" type="Node2D" parent="Node2D/Items" unique_id=48104156]
 z_index = 3
@@ -476,7 +461,7 @@ scale = Vector2(0.8, 0.8)
 
 [node name="Bowl" parent="Node2D/Items/Symbols" unique_id=555196455 instance=ExtResource("36_ureso")]
 z_index = 0
-position = Vector2(6690, 1881.25)
+position = Vector2(-695, 1716.25)
 scale = Vector2(0.99999994, 0.99999994)
 symbol_name = "bowl"
 texture_off = ExtResource("17_kxq3y")
@@ -484,7 +469,7 @@ texture_on = ExtResource("18_igsey")
 
 [node name="Lion" parent="Node2D/Items/Symbols" unique_id=2034340463 instance=ExtResource("36_ureso")]
 z_index = 0
-position = Vector2(6237.5, 956.25006)
+position = Vector2(7303.7505, 812.50006)
 scale = Vector2(0.8, 0.8)
 symbol_name = "lion"
 texture_off = ExtResource("12_ureso")
@@ -492,1146 +477,2013 @@ texture_on = ExtResource("20_5rcsp")
 
 [node name="Owl" parent="Node2D/Items/Symbols" unique_id=909949321 instance=ExtResource("36_ureso")]
 z_index = 0
-position = Vector2(7367.5, 260)
+position = Vector2(9247.5, 358.75)
 scale = Vector2(0.7, 0.7)
 symbol_name = "owl"
 texture_off = ExtResource("21_04g0o")
 texture_on = ExtResource("22_reql1")
 
-[node name="Torchs" type="Node2D" parent="Node2D/Items" unique_id=1590691312]
-light_mask = 0
+[node name="Deco" type="Node2D" parent="Node2D" unique_id=1339261767]
+
+[node name="DecoZ5" type="Node2D" parent="Node2D/Deco" unique_id=1748512292]
+modulate = Color(0.7179641, 0.7179642, 0.7179641, 1)
+
+[node name="Racks" type="Node2D" parent="Node2D/Deco/DecoZ5" unique_id=956852525]
+z_index = 15
+position = Vector2(135, 370)
+
+[node name="Rack" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=1122611886]
 z_index = 3
-z_as_relative = false
-position = Vector2(-1356, -250)
-script = ExtResource("4_3p2tf")
-
-[node name="Torch1" parent="Node2D/Items/Torchs" unique_id=1933736155 instance=ExtResource("6_ochkp")]
-position = Vector2(2985, -1406)
-
-[node name="Torch2" parent="Node2D/Items/Torchs" unique_id=1964241611 instance=ExtResource("6_ochkp")]
-position = Vector2(2999, -1796)
-
-[node name="Torch3" parent="Node2D/Items/Torchs" unique_id=1122027809 instance=ExtResource("6_ochkp")]
-position = Vector2(2977, -990)
-
-[node name="Torch4" parent="Node2D/Items/Torchs" unique_id=1529830413 instance=ExtResource("6_ochkp")]
-position = Vector2(1953, -1404)
-
-[node name="Torch" parent="Node2D/Items/Torchs" unique_id=650072432 instance=ExtResource("6_ochkp")]
-position = Vector2(2982, -558)
-
-[node name="Torch5" parent="Node2D/Items/Torchs" unique_id=2086776237 instance=ExtResource("6_ochkp")]
-position = Vector2(2979, -2209)
-
-[node name="Torch6" parent="Node2D/Items/Torchs" unique_id=957918455 instance=ExtResource("6_ochkp")]
-position = Vector2(2031, -180)
-
-[node name="Torch7" parent="Node2D/Items/Torchs" unique_id=551407990 instance=ExtResource("6_ochkp")]
-position = Vector2(7816, -1252)
-
-[node name="Torch8" parent="Node2D/Items/Torchs" unique_id=1328144849 instance=ExtResource("6_ochkp")]
-position = Vector2(8874, -425)
-
-[node name="Torch9" parent="Node2D/Items/Torchs" unique_id=591308342 instance=ExtResource("6_ochkp")]
-position = Vector2(8879, -847)
-
-[node name="Torch10" parent="Node2D/Items/Torchs" unique_id=816313082 instance=ExtResource("6_ochkp")]
-position = Vector2(8875, -1262)
-
-[node name="Torch11" parent="Node2D/Items/Torchs" unique_id=615402296 instance=ExtResource("6_ochkp")]
-position = Vector2(8885, -1657)
-
-[node name="Torch12" parent="Node2D/Items/Torchs" unique_id=1459420867 instance=ExtResource("6_ochkp")]
-position = Vector2(8890, -2060)
-
-[node name="Torch13" parent="Node2D/Items/Torchs" unique_id=705389888 instance=ExtResource("6_ochkp")]
-position = Vector2(7292, -2078)
-
-[node name="Torch14" parent="Node2D/Items/Torchs" unique_id=1103547110 instance=ExtResource("6_ochkp")]
-position = Vector2(8874, 37)
-
-[node name="Decorations" type="Node2D" parent="Node2D/Items" unique_id=1189664163]
-modulate = Color(0.37036446, 0.3703645, 0.37036446, 1)
-
-[node name="Racks" type="Node2D" parent="Node2D/Items/Decorations" unique_id=956852525]
-
-[node name="Rack" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=1122611886]
-position = Vector2(441, 824)
+position = Vector2(26, 285)
 scale = Vector2(0.5, 0.5)
 
-[node name="Flag9" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack" unique_id=1651932746]
-z_index = 3
-position = Vector2(824, -136)
+[node name="Flag9" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack" unique_id=1651932746]
+position = Vector2(816, -134)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_dnr68")
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack" unique_id=2104334718]
-z_index = 3
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack" unique_id=2104334718]
 position = Vector2(829, 142)
 scale = Vector2(0.6617031, 0.23818392)
 texture = ExtResource("18_dadqh")
 
-[node name="Skull" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack" unique_id=53792581]
-z_index = 3
+[node name="Skull" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack" unique_id=53792581]
 position = Vector2(627, 106.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("19_r6vc5")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack" unique_id=1227301997]
-z_index = 3
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack" unique_id=1227301997]
 position = Vector2(987, 102.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_y4pch")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack" unique_id=270671138]
-z_index = 3
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack" unique_id=270671138]
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_vmwbq")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack" unique_id=1391096383]
-z_index = 3
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack" unique_id=1391096383]
 position = Vector2(856, 84)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("22_6nkff")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack" unique_id=721644197]
-z_index = 3
+[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack" unique_id=721644197]
 
-[node name="Rack2" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=731801709]
-position = Vector2(1351, 829)
+[node name="Rack2" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=731801709]
+position = Vector2(1360, 320)
 scale = Vector2(0.5, 0.5)
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack2" unique_id=809131587]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack2" unique_id=809131587]
 z_index = 3
 position = Vector2(753.99994, 147.99997)
 scale = Vector2(0.33665332, 0.2771468)
 texture = ExtResource("18_dadqh")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack2" unique_id=129265013]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack2" unique_id=129265013]
 z_index = 3
 position = Vector2(674, 123.999985)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("23_vmwbq")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack2" unique_id=2010338944]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack2" unique_id=2010338944]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = SubResource("CompressedTexture2D_bwf5r")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack2" unique_id=790230510]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack2" unique_id=790230510]
 z_index = 3
 position = Vector2(818, 86)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("25_dnr68")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack2" unique_id=522339464]
+[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack2" unique_id=522339464]
 z_index = 3
 
-[node name="Rack3" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=881955281]
-position = Vector2(2356, 57)
+[node name="Rack3" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=881955281]
+position = Vector2(2874, 435)
 scale = Vector2(0.5, 0.5)
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack3" unique_id=252738499]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack3" unique_id=252738499]
 z_index = 3
 position = Vector2(829, 142)
 scale = Vector2(0.6617031, 0.23818392)
 texture = ExtResource("18_dadqh")
 
-[node name="Skull" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack3" unique_id=1389802369]
+[node name="Skull" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack3" unique_id=1389802369]
 z_index = 3
 position = Vector2(627, 106.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("19_r6vc5")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack3" unique_id=782781897]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack3" unique_id=782781897]
 z_index = 3
 position = Vector2(987, 102.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_y4pch")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack3" unique_id=1510672081]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack3" unique_id=1510672081]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_vmwbq")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack3" unique_id=1419124648]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack3" unique_id=1419124648]
 z_index = 3
 position = Vector2(856, 84)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("22_6nkff")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack3" unique_id=735620704]
+[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack3" unique_id=735620704]
 z_index = 3
 
-[node name="Rack4" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=1421685449]
-position = Vector2(2315, -743)
+[node name="Rack4" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=1421685449]
+position = Vector2(3591, -441)
 scale = Vector2(0.5, 0.5)
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack4" unique_id=1165380202]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack4" unique_id=1165380202]
 z_index = 3
 position = Vector2(829, 142)
 scale = Vector2(0.6617031, 0.23818392)
 texture = ExtResource("18_dadqh")
 
-[node name="Skull" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack4" unique_id=205673356]
+[node name="Skull" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack4" unique_id=205673356]
 z_index = 3
 position = Vector2(627, 106.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("19_r6vc5")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack4" unique_id=1300679434]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack4" unique_id=1300679434]
 z_index = 3
 position = Vector2(987, 102.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_y4pch")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack4" unique_id=167410155]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack4" unique_id=167410155]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_vmwbq")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack4" unique_id=1945941941]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack4" unique_id=1945941941]
 z_index = 3
 position = Vector2(856, 84)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("22_6nkff")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack4" unique_id=275973588]
+[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack4" unique_id=275973588]
 z_index = 3
 
-[node name="Rack5" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=1990689057]
-position = Vector2(380, 61)
-scale = Vector2(0.5, 0.5)
+[node name="Rack5" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=1990689057]
+position = Vector2(896, -286)
+scale = Vector2(0.3, 0.3)
 
-[node name="Flag5" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack5" unique_id=16704602]
+[node name="Flag5" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack5" unique_id=16704602]
 z_index = 3
 position = Vector2(816, -98)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("27_huc8a")
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack5" unique_id=1583326464]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack5" unique_id=1583326464]
 z_index = 3
 position = Vector2(829, 142)
 scale = Vector2(0.6617031, 0.23818392)
 texture = ExtResource("18_dadqh")
 
-[node name="Skull" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack5" unique_id=1849881040]
+[node name="Skull" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack5" unique_id=1849881040]
 z_index = 3
 position = Vector2(627, 106.99999)
 scale = Vector2(-0.1, 0.1)
 texture = ExtResource("19_r6vc5")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack5" unique_id=1301296136]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack5" unique_id=1301296136]
 z_index = 3
 position = Vector2(987, 102.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_y4pch")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack5" unique_id=731331426]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack5" unique_id=731331426]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_vmwbq")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack5" unique_id=215799013]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack5" unique_id=215799013]
 z_index = 3
 position = Vector2(856, 84)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("22_6nkff")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack5" unique_id=1670440487]
+[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack5" unique_id=1670440487]
 z_index = 3
 
-[node name="Rack6" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=1685393742]
+[node name="Rack6" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=1685393742]
 position = Vector2(258, -1191)
 scale = Vector2(0.5, 0.5)
 
-[node name="Flag6" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack6" unique_id=1581932669]
+[node name="Flag6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack6" unique_id=1581932669]
 z_index = 3
 position = Vector2(758, -116)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_dnr68")
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack6" unique_id=1854313077]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack6" unique_id=1854313077]
 z_index = 3
 position = Vector2(753.99994, 147.99997)
 scale = Vector2(0.33665332, 0.2771468)
 texture = ExtResource("18_dadqh")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack6" unique_id=1915677516]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack6" unique_id=1915677516]
 z_index = 3
 position = Vector2(674, 123.999985)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("23_vmwbq")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack6" unique_id=1871465702]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack6" unique_id=1871465702]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = SubResource("CompressedTexture2D_bwf5r")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack6" unique_id=397683858]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack6" unique_id=397683858]
 z_index = 3
 position = Vector2(818, 86)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("25_dnr68")
 
-[node name="Rack7" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=346148350]
-position = Vector2(6372, 941)
+[node name="Rack7" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=346148350]
+position = Vector2(9235, -613)
 scale = Vector2(0.5, 0.5)
 
-[node name="Flag4" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack7" unique_id=2062600714]
+[node name="Flag4" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack7" unique_id=2062600714]
 z_index = 3
 position = Vector2(748, -102)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_dnr68")
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack7" unique_id=166480129]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack7" unique_id=166480129]
 z_index = 3
 position = Vector2(753.99994, 147.99997)
 scale = Vector2(0.33665332, 0.2771468)
 texture = ExtResource("18_dadqh")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack7" unique_id=281013239]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack7" unique_id=281013239]
 z_index = 3
 position = Vector2(674, 123.999985)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("23_vmwbq")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack7" unique_id=192888295]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack7" unique_id=192888295]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = SubResource("CompressedTexture2D_bwf5r")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack7" unique_id=2124087428]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack7" unique_id=2124087428]
 z_index = 3
 position = Vector2(818, 86)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("25_dnr68")
 
-[node name="Rack8" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=1527604919]
+[node name="Rack8" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=1527604919]
 position = Vector2(8148, 157)
 scale = Vector2(0.5, 0.5)
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack8" unique_id=1044922463]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack8" unique_id=1044922463]
 z_index = 3
 position = Vector2(753.99994, 147.99997)
 scale = Vector2(0.33665332, 0.2771468)
 texture = ExtResource("18_dadqh")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack8" unique_id=723356174]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack8" unique_id=723356174]
 z_index = 3
 position = Vector2(674, 123.999985)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("23_vmwbq")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack8" unique_id=1924319822]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack8" unique_id=1924319822]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = SubResource("CompressedTexture2D_bwf5r")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack8" unique_id=503021874]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack8" unique_id=503021874]
 z_index = 3
 position = Vector2(818, 86)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("25_dnr68")
 
-[node name="Rack9" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=1029407639]
-position = Vector2(7255, 944)
+[node name="Rack9" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=1029407639]
+position = Vector2(6851, 560)
 scale = Vector2(0.5, 0.5)
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack9" unique_id=689569532]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack9" unique_id=689569532]
 z_index = 3
 position = Vector2(829, 142)
 scale = Vector2(0.6617031, 0.23818392)
 texture = ExtResource("18_dadqh")
 
-[node name="Skull" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack9" unique_id=1272877958]
+[node name="Skull" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack9" unique_id=1272877958]
 z_index = 3
 position = Vector2(627, 106.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("19_r6vc5")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack9" unique_id=909130362]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack9" unique_id=909130362]
 z_index = 3
 position = Vector2(987, 102.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_y4pch")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack9" unique_id=1592205390]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack9" unique_id=1592205390]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_vmwbq")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack9" unique_id=990485469]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack9" unique_id=990485469]
 z_index = 3
 position = Vector2(856, 84)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("22_6nkff")
 
-[node name="Rack10" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=1767965548]
-position = Vector2(6562, 160)
+[node name="Rack10" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=1767965548]
+position = Vector2(6858, 126)
 scale = Vector2(0.5, 0.5)
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack10" unique_id=2121677912]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack10" unique_id=2121677912]
 z_index = 3
 position = Vector2(829, 142)
 scale = Vector2(0.6617031, 0.23818392)
 texture = ExtResource("18_dadqh")
 
-[node name="Skull" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack10" unique_id=34621872]
+[node name="Skull" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack10" unique_id=34621872]
 z_index = 3
 position = Vector2(627, 106.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("19_r6vc5")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack10" unique_id=1865660436]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack10" unique_id=1865660436]
 z_index = 3
 position = Vector2(987, 102.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_y4pch")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack10" unique_id=7208296]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack10" unique_id=7208296]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_vmwbq")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack10" unique_id=119195739]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack10" unique_id=119195739]
 z_index = 3
 position = Vector2(856, 84)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("22_6nkff")
 
-[node name="Rack11" type="Node2D" parent="Node2D/Items/Decorations/Racks" unique_id=1430756628]
-position = Vector2(7979, -1862)
+[node name="Rack11" type="Node2D" parent="Node2D/Deco/DecoZ5/Racks" unique_id=1430756628]
+position = Vector2(7244, -1097)
 scale = Vector2(0.5, 0.5)
 
-[node name="Shelf" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack11" unique_id=947939545]
+[node name="Shelf" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack11" unique_id=947939545]
 z_index = 3
 position = Vector2(829, 142)
 scale = Vector2(0.6617031, 0.23818392)
 texture = ExtResource("18_dadqh")
 
-[node name="Skull" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack11" unique_id=1662753004]
+[node name="Skull" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack11" unique_id=1662753004]
 z_index = 3
 position = Vector2(627, 106.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("19_r6vc5")
 
-[node name="Skulls" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack11" unique_id=81518267]
+[node name="Skulls" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack11" unique_id=81518267]
 z_index = 3
 position = Vector2(987, 102.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_y4pch")
 
-[node name="Candel" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack11" unique_id=252175888]
+[node name="Candel" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack11" unique_id=252175888]
 z_index = 3
 position = Vector2(731, 109.99999)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_vmwbq")
 
-[node name="Candelstick" type="Sprite2D" parent="Node2D/Items/Decorations/Racks/Rack11" unique_id=466454220]
+[node name="Candelstick" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Racks/Rack11" unique_id=466454220]
 z_index = 3
 position = Vector2(856, 84)
 scale = Vector2(0.22946429, 0.26051363)
 texture = ExtResource("22_6nkff")
 
-[node name="Flags" type="Node2D" parent="Node2D/Items/Decorations" unique_id=638736819]
+[node name="Flags" type="Node2D" parent="Node2D/Deco/DecoZ5" unique_id=638736819]
 
-[node name="Flag" type="Sprite2D" parent="Node2D/Items/Decorations/Flags" unique_id=719880932]
-z_index = 3
-position = Vector2(8683, 903)
+[node name="Flag" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Flags" unique_id=719880932]
+position = Vector2(5543.0005, 805)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("18_dnr68")
 
-[node name="Flag2" type="Sprite2D" parent="Node2D/Items/Decorations/Flags" unique_id=1025048118]
+[node name="Flag2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Flags" unique_id=1025048118]
 z_index = 3
-position = Vector2(1671, -979)
+position = Vector2(4052, -738)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("27_huc8a")
 
-[node name="Flag3" type="Sprite2D" parent="Node2D/Items/Decorations/Flags" unique_id=1397864750]
+[node name="Flag3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Flags" unique_id=1397864750]
 z_index = 3
-position = Vector2(8197, -1445)
+position = Vector2(8182, -275)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("18_dnr68")
 
-[node name="Flag7" type="Sprite2D" parent="Node2D/Items/Decorations/Flags" unique_id=1274245698]
+[node name="Flag7" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Flags" unique_id=1274245698]
 z_index = 3
-position = Vector2(6895, -591)
+position = Vector2(6888, -661)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("18_dnr68")
 
-[node name="Flag8" type="Sprite2D" parent="Node2D/Items/Decorations/Flags" unique_id=1260652909]
+[node name="Flag8" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Flags" unique_id=1260652909]
 z_index = 3
 position = Vector2(2591, 899)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("27_huc8a")
 
-[node name="Plants" type="Node2D" parent="Node2D/Items/Decorations" unique_id=669825115]
+[node name="Stars" type="Node2D" parent="Node2D/Deco/DecoZ5" unique_id=1941545495]
 
-[node name="Sprite2D5" type="Sprite2D" parent="Node2D/Items/Decorations/Plants" unique_id=918708706]
+[node name="Stars2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=1171548146]
 z_index = 3
-
-[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Items/Decorations/Plants" unique_id=1090267076]
-z_index = 3
-
-[node name="Vines" type="Node2D" parent="Node2D/Items/Decorations/Plants" unique_id=421443948]
-position = Vector2(37, 4)
-
-[node name="Vine" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines" unique_id=1286031236]
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine" unique_id=38681585]
-z_index = 30
-position = Vector2(138, -49)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine" unique_id=1606142263]
-z_index = 30
-position = Vector2(140, 42)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine" unique_id=599984885]
-z_index = 30
-position = Vector2(142, 132)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines" unique_id=27654103]
-position = Vector2(-20, 415)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2" unique_id=2012592594]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2" unique_id=2028609999]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2" unique_id=1956491987]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines2" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2" unique_id=580861587]
-position = Vector2(6, 269)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2/Vines2" unique_id=1326850665]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2/Vines2" unique_id=1407896376]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2/Vines2" unique_id=2013711738]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines3" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2" unique_id=1764801307]
-position = Vector2(13, 518)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2/Vines3" unique_id=1041010497]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2/Vines3" unique_id=817569722]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine2/Vines3" unique_id=1718125353]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines" unique_id=1013090146]
-position = Vector2(1881, 418)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3" unique_id=1977894846]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3" unique_id=1997429209]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3" unique_id=2002581446]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines2" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3" unique_id=2086514788]
-position = Vector2(6, 269)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3/Vines2" unique_id=1789955620]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3/Vines2" unique_id=1018047707]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3/Vines2" unique_id=835259615]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines3" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3" unique_id=1485596904]
-position = Vector2(13, 518)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3/Vines3" unique_id=135726637]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3/Vines3" unique_id=796663192]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine3/Vines3" unique_id=1849437236]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine4" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines" unique_id=2003034180]
-position = Vector2(2264, 411)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4" unique_id=534540825]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4" unique_id=1766716594]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4" unique_id=2043962317]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines2" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4" unique_id=62998665]
-position = Vector2(6, 269)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4/Vines2" unique_id=1260807440]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4/Vines2" unique_id=777354902]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4/Vines2" unique_id=1993224518]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines3" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4" unique_id=1696691525]
-position = Vector2(13, 518)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4/Vines3" unique_id=87263899]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4/Vines3" unique_id=1601857540]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine4/Vines3" unique_id=2014395963]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine5" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines" unique_id=1162021810]
-position = Vector2(1815, -1254)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5" unique_id=1409691640]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5" unique_id=17266862]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5" unique_id=946984044]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines2" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5" unique_id=1522773605]
-position = Vector2(6, 269)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5/Vines2" unique_id=437501002]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5/Vines2" unique_id=85087489]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5/Vines2" unique_id=639260062]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines3" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5" unique_id=1803101791]
-position = Vector2(13, 518)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5/Vines3" unique_id=1598786887]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5/Vines3" unique_id=2138304559]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine5/Vines3" unique_id=1631690587]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine6" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines" unique_id=2113235289]
-position = Vector2(6668, -1094)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6" unique_id=955838474]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6" unique_id=274965222]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6" unique_id=343856937]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines2" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6" unique_id=1798488495]
-position = Vector2(6, 269)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6/Vines2" unique_id=1483699113]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6/Vines2" unique_id=606459676]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6/Vines2" unique_id=946197597]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines3" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6" unique_id=700553905]
-position = Vector2(13, 518)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6/Vines3" unique_id=1350534412]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6/Vines3" unique_id=1507267871]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine6/Vines3" unique_id=773655218]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine7" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines" unique_id=1719212618]
-position = Vector2(7699, 158)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7" unique_id=1032542679]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7" unique_id=509286945]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7" unique_id=1453578972]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines2" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7" unique_id=1299956983]
-position = Vector2(6, 269)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7/Vines2" unique_id=154903782]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7/Vines2" unique_id=1971680]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7/Vines2" unique_id=1333794102]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vines3" type="Node2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7" unique_id=1436094046]
-position = Vector2(13, 518)
-
-[node name="Vine" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7/Vines3" unique_id=1072412063]
-z_index = 30
-position = Vector2(137.99998, -48.999996)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7/Vines3" unique_id=1166070430]
-z_index = 30
-position = Vector2(140, 42.000004)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Vine3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Vines/Vine7/Vines3" unique_id=1804185368]
-z_index = 30
-position = Vector2(142, 132.00002)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("28_7mp3u")
-
-[node name="Bushs" type="Node2D" parent="Node2D/Items/Decorations/Plants" unique_id=1561208949]
-
-[node name="Bush" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=1406294180]
-z_index = 3
-position = Vector2(111, 1014)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=1316547167]
-z_index = 3
-position = Vector2(6036, 1178)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=1851662281]
-z_index = 3
-position = Vector2(2067, -1026)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush4" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=341874907]
-z_index = 3
-position = Vector2(2045, 212)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush5" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=2147184185]
-z_index = 3
-position = Vector2(960, -196)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush6" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=308741254]
-z_index = 3
-position = Vector2(6886.0005, -46)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush7" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=1314438841]
-z_index = 3
-position = Vector2(7913, -457)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush8" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=1793534426]
-z_index = 3
-position = Vector2(6777, -861)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush9" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=1295819980]
-z_index = 3
-position = Vector2(7117, 396)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Bush10" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Bushs" unique_id=321007621]
-z_index = 3
-position = Vector2(8344, 1169)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("29_wpmwo")
-
-[node name="Stars" type="Node2D" parent="Node2D/Items/Decorations/Plants" unique_id=1941545495]
-
-[node name="Stars2" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=1171548146]
-z_index = 3
-position = Vector2(6571, 221.99998)
+position = Vector2(7274, 125.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars3" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=14459491]
+[node name="Stars3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=14459491]
 z_index = 3
-position = Vector2(814, -1125.0001)
+position = Vector2(1670, 895)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars4" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=581907080]
+[node name="Stars4" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=581907080]
 z_index = 3
-position = Vector2(2618, -211.99998)
+position = Vector2(3164, 458.99994)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars5" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=1666644451]
+[node name="Stars5" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=1666644451]
 z_index = 3
 position = Vector2(801, -336)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars6" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=635945887]
+[node name="Stars6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=635945887]
 z_index = 3
-position = Vector2(822, -342)
+position = Vector2(2305, -339)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars7" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=590870650]
+[node name="Stars7" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=590870650]
 z_index = 3
-position = Vector2(1069, 118)
+position = Vector2(1084, 127)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars8" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=674631897]
+[node name="Stars8" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=674631897]
 z_index = 3
-position = Vector2(317, 794)
+position = Vector2(199, 800)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars9" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=1648154237]
+[node name="Stars9" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=1648154237]
 z_index = 3
-position = Vector2(628, -2.9999928)
+position = Vector2(4068.9998, 467.99997)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars10" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=350826736]
+[node name="Stars10" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=350826736]
 z_index = 3
-position = Vector2(6584, -952)
+position = Vector2(5593, -877)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars11" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=1142826010]
+[node name="Stars11" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=1142826010]
 z_index = 3
-position = Vector2(7166, -450.00006)
+position = Vector2(7196, -544.99994)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars12" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=845696426]
+[node name="Stars12" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=845696426]
 z_index = 3
-position = Vector2(7910, 1049)
+position = Vector2(7888, 1010)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars13" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=777025409]
+[node name="Stars13" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=777025409]
 z_index = 3
-position = Vector2(6478, 1006)
+position = Vector2(7972, 559)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Stars14" type="Sprite2D" parent="Node2D/Items/Decorations/Plants/Stars" unique_id=1487990325]
+[node name="Stars14" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Stars" unique_id=1487990325]
 z_index = 3
-position = Vector2(6420, -115.999985)
+position = Vector2(9311, 232.00009)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("30_0vnxp")
 
-[node name="Urns" type="Node2D" parent="Node2D/Items/Decorations" unique_id=2064022764]
-z_index = 8
+[node name="Urns" type="Node2D" parent="Node2D/Deco/DecoZ5" unique_id=2064022764]
+z_index = 3
 position = Vector2(-2, -6)
 
-[node name="Urn" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=264892362]
+[node name="Urn3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=674742773]
 z_index = 3
-position = Vector2(1390, 1034)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("30_wpmwo")
-
-[node name="Urn2" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=1952518004]
-z_index = 3
-position = Vector2(1516, 673)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("31_0vnxp")
-
-[node name="Urn3" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=674742773]
-z_index = 3
-position = Vector2(224, 1050)
+position = Vector2(235, 993)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("32_3kq7q")
 
-[node name="Urn4" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=2001344776]
+[node name="Urn" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=264892362]
 z_index = 3
-position = Vector2(2082, -1419)
+position = Vector2(278, 980)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("30_wpmwo")
 
-[node name="Urn5" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=643151231]
+[node name="Urn2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=1952518004]
 z_index = 3
-position = Vector2(807, -994)
+position = Vector2(304, 993)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("31_0vnxp")
 
-[node name="Urn6" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=581818010]
-z_index = 3
-position = Vector2(2520, -155)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("32_3kq7q")
-
-[node name="Urn7" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=552728753]
-z_index = 3
-position = Vector2(1295, -585)
+[node name="Urn4" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=2001344776]
+z_index = 10
+position = Vector2(1481, -180)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("30_wpmwo")
 
-[node name="Urn8" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=858876495]
-z_index = 3
-position = Vector2(1243, -159)
+[node name="Urn5" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=643151231]
+z_index = 20
+position = Vector2(1326, -567)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("31_0vnxp")
 
-[node name="Urn9" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=1130260693]
-z_index = 2
-position = Vector2(87, 263)
+[node name="Urn6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=581818010]
+z_index = 20
+position = Vector2(3370, 244)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("32_3kq7q")
 
-[node name="Urn10" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=1128613993]
-z_index = 3
-position = Vector2(7235.075, 1193.95)
+[node name="Urn7" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=552728753]
+z_index = 20
+position = Vector2(1359, -570)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("30_wpmwo")
 
-[node name="Urn11" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=760357329]
-z_index = 3
-position = Vector2(7361.075, 832.95)
+[node name="Urn8" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=858876495]
+z_index = 20
+position = Vector2(951.00006, 211)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("31_0vnxp")
 
-[node name="Urn12" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=569205763]
-z_index = 3
-position = Vector2(6180.075, 1209.95)
+[node name="Urn9" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=1130260693]
+z_index = 8
+position = Vector2(7720, 314)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("32_3kq7q")
 
-[node name="Urn13" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=374306975]
+[node name="Urn10" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=1128613993]
 z_index = 3
-position = Vector2(8365, 409)
+position = Vector2(7311, 1105)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("30_wpmwo")
 
-[node name="Urn14" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=706530578]
-z_index = 3
-position = Vector2(7994.001, 2)
+[node name="Urn11" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=760357329]
+z_index = 15
+position = Vector2(7611, -471)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("31_0vnxp")
 
-[node name="Urn15" type="Sprite2D" parent="Node2D/Items/Decorations/Urns" unique_id=1962788297]
+[node name="Urn12" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=569205763]
 z_index = 3
-position = Vector2(6932.075, 423.95)
+position = Vector2(8505, 709)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("32_3kq7q")
 
-[node name="StoneItem" parent="Node2D/Items" unique_id=1848008734 instance=ExtResource("39_5rcsp")]
-z_index = 25
-position = Vector2(6708, -1244)
-scale = Vector2(0.08, 0.08)
+[node name="Urn13" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=374306975]
+z_index = 20
+position = Vector2(9307, 330)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("30_wpmwo")
 
-[node name="Exit" parent="Node2D" unique_id=287702359 instance=ExtResource("12_vjssa")]
+[node name="Urn14" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=706530578]
+z_index = 20
+position = Vector2(10034, -444.00003)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("31_0vnxp")
+
+[node name="Urn15" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Urns" unique_id=1962788297]
+z_index = 20
+position = Vector2(9363, -56)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("32_3kq7q")
+
+[node name="BushsZ5" type="Node2D" parent="Node2D/Deco/DecoZ5" unique_id=1920345095]
+z_index = 5
+position = Vector2(805, -69)
+
+[node name="Bush2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=1927108136]
 z_index = 3
-position = Vector2(9417.001, 724.00006)
-rotation = -0.000533727
-scale = Vector2(1.2, 1.2)
-next_scene_path = "res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn"
+position = Vector2(6267, 760)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush8" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=1202996921]
+z_index = 15
+position = Vector2(6283, 368)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=1494073649]
+z_index = 15
+position = Vector2(4, 250)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush15" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=1164388831]
+z_index = 15
+position = Vector2(79, 1040)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush4" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=133965745]
+z_index = 15
+position = Vector2(23, -134)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush7" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=326386693]
+z_index = 15
+position = Vector2(-39, -525)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush5" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=706177226]
+z_index = 3
+position = Vector2(6237.0005, 1159)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush6" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=1931134964]
+z_index = 5
+position = Vector2(9945, 373)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush9" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=804571183]
+z_index = 15
+position = Vector2(9937, -18)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush16" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=1921765844]
+z_index = 15
+position = Vector2(10063, -412)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush10" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=2025367405]
+z_index = 3
+position = Vector2(3750, 1038)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush11" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=1316547167]
+z_index = 3
+position = Vector2(10504, 1160)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush12" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=2103689898]
+z_index = 15
+position = Vector2(5812, -426)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush13" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=322025356]
+z_index = 15
+position = Vector2(3733, 244)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush14" type="Sprite2D" parent="Node2D/Deco/DecoZ5/BushsZ5" unique_id=1851662281]
+z_index = 3
+position = Vector2(3744, 642)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Vines" type="Node2D" parent="Node2D/Deco/DecoZ5" unique_id=421443948]
+position = Vector2(441, -7)
+
+[node name="Vine4" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines" unique_id=2003034180]
+position = Vector2(4416.0005, 1140)
+rotation = 0.02617994
+
+[node name="Vine9" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4" unique_id=80032228]
+position = Vector2(104.864105, -44.76041)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9" unique_id=1071877005]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9" unique_id=311866104]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9" unique_id=1845861063]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9" unique_id=188451514]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vines2" unique_id=1668837075]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vines2" unique_id=702587326]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vines2" unique_id=787781747]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9" unique_id=2029049422]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vines3" unique_id=910091934]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vines3" unique_id=1853216157]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vines3" unique_id=1360126393]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine5" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9" unique_id=1721100706]
+position = Vector2(-18, -788)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5" unique_id=877827306]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5" unique_id=653461536]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5" unique_id=23436434]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5" unique_id=1083641739]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5/Vines2" unique_id=1643924708]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5/Vines2" unique_id=202240553]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5/Vines2" unique_id=1261409]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5" unique_id=1208469833]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5/Vines3" unique_id=152449703]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5/Vines3" unique_id=331409273]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine5/Vines3" unique_id=1338317465]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine8" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9" unique_id=340020686]
+position = Vector2(-36, -1573)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8" unique_id=1356755921]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8" unique_id=929651871]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8" unique_id=1042386145]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8" unique_id=1228397182]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8/Vines2" unique_id=701769111]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8/Vines2" unique_id=97388563]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8/Vines2" unique_id=868379980]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8/Vines2" unique_id=384641202]
+position = Vector2(7, 249)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8/Vines2/Vines3" unique_id=874376670]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8/Vines2/Vines3" unique_id=928266987]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine9/Vine8/Vines2/Vines3" unique_id=2018059657]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine10" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4" unique_id=302156108]
+position = Vector2(71.29452, -27.875885)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10" unique_id=459647923]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10" unique_id=1521184582]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10" unique_id=248187859]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10" unique_id=708341431]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vines2" unique_id=1660606296]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vines2" unique_id=115420759]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vines2" unique_id=71643460]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10" unique_id=1322539604]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vines3" unique_id=134827317]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vines3" unique_id=1476403693]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vines3" unique_id=783768576]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine5" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10" unique_id=625068944]
+position = Vector2(-18, -788)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5" unique_id=1379960472]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5" unique_id=1491686092]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5" unique_id=1229994430]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5" unique_id=1045104031]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5/Vines2" unique_id=1554812297]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5/Vines2" unique_id=1872081374]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5/Vines2" unique_id=1675034183]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5" unique_id=736669083]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5/Vines3" unique_id=1056839248]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5/Vines3" unique_id=1239387255]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine5/Vines3" unique_id=1680575622]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine8" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10" unique_id=218640773]
+position = Vector2(-36, -1573)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8" unique_id=345318232]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8" unique_id=490328255]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8" unique_id=1666240166]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8" unique_id=780978616]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8/Vines2" unique_id=749525490]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8/Vines2" unique_id=153442762]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8/Vines2" unique_id=160766280]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8/Vines2" unique_id=44903849]
+position = Vector2(7, 249)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8/Vines2/Vines3" unique_id=1546327381]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8/Vines2/Vines3" unique_id=58295010]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ5/Vines/Vine4/Vine10/Vine8/Vines2/Vines3" unique_id=1481471222]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="DecoZ30" type="Node2D" parent="Node2D/Deco" unique_id=233231602]
+
+[node name="Vine" type="Node2D" parent="Node2D/Deco/DecoZ30" unique_id=1286031236]
+position = Vector2(441, -7)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=38681585]
+z_index = 30
+position = Vector2(138, -49)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=1606142263]
+z_index = 30
+position = Vector2(140, 42)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=599984885]
+z_index = 30
+position = Vector2(142, 132)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine4" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=27654103]
+position = Vector2(4, 275)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine4" unique_id=2012592594]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine4" unique_id=2028609999]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine4" unique_id=1956491987]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine4" unique_id=1764801307]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine4/Vines3" unique_id=1041010497]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine4/Vines3" unique_id=817569722]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine4/Vines3" unique_id=1718125353]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=580861587]
+position = Vector2(10, 530)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vines2" unique_id=1326850665]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vines2" unique_id=1407896376]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vines2" unique_id=2013711738]
+z_index = 30
+position = Vector2(141, 127.000015)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine9" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=1719212618]
+position = Vector2(7699, 158)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9" unique_id=1032542679]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9" unique_id=509286945]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9" unique_id=1453578972]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9" unique_id=1299956983]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9/Vines2" unique_id=154903782]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9/Vines2" unique_id=1971680]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9/Vines2" unique_id=1333794102]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9" unique_id=1436094046]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9/Vines3" unique_id=1072412063]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9/Vines3" unique_id=1166070430]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine9/Vines3" unique_id=1804185368]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine7" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=2006088057]
+position = Vector2(4449, 1139)
+rotation = 0.02617994
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7" unique_id=485893291]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7" unique_id=64189313]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7" unique_id=1683346251]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7" unique_id=891746020]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vines2" unique_id=1040679124]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vines2" unique_id=2117141759]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vines2" unique_id=1543282949]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7" unique_id=927967887]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vines3" unique_id=847822237]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vines3" unique_id=1702455131]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vines3" unique_id=772655783]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine5" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7" unique_id=1635309310]
+position = Vector2(-18, -788)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5" unique_id=182350812]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5" unique_id=413883557]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5" unique_id=299645336]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5" unique_id=1541569670]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5/Vines2" unique_id=1338946762]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5/Vines2" unique_id=2124453625]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5/Vines2" unique_id=1057457814]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5" unique_id=1830022]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5/Vines3" unique_id=1346316048]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5/Vines3" unique_id=785745785]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine5/Vines3" unique_id=945962114]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine8" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7" unique_id=370298034]
+position = Vector2(-37.308395, -1577.564)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8" unique_id=1426267823]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8" unique_id=1358153626]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8" unique_id=2086017815]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8" unique_id=145823494]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8/Vines2" unique_id=308052725]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8/Vines2" unique_id=1901896734]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8/Vines2" unique_id=1158260032]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8/Vines2" unique_id=1073428478]
+position = Vector2(7, 249)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8/Vines2/Vines3" unique_id=2131307338]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8/Vines2/Vines3" unique_id=150214386]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine7/Vine8/Vines2/Vines3" unique_id=1289062559]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine5" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=1162021810]
+position = Vector2(4404, 360)
+rotation = 0.02617994
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=1409691640]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=17266862]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=946984044]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine4" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=2043962317]
+z_index = 30
+position = Vector2(158.62695, 919.83466)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine5" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=1766716594]
+z_index = 30
+position = Vector2(156.62842, 829.8348)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine6" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=534540825]
+z_index = 30
+position = Vector2(154.6294, 738.83466)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=1522773605]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines2" unique_id=437501002]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines2" unique_id=85087489]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines2" unique_id=639260062]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=1803101791]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines3" unique_id=1598786887]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines3" unique_id=2138304559]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines3" unique_id=1631690587]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine8" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=1013090146]
+position = Vector2(-20.54834, -784.73096)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8" unique_id=1977894846]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8" unique_id=1997429209]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8" unique_id=2002581446]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8" unique_id=2086514788]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8/Vines2" unique_id=1789955620]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8/Vines2" unique_id=1018047707]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8/Vines2" unique_id=835259615]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8/Vines2" unique_id=1485596904]
+position = Vector2(7, 249)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8/Vines2/Vines3" unique_id=135726637]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8/Vines2/Vines3" unique_id=796663192]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vine8/Vines2/Vines3" unique_id=1849437236]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines4" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=1696691525]
+position = Vector2(29.629395, 1305.8347)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines4" unique_id=87263899]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines4" unique_id=1601857540]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines4" unique_id=2014395963]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines5" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5" unique_id=62998665]
+position = Vector2(22.629395, 1056.8347)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines5" unique_id=1260807440]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines5" unique_id=777354902]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine5/Vines5" unique_id=1993224518]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine6" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=1677165327]
+position = Vector2(4354.0005, 1155)
+rotation = 0.02617994
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6" unique_id=342687439]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6" unique_id=650077063]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6" unique_id=29256441]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine5" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6" unique_id=1364114603]
+position = Vector2(-18, -788)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5" unique_id=1034592665]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5" unique_id=77326635]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5" unique_id=1208838633]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5" unique_id=121912927]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5/Vines2" unique_id=1811200948]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5/Vines2" unique_id=284965283]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5/Vines2" unique_id=1793497272]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5" unique_id=2051725363]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5/Vines3" unique_id=114838804]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5/Vines3" unique_id=2712678]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine5/Vines3" unique_id=155607065]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine8" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6" unique_id=636705084]
+position = Vector2(-36, -1573)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8" unique_id=313932479]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8" unique_id=31892592]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8" unique_id=1100714185]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8" unique_id=1139514085]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8/Vines2" unique_id=397580906]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8/Vines2" unique_id=353830082]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8/Vines2" unique_id=922262542]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8/Vines2" unique_id=1700278339]
+position = Vector2(7, 249)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8/Vines2/Vines3" unique_id=1817588810]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8/Vines2/Vines3" unique_id=1698124966]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine6/Vine8/Vines2/Vines3" unique_id=1608634455]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine8" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine" unique_id=2113235289]
+position = Vector2(6100, -286)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8" unique_id=955838474]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8" unique_id=274965222]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8" unique_id=343856937]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines2" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8" unique_id=1798488495]
+position = Vector2(6, 269)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines2" unique_id=1483699113]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines2" unique_id=606459676]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines2" unique_id=946197597]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8" unique_id=700553905]
+position = Vector2(13, 518)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines3" unique_id=1350534412]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines3" unique_id=1507267871]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines3" unique_id=773655218]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines4" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8" unique_id=1540127592]
+position = Vector2(15, 778)
+rotation = 0.02617994
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines4" unique_id=884418031]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines4" unique_id=1665915363]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines4" unique_id=769382410]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vines3" type="Node2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines4" unique_id=881640346]
+position = Vector2(7, 249)
+
+[node name="Vine" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines4/Vines3" unique_id=76387109]
+z_index = 30
+position = Vector2(137.99998, -48.999996)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines4/Vines3" unique_id=1756612552]
+z_index = 30
+position = Vector2(140, 42.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="Vine3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/Vine/Vine8/Vines4/Vines3" unique_id=1343674275]
+z_index = 30
+position = Vector2(142, 132.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_7mp3u")
+
+[node name="BushsZ30" type="Node2D" parent="Node2D/Deco/DecoZ30" unique_id=1561208949]
+z_index = 30
+
+[node name="Bush10" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=321007621]
+z_index = 3
+position = Vector2(11203, 1105)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush15" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=183798169]
+z_index = 3
+position = Vector2(10884, 345)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush16" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=749652949]
+z_index = 3
+position = Vector2(10894, -42)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush17" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=1908431383]
+z_index = 3
+position = Vector2(10972, -426)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush7" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=228087764]
+z_index = 3
+position = Vector2(7171, 1129)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush8" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=2082638005]
+z_index = 3
+position = Vector2(7133, 717)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush9" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=1624520719]
+z_index = 3
+position = Vector2(7157, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush11" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=1028611910]
+z_index = 3
+position = Vector2(6709, -460)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush12" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=308741254]
+z_index = 3
+position = Vector2(4420, 1007)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush13" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=167711839]
+z_index = 3
+position = Vector2(4449, 595)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush14" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=173955678]
+z_index = 3
+position = Vector2(4461, 199)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=1406294180]
+z_index = 3
+position = Vector2(709, 1006)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush2" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=84786496]
+z_index = 3
+position = Vector2(718, 229)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush3" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=421321498]
+z_index = 3
+position = Vector2(712, -164)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Bush4" type="Sprite2D" parent="Node2D/Deco/DecoZ30/BushsZ30" unique_id=1517597631]
+z_index = 3
+position = Vector2(665, -547)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("29_wpmwo")
+
+[node name="Torchs" type="Node2D" parent="Node2D/Deco" unique_id=1590691312]
+light_mask = 0
+z_index = -2
+z_as_relative = false
+position = Vector2(-1356, -250)
+script = ExtResource("4_3p2tf")
+
+[node name="Torch1" parent="Node2D/Deco/Torchs" unique_id=1933736155 instance=ExtResource("6_ochkp")]
+position = Vector2(3394, -1297)
+
+[node name="Torch2" parent="Node2D/Deco/Torchs" unique_id=1964241611 instance=ExtResource("6_ochkp")]
+position = Vector2(3408, -1687)
+
+[node name="Torch3" parent="Node2D/Deco/Torchs" unique_id=1122027809 instance=ExtResource("6_ochkp")]
+position = Vector2(3386, -881)
+
+[node name="Torch4" parent="Node2D/Deco/Torchs" unique_id=1529830413 instance=ExtResource("6_ochkp")]
+position = Vector2(2362, -1295)
+
+[node name="Torch" parent="Node2D/Deco/Torchs" unique_id=650072432 instance=ExtResource("6_ochkp")]
+position = Vector2(3391, -449)
+
+[node name="Torch5" parent="Node2D/Deco/Torchs" unique_id=2086776237 instance=ExtResource("6_ochkp")]
+position = Vector2(3388, -2100)
+
+[node name="Torch6" parent="Node2D/Deco/Torchs" unique_id=957918455 instance=ExtResource("6_ochkp")]
+position = Vector2(2045, -235)
+
+[node name="Torch7" parent="Node2D/Deco/Torchs" unique_id=551407990 instance=ExtResource("6_ochkp")]
+position = Vector2(8111, -808)
+
+[node name="Torch8" parent="Node2D/Deco/Torchs" unique_id=1328144849 instance=ExtResource("6_ochkp")]
+position = Vector2(8529, -425)
+
+[node name="Torch9" parent="Node2D/Deco/Torchs" unique_id=591308342 instance=ExtResource("6_ochkp")]
+position = Vector2(6105, -1935)
+
+[node name="Torch10" parent="Node2D/Deco/Torchs" unique_id=816313082 instance=ExtResource("6_ochkp")]
+position = Vector2(6976, -1946)
+
+[node name="Torch11" parent="Node2D/Deco/Torchs" unique_id=615402296 instance=ExtResource("6_ochkp")]
+position = Vector2(8269, -1598)
+
+[node name="Torch12" parent="Node2D/Deco/Torchs" unique_id=1459420867 instance=ExtResource("6_ochkp")]
+position = Vector2(10298, -1243)
+
+[node name="Torch13" parent="Node2D/Deco/Torchs" unique_id=705389888 instance=ExtResource("6_ochkp")]
+position = Vector2(10938, -1582)
+
+[node name="Torch14" parent="Node2D/Deco/Torchs" unique_id=1103547110 instance=ExtResource("6_ochkp")]
+z_index = 5
+position = Vector2(8831, -28)
 
 [node name="Sound" type="Node2D" parent="Node2D" unique_id=1379500442]
 position = Vector2(232, -2)
@@ -1641,7 +2493,5 @@ stream = ExtResource("10_ochkp")
 volume_db = 8.0
 autoplay = true
 
-[node name="Digicode" parent="Node2D" unique_id=654459137 instance=ExtResource("43_04g0o")]
-z_index = 3
-position = Vector2(8990, 804)
-scale = Vector2(0.1, 0.1)
+[node name="ParalaxeCiel" parent="Node2D" unique_id=634175650 instance=ExtResource("41_7462l")]
+position = Vector2(308, -332)

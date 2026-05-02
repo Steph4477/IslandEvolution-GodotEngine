@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var dialogue_scene = preload("res://Interface/Dialogue/toucan_dialogue.tscn")
-@export var crank_path = NodePath("Node2D/Platforms/Bridge/Crank")  
+@export var crank_path = NodePath("Node2D/Items/Bridge/Crank") 
 
 var gs
 var moko 
@@ -35,8 +35,11 @@ func _ready():
 
 	# --- Limite caméra & assombrissement ---
 	cam = gs.player.get_node("Camera2D")
-	cam.limit_top = -250000
-	cam.limit_right = 12000
+	cam.limit_top = -1200
+	cam.limit_right = 11300
+	cam.limit_left = -200
+	cam.limit_bottom = 1400
+	
 	
 	# === BLOQUAGE / DÉBLOQUAGE ENNEMIS ===
 	set_enemies_blocked(true)
@@ -65,12 +68,12 @@ func _ready():
 		"Et peut-être que je pourrai t'aider..."
 	])
 	await dlg.finished
-#
+
 	# --- Marque comme vu ---
 	gs.toucan_dialogue_seen = true
 
 	# --- Focus sur le digicode ---
-	await focus_camera_on_node("Node2D/Digicode")
+	await focus_camera_on_node("Node2D/Items/Digicode")
 	await get_tree().create_timer(1).timeout
 	await return_camera_to_player()
 #
