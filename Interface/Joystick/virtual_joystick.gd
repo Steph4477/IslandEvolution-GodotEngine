@@ -3,15 +3,10 @@ extends Node2D
 @onready var base = $Base
 @onready var stick = $Stick
 
-const RADIUS := 100.0
-var dragging := false
+const RADIUS = 100.0
+var dragging = false
 var input_vector := Vector2.ZERO
 var joystick_dir := Vector2.ZERO
-
-func _ready():
-	position = get_viewport().get_visible_rect().size - Vector2(200, 200)
-	base.position = Vector2.ZERO
-	stick.position = Vector2.ZERO
 
 func _input(event):
 	if event is InputEventScreenTouch and not event.pressed:

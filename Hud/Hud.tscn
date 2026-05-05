@@ -62,8 +62,7 @@
 [ext_resource type="Texture2D" uid="uid://btvi5xn63t8my" path="res://Items/CheckBox/seal.png" id="52_wfxx7"]
 [ext_resource type="Texture2D" uid="uid://co4ty4kifftog" path="res://Hud/Modules/Textures/web_dirt_big.png" id="61_ll21l"]
 
-[sub_resource type="Animation" id="Animation_jcaq3"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_1uhjb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -75,31 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(31, 801)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Coco:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [6.2831855]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Coco:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.1, 1.1)]
+"values": [Vector2(1789, 805.99994)]
 }
 
 [sub_resource type="Animation" id="Animation_wxm5k"]
@@ -114,7 +89,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(780, 316), Vector2(31, 801)]
+"values": [Vector2(780, 316), Vector2(1789, 805.99994)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -143,12 +118,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_26inf"]
 _data = {
-&"RESET": SubResource("Animation_jcaq3"),
+&"RESET": SubResource("Animation_1uhjb"),
 &"appear_coco": SubResource("Animation_wxm5k")
 }
 
-[sub_resource type="Animation" id="Animation_y20lb"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_vfut1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -160,31 +134,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(34.999996, 689.99994)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Spear:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [6.2831855]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Spear:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.1, 1.1)]
+"values": [Vector2(1789, 693)]
 }
 
 [sub_resource type="Animation" id="Animation_k3kan"]
@@ -199,7 +149,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(790, 329), Vector2(34.999996, 689.99994)]
+"values": [Vector2(790, 329), Vector2(1789, 693)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -228,12 +178,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ogbjv"]
 _data = {
-&"RESET": SubResource("Animation_y20lb"),
+&"RESET": SubResource("Animation_vfut1"),
 &"appear_spear": SubResource("Animation_k3kan")
 }
 
-[sub_resource type="Animation" id="Animation_uk4ib"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_jcaq3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -245,31 +194,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(34, 570.99994)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Bone:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [6.2831855]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Bone:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.1, 1.1)]
+"values": [Vector2(1788, 573)]
 }
 
 [sub_resource type="Animation" id="Animation_7iv5g"]
@@ -284,7 +209,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(740.99994, 255.00009), Vector2(34, 570.99994)]
+"values": [Vector2(740.99994, 255.00009), Vector2(1782, 574)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -313,12 +238,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hsv3q"]
 _data = {
-&"RESET": SubResource("Animation_uk4ib"),
+&"RESET": SubResource("Animation_jcaq3"),
 &"appear_bone": SubResource("Animation_7iv5g")
 }
 
-[sub_resource type="Animation" id="Animation_1uhjb"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_y20lb"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -329,31 +254,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(146, 923)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Health:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Health:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1698, 925)]
 }
 
 [sub_resource type="Animation" id="Animation_ogbjv"]
@@ -368,7 +269,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(781, 335), Vector2(146, 923)]
+"values": [Vector2(781, 335), Vector2(1698, 925)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -397,48 +298,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4dmrg"]
 _data = {
-&"RESET": SubResource("Animation_1uhjb"),
+&"RESET": SubResource("Animation_y20lb"),
 &"appear_health": SubResource("Animation_ogbjv")
-}
-
-[sub_resource type="Animation" id="Animation_vfut1"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(247.99998, 915.00006)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.11, 0.11)]
 }
 
 [sub_resource type="Animation" id="Animation_wfxx7"]
@@ -453,7 +314,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(784, 293.00006), Vector2(247.99998, 915.00006)]
+"values": [Vector2(784, 293.00006), Vector2(1594, 920)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -482,47 +343,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu565"]
 _data = {
-&"RESET": SubResource("Animation_vfut1"),
 &"appear_honey": SubResource("Animation_wfxx7")
-}
-
-[sub_resource type="Animation" id="Animation_oa44v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [6.2831855]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.11, 0.11)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(745, 318)]
 }
 
 [sub_resource type="Animation" id="Animation_legcx"]
@@ -567,7 +388,6 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x6mpx"]
 _data = {
-&"RESET": SubResource("Animation_oa44v"),
 &"appear_camouflage": SubResource("Animation_legcx")
 }
 
@@ -631,6 +451,21 @@ _data = {
 &"appear_ramp": SubResource("Animation_eqavf")
 }
 
+[sub_resource type="Animation" id="Animation_6yi51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1676, 806)]
+}
+
 [sub_resource type="Animation" id="Animation_dd24r"]
 resource_name = "appear_fire"
 length = 0.8
@@ -644,7 +479,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(729, 294), Vector2(137.99998, 801)]
+"values": [Vector2(729, 294), Vector2(1676, 806)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -673,15 +508,16 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_avv0v"]
 _data = {
+&"RESET": SubResource("Animation_6yi51"),
 &"appear_fire": SubResource("Animation_dd24r")
 }
 
-[sub_resource type="Animation" id="Animation_63qk1"]
+[sub_resource type="Animation" id="Animation_uk4ib"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Gamepad/Air:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -693,19 +529,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath("Gamepad/Air:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [6.208136]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath("Gamepad/Air:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -715,50 +551,49 @@ tracks/2/keys = {
 "values": [Vector2(0.43, 0.43)]
 }
 
-[sub_resource type="Animation" id="Animation_6yi51"]
+[sub_resource type="Animation" id="Animation_oa44v"]
 resource_name = "appear_air"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Gamepad/Air:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(729, 294), Vector2(200, 692)]
+"values": [Vector2(796.0001, 290.00003), Vector2(1592.0001, 735)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath("Gamepad/Air:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 6.2831855]
+"values": [6.2831855, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath("Gamepad/Air:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.43, 0.43), Vector2(0.12, 0.12)]
+"values": [Vector2(0.43, 0.43), Vector2(0.12, 0.116)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1uhjb"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnynh"]
 _data = {
-&"RESET": SubResource("Animation_63qk1"),
-&"appear_air": SubResource("Animation_6yi51")
+&"RESET": SubResource("Animation_uk4ib"),
+&"appear_air": SubResource("Animation_oa44v")
 }
 
 [sub_resource type="Animation" id="Animation_jnynh"]
@@ -1565,20 +1400,20 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="VirtualJoystick" parent="." unique_id=234075380 instance=ExtResource("2_s8lhr")]
-position = Vector2(1800, 938.99994)
+position = Vector2(155.00012, 921.99994)
 
 [node name="Gamepad" type="Control" parent="." unique_id=1114488835]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="Hand" type="TouchScreenButton" parent="Gamepad" unique_id=503376199]
-position = Vector2(30.000015, 916.00006)
+position = Vector2(1786, 923.00006)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("6_rgqxt")
 texture_pressed = ExtResource("7_b0qj5")
 
 [node name="Coco" type="TouchScreenButton" parent="Gamepad" unique_id=1026696562]
-position = Vector2(31, 801)
+position = Vector2(1789, 805.99994)
 rotation = 6.2831855
 scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("8_b0qj5")
@@ -1597,7 +1432,7 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_26inf")
 
 [node name="Spear" type="TouchScreenButton" parent="Gamepad" unique_id=2046174989]
-position = Vector2(34.999996, 689.99994)
+position = Vector2(1789, 693)
 rotation = 6.2831855
 scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("12_s8lhr")
@@ -1616,7 +1451,7 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_ogbjv")
 
 [node name="Bone" type="TouchScreenButton" parent="Gamepad" unique_id=981973535]
-position = Vector2(34, 570.99994)
+position = Vector2(1788, 573)
 rotation = 6.2831855
 scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("8_wb1yk")
@@ -1635,7 +1470,7 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_hsv3q")
 
 [node name="Health" type="TouchScreenButton" parent="Gamepad" unique_id=2026643396]
-position = Vector2(146, 923)
+position = Vector2(1698, 925)
 texture_normal = ExtResource("8_voibu")
 texture_pressed = ExtResource("11_e8y56")
 action = "ui_accept"
@@ -1653,7 +1488,7 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_4dmrg")
 
 [node name="Honey" type="TouchScreenButton" parent="Gamepad" unique_id=943434364]
-position = Vector2(247.99998, 915.00006)
+position = Vector2(1594, 920)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("12_shgqx")
 texture_pressed = ExtResource("13_cpk68")
@@ -1671,7 +1506,7 @@ text = "0"
 libraries/ = SubResource("AnimationLibrary_wu565")
 
 [node name="Camouflage" type="TouchScreenButton" parent="Gamepad" unique_id=2051500428]
-position = Vector2(745, 318)
+position = Vector2(1432, 910)
 rotation = 6.2831855
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("14_akioh")
@@ -1714,8 +1549,9 @@ reset_on_save = false
 libraries/ = SubResource("AnimationLibrary_ll21l")
 
 [node name="Fire" type="TouchScreenButton" parent="Gamepad" unique_id=1019016283]
-position = Vector2(729, 294)
-scale = Vector2(0.43, 0.43)
+position = Vector2(1676, 806)
+rotation = 6.2831855
+scale = Vector2(0.12, 0.12)
 texture_normal = ExtResource("19_mhl4i")
 texture_pressed = ExtResource("20_legcx")
 action = "fire_buff"
@@ -1725,13 +1561,15 @@ libraries/ = SubResource("AnimationLibrary_avv0v")
 
 [node name="Air" type="TouchScreenButton" parent="Gamepad" unique_id=1695551520]
 position = Vector2(729, 294)
+rotation = 6.208136
 scale = Vector2(0.43, 0.43)
 texture_normal = ExtResource("21_63qk1")
 texture_pressed = ExtResource("22_dd24r")
 action = "air_buff"
 
-[node name="AnimAir" type="AnimationPlayer" parent="Gamepad/Air" unique_id=689361633]
-libraries/ = SubResource("AnimationLibrary_1uhjb")
+[node name="AnimAir" type="AnimationPlayer" parent="Gamepad/Air" unique_id=1302254742]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_jnynh")
 
 [node name="Sprint" type="TouchScreenButton" parent="Gamepad" unique_id=322998859]
 position = Vector2(1275, 915)
