@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://bix2rlu654jtj"]
+
+[ext_resource type="Script" uid="uid://baspfce7d7x22" path="res://Levels/Lvl3/lvl_3a/lvl_3a.gd" id="1_by6n7"]
+[ext_resource type="Texture2D" uid="uid://p3rn7nqryq6p" path="res://Levels/Lvl3/lvl_3a/enter_arena.png" id="2_by6n7"]
+[ext_resource type="Texture2D" uid="uid://ljnsmdbtewun" path="res://Player/Sprite/exit/1.png" id="3_k3wr2"]
+[ext_resource type="Texture2D" uid="uid://31re10knbh5p" path="res://Player/Sprite/exit/2.png" id="4_t1lww"]
+[ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="5_vlyo5"]
+[ext_resource type="Texture2D" uid="uid://cosrgcxyxojql" path="res://Levels/Lvl3/lvl_3a/grid.png" id="6_t1lww"]
+
+[sub_resource type="Animation" id="Animation_vlyo5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(942, -482)]
+}
+
+[sub_resource type="Animation" id="Animation_fydlb"]
+resource_name = "close"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(942, -482), Vector2(941.99994, 617)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gkcie"]
+_data = {
+&"RESET": SubResource("Animation_vlyo5"),
+&"close": SubResource("Animation_fydlb")
+}
+
+[sub_resource type="Animation" id="Animation_xpx36"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_k3wr2")]
+}
+
+[sub_resource type="Animation" id="Animation_cbq1d"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_k3wr2")]
+}
+
+[sub_resource type="Animation" id="Animation_td567"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_k3wr2"), ExtResource("4_t1lww"), ExtResource("5_vlyo5")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fydlb"]
+_data = {
+&"RESET": SubResource("Animation_xpx36"),
+&"idle": SubResource("Animation_cbq1d"),
+&"walk": SubResource("Animation_td567")
+}
+
+[node name="Lvl_3a" type="Node2D" unique_id=379118956]
+z_index = 5
+script = ExtResource("1_by6n7")
+
+[node name="Background" type="Node2D" parent="." unique_id=334321475]
+
+[node name="Couloir" type="Sprite2D" parent="Background" unique_id=804918156]
+position = Vector2(960.99994, 549)
+scale = Vector2(1.2539063, 1.0869142)
+texture = ExtResource("2_by6n7")
+
+[node name="GateFront" type="Node2D" parent="." unique_id=856590111]
+
+[node name="Grid" type="Sprite2D" parent="GateFront" unique_id=547860626]
+z_index = 20
+position = Vector2(942, -482)
+scale = Vector2(1.7, 1.8)
+texture = ExtResource("6_t1lww")
+
+[node name="Anim" type="AnimationPlayer" parent="GateFront" unique_id=1082897405]
+libraries/ = SubResource("AnimationLibrary_gkcie")
+
+[node name="MokoBack" type="Node2D" parent="." unique_id=675069786]
+position = Vector2(984, 728)
+
+[node name="Moko" type="Sprite2D" parent="MokoBack" unique_id=1492917393]
+position = Vector2(-57, -9)
+texture = ExtResource("3_k3wr2")
+
+[node name="Anim" type="AnimationPlayer" parent="MokoBack" unique_id=911234196]
+libraries/ = SubResource("AnimationLibrary_fydlb")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1039005058]
+z_index = 15
+position = Vector2(969, 821)
+
+[node name="GateCloseMarker" type="Marker2D" parent="." unique_id=1931711198]
+position = Vector2(983, 750)
+
+[node name="CorridorExit" type="Marker2D" parent="." unique_id=2037252573]
+z_index = 15
+position = Vector2(992, 550)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=4430039]
+position = Vector2(965, 537)
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
