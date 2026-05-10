@@ -132,10 +132,6 @@ texture = ExtResource("3_k3wr2")
 [node name="Anim" type="AnimationPlayer" parent="MokoBack" unique_id=911234196]
 libraries/ = SubResource("AnimationLibrary_fydlb")
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1039005058]
-z_index = 15
-position = Vector2(969, 821)
-
 [node name="GateCloseMarker" type="Marker2D" parent="." unique_id=1931711198]
 position = Vector2(983, 750)
 
@@ -149,3 +145,7 @@ limit_left = 0
 limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1039005058]
+z_index = 15
+position = Vector2(969, 821)
