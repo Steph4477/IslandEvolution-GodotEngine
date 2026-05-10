@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bix2rlu654jtj"]
 
-[ext_resource type="Script" uid="uid://baspfce7d7x22" path="res://Levels/Lvl3/lvl_3a/lvl_3a.gd" id="1_by6n7"]
-[ext_resource type="Texture2D" uid="uid://p3rn7nqryq6p" path="res://Levels/Lvl3/lvl_3a/enter_arena.png" id="2_by6n7"]
+[ext_resource type="Script" uid="uid://cout6kthwim2w" path="res://Levels/Lvl3/lvl_3a/lvl_3a.gd" id="1_by6n7"]
+[ext_resource type="Texture2D" uid="uid://bwslnjjdmrsmr" path="res://Levels/Lvl3/lvl_3a/enter_arena.png" id="2_by6n7"]
 [ext_resource type="Texture2D" uid="uid://ljnsmdbtewun" path="res://Player/Sprite/exit/1.png" id="3_k3wr2"]
 [ext_resource type="Texture2D" uid="uid://31re10knbh5p" path="res://Player/Sprite/exit/2.png" id="4_t1lww"]
 [ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="5_vlyo5"]
-[ext_resource type="Texture2D" uid="uid://cosrgcxyxojql" path="res://Levels/Lvl3/lvl_3a/grid.png" id="6_t1lww"]
+[ext_resource type="Texture2D" uid="uid://bjk64fa4sabiu" path="res://Levels/Lvl3/lvl_3a/grid.png" id="6_t1lww"]
 
 [sub_resource type="Animation" id="Animation_vlyo5"]
 length = 0.001

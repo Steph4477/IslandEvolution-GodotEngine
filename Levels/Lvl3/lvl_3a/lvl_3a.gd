@@ -22,7 +22,6 @@ var end_moko_color = Color(0.207, 0.142, 0.096, 1.0)
 var is_transitioning = false
 var gate_closed = false
 
-var player = null
 var hud = null
 
 
@@ -31,17 +30,16 @@ func _ready():
 
 	var gs = get_node("/root/GameState")
 
-	player = gs.player
+	if gs.player:
+		gs.player.visible = false
+		gs.player.set_physics_process(false)
+		gs.player.set_process(false)
+		gs.player.velocity = Vector2.ZERO
+
 	hud = gs.hud
+	hud.visible = false
 
 	scene_camera.make_current()
-
-	player.visible = false
-	player.set_physics_process(false)
-	player.set_process(false)
-	player.get_node("Camera2D").enabled = false
-
-	hud.visible = false
 
 	moko_back.global_position = spawn_point.global_position
 	moko_back.scale = start_scale
@@ -102,13 +100,4 @@ func enter_arena():
 
 	await gs.fade.fade_out()
 
-	player.visible = true
-	player.set_physics_process(true)
-	player.set_process(true)
-	player.get_node("Camera2D").enabled = true
-
-	hud.visible = true
-
-	#gs.load_level("res://Levels/lvl_3b_arena.tscn")
-
-	gs.player.popups_mod.show_info("L'arène n'est pas encore prête ! 😂 ")
+	gs.load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
