@@ -8,7 +8,7 @@ extends Node2D
 @onready var scene_camera = $Camera2D
 @onready var gate_anim = $GateFront/Anim
 
-var corridor_speed = 120
+var corridor_speed = 75
 
 var start_scale = Vector2(1, 1)
 var end_scale = Vector2(0.20, 0.20)

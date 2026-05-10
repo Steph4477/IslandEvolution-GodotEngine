@@ -601,7 +601,7 @@ texture = ExtResource("20_8uqfc")
 z_index = 50
 position = Vector2(19066, -873)
 scale = Vector2(0.25, 8)
-next_scene_path = "res://Levels/Lvl3/lvl_3a/lvl_3a.tscn"
+next_scene_path = "res://Levels/Lvl3/Lvl_3a/lvl_3a.tscn"
 
 [node name="Village" type="Sprite2D" parent="." unique_id=1938003116]
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
