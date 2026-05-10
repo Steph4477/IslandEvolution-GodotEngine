@@ -21,7 +21,6 @@ var is_looking = false
 var can_look_again = true
 
 func _ready():
-	print("Animations : ", anim.get_animation_list())
 	pv = max_hp
 	find_and_bind_player()
 	start_patrol()
