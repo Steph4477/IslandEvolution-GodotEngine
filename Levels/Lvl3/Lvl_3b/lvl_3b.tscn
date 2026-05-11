@@ -11,6 +11,10 @@
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/Swim_Zone/water.gdshader" id="8_cp7mx"]
 [ext_resource type="Texture2D" uid="uid://dlcojyyjfdw7s" path="res://Levels/Lvl3/Environement/Swim_Zone/water.png" id="9_bq7xw"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="10_bq7xw"]
+[ext_resource type="Texture2D" uid="uid://ljnsmdbtewun" path="res://Player/Sprite/exit/1.png" id="12_6auop"]
+[ext_resource type="Texture2D" uid="uid://c6a8m3vr03wlm" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena-Z_20.png" id="12_sap2p"]
+[ext_resource type="Texture2D" uid="uid://31re10knbh5p" path="res://Player/Sprite/exit/2.png" id="13_sap2p"]
+[ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="14_f4icm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flxhq"]
 shader = ExtResource("8_cp7mx")
@@ -20,26 +24,133 @@ shader_parameter/speed = 0.050000002375
 diffuse_texture = ExtResource("9_bq7xw")
 texture_repeat = 2
 
+[sub_resource type="Animation" id="Animation_82sl6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FakeMoko:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-63.333416, 73.333374)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FakeMoko:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_6auop")]
+}
+
+[sub_resource type="Animation" id="Animation_ds7ig"]
+resource_name = "intro"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-136.66666, 270), Vector2(160, -1366.6667)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FakeMoko:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-216.66675, 176.6667), Vector2(59.999878, -153.33327)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FakeMoko:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.8, 1.1333333, 1.4000001, 1.6666667, 1.67),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("12_6auop")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbv6"]
+_data = {
+&"RESET": SubResource("Animation_82sl6"),
+&"intro": SubResource("Animation_ds7ig")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flxhq"]
-size = Vector2(2002.5, 135)
+size = Vector2(2002.5, 207)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u71ib"]
-size = Vector2(27, 1169)
+size = Vector2(257.75, 1169)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc7ln"]
 size = Vector2(1997, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6auop"]
-size = Vector2(45, 1071)
+size = Vector2(101, 1124.5)
 
 [node name="lvl_3b" type="Node2D" unique_id=36208587]
 script = ExtResource("1_flxhq")
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1505592288]
-position = Vector2(107, 851)
-
 [node name="World" type="Node2D" parent="." unique_id=1794883641]
 z_index = 15
+position = Vector2(-46, -7)
 
 [node name="SkySprite" type="Sprite2D" parent="World" unique_id=1704801586]
 position = Vector2(918.0001, 549.5)
@@ -67,12 +178,11 @@ scale = Vector2(0.74334097, 0.8055559)
 texture = ExtResource("5_80yr0")
 
 [node name="Toucan" parent="World" unique_id=1404903487 instance=ExtResource("10_bq7xw")]
-position = Vector2(83, 176)
+position = Vector2(387, 108.00001)
 scale = Vector2(0.6, 0.6)
 
 [node name="Arena" type="Node2D" parent="World" unique_id=1975248907]
-position = Vector2(247.00009, -33.999992)
-scale = Vector2(0.8, 0.8)
+position = Vector2(69, -288)
 
 [node name="TribuneSprite" type="Sprite2D" parent="World/Arena" unique_id=1050860516]
 position = Vector2(800.0001, 761.24994)
@@ -416,16 +526,45 @@ texture = ExtResource("3_80yr0")
 position = Vector2(812.5, 572.5)
 texture = ExtResource("4_k30wa")
 
+[node name="SpawnPoint" type="Marker2D" parent="World/Arena" unique_id=1505592288]
+position = Vector2(685, 1115)
+
+[node name="ArenaSprite-Z_20" type="Sprite2D" parent="World/Arena" unique_id=965977415]
+z_index = 20
+position = Vector2(812.5, 572.5)
+texture = ExtResource("12_sap2p")
+
+[node name="IntroCinematic" type="Node2D" parent="World" unique_id=573419137]
+position = Vector2(818, 894)
+scale = Vector2(0.3, 0.3)
+
+[node name="FakeMoko" type="Sprite2D" parent="World/IntroCinematic" unique_id=1447847349]
+z_index = 80
+position = Vector2(-63.333416, 73.333374)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_6auop")
+
+[node name="Camera2D" type="Camera2D" parent="World/IntroCinematic" unique_id=1558263865]
+zoom = Vector2(4, 4)
+
+[node name="CameraCinematic" type="Node2D" parent="World/IntroCinematic" unique_id=1286858604]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/IntroCinematic/CameraCinematic" unique_id=420016043]
+libraries/ = SubResource("AnimationLibrary_cmbv6")
+autoplay = &"intro"
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=851490859]
+z_index = 15
+position = Vector2(-115, -10)
 collision_layer = 2
 
 [node name="Border" type="CollisionShape2D" parent="StaticBody2D" unique_id=1430512837]
 z_index = 50
-position = Vector2(953.75, 1066.5)
+position = Vector2(953.75, 1030.5)
 shape = SubResource("RectangleShape2D_flxhq")
 
 [node name="Border2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1228470624]
-position = Vector2(-7, 548)
+position = Vector2(172.125, 561)
 shape = SubResource("RectangleShape2D_u71ib")
 
 [node name="Border3" type="CollisionShape2D" parent="StaticBody2D" unique_id=365477280]
@@ -433,5 +572,7 @@ position = Vector2(956.5, 7)
 shape = SubResource("RectangleShape2D_gc7ln")
 
 [node name="Border4" type="CollisionShape2D" parent="StaticBody2D" unique_id=380903725]
-position = Vector2(1917, 532)
+position = Vector2(1648.5, 505.25)
 shape = SubResource("RectangleShape2D_6auop")
+
+[connection signal="animation_finished" from="World/IntroCinematic/CameraCinematic/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
