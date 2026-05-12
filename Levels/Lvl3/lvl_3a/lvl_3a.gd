@@ -98,6 +98,4 @@ func enter_arena():
 
 	var gs = get_node("/root/GameState")
 
-	await gs.fade.fade_out()
-
 	gs.load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
