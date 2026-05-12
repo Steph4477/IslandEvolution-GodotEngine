@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://cfg03qmsi357m" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune.png" id="1_i1spm"]
 [ext_resource type="PackedScene" uid="uid://b2vyrpdh74p53" path="res://Levels/Lvl3/Lvl_3b/Assets/Public/public_cannibal.tscn" id="2_6do33"]
 [ext_resource type="Texture2D" uid="uid://nxpdacl8ouvv" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena.png" id="3_80yr0"]
-[ext_resource type="Texture2D" uid="uid://ig5udo1t1xpe" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena-Z_0.png" id="4_k30wa"]
+[ext_resource type="Texture2D" uid="uid://ig5udo1t1xpe" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/tooth.png" id="4_k30wa"]
 [ext_resource type="Texture2D" uid="uid://dtns0bb03echc" path="res://Levels/Lvl3/Lvl_3b/Assets/Floor.png" id="5_80yr0"]
 [ext_resource type="Texture2D" uid="uid://ce4kuy3r13fwn" path="res://Levels/Lvl3/Environement/sky.png" id="6_k30wa"]
 [ext_resource type="TileSet" uid="uid://7u7ot5b4g7n6" path="res://Levels/Lvl3/Environement/tiles_platforms/deco.tres" id="7_k30wa"]
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/Swim_Zone/water.gdshader" id="8_cp7mx"]
 [ext_resource type="Texture2D" uid="uid://dlcojyyjfdw7s" path="res://Levels/Lvl3/Environement/Swim_Zone/water.png" id="9_bq7xw"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="10_bq7xw"]
+[ext_resource type="Texture2D" uid="uid://b0cs2xlv1obaf" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/bones.png" id="11_6auop"]
 [ext_resource type="Texture2D" uid="uid://ljnsmdbtewun" path="res://Player/Sprite/exit/1.png" id="12_6auop"]
-[ext_resource type="Texture2D" uid="uid://c6a8m3vr03wlm" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena-Z_20.png" id="12_sap2p"]
 [ext_resource type="Texture2D" uid="uid://31re10knbh5p" path="res://Player/Sprite/exit/2.png" id="13_sap2p"]
 [ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="14_f4icm"]
 
@@ -74,10 +74,58 @@ tracks/3/keys = {
 "update": 1,
 "values": [ExtResource("12_6auop")]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Arena/BoneSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Camera2D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.17453292]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Arena/BoneSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(127, -546)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Arena/ToothSprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(118, -493)]
+}
 
 [sub_resource type="Animation" id="Animation_ds7ig"]
 resource_name = "intro"
-length = 4.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -88,7 +136,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(1, 1)]
+"values": [Vector2(4, 4), Vector2(0.7, 0.7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -97,7 +145,7 @@ tracks/1/path = NodePath("../Camera2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(1.7, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-136.66666, 270), Vector2(160, -1366.6667)]
@@ -109,10 +157,10 @@ tracks/2/path = NodePath("../FakeMoko:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.7),
+"times": PackedFloat32Array(0, 1.72),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-216.66675, 176.6667), Vector2(59.999878, -153.33327)]
+"values": [Vector2(-216.66675, 176.6667), Vector2(90.000084, -256.6666)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -126,6 +174,54 @@ tracks/3/keys = {
 "update": 1,
 "values": [ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("12_6auop")]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Arena/BoneSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Camera2D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Arena/BoneSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3, 3.08, 3.13, 3.21, 3.2666667, 3.36, 3.41, 3.49, 3.5333333, 3.61, 3.65, 3.74, 3.8000002, 3.9, 3.95, 4.04, 4.1, 4.19, 4.24, 4.3, 4.3333335, 4.4, 4.47, 4.55, 4.6, 4.67, 4.72, 4.79, 4.8333335, 4.91, 4.96, 5.04, 5.1, 5.22, 5.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(130.366, 139.644), Vector2(110, 112.838), Vector2(160, 96.084), Vector2(180, 69.278), Vector2(150, 50.29), Vector2(80, 25.308), Vector2(106, 11.925), Vector2(150, -9.488), Vector2(125, -21.086), Vector2(110, -40.597), Vector2(155.063, -50.777), Vector2(180, -73.681), Vector2(148, -88.951), Vector2(80, -119.572), Vector2(105, -134.883), Vector2(150, -162.443), Vector2(122, -180.816), Vector2(100, -203.521), Vector2(160, -216.135), Vector2(100, -231.272), Vector2(145, -239.681), Vector2(80, -262.525), Vector2(100, -286.511), Vector2(160, -313.924), Vector2(120, -331.057), Vector2(100, -350.363), Vector2(160, -364.153), Vector2(100, -383.459), Vector2(145, -395.411), Vector2(160, -421.682), Vector2(100, -438.815), Vector2(180, -466.228), Vector2(115, -486.787), Vector2(140, -522.315), Vector2(127, -546)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Arena/ToothSprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3, 5.34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(108, -920), Vector2(118, -1088)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbv6"]
 _data = {
@@ -134,34 +230,34 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flxhq"]
-size = Vector2(2002.5, 207)
+size = Vector2(2002.5, 245.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u71ib"]
-size = Vector2(257.75, 1169)
+size = Vector2(88.875, 1426.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc7ln"]
 size = Vector2(1997, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6auop"]
-size = Vector2(101, 1124.5)
+size = Vector2(101, 1530)
 
 [node name="lvl_3b" type="Node2D" unique_id=36208587]
 script = ExtResource("1_flxhq")
 
 [node name="World" type="Node2D" parent="." unique_id=1794883641]
 z_index = 15
-position = Vector2(-46, -7)
+position = Vector2(0, 486)
 
 [node name="SkySprite" type="Sprite2D" parent="World" unique_id=1704801586]
-position = Vector2(918.0001, 549.5)
-scale = Vector2(3.9765625, 2.3808594)
+position = Vector2(868.00006, 142.99998)
+scale = Vector2(6.554688, 2.9296873)
 texture = ExtResource("6_k30wa")
 
 [node name="WaterSprite" type="Sprite2D" parent="World" unique_id=144233068]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_flxhq")
-position = Vector2(773.99915, 764.5)
-scale = Vector2(1.76411, 0.5240965)
+position = Vector2(883.5, 764.5)
+scale = Vector2(2.136335, 0.5240965)
 texture = SubResource("CanvasTexture_u71ib")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="World" unique_id=284671844]
@@ -171,380 +267,213 @@ scale = Vector2(0.6, 0.6)
 tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAkADoAAgAGAAEAAAByADoAAgAGAAEAAACKADkAAgAGAAEAAAB+ADoAAgAHAAEAAABRADoAAgAHAAEAABA9ADkAAgAGAAAAAABfADkAAgAHAAAAAABpADoAAgAEAAQAAADMADkAAgAHAAAAAACwADoAAgAHAAAAAABsADkAAgAHAAAAAADUADoAAgAGAAEAAADtADkAAgAGAAAAAAABAToAAgAHAAEAABAPATkAAgAHAAAAAAAyADkAAgAHAAAAAABNADkAAgAHAAAAAACZADkAAgAGAAEAABDhADkAAgAGAAEAABA=")
 tile_set = ExtResource("7_k30wa")
 
-[node name="FloorSprite" type="Sprite2D" parent="World" unique_id=1942316824]
-modulate = Color(1, 1, 0, 0.96862745)
-position = Vector2(1379, 959.49994)
-scale = Vector2(0.74334097, 0.8055559)
-texture = ExtResource("5_80yr0")
-
 [node name="Toucan" parent="World" unique_id=1404903487 instance=ExtResource("10_bq7xw")]
-position = Vector2(387, 108.00001)
+position = Vector2(798.00006, -123)
 scale = Vector2(0.6, 0.6)
 
 [node name="Arena" type="Node2D" parent="World" unique_id=1975248907]
-position = Vector2(69, -288)
+position = Vector2(731, 831)
 
 [node name="TribuneSprite" type="Sprite2D" parent="World/Arena" unique_id=1050860516]
-position = Vector2(800.0001, 761.24994)
-scale = Vector2(0.7999999, 0.7999999)
+position = Vector2(126.5, -541.5)
 texture = ExtResource("1_i1spm")
 
 [node name="AnimPublic" type="Node2D" parent="World/Arena/TribuneSprite" unique_id=1737577089]
-
-[node name="Stage1" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=1818941231]
-modulate = Color(0.3172787, 0.31727865, 0.31727865, 1)
-position = Vector2(-6, -82)
-
-[node name="PublicCannibal" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1421322129 instance=ExtResource("2_6do33")]
-position = Vector2(44, -178)
-
-[node name="PublicCannibal2" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1475072575 instance=ExtResource("2_6do33")]
-position = Vector2(-55, -178)
-tribe = 2
-
-[node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1430714386 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
-tribe = 2
-
-[node name="PublicCannibal4" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=2035736208 instance=ExtResource("2_6do33")]
-position = Vector2(151, -177)
-tribe = 2
-
-[node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=474700423 instance=ExtResource("2_6do33")]
-position = Vector2(229, -182)
-tribe = 1
-
-[node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1037284944 instance=ExtResource("2_6do33")]
-position = Vector2(-160, -178)
-
-[node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1074411572 instance=ExtResource("2_6do33")]
-position = Vector2(-263, -175)
-tribe = 2
-
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1086834341 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
-tribe = 2
-
-[node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1002008600 instance=ExtResource("2_6do33")]
-position = Vector2(-364, -178)
-tribe = 2
-
-[node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=41756417 instance=ExtResource("2_6do33")]
-position = Vector2(-489, -187)
-tribe = 1
-
-[node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1418295608 instance=ExtResource("2_6do33")]
-position = Vector2(353, -180)
-
-[node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=1733540029 instance=ExtResource("2_6do33")]
-position = Vector2(505, -184)
-tribe = 2
-
-[node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=533926412 instance=ExtResource("2_6do33")]
-position = Vector2(604, -191)
-
-[node name="PublicCannibal9" parent="World/Arena/TribuneSprite/AnimPublic/Stage1" unique_id=831768407 instance=ExtResource("2_6do33")]
-position = Vector2(686, -194)
-
-[node name="Stage2" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=2003413087]
-modulate = Color(0.6288588, 0.62885886, 0.6288588, 1)
-
-[node name="PublicCannibal" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=1268360869 instance=ExtResource("2_6do33")]
-position = Vector2(44, -178)
-
-[node name="PublicCannibal2" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=198285221 instance=ExtResource("2_6do33")]
-position = Vector2(-55, -178)
-tribe = 2
-
-[node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=1395654855 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
-tribe = 2
-
-[node name="PublicCannibal4" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=1934841973 instance=ExtResource("2_6do33")]
-position = Vector2(151, -177)
-tribe = 2
-
-[node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=1676468328 instance=ExtResource("2_6do33")]
-position = Vector2(229, -182)
-tribe = 1
-
-[node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=577201191 instance=ExtResource("2_6do33")]
-position = Vector2(-160, -178)
-
-[node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=316770724 instance=ExtResource("2_6do33")]
-position = Vector2(-263, -175)
-tribe = 2
-
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=588640390 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
-tribe = 2
-
-[node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=837965122 instance=ExtResource("2_6do33")]
-position = Vector2(-364, -178)
-tribe = 2
-
-[node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=2141944572 instance=ExtResource("2_6do33")]
-position = Vector2(-489, -187)
-tribe = 1
-
-[node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=437155013 instance=ExtResource("2_6do33")]
-position = Vector2(353, -180)
-
-[node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=1857616021 instance=ExtResource("2_6do33")]
-position = Vector2(505, -184)
-tribe = 2
-
-[node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=906005354 instance=ExtResource("2_6do33")]
-position = Vector2(604, -191)
-
-[node name="PublicCannibal9" parent="World/Arena/TribuneSprite/AnimPublic/Stage2" unique_id=581189152 instance=ExtResource("2_6do33")]
-position = Vector2(686, -194)
+position = Vector2(-8, 3)
 
 [node name="Stage3" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=690246239]
-modulate = Color(0.846616, 0.846616, 0.8466159, 1)
-position = Vector2(-1, 92)
+modulate = Color(0.24695042, 0.24695027, 0.2469503, 1)
+position = Vector2(-1.5, 100.5)
 
 [node name="PublicCannibal" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=598821090 instance=ExtResource("2_6do33")]
-position = Vector2(44, -178)
-
-[node name="PublicCannibal2" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=879573696 instance=ExtResource("2_6do33")]
-position = Vector2(-55, -178)
-tribe = 2
+position = Vector2(12, -159)
 
 [node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1357285992 instance=ExtResource("2_6do33")]
 position = Vector2(-632, -195)
 tribe = 2
 
-[node name="PublicCannibal4" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=111285770 instance=ExtResource("2_6do33")]
-position = Vector2(151, -177)
-tribe = 2
-
 [node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=463464685 instance=ExtResource("2_6do33")]
-position = Vector2(229, -182)
+position = Vector2(211, -164)
 tribe = 1
 
 [node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=290868028 instance=ExtResource("2_6do33")]
-position = Vector2(-160, -178)
+position = Vector2(-200, -161)
 
 [node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=233865304 instance=ExtResource("2_6do33")]
-position = Vector2(-263, -175)
+position = Vector2(-338, -171)
 tribe = 2
-
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1068428149 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
-tribe = 2
-
-[node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1744869949 instance=ExtResource("2_6do33")]
-position = Vector2(-364, -178)
-tribe = 2
-
-[node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1903234612 instance=ExtResource("2_6do33")]
-position = Vector2(-489, -187)
-tribe = 1
 
 [node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1951612941 instance=ExtResource("2_6do33")]
-position = Vector2(353, -180)
+position = Vector2(357, -169)
 
 [node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=419515435 instance=ExtResource("2_6do33")]
-position = Vector2(505, -184)
+position = Vector2(478, -177)
 tribe = 2
 
 [node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1045668473 instance=ExtResource("2_6do33")]
 position = Vector2(604, -191)
 
-[node name="PublicCannibal9" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1534198638 instance=ExtResource("2_6do33")]
-position = Vector2(686, -194)
+[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=894098137 instance=ExtResource("2_6do33")]
+position = Vector2(-476, -178)
+tribe = 2
 
 [node name="Stage4" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=1415453135]
+modulate = Color(0.6158285, 0.6158285, 0.6158285, 1)
 position = Vector2(7, 181)
 
-[node name="PublicCannibal" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1818838487 instance=ExtResource("2_6do33")]
-position = Vector2(44, -178)
-
 [node name="PublicCannibal2" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1800487177 instance=ExtResource("2_6do33")]
-position = Vector2(-55, -178)
+position = Vector2(-38.5, -165.5)
 tribe = 2
 
 [node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1678613827 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
+position = Vector2(-631.5, -175.5)
 tribe = 2
 
 [node name="PublicCannibal4" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1130009606 instance=ExtResource("2_6do33")]
-position = Vector2(151, -177)
+position = Vector2(141.5, -164.5)
 tribe = 2
-
-[node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=125939545 instance=ExtResource("2_6do33")]
-position = Vector2(229, -182)
-tribe = 1
 
 [node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=605142838 instance=ExtResource("2_6do33")]
-position = Vector2(-160, -178)
-
-[node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=116584119 instance=ExtResource("2_6do33")]
-position = Vector2(-263, -175)
-tribe = 2
-
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1639020227 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
-tribe = 2
+position = Vector2(-229.5, -166.5)
 
 [node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=680702954 instance=ExtResource("2_6do33")]
-position = Vector2(-364, -178)
+position = Vector2(-355.5, -172.5)
 tribe = 2
 
 [node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=24104537 instance=ExtResource("2_6do33")]
-position = Vector2(-489, -187)
+position = Vector2(-498.5, -175.5)
 tribe = 1
 
 [node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1137441591 instance=ExtResource("2_6do33")]
-position = Vector2(353, -180)
+position = Vector2(316.5, -169.5)
 
 [node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=878898947 instance=ExtResource("2_6do33")]
-position = Vector2(505, -184)
+position = Vector2(457.5, -174.5)
 tribe = 2
 
 [node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1636613677 instance=ExtResource("2_6do33")]
-position = Vector2(604, -191)
+position = Vector2(597.5, -177.5)
 
 [node name="PublicCannibal9" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=461781613 instance=ExtResource("2_6do33")]
-position = Vector2(686, -194)
+position = Vector2(304.5, 85.5)
 
 [node name="Stage5" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=751591181]
 position = Vector2(11, 246)
 
-[node name="PublicCannibal" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1979429106 instance=ExtResource("2_6do33")]
-position = Vector2(44, -178)
-
 [node name="PublicCannibal2" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1379311058 instance=ExtResource("2_6do33")]
-position = Vector2(-55, -178)
-tribe = 2
-
-[node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=308794832 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
+position = Vector2(-163.5, -153.5)
 tribe = 2
 
 [node name="PublicCannibal4" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1273609600 instance=ExtResource("2_6do33")]
-position = Vector2(151, -177)
+position = Vector2(176.5, -152.5)
 tribe = 2
 
-[node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1163068298 instance=ExtResource("2_6do33")]
-position = Vector2(229, -182)
-tribe = 1
+[node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1421322129 instance=ExtResource("2_6do33")]
+position = Vector2(-23.5, -148.5)
+tribe = 2
 
 [node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=996652140 instance=ExtResource("2_6do33")]
-position = Vector2(-160, -178)
-
-[node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1634864767 instance=ExtResource("2_6do33")]
-position = Vector2(-263, -175)
-tribe = 2
-
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1125085005 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
-tribe = 2
+position = Vector2(-323.5, -149.5)
 
 [node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1901777052 instance=ExtResource("2_6do33")]
-position = Vector2(-364, -178)
+position = Vector2(-436.5, -150.5)
 tribe = 2
 
 [node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1259400762 instance=ExtResource("2_6do33")]
-position = Vector2(-489, -187)
+position = Vector2(-574.5, -146.5)
 tribe = 1
-
-[node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1697521920 instance=ExtResource("2_6do33")]
-position = Vector2(353, -180)
-
-[node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=838189410 instance=ExtResource("2_6do33")]
-position = Vector2(505, -184)
-tribe = 2
 
 [node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1804664717 instance=ExtResource("2_6do33")]
-position = Vector2(604, -191)
+position = Vector2(593.5, -147.5)
 
-[node name="PublicCannibal9" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1332643648 instance=ExtResource("2_6do33")]
-position = Vector2(686, -194)
-
-[node name="Stage6" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=1834720697]
-position = Vector2(0, 343)
-
-[node name="PublicCannibal" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=575144800 instance=ExtResource("2_6do33")]
-position = Vector2(44, -178)
-
-[node name="PublicCannibal2" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1459135944 instance=ExtResource("2_6do33")]
-position = Vector2(-55, -178)
+[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=572473870 instance=ExtResource("2_6do33")]
+position = Vector2(448.5, -148.5)
 tribe = 2
 
-[node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=175993042 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
-tribe = 2
-
-[node name="PublicCannibal4" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=822668797 instance=ExtResource("2_6do33")]
-position = Vector2(151, -177)
-tribe = 2
-
-[node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1667610524 instance=ExtResource("2_6do33")]
-position = Vector2(229, -182)
+[node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1667610524 instance=ExtResource("2_6do33")]
+position = Vector2(314.5, -149.5)
 tribe = 1
 
-[node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1054565793 instance=ExtResource("2_6do33")]
-position = Vector2(-160, -178)
+[node name="Stage6" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=1834720697]
+modulate = Color(0.5705783, 0.57057834, 0.57057834, 1)
+position = Vector2(0, 343)
 
-[node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=499622731 instance=ExtResource("2_6do33")]
-position = Vector2(-263, -175)
+[node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=175993042 instance=ExtResource("2_6do33")]
+position = Vector2(-593.5, -147.5)
 tribe = 2
 
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=894098137 instance=ExtResource("2_6do33")]
-position = Vector2(-632, -195)
+[node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=499622731 instance=ExtResource("2_6do33")]
+position = Vector2(-296.5, -158.5)
 tribe = 2
 
 [node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1848491024 instance=ExtResource("2_6do33")]
-position = Vector2(-364, -178)
+position = Vector2(-420.5, 14.5)
 tribe = 2
 
-[node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1302016906 instance=ExtResource("2_6do33")]
-position = Vector2(-489, -187)
-tribe = 1
+[node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=326591750 instance=ExtResource("2_6do33")]
+position = Vector2(-415.5, -74.5)
+tribe = 2
+
+[node name="PublicCannibal15" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1597405229 instance=ExtResource("2_6do33")]
+position = Vector2(-453.5, -155.5)
+tribe = 2
 
 [node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1327831305 instance=ExtResource("2_6do33")]
-position = Vector2(353, -180)
+position = Vector2(317.5, -159.5)
 
 [node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1268630515 instance=ExtResource("2_6do33")]
-position = Vector2(505, -184)
+position = Vector2(443.5, -151.5)
 tribe = 2
 
 [node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1220640942 instance=ExtResource("2_6do33")]
-position = Vector2(604, -191)
+position = Vector2(598.5, -142.5)
 
 [node name="PublicCannibal9" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1229314507 instance=ExtResource("2_6do33")]
-position = Vector2(686, -194)
+position = Vector2(555.5, -58.5)
+
+[node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1332643648 instance=ExtResource("2_6do33")]
+position = Vector2(422.5, 19.5)
+
+[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=19878620 instance=ExtResource("2_6do33")]
+position = Vector2(428.5, -69.5)
+
+[node name="BoneSprite" type="Sprite2D" parent="World/Arena" unique_id=909731591]
+visible = false
+position = Vector2(127, -546)
+texture = ExtResource("11_6auop")
+
+[node name="FloorSprite" type="Sprite2D" parent="World/Arena" unique_id=1942316824]
+modulate = Color(1, 1, 0, 0.96862745)
+position = Vector2(754.5, 292.5)
+scale = Vector2(1.14006, 1.817902)
+texture = ExtResource("5_80yr0")
 
 [node name="ArenaSprite" type="Sprite2D" parent="World/Arena" unique_id=321503114]
 modulate = Color(0.85348755, 0.85348773, 0.8534877, 1)
-position = Vector2(813, 573)
+position = Vector2(127.5, -545.5)
 texture = ExtResource("3_80yr0")
 
-[node name="ArenaSprite-Z_0" type="Sprite2D" parent="World/Arena" unique_id=909731591]
-position = Vector2(812.5, 572.5)
-texture = ExtResource("4_k30wa")
-
 [node name="SpawnPoint" type="Marker2D" parent="World/Arena" unique_id=1505592288]
-position = Vector2(685, 1115)
+position = Vector2(12, -62)
 
-[node name="ArenaSprite-Z_20" type="Sprite2D" parent="World/Arena" unique_id=965977415]
+[node name="ToothSprite" type="Sprite2D" parent="World/Arena" unique_id=1064526504]
 z_index = 20
-position = Vector2(812.5, 572.5)
-texture = ExtResource("12_sap2p")
+position = Vector2(118, -493)
+scale = Vector2(1, 2)
+texture = ExtResource("4_k30wa")
 
 [node name="IntroCinematic" type="Node2D" parent="World" unique_id=573419137]
 position = Vector2(818, 894)
 scale = Vector2(0.3, 0.3)
 
 [node name="FakeMoko" type="Sprite2D" parent="World/IntroCinematic" unique_id=1447847349]
-z_index = 80
+z_index = 15
 position = Vector2(-63.333416, 73.333374)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12_6auop")
 
 [node name="Camera2D" type="Camera2D" parent="World/IntroCinematic" unique_id=1558263865]
+rotation = 0.17453292
 zoom = Vector2(4, 4)
 
 [node name="CameraCinematic" type="Node2D" parent="World/IntroCinematic" unique_id=1286858604]
@@ -560,19 +489,19 @@ collision_layer = 2
 
 [node name="Border" type="CollisionShape2D" parent="StaticBody2D" unique_id=1430512837]
 z_index = 50
-position = Vector2(953.75, 1030.5)
+position = Vector2(970, 1477.75)
 shape = SubResource("RectangleShape2D_flxhq")
 
 [node name="Border2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1228470624]
-position = Vector2(172.125, 561)
+position = Vector2(222, 696)
 shape = SubResource("RectangleShape2D_u71ib")
 
 [node name="Border3" type="CollisionShape2D" parent="StaticBody2D" unique_id=365477280]
-position = Vector2(956.5, 7)
+position = Vector2(926, 277)
 shape = SubResource("RectangleShape2D_gc7ln")
 
 [node name="Border4" type="CollisionShape2D" parent="StaticBody2D" unique_id=380903725]
-position = Vector2(1648.5, 505.25)
+position = Vector2(1662, 731)
 shape = SubResource("RectangleShape2D_6auop")
 
 [connection signal="animation_finished" from="World/IntroCinematic/CameraCinematic/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cfg03qmsi357m" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune.png" id="1_p7nog"]
 [ext_resource type="PackedScene" uid="uid://b2vyrpdh74p53" path="res://Levels/Lvl3/Lvl_3b/Assets/Public/public_cannibal.tscn" id="2_v8ld0"]
 [ext_resource type="Texture2D" uid="uid://nxpdacl8ouvv" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena.png" id="3_pa2ib"]
-[ext_resource type="Texture2D" uid="uid://ig5udo1t1xpe" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena-Z_0.png" id="4_baw3q"]
+[ext_resource type="Texture2D" uid="uid://ig5udo1t1xpe" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/tooth.png" id="4_baw3q"]
 
 [node name="Tribune" type="Node2D" unique_id=36208587]
 

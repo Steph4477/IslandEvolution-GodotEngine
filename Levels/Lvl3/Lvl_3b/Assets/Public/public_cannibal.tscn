@@ -279,7 +279,7 @@ script = ExtResource("1_mw7oa")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1522123343]
 texture_filter = 2
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_pg4pi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1392535573]
