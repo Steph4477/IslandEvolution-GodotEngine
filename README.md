@@ -338,8 +338,14 @@ Game Developer — Modular Gameplay Architecture Focus
 
 # 📄 License
 
-Open-source for educational purposes.
+Public repository for educational and portfolio purposes.
 
-You may study and fork the code.
+You may study and fork the code for personal learning purposes.
 
-You may not reuse assets or commercialize the project without permission.
+You may NOT:
+- reuse assets
+- reuse characters or visual identity
+- commercialize the project
+- redistribute the game or its content
+
+without explicit permission from the author.
