@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b10dgqjkfnm6h"]
 
-[ext_resource type="Script" uid="uid://bkwtmouqcacme" path="res://Loot/Bone/bone_loot.gd" id="1_lflfo"]
+[ext_resource type="Script" uid="uid://dc5xgofy5anlx" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/Loot/bone_loot.gd" id="1_lflfo"]
 [ext_resource type="Texture2D" uid="uid://ckctlsigp4gtr" path="res://Shoot/Enemies/Bone/bone.png" id="2_o6nqn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]

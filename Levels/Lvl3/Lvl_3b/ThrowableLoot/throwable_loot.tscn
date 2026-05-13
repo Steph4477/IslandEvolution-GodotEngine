@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://bi5fisuq3p1o3" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/throwable_loot.gd" id="1_iiiel"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a8bgd"]
-bounce = 0.3
+friction = 1.2
+bounce = 0.15
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_is8tt"]
 radius = 33.37664
@@ -14,8 +15,11 @@ script = ExtResource("1_iiiel")
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=2128738648]
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_a8bgd")
+gravity_scale = 2.5
 contact_monitor = true
 max_contacts_reported = 4
+linear_damp = 0.5
+angular_damp = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=369939213]
 shape = SubResource("CircleShape2D_is8tt")
