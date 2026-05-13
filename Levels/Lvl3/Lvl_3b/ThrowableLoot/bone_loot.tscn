@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b10dgqjkfnm6h"]
+
+[ext_resource type="Script" uid="uid://bkwtmouqcacme" path="res://Loot/Bone/bone_loot.gd" id="1_lflfo"]
+[ext_resource type="Texture2D" uid="uid://ckctlsigp4gtr" path="res://Shoot/Enemies/Bone/bone.png" id="2_o6nqn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
+radius = 3.47464
+
+[node name="BoneLoot" type="Node2D" unique_id=332645160]
+z_index = 5
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_lflfo")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=83751617]
+position = Vector2(202.03462, -233.99998)
+rotation = 2.228996
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1069407894]
+position = Vector2(238.4363, 4.809868)
+rotation = -3.14159
+scale = Vector2(16.1668, -18.3068)
+shape = SubResource("CircleShape2D_52bb4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1803464264]
+position = Vector2(47.7119, -52.504898)
+rotation = -1.150172
+scale = Vector2(0.49999994, 0.49999994)
+texture = ExtResource("2_o6nqn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
