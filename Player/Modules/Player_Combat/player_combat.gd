@@ -72,6 +72,7 @@ func coco():
 		scene = p.spell_coco_fire
 
 	var spell = scene.instantiate()
+	spell.z_index = 30 
 	var dir = 1
 	if p.sprite.scale.x < 0:
 		dir = -1
@@ -125,6 +126,7 @@ func bone():
 		scene = p.spell_bone_fire
 
 	var spell = scene.instantiate()
+	scene.z_index = 30
 	var dir = 1
 	if p.sprite.scale.x < 0:
 		dir = -1
