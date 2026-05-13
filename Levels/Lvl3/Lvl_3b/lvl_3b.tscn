@@ -24,28 +24,13 @@ shader_parameter/speed = 0.050000002375
 diffuse_texture = ExtResource("9_bq7xw")
 texture_repeat = 2
 
-[sub_resource type="Animation" id="Animation_f4icm"]
-resource_name = "after_intro"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.70000005, 0.70000005), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_sap2p"]
 resource_name = "close"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Arena/BoneSprite:visible")
+tracks/0/path = NodePath("../../Arena/Visual/BoneSprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -57,7 +42,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Arena/BoneSprite:position")
+tracks/1/path = NodePath("../../Arena/Visual/BoneSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -69,7 +54,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../Arena/ToothSprite:position")
+tracks/2/path = NodePath("../../Arena/Visual/ToothSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -131,11 +116,26 @@ tracks/3/keys = {
 "values": [ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("12_6auop")]
 }
 
+[sub_resource type="Animation" id="Animation_f4icm"]
+resource_name = "after_intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.70000005, 0.70000005), Vector2(1.2, 1.2)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbv6"]
 _data = {
-&"after_intro": SubResource("Animation_f4icm"),
 &"close": SubResource("Animation_sap2p"),
-&"intro": SubResource("Animation_ds7ig")
+&"intro": SubResource("Animation_ds7ig"),
+&"zoom_out_camera": SubResource("Animation_f4icm")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flxhq"]
@@ -346,33 +346,48 @@ position = Vector2(422.5, 19.5)
 [node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=19878620 instance=ExtResource("2_6do33")]
 position = Vector2(428.5, -69.5)
 
-[node name="FloorSprite" type="Sprite2D" parent="World/Arena" unique_id=1942316824]
+[node name="Visual" type="Node2D" parent="World/Arena" unique_id=1605570121]
+
+[node name="FloorSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1942316824]
 modulate = Color(1, 1, 0, 1)
 z_index = 5
-position = Vector2(871.49994, 346.4999)
+position = Vector2(871.5, 346.49988)
 scale = Vector2(1.0987828, 2.1512349)
 texture = ExtResource("5_80yr0")
 
-[node name="BoneSprite" type="Sprite2D" parent="World/Arena" unique_id=909731591]
+[node name="BoneSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=909731591]
 visible = false
 z_index = 2
 position = Vector2(130.366, 139.644)
 texture = ExtResource("11_6auop")
 
-[node name="ArenaSprite" type="Sprite2D" parent="World/Arena" unique_id=321503114]
+[node name="ArenaSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=321503114]
 modulate = Color(0.85348755, 0.85348773, 0.8534877, 1)
 z_index = 5
 position = Vector2(127.5, -545.5)
 texture = ExtResource("3_80yr0")
 
-[node name="SpawnPoint" type="Marker2D" parent="World/Arena" unique_id=1505592288]
+[node name="SpawnPoint" type="Marker2D" parent="World/Arena/Visual" unique_id=1505592288]
 position = Vector2(12, -62)
 
-[node name="ToothSprite" type="Sprite2D" parent="World/Arena" unique_id=1064526504]
+[node name="ToothSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1064526504]
 z_index = 20
 position = Vector2(108, -920)
 scale = Vector2(1, 2)
 texture = ExtResource("4_k30wa")
+
+[node name="WavesEnemies" type="Node2D" parent="World/Arena" unique_id=1098877637]
+
+[node name="WaveSnake" type="Node2D" parent="World/Arena/WavesEnemies" unique_id=281634102]
+
+[node name="SnakeSpawn1" type="Marker2D" parent="World/Arena/WavesEnemies/WaveSnake" unique_id=929593278]
+position = Vector2(666, -158)
+
+[node name="SnakeSpawn2" type="Marker2D" parent="World/Arena/WavesEnemies/WaveSnake" unique_id=804213245]
+position = Vector2(-497, -199)
+
+[node name="SnakeSpawn3" type="Marker2D" parent="World/Arena/WavesEnemies/WaveSnake" unique_id=1559795736]
+position = Vector2(95, -150)
 
 [node name="IntroCinematic" type="Node2D" parent="World" unique_id=573419137]
 position = Vector2(818, 894)
