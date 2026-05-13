@@ -1,16 +1,16 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ckod1nhrovhg1"]
 
-[ext_resource type="Script" path="res://Enemies/Snake/snake.gd" id="1_iaegj"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/idle.png" id="2_x7ea2"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/attack.png" id="3_q5la2"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/attack1.png" id="4_14ylj"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/die.png" id="5_bepxj"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/patrol1.png" id="6_b4elk"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/patrol2.png" id="7_v837o"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/walk1.png" id="8_a8mk0"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/walk2.png" id="9_cdchp"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/walk3.png" id="10_drfaf"]
-[ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="11_wxmfk"]
+[ext_resource type="Script" uid="uid://d1lhqqjg2ddvb" path="res://Enemies/Snake/snake.gd" id="1_iaegj"]
+[ext_resource type="Texture2D" uid="uid://cefb1garxxsla" path="res://Enemies/Snake/idle.png" id="2_x7ea2"]
+[ext_resource type="Texture2D" uid="uid://c2l8n5ngaqh1t" path="res://Enemies/Snake/attack.png" id="3_q5la2"]
+[ext_resource type="Texture2D" uid="uid://df8asdwdbteap" path="res://Enemies/Snake/attack1.png" id="4_14ylj"]
+[ext_resource type="Texture2D" uid="uid://dtmkmena11had" path="res://Enemies/Snake/die.png" id="5_bepxj"]
+[ext_resource type="Texture2D" uid="uid://fuabcaxrixa2" path="res://Enemies/Snake/patrol1.png" id="6_b4elk"]
+[ext_resource type="Texture2D" uid="uid://ylxy5mwulpwd" path="res://Enemies/Snake/patrol2.png" id="7_v837o"]
+[ext_resource type="Texture2D" uid="uid://dm7307gteguv" path="res://Enemies/Snake/walk1.png" id="8_a8mk0"]
+[ext_resource type="Texture2D" uid="uid://ds15yi5u5dcmf" path="res://Enemies/Snake/walk2.png" id="9_cdchp"]
+[ext_resource type="Texture2D" uid="uid://boypnitlvbsqb" path="res://Enemies/Snake/walk3.png" id="10_drfaf"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="11_wxmfk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pioq7"]
 radius = 59.9862
@@ -166,7 +166,7 @@ _data = {
 [node name="Snake" type="CharacterBody2D" unique_id=88320707 groups=["Enemies"]]
 scale = Vector2(0.6, 0.6)
 collision_layer = 8
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_iaegj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298740383]

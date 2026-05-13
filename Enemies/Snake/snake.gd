@@ -30,7 +30,7 @@ var patrol_direction = 1
 
 func _ready():
 	max_hp = 400
-	damage = 200
+	damage = 20
 	speed = 200
 	gravity = 2000
 	attack_range = 99999
