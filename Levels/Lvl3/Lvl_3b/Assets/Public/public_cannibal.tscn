@@ -276,6 +276,7 @@ _data = {
 
 [node name="PublicCannibal" type="Node2D" unique_id=1421322129]
 script = ExtResource("1_mw7oa")
+auto_start_anim = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1522123343]
 texture_filter = 2

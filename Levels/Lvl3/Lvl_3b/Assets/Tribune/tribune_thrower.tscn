@@ -13,9 +13,51 @@ script = ExtResource("1_yjgo7")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1565776466]
 texture = ExtResource("1_5fkn7")
 
+[node name="WaveIntroLoots" type="Node2D" parent="." unique_id=1093696355]
+
+[node name="ThrowableLoot" parent="WaveIntroLoots" unique_id=642776830 instance=ExtResource("3_bl65k")]
+z_index = 15
+position = Vector2(-313, 270)
+loot_scene = ExtResource("6_vptw4")
+
+[node name="ThrowableLoot2" parent="WaveIntroLoots" unique_id=704887011 instance=ExtResource("3_bl65k")]
+z_index = 15
+position = Vector2(185, 18)
+loot_scene = ExtResource("6_vptw4")
+
+[node name="ThrowableLoot3" parent="WaveIntroLoots" unique_id=1949831152 instance=ExtResource("3_bl65k")]
+z_index = 15
+position = Vector2(322, 191)
+loot_scene = ExtResource("7_vptw4")
+
+[node name="ThrowableLoot4" parent="WaveIntroLoots" unique_id=311259039 instance=ExtResource("3_bl65k")]
+z_index = 15
+position = Vector2(346, 12)
+loot_scene = ExtResource("7_vptw4")
+
+[node name="ThrowableLoot5" parent="WaveIntroLoots" unique_id=1705867837 instance=ExtResource("3_bl65k")]
+z_index = 15
+position = Vector2(13, 261)
+loot_scene = ExtResource("7_vptw4")
+
+[node name="ThrowableLoot6" parent="WaveIntroLoots" unique_id=1607881760 instance=ExtResource("3_bl65k")]
+z_index = 15
+position = Vector2(226, -64)
+loot_scene = ExtResource("7_vptw4")
+
+[node name="ThrowableLoot7" parent="WaveIntroLoots" unique_id=1278849400 instance=ExtResource("3_bl65k")]
+z_index = 15
+position = Vector2(-616, 94)
+loot_scene = ExtResource("7_vptw4")
+
+[node name="ThrowableLoot8" parent="WaveIntroLoots" unique_id=422211293 instance=ExtResource("3_bl65k")]
+z_index = 15
+position = Vector2(13, 261)
+loot_scene = ExtResource("7_vptw4")
+
 [node name="WaveSnakeLoots" type="Node2D" parent="." unique_id=901711997]
 
-[node name="ThrowableLoot" parent="WaveSnakeLoots" unique_id=642776830 instance=ExtResource("3_bl65k")]
+[node name="ThrowableLoot" parent="WaveSnakeLoots" unique_id=1614651732 instance=ExtResource("3_bl65k")]
 z_index = 15
 loot_scene = ExtResource("6_vptw4")
 

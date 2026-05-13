@@ -3,9 +3,11 @@ extends Node2D
 @onready var player_spawn = $World/Arena/SpawnPoint
 @onready var toucan = $World/Toucan
 @onready var fake_moko = $World/IntroCinematic/FakeMoko
-@onready var fake_moko_anim = $World/IntroCinematic/CameraCinematic/AnimationPlayer
+@onready var anim = $World/IntroCinematic/CameraCinematic/AnimationPlayer
 @onready var scene_camera = $World/IntroCinematic/Camera2D
 @onready var tribune_thrower = $World/Arena/TribuneThrower
+
+var intro_finished = false
 
 func _ready():
 	var gs = get_node("/root/GameState")
@@ -13,14 +15,11 @@ func _ready():
 	await get_tree().process_frame
 
 	var player = gs.player
-	var player_camera = player.get_node("Camera2D")
 
 	player.visible = false
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 	player.global_position = player_spawn.global_position
 	player.scale = Vector2(0.8, 0.8)
-
-	player_camera.enabled = false
 
 	toucan.visible = false
 	toucan.process_mode = Node.PROCESS_MODE_DISABLED
@@ -28,30 +27,47 @@ func _ready():
 	scene_camera.enabled = true
 	scene_camera.make_current()
 
-	player_camera.zoom = Vector2(0.75, 0.75)
-
 	fake_moko.visible = true
-	fake_moko_anim.play("intro")
+	anim.play("intro")
 
-	# --- Test des vague de loot en anticipation
-	await get_tree().create_timer(5.0).timeout
-	tribune_thrower.throw_snake_wave = true
+	# --- vague de loots intro ---
+	await get_tree().create_timer(3.5).timeout
+	start_public_anim()
 
-	await get_tree().create_timer(5.0).timeout
-	tribune_thrower.throw_croco_wave = true
+	await get_tree().create_timer(0.5).timeout
+	stop_public_anim()
+	tribune_thrower.throw_intro_wave = true
+
+	# --- Fermeture barrière de dents ---
+	await get_tree().create_timer(1.0).timeout
+	anim.play("close")
+
+	await anim.animation_finished
+
+	end_intro()
+
+	# --- Spawn vague de serpents ---
+	await get_tree().create_timer(2.5).timeout
+	start_public_anim()
+	anim.play("after_intro")
+
+func start_public_anim():
+	get_tree().call_group("public_cannibal", "start_public_anim")
+
+
+func stop_public_anim():
+	get_tree().call_group("public_cannibal", "stop_public_anim")
 
 
 func end_intro():
+	intro_finished = true
+
 	var gs = get_node("/root/GameState")
 	var player = gs.player
-	var player_camera = player.get_node("Camera2D")
-	var fade = gs.fade
-
-	fade.fade_out()
 
 	await get_tree().create_timer(0.5).timeout
 
-	fake_moko.queue_free()
+	fake_moko.visible = false
 
 	player.visible = true
 	player.process_mode = Node.PROCESS_MODE_INHERIT
@@ -61,16 +77,3 @@ func end_intro():
 	toucan.process_mode = Node.PROCESS_MODE_INHERIT
 
 	await get_tree().process_frame
-
-	scene_camera.enabled = false
-
-	player_camera.enabled = true
-	player_camera.make_current()
-	player_camera.limit_right = 1900
-	player_camera.limit_bottom = 1750
-
-	fade.fade_in()
-
-
-func _on_animation_player_animation_finished(_anim_name):
-	end_intro()
