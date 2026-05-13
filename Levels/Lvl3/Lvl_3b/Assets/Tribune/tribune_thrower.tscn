@@ -16,51 +16,57 @@ texture = ExtResource("1_5fkn7")
 [node name="WaveSnakeLoots" type="Node2D" parent="." unique_id=901711997]
 
 [node name="ThrowableLoot" parent="WaveSnakeLoots" unique_id=642776830 instance=ExtResource("3_bl65k")]
-z_index = 50
+z_index = 15
 loot_scene = ExtResource("6_vptw4")
 
 [node name="ThrowableLoot2" parent="WaveSnakeLoots" unique_id=1040336005 instance=ExtResource("3_bl65k")]
-z_index = 50
+z_index = 15
 position = Vector2(-298, 97)
 loot_scene = ExtResource("6_vptw4")
 
 [node name="ThrowableLoot3" parent="WaveSnakeLoots" unique_id=1122092576 instance=ExtResource("3_bl65k")]
-z_index = 50
+z_index = 15
 position = Vector2(474, 0)
 loot_scene = ExtResource("7_vptw4")
 
 [node name="ThrowableLoot4" parent="WaveSnakeLoots" unique_id=1238064284 instance=ExtResource("3_bl65k")]
-z_index = 50
+z_index = 15
 position = Vector2(-486, 12)
 loot_scene = ExtResource("7_vptw4")
 
 [node name="ThrowableLoot5" parent="WaveSnakeLoots" unique_id=1895323172 instance=ExtResource("3_bl65k")]
-z_index = 50
+z_index = 15
 position = Vector2(201, 97)
 loot_scene = ExtResource("7_vptw4")
 
 [node name="WaveCrocoLoots" type="Node2D" parent="." unique_id=1014166646]
 
 [node name="ThrowableLoot" parent="WaveCrocoLoots" unique_id=1947308180 instance=ExtResource("3_bl65k")]
-z_index = 50
+z_index = 18
+position = Vector2(-219, 12)
 loot_scene = ExtResource("5_yjgo7")
+random_rotation = 4
 
 [node name="ThrowableLoot2" parent="WaveCrocoLoots" unique_id=859203210 instance=ExtResource("3_bl65k")]
-z_index = 50
-position = Vector2(-298, 97)
+z_index = 18
+position = Vector2(-465, 188)
 loot_scene = ExtResource("5_yjgo7")
+random_rotation = 12
 
 [node name="ThrowableLoot3" parent="WaveCrocoLoots" unique_id=1356102526 instance=ExtResource("3_bl65k")]
-z_index = 50
-position = Vector2(474, 0)
+z_index = 18
+position = Vector2(-45, 97)
 loot_scene = ExtResource("5_yjgo7")
+random_rotation = 2
 
 [node name="ThrowableLoot4" parent="WaveCrocoLoots" unique_id=851331796 instance=ExtResource("3_bl65k")]
-z_index = 50
-position = Vector2(-486, 12)
+z_index = 18
+position = Vector2(-352, -64)
 loot_scene = ExtResource("5_yjgo7")
+random_rotation = 6
 
 [node name="ThrowableLoot5" parent="WaveCrocoLoots" unique_id=1425036779 instance=ExtResource("3_bl65k")]
-z_index = 50
-position = Vector2(201, 97)
+z_index = 18
+position = Vector2(-179, 176)
 loot_scene = ExtResource("5_yjgo7")
+random_rotation = 15

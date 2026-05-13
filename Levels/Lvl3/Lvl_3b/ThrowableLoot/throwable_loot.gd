@@ -4,7 +4,7 @@ extends Node2D
 
 @export var loot_scene: PackedScene
 @export var throw_velocity = Vector2(250, -450)
-@export var random_x = 100
+@export var random_x = 150
 @export var random_rotation = 8
 @export var is_template = false
 
@@ -22,13 +22,13 @@ func _ready():
 
 
 func throw_now():
+	z_index = 18
+	await get_tree().create_timer(randf_range(0.0, 1)).timeout
+
 	if loot_spawned == false:
 		var loot = loot_scene.instantiate()
-
 		body.add_child(loot)
-
 		loot.position = Vector2.ZERO
-
 		loot_spawned = true
 
 	visible = true
