@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://co1jlymmduwe6"]
 
-[ext_resource type="Script" uid="uid://cxfxl00qytde8" path="res://Loot/Banana/banana.gd" id="1_y74jh"]
-[ext_resource type="Texture2D" uid="uid://vd1t305ujcdp" path="res://Loot/Banana/1.png" id="2_y74jh"]
+[ext_resource type="Script" uid="uid://cxfxl00qytde8" path="res://Loot/Banana/banana.gd" id="1_n34kx"]
+[ext_resource type="Texture2D" uid="uid://vd1t305ujcdp" path="res://Loot/Banana/1.png" id="2_ycph0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
 radius = 2.0419512
 
 [node name="BananaLoot" type="Node2D" unique_id=1423327370]
-script = ExtResource("1_y74jh")
+script = ExtResource("1_n34kx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2094142269]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_y74jh")
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_ycph0")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1266971748]
 
