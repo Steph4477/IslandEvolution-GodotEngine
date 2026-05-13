@@ -82,7 +82,7 @@ func throw_projectile():
 
 func spawn_projectile():
 	var projectile = enemy.projectile_scene.instantiate()
-	projectile.z_index = 15
+	projectile.z_index = 50
 	enemy.get_tree().current_scene.add_child(projectile)
 
 	var target_pos = enemy.target.global_position
