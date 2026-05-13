@@ -5,6 +5,7 @@ extends Node2D
 @onready var fake_moko = $World/IntroCinematic/FakeMoko
 @onready var fake_moko_anim = $World/IntroCinematic/CameraCinematic/AnimationPlayer
 @onready var scene_camera = $World/IntroCinematic/Camera2D
+@onready var tribune_thrower = $World/Arena/TribuneThrower
 
 func _ready():
 	var gs = get_node("/root/GameState")
@@ -31,6 +32,13 @@ func _ready():
 
 	fake_moko.visible = true
 	fake_moko_anim.play("intro")
+
+	# --- Test des vague de loot en anticipation
+	await get_tree().create_timer(5.0).timeout
+	tribune_thrower.throw_snake_wave = true
+
+	await get_tree().create_timer(5.0).timeout
+	tribune_thrower.throw_croco_wave = true
 
 
 func end_intro():

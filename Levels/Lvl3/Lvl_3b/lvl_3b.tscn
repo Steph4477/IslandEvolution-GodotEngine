@@ -1,13 +1,13 @@
 [gd_scene format=4 uid="uid://dr677cjk0xf3u"]
 
 [ext_resource type="Script" uid="uid://btk64wslk3k6e" path="res://Levels/Lvl3/Lvl_3b/lvl_3b.gd" id="1_flxhq"]
-[ext_resource type="Texture2D" uid="uid://cfg03qmsi357m" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune.png" id="1_i1spm"]
 [ext_resource type="PackedScene" uid="uid://b2vyrpdh74p53" path="res://Levels/Lvl3/Lvl_3b/Assets/Public/public_cannibal.tscn" id="2_6do33"]
 [ext_resource type="Texture2D" uid="uid://nxpdacl8ouvv" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena.png" id="3_80yr0"]
 [ext_resource type="Texture2D" uid="uid://ig5udo1t1xpe" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/tooth.png" id="4_k30wa"]
 [ext_resource type="Texture2D" uid="uid://dtns0bb03echc" path="res://Levels/Lvl3/Lvl_3b/Assets/Floor.png" id="5_80yr0"]
 [ext_resource type="Texture2D" uid="uid://ce4kuy3r13fwn" path="res://Levels/Lvl3/Environement/sky.png" id="6_k30wa"]
 [ext_resource type="TileSet" uid="uid://7u7ot5b4g7n6" path="res://Levels/Lvl3/Environement/tiles_platforms/deco.tres" id="7_k30wa"]
+[ext_resource type="PackedScene" uid="uid://b8dpjjqkydppr" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune_thrower.tscn" id="7_sap2p"]
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/Swim_Zone/water.gdshader" id="8_cp7mx"]
 [ext_resource type="Texture2D" uid="uid://dlcojyyjfdw7s" path="res://Levels/Lvl3/Environement/Swim_Zone/water.png" id="9_bq7xw"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="10_bq7xw"]
@@ -274,171 +274,172 @@ scale = Vector2(0.6, 0.6)
 [node name="Arena" type="Node2D" parent="World" unique_id=1975248907]
 position = Vector2(731, 831)
 
-[node name="TribuneSprite" type="Sprite2D" parent="World/Arena" unique_id=1050860516]
-position = Vector2(126.5, -541.5)
-texture = ExtResource("1_i1spm")
+[node name="TribuneThrower" parent="World/Arena" unique_id=1977538466 instance=ExtResource("7_sap2p")]
+z_index = 2
+position = Vector2(128, -658)
 
-[node name="AnimPublic" type="Node2D" parent="World/Arena/TribuneSprite" unique_id=1737577089]
-position = Vector2(-8, 3)
+[node name="AnimPublic" type="Node2D" parent="World/Arena/TribuneThrower" unique_id=1737577089]
+position = Vector2(0, 5)
 
-[node name="Stage3" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=690246239]
+[node name="Stage3" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=690246239]
 modulate = Color(0.24695042, 0.24695027, 0.2469503, 1)
 position = Vector2(-1.5, 100.5)
 
-[node name="PublicCannibal" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=598821090 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=598821090 instance=ExtResource("2_6do33")]
 position = Vector2(12, -159)
 
-[node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1357285992 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal3" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=1357285992 instance=ExtResource("2_6do33")]
 position = Vector2(-632, -195)
 tribe = 2
 
-[node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=463464685 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal5" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=463464685 instance=ExtResource("2_6do33")]
 position = Vector2(211, -164)
 tribe = 1
 
-[node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=290868028 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=290868028 instance=ExtResource("2_6do33")]
 position = Vector2(-200, -161)
 
-[node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=233865304 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal11" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=233865304 instance=ExtResource("2_6do33")]
 position = Vector2(-338, -171)
 tribe = 2
 
-[node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1951612941 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=1951612941 instance=ExtResource("2_6do33")]
 position = Vector2(357, -169)
 
-[node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=419515435 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal7" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=419515435 instance=ExtResource("2_6do33")]
 position = Vector2(478, -177)
 tribe = 2
 
-[node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=1045668473 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=1045668473 instance=ExtResource("2_6do33")]
 position = Vector2(604, -191)
 
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage3" unique_id=894098137 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=894098137 instance=ExtResource("2_6do33")]
 position = Vector2(-476, -178)
 tribe = 2
 
-[node name="Stage4" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=1415453135]
+[node name="Stage4" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=1415453135]
 modulate = Color(0.6158285, 0.6158285, 0.6158285, 1)
 position = Vector2(7, 181)
 
-[node name="PublicCannibal2" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1800487177 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal2" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1800487177 instance=ExtResource("2_6do33")]
 position = Vector2(-38.5, -165.5)
 tribe = 2
 
-[node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1678613827 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal3" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1678613827 instance=ExtResource("2_6do33")]
 position = Vector2(-631.5, -175.5)
 tribe = 2
 
-[node name="PublicCannibal4" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1130009606 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal4" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1130009606 instance=ExtResource("2_6do33")]
 position = Vector2(141.5, -164.5)
 tribe = 2
 
-[node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=605142838 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=605142838 instance=ExtResource("2_6do33")]
 position = Vector2(-229.5, -166.5)
 
-[node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=680702954 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal13" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=680702954 instance=ExtResource("2_6do33")]
 position = Vector2(-355.5, -172.5)
 tribe = 2
 
-[node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=24104537 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal14" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=24104537 instance=ExtResource("2_6do33")]
 position = Vector2(-498.5, -175.5)
 tribe = 1
 
-[node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1137441591 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1137441591 instance=ExtResource("2_6do33")]
 position = Vector2(316.5, -169.5)
 
-[node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=878898947 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal7" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=878898947 instance=ExtResource("2_6do33")]
 position = Vector2(457.5, -174.5)
 tribe = 2
 
-[node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=1636613677 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1636613677 instance=ExtResource("2_6do33")]
 position = Vector2(597.5, -177.5)
 
-[node name="PublicCannibal9" parent="World/Arena/TribuneSprite/AnimPublic/Stage4" unique_id=461781613 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal9" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=461781613 instance=ExtResource("2_6do33")]
 position = Vector2(304.5, 85.5)
 
-[node name="Stage5" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=751591181]
+[node name="Stage5" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=751591181]
 position = Vector2(11, 246)
 
-[node name="PublicCannibal2" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1379311058 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal2" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1379311058 instance=ExtResource("2_6do33")]
 position = Vector2(-163.5, -153.5)
 tribe = 2
 
-[node name="PublicCannibal4" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1273609600 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal4" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1273609600 instance=ExtResource("2_6do33")]
 position = Vector2(176.5, -152.5)
 tribe = 2
 
-[node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1421322129 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1421322129 instance=ExtResource("2_6do33")]
 position = Vector2(-23.5, -148.5)
 tribe = 2
 
-[node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=996652140 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=996652140 instance=ExtResource("2_6do33")]
 position = Vector2(-323.5, -149.5)
 
-[node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1901777052 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal13" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1901777052 instance=ExtResource("2_6do33")]
 position = Vector2(-436.5, -150.5)
 tribe = 2
 
-[node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1259400762 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal14" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1259400762 instance=ExtResource("2_6do33")]
 position = Vector2(-574.5, -146.5)
 tribe = 1
 
-[node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1804664717 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1804664717 instance=ExtResource("2_6do33")]
 position = Vector2(593.5, -147.5)
 
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=572473870 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=572473870 instance=ExtResource("2_6do33")]
 position = Vector2(448.5, -148.5)
 tribe = 2
 
-[node name="PublicCannibal5" parent="World/Arena/TribuneSprite/AnimPublic/Stage5" unique_id=1667610524 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal5" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1667610524 instance=ExtResource("2_6do33")]
 position = Vector2(314.5, -149.5)
 tribe = 1
 
-[node name="Stage6" type="Node2D" parent="World/Arena/TribuneSprite/AnimPublic" unique_id=1834720697]
+[node name="Stage6" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=1834720697]
 modulate = Color(0.5705783, 0.57057834, 0.57057834, 1)
 position = Vector2(0, 343)
 
-[node name="PublicCannibal3" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=175993042 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal3" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=175993042 instance=ExtResource("2_6do33")]
 position = Vector2(-593.5, -147.5)
 tribe = 2
 
-[node name="PublicCannibal11" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=499622731 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal11" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=499622731 instance=ExtResource("2_6do33")]
 position = Vector2(-296.5, -158.5)
 tribe = 2
 
-[node name="PublicCannibal13" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1848491024 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal13" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1848491024 instance=ExtResource("2_6do33")]
 position = Vector2(-420.5, 14.5)
 tribe = 2
 
-[node name="PublicCannibal14" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=326591750 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal14" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=326591750 instance=ExtResource("2_6do33")]
 position = Vector2(-415.5, -74.5)
 tribe = 2
 
-[node name="PublicCannibal15" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1597405229 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal15" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1597405229 instance=ExtResource("2_6do33")]
 position = Vector2(-453.5, -155.5)
 tribe = 2
 
-[node name="PublicCannibal6" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1327831305 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1327831305 instance=ExtResource("2_6do33")]
 position = Vector2(317.5, -159.5)
 
-[node name="PublicCannibal7" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1268630515 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal7" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1268630515 instance=ExtResource("2_6do33")]
 position = Vector2(443.5, -151.5)
 tribe = 2
 
-[node name="PublicCannibal8" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1220640942 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1220640942 instance=ExtResource("2_6do33")]
 position = Vector2(598.5, -142.5)
 
-[node name="PublicCannibal9" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1229314507 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal9" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1229314507 instance=ExtResource("2_6do33")]
 position = Vector2(555.5, -58.5)
 
-[node name="PublicCannibal10" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=1332643648 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1332643648 instance=ExtResource("2_6do33")]
 position = Vector2(422.5, 19.5)
 
-[node name="PublicCannibal12" parent="World/Arena/TribuneSprite/AnimPublic/Stage6" unique_id=19878620 instance=ExtResource("2_6do33")]
+[node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=19878620 instance=ExtResource("2_6do33")]
 position = Vector2(428.5, -69.5)
 
 [node name="BoneSprite" type="Sprite2D" parent="World/Arena" unique_id=909731591]
 visible = false
+z_index = 5
 position = Vector2(127, -546)
 texture = ExtResource("11_6auop")
 
@@ -450,6 +451,7 @@ texture = ExtResource("5_80yr0")
 
 [node name="ArenaSprite" type="Sprite2D" parent="World/Arena" unique_id=321503114]
 modulate = Color(0.85348755, 0.85348773, 0.8534877, 1)
+z_index = 5
 position = Vector2(127.5, -545.5)
 texture = ExtResource("3_80yr0")
 
