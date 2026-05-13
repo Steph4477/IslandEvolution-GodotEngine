@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cfg03qmsi357m" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune.png" id="1_5fkn7"]
 [ext_resource type="Script" uid="uid://bvjratmtiqon8" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune_thrower.gd" id="1_yjgo7"]
 [ext_resource type="PackedScene" uid="uid://cvc3ewgmf6jm5" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/throwable_loot.tscn" id="3_bl65k"]
+[ext_resource type="PackedScene" uid="uid://qx5rwduvnvd7" path="res://Player/Skills/Fire/fire.tscn" id="4_vptw4"]
 [ext_resource type="PackedScene" uid="uid://b10dgqjkfnm6h" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/Loot/bone_loot.tscn" id="5_yjgo7"]
 [ext_resource type="PackedScene" uid="uid://co1jlymmduwe6" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/Loot/banana_loot.tscn" id="6_vptw4"]
 [ext_resource type="PackedScene" uid="uid://cwcqedo82lips" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/Loot/coco_loot.tscn" id="7_vptw4"]
@@ -18,7 +19,7 @@ texture = ExtResource("1_5fkn7")
 [node name="ThrowableLoot" parent="WaveIntroLoots" unique_id=642776830 instance=ExtResource("3_bl65k")]
 z_index = 15
 position = Vector2(-313, 270)
-loot_scene = ExtResource("6_vptw4")
+loot_scene = ExtResource("4_vptw4")
 
 [node name="ThrowableLoot2" parent="WaveIntroLoots" unique_id=704887011 instance=ExtResource("3_bl65k")]
 z_index = 15
