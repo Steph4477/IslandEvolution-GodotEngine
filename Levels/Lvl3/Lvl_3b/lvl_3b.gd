@@ -127,7 +127,7 @@ func _ready():
 	start_public_anim()
 	
 	await get_tree().create_timer(0.5).timeout
-	#tribune_thrower.throw_cannibal_wave = true
+	tribune_thrower.throw_cannibal_wave = true
 
 	await get_tree().create_timer(2.0).timeout
 	stop_public_anim()

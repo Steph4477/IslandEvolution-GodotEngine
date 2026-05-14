@@ -113,3 +113,36 @@ z_index = 18
 position = Vector2(-179, 176)
 loot_scene = ExtResource("5_yjgo7")
 random_rotation = 15
+
+[node name="WaveCannibalLoots" type="Node2D" parent="." unique_id=134157622]
+position = Vector2(-125, 6)
+
+[node name="ThrowableLoot" parent="WaveCannibalLoots" unique_id=315627181 instance=ExtResource("3_bl65k")]
+z_index = 18
+position = Vector2(-219, 12)
+loot_scene = ExtResource("7_vptw4")
+random_rotation = 4
+
+[node name="ThrowableLoot2" parent="WaveCannibalLoots" unique_id=424277 instance=ExtResource("3_bl65k")]
+z_index = 18
+position = Vector2(-219, 12)
+loot_scene = ExtResource("7_vptw4")
+random_rotation = 4
+
+[node name="ThrowableLoot3" parent="WaveCannibalLoots" unique_id=1626178796 instance=ExtResource("3_bl65k")]
+z_index = 18
+position = Vector2(-219, 12)
+loot_scene = ExtResource("7_vptw4")
+random_rotation = 4
+
+[node name="ThrowableLoot4" parent="WaveCannibalLoots" unique_id=1953429004 instance=ExtResource("3_bl65k")]
+z_index = 18
+position = Vector2(-219, 12)
+loot_scene = ExtResource("7_vptw4")
+random_rotation = 4
+
+[node name="ThrowableLoot5" parent="WaveCannibalLoots" unique_id=1142181404 instance=ExtResource("3_bl65k")]
+z_index = 18
+position = Vector2(-219, 12)
+loot_scene = ExtResource("7_vptw4")
+random_rotation = 4
