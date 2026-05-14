@@ -11,11 +11,14 @@ extends Node2D
 @onready var snake_spawn_2 = $World/Arena/WavesEnemies/WaveSnake/SnakeSpawn2
 @onready var snake_spawn_3 = $World/Arena/WavesEnemies/WaveSnake/SnakeSpawn3
 
+@onready var croco_spawn_1 = $World/Arena/WavesEnemies/WaveCroco/CrocoSpawn1
+@onready var croco_spawn_2 = $World/Arena/WavesEnemies/WaveCroco/CrocoSpawn2
+
 var intro_finished = false
-var enemies_alive = 0
-var snake_wave_finished = false
 
 var snake_scene = preload("res://Enemies/Snake/snake.tscn")
+var croco_scene = preload("res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn")
+
 
 func _ready():
 	start_intro()
@@ -42,20 +45,38 @@ func _ready():
 	anim.play("zoom_out_camera")
 	start_snake_wave()
 
-func _process(_delta):
+	await wait_finish_snake_wave()
 
-	# --- Verification des serpents encore vivants ---
-	if enemies_alive > 0 and snake_wave_finished == false:
+	# --- Loot fin vague serpents ---
+	start_public_anim()
+	
+	await get_tree().create_timer(0.5).timeout
+	tribune_thrower.throw_snake_wave = true
 
-		update_wave_state()
+	await get_tree().create_timer(0.5).timeout
+	stop_public_anim()
 
-		if enemies_alive <= 0:
-			snake_wave_finished = true
-			end_snake_wave()
+	# --- Spawn vague de crocos ---
+	await get_tree().create_timer(2.0).timeout
+	start_public_anim()
+	start_croco_wave()
+
+	await wait_finish_croco_wave()
+
+	# --- Loot fin vague crocos ---
+	start_public_anim()
+	
+	await get_tree().create_timer(0.5).timeout
+	tribune_thrower.throw_croco_wave = true
+
+	await get_tree().create_timer(0.5).timeout
+	stop_public_anim()
+
 
 # ============================================================================
 #                          MAITRISE DU PUBLIQUE
 # ============================================================================
+
 func start_public_anim():
 	get_tree().call_group("public_cannibal", "start_public_anim")
 
@@ -63,9 +84,11 @@ func start_public_anim():
 func stop_public_anim():
 	get_tree().call_group("public_cannibal", "stop_public_anim")
 
+
 # ============================================================================
 #                           CINEMATIQUE D'INTRODUCTION
 # ============================================================================
+
 func start_intro():
 	var gs = get_node("/root/GameState")
 
@@ -87,6 +110,7 @@ func start_intro():
 	fake_moko.visible = true
 	anim.play("intro")
 
+
 func end_intro():
 	intro_finished = true
 
@@ -106,19 +130,15 @@ func end_intro():
 
 	await get_tree().process_frame
 
-# ============================================================================
-#                           VAGUES D'ENEMIES
-# ============================================================================
 
-# --- Vague de serpents ---
+# ============================================================================
+#                           VAGUES D'ENNEMIS
+# ============================================================================
+# --- Vague de Serpents ---
 func start_snake_wave():
 	spawn_snake(snake_spawn_1.global_position)
 	spawn_snake(snake_spawn_2.global_position)
 	spawn_snake(snake_spawn_3.global_position)
-
-	await get_tree().process_frame
-
-	update_wave_state()
 
 func spawn_snake(spawn_position):
 	var snake = snake_scene.instantiate()
@@ -128,15 +148,27 @@ func spawn_snake(spawn_position):
 	snake.z_index = 15
 	snake.get_node("Rotator/Sprite2D").scale.x *= -1
 
-func update_wave_state():
-	var snakes = get_tree().get_nodes_in_group("snake")
-	enemies_alive = snakes.size()
+func wait_finish_snake_wave():
+	await get_tree().process_frame
 
-func end_snake_wave():
-	start_public_anim()
-	
-	await get_tree().create_timer(0.5).timeout
-	tribune_thrower.throw_snake_wave = true
+	while get_tree().get_nodes_in_group("snake").size() > 0:
+		await get_tree().process_frame
 
-	await get_tree().create_timer(0.5).timeout
-	stop_public_anim()
+
+# --- Vague de Crocos ---
+func start_croco_wave():
+	spawn_croco(croco_spawn_1.global_position)
+	spawn_croco(croco_spawn_2.global_position)
+
+func spawn_croco(spawn_position):
+	var croco = croco_scene.instantiate()
+	$World/Arena/WavesEnemies.add_child(croco)
+	croco.global_position = spawn_position
+	croco.add_to_group("croco")
+	croco.z_index = 15
+
+func wait_finish_croco_wave():
+	await get_tree().process_frame
+
+	while get_tree().get_nodes_in_group("croco").size() > 0:
+		await get_tree().process_frame

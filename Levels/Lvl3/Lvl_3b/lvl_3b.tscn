@@ -389,6 +389,14 @@ position = Vector2(-497, -199)
 [node name="SnakeSpawn3" type="Marker2D" parent="World/Arena/WavesEnemies/WaveSnake" unique_id=1559795736]
 position = Vector2(95, -150)
 
+[node name="WaveCroco" type="Node2D" parent="World/Arena/WavesEnemies" unique_id=1852895937]
+
+[node name="CrocoSpawn1" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCroco" unique_id=1464391585]
+position = Vector2(702, -126)
+
+[node name="CrocoSpawn2" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCroco" unique_id=1004617749]
+position = Vector2(-482, -146)
+
 [node name="IntroCinematic" type="Node2D" parent="World" unique_id=573419137]
 position = Vector2(818, 894)
 scale = Vector2(0.3, 0.3)
