@@ -15,21 +15,21 @@ extends Node2D
 	"À toi de maîtriser le feu maintenant."
 ]
 
-@export var auto_start := true           # Démarrer au _ready
-@export var chars_per_sec := 30          # Vitesse d’écriture
-@export var pause_between_lines := 1.0   # Pause entre les lignes (s)
-@export var hide_when_done := true       # Cacher le bandeau à la fin
+@export var auto_start = true           # Démarrer au _ready
+@export var chars_per_sec = 30          # Vitesse d’écriture
+@export var pause_between_lines = 1.0   # Pause entre les lignes (s)
+@export var hide_when_done = true       # Cacher le bandeau à la fin
 
 var player
 var gs
 
 # --- Sous-titre ---
-var line_index := -1
-var full_line := ""
-var shown_chars := 0
-var writing := false
-var accum := 0.0
-var pause_left := 0.0
+var line_index = -1
+var full_line = ""
+var shown_chars = 0
+var writing = false
+var accum = 0.0
+var pause_left = 0.0
 
 func _ready():
 	gs = get_node("/root/GameState")

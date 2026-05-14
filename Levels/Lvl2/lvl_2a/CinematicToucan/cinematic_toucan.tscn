@@ -121,12 +121,6 @@ _data = {
 z_index = 50
 script = ExtResource("1_bymjv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2118893613]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=372999689]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Box" type="Panel" parent="." unique_id=912011851]
 anchors_preset = 12
 anchor_top = 1.0
