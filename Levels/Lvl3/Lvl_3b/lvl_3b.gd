@@ -14,10 +14,41 @@ extends Node2D
 @onready var croco_spawn_1 = $World/Arena/WavesEnemies/WaveCroco/CrocoSpawn1
 @onready var croco_spawn_2 = $World/Arena/WavesEnemies/WaveCroco/CrocoSpawn2
 
+@onready var cannibal_spawn_1 = $World/Arena/WavesEnemies/WaveCannibal/CannibalSpawn1
+@onready var cannibal_spawn_2 = $World/Arena/WavesEnemies/WaveCannibal/CannibalSpawn2
+
+# --- Discours du boss ---
+@onready var text = $World/Arena/Boss_Speech/Box/MarginContainer/Text
+@onready var box  = $World/Arena/Boss_Speech/Box
+@onready var speech_anim = $World/Arena/Boss_Speech/AnimationPlayer
+
+@export var speech_snake_wave = [
+	"Tu n'aurais jamais dû entrer ici...",
+	"Tuez-le ! 😡"
+]
+
+@export var speech_croco_wave = [
+	"Tu as survécu aux serpents...",
+	"Résisteras-tu à mes bêtes ?"
+]
+
+@export var speech_cannibals_wave = [
+	"Tu tiens encore debout...",
+	"Guerriers ! Brisez-le !"
+]
+
+@export var speech_combat_boss = [
+	"Assez joué...",
+	"Je vais m'occuper de toi moi-même !"
+]
+
+@export var pause_between_lines = 2.0   # Pause entre les lignes (s)
+
 var intro_finished = false
 
 var snake_scene = preload("res://Enemies/Snake/snake.tscn")
 var croco_scene = preload("res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn")
+var cannibal_scene = preload("res://Enemies/Cannibal/cannibal.tscn")
 
 
 func _ready():
@@ -40,37 +71,74 @@ func _ready():
 	end_intro()
 
 	# --- Spawn vague de serpents ---
-	await get_tree().create_timer(2.5).timeout
+	await start_speech(speech_snake_wave)
+
+	await get_tree().create_timer(3.0).timeout
 	start_public_anim()
-	anim.play("zoom_out_camera")
+	anim.play("zoom_camera")
 	start_snake_wave()
 
 	await wait_finish_snake_wave()
 
 	# --- Loot fin vague serpents ---
+	anim.play("zoom_out_camera")
 	start_public_anim()
 	
 	await get_tree().create_timer(0.5).timeout
 	tribune_thrower.throw_snake_wave = true
 
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(2.0).timeout
 	stop_public_anim()
 
+	anim.play("zoom_camera")
+
 	# --- Spawn vague de crocos ---
-	await get_tree().create_timer(2.0).timeout
+	await start_speech(speech_croco_wave)
+
+	await get_tree().create_timer(3.0).timeout
 	start_public_anim()
 	start_croco_wave()
 
 	await wait_finish_croco_wave()
 
 	# --- Loot fin vague crocos ---
+	anim.play("zoom_out_camera")
 	start_public_anim()
 	
 	await get_tree().create_timer(0.5).timeout
 	tribune_thrower.throw_croco_wave = true
 
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(2.0).timeout
 	stop_public_anim()
+
+	anim.play("zoom_camera")
+
+	# --- Spawn vague de cannibales ---
+	await start_speech(speech_cannibals_wave)
+
+	await get_tree().create_timer(3.0).timeout
+	start_public_anim()
+	start_cannibal_wave()
+
+	await wait_finish_cannibal_wave()
+
+	# --- Loot fin vague cannibales ---
+	anim.play("zoom_out_camera")
+	start_public_anim()
+	
+	await get_tree().create_timer(0.5).timeout
+	#tribune_thrower.throw_cannibal_wave = true
+
+	await get_tree().create_timer(2.0).timeout
+	stop_public_anim()
+
+	anim.play("zoom_camera")
+
+	# --- Discours combat boss ---
+	await start_speech(speech_combat_boss)
+
+	await get_tree().create_timer(2.0).timeout
+	start_public_anim()
 
 
 # ============================================================================
@@ -134,6 +202,7 @@ func end_intro():
 # ============================================================================
 #                           VAGUES D'ENNEMIS
 # ============================================================================
+
 # --- Vague de Serpents ---
 func start_snake_wave():
 	spawn_snake(snake_spawn_1.global_position)
@@ -172,3 +241,43 @@ func wait_finish_croco_wave():
 
 	while get_tree().get_nodes_in_group("croco").size() > 0:
 		await get_tree().process_frame
+
+
+# --- Vague de Cannibales ---
+func start_cannibal_wave():
+	spawn_cannibal(cannibal_spawn_1.global_position)
+	spawn_cannibal(cannibal_spawn_2.global_position)
+
+func spawn_cannibal(spawn_position):
+	var cannibal = cannibal_scene.instantiate()
+	$World/Arena/WavesEnemies.add_child(cannibal)
+	cannibal.global_position = spawn_position
+	cannibal.add_to_group("cannibal")
+	cannibal.z_index = 15
+
+func wait_finish_cannibal_wave():
+	await get_tree().process_frame
+
+	while get_tree().get_nodes_in_group("cannibal").size() > 0:
+		await get_tree().process_frame
+
+
+# ============================================================================
+#                           DISCOURS DU BOSS
+# ============================================================================
+
+func start_speech(lines):
+	text.text = ""
+
+	for line in lines:
+		text.text = "[center][b]" + line + "[/b][/center]"
+
+		speech_anim.play("speech_in")
+		await speech_anim.animation_finished
+
+		await get_tree().create_timer(pause_between_lines).timeout
+
+	speech_anim.play("speech_out")
+	await speech_anim.animation_finished
+
+	text.text = ""

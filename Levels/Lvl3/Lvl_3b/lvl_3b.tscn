@@ -24,6 +24,66 @@ shader_parameter/speed = 0.050000002375
 diffuse_texture = ExtResource("9_bq7xw")
 texture_repeat = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sap2p"]
+bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)
+
+[sub_resource type="Animation" id="Animation_fkhbp"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_cmbv6"]
+resource_name = "speech_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_0rsi1"]
+resource_name = "speech_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_viq1m"]
+_data = {
+&"RESET": SubResource("Animation_fkhbp"),
+&"speech_in": SubResource("Animation_cmbv6"),
+&"speech_out": SubResource("Animation_0rsi1")
+}
+
+[sub_resource type="Animation" id="Animation_3fc7u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.70000005, 0.70000005)]
+}
+
 [sub_resource type="Animation" id="Animation_sap2p"]
 resource_name = "close"
 length = 3.0
@@ -117,7 +177,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_f4icm"]
-resource_name = "after_intro"
+resource_name = "zoom_camera"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -131,11 +191,28 @@ tracks/0/keys = {
 "values": [Vector2(0.70000005, 0.70000005), Vector2(1.2, 1.2)]
 }
 
+[sub_resource type="Animation" id="Animation_7sb6u"]
+resource_name = "zoom_out_camera"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(0.70000005, 0.70000005)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbv6"]
 _data = {
+&"RESET": SubResource("Animation_3fc7u"),
 &"close": SubResource("Animation_sap2p"),
 &"intro": SubResource("Animation_ds7ig"),
-&"zoom_out_camera": SubResource("Animation_f4icm")
+&"zoom_camera": SubResource("Animation_f4icm"),
+&"zoom_out_camera": SubResource("Animation_7sb6u")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flxhq"]
@@ -396,6 +473,58 @@ position = Vector2(702, -126)
 
 [node name="CrocoSpawn2" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCroco" unique_id=1004617749]
 position = Vector2(-482, -146)
+
+[node name="WaveCannibal" type="Node2D" parent="World/Arena/WavesEnemies" unique_id=1318085319]
+
+[node name="CannibalSpawn1" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCannibal" unique_id=1920693955]
+position = Vector2(708, -137)
+
+[node name="CannibalSpawn2" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCannibal" unique_id=1244758120]
+position = Vector2(-498, -149)
+
+[node name="Boss_Speech" type="Node2D" parent="World/Arena" unique_id=227311408]
+z_index = 80
+position = Vector2(-136, -754)
+
+[node name="Box" type="Panel" parent="World/Arena/Boss_Speech" unique_id=614944357]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = 436.0
+offset_right = 520.0
+offset_bottom = 656.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(500, 110)
+theme_override_styles/panel = SubResource("StyleBoxFlat_sap2p")
+
+[node name="MarginContainer" type="MarginContainer" parent="World/Arena/Boss_Speech/Box" unique_id=1344419213]
+layout_mode = 0
+offset_left = -28.0
+offset_top = -69.0
+offset_right = 1144.0
+offset_bottom = 54.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Text" type="RichTextLabel" parent="World/Arena/Boss_Speech/Box/MarginContainer" unique_id=1300011660]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0.07058824, 0.1254902, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/italics_font_size = 35
+bbcode_enabled = true
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Arena/Boss_Speech" unique_id=204024588]
+libraries/ = SubResource("AnimationLibrary_viq1m")
 
 [node name="IntroCinematic" type="Node2D" parent="World" unique_id=573419137]
 position = Vector2(818, 894)
