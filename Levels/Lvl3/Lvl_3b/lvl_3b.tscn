@@ -13,8 +13,12 @@
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="10_bq7xw"]
 [ext_resource type="Texture2D" uid="uid://b0cs2xlv1obaf" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/bones.png" id="11_6auop"]
 [ext_resource type="Texture2D" uid="uid://ljnsmdbtewun" path="res://Player/Sprite/exit/1.png" id="12_6auop"]
+[ext_resource type="Texture2D" uid="uid://b1jkcdhgdwlk2" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/hut.png" id="12_fkhbp"]
+[ext_resource type="Texture2D" uid="uid://caaj4sh1ppr4s" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/1.png" id="13_82sl6"]
 [ext_resource type="Texture2D" uid="uid://31re10knbh5p" path="res://Player/Sprite/exit/2.png" id="13_sap2p"]
+[ext_resource type="Texture2D" uid="uid://cbkwxfaxx53vd" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/2.png" id="14_ds7ig"]
 [ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="14_f4icm"]
+[ext_resource type="Texture2D" uid="uid://dix1rhe2ffd00" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/3.png" id="15_cmbv6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flxhq"]
 shader = ExtResource("8_cp7mx")
@@ -23,6 +27,43 @@ shader_parameter/speed = 0.050000002375
 [sub_resource type="CanvasTexture" id="CanvasTexture_u71ib"]
 diffuse_texture = ExtResource("9_bq7xw")
 texture_repeat = 2
+
+[sub_resource type="Animation" id="Animation_82sl6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_82sl6")]
+}
+
+[sub_resource type="Animation" id="Animation_wdwv6"]
+resource_name = "open_door"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("13_82sl6"), ExtResource("14_ds7ig"), ExtResource("15_cmbv6")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cfaj8"]
+_data = {
+&"RESET": SubResource("Animation_82sl6"),
+&"open_door": SubResource("Animation_wdwv6")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sap2p"]
 bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)
@@ -433,7 +474,6 @@ scale = Vector2(1.0987828, 2.1512349)
 texture = ExtResource("5_80yr0")
 
 [node name="BoneSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=909731591]
-visible = false
 z_index = 2
 position = Vector2(130.366, 139.644)
 texture = ExtResource("11_6auop")
@@ -444,6 +484,17 @@ z_index = 5
 position = Vector2(127.5, -545.5)
 texture = ExtResource("3_80yr0")
 
+[node name="InteriorHutSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=587243503]
+z_index = 2
+position = Vector2(140, -550)
+texture = ExtResource("12_fkhbp")
+
+[node name="CloseSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=2146078472]
+z_index = 5
+position = Vector2(122.999985, -545)
+scale = Vector2(1.006845, 1.0009911)
+texture = ExtResource("13_82sl6")
+
 [node name="SpawnPoint" type="Marker2D" parent="World/Arena/Visual" unique_id=1505592288]
 position = Vector2(12, -62)
 
@@ -452,6 +503,9 @@ z_index = 20
 position = Vector2(108, -920)
 scale = Vector2(1, 2)
 texture = ExtResource("4_k30wa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Arena/Visual" unique_id=1090274793]
+libraries/ = SubResource("AnimationLibrary_cfaj8")
 
 [node name="WavesEnemies" type="Node2D" parent="World/Arena" unique_id=1098877637]
 
@@ -497,7 +551,7 @@ offset_right = 520.0
 offset_bottom = 656.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(500, 110)
 theme_override_styles/panel = SubResource("StyleBoxFlat_sap2p")
 

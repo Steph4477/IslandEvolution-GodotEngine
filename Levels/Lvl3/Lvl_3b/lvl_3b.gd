@@ -21,6 +21,7 @@ extends Node2D
 @onready var text = $World/Arena/Boss_Speech/Box/MarginContainer/Text
 @onready var box  = $World/Arena/Boss_Speech/Box
 @onready var speech_anim = $World/Arena/Boss_Speech/AnimationPlayer
+@onready var reveal_anim = $World/Arena/Visual/AnimationPlayer
 
 @export var speech_snake_wave = [
 	"Tu n'aurais jamais dû entrer ici...",
@@ -73,7 +74,7 @@ func _ready():
 	# --- Spawn vague de serpents ---
 	await start_speech(speech_snake_wave)
 
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	start_public_anim()
 	anim.play("zoom_camera")
 	start_snake_wave()
@@ -87,7 +88,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	tribune_thrower.throw_snake_wave = true
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	stop_public_anim()
 
 	anim.play("zoom_camera")
@@ -95,7 +96,7 @@ func _ready():
 	# --- Spawn vague de crocos ---
 	await start_speech(speech_croco_wave)
 
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	start_public_anim()
 	start_croco_wave()
 
@@ -108,7 +109,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	tribune_thrower.throw_croco_wave = true
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	stop_public_anim()
 
 	anim.play("zoom_camera")
@@ -116,7 +117,7 @@ func _ready():
 	# --- Spawn vague de cannibales ---
 	await start_speech(speech_cannibals_wave)
 
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	start_public_anim()
 	start_cannibal_wave()
 
@@ -129,7 +130,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	tribune_thrower.throw_cannibal_wave = true
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	stop_public_anim()
 
 	anim.play("zoom_camera")
@@ -137,9 +138,11 @@ func _ready():
 	# --- Discours combat boss ---
 	await start_speech(speech_combat_boss)
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	start_public_anim()
 
+	# --- Cinematique de l'aparition du boss ---
+	reveal_anim.play("open_door")
 
 # ============================================================================
 #                          MAITRISE DU PUBLIQUE
