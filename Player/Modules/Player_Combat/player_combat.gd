@@ -126,7 +126,7 @@ func bone():
 		scene = p.spell_bone_fire
 
 	var spell = scene.instantiate()
-	scene.z_index = 30
+	spell.z_index = 80 
 	var dir = 1
 	if p.sprite.scale.x < 0:
 		dir = -1
