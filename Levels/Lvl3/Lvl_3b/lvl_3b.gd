@@ -7,15 +7,15 @@ extends Node2D
 @onready var scene_camera = $World/IntroCinematic/Camera2D
 @onready var tribune_thrower = $World/Arena/TribuneThrower
 
-@onready var snake_spawn_1 = $World/Arena/WavesEnemies/WaveSnake/SnakeSpawn1
-@onready var snake_spawn_2 = $World/Arena/WavesEnemies/WaveSnake/SnakeSpawn2
-@onready var snake_spawn_3 = $World/Arena/WavesEnemies/WaveSnake/SnakeSpawn3
+@onready var snake_spawn_1 = $World/Arena/Visual/WavesEnemies/WaveSnake/Snake
+@onready var snake_spawn_2 = $World/Arena/Visual/WavesEnemies/WaveSnake/Snake2
+@onready var snake_spawn_3 = $World/Arena/Visual/WavesEnemies/WaveSnake/Snake3
 
-@onready var croco_spawn_1 = $World/Arena/WavesEnemies/WaveCroco/CrocoSpawn1
-@onready var croco_spawn_2 = $World/Arena/WavesEnemies/WaveCroco/CrocoSpawn2
+@onready var croco_spawn_1 = $World/Arena/Visual/WavesEnemies/WaveCroco/AmphibiousCroco
+@onready var croco_spawn_2 = $World/Arena/Visual/WavesEnemies/WaveCroco/AmphibiousCroco2
 
-@onready var cannibal_spawn_1 = $World/Arena/WavesEnemies/WaveCannibal/CannibalSpawn1
-@onready var cannibal_spawn_2 = $World/Arena/WavesEnemies/WaveCannibal/CannibalSpawn2
+@onready var cannibal_spawn_1 = $World/Arena/Visual/WavesEnemies/WaveCannibal/Cannibal
+@onready var cannibal_spawn_2 = $World/Arena/Visual/WavesEnemies/WaveCannibal/Cannibal2
 
 # --- Discours du boss ---
 @onready var text = $World/Arena/Boss_Speech/Box/MarginContainer/Text
@@ -47,12 +47,18 @@ extends Node2D
 
 var intro_finished = false
 
-var snake_scene = preload("res://Enemies/Snake/snake.tscn")
-var croco_scene = preload("res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn")
-var cannibal_scene = preload("res://Enemies/Cannibal/cannibal.tscn")
-
 
 func _ready():
+	disable_enemy(snake_spawn_1)
+	disable_enemy(snake_spawn_2)
+	disable_enemy(snake_spawn_3)
+
+	disable_enemy(croco_spawn_1)
+	disable_enemy(croco_spawn_2)
+
+	disable_enemy(cannibal_spawn_1)
+	disable_enemy(cannibal_spawn_2)
+
 	start_intro()
 
 	# --- vague de loots intro ---
@@ -145,14 +151,11 @@ func _ready():
 	reveal_anim.play("open_door")
 
 
-
 # ============================================================================
 #                          MAITRISE DU PUBLIQUE
 # ============================================================================
-
 func start_public_anim():
 	get_tree().call_group("public_cannibal", "start_public_anim")
-
 
 func stop_public_anim():
 	get_tree().call_group("public_cannibal", "stop_public_anim")
@@ -161,7 +164,6 @@ func stop_public_anim():
 # ============================================================================
 #                           CINEMATIQUE D'INTRODUCTION
 # ============================================================================
-
 func start_intro():
 	var gs = get_node("/root/GameState")
 
@@ -182,7 +184,6 @@ func start_intro():
 
 	fake_moko.visible = true
 	anim.play("intro")
-
 
 func end_intro():
 	intro_finished = true
@@ -207,19 +208,23 @@ func end_intro():
 # ============================================================================
 #                           VAGUES D'ENNEMIS
 # ============================================================================
+func disable_enemy(enemy):
+	enemy.visible = false
+	enemy.process_mode = Node.PROCESS_MODE_DISABLED
+
+func enable_enemy(enemy):
+	enemy.visible = true
+	enemy.process_mode = Node.PROCESS_MODE_INHERIT
 
 # --- Vague de Serpents ---
 func start_snake_wave():
-	spawn_snake(snake_spawn_1.global_position)
-	spawn_snake(snake_spawn_2.global_position)
-	spawn_snake(snake_spawn_3.global_position)
+	spawn_snake(snake_spawn_1)
+	spawn_snake(snake_spawn_2)
+	spawn_snake(snake_spawn_3)
 
-func spawn_snake(spawn_position):
-	var snake = snake_scene.instantiate()
-	$World/Arena/WavesEnemies.add_child(snake)
-	snake.global_position = spawn_position
+func spawn_snake(snake):
+	enable_enemy(snake)
 	snake.add_to_group("snake")
-	snake.z_index = 15
 	snake.get_node("Rotator/Sprite2D").scale.x *= -1
 
 func wait_finish_snake_wave():
@@ -228,18 +233,14 @@ func wait_finish_snake_wave():
 	while get_tree().get_nodes_in_group("snake").size() > 0:
 		await get_tree().process_frame
 
-
 # --- Vague de Crocos ---
 func start_croco_wave():
-	spawn_croco(croco_spawn_1.global_position)
-	spawn_croco(croco_spawn_2.global_position)
+	spawn_croco(croco_spawn_1)
+	spawn_croco(croco_spawn_2)
 
-func spawn_croco(spawn_position):
-	var croco = croco_scene.instantiate()
-	$World/Arena/WavesEnemies.add_child(croco)
-	croco.global_position = spawn_position
+func spawn_croco(croco):
+	enable_enemy(croco)
 	croco.add_to_group("croco")
-	croco.z_index = 15
 
 func wait_finish_croco_wave():
 	await get_tree().process_frame
@@ -247,18 +248,14 @@ func wait_finish_croco_wave():
 	while get_tree().get_nodes_in_group("croco").size() > 0:
 		await get_tree().process_frame
 
-
 # --- Vague de Cannibales ---
 func start_cannibal_wave():
-	spawn_cannibal(cannibal_spawn_1.global_position)
-	spawn_cannibal(cannibal_spawn_2.global_position)
+	spawn_cannibal(cannibal_spawn_1)
+	spawn_cannibal(cannibal_spawn_2)
 
-func spawn_cannibal(spawn_position):
-	var cannibal = cannibal_scene.instantiate()
-	$World/Arena/WavesEnemies.add_child(cannibal)
-	cannibal.global_position = spawn_position
+func spawn_cannibal(cannibal):
+	enable_enemy(cannibal)
 	cannibal.add_to_group("cannibal")
-	cannibal.z_index = 15
 
 func wait_finish_cannibal_wave():
 	await get_tree().process_frame
@@ -270,7 +267,6 @@ func wait_finish_cannibal_wave():
 # ============================================================================
 #                           DISCOURS DU BOSS
 # ============================================================================
-
 func start_speech(lines):
 	text.text = ""
 

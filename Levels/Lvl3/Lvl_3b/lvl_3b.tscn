@@ -16,9 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://b1jkcdhgdwlk2" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/hut.png" id="12_fkhbp"]
 [ext_resource type="Texture2D" uid="uid://caaj4sh1ppr4s" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/1.png" id="13_82sl6"]
 [ext_resource type="Texture2D" uid="uid://31re10knbh5p" path="res://Player/Sprite/exit/2.png" id="13_sap2p"]
+[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="14_cmbv6"]
 [ext_resource type="Texture2D" uid="uid://cbkwxfaxx53vd" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/2.png" id="14_ds7ig"]
 [ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="14_f4icm"]
+[ext_resource type="PackedScene" uid="uid://dhw0x3rjrwjfs" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="15_0rsi1"]
 [ext_resource type="Texture2D" uid="uid://dix1rhe2ffd00" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/3.png" id="15_cmbv6"]
+[ext_resource type="PackedScene" uid="uid://4nolvckgjic0" path="res://Enemies/Cannibal/cannibal.tscn" id="16_viq1m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flxhq"]
 shader = ExtResource("8_cp7mx")
@@ -495,6 +498,48 @@ position = Vector2(122.999985, -545)
 scale = Vector2(1.006845, 1.0009911)
 texture = ExtResource("13_82sl6")
 
+[node name="WavesEnemies" type="Node2D" parent="World/Arena/Visual" unique_id=1098877637]
+position = Vector2(43, 33)
+
+[node name="WaveSnake" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=281634102]
+
+[node name="Snake" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=88320707 instance=ExtResource("14_cmbv6")]
+z_index = 5
+position = Vector2(557, -94)
+attack_range = 3000
+
+[node name="Snake2" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=321227883 instance=ExtResource("14_cmbv6")]
+z_index = 5
+position = Vector2(-520, -110)
+attack_range = 3000
+
+[node name="Snake3" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=132262032 instance=ExtResource("14_cmbv6")]
+z_index = 5
+position = Vector2(612, -93)
+attack_range = 3000
+
+[node name="WaveCroco" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1852895937]
+
+[node name="AmphibiousCroco" parent="World/Arena/Visual/WavesEnemies/WaveCroco" unique_id=1403221519 instance=ExtResource("15_0rsi1")]
+position = Vector2(623, -41)
+attack_range = 6000
+
+[node name="AmphibiousCroco2" parent="World/Arena/Visual/WavesEnemies/WaveCroco" unique_id=2137143374 instance=ExtResource("15_0rsi1")]
+position = Vector2(-630, -93)
+attack_range = 6000
+
+[node name="WaveCannibal" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1318085319]
+
+[node name="Cannibal" parent="World/Arena/Visual/WavesEnemies/WaveCannibal" unique_id=708931693 instance=ExtResource("16_viq1m")]
+z_index = 5
+position = Vector2(-510, -115)
+attack_range = 3000
+
+[node name="Cannibal2" parent="World/Arena/Visual/WavesEnemies/WaveCannibal" unique_id=1383038523 instance=ExtResource("16_viq1m")]
+z_index = 5
+position = Vector2(600, -110)
+attack_range = 3000
+
 [node name="SpawnPoint" type="Marker2D" parent="World/Arena/Visual" unique_id=1505592288]
 position = Vector2(12, -62)
 
@@ -506,35 +551,6 @@ texture = ExtResource("4_k30wa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/Arena/Visual" unique_id=1090274793]
 libraries/ = SubResource("AnimationLibrary_cfaj8")
-
-[node name="WavesEnemies" type="Node2D" parent="World/Arena" unique_id=1098877637]
-
-[node name="WaveSnake" type="Node2D" parent="World/Arena/WavesEnemies" unique_id=281634102]
-
-[node name="SnakeSpawn1" type="Marker2D" parent="World/Arena/WavesEnemies/WaveSnake" unique_id=929593278]
-position = Vector2(666, -158)
-
-[node name="SnakeSpawn2" type="Marker2D" parent="World/Arena/WavesEnemies/WaveSnake" unique_id=804213245]
-position = Vector2(-497, -199)
-
-[node name="SnakeSpawn3" type="Marker2D" parent="World/Arena/WavesEnemies/WaveSnake" unique_id=1559795736]
-position = Vector2(95, -150)
-
-[node name="WaveCroco" type="Node2D" parent="World/Arena/WavesEnemies" unique_id=1852895937]
-
-[node name="CrocoSpawn1" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCroco" unique_id=1464391585]
-position = Vector2(702, -126)
-
-[node name="CrocoSpawn2" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCroco" unique_id=1004617749]
-position = Vector2(-482, -146)
-
-[node name="WaveCannibal" type="Node2D" parent="World/Arena/WavesEnemies" unique_id=1318085319]
-
-[node name="CannibalSpawn1" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCannibal" unique_id=1920693955]
-position = Vector2(708, -137)
-
-[node name="CannibalSpawn2" type="Marker2D" parent="World/Arena/WavesEnemies/WaveCannibal" unique_id=1244758120]
-position = Vector2(-498, -149)
 
 [node name="Boss_Speech" type="Node2D" parent="World/Arena" unique_id=227311408]
 z_index = 80
