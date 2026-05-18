@@ -1,0 +1,251 @@
+[gd_scene format=3 uid="uid://cy3bsh6oopd0n"]
+
+[ext_resource type="Script" uid="uid://q0614hrvcdfr" path="res://Enemies/Cannibal/Boss/boss_cannibal.gd" id="1_iiigo"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="3_863b8"]
+[ext_resource type="Texture2D" uid="uid://bltcin4jx8x8x" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/1.png" id="3_nfy1s"]
+[ext_resource type="Texture2D" uid="uid://g32ykaciwlfe" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/2.png" id="4_66vmv"]
+[ext_resource type="Texture2D" uid="uid://c6fdqpia4hnpx" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/3.png" id="5_j5f54"]
+[ext_resource type="Texture2D" uid="uid://bagqowo7orq5i" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/4.png" id="6_b43wt"]
+[ext_resource type="Texture2D" uid="uid://xyyjdwoj7uj0" path="res://Enemies/Cannibal/Boss/Sprites/Attack/1.png" id="7_pdt3i"]
+[ext_resource type="Texture2D" uid="uid://bv2vnlw8irfmm" path="res://Enemies/Cannibal/Boss/Sprites/Attack/2.png" id="8_csyv5"]
+[ext_resource type="Texture2D" uid="uid://d1odoijnoudi" path="res://Enemies/Cannibal/Boss/Sprites/Attack/3.png" id="9_k6r2b"]
+[ext_resource type="Texture2D" uid="uid://uw4w4yb2iy2v" path="res://Enemies/Cannibal/Boss/Sprites/Die/1.png" id="10_ib553"]
+[ext_resource type="Texture2D" uid="uid://o0m8jmk4mbna" path="res://Enemies/Cannibal/Boss/Sprites/Die/2.png" id="11_odeg0"]
+[ext_resource type="Texture2D" uid="uid://doma5gu3qej18" path="res://Enemies/Cannibal/Boss/Sprites/Die/3.png" id="12_7s0xb"]
+[ext_resource type="Texture2D" uid="uid://t53t15v3jfe0" path="res://Enemies/Cannibal/Boss/Sprites/Die/4.png" id="13_miwco"]
+[ext_resource type="Texture2D" uid="uid://coyv4rx36b26t" path="res://Enemies/Cannibal/Boss/Sprites/Jump/1.png" id="14_b4oy7"]
+[ext_resource type="Texture2D" uid="uid://c5mfaai6p5eip" path="res://Enemies/Cannibal/Boss/Sprites/Jump/2.png" id="15_67hha"]
+[ext_resource type="Texture2D" uid="uid://oke6qqxh6kik" path="res://Enemies/Cannibal/Boss/Sprites/Jump/3.png" id="16_1lskd"]
+[ext_resource type="Texture2D" uid="uid://3rce7u5o8cr3" path="res://Enemies/Cannibal/Boss/Sprites/Jump/4.png" id="17_twuli"]
+[ext_resource type="Texture2D" uid="uid://cwgsypcviyc84" path="res://Enemies/Cannibal/Boss/Sprites/Onhit/1.png" id="18_upaq3"]
+[ext_resource type="Texture2D" uid="uid://dp8go40a7lsqe" path="res://Enemies/Cannibal/Boss/Sprites/Onhit/2.png" id="19_r4d3k"]
+[ext_resource type="Texture2D" uid="uid://b77k3xjg4qeqm" path="res://Enemies/Cannibal/Boss/Sprites/Onhit/3.png" id="20_qs27j"]
+[ext_resource type="Texture2D" uid="uid://cge21sjfhmpji" path="res://Enemies/Cannibal/Boss/Sprites/Onhit/4.png" id="21_x2q26"]
+[ext_resource type="Texture2D" uid="uid://bschanvgbptuy" path="res://Enemies/Cannibal/Boss/Sprites/Run/2.png" id="22_etbmj"]
+[ext_resource type="Texture2D" uid="uid://c7xwxhbkgb3tv" path="res://Enemies/Cannibal/Boss/Sprites/Run/3.png" id="23_4icvi"]
+[ext_resource type="Texture2D" uid="uid://b0ocewog76hu7" path="res://Enemies/Cannibal/Boss/Sprites/Run/4.png" id="24_xcqje"]
+[ext_resource type="Texture2D" uid="uid://by3skqwspjost" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/1.png" id="25_33mvn"]
+[ext_resource type="Texture2D" uid="uid://x3kj0t3erkqc" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/2.png" id="26_0yu1h"]
+[ext_resource type="Texture2D" uid="uid://brlmt4gji0kfj" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/3.png" id="27_4g61g"]
+[ext_resource type="Texture2D" uid="uid://cfv4be3dcir2f" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/4.png" id="28_fafxj"]
+[ext_resource type="Texture2D" uid="uid://chqvx57ow6qwh" path="res://Enemies/Cannibal/Boss/Sprites/Run/1.png" id="29_0ad8v"]
+[ext_resource type="Texture2D" uid="uid://mt23v14unsnq" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/1.png" id="30_q2wud"]
+[ext_resource type="Texture2D" uid="uid://bancibdpw1vbc" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/2.png" id="31_qicd7"]
+[ext_resource type="Texture2D" uid="uid://djvrhm1s3vjpk" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/3.png" id="32_cbgv8"]
+[ext_resource type="Texture2D" uid="uid://cshfia5wvxhu3" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/4.png" id="33_ioxqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(47, 149.5)
+
+[sub_resource type="Animation" id="Animation_4xyrk"]
+resource_name = "aggro"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_nfy1s"), ExtResource("4_66vmv"), ExtResource("5_j5f54"), ExtResource("6_b43wt")]
+}
+
+[sub_resource type="Animation" id="Animation_60gw1"]
+resource_name = "attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("25_33mvn"), ExtResource("26_0yu1h"), ExtResource("27_4g61g"), ExtResource("28_fafxj")]
+}
+
+[sub_resource type="Animation" id="Animation_4ah2e"]
+resource_name = "cac"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_pdt3i"), ExtResource("8_csyv5"), ExtResource("9_k6r2b")]
+}
+
+[sub_resource type="Animation" id="Animation_6f0v3"]
+resource_name = "die"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_ib553"), ExtResource("11_odeg0"), ExtResource("12_7s0xb"), ExtResource("13_miwco")]
+}
+
+[sub_resource type="Animation" id="Animation_nfy1s"]
+resource_name = "idle"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_nfy1s"), ExtResource("4_66vmv"), ExtResource("5_j5f54"), ExtResource("6_b43wt")]
+}
+
+[sub_resource type="Animation" id="Animation_b6dgq"]
+resource_name = "jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_b4oy7"), ExtResource("15_67hha"), ExtResource("16_1lskd"), ExtResource("17_twuli")]
+}
+
+[sub_resource type="Animation" id="Animation_1dfca"]
+resource_name = "onhit"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("18_upaq3"), ExtResource("19_r4d3k"), ExtResource("20_qs27j"), ExtResource("21_x2q26")]
+}
+
+[sub_resource type="Animation" id="Animation_rvxuj"]
+resource_name = "run"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.3, 0.4, 0.5, 0.6, 0.6999999, 0.79999995, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8000001, 1.9000003, 2.0000002, 2.1000006, 2.1999998, 2.2999997, 2.4, 2.5, 2.6, 2.7000003, 2.8000002, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje")]
+}
+
+[sub_resource type="Animation" id="Animation_cvax2"]
+resource_name = "walk"
+length = 6.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("29_0ad8v"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje")]
+}
+
+[sub_resource type="Animation" id="Animation_scle8"]
+resource_name = "walk_face"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("30_q2wud"), ExtResource("31_qicd7"), ExtResource("32_cbgv8"), ExtResource("33_ioxqh")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pcfp"]
+_data = {
+&"aggro": SubResource("Animation_4xyrk"),
+&"attack": SubResource("Animation_60gw1"),
+&"cac": SubResource("Animation_4ah2e"),
+&"die": SubResource("Animation_6f0v3"),
+&"idle": SubResource("Animation_nfy1s"),
+&"jump": SubResource("Animation_b6dgq"),
+&"onhit": SubResource("Animation_1dfca"),
+&"run": SubResource("Animation_rvxuj"),
+&"walk": SubResource("Animation_cvax2"),
+&"walk_face": SubResource("Animation_scle8")
+}
+
+[node name="BossCannibal" type="CharacterBody2D" unique_id=708931693 groups=["Enemies"]]
+scale = Vector2(-1, 1)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_iiigo")
+attack_range = 3000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=545927351]
+position = Vector2(16.5, 63.25)
+shape = SubResource("RectangleShape2D_x2fpe")
+
+[node name="HealthBar" parent="." unique_id=1317778126 instance=ExtResource("3_863b8")]
+position = Vector2(56, -100)
+rotation = 3.14159
+scale = Vector2(1, -1.00374)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=2133574649]
+
+[node name="ProjectileTimer" type="Timer" parent="." unique_id=1862551901]
+
+[node name="Rotator" type="Node2D" parent="." unique_id=423549435]
+
+[node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=50650749]
+position = Vector2(13, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=802653703]
+position = Vector2(5, 4)
+scale = Vector2(-0.5, 0.5)
+texture = ExtResource("25_33mvn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1463877392]
+libraries/ = SubResource("AnimationLibrary_1pcfp")
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
