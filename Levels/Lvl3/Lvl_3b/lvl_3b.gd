@@ -17,11 +17,15 @@ extends Node2D
 @onready var cannibal_spawn_1 = $World/Arena/Visual/WavesEnemies/WaveCannibal/Cannibal
 @onready var cannibal_spawn_2 = $World/Arena/Visual/WavesEnemies/WaveCannibal/Cannibal2
 
+@onready var boss_spawn = $World/Arena/Visual/WavesEnemies/WaveBoss/BossCannibal
+
 # --- Discours du boss ---
 @onready var text = $World/Arena/Boss_Speech/Box/MarginContainer/Text
 @onready var box  = $World/Arena/Boss_Speech/Box
 @onready var speech_anim = $World/Arena/Boss_Speech/AnimationPlayer
 @onready var reveal_anim = $World/Arena/Visual/AnimationPlayer
+@onready var reveal_boss_anim = $World/RevealBoss/AnimationPlayer
+@onready var fake_boss = $World/RevealBoss/FakeBoss
 
 @export var speech_snake_wave = [
 	"Tu n'aurais jamais dû entrer ici...",
@@ -58,6 +62,8 @@ func _ready():
 
 	disable_enemy(cannibal_spawn_1)
 	disable_enemy(cannibal_spawn_2)
+
+	disable_enemy(boss_spawn)
 
 	start_intro()
 
@@ -149,7 +155,16 @@ func _ready():
 
 	# --- Cinematique de l'aparition du boss ---
 	reveal_anim.play("open_door")
+	await reveal_anim.animation_finished
 
+	fake_boss.visible = true
+
+	reveal_boss_anim.play("reveal_boss")
+	await reveal_boss_anim.animation_finished
+
+	fake_boss.visible = false
+
+	start_boss_wave()
 
 # ============================================================================
 #                          MAITRISE DU PUBLIQUE
@@ -263,6 +278,13 @@ func wait_finish_cannibal_wave():
 	while get_tree().get_nodes_in_group("cannibal").size() > 0:
 		await get_tree().process_frame
 
+# --- Vague Boss ---
+func start_boss_wave():
+	spawn_boss(boss_spawn)
+
+func spawn_boss(boss):
+	enable_enemy(boss)
+	boss.add_to_group("boss")
 
 # ============================================================================
 #                           DISCOURS DU BOSS

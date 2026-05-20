@@ -21,14 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://dp8go40a7lsqe" path="res://Enemies/Cannibal/Boss/Sprites/Onhit/2.png" id="19_r4d3k"]
 [ext_resource type="Texture2D" uid="uid://b77k3xjg4qeqm" path="res://Enemies/Cannibal/Boss/Sprites/Onhit/3.png" id="20_qs27j"]
 [ext_resource type="Texture2D" uid="uid://cge21sjfhmpji" path="res://Enemies/Cannibal/Boss/Sprites/Onhit/4.png" id="21_x2q26"]
-[ext_resource type="Texture2D" uid="uid://bschanvgbptuy" path="res://Enemies/Cannibal/Boss/Sprites/Run/2.png" id="22_etbmj"]
 [ext_resource type="Texture2D" uid="uid://c7xwxhbkgb3tv" path="res://Enemies/Cannibal/Boss/Sprites/Run/3.png" id="23_4icvi"]
 [ext_resource type="Texture2D" uid="uid://b0ocewog76hu7" path="res://Enemies/Cannibal/Boss/Sprites/Run/4.png" id="24_xcqje"]
 [ext_resource type="Texture2D" uid="uid://by3skqwspjost" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/1.png" id="25_33mvn"]
 [ext_resource type="Texture2D" uid="uid://x3kj0t3erkqc" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/2.png" id="26_0yu1h"]
 [ext_resource type="Texture2D" uid="uid://brlmt4gji0kfj" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/3.png" id="27_4g61g"]
+[ext_resource type="Texture2D" uid="uid://dy06gdd0fdyge" path="res://Enemies/Cannibal/Boss/Sprites/Run/5.png" id="28_63yon"]
 [ext_resource type="Texture2D" uid="uid://cfv4be3dcir2f" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/4.png" id="28_fafxj"]
-[ext_resource type="Texture2D" uid="uid://chqvx57ow6qwh" path="res://Enemies/Cannibal/Boss/Sprites/Run/1.png" id="29_0ad8v"]
 [ext_resource type="Texture2D" uid="uid://mt23v14unsnq" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/1.png" id="30_q2wud"]
 [ext_resource type="Texture2D" uid="uid://bancibdpw1vbc" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/2.png" id="31_qicd7"]
 [ext_resource type="Texture2D" uid="uid://djvrhm1s3vjpk" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/3.png" id="32_cbgv8"]
@@ -36,6 +35,21 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(47, 149.5)
+
+[sub_resource type="Animation" id="Animation_66vmv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_4icvi")]
+}
 
 [sub_resource type="Animation" id="Animation_4xyrk"]
 resource_name = "aggro"
@@ -151,8 +165,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rvxuj"]
 resource_name = "run"
-length = 3.0
-loop_mode = 2
+length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -160,16 +174,16 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.3, 0.4, 0.5, 0.6, 0.6999999, 0.79999995, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8000001, 1.9000003, 2.0000002, 2.1000006, 2.1999998, 2.2999997, 2.4, 2.5, 2.6, 2.7000003, 2.8000002, 2.9, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje")]
+"values": [ExtResource("24_xcqje"), ExtResource("28_63yon"), ExtResource("23_4icvi"), ExtResource("28_63yon")]
 }
 
-[sub_resource type="Animation" id="Animation_cvax2"]
+[sub_resource type="Animation" id="Animation_j5f54"]
 resource_name = "walk"
-length = 6.0
-loop_mode = 2
+length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -177,10 +191,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("29_0ad8v"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje"), ExtResource("22_etbmj"), ExtResource("23_4icvi"), ExtResource("24_xcqje")]
+"values": [ExtResource("24_xcqje"), ExtResource("28_63yon"), ExtResource("23_4icvi"), ExtResource("28_63yon")]
 }
 
 [sub_resource type="Animation" id="Animation_scle8"]
@@ -202,6 +216,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1pcfp"]
 _data = {
+&"RESET": SubResource("Animation_66vmv"),
 &"aggro": SubResource("Animation_4xyrk"),
 &"attack": SubResource("Animation_60gw1"),
 &"cac": SubResource("Animation_4ah2e"),
@@ -210,7 +225,7 @@ _data = {
 &"jump": SubResource("Animation_b6dgq"),
 &"onhit": SubResource("Animation_1dfca"),
 &"run": SubResource("Animation_rvxuj"),
-&"walk": SubResource("Animation_cvax2"),
+&"walk": SubResource("Animation_j5f54"),
 &"walk_face": SubResource("Animation_scle8")
 }
 
@@ -242,7 +257,7 @@ position = Vector2(13, 45)
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=802653703]
 position = Vector2(5, 4)
 scale = Vector2(-0.5, 0.5)
-texture = ExtResource("25_33mvn")
+texture = ExtResource("23_4icvi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1463877392]
 libraries/ = SubResource("AnimationLibrary_1pcfp")

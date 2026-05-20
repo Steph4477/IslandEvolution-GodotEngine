@@ -22,6 +22,15 @@
 [ext_resource type="PackedScene" uid="uid://dhw0x3rjrwjfs" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="15_0rsi1"]
 [ext_resource type="Texture2D" uid="uid://dix1rhe2ffd00" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/3.png" id="15_cmbv6"]
 [ext_resource type="PackedScene" uid="uid://4nolvckgjic0" path="res://Enemies/Cannibal/cannibal.tscn" id="16_viq1m"]
+[ext_resource type="PackedScene" uid="uid://cy3bsh6oopd0n" path="res://Enemies/Cannibal/Boss/BossCannibal.tscn" id="17_bhj3v"]
+[ext_resource type="Texture2D" uid="uid://mt23v14unsnq" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/1.png" id="24_m3dsj"]
+[ext_resource type="Texture2D" uid="uid://bancibdpw1vbc" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/2.png" id="25_nh78j"]
+[ext_resource type="Texture2D" uid="uid://djvrhm1s3vjpk" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/3.png" id="26_q85in"]
+[ext_resource type="Texture2D" uid="uid://cshfia5wvxhu3" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/4.png" id="27_23sse"]
+[ext_resource type="Texture2D" uid="uid://bltcin4jx8x8x" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/1.png" id="28_djwr8"]
+[ext_resource type="Texture2D" uid="uid://g32ykaciwlfe" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/2.png" id="29_w5ign"]
+[ext_resource type="Texture2D" uid="uid://c6fdqpia4hnpx" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/3.png" id="30_dm2a1"]
+[ext_resource type="Texture2D" uid="uid://bagqowo7orq5i" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/4.png" id="31_tldeq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flxhq"]
 shader = ExtResource("8_cp7mx")
@@ -257,6 +266,139 @@ _data = {
 &"intro": SubResource("Animation_ds7ig"),
 &"zoom_camera": SubResource("Animation_f4icm"),
 &"zoom_out_camera": SubResource("Animation_7sb6u")
+}
+
+[sub_resource type="Animation" id="Animation_mx2ic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FakeBoss:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FakeBoss:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.14911404, 0.14911404, 0.14911404, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FakeBoss:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(851.00006, 699.99994)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FakeBoss:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("24_m3dsj")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4xu44"]
+resource_name = "reveal_boss"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FakeBoss:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.45, 0.45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FakeBoss:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.26666668, 1.3333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.14911404, 0.14911404, 0.14911404, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FakeBoss:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(851.00006, 699.99994), Vector2(851.00006, 740.99994)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FakeBoss:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 2, 2.2, 2.4, 3, 3.2, 3.7666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("24_m3dsj"), ExtResource("25_nh78j"), ExtResource("26_q85in"), ExtResource("27_23sse"), ExtResource("24_m3dsj"), ExtResource("25_nh78j"), ExtResource("26_q85in"), ExtResource("27_23sse"), ExtResource("24_m3dsj"), ExtResource("28_djwr8"), ExtResource("29_w5ign"), ExtResource("30_dm2a1"), ExtResource("29_w5ign"), ExtResource("30_dm2a1"), ExtResource("31_tldeq")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.17, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oj4hj"]
+_data = {
+&"RESET": SubResource("Animation_mx2ic"),
+&"reveal_boss": SubResource("Animation_4xu44")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flxhq"]
@@ -540,6 +682,12 @@ z_index = 5
 position = Vector2(600, -110)
 attack_range = 3000
 
+[node name="WaveBoss" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1125832789]
+
+[node name="BossCannibal" parent="World/Arena/Visual/WavesEnemies/WaveBoss" unique_id=1493117163 instance=ExtResource("17_bhj3v")]
+z_index = 15
+position = Vector2(74, -154)
+
 [node name="SpawnPoint" type="Marker2D" parent="World/Arena/Visual" unique_id=1505592288]
 position = Vector2(12, -62)
 
@@ -616,6 +764,22 @@ zoom = Vector2(0.70000005, 0.70000005)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/IntroCinematic/CameraCinematic" unique_id=420016043]
 libraries/ = SubResource("AnimationLibrary_cmbv6")
 autoplay = &"intro"
+
+[node name="RevealBoss" type="Node2D" parent="World" unique_id=1506687962]
+
+[node name="FakeBoss" type="Sprite2D" parent="World/RevealBoss" unique_id=586575254]
+visible = false
+modulate = Color(0.14911404, 0.14911404, 0.14911404, 1)
+z_index = 15
+position = Vector2(851.00006, 699.99994)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("24_m3dsj")
+
+[node name="Camera2D" type="Camera2D" parent="World/RevealBoss" unique_id=310588285]
+position = Vector2(1190, 748)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/RevealBoss" unique_id=26226921]
+libraries/ = SubResource("AnimationLibrary_oj4hj")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=851490859]
 z_index = 15
