@@ -36,6 +36,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(87, 137)
 
+[sub_resource type="Animation" id="Animation_63yon"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_twuli")]
+}
+
 [sub_resource type="Animation" id="Animation_4xyrk"]
 resource_name = "aggro"
 length = 0.8
@@ -132,6 +147,22 @@ tracks/0/keys = {
 "values": [ExtResource("14_b4oy7"), ExtResource("15_67hha"), ExtResource("16_1lskd"), ExtResource("17_twuli")]
 }
 
+[sub_resource type="Animation" id="Animation_66vmv"]
+resource_name = "jump_quake"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("17_twuli"), ExtResource("17_twuli")]
+}
+
 [sub_resource type="Animation" id="Animation_1dfca"]
 resource_name = "onhit"
 length = 0.8
@@ -201,12 +232,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1pcfp"]
 _data = {
+&"RESET": SubResource("Animation_63yon"),
 &"aggro": SubResource("Animation_4xyrk"),
 &"attack": SubResource("Animation_60gw1"),
 &"cac": SubResource("Animation_4ah2e"),
 &"die": SubResource("Animation_6f0v3"),
 &"idle": SubResource("Animation_nfy1s"),
 &"jump": SubResource("Animation_b6dgq"),
+&"jump_quake": SubResource("Animation_66vmv"),
 &"onhit": SubResource("Animation_1dfca"),
 &"run": SubResource("Animation_rvxuj"),
 &"walk": SubResource("Animation_j5f54"),
@@ -218,7 +251,6 @@ scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_iiigo")
-attack_range = 3000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=545927351]
 position = Vector2(36.5, 69.5)
@@ -233,6 +265,8 @@ scale = Vector2(1, -1.00374)
 
 [node name="ProjectileTimer" type="Timer" parent="." unique_id=1862551901]
 
+[node name="JumpTimer" type="Timer" parent="." unique_id=506972388]
+
 [node name="Rotator" type="Node2D" parent="." unique_id=423549435]
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=50650749]
@@ -242,10 +276,11 @@ position = Vector2(40, 72)
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=802653703]
 position = Vector2(5, 4)
 scale = Vector2(-0.5, 0.5)
-texture = ExtResource("7_pdt3i")
+texture = ExtResource("17_twuli")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1463877392]
 libraries/ = SubResource("AnimationLibrary_1pcfp")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
