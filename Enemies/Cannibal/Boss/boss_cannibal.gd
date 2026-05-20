@@ -2,14 +2,9 @@ extends EnemyGroundBase
 
 @export var projectile_scene = preload("res://Shoot/Enemies/Spear/spear.tscn")
 @export var projectile_spawn_delay = 0.40
-@export var melee_distance = 140.0
-@export var min_shoot_distance = 300.0
+@export var melee_distance = 120.0
+@export var min_shoot_distance = 120.0
 @export var max_shoot_distance = 2000.0
-
-@export var boss_life = 30
-@export var boss_speed = 80.0
-@export var boss_damage = 2
-@export var boss_attack_range = 2000.0
 
 var projectile_attack_animation = "attack"
 var jump_animation_name = "jump"
@@ -28,15 +23,14 @@ var projectile_spawn = null
 func _ready():
 	attack_anim_name = "cac"
 
-	max_hp = boss_life
-	hp = boss_life
-	speed = boss_speed
-	damage = boss_damage
-	attack_range = boss_attack_range
-	stop_distance = melee_distance - 10.0
-
 	super._ready()
-
+	
+	melee_distance = 120.0
+	min_shoot_distance = melee_distance
+	max_shoot_distance = 2000.0
+	stop_distance = melee_distance - 10.0
+	attack_range = max_shoot_distance
+	
 	projectile_spawn = $Rotator/ProjectileSpawn
 
 	target_mod.setup(self)
@@ -46,7 +40,7 @@ func _ready():
 
 	if attack_timer:
 		attack_timer.wait_time = 1.0
-		attack_timer.start()
+		attack_timer.stop()
 
 	if projectile_timer:
 		projectile_timer.wait_time = fire_interval
@@ -61,11 +55,6 @@ func _physics_process(delta):
 	flip()
 	jump_mod.update()
 	melee_mod.update_state()
-
-	if target != null and distance <= melee_distance:
-		in_melee = true
-	else:
-		in_melee = false
 
 	if hit_locked:
 		stop_and_slide()

@@ -56,3 +56,4 @@ position = Vector2(1435, 1461)
 
 [node name="BossCannibal" parent="." unique_id=708931693 instance=ExtResource("2_g514y")]
 position = Vector2(2764, 1209)
+melee_distance = 170.0
