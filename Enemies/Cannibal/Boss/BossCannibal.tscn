@@ -271,7 +271,7 @@ scale = Vector2(1, -1.00374)
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=50650749]
 z_index = 80
-position = Vector2(40, 72)
+position = Vector2(-151, 56)
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=802653703]
 position = Vector2(5, 4)

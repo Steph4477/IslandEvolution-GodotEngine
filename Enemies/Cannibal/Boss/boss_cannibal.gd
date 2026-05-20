@@ -1,6 +1,6 @@
 extends EnemyGroundBase
 
-@export var projectile_scene = preload("res://Shoot/Enemies/Spear/spear.tscn")
+@export var projectile_scene = preload("res://Shoot/Enemies/Harpon/harpon.tscn")
 @export var projectile_spawn_delay = 0.40
 
 @export var melee_distance = 120.0
