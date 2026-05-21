@@ -52,6 +52,10 @@ var player = null
 
 var hud_scene = preload("res://Hud/Hud.tscn")
 var hud = null
+
+var boss_fight_hud_scene = preload("res://Hud/BossHud/HudFightBoss/hud_fight_boss.tscn")
+var boss_fight_hud = null
+
 var health_bar = null
 var speed_bar = null
 var breath_bar = null
@@ -122,10 +126,10 @@ func _ready():
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn")
-	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
+	await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
-	await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
+	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 
 func _process(_delta):
@@ -209,6 +213,10 @@ func is_menu_scene(scene_path):
 func load_level(scene_path):
 	resume_game()
 	await fade.fade_out()
+
+	if boss_fight_hud != null:
+		boss_fight_hud.queue_free()
+		boss_fight_hud = null
 
 	# Sauvegarde position du player 
 	if player:
@@ -297,7 +305,44 @@ func load_level(scene_path):
 
 	await fade.fade_in()
 
+# ============================================================================
+#                         BOSS FIGHT HUD
+# ============================================================================
 
+func show_boss_fight_hud(boss):
+	if hud and hud.has_method("set_gameplay_hud_visible"):
+		hud.set_gameplay_hud_visible(false)
+
+	if boss_fight_hud != null:
+		boss_fight_hud.queue_free()
+		boss_fight_hud = null
+
+	boss_fight_hud = boss_fight_hud_scene.instantiate()
+	add_child(boss_fight_hud)
+	boss_fight_hud.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	if boss_fight_hud.has_method("setup"):
+		boss_fight_hud.setup(player, boss)
+
+
+func hide_boss_fight_hud():
+	if boss_fight_hud != null:
+		if boss_fight_hud.has_method("disappear"):
+			await boss_fight_hud.disappear()
+
+		boss_fight_hud.queue_free()
+		boss_fight_hud = null
+
+	if hud and hud.has_method("set_gameplay_hud_visible"):
+		hud.set_gameplay_hud_visible(true)
+
+
+func update_boss_fight_hud():
+	if boss_fight_hud == null:
+		return
+
+	if boss_fight_hud.has_method("update_hud"):
+		boss_fight_hud.update_hud()
 
 # ===================================================================
 #                          SAVE / LOAD

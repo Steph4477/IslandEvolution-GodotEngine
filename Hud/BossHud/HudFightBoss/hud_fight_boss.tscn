@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cu3b72pjf5iep"]
 
+[ext_resource type="Script" uid="uid://cuhrlyy5bduqf" path="res://Hud/BossHud/HudFightBoss/hud_fight_boss.gd" id="1_ga0r3"]
 [ext_resource type="Texture2D" uid="uid://vok513cacemo" path="res://Hud/BossHud/HudFightBoss/HudMoko/hpMokoEmpty.png" id="1_o432s"]
 [ext_resource type="Texture2D" uid="uid://jhe7onduw6b" path="res://Hud/BossHud/HudFightBoss/HudMoko/hpMokoShape.png" id="2_ga0r3"]
 [ext_resource type="Texture2D" uid="uid://dbxmaxhqgryty" path="res://Hud/BossHud/HudFightBoss/HudMoko/hpMokoFull.png" id="3_gl2h4"]
@@ -435,6 +436,7 @@ _data = {
 
 [node name="HudFightBoss" type="CanvasLayer" unique_id=840627719]
 layer = 30
+script = ExtResource("1_ga0r3")
 
 [node name="Control" type="Control" parent="." unique_id=488269925]
 layout_mode = 3

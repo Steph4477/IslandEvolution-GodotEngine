@@ -562,10 +562,32 @@ func update_air_display():
 	air_button.visible = true
 	set_button_enabled(air_button, true)
 
+# ============================================================================
+#        BOSS FIGHT HUD
+# ============================================================================
+func set_gameplay_hud_visible(is_visible):
 
-######################################################################
-#              QUETES MAITRISE DES ELEMENTS                          #
-######################################################################
+	#$Gamepad.visible = is_visible
+	$HBoxContainerLive.visible = is_visible
+	$HBoxContainerSeed.visible = is_visible
+	$HBoxContainerBanane.visible = is_visible
+	$HBoxContainerHoney.visible = is_visible
+	$BarSlot.visible = is_visible
+	$HealthBar.visible = is_visible
+	$HBoxContainerBanane/TexturePotion.visible = is_visible
+	$Gamepad/Menu.visible = is_visible
+	$Gamepad/Break.visible = is_visible
+
+	if fire_craft_checklist:
+		fire_craft_checklist.visible = is_visible and gs.fire_craft_revealed
+
+	if air_craft_checklist:
+		air_craft_checklist.visible = is_visible and gs.air_craft_revealed
+
+
+# ============================================================================
+#              QUETES MAITRISE DES ELEMENTS                          
+# ============================================================================
 # --- Ultilitaire pour check les objectifs de quete accomplies
 func update_check_texture(check_node, is_valid):
 	if check_node == null:
