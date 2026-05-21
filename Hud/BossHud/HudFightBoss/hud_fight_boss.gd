@@ -4,6 +4,8 @@ extends CanvasLayer
 
 @onready var hp_moko_bar = $Control/HudMoko/HpMokoBar
 @onready var hp_boss_bar = $Control/HudBoss/HpBossBar
+@onready var boss_portrait = $Control/HudBoss/BossPortrait
+@onready var boss_name = $Control/HudBoss/BossName
 
 var player = null
 var boss = null
@@ -18,12 +20,20 @@ func setup(player_ref, boss_ref):
 	boss = boss_ref
 
 	hp_moko_bar.max_value = player.max_pv
+	hp_moko_bar.value = player.pv
+
 	hp_boss_bar.max_value = boss.max_hp
+	hp_boss_bar.value = boss.hp
+
+	if boss.has_meta("boss_portrait"):
+		boss_portrait.texture = boss.get_meta("boss_portrait")
+
+	if boss.has_meta("boss_name"):
+		boss_name.texture = boss.get_meta("boss_name")
 
 	update_hud()
 
 	anim.play("intro")
-
 
 func update_hud():
 	hp_moko_bar.value = player.pv

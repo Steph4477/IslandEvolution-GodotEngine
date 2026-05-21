@@ -71,6 +71,9 @@ func _ready():
 	ceiling_point = get_parent().get_node("CeilingPoint")
 	super._ready()
 
+	set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantula.png"))
+	set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantulaName.png"))
+
 	projectile_spawn = $Rotator/Muzzle
 	patrol_timer = $PatrolTimer
 
@@ -85,6 +88,7 @@ func _ready():
 
 	await play_plafond_intro()
 
+	
 	projectile_timer.wait_time = projectile_timer_time
 	projectile_timer.start()
 

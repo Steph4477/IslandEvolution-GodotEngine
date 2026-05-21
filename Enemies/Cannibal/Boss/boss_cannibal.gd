@@ -39,6 +39,9 @@ func _ready():
 
 	super._ready()
 
+	set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibale.png"))
+	set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibaleName.png"))
+
 	min_shoot_distance = melee_distance
 	stop_distance = melee_distance - 10.0
 	attack_range = max_shoot_distance
@@ -215,6 +218,22 @@ func shake_camera_and_damage_player():
 
 	cam.offset = original_offset
 
+
+# ============================================================================
+#                                  ON HIT
+# ============================================================================
+func on_hit(amount):
+	if is_dead:
+		return
+
+	if hit_locked:
+		return
+
+	super.on_hit(amount)
+
+	gs.update_boss_fight_hud()
+
+
 # ============================================================================
 #                                   DIE
 # ============================================================================
@@ -231,6 +250,8 @@ func die():
 
 	if cam:
 		cam.offset = Vector2.ZERO
+
+	gs.hide_boss_fight_hud()
 
 	super.die()
 
