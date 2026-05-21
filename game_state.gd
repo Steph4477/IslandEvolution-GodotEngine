@@ -308,7 +308,6 @@ func load_level(scene_path):
 # ============================================================================
 #                         BOSS FIGHT HUD
 # ============================================================================
-
 func show_boss_fight_hud(boss):
 	if hud and hud.has_method("set_gameplay_hud_visible"):
 		hud.set_gameplay_hud_visible(false)
@@ -321,15 +320,12 @@ func show_boss_fight_hud(boss):
 	add_child(boss_fight_hud)
 	boss_fight_hud.process_mode = Node.PROCESS_MODE_ALWAYS
 
-	if boss_fight_hud.has_method("setup"):
-		boss_fight_hud.setup(player, boss)
+	boss_fight_hud.setup(player, boss)
 
 
 func hide_boss_fight_hud():
 	if boss_fight_hud != null:
-		if boss_fight_hud.has_method("disappear"):
-			await boss_fight_hud.disappear()
-
+		await boss_fight_hud.disappear()
 		boss_fight_hud.queue_free()
 		boss_fight_hud = null
 
@@ -341,9 +337,7 @@ func update_boss_fight_hud():
 	if boss_fight_hud == null:
 		return
 
-	if boss_fight_hud.has_method("update_hud"):
-		boss_fight_hud.update_hud()
-
+	boss_fight_hud.update_hud()
 # ===================================================================
 #                          SAVE / LOAD
 # ===================================================================

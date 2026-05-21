@@ -42,7 +42,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HudMoko/HpMokoFull:scale")
+tracks/2/path = NodePath("HudMoko/HpMokoBar:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -138,7 +138,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("HudBoss/HpBossFull:scale")
+tracks/10/path = NodePath("HudBoss/HpBossBar:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -250,7 +250,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HudMoko/HpMokoFull:scale")
+tracks/2/path = NodePath("HudMoko/HpMokoBar:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -346,7 +346,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("HudBoss/HpBossFull:scale")
+tracks/10/path = NodePath("HudBoss/HpBossBar:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -455,21 +455,27 @@ offset_bottom = 40.0
 
 [node name="HpMokoEmpty" type="TextureRect" parent="Control/HudMoko" unique_id=116401849]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 249.0
+offset_top = 172.0
+offset_right = 713.0
+offset_bottom = 212.0
 texture = ExtResource("1_o432s")
 
-[node name="HpMokoFull" type="TextureProgressBar" parent="Control/HudMoko" unique_id=710599107]
+[node name="HpMokoBar" type="TextureProgressBar" parent="Control/HudMoko" unique_id=710599107]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = 257.0
+offset_top = 177.0
+offset_right = 712.0
+offset_bottom = 203.0
 value = 100.0
 texture_progress = ExtResource("3_gl2h4")
 
 [node name="HpMokoShape" type="TextureRect" parent="Control/HudMoko" unique_id=913590250]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 239.0
+offset_top = 125.0
+offset_right = 746.0
+offset_bottom = 228.0
 texture = ExtResource("2_ga0r3")
 
 [node name="MokoPortrait" type="TextureRect" parent="Control/HudMoko" unique_id=650404574]
@@ -513,22 +519,28 @@ grow_horizontal = 0
 
 [node name="HpBossEmpty" type="TextureRect" parent="Control/HudBoss" unique_id=2092338181]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1237.0
+offset_top = 178.0
+offset_right = 1713.0
+offset_bottom = 218.0
 texture = ExtResource("8_ddt4y")
 
-[node name="HpBossFull" type="TextureProgressBar" parent="Control/HudBoss" unique_id=898214780]
+[node name="HpBossBar" type="TextureProgressBar" parent="Control/HudBoss" unique_id=898214780]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1245.0
+offset_top = 184.0
+offset_right = 3165.0
+offset_bottom = 1264.0
 value = 100.0
 fill_mode = 1
 texture_progress = ExtResource("9_hrft7")
 
 [node name="HpBossShape" type="TextureRect" parent="Control/HudBoss" unique_id=997630099]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1209.0
+offset_top = 140.0
+offset_right = 1724.0
+offset_bottom = 242.0
 texture = ExtResource("7_ld06g")
 
 [node name="BossPortrait" type="TextureRect" parent="Control/HudBoss" unique_id=1775807721]
@@ -550,4 +562,3 @@ texture = ExtResource("11_ko504")
 
 [node name="Anim" type="AnimationPlayer" parent="Control" unique_id=1713051258]
 libraries/ = SubResource("AnimationLibrary_gl2h4")
-autoplay = &"intro"

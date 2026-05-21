@@ -566,8 +566,6 @@ func update_air_display():
 #        BOSS FIGHT HUD
 # ============================================================================
 func set_gameplay_hud_visible(is_visible):
-
-	#$Gamepad.visible = is_visible
 	$HBoxContainerLive.visible = is_visible
 	$HBoxContainerSeed.visible = is_visible
 	$HBoxContainerBanane.visible = is_visible

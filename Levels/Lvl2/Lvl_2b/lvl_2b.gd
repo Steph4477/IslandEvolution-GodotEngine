@@ -7,7 +7,6 @@ func _ready():
 	await get_tree().process_frame
 
 	var gs = get_node("/root/GameState")
-	gs.show_boss_fight_hud(null)
 
 	# Caméra + assombrissement Moko
 	if gs.player:

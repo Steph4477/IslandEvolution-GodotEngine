@@ -177,6 +177,10 @@ func play_plafond_intro():
 
 	await get_tree().process_frame
 	player_camera.global_position = player.global_position
+
+	var gs = get_node("/root/GameState")
+	gs.show_boss_fight_hud(self)
+
 	player.can_move = true
 
 
@@ -394,7 +398,11 @@ func spawn_adds():
 # ============================================================================
 
 func update_health_bar():
+	print("[TARANTULA] update_health_bar hp = ", hp, " / ", max_hp)
+
 	health_bar.set_value(hp)
+
+	gs.update_boss_fight_hud()
 
 
 # ============================================================================
@@ -464,10 +472,14 @@ func on_hit(amount):
 
 	if is_in_add_phase:
 		super.on_hit(amount)
+
+		gs.update_boss_fight_hud()
 		return
 
 	dodge_mod.register_hit()
 	super.on_hit(amount)
+
+	gs.update_boss_fight_hud()
 
 
 # ============================================================================
@@ -507,6 +519,9 @@ func _do_die():
 	particles.get_node("CPUParticles2D").emitting = true
 
 	spawn_loot()
+
+	await gs.hide_boss_fight_hud()
+
 	queue_free()
 
 
