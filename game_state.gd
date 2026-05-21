@@ -325,7 +325,6 @@ func show_boss_fight_hud(boss):
 
 func hide_boss_fight_hud():
 	if boss_fight_hud != null:
-		await boss_fight_hud.disappear()
 		boss_fight_hud.queue_free()
 		boss_fight_hud = null
 

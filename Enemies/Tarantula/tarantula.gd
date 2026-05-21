@@ -397,8 +397,6 @@ func spawn_adds():
 # ============================================================================
 
 func update_health_bar():
-	print("[TARANTULA] update_health_bar hp = ", hp, " / ", max_hp)
-
 	health_bar.set_value(hp)
 
 	gs.update_boss_fight_hud()
@@ -519,7 +517,7 @@ func _do_die():
 
 	spawn_loot()
 
-	await gs.hide_boss_fight_hud()
+	gs.hide_boss_fight_hud()
 
 	queue_free()
 
