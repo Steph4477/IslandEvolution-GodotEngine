@@ -443,7 +443,7 @@ func _on_drown_timer_timeout():
 		breath_mod.on_drown_timer_timeout()
 
 # =======================================================================
-#                               HELPERS UTILISÉS PARTOUT
+#                               HELPERS
 # =======================================================================
 func heal(amount):
 	pv = clamp(pv + amount, 0, max_pv)
@@ -457,6 +457,9 @@ func heal(amount):
 	if hud_mod:
 		hud_mod.update_banane_display()
 		hud_mod.refresh_hud_buttons()
+
+	if game_state:
+		game_state.update_boss_fight_hud()
 
 func update_can_heal():
 	can_heal = heal_potions.size() > 0 and pv < max_pv and not in_cooldown

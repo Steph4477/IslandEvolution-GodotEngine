@@ -178,7 +178,6 @@ func play_plafond_intro():
 	await get_tree().process_frame
 	player_camera.global_position = player.global_position
 
-	var gs = get_node("/root/GameState")
 	gs.show_boss_fight_hud(self)
 
 	player.can_move = true

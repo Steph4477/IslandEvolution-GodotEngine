@@ -20,6 +20,9 @@ func on_hit(damage):
 	if p.game_state and p.game_state.health_bar:
 		p.game_state.health_bar.set_value(p.pv)
 
+	if p.game_state:
+		p.game_state.update_boss_fight_hud()
+
 	# popup dégâts (DIRECT module)
 	if p.popups_mod:
 		p.popups_mod.show_damage(damage)
