@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cxtbfw3qpck70" path="res://Hud/BossHud/HudFightBoss/HudBoss/hpBossFull.png" id="9_hrft7"]
 [ext_resource type="Texture2D" uid="uid://b1xg0iaav44kk" path="res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantula.png" id="10_o66nx"]
 [ext_resource type="Texture2D" uid="uid://bx25e01x1t04y" path="res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantulaName.png" id="11_ko504"]
+[ext_resource type="AudioStream" uid="uid://baj65gwf53d0l" path="res://Hud/BossHud/HudFightBoss/Sounds/portrait.wav" id="13_ijn1v"]
+[ext_resource type="AudioStream" uid="uid://bx0d3n2gojmwq" path="res://Hud/BossHud/HudFightBoss/Sounds/versus.wav" id="14_ijn1v"]
 
 [sub_resource type="Animation" id="Animation_o432s"]
 length = 0.001
@@ -222,7 +224,7 @@ tracks/16/keys = {
 
 [sub_resource type="Animation" id="Animation_ga0r3"]
 resource_name = "intro"
-length = 2.0
+length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -427,6 +429,51 @@ tracks/16/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/17/type = "audio"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Sounds/soundBossPortrait")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"clips": [{
+"end_offset": 5.3,
+"start_offset": 0.0,
+"stream": ExtResource("13_ijn1v")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/17/use_blend = true
+tracks/18/type = "audio"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Sounds/soundMokoPortrait")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"clips": [{
+"end_offset": 5.3,
+"start_offset": 0.0,
+"stream": ExtResource("13_ijn1v")
+}],
+"times": PackedFloat32Array(1.0333333)
+}
+tracks/18/use_blend = true
+tracks/19/type = "audio"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Sounds/soundVersus")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"clips": [{
+"end_offset": 2.3500013,
+"start_offset": 0.79,
+"stream": ExtResource("14_ijn1v")
+}],
+"times": PackedFloat32Array(1.3666667)
+}
+tracks/19/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gl2h4"]
 _data = {
@@ -562,3 +609,15 @@ texture = ExtResource("11_ko504")
 
 [node name="Anim" type="AnimationPlayer" parent="Control" unique_id=1713051258]
 libraries/ = SubResource("AnimationLibrary_gl2h4")
+
+[node name="Sounds" type="Node2D" parent="Control" unique_id=1713621550]
+
+[node name="soundBossPortrait" type="AudioStreamPlayer2D" parent="Control/Sounds" unique_id=1731143873]
+position = Vector2(232, -2)
+volume_db = 24.0
+
+[node name="soundMokoPortrait" type="AudioStreamPlayer2D" parent="Control/Sounds" unique_id=839986612]
+volume_db = 16.0
+
+[node name="soundVersus" type="AudioStreamPlayer2D" parent="Control/Sounds" unique_id=941748016]
+volume_db = 20.0

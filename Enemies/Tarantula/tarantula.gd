@@ -71,9 +71,6 @@ func _ready():
 	ceiling_point = get_parent().get_node("CeilingPoint")
 	super._ready()
 
-	set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantula.png"))
-	set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantulaName.png"))
-
 	projectile_spawn = $Rotator/Muzzle
 	patrol_timer = $PatrolTimer
 
@@ -140,7 +137,6 @@ func _physics_process(delta):
 # ============================================================================
 #                               INTRO PLAFOND
 # ============================================================================
-
 func play_plafond_intro():
 	refresh_player()
 	await get_tree().process_frame
@@ -181,8 +177,6 @@ func play_plafond_intro():
 
 	await get_tree().process_frame
 	player_camera.global_position = player.global_position
-
-	gs.show_boss_fight_hud(self)
 
 	player.can_move = true
 

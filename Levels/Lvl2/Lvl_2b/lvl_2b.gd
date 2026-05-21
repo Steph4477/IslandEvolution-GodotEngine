@@ -1,13 +1,17 @@
 extends Node2D
 
 @export var dialogue_scene = preload("res://Interface/Dialogue/pyg_dialogue.tscn")
+@onready var boss = $Tarantula
 
 func _ready():
-	$Node2D/Sound/lvl2.play()
+	#$Node2D/Sound/lvl2.play()
 	await get_tree().process_frame
 
 	var gs = get_node("/root/GameState")
-
+	
+	set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantula.png"))
+	set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantulaName.png"))
+	
 	# Caméra + assombrissement Moko
 	if gs.player:
 		var cam = gs.player.get_node("Camera2D")
@@ -41,3 +45,10 @@ func _ready():
 	## Redonne le contrôle
 	#if gs.player:
 		#gs.player.can_move = true
+	gs.show_boss_fight_hud(boss)
+	await_sound_cinematic()
+
+
+func await_sound_cinematic():
+	await get_tree().create_timer(5).timeout
+	$Node2D/Sound/lvl2.play()

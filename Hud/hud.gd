@@ -565,16 +565,16 @@ func update_air_display():
 # ============================================================================
 #        BOSS FIGHT HUD
 # ============================================================================
-func set_gameplay_hud_visible(is_visible):
-	$HBoxContainerLive.visible = is_visible
-	$HBoxContainerSeed.visible = is_visible
-	$HBoxContainerBanane.visible = is_visible
-	$HBoxContainerHoney.visible = is_visible
-	$BarSlot.visible = is_visible
-	$HealthBar.visible = is_visible
-	$HBoxContainerBanane/TexturePotion.visible = is_visible
-	$Gamepad/Menu.visible = is_visible
-	$Gamepad/Break.visible = is_visible
+func set_gameplay_hud_visible(not_visible):
+	$HBoxContainerLive.visible = not_visible
+	$HBoxContainerSeed.visible = not_visible
+	$HBoxContainerBanane.visible = not_visible
+	$HBoxContainerHoney.visible = not_visible
+	$BarSlot.visible = not_visible
+	$HealthBar.visible = not_visible
+	$HBoxContainerBanane/TexturePotion.visible = not_visible
+	$Gamepad/Menu.visible = not_visible
+	$Gamepad/Break.visible = not_visible
 
 	if fire_craft_checklist:
 		fire_craft_checklist.visible = is_visible and gs.fire_craft_revealed
