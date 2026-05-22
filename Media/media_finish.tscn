@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://dp3xfjwjj176g"]
+
+[ext_resource type="Texture2D" uid="uid://dcd4t4v7tduy5" path="res://Media/Assets/background_temple.png" id="1_n1qcl"]
+[ext_resource type="Script" uid="uid://bm0pv5u3w6hmg" path="res://Media/media_finish.gd" id="1_p6l8f"]
+[ext_resource type="Texture2D" uid="uid://cwwps24kq4l7a" path="res://Media/Assets/title.png" id="2_cxaw7"]
+[ext_resource type="Texture2D" uid="uid://crx5mpwht21at" path="res://Media/Assets/texte.png" id="3_p6l8f"]
+[ext_resource type="Texture2D" uid="uid://db5wiensjpyht" path="res://Media/Assets/pc_mobile.png" id="4_bpdoa"]
+[ext_resource type="PackedScene" path="res://Player/Skills/DoubleJump/double_jump.tscn" id="6_bpdoa"]
+
+[sub_resource type="Animation" id="Animation_hvrxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(957, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Texte:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(965, 510)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PcMobile:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(861, 874)]
+}
+
+[sub_resource type="Animation" id="Animation_ln086"]
+resource_name = "appear"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.0333333, 2.4333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-466, 228), Vector2(953, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Texte:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.9000003, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2402, 510), Vector2(965, 510)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PcMobile:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.0666666, 6.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-466, 874), Vector2(861, 874)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r644r"]
+_data = {
+&"RESET": SubResource("Animation_hvrxp"),
+&"appear": SubResource("Animation_ln086")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdoa"]
+size = Vector2(3183, 63)
+
+[node name="MediaFinish" type="Node2D" unique_id=1199468174]
+script = ExtResource("1_p6l8f")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1413471016]
+position = Vector2(959, 543)
+texture = ExtResource("1_n1qcl")
+
+[node name="Title" type="Sprite2D" parent="." unique_id=126809681]
+position = Vector2(957, 228)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_cxaw7")
+
+[node name="Texte" type="Sprite2D" parent="." unique_id=1838802991]
+position = Vector2(965, 510)
+texture = ExtResource("3_p6l8f")
+
+[node name="PcMobile" type="Sprite2D" parent="." unique_id=64966480]
+position = Vector2(861, 874)
+texture = ExtResource("4_bpdoa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=205742741]
+root_node = NodePath("../Background")
+libraries/ = SubResource("AnimationLibrary_r644r")
+autoplay = &"appear"
+
+[node name="DoubleJump" parent="." unique_id=617719052 instance=ExtResource("6_bpdoa")]
+position = Vector2(-132, 923)
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=757985652]
+position = Vector2(-451, 484.00003)
+scale = Vector2(3, 3)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1343582516]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1475452604]
+position = Vector2(860.5, 1029.5)
+shape = SubResource("RectangleShape2D_bpdoa")
