@@ -85,7 +85,7 @@ func die():
 			next_level = p.game_state.current_level_path
 
 	# stop breath propre
-	if p.modules and p.modules.breath:
+	if p.die and p.modules and p.modules.breath:
 		p.modules.breath.stop_underwater_breath(true)
 
 	if p.game_state:
