@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 @export var speed = 800.0
 @export var lifetime = 10.0
+@export var damage = 150
 
 @onready var sprite = $anim
 @onready var area = $Area2D
 
-var damage = 40
 var direction = Vector2.ZERO
 var has_collided = false
 var is_web = true

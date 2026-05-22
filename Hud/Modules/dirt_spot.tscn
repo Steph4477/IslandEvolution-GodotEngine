@@ -65,6 +65,7 @@ mouse_filter = 2
 script = ExtResource("1_ccfck")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=558931313]
+modulate = Color(1, 1, 1, 0.44705883)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

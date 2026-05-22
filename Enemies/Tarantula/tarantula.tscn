@@ -245,6 +245,7 @@ drop_loot_enabled = true
 loot_scene_path = "res://Player/Skills/Ramp/ramp.tscn"
 
 [node name="HealthBar" parent="." unique_id=1252633794 instance=ExtResource("9_kg14j")]
+visible = false
 position = Vector2(-47, -170)
 scale = Vector2(1.5, 1.5)
 
