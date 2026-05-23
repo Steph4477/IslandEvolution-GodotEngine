@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://m4ch4x2wp74n"]
+
+[ext_resource type="Shader" uid="uid://bcuv1hn7hnrei" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Beach/sky.gdshader" id="1_r5mcf"]
+[ext_resource type="Texture2D" uid="uid://w6llyxo8bi6x" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Beach/sea.png" id="2_pswmh"]
+[ext_resource type="Texture2D" uid="uid://c4goptuyv1s2c" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Beach/sky.png" id="2_v4ti4"]
+[ext_resource type="Texture2D" uid="uid://cc4rnojeubmpk" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Beach/beach.png" id="3_n7blu"]
+[ext_resource type="Shader" uid="uid://bt35m36dplajs" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Beach/sea.gdshader" id="3_v4ti4"]
+[ext_resource type="Texture2D" uid="uid://droq6mr5acsmp" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/1.png" id="4_pswmh"]
+[ext_resource type="Texture2D" uid="uid://b8xtegyhshgk7" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/2.png" id="5_854mp"]
+[ext_resource type="Texture2D" uid="uid://rp7xxy7bkwhl" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/3.png" id="6_r5mcf"]
+[ext_resource type="Texture2D" uid="uid://2n6woddube5d" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/4.png" id="7_v4ti4"]
+[ext_resource type="Texture2D" uid="uid://b3obd2cs0a2nu" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/5.png" id="8_i7kdo"]
+[ext_resource type="Texture2D" uid="uid://b8emcqc147eg8" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/7.png" id="9_3perb"]
+[ext_resource type="Texture2D" uid="uid://buql43grpippy" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/8.png" id="10_08crl"]
+[ext_resource type="Texture2D" uid="uid://qaxqhamhndh1" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/9.png" id="11_htsyi"]
+[ext_resource type="Texture2D" uid="uid://bf2e3bxliur1u" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/10.png" id="12_o1gb0"]
+[ext_resource type="Texture2D" uid="uid://dd1hwtceyli2t" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/11.png" id="13_m3afy"]
+[ext_resource type="Texture2D" uid="uid://chbutiguvkeku" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/12.png" id="14_c4r38"]
+[ext_resource type="Texture2D" uid="uid://ckbcylp8ftfvd" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/13.png" id="17_o1gb0"]
+[ext_resource type="Texture2D" uid="uid://bys2qwgmheb53" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/14.png" id="18_m3afy"]
+[ext_resource type="Texture2D" uid="uid://s0bixjgqp1vc" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/15.png" id="19_c4r38"]
+[ext_resource type="Texture2D" uid="uid://b2o2ohutmn7t7" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/16.png" id="20_lsvxl"]
+[ext_resource type="Texture2D" uid="uid://bcquonhomokkd" path="res://Levels/IntroCinematic/AwakeBeach/Assets/Moko/17.png" id="21_vaqnd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7kdo"]
+shader = ExtResource("1_r5mcf")
+shader_parameter/speed = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3perb"]
+shader = ExtResource("3_v4ti4")
+shader_parameter/speed = 0.02
+
+[sub_resource type="Animation" id="Animation_lsvxl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_pswmh")]
+}
+
+[sub_resource type="Animation" id="Animation_vaqnd"]
+resource_name = "awake"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.8333335, 4.9333334, 5.0333333, 5.133333, 5.2333336, 5.3333335, 5.4333334, 5.5333333, 5.633333, 5.7333336, 5.833367, 5.933367, 6.0333667, 6.1333666, 6.233367, 6.333367),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_pswmh"), ExtResource("5_854mp"), ExtResource("6_r5mcf"), ExtResource("7_v4ti4"), ExtResource("8_i7kdo"), ExtResource("9_3perb"), ExtResource("10_08crl"), ExtResource("11_htsyi"), ExtResource("12_o1gb0"), ExtResource("13_m3afy"), ExtResource("14_c4r38"), ExtResource("17_o1gb0"), ExtResource("18_m3afy"), ExtResource("19_c4r38"), ExtResource("20_lsvxl"), ExtResource("21_vaqnd")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_060xl"]
+_data = {
+&"RESET": SubResource("Animation_lsvxl"),
+&"awake": SubResource("Animation_vaqnd")
+}
+
+[node name="AwakeBeach" type="Node2D" unique_id=214250387]
+metadata/_edit_horizontal_guides_ = [-105.0]
+
+[node name="Sky" type="Sprite2D" parent="." unique_id=925800656]
+material = SubResource("ShaderMaterial_i7kdo")
+position = Vector2(1063, -114)
+scale = Vector2(1.2666016, 1.0527344)
+texture = ExtResource("2_v4ti4")
+
+[node name="Sea" type="Sprite2D" parent="." unique_id=1411216584]
+material = SubResource("ShaderMaterial_3perb")
+position = Vector2(1705.0001, 701)
+scale = Vector2(1.5830077, 1)
+texture = ExtResource("2_pswmh")
+
+[node name="Beach" type="Sprite2D" parent="." unique_id=994496454]
+position = Vector2(958.3684, 441.99997)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("3_n7blu")
+
+[node name="Moko" type="Sprite2D" parent="." unique_id=1336598759]
+position = Vector2(935.00006, 900.00006)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_pswmh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2101330443]
+libraries/ = SubResource("AnimationLibrary_060xl")
+autoplay = &"awake"
