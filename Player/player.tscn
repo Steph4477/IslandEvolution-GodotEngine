@@ -60,7 +60,9 @@
 [ext_resource type="Texture2D" uid="uid://dl544wl76pk8n" path="res://Player/Sprite/swim/1.png" id="43_y06ei"]
 [ext_resource type="Texture2D" uid="uid://cgnrbluh1jscb" path="res://Player/Sprite/onhit/Under_Swim/4.png" id="44_3bga3"]
 [ext_resource type="Texture2D" uid="uid://db3q1di0fxyvo" path="res://Player/Sprite/swim/2.png" id="44_e2pw6"]
+[ext_resource type="Texture2D" uid="uid://c53rjr5ask2cd" path="res://Player/Sprite/push/1.png" id="45_ac8n6"]
 [ext_resource type="Texture2D" uid="uid://cahhnyax416lm" path="res://Player/Sprite/swim/3.png" id="45_jaf6r"]
+[ext_resource type="Texture2D" uid="uid://df608mi8d0om" path="res://Player/Sprite/push/2.png" id="46_3bga3"]
 [ext_resource type="Texture2D" uid="uid://50l612u7febw" path="res://Player/Sprite/swim/4.png" id="46_any7n"]
 [ext_resource type="Texture2D" uid="uid://254uxjdxhgts" path="res://Player/Sprite/sprint_skill/1.png" id="47_3e3ym"]
 [ext_resource type="Texture2D" uid="uid://nacrdr0tya04" path="res://Player/Sprite/sprint_skill/2.png" id="48_mdkl3"]
@@ -491,6 +493,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_2paov"]
 resource_name = "push"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -498,10 +501,10 @@ tracks/0/path = NodePath("Node2D/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.95),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("23_17nxb"), ExtResource("23_17nxb")]
+"values": [ExtResource("45_ac8n6"), ExtResource("46_3bga3")]
 }
 
 [sub_resource type="Animation" id="Animation_ms575"]
