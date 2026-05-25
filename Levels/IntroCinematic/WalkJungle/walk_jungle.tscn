@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://cbmuf6ramr4iv"]
+
+[ext_resource type="Texture2D" uid="uid://dfekwaj0ku65x" path="res://Levels/IntroCinematic/WalkJungle/jungle.png" id="1_mcwx6"]
+[ext_resource type="Script" uid="uid://cxj57tmdy4wat" path="res://Levels/IntroCinematic/WalkJungle/walk_jungle.gd" id="1_ym5xb"]
+[ext_resource type="Texture2D" uid="uid://dr2ocbmewq84y" path="res://Levels/IntroCinematic/WalkJungle/blackBackground.png" id="2_m76oh"]
+[ext_resource type="Texture2D" uid="uid://cwwps24kq4l7a" path="res://Media/Assets/title.png" id="3_mvgmf"]
+[ext_resource type="PackedScene" uid="uid://jcwjkxyh5vl0" path="res://Player/Skills/DoubleJump/double_jump.tscn" id="5_cddi5"]
+[ext_resource type="PackedScene" uid="uid://cr0enss65ug7v" path="res://Media/Assets/BoxPushPlatform/box_push_platform.tscn" id="6_p8c2f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym5xb"]
+size = Vector2(4287, 80)
+
+[sub_resource type="Animation" id="Animation_mvgmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.69135684, 0.6913568, 0.69135684, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(953, 318)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Jungle:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../BoxPushPlatform:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m76oh"]
+resource_name = "appear"
+length = 15.133333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(13.633333, 15.033333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.46666667, 2.4333334, 13.599999, 15.266666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(953, 318), Vector2(953, 318), Vector2(953, 318), Vector2(2523, 318)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.43333334, 2.4333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9, 1.5999999, 2.4666667, 15.333306),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 12.566370614359172, 12.566370614359172, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Jungle:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(13.733334, 15.099999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../BoxPushPlatform:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(13.7333, 15.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0g5sp"]
+_data = {
+&"RESET": SubResource("Animation_mvgmf"),
+&"appear": SubResource("Animation_m76oh")
+}
+
+[node name="WalkJungle" type="Node2D" unique_id=1314768068]
+script = ExtResource("1_ym5xb")
+
+[node name="BlackBackground" type="Sprite2D" parent="." unique_id=1519050594]
+position = Vector2(942.5, 550.99994)
+scale = Vector2(1.1015624, 1.1055555)
+texture = ExtResource("2_m76oh")
+
+[node name="Jungle" type="Sprite2D" parent="." unique_id=1006727126]
+position = Vector2(1003.00006, 761.00006)
+scale = Vector2(1.5, 1.518)
+texture = ExtResource("1_mcwx6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=728682308]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1779666228]
+position = Vector2(903.5, 1030)
+shape = SubResource("RectangleShape2D_ym5xb")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1182777209]
+position = Vector2(-1204, 722)
+
+[node name="Title" type="Sprite2D" parent="." unique_id=610182641]
+modulate = Color(0.69135684, 0.6913568, 0.69135684, 1)
+position = Vector2(953, 318)
+texture = ExtResource("3_mvgmf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title" unique_id=1285751899]
+libraries/ = SubResource("AnimationLibrary_0g5sp")
+autoplay = &"appear"
+
+[node name="DoubleJump" parent="." unique_id=132356137 instance=ExtResource("5_cddi5")]
+z_index = 20
+position = Vector2(-894, 925)
+scale = Vector2(2, 2)
+
+[node name="BoxPushPlatform" parent="." unique_id=2126630427 instance=ExtResource("6_p8c2f")]
+position = Vector2(-458, 830)
