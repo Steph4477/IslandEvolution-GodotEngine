@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bp2lu0to3myoi"]
+
+[ext_resource type="VideoStream" uid="uid://cu7qev3p2oua" path="res://Levels/IntroCinematic/intro_cinematic.ogv" id="1_fmqeu"]
+[ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/gamePad/menu.png" id="1_o1tmp"]
+[ext_resource type="Script" uid="uid://d1pwwwn4r41wm" path="res://Levels/IntroCinematic/intro_cinematic.gd" id="1_s00hh"]
+[ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/gamePad/Pressed/menu.png" id="2_fmqeu"]
+
+[node name="IntroCinematic" type="Node2D" unique_id=1987676523]
+script = ExtResource("1_s00hh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=892826665]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_fmqeu")
+autoplay = true
+
+[node name="Control" type="Control" parent="." unique_id=748673542]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Menu" type="TouchScreenButton" parent="Control" unique_id=1227477436]
+position = Vector2(1597, 42)
+scale = Vector2(0.11, 0.11)
+texture_normal = ExtResource("1_o1tmp")
+texture_pressed = ExtResource("2_fmqeu")
+action = "ui_cancel"
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="pressed" from="Control/Menu" to="." method="_on_menu_pressed"]

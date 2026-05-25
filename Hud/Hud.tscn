@@ -1734,6 +1734,7 @@ texture = ExtResource("18_1hj8m")
 script = ExtResource("19_s8lhr")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar" unique_id=1104299560]
+visible = false
 modulate = Color(0.67481464, 0.67481464, 0.6748146, 1)
 offset_left = 149.0
 offset_top = 50.0

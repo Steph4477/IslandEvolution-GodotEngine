@@ -123,6 +123,7 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
+	await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn")
@@ -132,7 +133,7 @@ func _ready():
 	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 	#await load_level("res://Media/media_finish.tscn")
-	await load_level("res://Levels/IntroCinematic/WalkJungle/walk_jungle.tscn")
+	#await load_level("res://Levels/IntroCinematic/WalkJungle/walk_jungle.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("break"):
