@@ -35,9 +35,9 @@ extends CanvasLayer
 @onready var fire_buff = $BarSlot/BuffContainer/FireBuff
 @onready var air_buff = $BarSlot/BuffContainer/AirBuff
 
-@onready var skill_selector = $Gamepad/SkillSelector
-@onready var heal_selector = $Gamepad/HealSelector
-@onready var throw_selector = $Gamepad/ThrowSelector
+#@onready var skill_selector = $Gamepad/SkillSelector
+#@onready var heal_selector = $Gamepad/HealSelector
+#@onready var throw_selector = $Gamepad/ThrowSelector
 
 @onready var banane_cooldown = $HBoxContainerBanane/TexturePotion/coolDownCircle
 @onready var honey_cooldown = $HBoxContainerHoney/TexturePotion/coolDownCircle
@@ -79,15 +79,6 @@ extends CanvasLayer
 #            VARS
 # -----------------------------
 var gs
-
-var skill_mode_active = false
-var selected_skill = "ramp"
-
-var heal_mode_active = false
-var selected_heal = "banane"
-
-var throw_mode_active = false
-var selected_throw_weapon = "coco"
 
 var banane_cd_left = 0.0
 var banane_cd_total = 1.0
@@ -205,10 +196,6 @@ func _ready():
 		breath_progress.max_value = 30
 		breath_progress.value = 30
 
-	skill_selector.visible = false
-	heal_selector.visible = false
-	throw_selector.visible = false
-
 	banane_cooldown.visible = false
 	honey_cooldown.visible = false
 
@@ -235,7 +222,6 @@ func _process(delta):
 		honey_cooldown.value = (honey_cd_left / honey_cd_total) * honey_cooldown.max_value
 		if honey_cd_left == 0.0:
 			honey_cooldown.visible = false
-
 
 # -----------------------------
 #        HELPERS VISIBILITÉ
@@ -325,131 +311,6 @@ func hide_air_buff():
 func update_air_buff_timer(time_left, duration):
 	if air_buff and air_buff.has_method("update_timer"):
 		air_buff.update_timer(time_left, duration)
-
-
-# -----------------------------
-#        SELECTOR HELPERS
-# -----------------------------
-func _hide_all_selectors():
-	skill_selector.visible = false
-	heal_selector.visible = false
-	throw_selector.visible = false
-
-func _place_selector_on_button(selector, btn):
-	var tex = btn.texture_normal
-	var tex_size = tex.get_size()
-
-	var local_center = tex_size * 0.5
-	var global_center = btn.global_transform * local_center
-	selector.global_position = global_center
-
-	var sx = abs(btn.scale.x)
-	var sy = abs(btn.scale.y)
-	var visual_size = Vector2(tex_size.x * sx, tex_size.y * sy)
-
-	var selector_tex = selector.texture
-	var selector_size = selector_tex.get_size()
-
-	var pad = 6.0
-	var target_size = visual_size + Vector2(pad * 2.0, pad * 2.0)
-
-	var EXTRA_SCALE = 1.1
-	selector.scale = Vector2(
-		(target_size.x / selector_size.x) * EXTRA_SCALE,
-		(target_size.y / selector_size.y) * EXTRA_SCALE
-	)
-
-
-# -----------------------------
-#        MODE SKILL
-# -----------------------------
-func set_skill_mode(enabled):
-	skill_mode_active = enabled
-
-	if not skill_mode_active:
-		skill_selector.visible = false
-		return
-
-	_hide_all_selectors()
-	skill_selector.visible = true
-	_update_skill_selector_position()
-
-func set_skill_selected(skill):
-	selected_skill = skill
-	if skill_mode_active:
-		_update_skill_selector_position()
-
-func _update_skill_selector_position():
-	_place_selector_on_button(skill_selector, _get_skill_button(selected_skill))
-
-func _get_skill_button(skill):
-	if skill == "ramp":
-		return ramp_button
-	if skill == "sprint":
-		return sprint_button
-	if skill == "camouflage":
-		return camouflage_button
-	return ramp_button
-
-
-# -----------------------------
-#        MODE HEAL
-# -----------------------------
-func show_heal_mode(item):
-	heal_mode_active = true
-	selected_heal = item
-
-	_hide_all_selectors()
-	heal_selector.visible = true
-	_update_heal_selector_position()
-
-func hide_heal_mode():
-	heal_mode_active = false
-	heal_selector.visible = false
-
-func set_heal_selected(item):
-	selected_heal = item
-	if heal_mode_active:
-		_update_heal_selector_position()
-
-func _update_heal_selector_position():
-	_place_selector_on_button(heal_selector, _get_heal_button(selected_heal))
-
-func _get_heal_button(item):
-	if item == "honey":
-		return honey_button
-	return health_button
-
-
-# -----------------------------
-#        MODE THROW
-# -----------------------------
-func show_throw_mode(weapon):
-	throw_mode_active = true
-	selected_throw_weapon = weapon
-
-	_hide_all_selectors()
-	throw_selector.visible = true
-	_update_throw_selector_position()
-
-func hide_throw_mode():
-	throw_mode_active = false
-	throw_selector.visible = false
-
-func set_throw_selected(weapon):
-	selected_throw_weapon = weapon
-	if throw_mode_active:
-		_update_throw_selector_position()
-
-func _update_throw_selector_position():
-	_place_selector_on_button(throw_selector, _get_throw_button(selected_throw_weapon))
-
-func _get_throw_button(weapon):
-	if weapon == "bone":
-		return bone_button
-	if weapon == "lance":
-		return lance_button
-	return coco_button
 
 
 # -----------------------------
@@ -703,6 +564,8 @@ func update_breath(current, max_value):
 
 func stop_breath():
 	hide_breathbar()
+
+
 # ============================================================================
 #        SALISSURE HUD
 # ============================================================================
@@ -761,8 +624,9 @@ func spawn_hud_dirt(texture = null):
 	# 10. Lancement animation
 	dirt.start()
 
+
 # ============================================================================
-#        RETROCOMPAT : APPEAR / ANIM_TO
+#                   APPEAR / ANIM_TO
 # ============================================================================
 func appear_coco():
 	_show_coco()

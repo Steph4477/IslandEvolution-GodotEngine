@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" uid="uid://cdnl4r3q0ukwv" path="res://Hud/Modules/dirt_spot.tscn" id="2_ll21l"]
-[ext_resource type="PackedScene" uid="uid://3etkaqelcp02" path="res://Interface/Joystick/virtual_joystick.tscn" id="2_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/gamePad/shoot.png" id="6_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/gamePad/Pressed/shoot.png" id="7_b0qj5"]
 [ext_resource type="Texture2D" uid="uid://wctveqj65ef2" path="res://Interface/gamePad/coconut.png" id="8_b0qj5"]
@@ -36,16 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://b0wt351ycqkuj" path="res://Interface/gamePad/Pressed/air.png" id="22_dd24r"]
 [ext_resource type="Texture2D" uid="uid://gynxfgu6u88u" path="res://Interface/gamePad/sprint.png" id="22_f2ifn"]
 [ext_resource type="PackedScene" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
-[ext_resource type="Texture2D" uid="uid://jdg5q4ytqgxl" path="res://Interface/gamePad/switch.png" id="23_3qhmc"]
-[ext_resource type="PackedScene" path="res://Interface/Cursor/game_cursor.tscn" id="23_ff868"]
-[ext_resource type="Texture2D" uid="uid://dd2g75kqskfxu" path="res://Interface/gamePad/Pressed/switch.png" id="24_o4sf8"]
 [ext_resource type="Texture2D" uid="uid://civywlo7n80ma" path="res://Hud/honey.png" id="25_akioh"]
 [ext_resource type="Texture2D" uid="uid://btm5j6wwh6x37" path="res://Interface/Speed_Bar/progress_bar.png" id="27_mltuv"]
-[ext_resource type="Texture2D" uid="uid://bmox2fkkm4s10" path="res://Interface/gamePad/selectedG.png" id="27_ulwxg"]
 [ext_resource type="Script" uid="uid://bdoxhgt5axy6w" path="res://Interface/Speed_Bar/speed_bar.gd" id="27_wb1yk"]
-[ext_resource type="Texture2D" uid="uid://beiex388t0xhp" path="res://Interface/gamePad/selectedY.png" id="28_egy6j"]
 [ext_resource type="Texture2D" uid="uid://4eeskkiqb3uk" path="res://Hud/break.png" id="28_m6ehm"]
-[ext_resource type="Texture2D" uid="uid://cw8mb1xkodc5u" path="res://Interface/gamePad/selected.png" id="28_rg2xt"]
 [ext_resource type="Texture2D" uid="uid://jajk5i7vupby" path="res://Interface/Healt_Bar/progress_bar2.png" id="33_rjgrc"]
 [ext_resource type="Script" uid="uid://bf67m6j36omgj" path="res://Hud/bar_slot.gd" id="36_k3kan"]
 [ext_resource type="Texture2D" uid="uid://c3waywbrqy860" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
@@ -61,6 +54,10 @@
 [ext_resource type="Texture2D" uid="uid://bnw3t35o22tdy" path="res://Items/CheckBox/2.png" id="51_hsv3q"]
 [ext_resource type="Texture2D" uid="uid://btvi5xn63t8my" path="res://Items/CheckBox/seal.png" id="52_wfxx7"]
 [ext_resource type="Texture2D" uid="uid://co4ty4kifftog" path="res://Hud/Modules/Textures/web_dirt_big.png" id="61_ll21l"]
+[ext_resource type="Texture2D" uid="uid://pb64ly4es3xl" path="res://Interface/gamePad/arrow.png" id="62_jcaq3"]
+[ext_resource type="Texture2D" uid="uid://dgxx3o1ksv4x7" path="res://Interface/gamePad/Pressed/arrow.png" id="63_y20lb"]
+[ext_resource type="Texture2D" uid="uid://btncwe56qeima" path="res://Interface/gamePad/interact.png" id="64_uk4ib"]
+[ext_resource type="Texture2D" uid="uid://crujlx35whpxy" path="res://Interface/gamePad/Pressed/interact.png" id="65_xl0m0"]
 
 [sub_resource type="Animation" id="Animation_1uhjb"]
 length = 0.001
@@ -667,118 +664,6 @@ _data = {
 &"RESET": SubResource("Animation_jnynh"),
 &"appear_sprint": SubResource("Animation_ll21l")
 }
-
-[sub_resource type="Animation" id="Animation_mhl4i"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Switch:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.11, 0.11)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Switch:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(501, 914.99994)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Switch:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Switch:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_6ivel"]
-resource_name = "appear_switch"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Switch:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.45, 0.45), Vector2(0.11, 0.11)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Switch:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(762, 296.00003), Vector2(501, 914.99994)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Switch:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [6.283185307179586, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Gamepad/Switch:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8k643"]
-_data = {
-&"RESET": SubResource("Animation_mhl4i"),
-&"appear_switch": SubResource("Animation_6ivel")
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_rg2xt"]
-font_size = 20
 
 [sub_resource type="Animation" id="Animation_x6mpx"]
 resource_name = "appear_fire_craft_quest"
@@ -1399,9 +1284,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VirtualJoystick" parent="." unique_id=234075380 instance=ExtResource("2_s8lhr")]
-position = Vector2(155.00012, 921.99994)
-
 [node name="Gamepad" type="Control" parent="." unique_id=1114488835]
 layout_mode = 3
 anchors_preset = 0
@@ -1415,7 +1297,6 @@ texture_pressed = ExtResource("7_b0qj5")
 [node name="Coco" type="TouchScreenButton" parent="Gamepad" unique_id=1026696562]
 position = Vector2(1789, 805.99994)
 rotation = 6.2831855
-scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("8_b0qj5")
 texture_pressed = ExtResource("9_870gb")
 action = "ui_cancel"
@@ -1580,19 +1461,6 @@ action = "sprint"
 [node name="AnimSprint" type="AnimationPlayer" parent="Gamepad/Sprint" unique_id=314590205]
 libraries/ = SubResource("AnimationLibrary_6yi51")
 
-[node name="Switch" type="TouchScreenButton" parent="Gamepad" unique_id=411639348]
-visible = false
-position = Vector2(501, 914.99994)
-scale = Vector2(0.11, 0.11)
-texture_normal = ExtResource("23_3qhmc")
-texture_pressed = ExtResource("24_o4sf8")
-action = "switch"
-
-[node name="AnimSwitch" type="AnimationPlayer" parent="Gamepad/Switch" unique_id=1079033093]
-root_node = NodePath("../../..")
-libraries/ = SubResource("AnimationLibrary_8k643")
-autoplay = &"appear_switch"
-
 [node name="Menu" type="TouchScreenButton" parent="Gamepad" unique_id=394726589]
 position = Vector2(1597, 42)
 scale = Vector2(0.11, 0.11)
@@ -1606,27 +1474,6 @@ scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("16_smsye")
 texture_pressed = ExtResource("17_m6ehm")
 action = "ui_cancel"
-
-[node name="SkillSelector" type="Sprite2D" parent="Gamepad" unique_id=1136588574]
-visible = false
-z_index = 50
-position = Vector2(328, 711)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("27_ulwxg")
-
-[node name="HealSelector" type="Sprite2D" parent="Gamepad" unique_id=1143041508]
-visible = false
-position = Vector2(329, 971)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("28_egy6j")
-
-[node name="ThrowSelector" type="Sprite2D" parent="Gamepad" unique_id=2020408350]
-visible = false
-modulate = Color(1, 1, 1, 0.45400003)
-z_index = 100
-position = Vector2(120, 676)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("28_rg2xt")
 
 [node name="HBoxContainerBanane" type="HBoxContainer" parent="." unique_id=837233078]
 offset_left = -1002.0
@@ -1866,40 +1713,11 @@ offset_top = -28.0
 offset_right = 7.0
 offset_bottom = -28.0
 
-[node name="GameCursor" parent="." unique_id=1171943240 instance=ExtResource("23_ff868")]
-
 [node name="BreakSprite" type="Sprite2D" parent="." unique_id=1262810462]
 modulate = Color(1, 1, 1, 0.31764707)
 position = Vector2(1013.00006, 575.00006)
 scale = Vector2(0.7216797, 0.7216797)
 texture = ExtResource("28_m6ehm")
-
-[node name="Label" type="Label" parent="." unique_id=1224505341]
-offset_left = 84.0
-offset_top = 1028.0
-offset_right = 116.0
-offset_bottom = 1096.0
-text = "J"
-label_settings = SubResource("LabelSettings_rg2xt")
-uppercase = true
-
-[node name="Label2" type="Label" parent="." unique_id=1320780764]
-offset_left = 15.0
-offset_top = 1007.0
-offset_right = 55.0
-offset_bottom = 1076.0
-text = "k"
-label_settings = SubResource("LabelSettings_rg2xt")
-uppercase = true
-
-[node name="Label3" type="Label" parent="." unique_id=2010574700]
-offset_left = 13.0
-offset_top = 954.0
-offset_right = 53.0
-offset_bottom = 1023.0
-text = "h"
-label_settings = SubResource("LabelSettings_rg2xt")
-uppercase = true
 
 [node name="FireCraftChecklist" type="VBoxContainer" parent="." unique_id=511074019]
 offset_left = 1556.0
@@ -2081,6 +1899,42 @@ position = Vector2(105.99999, -2.9999998)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("52_wfxx7")
 
+[node name="Interact" type="TouchScreenButton" parent="AirCraftChecklist" unique_id=1168241739]
+modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+position = Vector2(-1165, 665)
+texture_normal = ExtResource("64_uk4ib")
+texture_pressed = ExtResource("65_xl0m0")
+action = "interact"
+
+[node name="DirectionalArrow" type="Control" parent="." unique_id=1965791036]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1911.0
+offset_bottom = 1086.0
+
+[node name="ui_left" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1587167800]
+modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+position = Vector2(44.000004, 1024)
+rotation = -1.5707964
+texture_normal = ExtResource("62_jcaq3")
+texture_pressed = ExtResource("63_y20lb")
+action = "ui_left"
+
+[node name="ui_right" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1845974673]
+modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+position = Vector2(375, 895)
+rotation = 1.5707964
+texture_normal = ExtResource("62_jcaq3")
+texture_pressed = ExtResource("63_y20lb")
+action = "ui_right"
+
+[node name="ui_up" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1301371472]
+modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+position = Vector2(144, 899)
+texture_normal = ExtResource("62_jcaq3")
+texture_pressed = ExtResource("63_y20lb")
+action = "jump"
+
 [connection signal="pressed" from="Gamepad/Hand" to="." method="_on_hand_pressed"]
 [connection signal="pressed" from="Gamepad/Coco" to="." method="_on_coco_pressed"]
 [connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]
@@ -2092,6 +1946,5 @@ texture = ExtResource("52_wfxx7")
 [connection signal="pressed" from="Gamepad/Fire" to="." method="_on_fire_pressed"]
 [connection signal="pressed" from="Gamepad/Air" to="." method="_on_air_pressed"]
 [connection signal="pressed" from="Gamepad/Sprint" to="." method="_on_sprint_pressed"]
-[connection signal="pressed" from="Gamepad/Switch" to="." method="_on_switch_pressed"]
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Gamepad/Break" to="." method="_on_break_pressed"]

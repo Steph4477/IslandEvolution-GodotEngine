@@ -1,14 +1,14 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://Interface/Configuration/configuration.gd" id="1_cacsw"]
-[ext_resource type="Texture2D" path="res://Interface/Configuration/configuration.png" id="2_g4g8p"]
-[ext_resource type="Texture2D" path="res://Interface/Configuration/background.png" id="2_tle2q"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl0/Environement/border.png" id="3_tle2q"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/play.png" id="4_m3h2v"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/Pressed/play.png" id="5_yep7t"]
+[ext_resource type="Script" uid="uid://cws2xewfc2m6n" path="res://Interface/Configuration/configuration.gd" id="1_cacsw"]
+[ext_resource type="Texture2D" uid="uid://b6xcda208r1y" path="res://Interface/Configuration/configuration.png" id="2_g4g8p"]
+[ext_resource type="Texture2D" uid="uid://cknlh1cp3os8i" path="res://Interface/Configuration/background.png" id="2_tle2q"]
+[ext_resource type="Texture2D" uid="uid://djm1k0oitsct2" path="res://Levels/Lvl0/Assets/border.png" id="3_tle2q"]
+[ext_resource type="Texture2D" uid="uid://dksqtymolgkg8" path="res://Menu/Buttons/play.png" id="4_m3h2v"]
+[ext_resource type="Texture2D" uid="uid://c8j8bcuiju403" path="res://Menu/Buttons/Pressed/play.png" id="5_yep7t"]
 [ext_resource type="AudioStream" path="res://sounds/dijee.wav" id="6_inojj"]
-[ext_resource type="Texture2D" path="res://Interface/GamePad/menu.png" id="7_tle2q"]
-[ext_resource type="Texture2D" path="res://Interface/GamePad/Pressed/menu.png" id="8_m3h2v"]
+[ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/GamePad/menu.png" id="7_tle2q"]
+[ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/GamePad/Pressed/menu.png" id="8_m3h2v"]
 
 [node name="Configuration" type="Node2D"]
 position = Vector2(404, 247)
