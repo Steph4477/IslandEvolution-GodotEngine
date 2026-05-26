@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bp2lu0to3myoi"]
 
-[ext_resource type="VideoStream" uid="uid://cu7qev3p2oua" path="res://Levels/IntroCinematic/intro_cinematic.ogv" id="1_fmqeu"]
-[ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/gamePad/menu.png" id="1_o1tmp"]
+[ext_resource type="VideoStream" uid="uid://dmyphejf2g87q" path="res://Levels/IntroCinematic/intro_cinematic.ogv" id="1_fmqeu"]
 [ext_resource type="Script" uid="uid://d1pwwwn4r41wm" path="res://Levels/IntroCinematic/intro_cinematic.gd" id="1_s00hh"]
-[ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/gamePad/Pressed/menu.png" id="2_fmqeu"]
+[ext_resource type="Texture2D" uid="uid://b2uue3e54rcba" path="res://Levels/IntroCinematic/WalkJungle/pass.png" id="3_s00hh"]
+[ext_resource type="Texture2D" uid="uid://dx5gtmekassq8" path="res://Levels/IntroCinematic/WalkJungle/pass_pressed.png" id="4_s00hh"]
 
 [node name="IntroCinematic" type="Node2D" unique_id=1987676523]
 script = ExtResource("1_s00hh")
@@ -15,16 +15,16 @@ stream = ExtResource("1_fmqeu")
 autoplay = true
 
 [node name="Control" type="Control" parent="." unique_id=748673542]
+modulate = Color(1, 1, 1, 0.38431373)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+scale = Vector2(2, 2)
 
 [node name="Menu" type="TouchScreenButton" parent="Control" unique_id=1227477436]
-position = Vector2(1597, 42)
+position = Vector2(791, 427.5)
 scale = Vector2(0.11, 0.11)
-texture_normal = ExtResource("1_o1tmp")
-texture_pressed = ExtResource("2_fmqeu")
+texture_normal = ExtResource("3_s00hh")
+texture_pressed = ExtResource("4_s00hh")
 action = "ui_cancel"
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
