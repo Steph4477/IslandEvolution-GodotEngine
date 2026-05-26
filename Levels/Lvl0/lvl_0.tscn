@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://csdp6wwblqxu1"]
 
 [ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Levels/Lvl0/lvl0.gd" id="1_rv0fi"]
-[ext_resource type="Texture2D" uid="uid://dfekwaj0ku65x" path="res://Levels/IntroCinematic/WalkJungle/jungle.png" id="2_d3sq6"]
+[ext_resource type="Texture2D" uid="uid://dfekwaj0ku65x" path="res://Levels/Lvl0/Assets/jungle.png" id="2_d3sq6"]
 [ext_resource type="AudioStream" uid="uid://24fwln65j5wm" path="res://sounds/dijee.ogg" id="4_1tkva"]
-[ext_resource type="Texture2D" uid="uid://b8asnptvv1ljh" path="res://Levels/Lvl0/jungle.png" id="4_15gx2"]
+[ext_resource type="Texture2D" uid="uid://b8asnptvv1ljh" path="res://Levels/Lvl0/Assets/box.png" id="4_15gx2"]
 [ext_resource type="Texture2D" uid="uid://cyvt124r833wr" path="res://Player/Sprite/idle/1.png" id="4_ia24y"]
 [ext_resource type="Texture2D" uid="uid://dtvm6b751qk7o" path="res://Player/Sprite/idle/2.png" id="6_4i3og"]
 [ext_resource type="Texture2D" uid="uid://coka4l72cwoqs" path="res://Player/Sprite/idle/3.png" id="7_5nckp"]
@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c8j8bcuiju403" path="res://Menu/Buttons/Pressed/play.png" id="13_aj0cd"]
 [ext_resource type="Texture2D" uid="uid://bhl2fgu3cdcep" path="res://Menu/Buttons/eschap.png" id="14_aj0cd"]
 [ext_resource type="Texture2D" uid="uid://cfdkmt5xvb8h5" path="res://Menu/Buttons/Pressed/quit.png" id="14_usbvp"]
-[ext_resource type="Texture2D" uid="uid://bmwwi3bmwdljt" path="res://Levels/IntroCinematic/WalkJungle/title.png" id="16_usbvp"]
+[ext_resource type="Texture2D" uid="uid://bmwwi3bmwdljt" path="res://Levels/Lvl0/Assets/title.png" id="16_usbvp"]
 
 [sub_resource type="Animation" id="Animation_b47am"]
 length = 0.001

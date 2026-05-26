@@ -2,8 +2,8 @@
 
 [ext_resource type="VideoStream" uid="uid://dmyphejf2g87q" path="res://Levels/IntroCinematic/intro_cinematic.ogv" id="1_fmqeu"]
 [ext_resource type="Script" uid="uid://d1pwwwn4r41wm" path="res://Levels/IntroCinematic/intro_cinematic.gd" id="1_s00hh"]
-[ext_resource type="Texture2D" uid="uid://b2uue3e54rcba" path="res://Levels/IntroCinematic/WalkJungle/pass.png" id="3_s00hh"]
-[ext_resource type="Texture2D" uid="uid://dx5gtmekassq8" path="res://Levels/IntroCinematic/WalkJungle/pass_pressed.png" id="4_s00hh"]
+[ext_resource type="Texture2D" uid="uid://b2uue3e54rcba" path="res://Levels/IntroCinematic/Assets/pass.png" id="3_s00hh"]
+[ext_resource type="Texture2D" uid="uid://dx5gtmekassq8" path="res://Levels/IntroCinematic/Assets/pass_pressed.png" id="4_s00hh"]
 
 [node name="IntroCinematic" type="Node2D" unique_id=1987676523]
 script = ExtResource("1_s00hh")
