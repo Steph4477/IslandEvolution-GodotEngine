@@ -133,8 +133,7 @@ func _ready():
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
-	#await load_level("res://Media/media_finish.tscn")
-	#await load_level("res://Levels/IntroCinematic/WalkJungle/walk_jungle.tscn")
+
 
 func _process(_delta):
 	if Input.is_action_just_pressed("break"):
