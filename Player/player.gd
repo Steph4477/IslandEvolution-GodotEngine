@@ -16,21 +16,7 @@ const INPUT = {
 	"sprint": "sprint",
 	"camouflage": "camouflage",
 	"fire_buff": "fire_buff",        # F (InputMap)
-	"air_buff": "air_buff",          # A (InputMap)
-
-	# --- Gameplay jet ---
-	"throw_mode": "throw_mode",      # L (InputMap)
-	"throw_switch": "switch",        # switch
-	"throw_fire": "throw_fire",      # shoot (space)
-
-	# --- Gameplay skill ---
-	"skill_mode": "skill_mode",      # K (InputMap)
-	"skill_switch": "switch",        # switch (même action que throw)
-
-	# --- Gameplay heal ---
-	"heal_mode": "heal_mode",        # H (InputMap)
-	"heal_switch": "switch",         # switch (même action que throw)
-	"heal_use": "throw_fire"         # shoot (space) -> même action que le tir
+	"air_buff": "air_buff"           # A (InputMap)
 }
 
 @export var speed = 400
@@ -63,10 +49,6 @@ var spell_bone_fire = preload("res://Shoot/Player/Bone/Fire/bone_fire.tscn")
 var spell_lance_fire = preload("res://Shoot/Player/Spear/Fire/spear_fire.tscn")
 
 var game_state
-var skill_select_mod = null
-var skill_switch_mod = null
-var throw_mod = null
-var switch_heal_mod = null
 
 # --- modules ---
 var state_sync_mod
@@ -156,9 +138,6 @@ var can_camouflage = false
 @export var camouflage_duration = 5.0
 var is_camouflaged = false
 
-var turn_axis_parent = null
-var turn_axis_index = 0
-
 # --- Jump / double jump ---
 var jump_buffer = 0.0
 var did_double_jump = false
@@ -186,21 +165,6 @@ var current_liana = null
 # --- Caisse ---
 var can_push_pull = false
 var is_pushing_or_pulling = false
-
-# --- Gameplay jet ---
-var throw_mode = false
-var selected_throw_weapon = "coco"
-var dbg_throw = true
-
-# --- Gameplay skill ---
-var skill_mode = false
-var selected_skill = "ramp"
-var dbg_skill = true
-
-# --- Gameplay heal ---
-var heal_mode = false
-var selected_heal = "banane"   # IMPORTANT : banane / honey (pas "health")
-var dbg_heal = true
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
@@ -243,23 +207,6 @@ func _ready():
 		await hud_mod.wait_until_ready()
 	
 	setup_popups_module()
-	
-
-	# --- THROW (L / switch / space) ---
-	throw_mod = preload("res://Hud/switch_jet.gd").new()
-	add_child(throw_mod)
-	throw_mod.setup(self)
-
-	# --- SKILL (K / switch) ---
-	skill_switch_mod = preload("res://Hud/switch_skill.gd").new()
-	add_child(skill_switch_mod)
-	skill_switch_mod.setup(self)
-
-	# --- HEAL (H / switch) ---
-	switch_heal_mod = preload("res://Hud/switch_heal.gd").new()
-	add_child(switch_heal_mod)
-	switch_heal_mod.setup(self)
-
 	setup_breath_module()
 	setup_collect_items()
 	setup_collect_skills()
@@ -329,8 +276,6 @@ func setup_combat_module():
 	combat_mod = preload("res://Player/Modules/Player_Combat/player_combat.gd").new()
 	add_child(combat_mod)
 	combat_mod.setup(self)
-	if dbg_throw:
-		print("[THROW][READY] combat_mod=", combat_mod)
 
 func setup_damage_module():
 	damage_mod = preload("res://Player/Modules/Player_Damage/player_damage.gd").new()
@@ -373,15 +318,6 @@ func setup_animation_module():
 	animation_mod.setup(self)
 
 func _physics_process(delta):
-	if throw_mod:
-		throw_mod.update_input()
-
-	if skill_switch_mod:
-		skill_switch_mod.update_input()
-
-	if switch_heal_mod:
-		switch_heal_mod.update_input()
-
 	if is_headbutting:
 		velocity.y = 0
 		move_and_slide()

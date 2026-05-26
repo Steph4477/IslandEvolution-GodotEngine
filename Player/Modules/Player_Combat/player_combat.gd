@@ -17,10 +17,6 @@ func process():
 #                                 SHOOT
 # ============================================================================
 func shoot():
-	# IMPORTANT : si un mode HUD est actif, SPACE sert au mode, pas au tir combat
-	if p.throw_mode or p.heal_mode or p.skill_mode:
-		return
-
 	# lock simple pour éviter multi-await en parallèle
 	if firing_locked:
 		return
