@@ -1,82 +1,179 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene format=3 uid="uid://bij51n0rrxbeu"]
 
-[ext_resource type="Script" path="res://Menu/Game_over/game_over.gd" id="1_jfwx8"]
-[ext_resource type="Texture2D" path="res://Menu/Game_over/background.png" id="2_jfwx8"]
-[ext_resource type="Texture2D" path="res://Menu/Game_over/moko.png" id="4_jfwx8"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl0/Environement/border.png" id="4_luhk1"]
-[ext_resource type="Texture2D" path="res://Menu/Game_over/police.png" id="5_rsbxp"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/restart.png" id="6_877a3"]
-[ext_resource type="Texture2D" path="res://Interface/GamePad/menu.png" id="9_av6lx"]
-[ext_resource type="AudioStream" path="res://sounds/gameover.ogg" id="10_jfwx8"]
-[ext_resource type="Texture2D" path="res://Interface/GamePad/Pressed/menu.png" id="10_rsbxp"]
+[ext_resource type="Script" uid="uid://dr8albc6i3xav" path="res://Menu/Game_over/game_over.gd" id="1_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://cgjed0b0nenmv" path="res://Menu/Game_over/background.png" id="2_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://b73o5cph4jhwm" path="res://Menu/Game_over/moko.png" id="4_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://cxv278jcbhvp0" path="res://Menu/Game_over/police.png" id="5_rsbxp"]
+[ext_resource type="Texture2D" uid="uid://dksqtymolgkg8" path="res://Menu/Buttons/play.png" id="7_1s1kn"]
+[ext_resource type="Texture2D" uid="uid://cv8bn6lc2rnnv" path="res://Menu/Buttons/options.png" id="8_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/gamePad/menu.png" id="9_av6lx"]
+[ext_resource type="AudioStream" uid="uid://b1y8jhh18q4f1" path="res://sounds/gameover.ogg" id="10_jfwx8"]
+[ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/gamePad/Pressed/menu.png" id="10_rsbxp"]
 
-[node name="GameOver" type="Node2D"]
+[sub_resource type="Animation" id="Animation_av6lx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.521)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Gamepad/Restart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1382, 824)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Gamepad/Options:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(29, 824)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Gamepad/Menu:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1597, 42)]
+}
+
+[sub_resource type="Animation" id="Animation_rsbxp"]
+resource_name = "appear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.521)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Gamepad/Restart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1904, 836), Vector2(1382, 824)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Gamepad/Options:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-355, 843), Vector2(29, 824)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Gamepad/Menu:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1873, 26), Vector2(1597, 42)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_877a3"]
+_data = {
+&"RESET": SubResource("Animation_av6lx"),
+&"appear": SubResource("Animation_rsbxp")
+}
+
+[node name="GameOver" type="Node2D" unique_id=1579379951]
 script = ExtResource("1_jfwx8")
 
-[node name="Background" type="Node2D" parent="."]
-position = Vector2(403, 251)
-scale = Vector2(0.5, 0.521)
-
-[node name="Background" type="Node2D" parent="Background"]
-position = Vector2(1114, 552.783)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
-position = Vector2(-8, -257.198)
-scale = Vector2(2.5, 2.5)
+[node name="Background2" type="Sprite2D" parent="." unique_id=988761666]
+position = Vector2(956, 404.99982)
+scale = Vector2(1.25, 1.3024999)
 texture = ExtResource("2_jfwx8")
 
-[node name="Frame" type="Sprite2D" parent="Background/Background"]
-position = Vector2(-1.78814e-06, 1.91948)
-scale = Vector2(2.5, 2.02435)
-texture = ExtResource("4_luhk1")
-
-[node name="Moko" type="Sprite2D" parent="Background/Background"]
-position = Vector2(-102, 485.605)
-scale = Vector2(0.5, 0.5)
+[node name="Moko" type="Sprite2D" parent="." unique_id=810050538]
+position = Vector2(909, 792.00024)
+scale = Vector2(0.25, 0.2605)
 texture = ExtResource("4_jfwx8")
 
-[node name="Police" type="Sprite2D" parent="Background/Background"]
-position = Vector2(-46, -673.704)
+[node name="Titre" type="Sprite2D" parent="." unique_id=1282326003]
+position = Vector2(937, 188.00021)
+scale = Vector2(0.5, 0.521)
 texture = ExtResource("5_rsbxp")
 
-[node name="Gamepad" type="Node2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Titre" unique_id=211354935]
+libraries/ = SubResource("AnimationLibrary_877a3")
+autoplay = &"appear"
+
+[node name="Gamepad" type="Node2D" parent="." unique_id=602934693]
 position = Vector2(66, 49)
 
-[node name="Menu" type="TouchScreenButton" parent="Gamepad"]
+[node name="Menu" type="TouchScreenButton" parent="Gamepad" unique_id=1175235911]
 position = Vector2(1597, 42)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("9_av6lx")
 texture_pressed = ExtResource("10_rsbxp")
 action = "ui_cancel"
 
-[node name="Restart" type="Node2D" parent="."]
+[node name="Restart" type="TouchScreenButton" parent="Gamepad" unique_id=501618535]
+position = Vector2(1382, 824)
+texture_normal = ExtResource("7_1s1kn")
+texture_pressed = ExtResource("7_1s1kn")
+
+[node name="Options" type="TouchScreenButton" parent="Gamepad" unique_id=1527014938]
+position = Vector2(29, 824)
+texture_normal = ExtResource("8_jfwx8")
+texture_pressed = ExtResource("7_1s1kn")
+
+[node name="Restart" type="Node2D" parent="." unique_id=1032112470]
 position = Vector2(841, 455)
 scale = Vector2(0.5, 0.5)
 
-[node name="VBoxContainerRestart" type="VBoxContainer" parent="Restart"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1506.0
-offset_top = 759.0
-offset_right = 3042.0
-offset_bottom = 1866.0
-grow_vertical = 0
-scale = Vector2(0.3, 0.3)
-alignment = 1
+[node name="Options" type="Node2D" parent="." unique_id=593806846]
 
-[node name="Restart" type="TextureButton" parent="Restart/VBoxContainerRestart"]
-layout_mode = 2
-texture_normal = ExtResource("6_877a3")
-
-[node name="Options" type="Node2D" parent="."]
-
-[node name="sound" type="Node2D" parent="."]
+[node name="sound" type="Node2D" parent="." unique_id=997518917]
 position = Vector2(108, 237)
 scale = Vector2(2.10789, 2.42027)
 
-[node name="GameOver" type="AudioStreamPlayer" parent="sound"]
+[node name="GameOver" type="AudioStreamPlayer" parent="sound" unique_id=774660995]
 stream = ExtResource("10_jfwx8")
 
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Restart/VBoxContainerRestart/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Gamepad/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Gamepad/Options" to="." method="_on_options_pressed"]
