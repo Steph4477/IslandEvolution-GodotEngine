@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cr0enss65ug7v"]
 
 [ext_resource type="Script" uid="uid://cy2wr2fcy5eg1" path="res://Media/Assets/BoxPushPlatform/box_push_platform.gd" id="1_tritn"]
-[ext_resource type="Texture2D" uid="uid://k56cmf246jcq" path="res://Media/Assets/BoxPushPlatform/box_push_platform.png" id="2_sqj16"]
+[ext_resource type="Texture2D" uid="uid://beegs78wd72en" path="res://Levels/IntroCinematic/WalkJungle/box.png" id="2_d2u2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o78yy"]
-size = Vector2(557, 335)
+size = Vector2(930, 526)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prpvf"]
-size = Vector2(441, 304)
+size = Vector2(599, 510)
 
 [node name="BoxPushPlatform" type="RigidBody2D" unique_id=2126630427]
 collision_layer = 128
@@ -18,11 +18,10 @@ lock_rotation = true
 script = ExtResource("1_tritn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1379814653]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_sqj16")
+texture = ExtResource("2_d2u2p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2054058168]
-position = Vector2(-22.5, -9.5)
+position = Vector2(2, 86)
 shape = SubResource("RectangleShape2D_o78yy")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=437885276]
@@ -31,7 +30,7 @@ collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1518283601]
-position = Vector2(-133.5, -73)
+position = Vector2(-212.5, 30)
 shape = SubResource("RectangleShape2D_prpvf")
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_area_2d_body_entered"]

@@ -1,165 +1,284 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene format=3 uid="uid://csdp6wwblqxu1"]
 
-[ext_resource type="Script" path="res://Levels/Lvl0/lvl0.gd" id="1_rv0fi"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl0/Environement/border.png" id="2_oo4jl"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl0/Environement/background.png" id="2_uawj8"]
-[ext_resource type="AudioStream" path="res://sounds/dijee.ogg" id="4_1tkva"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/Pressed/restart.png" id="7_qfdsm"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/restart.png" id="9_7s5l6"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/Pressed/load.png" id="9_plvp6"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/load.png" id="9_qmtbe"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/play.png" id="9_ss15l"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/save.png" id="10_qfdsm"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/options.png" id="11_bfns0"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/Pressed/save.png" id="11_oci4l"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/Pressed/options.png" id="12_n1ip6"]
-[ext_resource type="Texture2D" path="res://Menu/Buttons/Pressed/play.png" id="13_aj0cd"]
+[ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Levels/Lvl0/lvl0.gd" id="1_rv0fi"]
+[ext_resource type="Texture2D" uid="uid://dfekwaj0ku65x" path="res://Levels/IntroCinematic/WalkJungle/jungle.png" id="2_d3sq6"]
+[ext_resource type="AudioStream" uid="uid://24fwln65j5wm" path="res://sounds/dijee.ogg" id="4_1tkva"]
+[ext_resource type="Texture2D" uid="uid://b8asnptvv1ljh" path="res://Levels/Lvl0/jungle.png" id="4_15gx2"]
+[ext_resource type="Texture2D" uid="uid://cyvt124r833wr" path="res://Player/Sprite/idle/1.png" id="4_ia24y"]
+[ext_resource type="Texture2D" uid="uid://dtvm6b751qk7o" path="res://Player/Sprite/idle/2.png" id="6_4i3og"]
+[ext_resource type="Texture2D" uid="uid://coka4l72cwoqs" path="res://Player/Sprite/idle/3.png" id="7_5nckp"]
+[ext_resource type="Texture2D" uid="uid://b6afrl1mru2f3" path="res://Menu/Buttons/Pressed/restart.png" id="7_qfdsm"]
+[ext_resource type="Texture2D" uid="uid://cd447qx5fnim4" path="res://Player/Sprite/idle/4.png" id="8_eboxw"]
+[ext_resource type="Texture2D" uid="uid://cia8yk03fjvxb" path="res://Menu/Buttons/restart.png" id="9_7s5l6"]
+[ext_resource type="Texture2D" uid="uid://dgdg8vqghb0mu" path="res://Menu/Buttons/Pressed/load.png" id="9_plvp6"]
+[ext_resource type="Texture2D" uid="uid://d0ofi6bpni2c6" path="res://Menu/Buttons/load.png" id="9_qmtbe"]
+[ext_resource type="Texture2D" uid="uid://dksqtymolgkg8" path="res://Menu/Buttons/play.png" id="9_ss15l"]
+[ext_resource type="Texture2D" uid="uid://cmuuarglwnaxw" path="res://Menu/Buttons/save.png" id="10_qfdsm"]
+[ext_resource type="Texture2D" uid="uid://cv8bn6lc2rnnv" path="res://Menu/Buttons/options.png" id="11_bfns0"]
+[ext_resource type="Texture2D" uid="uid://b1qeojagvcjyo" path="res://Menu/Buttons/Pressed/save.png" id="11_oci4l"]
+[ext_resource type="Texture2D" uid="uid://cwc1sn1eoxu6b" path="res://Menu/Buttons/Pressed/options.png" id="12_n1ip6"]
+[ext_resource type="Texture2D" uid="uid://c8j8bcuiju403" path="res://Menu/Buttons/Pressed/play.png" id="13_aj0cd"]
+[ext_resource type="Texture2D" uid="uid://bhl2fgu3cdcep" path="res://Menu/Buttons/eschap.png" id="14_aj0cd"]
+[ext_resource type="Texture2D" uid="uid://cfdkmt5xvb8h5" path="res://Menu/Buttons/Pressed/quit.png" id="14_usbvp"]
+[ext_resource type="Texture2D" uid="uid://bmwwi3bmwdljt" path="res://Levels/IntroCinematic/WalkJungle/title.png" id="16_usbvp"]
 
-[node name="MenuLvl0" type="Node2D"]
+[sub_resource type="Animation" id="Animation_b47am"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ia24y")]
+}
+
+[sub_resource type="Animation" id="Animation_347at"]
+resource_name = "idle_moko"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.029999971, 0.5, 0.95000005, 1.3800001, 1.8600001, 2.3999999, 2.83, 3.29),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_ia24y"), ExtResource("6_4i3og"), ExtResource("4_ia24y"), ExtResource("7_5nckp"), ExtResource("8_eboxw"), ExtResource("6_4i3og"), ExtResource("4_ia24y"), ExtResource("8_eboxw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcm01"]
+_data = {
+&"RESET": SubResource("Animation_b47am"),
+&"idle_moko": SubResource("Animation_347at")
+}
+
+[sub_resource type="Animation" id="Animation_82w0o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainerOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1623, 929)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainerQuitter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(57, 929)]
+}
+
+[sub_resource type="Animation" id="Animation_f18hj"]
+resource_name = "appear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainerOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1969, 931), Vector2(1623, 929)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainerQuitter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-291, 927), Vector2(57, 929)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2rdvj"]
+_data = {
+&"RESET": SubResource("Animation_82w0o"),
+&"appear": SubResource("Animation_f18hj")
+}
+
+[node name="MenuLvl0" type="Node2D" unique_id=1518816508]
 script = ExtResource("1_rv0fi")
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="." unique_id=1801920291]
 position = Vector2(403, 251)
-scale = Vector2(0.5, 0.521)
 
-[node name="Background" type="Node2D" parent="Background"]
-position = Vector2(1114, 552.783)
+[node name="Background" type="Sprite2D" parent="Background" unique_id=2114204543]
+position = Vector2(557, 289)
+texture = ExtResource("2_d3sq6")
 
-[node name="TextureRect" type="TextureRect" parent="Background/Background"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -1772.0
-offset_top = -942.4184
-offset_right = 1768.0
-offset_bottom = 1051.5815
-texture = ExtResource("2_uawj8")
+[node name="Box" type="Sprite2D" parent="Background" unique_id=1098181049]
+position = Vector2(555, 289)
+texture = ExtResource("4_15gx2")
 
-[node name="Background" type="Sprite2D" parent="Background/Background"]
-position = Vector2(-284, 22.04563)
-scale = Vector2(0.83126545, 0.76720417)
-texture = ExtResource("2_uawj8")
+[node name="Moko" type="Sprite2D" parent="Background" unique_id=401838200]
+position = Vector2(99, 543)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("4_ia24y")
 
-[node name="Frame" type="Sprite2D" parent="Background/Background"]
-position = Vector2(-1.78814e-06, 1.91948)
-scale = Vector2(2.5, 2.02435)
-texture = ExtResource("2_oo4jl")
+[node name="Title" type="Sprite2D" parent="Background" unique_id=1297356091]
+position = Vector2(536, -54)
+texture = ExtResource("16_usbvp")
 
-[node name="VBoxContainerOptions" type="VBoxContainer" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 134.0
-offset_top = 813.0
-offset_right = 1042.0
-offset_bottom = 1920.0
-grow_vertical = 0
-scale = Vector2(0.2, 0.2)
-alignment = 1
+[node name="Anim" type="AnimationPlayer" parent="Background" unique_id=34932310]
+libraries/ = SubResource("AnimationLibrary_kcm01")
+autoplay = &"idle_moko"
 
-[node name="Options" type="TextureButton" parent="VBoxContainerOptions"]
-layout_mode = 2
-texture_normal = ExtResource("11_bfns0")
-texture_pressed = ExtResource("12_n1ip6")
-
-[node name="Continue" type="Node2D" parent="."]
+[node name="Load" type="Node2D" parent="." unique_id=1048620640]
 z_index = 5
-position = Vector2(-1154, -202)
-scale = Vector2(1.6, 1.6)
+position = Vector2(787, 471)
 
-[node name="VBoxContainerStart" type="VBoxContainer" parent="Continue"]
-anchors_preset = 2
-anchor_top = 1.0
+[node name="VBoxContainerLoad" type="VBoxContainer" parent="Load" unique_id=246444970]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1615.0
-offset_top = 527.00006
-offset_right = 2523.0
-offset_bottom = 1616.9998
-grow_vertical = 0
-scale = Vector2(0.2, 0.2)
+offset_left = -14.0
+offset_top = -94.0
+offset_right = 266.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Continue" type="TextureButton" parent="Continue/VBoxContainerStart"]
-layout_mode = 2
-texture_normal = ExtResource("9_7s5l6")
-texture_pressed = ExtResource("7_qfdsm")
-
-[node name="Load" type="Node2D" parent="."]
-z_index = 5
-position = Vector2(74, 32)
-scale = Vector2(0.9, 0.9)
-
-[node name="VBoxContainerLoad" type="VBoxContainer" parent="Load"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1615.0
-offset_top = 527.00006
-offset_right = 2523.0
-offset_bottom = 1616.9998
-grow_vertical = 0
-scale = Vector2(0.2, 0.2)
-mouse_filter = 2
-alignment = 1
-
-[node name="Load" type="TextureButton" parent="Load/VBoxContainerLoad"]
+[node name="Load" type="TextureButton" parent="Load/VBoxContainerLoad" unique_id=1236002251]
 layout_mode = 2
 texture_normal = ExtResource("9_qmtbe")
 texture_pressed = ExtResource("9_plvp6")
 
-[node name="Save" type="Node2D" parent="."]
+[node name="Save" type="Node2D" parent="." unique_id=1720657435]
 z_index = 5
-position = Vector2(-108, 74)
+position = Vector2(735, 638)
 
-[node name="VBoxContainerSave" type="VBoxContainer" parent="Save"]
-anchors_preset = 2
-anchor_top = 1.0
+[node name="VBoxContainerSave" type="VBoxContainer" parent="Save" unique_id=1093500135]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1615.0
-offset_top = 527.00006
-offset_right = 2523.0
-offset_bottom = 1616.9998
-grow_vertical = 0
-scale = Vector2(0.2, 0.2)
+offset_left = -14.0
+offset_top = -130.0
+offset_right = 382.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Save" type="TextureButton" parent="Save/VBoxContainerSave"]
+[node name="Save" type="TextureButton" parent="Save/VBoxContainerSave" unique_id=1793276006]
 layout_mode = 2
 texture_normal = ExtResource("10_qfdsm")
 texture_pressed = ExtResource("11_oci4l")
 
-[node name="Restart" type="Node2D" parent="."]
-position = Vector2(251, 192)
-scale = Vector2(0.8, 0.8)
+[node name="Continue" type="Node2D" parent="." unique_id=1097869991]
+z_index = 5
+position = Vector2(767, 637)
 
-[node name="VBoxContainerRestart" type="VBoxContainer" parent="Restart"]
-anchors_preset = 2
-anchor_top = 1.0
+[node name="VBoxContainerStart" type="VBoxContainer" parent="Continue" unique_id=347625118]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1504.0
-offset_top = 744.0
-offset_right = 2476.0
-offset_bottom = 1851.0
-grow_vertical = 0
-scale = Vector2(0.3, 0.3)
+offset_right = 303.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Restart" type="TextureButton" parent="Restart/VBoxContainerRestart"]
+[node name="Continue" type="TextureButton" parent="Continue/VBoxContainerStart" unique_id=980017973]
+layout_mode = 2
+texture_normal = ExtResource("9_7s5l6")
+texture_pressed = ExtResource("7_qfdsm")
+
+[node name="Restart" type="Node2D" parent="." unique_id=1989511834]
+position = Vector2(705, 773)
+
+[node name="VBoxContainerRestart" type="VBoxContainer" parent="Restart" unique_id=1195688488]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 442.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Restart" type="TextureButton" parent="Restart/VBoxContainerRestart" unique_id=1853942618]
 layout_mode = 2
 texture_normal = ExtResource("9_ss15l")
 texture_pressed = ExtResource("13_aj0cd")
 
-[node name="sound" type="Node2D" parent="."]
-position = Vector2(923.9999, 597.00006)
-scale = Vector2(2.10789, 2.42027)
+[node name="VBoxContainerOptions" type="VBoxContainer" parent="." unique_id=493358571]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1623.0
+offset_top = 929.0
+offset_right = 1887.001
+offset_bottom = 1031.002
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="dijee" type="AudioStreamPlayer" parent="sound"]
+[node name="Options" type="TextureButton" parent="VBoxContainerOptions" unique_id=1277407320]
+layout_mode = 2
+texture_normal = ExtResource("11_bfns0")
+texture_pressed = ExtResource("12_n1ip6")
+
+[node name="VBoxContainerQuitter" type="VBoxContainer" parent="." unique_id=1772656248]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 929.0
+offset_right = 317.0
+offset_bottom = 1029.0002
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Quitter" type="TextureButton" parent="VBoxContainerQuitter" unique_id=1723617029]
+layout_mode = 2
+texture_normal = ExtResource("14_aj0cd")
+texture_pressed = ExtResource("14_usbvp")
+
+[node name="sound" type="Node2D" parent="." unique_id=1680498724]
+
+[node name="dijee" type="AudioStreamPlayer" parent="sound" unique_id=1683550365]
 stream = ExtResource("4_1tkva")
 volume_db = -6.45
+autoplay = true
 
-[connection signal="pressed" from="VBoxContainerOptions/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Continue/VBoxContainerStart/Continue" to="." method="_on_continue_pressed"]
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=175262954]
+libraries/ = SubResource("AnimationLibrary_2rdvj")
+autoplay = &"appear"
+
 [connection signal="pressed" from="Load/VBoxContainerLoad/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Save/VBoxContainerSave/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Continue/VBoxContainerStart/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Restart/VBoxContainerRestart/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainerOptions/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainerQuitter/Quitter" to="." method="_on_options_pressed"]
