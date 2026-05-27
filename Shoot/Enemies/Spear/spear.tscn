@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://odqp6c1akesl"]
 
-[ext_resource type="Script" uid="uid://csrijdkls1wbw" path="res://Shoot/Enemies/Spear/spear.gd" id="1_xbsnv"]
+[ext_resource type="Script" uid="uid://cglwmrdgurxwf" path="res://Shoot/Enemies/Spear/spear.gd" id="1_6by6y"]
 [ext_resource type="Texture2D" uid="uid://rgysxhr1dxge" path="res://Shoot/Enemies/Spear/spear.png" id="2_i14k0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyw12"]
@@ -10,7 +10,7 @@ size = Vector2(8, 3)
 z_index = 5
 collision_layer = 8
 collision_mask = 3
-script = ExtResource("1_xbsnv")
+script = ExtResource("1_6by6y")
 
 [node name="SpearSprite" type="Sprite2D" parent="." unique_id=607642992]
 scale = Vector2(0.2, -0.2)

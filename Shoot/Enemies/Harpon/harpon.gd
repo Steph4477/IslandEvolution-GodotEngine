@@ -2,7 +2,8 @@ extends RigidBody2D
 
 @export var speed = 1000
 @export var damage = 500
-@export var life_time = 3.0
+@export var arc_force = -350
+@export var gravity_force = 1.6
 
 var direction = 1
 
@@ -10,30 +11,38 @@ var direction = 1
 @onready var hitbox = $Area2D/CollisionPolygon2D
 
 func _ready():
-	gravity_scale = 0
+	gravity_scale = gravity_force
 	hitbox.disabled = true
+	contact_monitor = true
+	max_contacts_reported = 1
 
-func start(pos, dir):
+func _physics_process(_delta):
+	rotation = linear_velocity.angle()
+
+func start(pos, target_pos):
 	global_position = pos
-	direction = dir
+
+	if target_pos.x < global_position.x:
+		direction = -1
+	else:
+		direction = 1
+
+	var dir = (target_pos - global_position).normalized()
 
 	hitbox.disabled = false
-	linear_velocity = Vector2(speed * direction, 0)
+	linear_velocity = Vector2(dir.x * speed, dir.y * speed + arc_force)
 
 	if direction < 0:
-		sprite.flip_h = true
+		sprite.flip_v = true
 	else:
-		sprite.flip_h = false
-
-	await get_tree().create_timer(life_time).timeout
-	queue_free()
+		sprite.flip_v = false
 
 func _on_area_2d_body_entered(body):
 	if not body.is_in_group("Player"):
 		return
 
 	body.damage_mod.on_hit(damage)
+	queue_free()
 
-	hitbox.set_deferred("disabled", true)
-
+func _on_body_entered(_body):
 	queue_free()

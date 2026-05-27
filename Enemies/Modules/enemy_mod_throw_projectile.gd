@@ -95,4 +95,4 @@ func spawn_projectile():
 	if target_pos.x < enemy.projectile_spawn.global_position.x:
 		dir = -1
 
-	projectile.start(enemy.projectile_spawn.global_position, dir)
+	projectile.start(enemy.projectile_spawn.global_position, target_pos)
