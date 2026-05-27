@@ -49,6 +49,13 @@ func start_pull(target):
 	is_pulling = true
 	pull_time = 0.0
 
+	owner_node.velocity.x = 0
+	owner_node.is_attacking = true
+	owner_node.is_shooting = false
+
+	if owner_node.anim.current_animation != "pull_harpoon":
+		owner_node.anim.play("pull_harpoon")
+
 func _physics_process(delta):
 	if rope != null:
 		rope.update_rope()
@@ -85,6 +92,11 @@ func stop_pull():
 
 	if target_node != null:
 		target_node.stop_harpooned()
+
+	if owner_node != null:
+		owner_node.is_attacking = false
+		owner_node.is_shooting = false
+		owner_node.play_idle()
 
 	is_pulling = false
 	pull_time = 0.0

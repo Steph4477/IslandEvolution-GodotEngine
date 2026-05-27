@@ -25,9 +25,13 @@
 [ext_resource type="Texture2D" uid="uid://b0ocewog76hu7" path="res://Enemies/Cannibal/Boss/Sprites/Run/4.png" id="24_xcqje"]
 [ext_resource type="Texture2D" uid="uid://by3skqwspjost" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/1.png" id="25_33mvn"]
 [ext_resource type="Texture2D" uid="uid://x3kj0t3erkqc" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/2.png" id="26_0yu1h"]
+[ext_resource type="Texture2D" uid="uid://bqo6b0wns184u" path="res://Enemies/Cannibal/Boss/Sprites/Harpooned/1.png" id="26_b43wt"]
 [ext_resource type="Texture2D" uid="uid://brlmt4gji0kfj" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/3.png" id="27_4g61g"]
+[ext_resource type="Texture2D" uid="uid://b26giw5lwfdvd" path="res://Enemies/Cannibal/Boss/Sprites/Harpooned/2.png" id="27_pdt3i"]
 [ext_resource type="Texture2D" uid="uid://dy06gdd0fdyge" path="res://Enemies/Cannibal/Boss/Sprites/Run/5.png" id="28_63yon"]
+[ext_resource type="Texture2D" uid="uid://bh3f3tcewgtaj" path="res://Enemies/Cannibal/Boss/Sprites/Harpooned/3.png" id="28_csyv5"]
 [ext_resource type="Texture2D" uid="uid://cfv4be3dcir2f" path="res://Enemies/Cannibal/Boss/Sprites/ThrowProjectile/4.png" id="28_fafxj"]
+[ext_resource type="Texture2D" uid="uid://dvyybhyggr3bd" path="res://Enemies/Cannibal/Boss/Sprites/Harpooned/4.png" id="29_k6r2b"]
 [ext_resource type="Texture2D" uid="uid://mt23v14unsnq" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/1.png" id="30_q2wud"]
 [ext_resource type="Texture2D" uid="uid://bancibdpw1vbc" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/2.png" id="31_qicd7"]
 [ext_resource type="Texture2D" uid="uid://djvrhm1s3vjpk" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/3.png" id="32_cbgv8"]
@@ -36,19 +40,31 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(87, 137)
 
-[sub_resource type="Animation" id="Animation_63yon"]
+[sub_resource type="Animation" id="Animation_b43wt"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("17_twuli")]
+"update": 0,
+"values": [Vector2(5, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HealthBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(79, -71)]
 }
 
 [sub_resource type="Animation" id="Animation_4xyrk"]
@@ -146,6 +162,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("14_b4oy7"), ExtResource("15_67hha"), ExtResource("16_1lskd"), ExtResource("17_twuli")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 4), Vector2(5, -200), Vector2(5, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HealthBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.34, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(79, -71), Vector2(71, -341), Vector2(79, -71)]
+}
 
 [sub_resource type="Animation" id="Animation_66vmv"]
 resource_name = "jump_quake"
@@ -177,6 +217,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("18_upaq3"), ExtResource("19_r4d3k"), ExtResource("20_qs27j"), ExtResource("21_x2q26")]
+}
+
+[sub_resource type="Animation" id="Animation_ib553"]
+resource_name = "pull_harpoon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("26_b43wt"), ExtResource("27_pdt3i"), ExtResource("28_csyv5"), ExtResource("29_k6r2b")]
 }
 
 [sub_resource type="Animation" id="Animation_rvxuj"]
@@ -212,6 +267,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("24_xcqje"), ExtResource("28_63yon"), ExtResource("23_4icvi"), ExtResource("28_63yon")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 4), Vector2(5, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HealthBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(79, -71), Vector2(79, -71)]
+}
 
 [sub_resource type="Animation" id="Animation_scle8"]
 resource_name = "walk_face"
@@ -232,7 +311,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1pcfp"]
 _data = {
-&"RESET": SubResource("Animation_63yon"),
+&"RESET": SubResource("Animation_b43wt"),
 &"aggro": SubResource("Animation_4xyrk"),
 &"attack": SubResource("Animation_60gw1"),
 &"cac": SubResource("Animation_4ah2e"),
@@ -241,6 +320,7 @@ _data = {
 &"jump": SubResource("Animation_b6dgq"),
 &"jump_quake": SubResource("Animation_66vmv"),
 &"onhit": SubResource("Animation_1dfca"),
+&"pull_harpoon": SubResource("Animation_ib553"),
 &"run": SubResource("Animation_rvxuj"),
 &"walk": SubResource("Animation_j5f54"),
 &"walk_face": SubResource("Animation_scle8")
@@ -276,7 +356,7 @@ position = Vector2(-151, 56)
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=802653703]
 position = Vector2(5, 4)
 scale = Vector2(-0.5, 0.5)
-texture = ExtResource("17_twuli")
+texture = ExtResource("28_63yon")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1463877392]
 libraries/ = SubResource("AnimationLibrary_1pcfp")

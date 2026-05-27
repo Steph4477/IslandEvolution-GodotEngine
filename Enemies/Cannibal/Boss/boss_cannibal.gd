@@ -1,6 +1,6 @@
 extends EnemyGroundBase
 
-@export var projectile_scene = preload("res://Shoot/Enemies/Harpon/harpon.tscn")
+@export var projectile_scene = preload("res://Shoot/Enemies/Harpoon/harpoon.tscn")
 @export var projectile_spawn_delay = 0.40
 
 @export var melee_distance = 120.0
@@ -269,6 +269,12 @@ func _on_attack_timer_timeout():
 
 func _on_projectile_timer_timeout():
 	if is_quaking:
+		return
+
+	if is_quake_jumping:
+		return
+
+	if not is_on_floor():
 		return
 
 	throw_mod.on_timer_timeout()
