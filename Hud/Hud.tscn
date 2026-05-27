@@ -1475,6 +1475,42 @@ texture_normal = ExtResource("16_smsye")
 texture_pressed = ExtResource("17_m6ehm")
 action = "ui_cancel"
 
+[node name="Interact" type="TouchScreenButton" parent="Gamepad" unique_id=1168241739]
+modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+position = Vector2(391, 904)
+texture_normal = ExtResource("64_uk4ib")
+texture_pressed = ExtResource("65_xl0m0")
+action = "interact"
+
+[node name="DirectionalArrow" type="Control" parent="." unique_id=1965791036]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1911.0
+offset_bottom = 1086.0
+
+[node name="ui_left" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1587167800]
+modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+position = Vector2(44.000004, 1024)
+rotation = -1.5707964
+texture_normal = ExtResource("62_jcaq3")
+texture_pressed = ExtResource("63_y20lb")
+action = "ui_left"
+
+[node name="ui_right" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1845974673]
+modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+position = Vector2(375, 895)
+rotation = 1.5707964
+texture_normal = ExtResource("62_jcaq3")
+texture_pressed = ExtResource("63_y20lb")
+action = "ui_right"
+
+[node name="ui_up" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1301371472]
+modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+position = Vector2(144, 899)
+texture_normal = ExtResource("62_jcaq3")
+texture_pressed = ExtResource("63_y20lb")
+action = "jump"
+
 [node name="HBoxContainerBanane" type="HBoxContainer" parent="." unique_id=837233078]
 offset_left = -1002.0
 offset_top = 357.0
@@ -1898,42 +1934,6 @@ visible = false
 position = Vector2(105.99999, -2.9999998)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("52_wfxx7")
-
-[node name="Interact" type="TouchScreenButton" parent="AirCraftChecklist" unique_id=1168241739]
-modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(-1165, 665)
-texture_normal = ExtResource("64_uk4ib")
-texture_pressed = ExtResource("65_xl0m0")
-action = "interact"
-
-[node name="DirectionalArrow" type="Control" parent="." unique_id=1965791036]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1911.0
-offset_bottom = 1086.0
-
-[node name="ui_left" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1587167800]
-modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(44.000004, 1024)
-rotation = -1.5707964
-texture_normal = ExtResource("62_jcaq3")
-texture_pressed = ExtResource("63_y20lb")
-action = "ui_left"
-
-[node name="ui_right" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1845974673]
-modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(375, 895)
-rotation = 1.5707964
-texture_normal = ExtResource("62_jcaq3")
-texture_pressed = ExtResource("63_y20lb")
-action = "ui_right"
-
-[node name="ui_up" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1301371472]
-modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(144, 899)
-texture_normal = ExtResource("62_jcaq3")
-texture_pressed = ExtResource("63_y20lb")
-action = "jump"
 
 [connection signal="pressed" from="Gamepad/Hand" to="." method="_on_hand_pressed"]
 [connection signal="pressed" from="Gamepad/Coco" to="." method="_on_coco_pressed"]
