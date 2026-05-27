@@ -13,6 +13,7 @@ extends EnemyGroundBase
 @export var quake_duration = 2.5
 @export var quake_damage = 50
 
+
 var projectile_attack_animation = "attack"
 var jump_animation_name = "jump"
 
@@ -24,6 +25,7 @@ var projectile_spawn = null
 var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
+var harpoon_pull = HarpoonPull.new()
 
 var is_quaking = false
 var is_quake_jumping = false
@@ -39,6 +41,7 @@ func _ready():
 
 	super._ready()
 
+	# --- Affichage dans le Hud ---
 	set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibale.png"))
 	set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibaleName.png"))
 
@@ -52,6 +55,9 @@ func _ready():
 	melee_mod.setup(self)
 	throw_mod.setup(self)
 
+	harpoon_pull.setup(self)
+	add_child(harpoon_pull)
+	
 	attack_timer.wait_time = 1.0
 	attack_timer.stop()
 

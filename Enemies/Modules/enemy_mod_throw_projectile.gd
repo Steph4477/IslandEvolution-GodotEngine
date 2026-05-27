@@ -90,9 +90,5 @@ func spawn_projectile():
 	if enemy.target.has_node("TurnAxis"):
 		target_pos = enemy.target.get_node("TurnAxis").global_position
 
-	var dir = 1
-
-	if target_pos.x < enemy.projectile_spawn.global_position.x:
-		dir = -1
-
+	projectile.setup_owner(enemy)
 	projectile.start(enemy.projectile_spawn.global_position, target_pos)

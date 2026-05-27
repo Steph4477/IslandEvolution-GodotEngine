@@ -1,8 +1,8 @@
 extends Node
 class_name HarpoonPull
 
-var owner_node
-var target_node
+var owner_node = null
+var target_node = null
 
 var pull_speed = 450.0
 var stop_distance = 60.0
@@ -13,55 +13,53 @@ var pull_time = 0.0
 
 func setup(parent_owner):
 	owner_node = parent_owner
-	print("SETUP OWNER :", owner_node)
 
 func start_pull(target):
+	if is_pulling:
+		return
+
+	if owner_node == null:
+		return
+
+	if target == null:
+		return
+
 	target_node = target
 	is_pulling = true
 	pull_time = 0.0
-	print("START PULL :", target_node)
 
-func process_pull(delta):
-
+func _physics_process(delta):
 	if not is_pulling:
 		return
 
 	if owner_node == null:
-		print("OWNER NULL")
 		stop_pull()
 		return
 
 	if target_node == null:
-		print("TARGET NULL")
 		stop_pull()
 		return
 
 	pull_time += delta
 
-	print("PULL TIME :", pull_time)
-
 	if pull_time >= max_duration:
-		print("STOP MAX DURATION")
 		stop_pull()
 		return
 
-	var direction = owner_node.global_position - target_node.global_position
-	var distance = direction.length()
+	var dir = target_node.global_position.direction_to(owner_node.global_position)
 
-	print("DISTANCE :", distance)
+	target_node.velocity.x = dir.x * pull_speed
+	target_node.move_and_slide()
+
+	var distance = target_node.global_position.distance_to(owner_node.global_position)
 
 	if distance <= stop_distance:
-		print("STOP DISTANCE")
 		stop_pull()
-		return
-
-	target_node.global_position += direction.normalized() * pull_speed * delta
-
-	print("TARGET POS :", target_node.global_position)
 
 func stop_pull():
-	is_pulling = false
-	target_node = null
-	pull_time = 0.0
+	if target_node != null:
+		target_node.stop_harpooned()
 
-	print("STOP PULL")
+	is_pulling = false
+	pull_time = 0.0
+	target_node = null

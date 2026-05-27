@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
 [ext_resource type="PackedScene" uid="uid://cy3bsh6oopd0n" path="res://Enemies/Cannibal/Boss/BossCannibal.tscn" id="2_g514y"]
-[ext_resource type="PackedScene" uid="uid://bws7kkotjh64q" path="res://Enemies/Pygmy/pygmy.tscn" id="3_qvx8w"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
@@ -59,6 +58,3 @@ position = Vector2(1435, 1461)
 [node name="BossCannibal" parent="." unique_id=708931693 instance=ExtResource("2_g514y")]
 position = Vector2(2764, 1209)
 melee_distance = 170.0
-
-[node name="Pygmy" parent="." unique_id=1783296698 instance=ExtResource("3_qvx8w")]
-position = Vector2(4455, 1415)

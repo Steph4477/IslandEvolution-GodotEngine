@@ -412,15 +412,18 @@ func enable_controls():
 	can_move = true
 
 # --- Harpon ---
-func start_harpooned(owner):
+func start_harpooned(shooter):
 	is_harpooned = true
-	harpoon_owner = owner
+	harpoon_owner = shooter
 	velocity = Vector2.ZERO
-
 
 func stop_harpooned():
 	is_harpooned = false
 	harpoon_owner = null
+
+# ==============================================================================
+#                            SIGNAUX                                           =
+# ==============================================================================
 func _on_clac_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(clac_damage)
