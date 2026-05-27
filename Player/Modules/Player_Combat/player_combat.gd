@@ -10,6 +10,9 @@ func setup(player):
 #                                 PROCESS
 # ============================================================================
 func process():
+	if p.is_harpooned:
+		return
+
 	shoot()
 	clac()
 
@@ -259,6 +262,9 @@ func attack():
 #                         ALIAS API (HUD)
 # ============================================================================
 func shoot_coco():
+	if p.is_harpooned:
+		return
+
 	if firing_locked:
 		return
 
@@ -267,6 +273,9 @@ func shoot_coco():
 	firing_locked = false
 
 func process_bone():
+	if p.is_harpooned:
+		return
+
 	if firing_locked:
 		return
 
@@ -275,6 +284,9 @@ func process_bone():
 	firing_locked = false
 
 func shoot_lance():
+	if p.is_harpooned:
+		return
+
 	if firing_locked:
 		return
 

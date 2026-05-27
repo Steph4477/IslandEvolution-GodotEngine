@@ -166,6 +166,10 @@ var current_liana = null
 var can_push_pull = false
 var is_pushing_or_pulling = false
 
+# --- Harpon ---
+var is_harpooned = false
+var harpoon_owner = null
+
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
 @onready var anim = $Node2D/Anim
@@ -407,6 +411,16 @@ func disable_controls():
 func enable_controls():
 	can_move = true
 
+# --- Harpon ---
+func start_harpooned(owner):
+	is_harpooned = true
+	harpoon_owner = owner
+	velocity = Vector2.ZERO
+
+
+func stop_harpooned():
+	is_harpooned = false
+	harpoon_owner = null
 func _on_clac_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(clac_damage)

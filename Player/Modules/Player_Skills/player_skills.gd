@@ -14,6 +14,10 @@ func setup(player):
 #                                 PROCESS
 # ============================================================================
 func process(delta):
+	if p.is_harpooned:
+		p.is_sprinting = false
+		return
+
 	process_ramp()
 	process_sprint(delta)
 	process_camouflage()
@@ -96,6 +100,9 @@ func process_sprint(delta):
 		p.game_state.speed_bar.update_speed_bar_current(p.game_state.sprint_stamina)
 
 func use_sprint():
+	if p.is_harpooned:
+		return
+
 	if not p.game_state:
 		return
 	if not p.game_state.sprint_unlocked:
@@ -113,6 +120,9 @@ func process_camouflage():
 		use_camouflage()
 
 func use_camouflage():
+	if p.is_harpooned:
+		return
+
 	if p.is_camouflaged:
 		return
 	if not p.game_state.camouflage_unlocked:
@@ -170,6 +180,9 @@ func process_fire_buff():
 		use_fire_buff()
 
 func use_fire_buff():
+	if p.is_harpooned:
+		return
+
 	if not p.game_state:
 		return
 	if not p.game_state.fire_buff_unlocked:
@@ -188,6 +201,9 @@ func process_air_buff():
 		use_fire_buff()
 
 func use_air_buff():
+	if p.is_harpooned:
+		return
+
 	if not p.game_state:
 		return
 	if not p.game_state.air_buff_unlocked:

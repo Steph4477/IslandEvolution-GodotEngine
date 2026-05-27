@@ -10,6 +10,10 @@ func setup(player):
 # ============================================================================
 
 func process(delta, was_on_floor):
+	if p.is_harpooned:
+		p.velocity = Vector2.ZERO
+		return
+
 	update_push_pull_state()
 
 	process_climb()
@@ -26,6 +30,9 @@ func process(delta, was_on_floor):
 	track_fall_speed(was_on_floor)
 
 func post_physics(was_on_floor):
+	if p.is_harpooned:
+		return
+
 	apply_fall_damage(was_on_floor)
 	process_wall_jump_input()
 
