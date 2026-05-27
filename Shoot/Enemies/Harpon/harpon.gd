@@ -57,6 +57,11 @@ func _on_area_2d_body_entered(body):
 	body.damage_mod.on_hit(damage)
 	body.start_harpooned(shooter_node)
 
+	shooter_node.harpoon_pull.create_rope(
+	shooter_node.get_node("HarpoonShootPoint"),
+	body.get_node("HarpoonAttachPoint")
+)
+
 	shooter_node.harpoon_pull.start_pull(body)
 
 	queue_free()

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://djwnaf2et33ty"]
+
+[ext_resource type="Script" uid="uid://6cshi38vdnis" path="res://Shoot/HarpoonRope/harpoon_rope.gd" id="1_n648s"]
+
+[node name="HarpoonRope" type="Node2D" unique_id=1847359825]
+script = ExtResource("1_n648s")

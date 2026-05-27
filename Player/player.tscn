@@ -835,6 +835,9 @@ position = Vector2(177, 125)
 
 [node name="DrownTimer" type="Timer" parent="." unique_id=1850105644]
 
+[node name="HarpoonAttachPoint" type="Marker2D" parent="." unique_id=1171941515]
+position = Vector2(114, 123)
+
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]
 [connection signal="body_entered" from="HeadbuttArea" to="." method="_on_headbutt_area_body_entered"]
 [connection signal="timeout" from="BreathTickTimer" to="." method="_on_breath_tick_timer_timeout"]
