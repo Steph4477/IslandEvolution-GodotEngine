@@ -1,7 +1,18 @@
 extends Node2D
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	var game_state = get_node_or_null("/root/GameState")
-	if body.has_method("on_hit"):
-		var damage = game_state.player.max_pv
-		body.on_hit(damage)
+func _on_area_2d_body_entered(body):
+
+	# --- PLAYER ---
+	if body.is_in_group("Player"):
+
+		if body.damage_mod.has_method("on_hit") and not body.is_dead:
+			body.damage_mod.on_hit(body.max_pv)
+
+		return
+
+
+	# --- ENEMies ---
+	if body.is_in_group("Enemies"):
+
+		if body.has_method("on_hit") and not body.is_dead:
+			body.on_hit(999999)

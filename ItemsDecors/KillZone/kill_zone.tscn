@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://bknqb0hd0lghx"]
 
-[ext_resource type="Script" path="res://ItemsDecors/KillZone/kill_zone.gd" id="1_qy71m"]
+[ext_resource type="Script" uid="uid://bhfypmgfvej4e" path="res://ItemsDecors/KillZone/kill_zone.gd" id="1_qy71m"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(14540.221, 123.004)
 
-[node name="KillZone" type="Node2D" groups=["enemies"]]
+[node name="KillZone" type="Node2D" unique_id=2144844811 groups=["enemies"]]
 scale = Vector2(0.353535, 0.196148)
 script = ExtResource("1_qy71m")
 
-[node name="Area2D" type="Area2D" parent="." groups=["enemies"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=252289631 groups=["enemies"]]
 position = Vector2(-8.71507, -218.527)
 collision_layer = 2
 collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemies"]]
+[node name="CollisionShapeD" type="CollisionShape2D" parent="Area2D" unique_id=1586733194]
 position = Vector2(145.90092, 565.204)
 scale = Vector2(1.04679, 1.36292)
 shape = SubResource("2")
