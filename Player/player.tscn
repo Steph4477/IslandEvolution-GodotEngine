@@ -32,12 +32,18 @@
 [ext_resource type="Texture2D" uid="uid://cf85wnyqp84u8" path="res://Player/Sprite/clac/1.png" id="21_bj58r"]
 [ext_resource type="Texture2D" uid="uid://bt8laly4vshu" path="res://Player/Sprite/clac/2.png" id="22_p11ve"]
 [ext_resource type="Texture2D" uid="uid://cgaip42j73g0g" path="res://Player/Sprite/clac/3.png" id="23_17nxb"]
+[ext_resource type="Texture2D" uid="uid://b5n5my2pwmf54" path="res://Player/Sprite/Harpooned/1.png" id="23_fhogf"]
 [ext_resource type="Texture2D" uid="uid://bms8e7k3fegex" path="res://Player/Sprite/Headbutt_Swim/1.png" id="23_o5r0w"]
 [ext_resource type="Texture2D" uid="uid://bt51umtg0sqg" path="res://Player/Sprite/shoot/1.png" id="24_17nxb"]
+[ext_resource type="Texture2D" uid="uid://btgpj3nmrje2s" path="res://Player/Sprite/Harpooned/2.png" id="24_286oo"]
 [ext_resource type="Texture2D" uid="uid://cq7ks2ykokjty" path="res://Player/Sprite/Headbutt_Swim/2.png" id="24_qns6m"]
 [ext_resource type="Texture2D" uid="uid://coka4l72cwoqs" path="res://Player/Sprite/idle/3.png" id="24_y06ei"]
 [ext_resource type="Texture2D" uid="uid://bl3dynq7ateyc" path="res://Player/Sprite/shoot/2.png" id="25_fnfic"]
+[ext_resource type="Texture2D" uid="uid://b1yqr865b6bp5" path="res://Player/Sprite/Harpooned/3.png" id="25_k84o0"]
 [ext_resource type="Texture2D" uid="uid://bq2ul4chnxt6k" path="res://Player/Sprite/shoot/3.png" id="26_bpa77"]
+[ext_resource type="Texture2D" uid="uid://bq6xiulodhtt6" path="res://Player/Sprite/Harpooned/4.png" id="26_vx8o5"]
+[ext_resource type="Texture2D" uid="uid://gkrd3q2xi3bs" path="res://Player/Sprite/Harpooned/5.png" id="27_w5pua"]
+[ext_resource type="Texture2D" uid="uid://gwica54y758q" path="res://Player/Sprite/Harpooned/6.png" id="28_ca054"]
 [ext_resource type="Texture2D" uid="uid://b0um45dd27vem" path="res://Player/Sprite/jump/2.png" id="29_6qokg"]
 [ext_resource type="Texture2D" uid="uid://c077v6vf1dkyd" path="res://Player/Sprite/shoot/Jump_Shoot/1.png" id="33_pqfba"]
 [ext_resource type="Texture2D" uid="uid://cr3avmor8xjtl" path="res://Player/Sprite/shoot/4.png" id="34_c4i3b"]
@@ -297,6 +303,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [ExtResource("18_p8mbp"), ExtResource("19_efgfv"), ExtResource("20_ms575")]
+}
+
+[sub_resource type="Animation" id="Animation_6xaqw"]
+resource_name = "harpooned"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("23_fhogf"), ExtResource("24_286oo"), ExtResource("25_k84o0"), ExtResource("26_vx8o5"), ExtResource("27_w5pua"), ExtResource("28_ca054")]
 }
 
 [sub_resource type="Animation" id="Animation_ac8n6"]
@@ -702,6 +724,7 @@ _data = {
 &"empty": SubResource("Animation_e2pw6"),
 &"fire_buff": SubResource("Animation_mdkl3"),
 &"hang": SubResource("Animation_kse80"),
+&"harpooned": SubResource("Animation_6xaqw"),
 &"headbutt_swim": SubResource("Animation_ac8n6"),
 &"heal": SubResource("Animation_y06ei"),
 &"idle": SubResource("Animation_i1uru"),
@@ -760,7 +783,6 @@ texture = ExtResource("2_8hx1r")
 [node name="Sprite" type="Sprite2D" parent="Node2D" unique_id=1543697993]
 modulate = Color(1, 1, 1, 0.9785716)
 position = Vector2(142.49998, 70)
-rotation = 6.1934304
 scale = Vector2(0.19565926, 0.19565926)
 texture = ExtResource("2_2paov")
 
@@ -836,7 +858,7 @@ position = Vector2(177, 125)
 [node name="DrownTimer" type="Timer" parent="." unique_id=1850105644]
 
 [node name="HarpoonAttachPoint" type="Marker2D" parent="." unique_id=1171941515]
-position = Vector2(114, 123)
+position = Vector2(132, 115)
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]
 [connection signal="body_entered" from="HeadbuttArea" to="." method="_on_headbutt_area_body_entered"]

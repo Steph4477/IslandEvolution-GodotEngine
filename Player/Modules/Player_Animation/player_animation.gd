@@ -16,6 +16,11 @@ func process():
 	if p.is_dead:
 		return
 
+	if p.is_harpooned:
+		if p.anim.current_animation != "harpooned":
+			p.anim.play("harpooned")
+		return
+
 	if is_interacting:
 		if p.anim.current_animation != "push":
 			p.anim.play("push")
