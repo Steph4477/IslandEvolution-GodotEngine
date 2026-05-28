@@ -73,7 +73,7 @@ func coco():
 	var spell = scene.instantiate()
 	spell.z_index = 30 
 	var dir = 1
-	if p.sprite.scale.x < 0:
+	if p.sprite.flip_h:
 		dir = -1
 
 	spell.start(p.get_node("ShootPoint").global_position, dir)
@@ -127,7 +127,7 @@ func bone():
 	var spell = scene.instantiate()
 	spell.z_index = 80 
 	var dir = 1
-	if p.sprite.scale.x < 0:
+	if p.sprite.flip_h:
 		dir = -1
 	spell.start(p.get_node("ShootPoint").global_position, dir)
 	p.get_tree().current_scene.add_child(spell)
@@ -174,7 +174,7 @@ func lance():
 
 	var spell = scene.instantiate()
 	var dir = 1
-	if p.sprite.scale.x < 0:
+	if p.sprite.flip_h:
 		dir = -1
 	spell.start(p.get_node("ShootPoint").global_position, dir)
 	p.get_tree().current_scene.add_child(spell)
@@ -216,7 +216,7 @@ func headbutt():
 	p.get_node("HeadbuttArea").monitoring = true
 
 	var dir = 1
-	if p.sprite.scale.x < 0:
+	if p.sprite.flip_h:
 		dir = -1
 
 	var elapsed = 0.0
