@@ -1,6 +1,3 @@
-# res://Levels/Lvl3/Lvl_3b/lvl_3b.gd
-
-
 extends Node2D
 
 @onready var player_spawn = $World/Arena/Visual/SpawnPoint
@@ -85,83 +82,80 @@ func _ready():
 	await anim.animation_finished
 
 	end_intro()
-#
-	## --- Spawn vague de serpents ---
-	#await start_speech(speech_snake_wave)
-#
-	#await get_tree().create_timer(2.0).timeout
-	#start_public_anim()
-	#anim.play("zoom_camera")
-	#start_snake_wave()
-#
-	#await wait_finish_snake_wave()
-#
-	## --- Loot fin vague serpents ---
-	#anim.play("zoom_out_camera")
-	#start_public_anim()
-	#
-	#await get_tree().create_timer(0.5).timeout
-	#tribune_thrower.throw_snake_wave = true
-#
-	#await get_tree().create_timer(1.0).timeout
-	#stop_public_anim()
-#
-	#anim.play("zoom_camera")
-#
-	## --- Spawn vague de crocos ---
-	#await start_speech(speech_croco_wave)
-#
-	#await get_tree().create_timer(2.0).timeout
-	#start_public_anim()
-	#start_croco_wave()
-#
-	#await wait_finish_croco_wave()
-#
-	## --- Loot fin vague crocos ---
-	#anim.play("zoom_out_camera")
-	#start_public_anim()
-	#
-	#await get_tree().create_timer(0.5).timeout
-	#tribune_thrower.throw_croco_wave = true
-#
-	#await get_tree().create_timer(1.0).timeout
-	#stop_public_anim()
-#
-	#anim.play("zoom_camera")
-#
-	## --- Spawn vague de cannibales ---
-	#await start_speech(speech_cannibals_wave)
-#
-	#await get_tree().create_timer(2.0).timeout
-	#start_public_anim()
-	#start_cannibal_wave()
-#
-	#await wait_finish_cannibal_wave()
-#
-	## --- Loot fin vague cannibales ---
-	#anim.play("zoom_out_camera")
-	#start_public_anim()
-	#
-	#await get_tree().create_timer(0.5).timeout
-	#tribune_thrower.throw_cannibal_wave = true
-#
-	#await get_tree().create_timer(1.0).timeout
-	#stop_public_anim()
-#
-	#anim.play("zoom_camera")
+
+	# --- Spawn vague de serpents ---
+	await start_speech(speech_snake_wave)
+
+	await get_tree().create_timer(2.0).timeout
+	start_public_anim()
+
+	return_to_moko_camera()
+	start_snake_wave()
+
+	await wait_finish_snake_wave()
+
+	# --- Loot fin vague serpents ---
+	anim.play("zoom_out_camera")
+	start_public_anim()
+	
+	await get_tree().create_timer(0.5).timeout
+	tribune_thrower.throw_snake_wave = true
+
+	await get_tree().create_timer(1.0).timeout
+	stop_public_anim()
+
+	anim.play("zoom_camera")
+
+	# --- Spawn vague de crocos ---
+	await start_speech(speech_croco_wave)
+
+	await get_tree().create_timer(2.0).timeout
+	start_public_anim()
+
+	return_to_moko_camera()
+	start_croco_wave()
+
+	await wait_finish_croco_wave()
+
+	# --- Loot fin vague crocos ---
+	anim.play("zoom_out_camera")
+	start_public_anim()
+	
+	await get_tree().create_timer(0.5).timeout
+	tribune_thrower.throw_croco_wave = true
+
+	await get_tree().create_timer(1.0).timeout
+	stop_public_anim()
+
+	anim.play("zoom_camera")
+
+	# --- Spawn vague de cannibales ---
+	await start_speech(speech_cannibals_wave)
+
+	await get_tree().create_timer(2.0).timeout
+	start_public_anim()
+	return_to_moko_camera()
+	start_cannibal_wave()
+
+	await wait_finish_cannibal_wave()
+
+	# --- Loot fin vague cannibales ---
+	anim.play("zoom_out_camera")
+	start_public_anim()
+	
+	await get_tree().create_timer(0.5).timeout
+	tribune_thrower.throw_cannibal_wave = true
+
+	await get_tree().create_timer(1.0).timeout
+	stop_public_anim()
+
+	anim.play("zoom_camera")
 
 	# --- Discours combat boss ---
 	await start_speech(speech_combat_boss)
 
 	await get_tree().create_timer(1.0).timeout
-
 	start_public_anim()
-
-	await get_tree().create_timer(0.5).timeout
-	tribune_thrower.throw_aoe_wave = true
-
-	await get_tree().create_timer(1.0).timeout
-	stop_public_anim()
 
 	# --- Cinematique de l'aparition du boss ---
 	reveal_anim.play("open_door")
@@ -174,6 +168,7 @@ func _ready():
 
 	fake_boss.visible = false
 
+	return_to_moko_camera()
 	start_boss_wave()
 
 # ============================================================================
@@ -185,6 +180,18 @@ func start_public_anim():
 func stop_public_anim():
 	get_tree().call_group("public_cannibal", "stop_public_anim")
 
+# ============================================================================
+#                          MAITRISE CAMERA MOKO
+# ============================================================================
+func return_to_moko_camera():
+	var gs = get_node("/root/GameState")
+	var player = gs.player
+	var player_camera = player.get_node("Camera2D")
+
+	scene_camera.enabled = false
+	player_camera.enabled = true
+	player_camera.make_current()
+	player_camera.zoom = Vector2(0.8, 0.8)
 
 # ============================================================================
 #                           CINEMATIQUE D'INTRODUCTION
@@ -199,7 +206,7 @@ func start_intro():
 	player.visible = false
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 	player.global_position = player_spawn.global_position
-	player.scale = Vector2(0.8, 0.8)
+	player.scale = Vector2(1.2, 1.2)
 
 	toucan.visible = false
 	toucan.process_mode = Node.PROCESS_MODE_DISABLED

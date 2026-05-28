@@ -122,24 +122,48 @@ _data = {
 &"speech_out": SubResource("Animation_0rsi1")
 }
 
-[sub_resource type="Animation" id="Animation_3fc7u"]
+[sub_resource type="Animation" id="Animation_bhj3v"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/path = NodePath("../../Arena/Visual/ToothSprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.70000005, 0.70000005)]
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4169.9995, -4140)]
 }
 
 [sub_resource type="Animation" id="Animation_sap2p"]
 resource_name = "close"
-length = 3.0
+length = 3.0666666
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -159,10 +183,10 @@ tracks/1/path = NodePath("../../Arena/Visual/BoneSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.36666667, 0.4466666, 0.4966668, 0.5766667, 0.6333333, 0.72666657, 0.77666676, 0.8566667, 0.9, 0.97666657, 1.0166668, 1.1066667, 1.1666669, 1.2666668, 1.3166667, 1.4066666, 1.4666666, 1.5566667, 1.6066664, 1.6666669, 1.7000002, 1.7666668, 1.8366665, 1.9166669, 1.9666666, 2.0366669, 2.0866666, 2.1566668, 2.2000003, 2.2766666, 2.3266668, 2.4066668, 2.4666667, 2.5866666, 2.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.36666667, 0.4466666, 0.4966668, 0.5766667, 0.6333333, 0.72666657, 0.77666676, 0.8566667, 0.9, 0.97666657, 1.0166668, 1.1066667, 1.1666669, 1.2666668, 1.3166667, 1.4066666, 1.4666666, 1.5566667, 1.6066664, 1.6666669, 1.7000002, 1.7666668, 1.8366665, 1.9166669, 1.9666666, 2.0366669, 2.0866666, 2.1566668, 2.2000003, 2.2766666, 2.3266668, 2.4066668, 2.4666667, 2.5866666, 2.666667, 2.7666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(130.366, 139.644), Vector2(110, 112.838), Vector2(160, 96.084), Vector2(180, 69.278), Vector2(150, 50.29), Vector2(80, 25.308), Vector2(106, 11.925), Vector2(150, -9.488), Vector2(125, -21.086), Vector2(110, -40.597), Vector2(155.063, -50.777), Vector2(180, -73.681), Vector2(148, -88.951), Vector2(80, -119.572), Vector2(105, -134.883), Vector2(150, -162.443), Vector2(122, -180.816), Vector2(100, -203.521), Vector2(160, -216.135), Vector2(100, -231.272), Vector2(145, -239.681), Vector2(80, -262.525), Vector2(100, -286.511), Vector2(160, -313.924), Vector2(120, -331.057), Vector2(100, -350.363), Vector2(160, -364.153), Vector2(100, -383.459), Vector2(145, -395.411), Vector2(160, -421.682), Vector2(100, -438.815), Vector2(180, -466.228), Vector2(115, -486.787), Vector2(140, -522.315), Vector2(127, -546)]
+"values": [Vector2(130.366, 139.644), Vector2(110, 112.838), Vector2(160, 96.084), Vector2(180, 69.278), Vector2(150, 50.29), Vector2(80, 25.308), Vector2(106, 11.925), Vector2(150, -9.488), Vector2(125, -21.086), Vector2(110, -40.597), Vector2(155.063, -50.777), Vector2(180, -73.681), Vector2(148, -88.951), Vector2(80, -119.572), Vector2(105, -134.883), Vector2(150, -162.443), Vector2(122, -180.816), Vector2(100, -203.521), Vector2(160, -216.135), Vector2(100, -231.272), Vector2(145, -239.681), Vector2(80, -262.525), Vector2(100, -286.511), Vector2(160, -313.924), Vector2(120, -331.057), Vector2(100, -350.363), Vector2(160, -364.153), Vector2(100, -383.459), Vector2(145, -395.411), Vector2(160, -421.682), Vector2(100, -438.815), Vector2(180, -466.228), Vector2(115, -486.787), Vector2(140, -522.315), Vector2(127, -746), Vector2(1388, -1302)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -171,15 +195,27 @@ tracks/2/path = NodePath("../../Arena/Visual/ToothSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.6333334),
+"times": PackedFloat32Array(0.033333335, 2.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(108, -920), Vector2(118, -1088)]
+"values": [Vector2(1347, -894), Vector2(1383, -2344)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Arena/Visual/ToothSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ds7ig"]
 resource_name = "intro"
-length = 3.0
+length = 1.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -187,10 +223,10 @@ tracks/0/path = NodePath("../Camera2D:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 1.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(0.7, 0.7)]
+"values": [Vector2(2, 2), Vector2(0.4, 0.4)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -199,10 +235,10 @@ tracks/1/path = NodePath("../Camera2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.7, 3),
+"times": PackedFloat32Array(0, 1.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-136.66666, 270), Vector2(160, -1366.6667)]
+"values": [Vector2(3893.3335, -580), Vector2(4166.6665, -3646.6665)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -211,10 +247,10 @@ tracks/2/path = NodePath("../FakeMoko:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.72),
+"times": PackedFloat32Array(0, 1.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-216.66675, 176.6667), Vector2(120, -326.667)]
+"values": [Vector2(4063.3333, -720), Vector2(3990, -1299.9998)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -223,10 +259,10 @@ tracks/3/path = NodePath("../FakeMoko:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.8, 1.1333333, 1.4000001, 1.6666667, 1.67),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.8, 1.1333333, 1.4000001, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("12_6auop")]
+"values": [ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop")]
 }
 
 [sub_resource type="Animation" id="Animation_f4icm"]
@@ -244,6 +280,34 @@ tracks/0/keys = {
 "values": [Vector2(0.70000005, 0.70000005), Vector2(1.2, 1.2)]
 }
 
+[sub_resource type="Animation" id="Animation_m3dsj"]
+resource_name = "zoom_out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4329.9995, -1630), Vector2(4169.9995, -4140)]
+}
+
 [sub_resource type="Animation" id="Animation_7sb6u"]
 resource_name = "zoom_out_camera"
 tracks/0/type = "value"
@@ -256,67 +320,17 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.2, 1.2), Vector2(0.70000005, 0.70000005)]
+"values": [Vector2(4, 4), Vector2(0.4, 0.4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbv6"]
 _data = {
-&"RESET": SubResource("Animation_3fc7u"),
+&"RESET": SubResource("Animation_bhj3v"),
 &"close": SubResource("Animation_sap2p"),
 &"intro": SubResource("Animation_ds7ig"),
 &"zoom_camera": SubResource("Animation_f4icm"),
+&"zoom_out": SubResource("Animation_m3dsj"),
 &"zoom_out_camera": SubResource("Animation_7sb6u")
-}
-
-[sub_resource type="Animation" id="Animation_mx2ic"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FakeBoss:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.2, 0.2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FakeBoss:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.14911404, 0.14911404, 0.14911404, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FakeBoss:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(851.00006, 699.99994)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FakeBoss:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("24_m3dsj")]
 }
 
 [sub_resource type="Animation" id="Animation_4xu44"]
@@ -353,10 +367,10 @@ tracks/2/path = NodePath("FakeBoss:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.6),
+"times": PackedFloat32Array(0, 1.5333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(851.00006, 699.99994), Vector2(851.00006, 740.99994)]
+"values": [Vector2(2078, 442.99997), Vector2(2088, 486.99994)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -373,21 +387,20 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oj4hj"]
 _data = {
-&"RESET": SubResource("Animation_mx2ic"),
 &"reveal_boss": SubResource("Animation_4xu44")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flxhq"]
-size = Vector2(2002.5, 300.5)
+size = Vector2(2950, 487.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u71ib"]
-size = Vector2(88.875, 1426.25)
+size = Vector2(88.875, 1138.125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc7ln"]
-size = Vector2(1997, 34)
+size = Vector2(2960, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6auop"]
-size = Vector2(101, 1530)
+size = Vector2(101, 1187)
 
 [node name="lvl_3b" type="Node2D" unique_id=36208587]
 script = ExtResource("1_flxhq")
@@ -397,21 +410,21 @@ z_index = 15
 position = Vector2(0, 486)
 
 [node name="SkySprite" type="Sprite2D" parent="World" unique_id=1704801586]
-position = Vector2(853, 253.49997)
-scale = Vector2(5.582031, 2.4980466)
+position = Vector2(2076.5, -421.49994)
+scale = Vector2(10.427733, 5.1699224)
 texture = ExtResource("6_k30wa")
 
 [node name="WaterSprite" type="Sprite2D" parent="World" unique_id=144233068]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_flxhq")
-position = Vector2(832, 764.5)
-scale = Vector2(1.8376665, 0.5240965)
+position = Vector2(2086.5, 926.2501)
+scale = Vector2(3.4109068, 3.0993981)
 texture = SubResource("CanvasTexture_u71ib")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="World" unique_id=284671844]
 modulate = Color(1, 0.9906667, 0.99, 1)
-position = Vector2(-516, 74)
-scale = Vector2(0.6, 0.6)
+position = Vector2(-789.00006, -1043.0001)
+scale = Vector2(1.2, 1.2)
 tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAkADoAAgAGAAEAAAByADoAAgAGAAEAAACKADkAAgAGAAEAAAB+ADoAAgAHAAEAAABRADoAAgAHAAEAABA9ADkAAgAGAAAAAABfADkAAgAHAAAAAABpADoAAgAEAAQAAADMADkAAgAHAAAAAACwADoAAgAHAAAAAABsADkAAgAHAAAAAADUADoAAgAGAAEAAADtADkAAgAGAAAAAAABAToAAgAHAAEAABAPATkAAgAHAAAAAAAyADkAAgAHAAAAAABNADkAAgAHAAAAAACZADkAAgAGAAEAABDhADkAAgAGAAEAABA=")
 tile_set = ExtResource("7_k30wa")
 
@@ -424,14 +437,15 @@ position = Vector2(731, 831)
 
 [node name="TribuneThrower" parent="World/Arena" unique_id=1977538466 instance=ExtResource("7_sap2p")]
 z_index = 2
-position = Vector2(128, -658)
+position = Vector2(1382, -1542)
 
 [node name="AnimPublic" type="Node2D" parent="World/Arena/TribuneThrower" unique_id=1737577089]
 position = Vector2(0, 5)
 
 [node name="Stage3" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=690246239]
 modulate = Color(0.24695042, 0.24695027, 0.2469503, 1)
-position = Vector2(-1.5, 100.5)
+position = Vector2(-22, 150)
+scale = Vector2(1.8, 1.8)
 
 [node name="PublicCannibal" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=598821090 instance=ExtResource("2_6do33")]
 position = Vector2(12, -159)
@@ -459,26 +473,64 @@ position = Vector2(478, -177)
 tribe = 2
 
 [node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=1045668473 instance=ExtResource("2_6do33")]
-position = Vector2(604, -191)
+position = Vector2(647.2222, -190)
 
 [node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage3" unique_id=894098137 instance=ExtResource("2_6do33")]
 position = Vector2(-476, -178)
 tribe = 2
 
+[node name="Stage7" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=6397928]
+modulate = Color(0.24695042, 0.24695027, 0.2469503, 1)
+position = Vector2(-49, 890)
+scale = Vector2(1.8, 1.8)
+
+[node name="PublicCannibal" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=1421322129 instance=ExtResource("2_6do33")]
+position = Vector2(705.55554, -195.55557)
+
+[node name="PublicCannibal3" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=1957509269 instance=ExtResource("2_6do33")]
+position = Vector2(-632, -195)
+tribe = 2
+
+[node name="PublicCannibal5" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=926243496 instance=ExtResource("2_6do33")]
+position = Vector2(-205.00006, -216.11111)
+tribe = 1
+
+[node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=1582165544 instance=ExtResource("2_6do33")]
+position = Vector2(-295, -210.55557)
+
+[node name="PublicCannibal11" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=2135389516 instance=ExtResource("2_6do33")]
+position = Vector2(-405.00006, -205)
+tribe = 2
+
+[node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=866180680 instance=ExtResource("2_6do33")]
+position = Vector2(345.5555, -212.22223)
+
+[node name="PublicCannibal7" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=1591893126 instance=ExtResource("2_6do33")]
+position = Vector2(495.5556, -205)
+tribe = 2
+
+[node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=182536432 instance=ExtResource("2_6do33")]
+position = Vector2(235, -217.77777)
+
+[node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage7" unique_id=493096425 instance=ExtResource("2_6do33")]
+position = Vector2(-565, -199.44444)
+tribe = 2
+
 [node name="Stage4" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=1415453135]
 modulate = Color(0.6158285, 0.6158285, 0.6158285, 1)
-position = Vector2(7, 181)
+position = Vector2(-61, 314)
+scale = Vector2(1.8, 1.8)
 
 [node name="PublicCannibal2" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1800487177 instance=ExtResource("2_6do33")]
 position = Vector2(-38.5, -165.5)
 tribe = 2
 
 [node name="PublicCannibal3" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1678613827 instance=ExtResource("2_6do33")]
-position = Vector2(-631.5, -175.5)
+position = Vector2(-681.6667, -185)
 tribe = 2
 
 [node name="PublicCannibal4" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1130009606 instance=ExtResource("2_6do33")]
-position = Vector2(141.5, -164.5)
+position = Vector2(99.44447, -168.33333)
 tribe = 2
 
 [node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=605142838 instance=ExtResource("2_6do33")]
@@ -493,133 +545,181 @@ position = Vector2(-498.5, -175.5)
 tribe = 1
 
 [node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1137441591 instance=ExtResource("2_6do33")]
-position = Vector2(316.5, -169.5)
+position = Vector2(280.55557, -170.55557)
 
 [node name="PublicCannibal7" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=878898947 instance=ExtResource("2_6do33")]
-position = Vector2(457.5, -174.5)
+position = Vector2(406.1111, -177.22221)
 tribe = 2
 
 [node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=1636613677 instance=ExtResource("2_6do33")]
-position = Vector2(597.5, -177.5)
+position = Vector2(211.11108, -170.55556)
 
 [node name="PublicCannibal9" parent="World/Arena/TribuneThrower/AnimPublic/Stage4" unique_id=461781613 instance=ExtResource("2_6do33")]
-position = Vector2(304.5, 85.5)
+position = Vector2(746.6666, -183.88889)
+
+[node name="Stage8" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=1129347475]
+modulate = Color(0.6158285, 0.6158285, 0.6158285, 1)
+position = Vector2(142, 700)
+scale = Vector2(1.8, 1.8)
+
+[node name="PublicCannibal2" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=802201433 instance=ExtResource("2_6do33")]
+position = Vector2(-91.66664, -202.22223)
+tribe = 2
+
+[node name="PublicCannibal3" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=2119711754 instance=ExtResource("2_6do33")]
+position = Vector2(-681.6667, -185)
+tribe = 2
+
+[node name="PublicCannibal4" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=2019401509 instance=ExtResource("2_6do33")]
+position = Vector2(63.888916, -198.8889)
+tribe = 2
+
+[node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=834629827 instance=ExtResource("2_6do33")]
+position = Vector2(-600, -190.55557)
+
+[node name="PublicCannibal13" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=1557360067 instance=ExtResource("2_6do33")]
+position = Vector2(-294.4445, -195.55556)
+tribe = 2
+
+[node name="PublicCannibal14" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=1821835268 instance=ExtResource("2_6do33")]
+position = Vector2(-408.3333, -197.22223)
+tribe = 1
+
+[node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=304985028 instance=ExtResource("2_6do33")]
+position = Vector2(517.77783, -191.11111)
+
+[node name="PublicCannibal7" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=661356550 instance=ExtResource("2_6do33")]
+position = Vector2(436.6667, -192.22223)
+tribe = 2
+
+[node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=199624136 instance=ExtResource("2_6do33")]
+position = Vector2(-146.66672, -202.22223)
+
+[node name="PublicCannibal9" parent="World/Arena/TribuneThrower/AnimPublic/Stage8" unique_id=124334550 instance=ExtResource("2_6do33")]
+position = Vector2(622.22217, -290.55554)
 
 [node name="Stage5" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=751591181]
-position = Vector2(11, 246)
+position = Vector2(-34, 513)
+scale = Vector2(1.8, 1.8)
 
 [node name="PublicCannibal2" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1379311058 instance=ExtResource("2_6do33")]
-position = Vector2(-163.5, -153.5)
+position = Vector2(-224.44443, -187.77779)
 tribe = 2
 
 [node name="PublicCannibal4" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1273609600 instance=ExtResource("2_6do33")]
-position = Vector2(176.5, -152.5)
+position = Vector2(201.66669, -190.55556)
 tribe = 2
 
-[node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1421322129 instance=ExtResource("2_6do33")]
-position = Vector2(-23.5, -148.5)
+[node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=768497888 instance=ExtResource("2_6do33")]
+position = Vector2(0.55558395, -188.8889)
 tribe = 2
 
 [node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=996652140 instance=ExtResource("2_6do33")]
-position = Vector2(-323.5, -149.5)
+position = Vector2(-313.88885, -188.8889)
 
 [node name="PublicCannibal13" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1901777052 instance=ExtResource("2_6do33")]
-position = Vector2(-436.5, -150.5)
+position = Vector2(-465.55554, -189.44446)
 tribe = 2
 
 [node name="PublicCannibal14" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1259400762 instance=ExtResource("2_6do33")]
-position = Vector2(-574.5, -146.5)
+position = Vector2(-698.8889, -190.00002)
 tribe = 1
 
 [node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1804664717 instance=ExtResource("2_6do33")]
-position = Vector2(593.5, -147.5)
+position = Vector2(-636.1111, -78.33334)
 
 [node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=572473870 instance=ExtResource("2_6do33")]
-position = Vector2(448.5, -148.5)
+position = Vector2(554.4444, -189.44446)
 tribe = 2
 
 [node name="PublicCannibal5" parent="World/Arena/TribuneThrower/AnimPublic/Stage5" unique_id=1667610524 instance=ExtResource("2_6do33")]
-position = Vector2(314.5, -149.5)
+position = Vector2(368.88885, -190.55557)
 tribe = 1
 
 [node name="Stage6" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=1834720697]
 modulate = Color(0.5705783, 0.57057834, 0.57057834, 1)
 position = Vector2(0, 343)
+scale = Vector2(1.8, 1.8)
 
 [node name="PublicCannibal3" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=175993042 instance=ExtResource("2_6do33")]
-position = Vector2(-593.5, -147.5)
+position = Vector2(-466.1111, 6.666664)
 tribe = 2
 
 [node name="PublicCannibal11" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=499622731 instance=ExtResource("2_6do33")]
-position = Vector2(-296.5, -158.5)
+position = Vector2(-390.00003, 3.3333282)
 tribe = 2
 
 [node name="PublicCannibal13" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1848491024 instance=ExtResource("2_6do33")]
-position = Vector2(-420.5, 14.5)
+position = Vector2(204.44444, -2.222229)
 tribe = 2
 
 [node name="PublicCannibal14" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=326591750 instance=ExtResource("2_6do33")]
-position = Vector2(-415.5, -74.5)
+position = Vector2(-397.2223, -96.66667)
 tribe = 2
 
 [node name="PublicCannibal15" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1597405229 instance=ExtResource("2_6do33")]
-position = Vector2(-453.5, -155.5)
+position = Vector2(-547.7778, -95.55556)
 tribe = 2
 
 [node name="PublicCannibal6" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1327831305 instance=ExtResource("2_6do33")]
-position = Vector2(317.5, -159.5)
+position = Vector2(483.33334, -97.77777)
 
 [node name="PublicCannibal7" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1268630515 instance=ExtResource("2_6do33")]
-position = Vector2(443.5, -151.5)
+position = Vector2(545.55554, -197.22223)
 tribe = 2
 
 [node name="PublicCannibal8" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1220640942 instance=ExtResource("2_6do33")]
-position = Vector2(598.5, -142.5)
+position = Vector2(626.1112, -201.66667)
 
 [node name="PublicCannibal9" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1229314507 instance=ExtResource("2_6do33")]
-position = Vector2(555.5, -58.5)
+position = Vector2(648.8889, -93.88889)
 
 [node name="PublicCannibal10" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=1332643648 instance=ExtResource("2_6do33")]
-position = Vector2(422.5, 19.5)
+position = Vector2(343.3333, 7.222226)
 
 [node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=19878620 instance=ExtResource("2_6do33")]
-position = Vector2(428.5, -69.5)
+position = Vector2(649.44446, 10.555565)
 
 [node name="Visual" type="Node2D" parent="World/Arena" unique_id=1605570121]
 
 [node name="FloorSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1942316824]
 modulate = Color(1, 1, 0, 1)
 z_index = 5
-position = Vector2(871.5, 346.49988)
-scale = Vector2(1.0987828, 2.1512349)
+position = Vector2(2007, 381)
+scale = Vector2(2, 3.914)
 texture = ExtResource("5_80yr0")
 
 [node name="BoneSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=909731591]
+visible = false
 z_index = 2
 position = Vector2(130.366, 139.644)
+scale = Vector2(2, 2)
 texture = ExtResource("11_6auop")
 
 [node name="ArenaSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=321503114]
 modulate = Color(0.85348755, 0.85348773, 0.8534877, 1)
 z_index = 5
-position = Vector2(127.5, -545.5)
+position = Vector2(1387.5, -1304.5)
+scale = Vector2(2, 2)
 texture = ExtResource("3_80yr0")
 
 [node name="InteriorHutSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=587243503]
 z_index = 2
-position = Vector2(140, -550)
+position = Vector2(1400, -1309)
+scale = Vector2(2, 2)
 texture = ExtResource("12_fkhbp")
 
 [node name="CloseSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=2146078472]
 z_index = 5
-position = Vector2(122.999985, -545)
-scale = Vector2(1.006845, 1.0009911)
+position = Vector2(1382.9999, -1304)
+scale = Vector2(2, 1.988)
 texture = ExtResource("13_82sl6")
 
 [node name="WavesEnemies" type="Node2D" parent="World/Arena/Visual" unique_id=1098877637]
 position = Vector2(43, 33)
 
 [node name="WaveSnake" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=281634102]
+position = Vector2(1882, -274)
 
 [node name="Snake" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=88320707 instance=ExtResource("14_cmbv6")]
 z_index = 5
@@ -628,7 +728,7 @@ attack_range = 3000
 
 [node name="Snake2" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=321227883 instance=ExtResource("14_cmbv6")]
 z_index = 5
-position = Vector2(-520, -110)
+position = Vector2(548, -25)
 attack_range = 3000
 
 [node name="Snake3" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=132262032 instance=ExtResource("14_cmbv6")]
@@ -637,9 +737,10 @@ position = Vector2(612, -93)
 attack_range = 3000
 
 [node name="WaveCroco" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1852895937]
+position = Vector2(809, -323)
 
 [node name="AmphibiousCroco" parent="World/Arena/Visual/WavesEnemies/WaveCroco" unique_id=1403221519 instance=ExtResource("15_0rsi1")]
-position = Vector2(623, -41)
+position = Vector2(1541, -81)
 attack_range = 6000
 
 [node name="AmphibiousCroco2" parent="World/Arena/Visual/WavesEnemies/WaveCroco" unique_id=2137143374 instance=ExtResource("15_0rsi1")]
@@ -647,6 +748,7 @@ position = Vector2(-630, -93)
 attack_range = 6000
 
 [node name="WaveCannibal" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1318085319]
+position = Vector2(1035, -206)
 
 [node name="Cannibal" parent="World/Arena/Visual/WavesEnemies/WaveCannibal" unique_id=708931693 instance=ExtResource("16_viq1m")]
 z_index = 5
@@ -662,17 +764,16 @@ attack_range = 3000
 
 [node name="BossCannibal" parent="World/Arena/Visual/WavesEnemies/WaveBoss" unique_id=1493117163 instance=ExtResource("17_bhj3v")]
 z_index = 15
-position = Vector2(60, -173)
-scale = Vector2(-0.8, 0.8)
+position = Vector2(1306, -391.99997)
 speed = 200
 
 [node name="SpawnPoint" type="Marker2D" parent="World/Arena/Visual" unique_id=1505592288]
-position = Vector2(-263, -217)
+position = Vector2(1246, -398)
 
 [node name="ToothSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1064526504]
 z_index = 20
-position = Vector2(108, -920)
-scale = Vector2(1, 2)
+position = Vector2(1347, -894)
+scale = Vector2(2, 4)
 texture = ExtResource("4_k30wa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/Arena/Visual" unique_id=1090274793]
@@ -687,10 +788,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -280.0
-offset_top = 436.0
-offset_right = 520.0
-offset_bottom = 656.0
+offset_left = 977.0
+offset_top = 52.0
+offset_right = 1777.0
+offset_bottom = 272.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1e-05, 1e-05)
@@ -728,14 +829,14 @@ scale = Vector2(0.3, 0.3)
 
 [node name="FakeMoko" type="Sprite2D" parent="World/IntroCinematic" unique_id=1447847349]
 z_index = 15
-position = Vector2(-216.66675, 176.6667)
-scale = Vector2(0.6, 0.5)
+position = Vector2(4063.3333, -720)
+scale = Vector2(1.2, 1)
 texture = ExtResource("12_6auop")
 
 [node name="Camera2D" type="Camera2D" parent="World/IntroCinematic" unique_id=1558263865]
-position = Vector2(-136.66666, 270)
-rotation = 0.17453292
-zoom = Vector2(0.70000005, 0.70000005)
+z_index = 100
+position = Vector2(4169.9995, -4140)
+zoom = Vector2(0.4, 0.4)
 
 [node name="CameraCinematic" type="Node2D" parent="World/IntroCinematic" unique_id=1286858604]
 
@@ -749,7 +850,7 @@ autoplay = &"intro"
 visible = false
 modulate = Color(0.14911404, 0.14911404, 0.14911404, 1)
 z_index = 15
-position = Vector2(851.00006, 699.99994)
+position = Vector2(2078, 442.99997)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("24_m3dsj")
 
@@ -764,19 +865,19 @@ collision_mask = 9
 
 [node name="Border" type="CollisionShape2D" parent="StaticBody2D" unique_id=1430512837]
 z_index = 50
-position = Vector2(970, 1450.25)
+position = Vector2(2137, 1356.75)
 shape = SubResource("RectangleShape2D_flxhq")
 
 [node name="Border2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1228470624]
-position = Vector2(222, 696)
+position = Vector2(712, 573)
 shape = SubResource("RectangleShape2D_u71ib")
 
 [node name="Border3" type="CollisionShape2D" parent="StaticBody2D" unique_id=365477280]
-position = Vector2(926, 277)
+position = Vector2(2132, -26.5)
 shape = SubResource("RectangleShape2D_gc7ln")
 
 [node name="Border4" type="CollisionShape2D" parent="StaticBody2D" unique_id=380903725]
-position = Vector2(1662, 731)
+position = Vector2(3556, 553)
 shape = SubResource("RectangleShape2D_6auop")
 
 [connection signal="animation_finished" from="World/IntroCinematic/CameraCinematic/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
