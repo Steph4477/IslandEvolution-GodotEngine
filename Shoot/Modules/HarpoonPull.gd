@@ -33,6 +33,7 @@ func set_rope_target(target):
 func stop_rope():
 	if rope != null:
 		rope.stop()
+		rope.queue_free()
 		rope = null
 
 func start_pull(target):
@@ -71,6 +72,11 @@ func _physics_process(delta):
 		return
 
 	if target_node == null:
+		stop_pull()
+		return
+
+	if target_node.is_dead:
+		stop_rope()
 		stop_pull()
 		return
 

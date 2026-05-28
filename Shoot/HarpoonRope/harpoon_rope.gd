@@ -35,6 +35,7 @@ func start(a, b):
 		sprite.scale = Vector2(0.25, 0.15)
 
 		add_child(sprite)
+		sprite.z_index = 100
 
 		segments.append(sprite)
 
