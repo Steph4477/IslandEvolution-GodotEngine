@@ -120,4 +120,3 @@ func stop_pull():
 
 		if owner_node.jump_timer:
 			owner_node.jump_timer.start()
-			owner_node.jump_timer.start()

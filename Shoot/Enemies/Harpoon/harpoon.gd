@@ -63,17 +63,7 @@ func _on_area_2d_body_entered(body):
 		body.get_node("HarpoonAttachPoint")
 	)
 
-	body.anim.play("fall_harpooned")
-
-	await body.anim.animation_finished
-
-	if body.is_dead:
-		queue_free()
-		return
-
-	if not body.is_harpooned:
-		queue_free()
-		return
+	body.anim.play("harpooned")
 
 	shooter_node.harpoon_pull.start_pull(body)
 
