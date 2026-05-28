@@ -9,6 +9,9 @@ var segment_count = 30
 # Effet courbe Relâchement de la corde
 var sag = 18.0
 
+# Décalage pour raccourcir la corde côté Moko
+var target_offset = 25.0
+
 # Liste des morceaux de corde
 var segments = []
 
@@ -42,6 +45,10 @@ func start(a, b):
 func update_rope():
 	var start_pos = point_shooter.global_position
 	var end_pos = point_target.global_position
+
+	# Raccourcit légèrement la corde côté cible
+	var dir_to_target = start_pos.direction_to(end_pos)
+	end_pos -= dir_to_target * target_offset
 
 	# Point du milieu
 	var middle = (start_pos + end_pos) / 2.0
