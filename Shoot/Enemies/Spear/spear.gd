@@ -5,7 +5,7 @@ extends RigidBody2D
 @export var arc_force = -150
 @export var gravity_force = 1.2
 
-var direction = 1
+var direction = Vector2.RIGHT
 
 @onready var sprite = $SpearSprite
 @onready var hitbox = $Area2D/CollisionPolygon2D
@@ -19,20 +19,21 @@ func _ready():
 func _physics_process(_delta):
 	rotation = linear_velocity.angle()
 
-func start(pos, target_pos):
+func start(pos, dir):
 	global_position = pos
 
-	if target_pos.x < global_position.x:
-		direction = -1
+	if typeof(dir) == TYPE_VECTOR2:
+		direction = dir.normalized()
 	else:
-		direction = 1
-
-	var dir = (target_pos - global_position).normalized()
+		if dir < 0:
+			direction = Vector2.LEFT
+		else:
+			direction = Vector2.RIGHT
 
 	hitbox.disabled = false
-	linear_velocity = Vector2(dir.x * speed, dir.y * speed + arc_force)
+	linear_velocity = Vector2(direction.x * speed, direction.y * speed + arc_force)
 
-	if direction < 0:
+	if direction.x < 0:
 		sprite.flip_v = true
 	else:
 		sprite.flip_v = false

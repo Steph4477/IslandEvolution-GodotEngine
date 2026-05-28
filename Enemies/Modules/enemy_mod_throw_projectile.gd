@@ -54,6 +54,9 @@ func throw_projectile():
 
 	await enemy.get_tree().create_timer(enemy.projectile_spawn_delay).timeout
 
+	if not is_instance_valid(enemy):
+		return
+
 	if enemy.is_dead:
 		enemy.is_shooting = false
 		return
@@ -70,19 +73,11 @@ func throw_projectile():
 		enemy.is_shooting = false
 		return
 
-	spawn_projectile()
+	if enemy.in_melee:
+		enemy.is_shooting = false
+		return
 
-	var anim_time = enemy.anim.get_animation(enemy.projectile_attack_animation).length
-	var remain = anim_time - enemy.projectile_spawn_delay
-
-	if remain > 0:
-		await enemy.get_tree().create_timer(remain).timeout
-
-	enemy.is_shooting = false
-
-func spawn_projectile():
 	var projectile = enemy.projectile_scene.instantiate()
-	projectile.z_index = 50
 	enemy.get_tree().current_scene.add_child(projectile)
 
 	var target_pos = enemy.target.global_position
@@ -90,5 +85,11 @@ func spawn_projectile():
 	if enemy.target.has_node("TurnAxis"):
 		target_pos = enemy.target.get_node("TurnAxis").global_position
 
-	projectile.setup_owner(enemy)
-	projectile.start(enemy.projectile_spawn.global_position, target_pos)
+	var dir = target_pos - enemy.projectile_spawn.global_position
+
+	if projectile.has_method("setup_owner"):
+		projectile.setup_owner(enemy)
+
+	projectile.start(enemy.projectile_spawn.global_position, dir.normalized())
+
+	enemy.is_shooting = false

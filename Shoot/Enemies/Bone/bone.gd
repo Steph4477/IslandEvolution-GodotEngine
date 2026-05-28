@@ -23,7 +23,6 @@ func _ready():
 
 	set_physics_process(true)
 
-
 func start(pos, dir):
 	global_position = pos
 	start_position = global_position
@@ -33,11 +32,13 @@ func start(pos, dir):
 	if shape:
 		shape.disabled = false
 
-	if dir < 0:
-		direction = Vector2.LEFT
+	if typeof(dir) == TYPE_VECTOR2:
+		direction = dir.normalized()
 	else:
-		direction = Vector2.RIGHT
-
+		if dir < 0:
+			direction = Vector2.LEFT
+		else:
+			direction = Vector2.RIGHT
 
 func _physics_process(_delta):
 	if did_hit:
@@ -73,7 +74,6 @@ func _physics_process(_delta):
 	if traveled >= max_distance:
 		_finish()
 
-
 func _impact():
 	did_hit = true
 	set_physics_process(false)
@@ -86,10 +86,8 @@ func _impact():
 
 	_finish()
 
-
 func _finish():
 	queue_free()
-
 
 func _on_area_2d_body_entered(body):
 	if did_hit:

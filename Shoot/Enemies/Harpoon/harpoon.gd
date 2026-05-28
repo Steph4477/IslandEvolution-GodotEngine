@@ -5,7 +5,7 @@ extends RigidBody2D
 @export var arc_force = -350
 @export var gravity_force = 1.6
 
-var direction = 1
+var direction = Vector2.RIGHT
 var shooter_node = null
 var has_hooked = false
 
@@ -24,20 +24,21 @@ func setup_owner(shooter):
 func _physics_process(_delta):
 	rotation = linear_velocity.angle()
 
-func start(pos, target_pos):
+func start(pos, dir):
 	global_position = pos
 
-	if target_pos.x < global_position.x:
-		direction = -1
+	if typeof(dir) == TYPE_VECTOR2:
+		direction = dir.normalized()
 	else:
-		direction = 1
-
-	var dir = (target_pos - global_position).normalized()
+		if dir < 0:
+			direction = Vector2.LEFT
+		else:
+			direction = Vector2.RIGHT
 
 	hitbox.disabled = false
-	linear_velocity = Vector2(dir.x * speed, dir.y * speed + arc_force)
+	linear_velocity = Vector2(direction.x * speed, direction.y * speed + arc_force)
 
-	if direction < 0:
+	if direction.x < 0:
 		sprite.flip_v = true
 	else:
 		sprite.flip_v = false

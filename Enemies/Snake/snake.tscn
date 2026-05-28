@@ -189,7 +189,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1069437686]
-position = Vector2(-45.00001, -13.000002)
+position = Vector2(-35, -28.333336)
 rotation = 0.78539795
 
 [node name="Rotator" type="Node2D" parent="." unique_id=896195456]
@@ -200,7 +200,7 @@ libraries/ = SubResource("AnimationLibrary_feqrn")
 autoplay = &"walk"
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=1636847424]
-position = Vector2(120, 40.999996)
+position = Vector2(-136.66667, -111.66666)
 rotation = 0.78539795
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=1039368433]

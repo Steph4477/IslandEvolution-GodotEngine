@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ubrnrkvgv5pw"]
 
-[ext_resource type="Script" path="res://Shoot/Enemies/Gaz/gaz.gd" id="1_qfa8b"]
-[ext_resource type="Texture2D" path="res://Shoot/Enemies/Gaz/gaz.png" id="2_mdf05"]
+[ext_resource type="Script" uid="uid://bhk73j7pugrbo" path="res://Shoot/Enemies/Gaz/gaz.gd" id="1_qfa8b"]
+[ext_resource type="Texture2D" uid="uid://cg7hlijr1wj4j" path="res://Shoot/Enemies/Gaz/gaz.png" id="2_mdf05"]
 
 [sub_resource type="Animation" id="Animation_yt74o"]
 length = 0.001
@@ -93,11 +93,12 @@ _data = {
 radius = 5.97944
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xepjl"]
-radius = 15.493
+radius = 10.378099
 
 [node name="GazSerpent" type="RigidBody2D" unique_id=1660559815]
-z_index = 5
+z_index = 50
 collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_qfa8b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=250849335]
@@ -116,7 +117,6 @@ shape = SubResource("CircleShape2D_bydea")
 [node name="Area2D" type="Area2D" parent="." unique_id=416815234 groups=["Enemies"]]
 scale = Vector2(0.560001, 0.360001)
 collision_layer = 8
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=220656743]
 scale = Vector2(2.84, 4.36)

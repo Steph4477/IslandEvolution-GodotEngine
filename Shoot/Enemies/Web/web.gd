@@ -6,55 +6,72 @@ extends CharacterBody2D
 
 @onready var sprite = $anim
 @onready var area = $Area2D
+@onready var shape = $Area2D/CollisionShape2D
 
 var direction = Vector2.ZERO
 var has_collided = false
 var is_web = true
 
+func _ready():
+	top_level = true
+	z_index = 100
+	visible = true
+
+	sprite.visible = true
+	sprite.z_index = 100
+	sprite.play("web_attack")
+
+	if shape:
+		shape.disabled = true
+
+	await get_tree().create_timer(lifetime).timeout
+	queue_free()
 
 func start(spawn_position, dir):
 	global_position = spawn_position
 
-	if dir < 0:
-		direction = Vector2.LEFT
+	if typeof(dir) == TYPE_VECTOR2:
+		direction = dir.normalized()
 	else:
-		direction = Vector2.RIGHT
+		if dir < 0:
+			direction = Vector2.LEFT
+		else:
+			direction = Vector2.RIGHT
 
+	await get_tree().create_timer(0.15).timeout
 
-func _ready():
-	sprite.play("web_attack")
-	await get_tree().create_timer(lifetime).timeout
-	queue_free()
-
+	if shape:
+		shape.disabled = false
 
 func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 
-
 func _on_area_2d_body_entered(body):
 	if has_collided:
 		return
 
-	if body.is_in_group("Player"):
-		has_collided = true
-		is_web = true
+	if not body.is_in_group("Player"):
+		return
 
-		var effet_scene = preload("res://Enemies/Tarantula/effects/glued_web.tscn")
-		var effet = effet_scene.instantiate()
+	has_collided = true
+	is_web = true
 
-		get_tree().current_scene.add_child(effet)
-		effet.global_position = global_position
-		effet.get_node("AnimationPlayer").play("appear_fade")
+	var effet_scene = preload("res://Enemies/Tarantula/effects/glued_web.tscn")
+	var effet = effet_scene.instantiate()
 
-		if body.effects_mod.has_method("apply_web_effect"):
-			body.effects_mod.apply_web_effect()
+	get_tree().current_scene.add_child(effet)
+	effet.global_position = global_position
+	effet.get_node("AnimationPlayer").play("appear_fade")
 
-		if body.damage_mod.has_method("on_hit"):
-			body.damage_mod.on_hit(damage)
+	if body.effects_mod.has_method("apply_web_effect"):
+		body.effects_mod.apply_web_effect()
 
-		var gs = get_node("/root/GameState")
-		if gs.hud:
-			gs.hud.spawn_hud_dirt()
+	if body.damage_mod.has_method("on_hit"):
+		body.damage_mod.on_hit(damage)
 
-		queue_free()
+	var gs = get_node("/root/GameState")
+	if gs.hud:
+		gs.hud.spawn_hud_dirt()
+
+	queue_free()
