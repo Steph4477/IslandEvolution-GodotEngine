@@ -7,7 +7,7 @@ extends Node2D
 @export var random_x = 0
 @export var random_rotation = 60
 @export var is_template = false
-@export var damage = 1000
+@export var damage = 10
 
 var did_hit = false
 
