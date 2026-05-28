@@ -1,3 +1,6 @@
+# res://Levels/Lvl3/Lvl_3b/lvl_3b.gd
+
+
 extends Node2D
 
 @onready var player_spawn = $World/Arena/Visual/SpawnPoint
@@ -82,76 +85,83 @@ func _ready():
 	await anim.animation_finished
 
 	end_intro()
-
-	# --- Spawn vague de serpents ---
-	await start_speech(speech_snake_wave)
-
-	await get_tree().create_timer(2.0).timeout
-	start_public_anim()
-	anim.play("zoom_camera")
-	start_snake_wave()
-
-	await wait_finish_snake_wave()
-
-	# --- Loot fin vague serpents ---
-	anim.play("zoom_out_camera")
-	start_public_anim()
-	
-	await get_tree().create_timer(0.5).timeout
-	tribune_thrower.throw_snake_wave = true
-
-	await get_tree().create_timer(1.0).timeout
-	stop_public_anim()
-
-	anim.play("zoom_camera")
-
-	# --- Spawn vague de crocos ---
-	await start_speech(speech_croco_wave)
-
-	await get_tree().create_timer(2.0).timeout
-	start_public_anim()
-	start_croco_wave()
-
-	await wait_finish_croco_wave()
-
-	# --- Loot fin vague crocos ---
-	anim.play("zoom_out_camera")
-	start_public_anim()
-	
-	await get_tree().create_timer(0.5).timeout
-	tribune_thrower.throw_croco_wave = true
-
-	await get_tree().create_timer(1.0).timeout
-	stop_public_anim()
-
-	anim.play("zoom_camera")
-
-	# --- Spawn vague de cannibales ---
-	await start_speech(speech_cannibals_wave)
-
-	await get_tree().create_timer(2.0).timeout
-	start_public_anim()
-	start_cannibal_wave()
-
-	await wait_finish_cannibal_wave()
-
-	# --- Loot fin vague cannibales ---
-	anim.play("zoom_out_camera")
-	start_public_anim()
-	
-	await get_tree().create_timer(0.5).timeout
-	tribune_thrower.throw_cannibal_wave = true
-
-	await get_tree().create_timer(1.0).timeout
-	stop_public_anim()
-
-	anim.play("zoom_camera")
+#
+	## --- Spawn vague de serpents ---
+	#await start_speech(speech_snake_wave)
+#
+	#await get_tree().create_timer(2.0).timeout
+	#start_public_anim()
+	#anim.play("zoom_camera")
+	#start_snake_wave()
+#
+	#await wait_finish_snake_wave()
+#
+	## --- Loot fin vague serpents ---
+	#anim.play("zoom_out_camera")
+	#start_public_anim()
+	#
+	#await get_tree().create_timer(0.5).timeout
+	#tribune_thrower.throw_snake_wave = true
+#
+	#await get_tree().create_timer(1.0).timeout
+	#stop_public_anim()
+#
+	#anim.play("zoom_camera")
+#
+	## --- Spawn vague de crocos ---
+	#await start_speech(speech_croco_wave)
+#
+	#await get_tree().create_timer(2.0).timeout
+	#start_public_anim()
+	#start_croco_wave()
+#
+	#await wait_finish_croco_wave()
+#
+	## --- Loot fin vague crocos ---
+	#anim.play("zoom_out_camera")
+	#start_public_anim()
+	#
+	#await get_tree().create_timer(0.5).timeout
+	#tribune_thrower.throw_croco_wave = true
+#
+	#await get_tree().create_timer(1.0).timeout
+	#stop_public_anim()
+#
+	#anim.play("zoom_camera")
+#
+	## --- Spawn vague de cannibales ---
+	#await start_speech(speech_cannibals_wave)
+#
+	#await get_tree().create_timer(2.0).timeout
+	#start_public_anim()
+	#start_cannibal_wave()
+#
+	#await wait_finish_cannibal_wave()
+#
+	## --- Loot fin vague cannibales ---
+	#anim.play("zoom_out_camera")
+	#start_public_anim()
+	#
+	#await get_tree().create_timer(0.5).timeout
+	#tribune_thrower.throw_cannibal_wave = true
+#
+	#await get_tree().create_timer(1.0).timeout
+	#stop_public_anim()
+#
+	#anim.play("zoom_camera")
 
 	# --- Discours combat boss ---
 	await start_speech(speech_combat_boss)
 
 	await get_tree().create_timer(1.0).timeout
+
 	start_public_anim()
+
+	await get_tree().create_timer(0.5).timeout
+	tribune_thrower.throw_aoe_wave = true
+
+	await get_tree().create_timer(1.0).timeout
+	stop_public_anim()
 
 	# --- Cinematique de l'aparition du boss ---
 	reveal_anim.play("open_door")

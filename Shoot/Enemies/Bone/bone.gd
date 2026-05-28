@@ -1,3 +1,6 @@
+# res://Shoot/Enemies/Bone/bone.gd
+
+
 extends RigidBody2D
 
 @export var speed = 1000

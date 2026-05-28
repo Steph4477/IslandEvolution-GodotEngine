@@ -378,7 +378,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flxhq"]
-size = Vector2(2002.5, 245.5)
+size = Vector2(2002.5, 300.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u71ib"]
 size = Vector2(88.875, 1426.25)
@@ -662,12 +662,12 @@ attack_range = 3000
 
 [node name="BossCannibal" parent="World/Arena/Visual/WavesEnemies/WaveBoss" unique_id=1493117163 instance=ExtResource("17_bhj3v")]
 z_index = 15
-position = Vector2(58, -159)
+position = Vector2(60, -173)
 scale = Vector2(-0.8, 0.8)
 speed = 200
 
 [node name="SpawnPoint" type="Marker2D" parent="World/Arena/Visual" unique_id=1505592288]
-position = Vector2(12, -62)
+position = Vector2(-263, -217)
 
 [node name="ToothSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1064526504]
 z_index = 20
@@ -760,10 +760,11 @@ libraries/ = SubResource("AnimationLibrary_oj4hj")
 z_index = 15
 position = Vector2(-115, -10)
 collision_layer = 2
+collision_mask = 9
 
 [node name="Border" type="CollisionShape2D" parent="StaticBody2D" unique_id=1430512837]
 z_index = 50
-position = Vector2(970, 1477.75)
+position = Vector2(970, 1450.25)
 shape = SubResource("RectangleShape2D_flxhq")
 
 [node name="Border2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1228470624]
