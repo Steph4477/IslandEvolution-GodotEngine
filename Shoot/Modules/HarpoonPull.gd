@@ -49,6 +49,9 @@ func start_pull(target):
 	is_pulling = true
 	pull_time = 0.0
 
+	if owner_node.jump_timer:
+		owner_node.jump_timer.stop()
+
 	owner_node.velocity.x = 0
 	owner_node.is_attacking = true
 	owner_node.is_shooting = false
@@ -93,11 +96,28 @@ func stop_pull():
 	if target_node != null:
 		target_node.stop_harpooned()
 
-	if owner_node != null:
-		owner_node.is_attacking = false
-		owner_node.is_shooting = false
-		owner_node.play_idle()
-
 	is_pulling = false
 	pull_time = 0.0
 	target_node = null
+
+	if owner_node != null:
+		owner_node.after_pull_idle = true
+		owner_node.is_attacking = false
+		owner_node.is_shooting = false
+		owner_node.velocity.x = 0
+
+		if owner_node.attack_timer:
+			owner_node.attack_timer.stop()
+
+		if owner_node.jump_timer:
+			owner_node.jump_timer.stop()
+
+		owner_node.anim.play("idle")
+
+		await get_tree().create_timer(0.6).timeout
+
+		owner_node.after_pull_idle = false
+
+		if owner_node.jump_timer:
+			owner_node.jump_timer.start()
+			owner_node.jump_timer.start()

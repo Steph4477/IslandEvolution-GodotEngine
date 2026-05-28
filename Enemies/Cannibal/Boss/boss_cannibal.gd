@@ -27,9 +27,11 @@ var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
 var harpoon_pull = HarpoonPull.new()
 
+var block_shoot_harppon = false
 var is_quaking = false
 var is_quake_jumping = false
 var has_left_floor = false
+var after_pull_idle = false
 
 @onready var jump_timer = $JumpTimer
 
@@ -87,6 +89,15 @@ func _physics_process(delta):
 	melee_mod.update_state()
 
 	if hit_locked:
+		stop_and_slide()
+		return
+
+	if after_pull_idle:
+		velocity.x = 0
+
+		if anim.current_animation != "idle":
+			anim.play("idle")
+
 		stop_and_slide()
 		return
 
@@ -154,12 +165,20 @@ func start_quake_jump():
 	if player == null:
 		return
 
+	if not is_on_floor():
+		return
+
+	if harpoon_pull.is_pulling:
+		return
+
 	is_quaking = true
 	is_quake_jumping = true
 	has_left_floor = false
 
 	is_attacking = false
 	is_shooting = false
+
+	block_shoot_harppon = true
 
 	projectile_timer.stop()
 	attack_timer.stop()
@@ -197,6 +216,7 @@ func start_quake():
 		if distance >= min_shoot_distance and distance <= max_shoot_distance:
 			throw_mod.on_timer_timeout()
 
+	block_shoot_harppon = false
 	projectile_timer.start()
 
 	if in_melee:
@@ -275,6 +295,9 @@ func _on_projectile_timer_timeout():
 		return
 
 	if not is_on_floor():
+		return
+
+	if block_shoot_harppon:
 		return
 
 	throw_mod.on_timer_timeout()

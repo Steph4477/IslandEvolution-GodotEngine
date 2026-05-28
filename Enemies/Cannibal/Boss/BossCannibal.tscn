@@ -221,6 +221,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ib553"]
 resource_name = "pull_harpoon"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -356,7 +357,7 @@ position = Vector2(-151, 56)
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=802653703]
 position = Vector2(5, 4)
 scale = Vector2(-0.5, 0.5)
-texture = ExtResource("24_xcqje")
+texture = ExtResource("26_b43wt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1463877392]
 libraries/ = SubResource("AnimationLibrary_1pcfp")
