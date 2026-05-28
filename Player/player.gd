@@ -170,6 +170,7 @@ var is_pushing_or_pulling = false
 var is_harpooned = false
 var harpoon_owner = null
 
+
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
 @onready var anim = $Node2D/Anim
@@ -338,11 +339,13 @@ func _physics_process(delta):
 
 	if not can_move:
 		velocity.x = 0
-		if anim.current_animation != "idle":
-			anim.play("idle")
-		return
 
-	if animation_locked:
+		if is_harpooned and not is_on_floor():
+			velocity.y += gravity * gravity_factor * delta
+		else:
+			velocity.y = 0
+
+		move_and_slide()
 		return
 
 	var was_on_floor = is_on_floor()
@@ -413,13 +416,28 @@ func enable_controls():
 
 # --- Harpon ---
 func start_harpooned(shooter):
+	if is_harpooned:
+		return
+
 	is_harpooned = true
 	harpoon_owner = shooter
-	velocity = Vector2.ZERO
+	can_move = false
+
+	animation_locked = false
+	is_attacking = false
+	is_jumping = false
+	jump_count = 0
+
+	anim.play("harpooned")
 
 func stop_harpooned():
 	is_harpooned = false
 	harpoon_owner = null
+	can_move = true
+
+	is_jumping = false
+	jump_count = 0
+	velocity = Vector2.ZERO
 
 # ==============================================================================
 #                            SIGNAUX                                           =

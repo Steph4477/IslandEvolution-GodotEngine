@@ -307,7 +307,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6xaqw"]
 resource_name = "harpooned"
-length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -769,7 +768,7 @@ collision_mask = 294
 script = ExtResource("1_5psm4")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1565517736]
-position = Vector2(-23, -28)
+position = Vector2(-149, -114)
 scale = Vector2(1.2, 1.2)
 
 [node name="OpenMouth" type="Sprite2D" parent="Node2D" unique_id=592179325]
@@ -794,11 +793,11 @@ libraries/ = SubResource("AnimationLibrary_p7kcq")
 position = Vector2(164.16666, 61.666664)
 
 [node name="TurnAxis" type="Marker2D" parent="." unique_id=770474976]
-position = Vector2(136, 99.99999)
+position = Vector2(10, 13.999992)
 rotation = 0.785398
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1847097831]
-position = Vector2(174, 59)
+position = Vector2(48, -27)
 rotation = 0.785398
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1435274399]
@@ -819,7 +818,7 @@ stream = ExtResource("12_5vkkw")
 volume_db = -6.287
 
 [node name="ClacArea" type="Area2D" parent="." unique_id=1323133612]
-position = Vector2(26, -44)
+position = Vector2(-100, -130)
 collision_mask = 8
 monitoring = false
 monitorable = false
@@ -829,7 +828,7 @@ position = Vector2(125.5, 118)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="HeadbuttArea" type="Area2D" parent="." unique_id=1302658323]
-position = Vector2(26, -44)
+position = Vector2(-100, -130)
 collision_mask = 8
 monitoring = false
 monitorable = false
@@ -839,17 +838,17 @@ position = Vector2(159, 161)
 shape = SubResource("CircleShape2D_o5r0w")
 
 [node name="ColStand" type="CollisionShape2D" parent="." unique_id=1265538359 groups=["Player"]]
-position = Vector2(136, 92.00001)
+position = Vector2(10, 6.0000076)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_uvbbp")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." unique_id=1451828545 groups=["Player"]]
-position = Vector2(135.5, 125)
+position = Vector2(9.5, 39)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_7v2uk")
 
 [node name="AirBubbleSpawn" type="Marker2D" parent="." unique_id=214021573]
-position = Vector2(177, 125)
+position = Vector2(51, 39)
 
 [node name="BreathTickTimer" type="Timer" parent="." unique_id=1186615154]
 
@@ -858,7 +857,7 @@ position = Vector2(177, 125)
 [node name="DrownTimer" type="Timer" parent="." unique_id=1850105644]
 
 [node name="HarpoonAttachPoint" type="Marker2D" parent="." unique_id=1171941515]
-position = Vector2(132, 115)
+position = Vector2(1, 28)
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]
 [connection signal="body_entered" from="HeadbuttArea" to="." method="_on_headbutt_area_body_entered"]

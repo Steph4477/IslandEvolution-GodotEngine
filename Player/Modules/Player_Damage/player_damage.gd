@@ -9,6 +9,9 @@ func setup(player):
 #                       DOMMAGES ET MORT
 # ============================================================================
 func on_hit(damage):
+	if p.is_harpooned:
+		return
+
 	if not p.can_be_damaged or p.is_dead:
 		return
 
@@ -23,7 +26,6 @@ func on_hit(damage):
 	if p.game_state:
 		p.game_state.update_boss_fight_hud()
 
-	# popup dégâts (DIRECT module)
 	if p.popups_mod:
 		p.popups_mod.show_damage(damage)
 
@@ -48,18 +50,21 @@ func on_hit(damage):
 		return
 
 	if p.is_swimming_under_water:
-		p.play_anim("onhit_under_swim")
+		await p.play_anim("onhit_under_swim")
 	elif p.is_swimming:
-		p.play_anim("onhit_swim")
+		await p.play_anim("onhit_swim")
 	else:
-		p.play_anim("onhit")
+		await p.play_anim("onhit")
 
 	p.can_be_damaged = true
-
 
 func die():
 	if p.is_dead:
 		return
+
+	p.is_harpooned = false
+	p.harpoon_owner = null
+	p.can_move = true
 
 	p.is_dead = true
 	p.animation_locked = true
@@ -77,24 +82,13 @@ func die():
 	p.modulate = Color(1, 1, 1, 1)
 	await p.get_tree().process_frame
 
-	var next_level = ""
-	if p.game_state and p.game_state.is_game_over():
-		next_level = "res://Menu/Game_over/game_over.tscn"
-	else:
-		if p.game_state:
-			next_level = p.game_state.current_level_path
-
 	# stop breath propre
-	if p.die and p.modules and p.modules.breath:
-		p.modules.breath.stop_underwater_breath(true)
-
-	if p.game_state:
-		p.game_state.load_level(next_level)
-
+	if p.breath_mod:
+		p.breath_mod.stop_underwater_breath(true)
 
 func reset_state():
-	if p.modules and p.modules.breath:
-		p.modules.breath.stop_underwater_breath(true)
+	if p.breath_mod:
+		p.breath_mod.stop_underwater_breath(true)
 
 	p.is_dead = false
 	p.animation_locked = false

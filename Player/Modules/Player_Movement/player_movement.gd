@@ -2,6 +2,7 @@ extends Node
 
 var p
 
+
 func setup(player):
 	p = player
 
@@ -10,8 +11,9 @@ func setup(player):
 # ============================================================================
 
 func process(delta, was_on_floor):
-	if p.is_harpooned:
-		p.velocity = Vector2.ZERO
+	process_harpooned(delta)
+
+	if not p.can_move:
 		return
 
 	update_push_pull_state()
@@ -56,9 +58,9 @@ func move_horizontal():
 
 	if dir != 0 and not p.is_pushing_or_pulling:
 		if dir > 0:
-			p.sprite.scale.x = abs(p.sprite.scale.x)
+			p.sprite.flip_h = false
 		else:
-			p.sprite.scale.x = -abs(p.sprite.scale.x)
+			p.sprite.flip_h = true
 
 # ============================================================================
 #                                CLIMB
@@ -159,6 +161,11 @@ func detach_to_liana():
 #                           JUMP / WALL JUMP
 # ============================================================================
 func update_jump(delta):
+	if p.is_harpooned or not p.can_move:
+		p.is_jumping = false
+		p.jump_count = 0
+		return
+
 	# Bloque toute logique de saut sous l'eau (surface + underwater)
 	if p.is_swimming or p.is_swimming_under_water:
 		p.is_jumping = false
@@ -189,6 +196,9 @@ func update_jump(delta):
 
 
 func process_wall_jump_input():
+	if p.is_harpooned:
+		return
+
 	if p.is_on_floor():
 		return
 	if p.is_on_liana:
@@ -288,3 +298,26 @@ func apply_fall_damage(was_on_floor):
 
 		# Applique les dégâts + anim onhit
 		p.damage_mod.on_hit(dmg)
+
+# ============================================================================
+#                                HARPOONED
+# ============================================================================
+
+func process_harpooned(delta):
+	if not p.is_harpooned:
+		return
+
+	p.is_hanging = false
+	p.is_on_liana = false
+	p.climbing_anim = ""
+	p.is_jumping = false
+	p.is_ramping = false
+	p.is_sprinting = false
+	p.jump_count = 0
+
+	p.velocity.x = 0
+
+	if p.is_on_floor():
+		p.velocity.y = 0
+	else:
+		p.velocity.y += p.gravity * p.gravity_factor * delta
