@@ -7,7 +7,7 @@ extends EnemyGroundBase
 var fire_gaz = false
 var fire_interval = 2.0
 var melee_distance = 200.0
-var chase_distance = 460.0
+var chase_distance = 99999.0
 var min_shoot_distance = 201.0
 var max_shoot_distance = 360.0
 
@@ -29,11 +29,7 @@ var is_patrol_paused = false
 var patrol_direction = 1
 
 func _ready():
-	max_hp = 400
-	damage = 20
-	speed = 200
 	gravity = 2000
-	attack_range = 99999
 	stop_distance = 40
 	attack_anim_name = "attack"
 
