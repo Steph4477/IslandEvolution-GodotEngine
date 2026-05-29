@@ -9,23 +9,30 @@
 [ext_resource type="TileSet" uid="uid://7u7ot5b4g7n6" path="res://Levels/Lvl3/Environement/tiles_platforms/deco.tres" id="7_k30wa"]
 [ext_resource type="PackedScene" uid="uid://b8dpjjqkydppr" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune_thrower.tscn" id="7_sap2p"]
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/Swim_Zone/water.gdshader" id="8_cp7mx"]
+[ext_resource type="Texture2D" uid="uid://co21ubc6x2ibo" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/grid.png" id="9_bhj3v"]
 [ext_resource type="Texture2D" uid="uid://dlcojyyjfdw7s" path="res://Levels/Lvl3/Environement/Swim_Zone/water.png" id="9_bq7xw"]
+[ext_resource type="Texture2D" uid="uid://c8pgkqllu65xn" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/wallRight.png" id="9_nh78j"]
+[ext_resource type="Texture2D" uid="uid://d0vem0ltj3b7d" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/hut.png" id="10_bhj3v"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="10_bq7xw"]
+[ext_resource type="Texture2D" uid="uid://caaj4sh1ppr4s" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/GridLeft/1.png" id="10_q85in"]
 [ext_resource type="Texture2D" uid="uid://b0cs2xlv1obaf" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/bones.png" id="11_6auop"]
 [ext_resource type="Texture2D" uid="uid://ljnsmdbtewun" path="res://Player/Sprite/exit/1.png" id="12_6auop"]
-[ext_resource type="Texture2D" uid="uid://b1jkcdhgdwlk2" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/hut.png" id="12_fkhbp"]
-[ext_resource type="Texture2D" uid="uid://caaj4sh1ppr4s" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/1.png" id="13_82sl6"]
 [ext_resource type="Texture2D" uid="uid://31re10knbh5p" path="res://Player/Sprite/exit/2.png" id="13_sap2p"]
 [ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="14_cmbv6"]
-[ext_resource type="Texture2D" uid="uid://cbkwxfaxx53vd" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/2.png" id="14_ds7ig"]
 [ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="14_f4icm"]
 [ext_resource type="PackedScene" uid="uid://dhw0x3rjrwjfs" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="15_0rsi1"]
-[ext_resource type="Texture2D" uid="uid://dix1rhe2ffd00" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Door/3.png" id="15_cmbv6"]
 [ext_resource type="PackedScene" uid="uid://4nolvckgjic0" path="res://Enemies/Cannibal/cannibal.tscn" id="16_viq1m"]
 [ext_resource type="PackedScene" uid="uid://cy3bsh6oopd0n" path="res://Enemies/Cannibal/Boss/BossCannibal.tscn" id="17_bhj3v"]
+[ext_resource type="Texture2D" uid="uid://bbrsdulhc75g5" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/GridLeft/4.png" id="21_dm2a1"]
+[ext_resource type="Texture2D" uid="uid://dix1rhe2ffd00" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/GridLeft/3.png" id="22_tldeq"]
+[ext_resource type="Texture2D" uid="uid://cbkwxfaxx53vd" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/GridLeft/2.png" id="23_mx2ic"]
+[ext_resource type="Texture2D" uid="uid://cilxuwnjkicvc" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/GridRight/4.png" id="24_4xu44"]
 [ext_resource type="Texture2D" uid="uid://mt23v14unsnq" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/1.png" id="24_m3dsj"]
 [ext_resource type="Texture2D" uid="uid://bancibdpw1vbc" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/2.png" id="25_nh78j"]
+[ext_resource type="Texture2D" uid="uid://bb6uwd8nvh4p8" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/GridRight/3.png" id="25_oj4hj"]
 [ext_resource type="Texture2D" uid="uid://djvrhm1s3vjpk" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/3.png" id="26_q85in"]
+[ext_resource type="Texture2D" uid="uid://bktox83xovyp4" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/GridRight/2.png" id="26_w1o2t"]
+[ext_resource type="Texture2D" uid="uid://vhyhrf4nfkiy" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/GridRight/1.png" id="27_7yw1m"]
 [ext_resource type="Texture2D" uid="uid://cshfia5wvxhu3" path="res://Enemies/Cannibal/Boss/Sprites/WalkFace/4.png" id="27_23sse"]
 [ext_resource type="Texture2D" uid="uid://bltcin4jx8x8x" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/1.png" id="28_djwr8"]
 [ext_resource type="Texture2D" uid="uid://g32ykaciwlfe" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/2.png" id="29_w5ign"]
@@ -40,19 +47,64 @@ shader_parameter/speed = 0.050000002375
 diffuse_texture = ExtResource("9_bq7xw")
 texture_repeat = 2
 
-[sub_resource type="Animation" id="Animation_82sl6"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_hvrw5"]
+resource_name = "close_door"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloseSprite:texture")
+tracks/0/path = NodePath("../DorrLeft/GridBoss:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(932, -572), Vector2(936, -263.99994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DorrLeft/InteriorHutSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.6609516, 1.6609516, 1.6609516, 1), Color(0.13724168, 0.13724168, 0.13724168, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rg3dc"]
+resource_name = "close_grid_left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DorrLeft/GridLeft:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("13_82sl6")]
+"values": [ExtResource("21_dm2a1"), ExtResource("22_tldeq"), ExtResource("23_mx2ic"), ExtResource("10_q85in")]
+}
+
+[sub_resource type="Animation" id="Animation_p0c45"]
+resource_name = "close_grid_right"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DorrLeft/GridRight:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.39999998, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("24_4xu44"), ExtResource("25_oj4hj"), ExtResource("26_w1o2t"), ExtResource("27_7yw1m")]
 }
 
 [sub_resource type="Animation" id="Animation_wdwv6"]
@@ -61,20 +113,68 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloseSprite:texture")
+tracks/0/path = NodePath("../DorrLeft/GridBoss:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(936, -263.99994), Vector2(932, -572)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DorrLeft/InteriorHutSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.13724168, 0.13724168, 0.13724168, 1), Color(1.6609516, 1.6609516, 1.6609516, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ld15j"]
+resource_name = "open_grid_left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DorrLeft/GridLeft:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("13_82sl6"), ExtResource("14_ds7ig"), ExtResource("15_cmbv6")]
+"values": [ExtResource("10_q85in"), ExtResource("23_mx2ic"), ExtResource("22_tldeq"), ExtResource("21_dm2a1")]
+}
+
+[sub_resource type="Animation" id="Animation_ggg5a"]
+resource_name = "open_grid_right"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DorrLeft/GridRight:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("27_7yw1m"), ExtResource("26_w1o2t"), ExtResource("25_oj4hj"), ExtResource("24_4xu44")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cfaj8"]
 _data = {
-&"RESET": SubResource("Animation_82sl6"),
-&"open_door": SubResource("Animation_wdwv6")
+&"close_door": SubResource("Animation_hvrw5"),
+&"close_grid_left": SubResource("Animation_rg3dc"),
+&"close_grid_right": SubResource("Animation_p0c45"),
+&"open_door": SubResource("Animation_wdwv6"),
+&"open_grid_left": SubResource("Animation_ld15j"),
+&"open_grid_right": SubResource("Animation_ggg5a")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sap2p"]
@@ -127,43 +227,55 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Arena/Visual/ToothSprite:visible")
+tracks/0/path = NodePath("../Camera2D:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(2, 2)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Camera2D:zoom")
+tracks/1/path = NodePath("../Camera2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.4, 0.4)]
+"values": [Vector2(3893.3335, -580)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Camera2D:position")
+tracks/2/path = NodePath("../../Arena/Visual/ToothSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(4169.9995, -4140)]
+"values": [Vector2(1406, -18)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FakeMoko:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3940, -1156.6666)]
 }
 
 [sub_resource type="Animation" id="Animation_sap2p"]
 resource_name = "close"
-length = 3.0666666
+length = 2.8333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -183,10 +295,10 @@ tracks/1/path = NodePath("../../Arena/Visual/BoneSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.36666667, 0.4466666, 0.4966668, 0.5766667, 0.6333333, 0.72666657, 0.77666676, 0.8566667, 0.9, 0.97666657, 1.0166668, 1.1066667, 1.1666669, 1.2666668, 1.3166667, 1.4066666, 1.4666666, 1.5566667, 1.6066664, 1.6666669, 1.7000002, 1.7666668, 1.8366665, 1.9166669, 1.9666666, 2.0366669, 2.0866666, 2.1566668, 2.2000003, 2.2766666, 2.3266668, 2.4066668, 2.4666667, 2.5866666, 2.666667, 2.7666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.36666667, 0.4466666, 0.4966668, 0.5766667, 0.6333333, 0.72666657, 0.77666676, 0.8566667, 0.9, 0.97666657, 1.0166668, 1.1066667, 1.1666669, 1.2666668, 1.3166667, 1.4066666, 1.4666666, 1.5566667, 1.6066664, 1.6666669, 1.7000002, 1.7666668, 1.8366665, 1.9166669, 1.9666666, 2.0366669, 2.0866666, 2.1566668, 2.2000003, 2.2766666, 2.3266668, 2.4066668, 2.4666667, 2.5866666, 2.666667, 2.7666667, 2.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(130.366, 139.644), Vector2(110, 112.838), Vector2(160, 96.084), Vector2(180, 69.278), Vector2(150, 50.29), Vector2(80, 25.308), Vector2(106, 11.925), Vector2(150, -9.488), Vector2(125, -21.086), Vector2(110, -40.597), Vector2(155.063, -50.777), Vector2(180, -73.681), Vector2(148, -88.951), Vector2(80, -119.572), Vector2(105, -134.883), Vector2(150, -162.443), Vector2(122, -180.816), Vector2(100, -203.521), Vector2(160, -216.135), Vector2(100, -231.272), Vector2(145, -239.681), Vector2(80, -262.525), Vector2(100, -286.511), Vector2(160, -313.924), Vector2(120, -331.057), Vector2(100, -350.363), Vector2(160, -364.153), Vector2(100, -383.459), Vector2(145, -395.411), Vector2(160, -421.682), Vector2(100, -438.815), Vector2(180, -466.228), Vector2(115, -486.787), Vector2(140, -522.315), Vector2(127, -746), Vector2(1388, -1302)]
+"values": [Vector2(1300.366, 139.644), Vector2(1100, 112.838), Vector2(1600, 96.084), Vector2(1800, 69.278), Vector2(1500, 50.29), Vector2(800, 25.308), Vector2(1060, 11.925), Vector2(1500, -9.488), Vector2(1250, -21.086), Vector2(1100, -40.597), Vector2(1550.063, -50.777), Vector2(1800, -73.681), Vector2(1480, -88.951), Vector2(800, -119.572), Vector2(1050, -134.883), Vector2(1500, -162.443), Vector2(1220, -180.816), Vector2(1000, -203.521), Vector2(1600, -216.135), Vector2(1000, -231.272), Vector2(1450, -239.681), Vector2(800, -262.525), Vector2(1000, -286.511), Vector2(1600, -313.924), Vector2(1200, -331.057), Vector2(1000, -350.363), Vector2(1600, -364.153), Vector2(1000, -383.459), Vector2(1450, -395.411), Vector2(1600, -421.682), Vector2(1000, -438.815), Vector2(1800, -466.228), Vector2(1150, -486.787), Vector2(1400, -522.315), Vector2(1270, -746), Vector2(1388, -1302), Vector2(1495, -1293)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -195,10 +307,10 @@ tracks/2/path = NodePath("../../Arena/Visual/ToothSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 2.8),
+"times": PackedFloat32Array(0, 2.7666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1347, -894), Vector2(1383, -2344)]
+"values": [Vector2(1406, -18), Vector2(1379, -1322)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -235,10 +347,10 @@ tracks/1/path = NodePath("../Camera2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.7),
+"times": PackedFloat32Array(0, 1.6932005),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(3893.3335, -580), Vector2(4166.6665, -3646.6665)]
+"values": [Vector2(3893.3335, -580), Vector2(4165.573, -3634.4006)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -250,7 +362,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4063.3333, -720), Vector2(3990, -1299.9998)]
+"values": [Vector2(4063.3333, -720), Vector2(4023.3337, -1316.6666)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -265,8 +377,8 @@ tracks/3/keys = {
 "values": [ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop"), ExtResource("13_sap2p"), ExtResource("14_f4icm"), ExtResource("12_6auop")]
 }
 
-[sub_resource type="Animation" id="Animation_f4icm"]
-resource_name = "zoom_camera"
+[sub_resource type="Animation" id="Animation_nh78j"]
+resource_name = "zoom"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -274,15 +386,54 @@ tracks/0/path = NodePath("../Camera2D:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.70000005, 0.70000005), Vector2(1.2, 1.2)]
+"values": [Vector2(0.4, 0.4), Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4169.9995, -4140), Vector2(4599.9995, -2836.6667)]
+}
+
+[sub_resource type="Animation" id="Animation_q85in"]
+resource_name = "zoom_boss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(1.2, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4169.9995, -4140), Vector2(4629.9995, -2346.6667)]
 }
 
 [sub_resource type="Animation" id="Animation_m3dsj"]
 resource_name = "zoom_out"
-length = 5.0
+length = 0.43333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -308,29 +459,41 @@ tracks/1/keys = {
 "values": [Vector2(4329.9995, -1630), Vector2(4169.9995, -4140)]
 }
 
-[sub_resource type="Animation" id="Animation_7sb6u"]
-resource_name = "zoom_out_camera"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(4, 4), Vector2(0.4, 0.4)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbv6"]
 _data = {
 &"RESET": SubResource("Animation_bhj3v"),
 &"close": SubResource("Animation_sap2p"),
 &"intro": SubResource("Animation_ds7ig"),
-&"zoom_camera": SubResource("Animation_f4icm"),
-&"zoom_out": SubResource("Animation_m3dsj"),
-&"zoom_out_camera": SubResource("Animation_7sb6u")
+&"zoom": SubResource("Animation_nh78j"),
+&"zoom_boss": SubResource("Animation_q85in"),
+&"zoom_out": SubResource("Animation_m3dsj")
+}
+
+[sub_resource type="Animation" id="Animation_23sse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FakeBoss:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FakeBoss:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2197.0002, 416.99997)]
 }
 
 [sub_resource type="Animation" id="Animation_4xu44"]
@@ -343,10 +506,10 @@ tracks/0/path = NodePath("FakeBoss:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.01, 1.59),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.2, 0.2), Vector2(0.45, 0.45)]
+"values": [Vector2(0.2, 0.2), Vector2(0.2018868, 0.2018868), Vector2(0.5, 0.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -367,10 +530,10 @@ tracks/2/path = NodePath("FakeBoss:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5333333),
+"times": PackedFloat32Array(0, 1.62),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2078, 442.99997), Vector2(2088, 486.99994)]
+"values": [Vector2(2209, 454.99997), Vector2(2197, 507.99997)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -387,11 +550,12 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oj4hj"]
 _data = {
+&"RESET": SubResource("Animation_23sse"),
 &"reveal_boss": SubResource("Animation_4xu44")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flxhq"]
-size = Vector2(2950, 487.5)
+size = Vector2(3186, 447.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u71ib"]
 size = Vector2(88.875, 1138.125)
@@ -437,10 +601,10 @@ position = Vector2(731, 831)
 
 [node name="TribuneThrower" parent="World/Arena" unique_id=1977538466 instance=ExtResource("7_sap2p")]
 z_index = 2
-position = Vector2(1382, -1542)
+position = Vector2(1593, -1447)
 
 [node name="AnimPublic" type="Node2D" parent="World/Arena/TribuneThrower" unique_id=1737577089]
-position = Vector2(0, 5)
+position = Vector2(-133, -31)
 
 [node name="Stage3" type="Node2D" parent="World/Arena/TribuneThrower/AnimPublic" unique_id=690246239]
 modulate = Color(0.24695042, 0.24695027, 0.2469503, 1)
@@ -680,67 +844,107 @@ position = Vector2(343.3333, 7.222226)
 [node name="PublicCannibal12" parent="World/Arena/TribuneThrower/AnimPublic/Stage6" unique_id=19878620 instance=ExtResource("2_6do33")]
 position = Vector2(649.44446, 10.555565)
 
+[node name="DorrLeft" type="Node2D" parent="World/Arena" unique_id=395798610]
+position = Vector2(485, -619)
+
+[node name="GridBoss" type="Sprite2D" parent="World/Arena/DorrLeft" unique_id=1804415459]
+z_index = 8
+position = Vector2(932, -572)
+scale = Vector2(1.3312027, 1.1298316)
+texture = ExtResource("9_bhj3v")
+
+[node name="InteriorHutSprite" type="Sprite2D" parent="World/Arena/DorrLeft" unique_id=587243503]
+modulate = Color(1.6609516, 1.6609516, 1.6609516, 1)
+z_index = 2
+position = Vector2(1052, -598)
+scale = Vector2(2, 2)
+texture = ExtResource("10_bhj3v")
+
+[node name="wall" type="Sprite2D" parent="World/Arena/DorrLeft" unique_id=1960602468]
+z_index = 4
+position = Vector2(906, -687)
+scale = Vector2(2, 2)
+texture = ExtResource("9_nh78j")
+
+[node name="wall2" type="Sprite2D" parent="World/Arena/DorrLeft" unique_id=1702313914]
+z_index = 4
+position = Vector2(1042, -687)
+scale = Vector2(-2, 2)
+texture = ExtResource("9_nh78j")
+
+[node name="GridLeft" type="Sprite2D" parent="World/Arena/DorrLeft" unique_id=121393396]
+z_index = 6
+position = Vector2(906, -687)
+scale = Vector2(2, 2)
+texture = ExtResource("10_q85in")
+
+[node name="GridRight" type="Sprite2D" parent="World/Arena/DorrLeft" unique_id=593188672]
+z_index = 6
+position = Vector2(906, -687)
+scale = Vector2(2, 2)
+texture = ExtResource("27_7yw1m")
+
 [node name="Visual" type="Node2D" parent="World/Arena" unique_id=1605570121]
 
 [node name="FloorSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1942316824]
 modulate = Color(1, 1, 0, 1)
 z_index = 5
-position = Vector2(2007, 381)
+position = Vector2(2018, 546)
 scale = Vector2(2, 3.914)
 texture = ExtResource("5_80yr0")
 
 [node name="BoneSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=909731591]
 visible = false
 z_index = 2
-position = Vector2(130.366, 139.644)
+position = Vector2(1300.366, 139.644)
 scale = Vector2(2, 2)
 texture = ExtResource("11_6auop")
 
+[node name="SpawnPoint" type="Marker2D" parent="World/Arena/Visual" unique_id=1505592288]
+z_index = 10
+position = Vector2(1228, -293)
+
 [node name="ArenaSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=321503114]
 modulate = Color(0.85348755, 0.85348773, 0.8534877, 1)
-z_index = 5
-position = Vector2(1387.5, -1304.5)
+z_index = 8
+position = Vector2(1388, -1304)
 scale = Vector2(2, 2)
 texture = ExtResource("3_80yr0")
 
-[node name="InteriorHutSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=587243503]
-z_index = 2
-position = Vector2(1400, -1309)
-scale = Vector2(2, 2)
-texture = ExtResource("12_fkhbp")
-
-[node name="CloseSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=2146078472]
-z_index = 5
-position = Vector2(1382.9999, -1304)
-scale = Vector2(2, 1.988)
-texture = ExtResource("13_82sl6")
-
 [node name="WavesEnemies" type="Node2D" parent="World/Arena/Visual" unique_id=1098877637]
+z_index = 10
 position = Vector2(43, 33)
 
 [node name="WaveSnake" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=281634102]
 position = Vector2(1882, -274)
+scale = Vector2(2, 2)
 
 [node name="Snake" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=88320707 instance=ExtResource("14_cmbv6")]
 z_index = 5
-position = Vector2(557, -94)
-attack_range = 3000
+position = Vector2(355.99994, -64.00001)
+speed = 600
+attack_range = 99999
+max_hp = 2000
 
 [node name="Snake2" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=321227883 instance=ExtResource("14_cmbv6")]
 z_index = 5
-position = Vector2(548, -25)
+position = Vector2(357.50006, -108.49999)
 attack_range = 3000
+max_hp = 2000
 
 [node name="Snake3" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=132262032 instance=ExtResource("14_cmbv6")]
 z_index = 5
-position = Vector2(612, -93)
-attack_range = 3000
+position = Vector2(350.5, -91.999985)
+speed = 500
+attack_range = 30000
+max_hp = 2000
 
 [node name="WaveCroco" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1852895937]
-position = Vector2(809, -323)
+position = Vector2(1328, -299)
+scale = Vector2(2, 2)
 
 [node name="AmphibiousCroco" parent="World/Arena/Visual/WavesEnemies/WaveCroco" unique_id=1403221519 instance=ExtResource("15_0rsi1")]
-position = Vector2(1541, -81)
+position = Vector2(-567, -90)
 attack_range = 6000
 
 [node name="AmphibiousCroco2" parent="World/Arena/Visual/WavesEnemies/WaveCroco" unique_id=2137143374 instance=ExtResource("15_0rsi1")]
@@ -748,32 +952,32 @@ position = Vector2(-630, -93)
 attack_range = 6000
 
 [node name="WaveCannibal" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1318085319]
-position = Vector2(1035, -206)
+position = Vector2(-514, -97)
+scale = Vector2(2, 2)
 
 [node name="Cannibal" parent="World/Arena/Visual/WavesEnemies/WaveCannibal" unique_id=708931693 instance=ExtResource("16_viq1m")]
 z_index = 5
-position = Vector2(-510, -115)
+position = Vector2(1534, -165)
 attack_range = 3000
 
 [node name="Cannibal2" parent="World/Arena/Visual/WavesEnemies/WaveCannibal" unique_id=1383038523 instance=ExtResource("16_viq1m")]
 z_index = 5
-position = Vector2(600, -110)
+position = Vector2(1591, -176)
 attack_range = 3000
 
 [node name="WaveBoss" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1125832789]
+scale = Vector2(2, 2)
 
 [node name="BossCannibal" parent="World/Arena/Visual/WavesEnemies/WaveBoss" unique_id=1493117163 instance=ExtResource("17_bhj3v")]
+visible = false
 z_index = 15
-position = Vector2(1306, -391.99997)
+position = Vector2(1473, -476.99997)
 speed = 200
 
-[node name="SpawnPoint" type="Marker2D" parent="World/Arena/Visual" unique_id=1505592288]
-position = Vector2(1246, -398)
-
 [node name="ToothSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1064526504]
-z_index = 20
-position = Vector2(1347, -894)
-scale = Vector2(2, 4)
+z_index = 50
+position = Vector2(1406, -18)
+scale = Vector2(2, 2)
 texture = ExtResource("4_k30wa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/Arena/Visual" unique_id=1090274793]
@@ -829,14 +1033,14 @@ scale = Vector2(0.3, 0.3)
 
 [node name="FakeMoko" type="Sprite2D" parent="World/IntroCinematic" unique_id=1447847349]
 z_index = 15
-position = Vector2(4063.3333, -720)
-scale = Vector2(1.2, 1)
+position = Vector2(3940, -1156.6666)
+scale = Vector2(1.8, 1.4)
 texture = ExtResource("12_6auop")
 
 [node name="Camera2D" type="Camera2D" parent="World/IntroCinematic" unique_id=1558263865]
 z_index = 100
-position = Vector2(4169.9995, -4140)
-zoom = Vector2(0.4, 0.4)
+position = Vector2(3893.3335, -580)
+zoom = Vector2(2, 2)
 
 [node name="CameraCinematic" type="Node2D" parent="World/IntroCinematic" unique_id=1286858604]
 
@@ -850,8 +1054,8 @@ autoplay = &"intro"
 visible = false
 modulate = Color(0.14911404, 0.14911404, 0.14911404, 1)
 z_index = 15
-position = Vector2(2078, 442.99997)
-scale = Vector2(0.2, 0.2)
+position = Vector2(2197.0002, 416.99997)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_m3dsj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/RevealBoss" unique_id=26226921]
@@ -865,7 +1069,7 @@ collision_mask = 9
 
 [node name="Border" type="CollisionShape2D" parent="StaticBody2D" unique_id=1430512837]
 z_index = 50
-position = Vector2(2137, 1356.75)
+position = Vector2(2255, 1376.75)
 shape = SubResource("RectangleShape2D_flxhq")
 
 [node name="Border2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1228470624]
@@ -877,7 +1081,7 @@ position = Vector2(2132, -26.5)
 shape = SubResource("RectangleShape2D_gc7ln")
 
 [node name="Border4" type="CollisionShape2D" parent="StaticBody2D" unique_id=380903725]
-position = Vector2(3556, 553)
+position = Vector2(3770, 561)
 shape = SubResource("RectangleShape2D_6auop")
 
 [connection signal="animation_finished" from="World/IntroCinematic/CameraCinematic/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

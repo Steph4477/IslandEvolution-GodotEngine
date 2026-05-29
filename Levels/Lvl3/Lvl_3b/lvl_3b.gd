@@ -64,8 +64,11 @@ func _ready():
 	disable_enemy(cannibal_spawn_2)
 
 	disable_enemy(boss_spawn)
-
 	start_intro()
+	
+	# --- anim des grilles ---
+	await get_tree().create_timer(1.0).timeout
+	reveal_anim.play("close_door")
 
 	# --- vague de loots intro ---
 	await get_tree().create_timer(3.5).timeout
@@ -89,13 +92,22 @@ func _ready():
 	await get_tree().create_timer(2.0).timeout
 	start_public_anim()
 
-	return_to_moko_camera()
+	anim.play("zoom")
+	await anim.animation_finished
+	
+	reveal_anim.play("open_grid_right")
+	await reveal_anim.animation_finished
+	
 	start_snake_wave()
 
+	reveal_anim.play("close_grid_right")
+	await reveal_anim.animation_finished
+	
 	await wait_finish_snake_wave()
 
 	# --- Loot fin vague serpents ---
-	anim.play("zoom_out_camera")
+	anim.play("zoom_out")
+	
 	start_public_anim()
 	
 	await get_tree().create_timer(0.5).timeout
@@ -104,21 +116,29 @@ func _ready():
 	await get_tree().create_timer(1.0).timeout
 	stop_public_anim()
 
-	anim.play("zoom_camera")
-
 	# --- Spawn vague de crocos ---
 	await start_speech(speech_croco_wave)
 
 	await get_tree().create_timer(2.0).timeout
 	start_public_anim()
+	
+	anim.play("zoom")
+	await anim.animation_finished
 
-	return_to_moko_camera()
+	reveal_anim.play("open_grid_left")
+	await reveal_anim.animation_finished
+	
 	start_croco_wave()
+
+	reveal_anim.play("close_grid_left")
+	await reveal_anim.animation_finished
+
 
 	await wait_finish_croco_wave()
 
 	# --- Loot fin vague crocos ---
-	anim.play("zoom_out_camera")
+	anim.play("zoom_out")
+	await anim.animation_finished
 	start_public_anim()
 	
 	await get_tree().create_timer(0.5).timeout
@@ -127,20 +147,28 @@ func _ready():
 	await get_tree().create_timer(1.0).timeout
 	stop_public_anim()
 
-	anim.play("zoom_camera")
-
 	# --- Spawn vague de cannibales ---
 	await start_speech(speech_cannibals_wave)
 
 	await get_tree().create_timer(2.0).timeout
 	start_public_anim()
-	return_to_moko_camera()
+	
+	anim.play("zoom")
+	await anim.animation_finished
+	
+	reveal_anim.play("open_grid_right")
+	await reveal_anim.animation_finished
+	
 	start_cannibal_wave()
 
+	reveal_anim.play("close_grid_right")
+	await reveal_anim.animation_finished
+	
 	await wait_finish_cannibal_wave()
 
 	# --- Loot fin vague cannibales ---
-	anim.play("zoom_out_camera")
+	anim.play("zoom_out")
+
 	start_public_anim()
 	
 	await get_tree().create_timer(0.5).timeout
@@ -149,8 +177,6 @@ func _ready():
 	await get_tree().create_timer(1.0).timeout
 	stop_public_anim()
 
-	anim.play("zoom_camera")
-
 	# --- Discours combat boss ---
 	await start_speech(speech_combat_boss)
 
@@ -158,6 +184,8 @@ func _ready():
 	start_public_anim()
 
 	# --- Cinematique de l'aparition du boss ---
+	anim.play("zoom_boss")
+	await anim.animation_finished
 	reveal_anim.play("open_door")
 	await reveal_anim.animation_finished
 
@@ -165,10 +193,14 @@ func _ready():
 
 	reveal_boss_anim.play("reveal_boss")
 	await reveal_boss_anim.animation_finished
+	
+	reveal_anim.play("close_door")
+	await reveal_anim.animation_finished
 
 	fake_boss.visible = false
 
-	return_to_moko_camera()
+	anim.play("zoom")
+	await anim.animation_finished
 	start_boss_wave()
 
 # ============================================================================
@@ -180,18 +212,6 @@ func start_public_anim():
 func stop_public_anim():
 	get_tree().call_group("public_cannibal", "stop_public_anim")
 
-# ============================================================================
-#                          MAITRISE CAMERA MOKO
-# ============================================================================
-func return_to_moko_camera():
-	var gs = get_node("/root/GameState")
-	var player = gs.player
-	var player_camera = player.get_node("Camera2D")
-
-	scene_camera.enabled = false
-	player_camera.enabled = true
-	player_camera.make_current()
-	player_camera.zoom = Vector2(0.8, 0.8)
 
 # ============================================================================
 #                           CINEMATIQUE D'INTRODUCTION
@@ -206,7 +226,8 @@ func start_intro():
 	player.visible = false
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 	player.global_position = player_spawn.global_position
-	player.scale = Vector2(1.2, 1.2)
+	player.scale = Vector2(2, 2)
+	player.speed = 800
 
 	toucan.visible = false
 	toucan.process_mode = Node.PROCESS_MODE_DISABLED
@@ -230,6 +251,8 @@ func end_intro():
 	player.visible = true
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	player.global_position = player_spawn.global_position
+
+	player.z_index = 40
 
 	toucan.visible = true
 	toucan.process_mode = Node.PROCESS_MODE_INHERIT
