@@ -66,6 +66,8 @@ func _do_scene_change():
 		return
 
 	# --- Affichage des statistiques de fin de niveau ---
+	gs.score_system.calculate_stars()
+	gs.score_system.print_level_stats()
 	gs.show_score_screen()
 
 	await get_tree().create_timer(0.2).timeout

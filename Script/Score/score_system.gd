@@ -3,12 +3,17 @@ class_name ScoreSystem
 
 var enemies_killed = 0
 var enemies_total = 0
+var stars = 0
 
+
+##################################################################################
+#                                CALCUL D'ENEMIS TUES                            #
+##################################################################################
 
 func reset_level_score():
 	enemies_killed = 0
 	enemies_total = 0
-
+	stars = 0
 
 func set_enemies_total(value):
 	enemies_total = value
@@ -45,3 +50,25 @@ func count_enemies_in_node(node):
 func print_level_stats():
 	print("=== SCORE NIVEAU ===")
 	print("Ennemis tués : ", enemies_killed, " / ", enemies_total)
+	print("Étoiles : ", stars)
+	
+##################################################################################
+#                                CALCUL ETOILES                                  #
+##################################################################################
+func calculate_stars():
+	var percent = 0.0
+
+	if enemies_total > 0:
+		percent = (float(enemies_killed) / float(enemies_total)) * 100.0
+
+	if percent >= 100:
+		stars = 3
+	elif percent >= 80:
+		stars = 2
+	elif percent >= 50:
+		stars = 1
+	else:
+		stars = 0
+	
+	print("SCORE - Pourcentage :", percent)
+	print("SCORE - Etoiles :", stars)
