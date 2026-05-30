@@ -72,3 +72,19 @@ func calculate_stars():
 	
 	print("SCORE - Pourcentage :", percent)
 	print("SCORE - Etoiles :", stars)
+	print("SCORE - Médaille : ", get_medal())
+
+##################################################################################
+#                                CALCUL DE LA MEDAILLE                           #
+##################################################################################
+func get_medal():
+	if stars == 3:
+		return "Or"
+
+	if stars == 2:
+		return "Argent"
+
+	if stars == 1:
+		return "Bronze"
+
+	return "Aucune"
