@@ -924,20 +924,17 @@ z_index = 5
 position = Vector2(355.99994, -64.00001)
 speed = 600
 attack_range = 99999
-max_hp = 2000
 
 [node name="Snake2" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=321227883 instance=ExtResource("14_cmbv6")]
 z_index = 5
 position = Vector2(357.50006, -108.49999)
 attack_range = 3000
-max_hp = 2000
 
 [node name="Snake3" parent="World/Arena/Visual/WavesEnemies/WaveSnake" unique_id=132262032 instance=ExtResource("14_cmbv6")]
 z_index = 5
 position = Vector2(350.5, -91.999985)
 speed = 500
 attack_range = 30000
-max_hp = 2000
 
 [node name="WaveCroco" type="Node2D" parent="World/Arena/Visual/WavesEnemies" unique_id=1852895937]
 position = Vector2(1328, -299)
@@ -945,6 +942,7 @@ scale = Vector2(2, 2)
 
 [node name="AmphibiousCroco" parent="World/Arena/Visual/WavesEnemies/WaveCroco" unique_id=1403221519 instance=ExtResource("15_0rsi1")]
 position = Vector2(-567, -90)
+max_hp = 200
 attack_range = 6000
 
 [node name="AmphibiousCroco2" parent="World/Arena/Visual/WavesEnemies/WaveCroco" unique_id=2137143374 instance=ExtResource("15_0rsi1")]

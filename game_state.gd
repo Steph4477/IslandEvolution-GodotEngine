@@ -112,14 +112,25 @@ var air_recipe_dialog_shown = false
 var air_craft_revealed = false
 var air_altar_found = false
 
+# --- Score ---
+var score_system: ScoreSystem
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
+	
+	# --- score ---
+	score_system = ScoreSystem.new()
+	add_child(score_system)
+	
+	# --- fondu au chargement ---
 	fade = fade_scene.instantiate()
 	add_child(fade)
 	fade.process_mode = Node.PROCESS_MODE_ALWAYS
 
+	# --- Création du monde qui contiendra les niveaux ---
 	_create_world()
+	
+	# --- Réinitialise les dialogues de session pour éviter les répétitions ---
 	reset_session_dialogues()
 
 	await get_tree().process_frame
