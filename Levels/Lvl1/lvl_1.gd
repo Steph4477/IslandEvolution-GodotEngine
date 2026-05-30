@@ -12,7 +12,12 @@ extends Node2D
 #| `focus_camera_on_exit_and_fade()`   | Focus sortie, joue le fade, puis revient sur Moko                              |
 
 func _ready():
-	start_intro_sequence()
+	var gs = get_node("/root/GameState")
+
+	if gs.lvl1_intro_seen == false:
+		gs.lvl1_intro_seen = true
+		start_intro_sequence()
+
 	await get_tree().process_frame
 	$Sound/lvl1.play()
 
@@ -98,42 +103,6 @@ func return_camera_to_player():
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 
-# === FOCUS TOTEM + ANIMATION D'ÉTAPE ===
-func focus_camera_on_totem_with_anim(seed_index):
-	var gs = get_node("/root/GameState")
-	var player = gs.player
-
-	player.can_move = false
-	set_enemies_blocked(true)
-
-	var cam = player.get_node("Camera2D")
-	var totem = get_node_or_null("Totem")
-	if not totem:
-		set_enemies_blocked(false)
-		player.can_move = true
-		return
-
-	var original_position = cam.global_position
-
-	var tween = create_tween()
-	tween.tween_property(cam, "global_position", totem.global_position, 1.2)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	await tween.finished
-
-	await get_tree().create_timer(0.6).timeout
-
-	if totem.has_method("update_sprite"):
-		totem.update_sprite(seed_index)
-
-	await get_tree().create_timer(0.6).timeout
-
-	var back = create_tween()
-	back.tween_property(cam, "global_position", original_position, 1.2)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	await back.finished
-
-	set_enemies_blocked(false)
-	player.can_move = true
 
 # === FOCUS SORTIE + FADE + RETOUR MOKO ===
 func focus_camera_on_exit_and_fade():

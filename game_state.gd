@@ -45,6 +45,7 @@ var ramp_unlocked = false
 # --- Dialogues uniques ---
 var toucan_dialogue_seen = false
 var pygmy_dialogue_seen = false
+var lvl1_intro_seen = false
 
 # --- Joueur, HUD & Scènes ---
 var player_scene = preload("res://Player/player.tscn")
@@ -458,6 +459,8 @@ func save_game():
 	data["air_recipe_dialog_shown"] = air_recipe_dialog_shown
 	data["air_craft_revealed"] = air_craft_revealed
 	data["air_altar_found"] = air_altar_found
+	
+	data["lvl1_intro_seen"] = lvl1_intro_seen
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -533,6 +536,8 @@ func apply_save_data(data):
 	air_recipe_dialog_shown = data.get("air_recipe_dialog_shown", false)
 	air_craft_revealed = data.get("air_craft_revealed", false)
 	air_altar_found = data.get("air_altar_found", false)
+	
+	lvl1_intro_seen = data.get("lvl1_intro_seen", false)
 
 	# Recharge du niveau sauvegardé
 	await load_level(pending_level_path)
@@ -687,6 +692,8 @@ func reinitialise():
 	air_recipe_unlocked = false
 	air_craft_revealed = false
 	air_altar_found = false
+	
+	lvl1_intro_seen = false
 
 	if hud:
 		var gamepad = hud.get_node("Gamepad")

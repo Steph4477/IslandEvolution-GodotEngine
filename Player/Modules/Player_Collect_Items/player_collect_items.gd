@@ -127,10 +127,6 @@ func collect_seed(amount = 1):
 
 	p.hud_mod.update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
-	var parent = p.get_parent()
-	if parent and parent.has_method("focus_camera_on_totem_with_anim"):
-		await parent.focus_camera_on_totem_with_anim(gs.collected_seeds)
-
 # --- Craft skill_air
 func collect_leaf():
 	if p.game_state.leaf_collected:
