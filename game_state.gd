@@ -242,7 +242,9 @@ func is_menu_scene(scene_path):
 func show_score_screen():
 	score_screen.show_score(
 		score_system.enemies_killed,
-		score_system.enemies_total
+		score_system.enemies_total,
+		score_system.stars,
+		score_system.get_medal()
 	)
 
 func setup_level_score(level):

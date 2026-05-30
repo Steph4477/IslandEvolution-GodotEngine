@@ -70,7 +70,7 @@ func _do_scene_change():
 	gs.score_system.print_level_stats()
 	gs.show_score_screen()
 
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(5.0).timeout
 	gs.load_level(next_scene_path)
 
 func play_fade():

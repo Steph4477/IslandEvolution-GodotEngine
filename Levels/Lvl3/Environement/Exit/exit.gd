@@ -15,4 +15,6 @@ func change_scene():
 	gs.score_system.print_level_stats()
 	gs.show_score_screen()
 
+	await get_tree().create_timer(3000.0).timeout
+
 	gs.load_level(next_scene_path)

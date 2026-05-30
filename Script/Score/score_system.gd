@@ -51,6 +51,7 @@ func print_level_stats():
 	print("=== SCORE NIVEAU ===")
 	print("Ennemis tués : ", enemies_killed, " / ", enemies_total)
 	print("Étoiles : ", stars)
+	print("SCORE - Médaille : ", get_medal())
 	
 ##################################################################################
 #                                CALCUL ETOILES                                  #
@@ -79,12 +80,12 @@ func calculate_stars():
 ##################################################################################
 func get_medal():
 	if stars == 3:
-		return "Or"
+		return "gold"
 
 	if stars == 2:
-		return "Argent"
+		return "silver"
 
 	if stars == 1:
-		return "Bronze"
+		return "bronze"
 
-	return "Aucune"
+	return "banana"

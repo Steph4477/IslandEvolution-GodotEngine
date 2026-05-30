@@ -65,9 +65,10 @@ func change_scene():
 	if not gs:
 		return
 
-	# --- Affichage des statistiques de fin de niveau ---
+# --- Affichage des statistiques de fin de niveau ---
 	gs.score_system.calculate_stars()
 	gs.score_system.print_level_stats()
 	gs.show_score_screen()
 
+	await get_tree().create_timer(5.0).timeout
 	gs.load_level(next_scene_path)

@@ -1,28 +1,80 @@
 [gd_scene format=3 uid="uid://drwmfby3pxiv1"]
 
 [ext_resource type="Script" uid="uid://cs3yxsvkj3uuo" path="res://Hud/ScoreScreen/score_screen.gd" id="1_17xng"]
+[ext_resource type="Texture2D" uid="uid://cgq5db013dj0x" path="res://Hud/ScoreScreen/Medals/medal_banana.png" id="2_a77ux"]
+[ext_resource type="Texture2D" uid="uid://dlunom3s63us5" path="res://Hud/ScoreScreen/Assets/background.png" id="2_ovbo7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11dft"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3vcr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="ScoreScreen" type="CanvasLayer" unique_id=807427587]
 script = ExtResource("1_17xng")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=816817712]
+position = Vector2(987, 554)
+texture = ExtResource("2_ovbo7")
+
 [node name="Panel" type="Panel" parent="." unique_id=1507266931]
-offset_left = 680.0
-offset_top = 409.0
-offset_right = 1067.0
-offset_bottom = 767.0
+offset_left = 420.0
+offset_top = 327.0
+offset_right = 1086.0
+offset_bottom = 862.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_11dft")
 
 [node name="TitleLabel" type="Label" parent="Panel" unique_id=1569016578]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 36.0
+offset_top = 44.0
+offset_right = 234.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "TitleLabel "
 
 [node name="KillLabel" type="Label" parent="Panel" unique_id=1289451698]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 147.0
-offset_right = 154.0
-offset_bottom = 189.0
+offset_left = 487.0
+offset_top = 44.0
+offset_right = 636.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.022979883, 0.022979883, 0.022979883, 1)
 theme_override_font_sizes/font_size = 30
 text = "KillLabel "
+
+[node name="TitleLabel2" type="Label" parent="Panel" unique_id=1177914443]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 582.0
+offset_right = 559.0
+offset_bottom = 624.0
+theme_override_font_sizes/font_size = 30
+text = "Succés :"
+
+[node name="StarLabel" type="Label" parent="Panel" unique_id=318112028]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 582.0
+offset_right = 692.0
+offset_bottom = 624.0
+theme_override_font_sizes/font_size = 30
+text = "StarLabel "
+
+[node name="Panel2" type="Panel" parent="." unique_id=1502073258]
+offset_left = 1146.0
+offset_top = 416.0
+offset_right = 1533.0
+offset_bottom = 774.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n3vcr")
+
+[node name="MedalTexture" type="TextureRect" parent="Panel2" unique_id=762906291]
+layout_mode = 0
+offset_left = -104.0
+offset_top = -37.0
+offset_right = 493.0
+offset_bottom = 404.0
+texture = ExtResource("2_a77ux")
+expand_mode = 3
+stretch_mode = 5
