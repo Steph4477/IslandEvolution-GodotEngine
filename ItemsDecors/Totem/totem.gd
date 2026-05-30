@@ -59,6 +59,12 @@ func update_sprite(stage_index):
 
 # Quand toutes les graines sont collectées
 func on_all_seeds_collected():
+	if game_state:
+		game_state.lvl1_totem_done = true
+
+		if game_state.hud:
+			game_state.hud.update_lvl1_checklist()
+
 	update_sprite(4)
 	spawn_key()
 

@@ -648,9 +648,16 @@ func reset_seed_tracking_from_scene():
 
 func add_seed_collected():
 	collected_seeds += 1
+
 	if hud:
 		hud.update_seed_display(collected_seeds, total_seeds_in_level)
+
 	if collected_seeds >= total_seeds_in_level:
+		lvl1_seeds_done = true
+
+		if hud:
+			hud.update_lvl1_checklist()
+
 		emit_signal("all_seeds_collected")
 
 

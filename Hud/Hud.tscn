@@ -714,10 +714,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.3333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(804, 440), Vector2(1556, 239)]
+"values": [Vector2(804, 440), Vector2(82, 337)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -790,10 +790,10 @@ tracks/3/path = NodePath(".:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.6),
+"times": PackedFloat32Array(0, 1.1, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1556, 239), Vector2(1556, 239), Vector2(2000, 239)]
+"values": [Vector2(82, 337), Vector2(82, 337), Vector2(-355, 350)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -899,6 +899,57 @@ _data = {
 &"disappear_fire_craft_quest": SubResource("Animation_avv0v")
 }
 
+[sub_resource type="Animation" id="Animation_qxfqj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdoleRow:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RecipeAirRow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AltarAirRow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeafRow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_q4hkw"]
 resource_name = "appear_air_craft_quest"
 length = 0.8
@@ -997,10 +1048,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.6),
+"times": PackedFloat32Array(0, 1.1, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1556, 239), Vector2(1556, 239), Vector2(2000, 239)]
+"values": [Vector2(82, 337), Vector2(82, 337), Vector2(-355, 350)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1033,10 +1084,10 @@ tracks/4/path = NodePath(".:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1.0666667, 1.3666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1074,9 +1125,58 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(0.4, 0.4), Vector2(0.2, 0.2)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("IdoleRow:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RecipeAirRow:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AltarAirRow:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("LeafRow:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o1dn3"]
 _data = {
+&"RESET": SubResource("Animation_qxfqj"),
 &"appear_air_craft_quest": SubResource("Animation_q4hkw"),
 &"disappear_air_craft_quest": SubResource("Animation_x0ufb")
 }
@@ -1977,11 +2077,10 @@ scale = Vector2(0.7216797, 0.7216797)
 texture = ExtResource("28_m6ehm")
 
 [node name="FireCraftChecklist" type="VBoxContainer" parent="." unique_id=511074019]
-visible = false
-offset_left = 1556.0
-offset_top = 239.0
-offset_right = 1755.9928
-offset_bottom = 423.00305
+offset_left = 82.0
+offset_top = 337.0
+offset_right = 281.99292
+offset_bottom = 521.003
 theme_override_constants/separation = 6
 
 [node name="WoodRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=79236682]
@@ -2070,12 +2169,10 @@ texture = ExtResource("52_wfxx7")
 
 [node name="AirCraftChecklist" type="VBoxContainer" parent="." unique_id=299491657]
 visible = false
-offset_left = 804.0
-offset_top = 440.0
-offset_right = 1003.99164
-offset_bottom = 624.00226
-rotation = -6.2831855
-scale = Vector2(2, 2)
+offset_left = 82.0
+offset_top = 337.0
+offset_right = 281.99063
+offset_bottom = 520.9999
 theme_override_constants/separation = 6
 
 [node name="LeafRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=2129590371]
@@ -2163,6 +2260,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("52_wfxx7")
 
 [node name="Lvl1Checklist" type="VBoxContainer" parent="." unique_id=2040972916]
+visible = false
 offset_left = 1556.0
 offset_top = 239.0
 offset_right = 1841.0018
