@@ -114,14 +114,25 @@ var air_altar_found = false
 
 # --- Score ---
 var score_system: ScoreSystem
+var score_screen_scene = preload("res://Hud/ScoreScreen/score_screen.tscn")
+var score_screen = null
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	
+
 	# --- score ---
 	score_system = ScoreSystem.new()
 	add_child(score_system)
-	
+
+	# --- score screen ---
+	score_screen = score_screen_scene.instantiate()
+	add_child(score_screen)
+
+	print(score_screen)
+
+	score_screen.visible = false
+
 	# --- fondu au chargement ---
 	fade = fade_scene.instantiate()
 	add_child(fade)
@@ -224,6 +235,16 @@ func _find_spawn(level):
 func is_menu_scene(scene_path):
 	return scene_path.contains("menu") or scene_path.contains("Menu") or scene_path.contains("Lvl0") or scene_path.contains("lvl_0")
 
+
+######################################################################################
+#                                     SCORE                                          #
+######################################################################################
+func show_score_screen():
+	score_screen.show_score(
+		score_system.enemies_killed,
+		score_system.enemies_total
+	)
+
 func setup_level_score(level):
 	score_system.reset_level_score()
 
@@ -236,6 +257,8 @@ func setup_level_score(level):
 	score_system.set_enemies_total(total_enemies)
 
 	print("SCORE - Total ennemis :", total_enemies)
+
+
 
 func load_level(scene_path):
 	resume_game()
@@ -261,6 +284,10 @@ func load_level(scene_path):
 	var level = load(scene_path).instantiate()
 	current_level = level
 	world.add_child(level)
+
+	# --- Cache l'écran de score ---
+	if score_screen:
+		score_screen.visible = false
 
 	# --- Score ---
 	setup_level_score(level)

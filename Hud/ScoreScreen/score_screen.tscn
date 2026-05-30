@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://drwmfby3pxiv1"]
+
+[ext_resource type="Script" uid="uid://cs3yxsvkj3uuo" path="res://Hud/ScoreScreen/score_screen.gd" id="1_17xng"]
+
+[node name="ScoreScreen" type="CanvasLayer" unique_id=807427587]
+script = ExtResource("1_17xng")
+
+[node name="Panel" type="Panel" parent="." unique_id=1507266931]
+offset_left = 680.0
+offset_top = 409.0
+offset_right = 1067.0
+offset_bottom = 767.0
+
+[node name="TitleLabel" type="Label" parent="Panel" unique_id=1569016578]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "TitleLabel "
+
+[node name="KillLabel" type="Label" parent="Panel" unique_id=1289451698]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 147.0
+offset_right = 154.0
+offset_bottom = 189.0
+theme_override_font_sizes/font_size = 30
+text = "KillLabel "

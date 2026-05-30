@@ -66,6 +66,6 @@ func change_scene():
 		return
 
 	# --- Affichage des statistiques de fin de niveau ---
-	gs.score_system.print_level_stats()
+	gs.show_score_screen()
 
 	gs.load_level(next_scene_path)
