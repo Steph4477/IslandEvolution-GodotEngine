@@ -64,6 +64,10 @@ func _do_scene_change():
 	var gs = get_node_or_null("/root/GameState")
 	if not gs:
 		return
+
+	# --- Affichage des statistiques de fin de niveau ---
+	gs.score_system.print_level_stats()
+
 	await get_tree().create_timer(0.2).timeout
 	gs.load_level(next_scene_path)
 

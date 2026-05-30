@@ -41,3 +41,7 @@ func count_enemies_in_node(node):
 			total += count_enemies_in_node(child)
 
 	return total
+
+func print_level_stats():
+	print("=== SCORE NIVEAU ===")
+	print("Ennemis tués : ", enemies_killed, " / ", enemies_total)

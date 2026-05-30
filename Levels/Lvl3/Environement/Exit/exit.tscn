@@ -1,16 +1,16 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bqp01rii57bt0"]
 
 [ext_resource type="Script" uid="uid://bks1383oemo47" path="res://Levels/Lvl3/Environement/Exit/exit.gd" id="1_4imxi"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(2102.5005, 97.500145)
 
-[node name="Exit" type="Area2D"]
+[node name="Exit" type="Area2D" unique_id=1671161017]
 scale = Vector2(0.8, 0.8)
 collision_layer = 256
 script = ExtResource("1_4imxi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=439293649]
 position = Vector2(1047.4999, 183.7499)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("2")
