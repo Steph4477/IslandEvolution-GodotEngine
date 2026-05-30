@@ -141,8 +141,8 @@ func _ready():
 	#await load_level("res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
-	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
-	await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
+	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 
 
@@ -224,6 +224,19 @@ func _find_spawn(level):
 func is_menu_scene(scene_path):
 	return scene_path.contains("menu") or scene_path.contains("Menu") or scene_path.contains("Lvl0") or scene_path.contains("lvl_0")
 
+func setup_level_score(level):
+	score_system.reset_level_score()
+
+	var creatures = level.find_child("Creatures", true, false)
+	var total_enemies = 0
+
+	if creatures:
+		total_enemies = score_system.count_enemies_in_node(creatures)
+
+	score_system.set_enemies_total(total_enemies)
+
+	print("SCORE - Total ennemis :", total_enemies)
+
 func load_level(scene_path):
 	resume_game()
 	await fade.fade_out()
@@ -248,6 +261,9 @@ func load_level(scene_path):
 	var level = load(scene_path).instantiate()
 	current_level = level
 	world.add_child(level)
+
+	# --- Score ---
+	setup_level_score(level)
 
 	var spawn_point = _find_spawn(level)
 	var is_menu = spawn_point == null

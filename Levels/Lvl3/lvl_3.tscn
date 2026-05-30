@@ -12,13 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://dlcojyyjfdw7s" path="res://Levels/Lvl3/Environement/Swim_Zone/water.png" id="6_06aic"]
 [ext_resource type="Texture2D" uid="uid://ce4kuy3r13fwn" path="res://Levels/Lvl3/Environement/sky.png" id="8_qskf4"]
 [ext_resource type="Script" uid="uid://bj2b2nld2cnfh" path="res://Levels/Lvl3/Environement/Swim_Zone/swim_zone.gd" id="10_4tc27"]
-[ext_resource type="PackedScene" path="res://Loot/Coconut/coco_loot_lvl3.tscn" id="11_6n0ay"]
+[ext_resource type="PackedScene" uid="uid://8ui0q0lf31sc" path="res://Loot/Coconut/coco_loot_lvl3.tscn" id="11_6n0ay"]
 [ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="11_sdlip"]
 [ext_resource type="PackedScene" uid="uid://di6bb11m8xram" path="res://Enemies/Crocodile/SwimCroco/swim_croco.tscn" id="12_12vmq"]
 [ext_resource type="PackedScene" path="res://Loot/Flower/flower.tscn" id="14_4esaq"]
 [ext_resource type="PackedScene" uid="uid://4nolvckgjic0" path="res://Enemies/Cannibal/cannibal.tscn" id="16_qaw7r"]
 [ext_resource type="PackedScene" uid="uid://dhw0x3rjrwjfs" path="res://Enemies/Crocodile/AmphibiousCroco/amphibious_croco.tscn" id="17_2nymq"]
 [ext_resource type="Texture2D" uid="uid://nwr2jb4bn8tx" path="res://Levels/Lvl3/Environement/tiles_platforms/village.png" id="17_06aic"]
+[ext_resource type="PackedScene" path="res://Enemies/Mosquito/mosquito.tscn" id="18_8uqfc"]
 [ext_resource type="Texture2D" uid="uid://w0fr428uf8y6" path="res://Levels/Lvl3/Environement/tiles_platforms/exit_z-50.png" id="19_1jb2y"]
 [ext_resource type="PackedScene" uid="uid://dbqxuv0ffeqjo" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="Texture2D" uid="uid://jo6ij73tafq8" path="res://Levels/Lvl3/Environement/tiles_platforms/exit.png" id="20_8uqfc"]
@@ -466,6 +467,10 @@ z_index = 5
 position = Vector2(756, 241)
 scale = Vector2(0.4, 1)
 
+[node name="SwimCrocodile" parent="Node2D/World" unique_id=922786221 instance=ExtResource("12_12vmq")]
+position = Vector2(2144, 1257)
+scale = Vector2(2, 2)
+
 [node name="ItemChronoLianas" type="Node2D" parent="Node2D/World" unique_id=1871030560]
 z_index = 5
 position = Vector2(184, 2000)
@@ -523,46 +528,6 @@ texture = ExtResource("3_o2qeu")
 hframes = 8
 vframes = 6
 frame = 18
-
-[node name="Ennemies" type="Node2D" parent="Node2D/World" unique_id=578715975]
-z_index = 15
-position = Vector2(-1871, 9)
-
-[node name="SwimCrocodile" parent="Node2D/World/Ennemies" unique_id=922786221 instance=ExtResource("12_12vmq")]
-position = Vector2(4015, 1248)
-scale = Vector2(2, 2)
-
-[node name="AmphibiousCroco" parent="Node2D/World/Ennemies" unique_id=939733752 instance=ExtResource("17_2nymq")]
-position = Vector2(14709, 954)
-max_hp = 2000
-speed = 400
-attack_range = 1000
-
-[node name="Cannibal" parent="Node2D/World/Ennemies" unique_id=708931693 instance=ExtResource("16_qaw7r")]
-position = Vector2(9356, 902)
-
-[node name="Cannibal6" parent="Node2D/World/Ennemies" unique_id=1443868190 instance=ExtResource("16_qaw7r")]
-position = Vector2(11155, 955)
-
-[node name="Cannibal2" parent="Node2D/World/Ennemies" unique_id=1776202316 instance=ExtResource("16_qaw7r")]
-position = Vector2(17960, 935)
-min_shoot_distance = 400.0
-attack_range = 500
-
-[node name="Cannibal3" parent="Node2D/World/Ennemies" unique_id=1130625183 instance=ExtResource("16_qaw7r")]
-position = Vector2(18688, 958)
-min_shoot_distance = 500.0
-attack_range = 1000
-
-[node name="Cannibal4" parent="Node2D/World/Ennemies" unique_id=881252677 instance=ExtResource("16_qaw7r")]
-position = Vector2(18795, 890)
-min_shoot_distance = 400.0
-attack_range = 1500
-
-[node name="Cannibal5" parent="Node2D/World/Ennemies" unique_id=77513344 instance=ExtResource("16_qaw7r")]
-position = Vector2(18725, 883)
-min_shoot_distance = 400.0
-attack_range = 1500
 
 [node name="Flower" parent="Node2D/World" unique_id=1069062389 instance=ExtResource("14_4esaq")]
 position = Vector2(3585, 1198)
@@ -677,6 +642,58 @@ z_index = 5
 position = Vector2(12920.999, 505)
 rotation = -0.012217305
 scale = Vector2(0.6, 0.6)
+
+[node name="Creatures" type="Node2D" parent="." unique_id=578715975]
+z_index = 15
+position = Vector2(-1871, 9)
+
+[node name="AmphibiousCroco" parent="Creatures" unique_id=939733752 instance=ExtResource("17_2nymq")]
+position = Vector2(14709, 954)
+max_hp = 2000
+speed = 400
+attack_range = 1000
+
+[node name="Cannibal" parent="Creatures" unique_id=708931693 instance=ExtResource("16_qaw7r")]
+position = Vector2(9356, 902)
+
+[node name="Cannibal6" parent="Creatures" unique_id=1443868190 instance=ExtResource("16_qaw7r")]
+position = Vector2(11155, 955)
+
+[node name="Cannibal2" parent="Creatures" unique_id=1776202316 instance=ExtResource("16_qaw7r")]
+position = Vector2(17960, 935)
+min_shoot_distance = 400.0
+attack_range = 500
+
+[node name="Cannibal3" parent="Creatures" unique_id=1130625183 instance=ExtResource("16_qaw7r")]
+position = Vector2(18688, 958)
+min_shoot_distance = 500.0
+attack_range = 1000
+
+[node name="Cannibal4" parent="Creatures" unique_id=881252677 instance=ExtResource("16_qaw7r")]
+position = Vector2(18795, 890)
+min_shoot_distance = 400.0
+attack_range = 1500
+
+[node name="Cannibal5" parent="Creatures" unique_id=77513344 instance=ExtResource("16_qaw7r")]
+position = Vector2(18725, 883)
+min_shoot_distance = 400.0
+attack_range = 1500
+
+[node name="Mosquito" parent="Creatures" unique_id=55077267 instance=ExtResource("18_8uqfc")]
+z_index = 15
+position = Vector2(8215, 484)
+
+[node name="Mosquito2" parent="Creatures" unique_id=1731938295 instance=ExtResource("18_8uqfc")]
+z_index = 15
+position = Vector2(3127, 826)
+
+[node name="Mosquito3" parent="Creatures" unique_id=1312555607 instance=ExtResource("18_8uqfc")]
+z_index = 15
+position = Vector2(16690, 660)
+
+[node name="Mosquito4" parent="Creatures" unique_id=1226800460 instance=ExtResource("18_8uqfc")]
+z_index = 15
+position = Vector2(9870, 562)
 
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/ChronoZone" to="Node2D/World/TreeBranch" method="_on_chrono_zone_challenge_win"]

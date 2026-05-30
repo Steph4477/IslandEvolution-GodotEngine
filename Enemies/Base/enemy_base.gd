@@ -171,6 +171,9 @@ func die():
 		anim.play("die")
 		await anim.animation_finished
 
+	# --- Comptage d'ennemis tués pour le score --- 
+	gs.score_system.add_enemy_kill()
+
 	spawn_loot()
 	queue_free()
 

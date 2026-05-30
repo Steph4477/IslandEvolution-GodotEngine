@@ -29,3 +29,15 @@ func get_score_data():
 func load_score_data(data):
 	enemies_killed = data.get("enemies_killed", 0)
 	enemies_total = data.get("enemies_total", 0)
+
+# --- Compte récursivement tous les ennemis présents sous un node ---
+func count_enemies_in_node(node):
+	var total = 0
+
+	for child in node.get_children():
+		if child is CharacterBody2D:
+			total += 1
+		else:
+			total += count_enemies_in_node(child)
+
+	return total

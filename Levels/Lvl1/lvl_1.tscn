@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.tscn" id="9_wh82l"]
 [ext_resource type="PackedScene" path="res://Loot/Coconut/coconut.tscn" id="10_oicsw"]
 [ext_resource type="PackedScene" path="res://Loot/Banana/banana.tscn" id="11_hkrhx"]
-[ext_resource type="PackedScene" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
+[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
 [ext_resource type="PackedScene" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
 [ext_resource type="PackedScene" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
@@ -84,6 +84,9 @@ size = Vector2(5.4567, 20)
 script = ExtResource("1_mebys")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=474005028]
+
+[node name="Toucan" parent="Node2D" unique_id=512843782 instance=ExtResource("14_li3ov")]
+position = Vector2(3816, 881)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
 position = Vector2(179, 1300)
@@ -307,6 +310,14 @@ butterfly_color = Color(0.82884276, 0.66643363, 0.15861124, 1)
 position = Vector2(-1231, -55)
 butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
 
+[node name="Carnivores" type="Node2D" parent="." unique_id=726381797]
+
+[node name="Carnivore" parent="Carnivores" unique_id=967292307 instance=ExtResource("15_los52")]
+position = Vector2(2259, 1383)
+
+[node name="Carnivore2" parent="Carnivores" unique_id=1637013469 groups=["Enemies"] instance=ExtResource("15_los52")]
+position = Vector2(2538, 1382)
+
 [node name="Creatures" type="Node2D" parent="." unique_id=1013611793]
 position = Vector2(3329, 1040)
 
@@ -316,17 +327,8 @@ position = Vector2(627, 389)
 [node name="Mousquito" parent="Creatures" unique_id=1197171326 instance=ExtResource("13_oiu73")]
 position = Vector2(2843, 40)
 
-[node name="Toucan" parent="Creatures" unique_id=512843782 instance=ExtResource("14_li3ov")]
-position = Vector2(487, -159)
-
-[node name="Carnivore" parent="Creatures" unique_id=967292307 instance=ExtResource("15_los52")]
-position = Vector2(-1070, 343)
-
 [node name="Mousquito2" parent="Creatures" unique_id=156221535 instance=ExtResource("13_oiu73")]
 position = Vector2(980, -356)
-
-[node name="Carnivore2" parent="Creatures" unique_id=1637013469 groups=["Enemies"] instance=ExtResource("15_los52")]
-position = Vector2(-791, 342)
 
 [node name="Items" type="Node2D" parent="." unique_id=1086633539]
 
