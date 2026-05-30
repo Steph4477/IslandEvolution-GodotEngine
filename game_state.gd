@@ -97,6 +97,9 @@ signal flower_collected
 signal player_updated(new_player)
 signal digicode_ok
 
+##################################################################################
+#                            QUETES                                              #
+##################################################################################
 # --- Craft skill_fire ---
 var wood_collected = false
 var stone_collected = false
@@ -112,6 +115,12 @@ var air_recipe_unlocked = false
 var air_recipe_dialog_shown = false
 var air_craft_revealed = false
 var air_altar_found = false
+
+# --- Lvl_1 Collecte de graines ---
+var lvl1_quest_revealed = false
+var lvl1_seeds_done = false
+var lvl1_totem_done = false
+var lvl1_key_done = false
 
 # --- Score ---
 var score_system: ScoreSystem
@@ -694,6 +703,11 @@ func reinitialise():
 	air_altar_found = false
 	
 	lvl1_intro_seen = false
+
+	lvl1_quest_revealed = false
+	lvl1_seeds_done = false
+	lvl1_totem_done = false
+	lvl1_key_done = false
 
 	if hud:
 		var gamepad = hud.get_node("Gamepad")

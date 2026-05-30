@@ -65,6 +65,7 @@ extends CanvasLayer
 @onready var recipe_fire_label_checklist = get_node_or_null("FireCraftChecklist/RecipeRow/Label")
 @onready var altar_fire_label_checklist = get_node_or_null("FireCraftChecklist/AltarRow/Label")
 
+# --- Craft air skill ---
 @onready var air_craft_checklist = get_node_or_null("AirCraftChecklist")
 @onready var leaf_check = get_node_or_null("AirCraftChecklist/LeafRow/Check")
 @onready var idole_check = get_node_or_null("AirCraftChecklist/IdoleRow/Check")
@@ -75,6 +76,12 @@ extends CanvasLayer
 @onready var recipe_air_label_checklist = get_node_or_null("AirCraftChecklist/RecipeAirRow/Label")
 @onready var altar_air_label_checklist = get_node_or_null("AirCraftChecklist/AltarAirRow/Label")
 
+
+# --- Quête lvl1 graines ---
+@onready var lvl1_checklist = get_node_or_null("Lvl1Checklist")
+@onready var lvl1_seed_check = get_node_or_null("Lvl1Checklist/SeedRow/Check")
+@onready var lvl1_totem_check = get_node_or_null("Lvl1Checklist/TotemRow/Check")
+@onready var lvl1_key_check = get_node_or_null("Lvl1Checklist/KeyRow/Check")
 # -----------------------------
 #            VARS
 # -----------------------------
@@ -125,6 +132,9 @@ func _ready():
 	
 	if air_craft_checklist:
 		air_craft_checklist.visible = false
+	
+	if lvl1_checklist:
+		lvl1_checklist.visible = false
 
 	hide_breathbar()
 	_hide_all_buffs()
@@ -204,6 +214,7 @@ func _ready():
 
 	update_fire_craft_checklist()
 	update_air_craft_checklist()
+	update_lvl1_checklist()
 
 
 func _process(delta):
@@ -444,8 +455,8 @@ func set_gameplay_hud_visible(not_visible):
 		air_craft_checklist.visible = is_visible and gs.air_craft_revealed
 
 
-# ============================================================================
-#              QUETES MAITRISE DES ELEMENTS                          
+# =============================================================================
+#              QUETES LVL1 COLLECTE DE GRAINES                         
 # ============================================================================
 # --- Ultilitaire pour check les objectifs de quete accomplies
 func update_check_texture(check_node, is_valid):
@@ -457,7 +468,41 @@ func update_check_texture(check_node, is_valid):
 	else:
 		check_node.texture = preload("res://Items/CheckBox/empty.png")
 
-# --- Quête maitrise du feu
+# --- Lvl1 collecte de graines ---  
+func update_lvl1_checklist():
+	if lvl1_checklist == null:
+		return
+
+	if not gs.lvl1_quest_revealed:
+		lvl1_checklist.visible = false
+		return
+
+	lvl1_checklist.visible = true
+
+	update_check_texture(lvl1_seed_check, gs.lvl1_seeds_done)
+	update_check_texture(lvl1_totem_check, gs.lvl1_totem_done)
+	update_check_texture(lvl1_key_check, gs.lvl1_key_done)
+
+
+func appear_lvl1_quest():
+	if lvl1_checklist:
+		lvl1_checklist.visible = true
+
+	var anim = get_node_or_null("Lvl1Checklist/AnimationPlayer")
+	if anim:
+		anim.play("appear_lvl1_quest")
+		await anim.animation_finished
+
+	update_lvl1_checklist()
+
+
+func disappear_lvl1_quest():
+	var anim = get_node_or_null("Lvl1Checklist/AnimationPlayer")
+	if anim:
+		anim.play("disappear_lvl1_quest")
+
+
+# --- Lvl2 Quête maitrise du feu ---
 func update_fire_craft_checklist():
 	if fire_craft_checklist == null:
 		return
@@ -489,7 +534,7 @@ func disappear_fire_craft_quest():
 	if anim:
 		anim.play("disappear_fire_craft_quest")
 
-# --- Quête maitrise de l'air
+# --- Lvl3 Quête maitrise de l'air ---
 func update_air_craft_checklist():
 	if air_craft_checklist == null:
 		return

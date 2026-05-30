@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="19_jsni3"]
 [ext_resource type="AudioStream" uid="uid://db12ei3cw5sxd" path="res://sounds/lvl1.mp3" id="20_qky26"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
-[ext_resource type="PackedScene" path="res://Interface/Quest/quest.tscn" id="22_2hr7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
 size = Vector2(2.23209, 104.915)
@@ -357,5 +356,3 @@ volume_db = 4.837
 
 [node name="Totem" parent="." unique_id=209721126 instance=ExtResource("21_t7ttw")]
 position = Vector2(3767, 550)
-
-[node name="QuestBox" parent="." unique_id=1634934958 instance=ExtResource("22_2hr7n")]

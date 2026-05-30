@@ -31,8 +31,14 @@ func start_intro_sequence():
 	player.can_move = false          # 🔒 Moko bloqué
 	set_enemies_blocked(true)        # 🔒 Ennemis bloqués
 
+	if gs.hud and gs.lvl1_quest_revealed == false:
+		gs.lvl1_quest_revealed = true
+		await gs.hud.appear_lvl1_quest()
+	
+	
 	await focus_camera_on_node("Totem")
-	await show_quest()
+
+
 	await focus_camera_on_node("Exit")
 	await return_camera_to_player()
 
@@ -58,23 +64,6 @@ func set_enemies_blocked(blocked):
 		if blocked and e is CharacterBody2D:
 			e.velocity = Vector2.ZERO
 
-# === AFFICHAGE DE LA QUÊTE ===
-func show_quest():
-	var quest = get_node_or_null("QuestBox")
-	if not quest:
-		return
-
-	quest.visible = true
-
-	var timer = Timer.new()
-	timer.wait_time = 5.0
-	timer.one_shot = true
-	add_child(timer)
-	timer.start()
-
-	await timer.timeout
-	quest.visible = false
-	timer.queue_free()
 
 # === FOCUS CAMÉRA GÉNÉRIQUE ===
 func focus_camera_on_node(node_name):
