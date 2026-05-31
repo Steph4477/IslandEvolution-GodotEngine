@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene format=3 uid="uid://owlt1sjo4dtm"]
 
-[ext_resource type="Script" path="res://Interface/Dialogue/toucan_dialogue.gd" id="1_fob3j"]
-[ext_resource type="Texture2D" path="res://Loot/Flower/flower.png" id="2_fv1li"]
-[ext_resource type="Texture2D" path="res://Enemies/Toucan/idle1.png" id="3_2eail"]
-[ext_resource type="Texture2D" path="res://Enemies/Toucan/speack.png" id="4_wvq16"]
+[ext_resource type="Script" uid="uid://ckdyhoyxo7u5h" path="res://Interface/Dialogue/toucan_dialogue.gd" id="1_fob3j"]
+[ext_resource type="Texture2D" uid="uid://cma4jf1goitsb" path="res://Loot/Flower/flower.png" id="2_fv1li"]
+[ext_resource type="Texture2D" uid="uid://87d1bcavxogf" path="res://Enemies/Toucan/idle1.png" id="3_2eail"]
+[ext_resource type="Texture2D" uid="uid://byqib1tqbmcd3" path="res://Enemies/Toucan/speack.png" id="4_wvq16"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8hky"]
 bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)
@@ -64,10 +64,10 @@ _data = {
 &"speack": SubResource("Animation_m7a87")
 }
 
-[node name="DialogueUi" type="CanvasLayer"]
+[node name="DialogueUi" type="CanvasLayer" unique_id=2081740230]
 script = ExtResource("1_fob3j")
 
-[node name="Box" type="Panel" parent="."]
+[node name="Box" type="Panel" parent="." unique_id=1645740404]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -77,7 +77,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_o8hky")
 
-[node name="MarginContainer" type="MarginContainer" parent="Box"]
+[node name="MarginContainer" type="MarginContainer" parent="Box" unique_id=439521858]
 layout_mode = 0
 offset_left = 327.0
 offset_top = 40.0
@@ -88,7 +88,7 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="Text" type="RichTextLabel" parent="Box/MarginContainer"]
+[node name="Text" type="RichTextLabel" parent="Box/MarginContainer" unique_id=445714041]
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 35
@@ -97,20 +97,19 @@ theme_override_font_sizes/italics_font_size = 35
 bbcode_enabled = true
 scroll_active = false
 
-[node name="Flower" type="Sprite2D" parent="."]
+[node name="Flower" type="Sprite2D" parent="." unique_id=485804482]
+visible = false
 z_index = -5
 position = Vector2(261.00006, 1017)
 rotation = 1.7453293
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_fv1li")
 
-[node name="Toucan" type="Sprite2D" parent="."]
+[node name="Toucan" type="Sprite2D" parent="." unique_id=1626794742]
 modulate = Color(0.763809, 0.763809, 0.763808, 1)
 position = Vector2(192, 981)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_2eail")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_33chn")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1807169247]
+libraries/ = SubResource("AnimationLibrary_33chn")

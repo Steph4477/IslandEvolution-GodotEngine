@@ -1,6 +1,9 @@
 extends Node2D
 
+@onready var toucan_dialogue = $ToucanDialogue
+
 var gs
+var player = null
 
 func _ready():
 	$sound/dijee.play()
