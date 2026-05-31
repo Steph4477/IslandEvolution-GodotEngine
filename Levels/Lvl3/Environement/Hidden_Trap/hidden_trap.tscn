@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://dcfkkrwvp0ixd"]
 
-[ext_resource type="Script" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.gd" id="1_vqit1"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Hidden_Trap/leaf.png" id="2_o6m1u"]
+[ext_resource type="Script" uid="uid://ca47cgmuf6vjm" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.gd" id="1_vqit1"]
+[ext_resource type="Texture2D" uid="uid://l6j18qjaxetd" path="res://Levels/Lvl3/Environement/Hidden_Trap/leaf.png" id="2_o6m1u"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Spike/spike.tscn" id="4_o6m1u"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl3/Environement/Hidden_Trap/hole.png" id="4_rrqtn"]
+[ext_resource type="Texture2D" uid="uid://ctgnjk50pes4w" path="res://Levels/Lvl3/Environement/Hidden_Trap/hole.png" id="4_rrqtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6m1u"]
 size = Vector2(254, 34)
@@ -11,37 +11,38 @@ size = Vector2(254, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywaqi"]
 size = Vector2(99, 100)
 
-[node name="HiddenTrap" type="Node2D"]
+[node name="HiddenTrap" type="Node2D" unique_id=454844292]
 script = ExtResource("1_vqit1")
 
-[node name="LeafSprite" type="Sprite2D" parent="."]
+[node name="LeafSprite" type="Sprite2D" parent="." unique_id=1328062243]
 z_index = 5
 position = Vector2(-2, 8)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_o6m1u")
 
-[node name="HoleSprite" type="Sprite2D" parent="."]
+[node name="HoleSprite" type="Sprite2D" parent="." unique_id=871141201]
 z_index = 4
 texture = ExtResource("4_rrqtn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=842960562]
 
-[node name="Harrow" parent="." instance=ExtResource("4_o6m1u")]
+[node name="Harrow" parent="." unique_id=840578130 instance=ExtResource("4_o6m1u")]
 z_index = 5
 position = Vector2(-11, 29)
 scale = Vector2(0.5, 0.277)
 
-[node name="LeafArea" type="StaticBody2D" parent="."]
+[node name="LeafArea" type="StaticBody2D" parent="." unique_id=438635495]
 z_index = 5
 collision_layer = 2
 collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafArea" unique_id=793668108]
 position = Vector2(-8, -43)
 shape = SubResource("RectangleShape2D_o6m1u")
 
-[node name="Area2D" type="Area2D" parent="LeafArea"]
+[node name="Area2D" type="Area2D" parent="LeafArea" unique_id=1629730484]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafArea/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafArea/Area2D" unique_id=1744801929]
 position = Vector2(7.5, -40)
 shape = SubResource("RectangleShape2D_ywaqi")
 
