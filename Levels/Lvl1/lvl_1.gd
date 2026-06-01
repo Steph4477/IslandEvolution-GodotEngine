@@ -1,15 +1,6 @@
-extends Node2D
+extends Node2D                          
 
-#| Fonction                            | Description                                                                    |
-#| ----------------------------------- | ------------------------------------------------------------------------------ |
-#| `_ready()`                          | Lance l’intro dès le chargement                                                |
-#| `start_intro_sequence()`            | Bloque Moko + ennemis, focus caméra, quête, puis redonne le contrôle           |
-#| `set_enemies_blocked(blocked)`      | Active/Désactive tous les ennemis de Creatures                                 |
-#| `show_quest()`                      | Affiche le parchemin 5s                                                        |
-#| `focus_camera_on_node()`            | Déplace la caméra en douceur vers un nœud                                      |
-#| `return_camera_to_player()`         | Ramène la caméra sur Moko                                                      |
-#| `focus_camera_on_totem_with_anim()` | Focus totem, met à jour le sprite, puis revient sur Moko                       |
-#| `focus_camera_on_exit_and_fade()`   | Focus sortie, joue le fade, puis revient sur Moko                              |
+var cam
 
 func _ready():
 	var gs = get_node("/root/GameState")
@@ -20,6 +11,10 @@ func _ready():
 
 	await get_tree().process_frame
 	$Sound/lvl1.play()
+	
+	# --- Limite caméra  ---
+	cam = gs.player.get_node("Camera2D")
+	cam.limit_right = 9700
 
 # === CINÉMATIQUE D’INTRO ===
 func start_intro_sequence():

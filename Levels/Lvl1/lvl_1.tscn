@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/environement.tscn" id="2_lalfn"]
-[ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/tileForet.tscn" id="3_mpeth"]
+[ext_resource type="PackedScene" uid="uid://bykcb7i24ljuo" path="res://Levels/Lvl1/Environement/tileForet.tscn" id="3_mpeth"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/Door/lvl2/Exit.tscn" id="4_na1bk"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Spike/spike.tscn" id="5_jneuh"]
 [ext_resource type="TileSet" uid="uid://dkhrc1vay74qd" path="res://Levels/Lvl1/Environement/platform.tres" id="7_jsni3"]
@@ -22,6 +22,9 @@
 [ext_resource type="AudioStream" uid="uid://db12ei3cw5sxd" path="res://sounds/lvl1.mp3" id="20_qky26"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
 [ext_resource type="Texture2D" uid="uid://bp1em842hmp0b" path="res://Levels/Lvl1/Environement/Platforms/floor_1.png" id="22_jsni3"]
+[ext_resource type="Texture2D" uid="uid://bhmrw8etfd8lq" path="res://ItemsDecors/Moving_Platform/Jungle/elevator_tree.png" id="23_tqxky"]
+[ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="24_2hs2i"]
+[ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqxky"]
 
@@ -74,13 +77,16 @@ size = Vector2(20.1556, 79.0103)
 size = Vector2(5.4567, 19.396912)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3xnj"]
-size = Vector2(9.84062, 18.7567)
+size = Vector2(9.84062, 16.95621)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmo30"]
-size = Vector2(312.797, 53.526)
+size = Vector2(397.7745, 53.526)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
-size = Vector2(314.9708, 78.184616)
+size = Vector2(305.564, 78.184654)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs2i"]
+size = Vector2(65.25502, 75.26184)
 
 [node name="lvl1" type="Node2D" unique_id=354594342]
 script = ExtResource("1_mebys")
@@ -92,7 +98,7 @@ z_index = 2
 position = Vector2(3816, 881)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
-position = Vector2(163, 1190)
+position = Vector2(336, 1094)
 
 [node name="Background" type="Node2D" parent="." unique_id=1107236498]
 position = Vector2(3329, 1040)
@@ -118,7 +124,7 @@ position = Vector2(-3329, -1040)
 
 [node name="Exit" parent="." unique_id=550448380 instance=ExtResource("4_na1bk")]
 z_index = 10
-position = Vector2(7117, 1240)
+position = Vector2(9345, 1236)
 
 [node name="Arrows" type="Node2D" parent="." unique_id=83345912]
 z_index = 5
@@ -240,7 +246,7 @@ scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_myamh")
 
 [node name="BorderRShape2D9" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=232197234]
-position = Vector2(76611.3, 17446.4)
+position = Vector2(102076.305, 17746.68)
 rotation = -3.14159
 scale = Vector2(144.60701, 694.703)
 shape = SubResource("RectangleShape2D_t3xnj")
@@ -253,17 +259,25 @@ shape = SubResource("RectangleShape2D_t3xnj")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
 
 [node name="BorderTShape2D5" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1764908885]
-position = Vector2(34840.6, 12353.3)
-scale = Vector2(283.803, 14.7983)
+position = Vector2(46899.043, 12353.302)
+scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
 
 [node name="BorderBShape2D4" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1878674279]
 light_mask = 4
 z_index = 5
-position = Vector2(33769.3, 22770.438)
+position = Vector2(32434.473, 22770.438)
 scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_dvpsw")
+debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
+
+[node name="BorderBShape2D5" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=118398063]
+light_mask = 4
+z_index = 5
+position = Vector2(93590.52, 22748.813)
+scale = Vector2(283.80304, 14.7983)
+shape = SubResource("RectangleShape2D_2hs2i")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
 
 [node name="MobilePlatForm1" parent="Platforms" unique_id=1983112277 instance=ExtResource("7_wpu1g")]
@@ -463,3 +477,44 @@ texture = ExtResource("22_jsni3")
 [node name="Sprite2D8" type="Sprite2D" parent="Floor" unique_id=1510134517]
 position = Vector2(7855.0664, 1332.1323)
 texture = ExtResource("22_jsni3")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Floor" unique_id=115665375]
+position = Vector2(8699, 1331)
+texture = ExtResource("22_jsni3")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Floor" unique_id=32646642]
+position = Vector2(9524, 1333)
+rotation = 0.00025853945
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("22_jsni3")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Floor" unique_id=2024829117]
+position = Vector2(10356, 1333)
+texture = ExtResource("22_jsni3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=725603047]
+modulate = Color(0.66492164, 0.66492164, 0.6649216, 1)
+position = Vector2(7502, 880)
+texture = ExtResource("23_tqxky")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=493400102]
+modulate = Color(0.66492164, 0.66492164, 0.6649216, 1)
+position = Vector2(8265, 880)
+scale = Vector2(-1, 1)
+texture = ExtResource("23_tqxky")
+
+[node name="Liana" parent="Sprite2D2" unique_id=411276915 instance=ExtResource("24_2hs2i")]
+position = Vector2(386, -143)
+scale = Vector2(-0.4, 0.4)
+
+[node name="HiddenTrap2" parent="." unique_id=2003431478 instance=ExtResource("25_p5uxy")]
+modulate = Color(0.49411765, 0.49411765, 0.49411765, 1)
+position = Vector2(7626, 1457)
+
+[node name="HiddenTrap3" parent="." unique_id=1275044498 instance=ExtResource("25_p5uxy")]
+modulate = Color(0.49411765, 0.49411765, 0.49411765, 1)
+position = Vector2(8133, 1457)
+
+[node name="HiddenTrap" parent="." unique_id=1245213246 instance=ExtResource("25_p5uxy")]
+modulate = Color(0.49433076, 0.49433076, 0.4943307, 1)
+position = Vector2(7880, 1457)
