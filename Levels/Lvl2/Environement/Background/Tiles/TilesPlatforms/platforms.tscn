@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=4]
+
+[ext_resource type="TileSet" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="1_8rlpo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvf4m"]
+
+[node name="TileMap" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dvf4m")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAgACEAAAAAAAAAAAAgAGEAAAAAAAAAABAgAKEAAAAAAAAAABBaACEAAAAAAAAAAABaAKEAAAAAAAAAAACaACEAAAAAAAAAABCaACIAAAAAAAAAABCaAGIAAQAAAAAAAACaAKEAAAAAAAAAAADaACEAAAAAAAAAAADaAGEAAQAAAAAAABDaAKEAAAAAAAAAAAAaAWEAAgAAAAAAAAAaASEAAQAAAAAAAAAaAaEAAQAAAAAAAABZAaEAAQAAAAAAABBaASEAAQAAAAAAABBaAWEAAgAAAAAAAACaASEAAAAAAAAAAACaAWEAAAAAAAAAAACaAWAAAAAAAAAAAACZAaEAAAAAAAAAAABbAGEAAAAAAAAAAADZAWEAAQAAAAAAAAAZAmEAAQAAAAAAADDaASEAAgAAAAAAAAAZAiEAAgAAAAAAAADZAaEAAgAAAAAAAAAZAqEAAgAAAAAAAAA=")
+tile_set = ExtResource("1_8rlpo")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+z_index = 1
+tile_map_data = PackedByteArray("AAA2AJQABQAAAAAAAAA2AEMABQAAAAAAAAA2APD/BQAAAAAAAAA=")
+tile_set = ExtResource("1_8rlpo")
