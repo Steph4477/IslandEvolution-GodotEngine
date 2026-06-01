@@ -5,9 +5,6 @@
 [ext_resource type="PackedScene" path="res://ItemsDecors/Spike/spike.tscn" id="4_o6m1u"]
 [ext_resource type="Texture2D" uid="uid://ctgnjk50pes4w" path="res://Levels/Lvl3/Environement/Hidden_Trap/hole.png" id="4_rrqtn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6m1u"]
-size = Vector2(254, 34)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywaqi"]
 size = Vector2(99, 100)
 
@@ -31,19 +28,10 @@ z_index = 5
 position = Vector2(-11, 29)
 scale = Vector2(0.5, 0.277)
 
-[node name="LeafArea" type="StaticBody2D" parent="." unique_id=438635495]
-z_index = 5
-collision_layer = 2
-collision_mask = 9
+[node name="Area2D" type="Area2D" parent="." unique_id=1629730484]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafArea" unique_id=793668108]
-position = Vector2(-8, -43)
-shape = SubResource("RectangleShape2D_o6m1u")
-
-[node name="Area2D" type="Area2D" parent="LeafArea" unique_id=1629730484]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafArea/Area2D" unique_id=1744801929]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1744801929]
 position = Vector2(7.5, -40)
 shape = SubResource("RectangleShape2D_ywaqi")
 
-[connection signal="body_entered" from="LeafArea/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
