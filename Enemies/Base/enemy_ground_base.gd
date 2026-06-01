@@ -4,8 +4,8 @@ class_name EnemyGroundBase
 @export var speed = 350
 @export var attack_range = 300
 @export var gravity = 2000
+@export var stop_distance = 40
 
-var stop_distance = 40
 var dx = 0
 var distance = 0
 var base_scale_x = 1
