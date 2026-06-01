@@ -29,8 +29,6 @@ var is_patrol_paused = false
 var patrol_direction = 1
 
 func _ready():
-	gravity = 2000
-	stop_distance = 40
 	attack_anim_name = "attack"
 
 	super._ready()
