@@ -8,7 +8,7 @@
 [ext_resource type="TileSet" uid="uid://dkhrc1vay74qd" path="res://Levels/Lvl1/Environement/platform.tres" id="7_jsni3"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.tscn" id="7_wpu1g"]
 [ext_resource type="PackedScene" uid="uid://c5a3jpxxsvrpy" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.tscn" id="8_n1s4q"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.tscn" id="9_wh82l"]
+[ext_resource type="PackedScene" uid="uid://2d77368f0fid" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.tscn" id="9_wh82l"]
 [ext_resource type="PackedScene" path="res://Loot/Coconut/coconut.tscn" id="10_oicsw"]
 [ext_resource type="PackedScene" path="res://Loot/Banana/banana.tscn" id="11_hkrhx"]
 [ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
@@ -112,7 +112,7 @@ position = Vector2(-1680, -751)
 rotation = 0.785398
 scale = Vector2(1.5, 1.5)
 color = Color(1, 0.952941, 0.682353, 1)
-energy = 1.6
+energy = 4.83
 blend_mode = 2
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
@@ -295,25 +295,29 @@ z_index = 5
 position = Vector2(6144, 1425)
 
 [node name="Coconut" parent="Trees" unique_id=539869301 instance=ExtResource("8_n1s4q")]
-position = Vector2(-788, -148)
+modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
+position = Vector2(-809, -118)
 
 [node name="Coconut2" parent="Trees" unique_id=1960314878 instance=ExtResource("8_n1s4q")]
-position = Vector2(-5569, -159)
+modulate = Color(0.74474084, 0.74474084, 0.74474084, 1)
+position = Vector2(-5683, -111)
 
 [node name="Bananier" parent="Trees" unique_id=1737612719 instance=ExtResource("9_wh82l")]
-position = Vector2(-4692, -466)
+modulate = Color(0.74474084, 0.74474084, 0.74474084, 1)
+position = Vector2(-4702, -427)
 
 [node name="Bananier2" parent="Trees" unique_id=204370001 instance=ExtResource("9_wh82l")]
-position = Vector2(-2497, -469)
+modulate = Color(0.74509805, 0.74509805, 0.74509805, 1)
+position = Vector2(-2494, -418)
 
 [node name="Loot" type="Node2D" parent="Trees" unique_id=617090188]
 position = Vector2(-5519, -361)
 
 [node name="CocoLoot2" parent="Trees/Loot" unique_id=667419175 instance=ExtResource("10_oicsw")]
-position = Vector2(-9, -403)
+position = Vector2(-118, -209)
 
 [node name="BananaLoot" parent="Trees/Loot" unique_id=470617441 instance=ExtResource("11_hkrhx")]
-position = Vector2(891, -127)
+position = Vector2(874, -132)
 
 [node name="BananaLoot2" parent="Trees/Loot" unique_id=2014532649 instance=ExtResource("11_hkrhx")]
 position = Vector2(3087, -128)

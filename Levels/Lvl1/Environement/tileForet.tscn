@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://hxj4vu35hkg0" path="res://Levels/Lvl1/Environement/forest_tileset.tres" id="1_4p213"]
 [ext_resource type="TileSet" uid="uid://fpc86oqo50d0" path="res://Levels/Lvl1/Environement/tiles.tres" id="2_fkcea"]
-[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="3_raanu"]
+[ext_resource type="PackedScene" uid="uid://dnpligc6alj5f" path="res://Enemies/GazShooter/gaz_shooter.tscn" id="3_raanu"]
 
 [node name="Foret" type="Node2D" unique_id=981220469]
 
@@ -15,23 +15,25 @@ tile_set = ExtResource("1_4p213")
 tile_map_data = PackedByteArray("AACPABkAAQAAAAAAAACvABkAAQAAAAAAABCPARkAAQAAAAAAAACvARkAAQAAAAAAABBNAhoAAQAAAAAAAABtAhoAAQAAAAAAABA=")
 tile_set = ExtResource("2_fkcea")
 
-[node name="WaveSnake" type="Node2D" parent="TileMapLayer2" unique_id=1997661547]
-position = Vector2(1882, -274)
+[node name="GazShooters" type="Node2D" parent="TileMapLayer2" unique_id=1997661547]
+z_index = 2
+position = Vector2(1874, -213)
 scale = Vector2(2, 2)
 
-[node name="Snake" parent="TileMapLayer2/WaveSnake" unique_id=88320707 instance=ExtResource("3_raanu")]
-z_index = 5
-position = Vector2(355.99994, -64.00001)
-speed = 600
-attack_range = 99999
+[node name="GazShooter" parent="TileMapLayer2/GazShooters" unique_id=88320707 instance=ExtResource("3_raanu")]
+position = Vector2(-430, 629)
 
-[node name="Snake2" parent="TileMapLayer2/WaveSnake" unique_id=2067401062 instance=ExtResource("3_raanu")]
-z_index = 5
-position = Vector2(357.50006, -108.49999)
-attack_range = 3000
+[node name="GazShooter2" parent="TileMapLayer2/GazShooters" unique_id=1012699545 instance=ExtResource("3_raanu")]
+position = Vector2(920.5, 656.5)
 
-[node name="Snake3" parent="TileMapLayer2/WaveSnake" unique_id=1271623332 instance=ExtResource("3_raanu")]
-z_index = 5
-position = Vector2(350.5, -91.999985)
-speed = 500
-attack_range = 30000
+[node name="GazShooter3" parent="TileMapLayer2/GazShooters" unique_id=1474961255 instance=ExtResource("3_raanu")]
+position = Vector2(1309.5, 648)
+
+[node name="GazShooter4" parent="TileMapLayer2/GazShooters" unique_id=583952511 instance=ExtResource("3_raanu")]
+position = Vector2(1911, 646)
+
+[node name="GazShooter5" parent="TileMapLayer2/GazShooters" unique_id=385846681 instance=ExtResource("3_raanu")]
+position = Vector2(2959.5, 648.5)
+
+[node name="GazShooter6" parent="TileMapLayer2/GazShooters" unique_id=1730270796 instance=ExtResource("3_raanu")]
+position = Vector2(3424.5, 655)
