@@ -1,3 +1,156 @@
 [gd_scene format=3 uid="uid://dem6aecic7fr5"]
 
+[ext_resource type="Script" uid="uid://pwkfthjdkfwq" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.gd" id="1_crfi1"]
+[ext_resource type="Texture2D" uid="uid://x168hktec62w" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/1.png" id="2_x7hf4"]
+[ext_resource type="Texture2D" uid="uid://l1cm6d3ywxpv" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/2.png" id="3_rb4jf"]
+[ext_resource type="Texture2D" uid="uid://81qy4dne7pcp" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/3.png" id="4_yulbx"]
+[ext_resource type="Texture2D" uid="uid://3boamodp1sgi" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/4.png" id="5_wqtxo"]
+[ext_resource type="Texture2D" uid="uid://c2i71a433acts" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/5.png" id="6_dgods"]
+[ext_resource type="Texture2D" uid="uid://do547dror5dau" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/6.png" id="7_7fqp6"]
+[ext_resource type="Texture2D" uid="uid://da0ptr2e4rak5" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/7.png" id="8_rem8b"]
+[ext_resource type="Texture2D" uid="uid://civvct03ralt8" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/8.png" id="9_oq22u"]
+
+[sub_resource type="Animation" id="Animation_x7hf4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -261)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Area2D/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-187, 214)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_x7hf4")]
+}
+
+[sub_resource type="Animation" id="Animation_wb5wy"]
+resource_name = "retract"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_x7hf4"), ExtResource("3_rb4jf"), ExtResource("4_yulbx"), ExtResource("5_wqtxo"), ExtResource("6_dgods"), ExtResource("7_7fqp6"), ExtResource("8_rem8b"), ExtResource("9_oq22u")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 201), Vector2(-4, 174), Vector2(-5, 131), Vector2(-4, -175), Vector2(-4, -230), Vector2(-4, -207), Vector2(-10, -260), Vector2(2, -261)]
+}
+
+[sub_resource type="Animation" id="Animation_y20wg"]
+resource_name = "unroll"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4000001, 0.59999996, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("9_oq22u"), ExtResource("8_rem8b"), ExtResource("7_7fqp6"), ExtResource("5_wqtxo"), ExtResource("4_yulbx"), ExtResource("3_rb4jf"), ExtResource("2_x7hf4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, -261), Vector2(-4, -228), Vector2(0, -176), Vector2(0, -169), Vector2(0, 137), Vector2(-4, 179), Vector2(3, 268)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.64),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-187, 214)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8mvgm"]
+_data = {
+&"RESET": SubResource("Animation_x7hf4"),
+&"retract": SubResource("Animation_wb5wy"),
+&"unroll": SubResource("Animation_y20wg")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc4ge"]
+size = Vector2(32, 125.04224)
+
 [node name="ElevatorLiana" type="Node2D" unique_id=2000748319]
+script = ExtResource("1_crfi1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=412028669]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_x7hf4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1955288816]
+libraries/ = SubResource("AnimationLibrary_8mvgm")
+autoplay = &"unroll"
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1602212791]
+position = Vector2(2, -261)
+
+[node name="Grip" type="Node2D" parent="Pivot" unique_id=964687811]
+position = Vector2(-1, -4)
+
+[node name="Area2D" type="Area2D" parent="Pivot" unique_id=261117484]
+position = Vector2(184, -215)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D" unique_id=608096552]
+position = Vector2(-187, 214)
+shape = SubResource("RectangleShape2D_tc4ge")
+
+[connection signal="body_entered" from="Pivot/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Pivot/Area2D" to="." method="_on_area_2d_body_exited"]
