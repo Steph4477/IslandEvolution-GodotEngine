@@ -1,18 +1,20 @@
-[gd_scene format=4 uid="uid://d37am0jyminnf"]
+[gd_scene format=3 uid="uid://d37am0jyminnf"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/environement.tscn" id="2_lalfn"]
+[ext_resource type="Texture2D" path="res://ItemsDecors/Trees/Banana_tree/1a79ad2f-03ad-4ed4-998b-57aba48e71a7.png" id="3_f1okb"]
 [ext_resource type="PackedScene" uid="uid://bykcb7i24ljuo" path="res://Levels/Lvl1/Environement/tileForet.tscn" id="3_mpeth"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/Door/lvl2/Exit.tscn" id="4_na1bk"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Spike/spike.tscn" id="5_jneuh"]
-[ext_resource type="TileSet" uid="uid://dkhrc1vay74qd" path="res://Levels/Lvl1/Environement/platform.tres" id="7_jsni3"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.tscn" id="7_wpu1g"]
+[ext_resource type="PackedScene" uid="uid://btj5prwbjyjm7" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.tscn" id="7_wpu1g"]
 [ext_resource type="PackedScene" uid="uid://c5a3jpxxsvrpy" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.tscn" id="8_n1s4q"]
 [ext_resource type="PackedScene" uid="uid://2d77368f0fid" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.tscn" id="9_wh82l"]
 [ext_resource type="PackedScene" path="res://Loot/Coconut/coconut.tscn" id="10_oicsw"]
 [ext_resource type="PackedScene" path="res://Loot/Banana/banana.tscn" id="11_hkrhx"]
+[ext_resource type="PackedScene" uid="uid://dem6aecic7fr5" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.tscn" id="11_p5uxy"]
 [ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
 [ext_resource type="PackedScene" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
+[ext_resource type="PackedScene" uid="uid://cq6jk0e2mpkxk" path="res://Levels/Lvl1/tile_map.tscn" id="13_qhqjp"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
 [ext_resource type="PackedScene" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
 [ext_resource type="PackedScene" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
@@ -22,11 +24,10 @@
 [ext_resource type="AudioStream" uid="uid://db12ei3cw5sxd" path="res://sounds/lvl1.mp3" id="20_qky26"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
 [ext_resource type="Texture2D" uid="uid://bp1em842hmp0b" path="res://Levels/Lvl1/Environement/Platforms/floor_1.png" id="22_jsni3"]
-[ext_resource type="Texture2D" uid="uid://bhmrw8etfd8lq" path="res://ItemsDecors/Moving_Platform/Jungle/elevator_tree.png" id="23_tqxky"]
+[ext_resource type="Texture2D" uid="uid://bi3poqdlmghsw" path="res://Levels/Lvl1/Environement/ElevatorLiana/liana_tree.png" id="23_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="24_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqxky"]
+[ext_resource type="Texture2D" uid="uid://bxfxudtujf5lj" path="res://ItemsDecors/Trees/liana_tree.png" id="26_qhqjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e63vn"]
 size = Vector2(6.6532745, 30.570717)
@@ -98,13 +99,19 @@ z_index = 2
 position = Vector2(3816, 881)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
-position = Vector2(336, 1094)
+position = Vector2(6374, 1185)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1663190254]
+z_index = 15
+position = Vector2(6947, 774)
+scale = Vector2(2, 2)
+texture = ExtResource("3_f1okb")
 
 [node name="Background" type="Node2D" parent="." unique_id=1107236498]
 position = Vector2(3329, 1040)
 
 [node name="ParalaxeCiel" parent="Background" unique_id=300711010 instance=ExtResource("2_lalfn")]
-position = Vector2(1532, -641)
+position = Vector2(1802, -923)
 scale = Vector2(3.28, 1)
 
 [node name="SunLight2D" type="DirectionalLight2D" parent="Background" unique_id=2117109705]
@@ -120,7 +127,7 @@ shadow_filter = 1
 shadow_filter_smooth = 4.0
 
 [node name="Forest" parent="Background" unique_id=1951585968 instance=ExtResource("3_mpeth")]
-position = Vector2(-3329, -1040)
+position = Vector2(-3310, -1180)
 
 [node name="Exit" parent="." unique_id=550448380 instance=ExtResource("4_na1bk")]
 z_index = 10
@@ -141,20 +148,43 @@ rotation = -3.14158
 scale = Vector2(0.397965, -1.02986)
 skew = -1.0848e-05
 
-[node name="TileMap" type="Node2D" parent="." unique_id=115444180]
-z_index = 5
+[node name="Trees" type="Node2D" parent="." unique_id=2136015294]
+position = Vector2(6144, 1425)
+
+[node name="Coconut" parent="Trees" unique_id=539869301 instance=ExtResource("8_n1s4q")]
+modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
+position = Vector2(-815, -82)
+
+[node name="Coconut2" parent="Trees" unique_id=1960314878 instance=ExtResource("8_n1s4q")]
+modulate = Color(0.74474084, 0.74474084, 0.74474084, 1)
+position = Vector2(-5301, -96)
+
+[node name="Bananier" parent="Trees" unique_id=1737612719 instance=ExtResource("9_wh82l")]
+modulate = Color(0.74474084, 0.74474084, 0.74474084, 1)
+position = Vector2(-4719, -77)
+
+[node name="Bananier2" parent="Trees" unique_id=204370001 instance=ExtResource("9_wh82l")]
+modulate = Color(0.74509805, 0.74509805, 0.74509805, 1)
+position = Vector2(-2500, -59)
+
+[node name="Loot" type="Node2D" parent="Trees" unique_id=617090188]
+position = Vector2(-5519, -361)
+
+[node name="CocoLoot2" parent="Trees/Loot" unique_id=667419175 instance=ExtResource("10_oicsw")]
+z_index = 126
+position = Vector2(252, -199)
+
+[node name="BananaLoot" parent="Trees/Loot" unique_id=470617441 instance=ExtResource("11_hkrhx")]
+position = Vector2(859, -159)
+
+[node name="BananaLoot2" parent="Trees/Loot" unique_id=2014532649 instance=ExtResource("11_hkrhx")]
+position = Vector2(3081, -141)
+
+[node name="CocoLoot" parent="Trees/Loot" unique_id=1314676657 instance=ExtResource("10_oicsw")]
+position = Vector2(4751, -175)
+
+[node name="TileMap" parent="." unique_id=2043855980 instance=ExtResource("13_qhqjp")]
 position = Vector2(785, 226)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="TileMap" unique_id=597137144]
-position = Vector2(1222, -82)
-tile_map_data = PackedByteArray("AAD7/zsAIgACAAEAAAAAADsAIgACAAEAABD7/0AAIgACAAIAAAAAAEAAIgACAAIAABD7/0UAIgACAAIAACAAAEUAIgACAAIAADBmABMAIwAAAAEAABAAAEoAIgACAAIAABD7/0oAIgACAAIAAAAMAC4AIwAAAAEAAAAIAC4AIwAAAAEAABDv/0IAIwAAAAEAAADq/0IAIwAAAAEAABBHABQAIwAAAAEAAABCABQAIwAAAAEAABBrABMAIwAAAAEAAACCACEAIwAAAAEAAAB9ACEAIwAAAAEAABAfACMAIwAAAAEAAAAaACMAIwAAAAEAABD/AC0AIgACAAEAAAD/ADIAIgACAAIAAAD/ADcAIgACAAIAACD/ADwAIgACAAIAAAD/AEEAIgACAAIAACD/AEYAIgACAAIAAAD/AEsAIgACAAIAACAEAS0AIgACAAEAABAEATIAIgACAAIAABAEATcAIgACAAIAADAEATwAIgACAAIAABAEAUEAIgACAAIAADAEAUYAIgACAAIAABAEAUsAIgACAAIAADCIAEwAIgACAAEAAACLAEwAIgACAAEAAACOAEIAKwAAAAAAAACPADIAJgAAAAAAABCPAEwAIgACAAEAAACQACgAIwAAAAIAABCRACQAIgACAAEAAACSACQAIgACAAEAAACTAEwAIgACAAEAAACUACQAIgACAAEAAACUACgAIwAAAAIAAACVADIAJgAAAAAAAACXADIAJgAAAAAAABCYACgAIwAAAAIAABCYAEwAIgACAAEAABCZACQAIgACAAEAABCbACQAIgACAAEAABCcACgAIwAAAAIAAACcAEwAIgACAAEAABCdADIAJgAAAAAAAACeAEIAKwAAAAAAABCgAEwAIgACAAEAABApAEUAJQAAAAAAAAAqACUAJQAAAAAAAAAqADUAJQAAAAAAACAsABsAIwAAAAEAABAxABsAIwAAAAEAAAAxADUAJQAAAAAAADAyACUAJgAAAAAAAAAyAEUAJQAAAAAAABA=")
-tile_set = ExtResource("7_jsni3")
-collision_enabled = false
-
-[node name="Area2D" type="Area2D" parent="TileMap" unique_id=922234017]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Area2D" unique_id=1496926065]
-shape = SubResource("RectangleShape2D_tqxky")
 
 [node name="Platforms" type="Node2D" parent="." unique_id=1549227537]
 
@@ -280,50 +310,10 @@ scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_2hs2i")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
 
-[node name="MobilePlatForm1" parent="Platforms" unique_id=1983112277 instance=ExtResource("7_wpu1g")]
-position = Vector2(6356, 1311)
-speed = 200.0
-direction = 1
-
 [node name="MobilePlatForm2" parent="Platforms" unique_id=851967852 instance=ExtResource("7_wpu1g")]
 position = Vector2(4708, 1089)
 speed = 300.0
 distance = 1800.0
-
-[node name="Trees" type="Node2D" parent="." unique_id=2136015294]
-z_index = 5
-position = Vector2(6144, 1425)
-
-[node name="Coconut" parent="Trees" unique_id=539869301 instance=ExtResource("8_n1s4q")]
-modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
-position = Vector2(-809, -118)
-
-[node name="Coconut2" parent="Trees" unique_id=1960314878 instance=ExtResource("8_n1s4q")]
-modulate = Color(0.74474084, 0.74474084, 0.74474084, 1)
-position = Vector2(-5683, -111)
-
-[node name="Bananier" parent="Trees" unique_id=1737612719 instance=ExtResource("9_wh82l")]
-modulate = Color(0.74474084, 0.74474084, 0.74474084, 1)
-position = Vector2(-4702, -427)
-
-[node name="Bananier2" parent="Trees" unique_id=204370001 instance=ExtResource("9_wh82l")]
-modulate = Color(0.74509805, 0.74509805, 0.74509805, 1)
-position = Vector2(-2494, -418)
-
-[node name="Loot" type="Node2D" parent="Trees" unique_id=617090188]
-position = Vector2(-5519, -361)
-
-[node name="CocoLoot2" parent="Trees/Loot" unique_id=667419175 instance=ExtResource("10_oicsw")]
-position = Vector2(-118, -209)
-
-[node name="BananaLoot" parent="Trees/Loot" unique_id=470617441 instance=ExtResource("11_hkrhx")]
-position = Vector2(874, -132)
-
-[node name="BananaLoot2" parent="Trees/Loot" unique_id=2014532649 instance=ExtResource("11_hkrhx")]
-position = Vector2(3087, -128)
-
-[node name="CocoLoot" parent="Trees/Loot" unique_id=1314676657 instance=ExtResource("10_oicsw")]
-position = Vector2(4773, -392)
 
 [node name="Butterfly" type="Node2D" parent="." unique_id=380073951]
 z_index = 2
@@ -374,7 +364,7 @@ z_index = 10
 position = Vector2(3329, 1040)
 
 [node name="Mousquito" parent="Creatures" unique_id=1197171326 instance=ExtResource("13_oiu73")]
-position = Vector2(2843, 40)
+position = Vector2(2259, -112)
 
 [node name="Mousquito2" parent="Creatures" unique_id=156221535 instance=ExtResource("13_oiu73")]
 position = Vector2(980, -356)
@@ -430,6 +420,7 @@ stream = ExtResource("20_qky26")
 volume_db = 4.837
 
 [node name="Floor" type="Node2D" parent="." unique_id=1873456164]
+z_index = 4
 position = Vector2(0, 102)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Floor" unique_id=1853961011]
@@ -496,29 +487,49 @@ texture = ExtResource("22_jsni3")
 position = Vector2(10356, 1333)
 texture = ExtResource("22_jsni3")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=725603047]
-modulate = Color(0.66492164, 0.66492164, 0.6649216, 1)
-position = Vector2(7502, 880)
-texture = ExtResource("23_tqxky")
+[node name="LianaElevator" type="Node2D" parent="." unique_id=1992963402]
+position = Vector2(7447, 739)
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=493400102]
-modulate = Color(0.66492164, 0.66492164, 0.6649216, 1)
-position = Vector2(8265, 880)
-scale = Vector2(-1, 1)
-texture = ExtResource("23_tqxky")
+[node name="ElevatorLiana" parent="LianaElevator" unique_id=2000748319 instance=ExtResource("11_p5uxy")]
+modulate = Color(0.6847319, 0.6847319, 0.6847319, 1)
+position = Vector2(-1280, -70)
+scale = Vector2(1, 1.6)
 
-[node name="Liana" parent="Sprite2D2" unique_id=411276915 instance=ExtResource("24_2hs2i")]
-position = Vector2(386, -143)
-scale = Vector2(-0.4, 0.4)
+[node name="ElevatorTree" type="Sprite2D" parent="LianaElevator" unique_id=135223242]
+position = Vector2(-1071, -70)
+texture = ExtResource("23_2hs2i")
+
+[node name="LianaTree" type="Node2D" parent="." unique_id=1057297115]
+position = Vector2(7447, 739)
+
+[node name="LianaTree" type="Sprite2D" parent="LianaTree" unique_id=725603047]
+modulate = Color(0.66492164, 0.66492164, 0.6649216, 1)
+z_index = 5
+texture = ExtResource("26_qhqjp")
+
+[node name="Liana" parent="LianaTree" unique_id=411276915 instance=ExtResource("24_2hs2i")]
+position = Vector2(408, -212)
+scale = Vector2(0.4, 0.6)
+
+[node name="LianaTree2" type="Sprite2D" parent="LianaTree" unique_id=493400102]
+modulate = Color(0.66492164, 0.66492164, 0.6649216, 1)
+z_index = 5
+position = Vector2(824, 5)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+texture = ExtResource("26_qhqjp")
 
 [node name="HiddenTrap2" parent="." unique_id=2003431478 instance=ExtResource("25_p5uxy")]
 modulate = Color(0.49411765, 0.49411765, 0.49411765, 1)
+z_index = 10
 position = Vector2(7626, 1457)
 
 [node name="HiddenTrap3" parent="." unique_id=1275044498 instance=ExtResource("25_p5uxy")]
 modulate = Color(0.49411765, 0.49411765, 0.49411765, 1)
+z_index = 10
 position = Vector2(8133, 1457)
 
 [node name="HiddenTrap" parent="." unique_id=1245213246 instance=ExtResource("25_p5uxy")]
 modulate = Color(0.49433076, 0.49433076, 0.4943307, 1)
+z_index = 10
 position = Vector2(7880, 1457)
