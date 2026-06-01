@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.gd" id="1_7272f"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Background/Tiles/tiles platforms/T5.png" id="2_7272f"]
+[ext_resource type="Script" uid="uid://c2gwqc2veghiu" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.gd" id="1_7272f"]
+[ext_resource type="Texture2D" uid="uid://dvy5mmroq2iws" path="res://Levels/Lvl2/Environement/Background/Tiles/TilesPlatforms/T5.png" id="2_7272f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfqmu"]
 size = Vector2(134, 21.75)

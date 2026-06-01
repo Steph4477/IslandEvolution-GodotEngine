@@ -1797,13 +1797,14 @@ texture_pressed = ExtResource("17_m6ehm")
 action = "ui_cancel"
 
 [node name="Interact" type="TouchScreenButton" parent="Gamepad" unique_id=1168241739]
-modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
+modulate = Color(0.85882354, 0.85882354, 0.85882354, 0.43137255)
 position = Vector2(391, 904)
 texture_normal = ExtResource("64_uk4ib")
 texture_pressed = ExtResource("65_xl0m0")
 action = "interact"
 
 [node name="DirectionalArrow" type="Control" parent="." unique_id=1965791036]
+modulate = Color(1, 1, 1, 0.43137255)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1911.0
