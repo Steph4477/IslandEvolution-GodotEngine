@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://hh078ixonxjb" path="res://ItemsDecors/Trees/Coconut_tree/1.png" id="2_koarn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
-size = Vector2(12.225092, 704.08606)
+size = Vector2(32.158302, 512.56036)
 
 [sub_resource type="Animation" id="Animation_i7hbb"]
 length = 0.001
@@ -72,9 +72,8 @@ _data = {
 script = ExtResource("1_it4j1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=545630696]
-position = Vector2(215.024, 518.82)
-rotation = 0.0244346
-scale = Vector2(0.811754, 1)
+position = Vector2(159.99998, 115)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_koarn")
 offset = Vector2(-288, -844)
 
@@ -84,7 +83,7 @@ offset = Vector2(-288, -844)
 position = Vector2(-1, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=238588019]
-position = Vector2(6.5789547, -253.04094)
+position = Vector2(22.31352, -208.78546)
 scale = Vector2(1.0000005, 1.0000005)
 shape = SubResource("RectangleShape2D_it4j1")
 
