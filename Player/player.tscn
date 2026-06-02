@@ -764,7 +764,7 @@ size = Vector2(43.333313, 141.84393)
 
 [node name="Player" type="CharacterBody2D" unique_id=1482889488 groups=["Player"]]
 z_index = 22
-collision_mask = 294
+collision_mask = 4390
 script = ExtResource("1_5psm4")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1565517736]

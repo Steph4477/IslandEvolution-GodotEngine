@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dnpligc6alj5f"]
 
-[ext_resource type="Script" uid="uid://d1lhqqjg2ddvb" path="res://Enemies/Snake/snake.gd" id="1_y4by2"]
+[ext_resource type="Script" uid="uid://bmnfdbh0lj5t2" path="res://Enemies/GazShooter/gaz_shooter.gd" id="1_qje2y"]
 [ext_resource type="Texture2D" uid="uid://dbryfja50ukd5" path="res://Enemies/GazShooter/Sprites/1.png" id="3_qje2y"]
 [ext_resource type="Texture2D" uid="uid://d4f5xqiu52hly" path="res://Enemies/GazShooter/Sprites/0.png" id="3_wcf57"]
 [ext_resource type="Texture2D" uid="uid://pi6x317tatai" path="res://Enemies/GazShooter/Sprites/2.png" id="4_wcf57"]
 [ext_resource type="Texture2D" uid="uid://crwxh662lm0ae" path="res://Enemies/GazShooter/Sprites/3.png" id="5_wyhdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qje2y"]
-size = Vector2(148.33328, 123.33345)
+size = Vector2(1.2500296, 0.8331792)
 
 [sub_resource type="Animation" id="Animation_qje2y"]
 resource_name = "RESET"
@@ -69,15 +69,12 @@ _data = {
 
 [node name="GazShooter" type="CharacterBody2D" unique_id=88320707 groups=["Enemies"]]
 scale = Vector2(0.6, 0.6)
-collision_layer = 8
+collision_layer = 4096
 collision_mask = 2
-script = ExtResource("1_y4by2")
-speed = 0
-max_hp = -8446744073709551616
-hit_lock_time = 0.4
+script = ExtResource("1_qje2y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298740383]
-position = Vector2(3.3334541, 32.50001)
+position = Vector2(0.41658732, 0.62501645)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_qje2y")
 

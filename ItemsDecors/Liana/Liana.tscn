@@ -21,7 +21,7 @@ position = Vector2(6, 469)
 polygon = PackedVector2Array(-15, -844, -13, -655, 4, -441, 23, -379, 35, -309, 41, -245, 44, -154, 37, -86, 16, -15, 7, 38, -5, 98, -20, 158, -20, 224, -5, 324, 19, 467, -2, 264, -12, 193, 9, 69, 44, -55, 55, -207, 43, -331, 15, -438, 1, -521, -4, -644, -9, -845)
 
 [node name="Grip" type="Node2D" parent="Pivot" unique_id=75460564]
-position = Vector2(-5, 728)
+position = Vector2(-7, 619)
 
 [connection signal="body_entered" from="Pivot/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Pivot/Area2D" to="." method="_on_area_2d_body_exited"]

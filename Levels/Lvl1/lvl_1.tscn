@@ -1,535 +1,672 @@
-[gd_scene format=3 uid="uid://d37am0jyminnf"]
+[gd_scene format=4 uid="uid://d37am0jyminnf"]
 
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
-[ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/environement.tscn" id="2_lalfn"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Trees/Banana_tree/1a79ad2f-03ad-4ed4-998b-57aba48e71a7.png" id="3_f1okb"]
-[ext_resource type="PackedScene" uid="uid://bykcb7i24ljuo" path="res://Levels/Lvl1/Environement/tileForet.tscn" id="3_mpeth"]
-[ext_resource type="PackedScene" path="res://Levels/Lvl1/Environement/Door/lvl2/Exit.tscn" id="4_na1bk"]
+[ext_resource type="PackedScene" uid="uid://r1g73vkfwclw" path="res://Levels/Lvl1/Environement/Exit/lvl2/Exit.tscn" id="4_na1bk"]
+[ext_resource type="Script" uid="uid://b2wash03n1xr2" path="res://Levels/Lvl1/Environement/Paralaxe/parallax.gd" id="4_yc75k"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Spike/spike.tscn" id="5_jneuh"]
-[ext_resource type="PackedScene" uid="uid://btj5prwbjyjm7" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.tscn" id="7_wpu1g"]
 [ext_resource type="PackedScene" uid="uid://c5a3jpxxsvrpy" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.tscn" id="8_n1s4q"]
+[ext_resource type="Texture2D" uid="uid://btlt850oq8jg1" path="res://Levels/Lvl1/Environement/TileMap/tileset_plant.png" id="9_qhqjp"]
 [ext_resource type="PackedScene" uid="uid://2d77368f0fid" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.tscn" id="9_wh82l"]
 [ext_resource type="PackedScene" path="res://Loot/Coconut/coconut.tscn" id="10_oicsw"]
 [ext_resource type="PackedScene" path="res://Loot/Banana/banana.tscn" id="11_hkrhx"]
 [ext_resource type="PackedScene" uid="uid://dem6aecic7fr5" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.tscn" id="11_p5uxy"]
 [ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
+[ext_resource type="Texture2D" uid="uid://b1hd2mhorqrne" path="res://Levels/Lvl1/Environement/TileMap/tileset_jungle_ground.png" id="12_f1okb"]
 [ext_resource type="PackedScene" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
-[ext_resource type="PackedScene" uid="uid://cq6jk0e2mpkxk" path="res://Levels/Lvl1/tile_map.tscn" id="13_qhqjp"]
+[ext_resource type="Texture2D" uid="uid://s0vtyicveem5" path="res://Levels/Lvl1/Environement/TileMap/tileset_platform.png" id="14_f1okb"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
 [ext_resource type="PackedScene" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
 [ext_resource type="PackedScene" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
 [ext_resource type="Script" uid="uid://o41uset6a6qr" path="res://Levels/Lvl1/Environement/seeds.gd" id="18_p8qu6"]
-[ext_resource type="PackedScene" path="res://Loot/Seed/seed.tscn" id="19_hs4kr"]
+[ext_resource type="PackedScene" uid="uid://nqrb063x5buh" path="res://Loot/Seed/seed.tscn" id="19_hs4kr"]
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="19_jsni3"]
 [ext_resource type="AudioStream" uid="uid://db12ei3cw5sxd" path="res://sounds/lvl1.mp3" id="20_qky26"]
 [ext_resource type="PackedScene" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
-[ext_resource type="Texture2D" uid="uid://bp1em842hmp0b" path="res://Levels/Lvl1/Environement/Platforms/floor_1.png" id="22_jsni3"]
 [ext_resource type="Texture2D" uid="uid://bi3poqdlmghsw" path="res://Levels/Lvl1/Environement/ElevatorLiana/liana_tree.png" id="23_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="24_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
 [ext_resource type="Texture2D" uid="uid://bxfxudtujf5lj" path="res://ItemsDecors/Trees/liana_tree.png" id="26_qhqjp"]
+[ext_resource type="Texture2D" uid="uid://nbux7ymli8mw" path="res://Levels/Lvl1/Environement/Paralaxe/sky.png" id="29_6e3s7"]
+[ext_resource type="PackedScene" uid="uid://dnpligc6alj5f" path="res://Enemies/GazShooter/gaz_shooter.tscn" id="29_ppy38"]
+[ext_resource type="Texture2D" uid="uid://cq7u7wuv2qqpi" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_back.png" id="29_yc75k"]
+[ext_resource type="Texture2D" uid="uid://crqo6elghv737" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_forest.png" id="30_yc75k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e63vn"]
-size = Vector2(6.6532745, 30.570717)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5uxy"]
+texture = ExtResource("14_f1okb")
+texture_region_size = Vector2i(128, 128)
+0:1/0 = 0
+0:2/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:0/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+3:3/0 = 0
+3:4/0 = 0
+2:4/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+1:4/0 = 0
+0:4/0 = 0
+0:3/0 = 0
+3:2/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+6:3/0 = 0
+6:2/0 = 0
+6:1/0 = 0
+6:0/0 = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0og2l"]
-size = Vector2(8.662496, 12.540155)
+[sub_resource type="TileSet" id="TileSet_f1okb"]
+sources/0 = SubResource("TileSetAtlasSource_p5uxy")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcd4a"]
-size = Vector2(10.132732, 53.790848)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfula"]
+texture = ExtResource("12_f1okb")
+texture_region_size = Vector2i(640, 384)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yc75k"]
+sources/0 = SubResource("TileSetAtlasSource_mfula")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6e3s7"]
+texture = ExtResource("9_qhqjp")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+6:2/0 = 0
+5:2/0 = 0
+4:2/0 = 0
+3:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ppy38"]
+sources/0 = SubResource("TileSetAtlasSource_6e3s7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wajbs"]
-size = Vector2(2.23209, 104.915)
+size = Vector2(2.9369435, 14.5576935)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am3co"]
-size = Vector2(5.66036, 27.485558)
+size = Vector2(4.322444, 18.73994)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofnsq"]
-size = Vector2(1.5478, 35.4137)
+size = Vector2(0.98291415, 17.644089)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vc1ff"]
-size = Vector2(5.43134, 25.4167)
+size = Vector2(9.19559, 12.984623)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgp0u"]
-size = Vector2(4.39744, 32.0253)
+size = Vector2(3.1210675, 24.705214)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lr8k6"]
-size = Vector2(6.6188126, 17.128586)
+size = Vector2(3.9409451, 12.984581)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvxqb"]
-size = Vector2(5.35568, 26.5216)
+size = Vector2(3.8146398, 11.603208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26k7p"]
-size = Vector2(5.35569, 21.5524)
+size = Vector2(3.6378279, 16.991264)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhs03"]
-size = Vector2(5.00002, 20)
+size = Vector2(2.936956, 12.007721)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avxqp"]
-size = Vector2(11.166087, 20.4457)
+size = Vector2(3.8398833, 12.018042)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlm52"]
-size = Vector2(14.3997, 61.8802)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0804m"]
-size = Vector2(20.1556, 79.0103)
+size = Vector2(15.587042, 246.42885)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myamh"]
-size = Vector2(5.4567, 19.396912)
+size = Vector2(8.905088, 14.671143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3xnj"]
-size = Vector2(9.84062, 16.95621)
+size = Vector2(15.281317, 20.38168)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmo30"]
-size = Vector2(397.7745, 53.526)
+size = Vector2(383.90152, 53.526)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
-size = Vector2(305.564, 78.184654)
+size = Vector2(306.27557, 106.70017)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs2i"]
-size = Vector2(65.25502, 75.26184)
+size = Vector2(52.923317, 75.26184)
 
 [node name="lvl1" type="Node2D" unique_id=354594342]
 script = ExtResource("1_mebys")
+metadata/_edit_vertical_guides_ = [7836.0]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=474005028]
+modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
 
 [node name="Toucan" parent="Node2D" unique_id=512843782 instance=ExtResource("14_li3ov")]
 z_index = 2
 position = Vector2(3816, 881)
+collision_mask = 256
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
-position = Vector2(6374, 1185)
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1663190254]
-z_index = 15
-position = Vector2(6947, 774)
-scale = Vector2(2, 2)
-texture = ExtResource("3_f1okb")
-
-[node name="Background" type="Node2D" parent="." unique_id=1107236498]
-position = Vector2(3329, 1040)
-
-[node name="ParalaxeCiel" parent="Background" unique_id=300711010 instance=ExtResource("2_lalfn")]
-position = Vector2(1802, -923)
-scale = Vector2(3.28, 1)
-
-[node name="SunLight2D" type="DirectionalLight2D" parent="Background" unique_id=2117109705]
-position = Vector2(-1680, -751)
-rotation = 0.785398
-scale = Vector2(1.5, 1.5)
-color = Color(1, 0.952941, 0.682353, 1)
-energy = 4.83
-blend_mode = 2
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 1)
-shadow_filter = 1
-shadow_filter_smooth = 4.0
-
-[node name="Forest" parent="Background" unique_id=1951585968 instance=ExtResource("3_mpeth")]
-position = Vector2(-3310, -1180)
-
-[node name="Exit" parent="." unique_id=550448380 instance=ExtResource("4_na1bk")]
-z_index = 10
-position = Vector2(9345, 1236)
-
-[node name="Arrows" type="Node2D" parent="." unique_id=83345912]
-z_index = 5
-position = Vector2(3028.9998, 1338)
-scale = Vector2(0.635458, 0.141613)
-
-[node name="Arrow1" parent="Arrows" unique_id=155893927 instance=ExtResource("5_jneuh")]
-position = Vector2(-6.29467, 42.369)
-scale = Vector2(1, 1)
-
-[node name="Arrow2" parent="Arrows" unique_id=758725078 instance=ExtResource("5_jneuh")]
-position = Vector2(-1850.6338, 127.10695)
-rotation = -3.14158
-scale = Vector2(0.397965, -1.02986)
-skew = -1.0848e-05
-
-[node name="Trees" type="Node2D" parent="." unique_id=2136015294]
-position = Vector2(6144, 1425)
-
-[node name="Coconut" parent="Trees" unique_id=539869301 instance=ExtResource("8_n1s4q")]
-modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
-position = Vector2(-815, -82)
-
-[node name="Coconut2" parent="Trees" unique_id=1960314878 instance=ExtResource("8_n1s4q")]
-modulate = Color(0.74474084, 0.74474084, 0.74474084, 1)
-position = Vector2(-5301, -96)
-
-[node name="Bananier" parent="Trees" unique_id=1737612719 instance=ExtResource("9_wh82l")]
-modulate = Color(0.74474084, 0.74474084, 0.74474084, 1)
-position = Vector2(-4719, -77)
-
-[node name="Bananier2" parent="Trees" unique_id=204370001 instance=ExtResource("9_wh82l")]
-modulate = Color(0.74509805, 0.74509805, 0.74509805, 1)
-position = Vector2(-2500, -59)
-
-[node name="Loot" type="Node2D" parent="Trees" unique_id=617090188]
-position = Vector2(-5519, -361)
-
-[node name="CocoLoot2" parent="Trees/Loot" unique_id=667419175 instance=ExtResource("10_oicsw")]
-z_index = 126
-position = Vector2(252, -199)
-
-[node name="BananaLoot" parent="Trees/Loot" unique_id=470617441 instance=ExtResource("11_hkrhx")]
-position = Vector2(859, -159)
-
-[node name="BananaLoot2" parent="Trees/Loot" unique_id=2014532649 instance=ExtResource("11_hkrhx")]
-position = Vector2(3081, -141)
-
-[node name="CocoLoot" parent="Trees/Loot" unique_id=1314676657 instance=ExtResource("10_oicsw")]
-position = Vector2(4751, -175)
-
-[node name="TileMap" parent="." unique_id=2043855980 instance=ExtResource("13_qhqjp")]
-position = Vector2(785, 226)
-
-[node name="Platforms" type="Node2D" parent="." unique_id=1549227537]
-
-[node name="PlatformsCollision" type="StaticBody2D" parent="Platforms" unique_id=1173081895]
-position = Vector2(734, -1811)
-scale = Vector2(0.089149, 0.144557)
-collision_layer = 2
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1872796002]
-position = Vector2(22613.824, 18113.963)
-scale = Vector2(401.261, 7.0148296)
-shape = SubResource("RectangleShape2D_e63vn")
-
-[node name="CollisionShape2D24" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=3642631]
-position = Vector2(22479.223, 19193.121)
-scale = Vector2(282.291, 10.4812)
-shape = SubResource("RectangleShape2D_0og2l")
-
-[node name="CollisionShape2D26" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=767446134]
-position = Vector2(22518.48, 21823.572)
-scale = Vector2(282.291, 10.4812)
-shape = SubResource("RectangleShape2D_kcd4a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=682810030]
-position = Vector2(13922.81, 21005.586)
-rotation = -3.14159
-scale = Vector2(286.449, -13.7806)
-shape = SubResource("RectangleShape2D_wajbs")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=555667]
-position = Vector2(22703.61, 16612.824)
-scale = Vector2(217.98804, 8.30556)
-shape = SubResource("RectangleShape2D_am3co")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=78601811]
-position = Vector2(13886.908, 20171.986)
-scale = Vector2(992.862, 8.2334)
-shape = SubResource("RectangleShape2D_ofnsq")
-
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=265071110]
-position = Vector2(33090.71, 15834.585)
-scale = Vector2(222.011, 12.5199)
-shape = SubResource("RectangleShape2D_vc1ff")
-
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=437177044]
-position = Vector2(10847.009, 21009.086)
-scale = Vector2(300.999, -7.56021)
-shape = SubResource("RectangleShape2D_kgp0u")
-
-[node name="CollisionShape2D20" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1110045396]
-position = Vector2(37224.242, 17221.625)
-scale = Vector2(222.01102, 12.5199)
-shape = SubResource("RectangleShape2D_lr8k6")
-
-[node name="CollisionShape2D30" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1852318435]
-position = Vector2(26663.21, 15917.685)
-scale = Vector2(222.011, 12.5199)
-shape = SubResource("RectangleShape2D_cvxqb")
-
-[node name="CollisionShape2D31" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=408281495]
-position = Vector2(16175.21, 18788.486)
-scale = Vector2(222.011, 12.5199)
-shape = SubResource("RectangleShape2D_26k7p")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=552635228]
-position = Vector2(19461.81, 17577.887)
-rotation = -3.14159
-scale = Vector2(286.449, -13.7806)
-shape = SubResource("RectangleShape2D_uhs03")
-
-[node name="CollisionShape2D25" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1016564404]
-position = Vector2(41290.426, 17522.53)
-scale = Vector2(222.01102, 12.5199)
-shape = SubResource("RectangleShape2D_avxqp")
-
-[node name="CollisionShape2D27" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1629477325]
-position = Vector2(41357.695, 19791.53)
-scale = Vector2(222.011, 12.5199)
-shape = SubResource("RectangleShape2D_mlm52")
-
-[node name="CollisionShape2D28" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1259879072]
-position = Vector2(41312.395, 20687.328)
-scale = Vector2(222.011, 12.5199)
-shape = SubResource("RectangleShape2D_0804m")
-
-[node name="CollisionShape2D29" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=334011898]
-position = Vector2(60595.188, 18525.564)
-scale = Vector2(222.01102, 12.5199)
-shape = SubResource("RectangleShape2D_myamh")
-
-[node name="BorderRShape2D9" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=232197234]
-position = Vector2(102076.305, 17746.68)
-rotation = -3.14159
-scale = Vector2(144.60701, 694.703)
-shape = SubResource("RectangleShape2D_t3xnj")
-debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
-
-[node name="BorderLShape2D7" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=542489724]
-position = Vector2(-8244.62, 17698.902)
-scale = Vector2(123.51101, -685.622)
-shape = SubResource("RectangleShape2D_t3xnj")
-debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
-
-[node name="BorderTShape2D5" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1764908885]
-position = Vector2(46899.043, 12353.302)
-scale = Vector2(283.80304, 14.7983)
-shape = SubResource("RectangleShape2D_pmo30")
-debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
-
-[node name="BorderBShape2D4" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=1878674279]
-light_mask = 4
-z_index = 5
-position = Vector2(32434.473, 22770.438)
-scale = Vector2(283.80304, 14.7983)
-shape = SubResource("RectangleShape2D_dvpsw")
-debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
-
-[node name="BorderBShape2D5" type="CollisionShape2D" parent="Platforms/PlatformsCollision" unique_id=118398063]
-light_mask = 4
-z_index = 5
-position = Vector2(93590.52, 22748.813)
-scale = Vector2(283.80304, 14.7983)
-shape = SubResource("RectangleShape2D_2hs2i")
-debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
-
-[node name="MobilePlatForm2" parent="Platforms" unique_id=851967852 instance=ExtResource("7_wpu1g")]
-position = Vector2(4708, 1089)
-speed = 300.0
-distance = 1800.0
-
-[node name="Butterfly" type="Node2D" parent="." unique_id=380073951]
-z_index = 2
-position = Vector2(3329, 1040)
-
-[node name="Butterfly1" parent="Butterfly" unique_id=1994102652 instance=ExtResource("16_xerpc")]
-position = Vector2(-2278, 298)
-
-[node name="Butterfly7" parent="Butterfly" unique_id=527939225 instance=ExtResource("16_xerpc")]
-position = Vector2(1827, -21)
-
-[node name="Butterfly2" parent="Butterfly" unique_id=1680537455 instance=ExtResource("16_xerpc")]
-position = Vector2(2387, 97)
-butterfly_color = Color(0.99785334, 0.9176539, 0.9126982, 1)
-
-[node name="Butterfly3" parent="Butterfly" unique_id=709357037 instance=ExtResource("16_xerpc")]
-position = Vector2(1419, 279)
-butterfly_color = Color(0.30679777, 0.024966344, 0.058257446, 1)
-
-[node name="Butterfly4" parent="Butterfly" unique_id=991427257 instance=ExtResource("16_xerpc")]
-position = Vector2(386, 83)
-butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
-
-[node name="Butterfly8" parent="Butterfly" unique_id=1995250690 instance=ExtResource("16_xerpc")]
-position = Vector2(3335, -2)
-butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
-
-[node name="Butterfly5" parent="Butterfly" unique_id=618754538 instance=ExtResource("16_xerpc")]
-position = Vector2(-629, -97)
-butterfly_color = Color(0.82884276, 0.66643363, 0.15861124, 1)
-
-[node name="Butterfly6" parent="Butterfly" unique_id=1153317459 instance=ExtResource("16_xerpc")]
-position = Vector2(-1231, -55)
-butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
-
-[node name="Carnivores" type="Node2D" parent="." unique_id=726381797]
-z_index = 10
-position = Vector2(-30, -91)
-
-[node name="Carnivore" parent="Carnivores" unique_id=967292307 instance=ExtResource("15_los52")]
-position = Vector2(2259, 1383)
-
-[node name="Carnivore2" parent="Carnivores" unique_id=1637013469 groups=["Enemies"] instance=ExtResource("15_los52")]
-position = Vector2(2538, 1382)
-
-[node name="Creatures" type="Node2D" parent="." unique_id=1013611793]
-z_index = 10
-position = Vector2(3329, 1040)
-
-[node name="Mousquito" parent="Creatures" unique_id=1197171326 instance=ExtResource("13_oiu73")]
-position = Vector2(2259, -112)
-
-[node name="Mousquito2" parent="Creatures" unique_id=156221535 instance=ExtResource("13_oiu73")]
-position = Vector2(980, -356)
-
-[node name="Mosquito" parent="Creatures" unique_id=55077267 instance=ExtResource("13_oiu73")]
-position = Vector2(-1497, -30)
-
-[node name="Snake" parent="Creatures" unique_id=88320707 instance=ExtResource("12_d0a2k")]
-z_index = 5
-position = Vector2(1846, 287)
-scale = Vector2(-0.6, 0.6)
-speed = 600
-
-[node name="Snake2" parent="Creatures" unique_id=1961381336 instance=ExtResource("12_d0a2k")]
-z_index = 5
-position = Vector2(-160, 285)
-scale = Vector2(-0.6, 0.6)
-
-[node name="Snake3" parent="Creatures" unique_id=985537058 instance=ExtResource("12_d0a2k")]
-z_index = 5
-position = Vector2(2567, 281)
-scale = Vector2(-0.6, 0.6)
-speed = 500
-
-[node name="Items" type="Node2D" parent="." unique_id=1086633539]
-z_index = 10
-
-[node name="Seeds" type="Node2D" parent="Items" unique_id=1818313655]
-position = Vector2(6128, 1255)
-script = ExtResource("18_p8qu6")
-
-[node name="Seed4" parent="Items/Seeds" unique_id=1191230243 instance=ExtResource("19_hs4kr")]
-position = Vector2(-2067, -609)
-
-[node name="Seed5" parent="Items/Seeds" unique_id=1170338854 instance=ExtResource("19_hs4kr")]
-position = Vector2(-3939, -402)
-
-[node name="Seed6" parent="Items/Seeds" unique_id=1727442955 instance=ExtResource("19_hs4kr")]
-position = Vector2(-3363, -707)
-
-[node name="WoodItem" parent="Items" unique_id=1848008734 instance=ExtResource("19_jsni3")]
-position = Vector2(4411, 691)
-scale = Vector2(0.6, 0.6)
-
-[node name="Totem" parent="Items" unique_id=209721126 instance=ExtResource("21_t7ttw")]
-position = Vector2(3720, 415)
+position = Vector2(3690, 301)
 
 [node name="Sound" type="Node2D" parent="." unique_id=1907351730]
+position = Vector2(14, -90)
 
 [node name="lvl1" type="AudioStreamPlayer2D" parent="Sound" unique_id=1778967354]
 position = Vector2(1226, 1228)
 stream = ExtResource("20_qky26")
 volume_db = 4.837
 
-[node name="Floor" type="Node2D" parent="." unique_id=1873456164]
-z_index = 4
-position = Vector2(0, 102)
+[node name="World" type="Node2D" parent="." unique_id=364883991]
+modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Floor" unique_id=1853961011]
-position = Vector2(375.06616, 1321.1323)
-rotation = 0.00025853945
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("22_jsni3")
+[node name="Background" type="Node2D" parent="World" unique_id=1107236498]
+position = Vector2(3329, 1040)
 
-[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=2025484335]
-position = Vector2(1207.0662, 1321.1323)
-texture = ExtResource("22_jsni3")
+[node name="SunLight2D" type="DirectionalLight2D" parent="World/Background" unique_id=2117109705]
+z_index = -5
+position = Vector2(-98.999756, -1276)
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+energy = 0.0
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 4.0
 
-[node name="Sprite2D9" type="Sprite2D" parent="Floor" unique_id=702441524]
-position = Vector2(2035.0662, 1324.1323)
-rotation = 0.00025853945
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("22_jsni3")
+[node name="Parallax" type="Node2D" parent="World/Background" unique_id=1981445725]
+position = Vector2(-3806, -759)
+script = ExtResource("4_yc75k")
 
-[node name="Sprite2D10" type="Sprite2D" parent="Floor" unique_id=510756895]
-position = Vector2(2867.0662, 1324.1323)
-texture = ExtResource("22_jsni3")
+[node name="SkyLayer" type="Node2D" parent="World/Background/Parallax" unique_id=1777810453]
+z_index = -40
+position = Vector2(181, -630)
+scale = Vector2(2, 2)
 
-[node name="Sprite2D3" type="Sprite2D" parent="Floor" unique_id=2086813962]
-position = Vector2(3701.0662, 1327.1323)
-rotation = 0.00025853945
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("22_jsni3")
+[node name="Sprite2D" type="Sprite2D" parent="World/Background/Parallax/SkyLayer" unique_id=1421922123]
+texture = ExtResource("29_6e3s7")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Floor" unique_id=1872997013]
-position = Vector2(4533.0664, 1327.1323)
-texture = ExtResource("22_jsni3")
+[node name="TreeLayer" type="Node2D" parent="World/Background/Parallax" unique_id=2127213204]
+modulate = Color(0.90881085, 0.908811, 0.90881073, 1)
+z_index = -20
+position = Vector2(-4, -150)
 
-[node name="Sprite2D5" type="Sprite2D" parent="Floor" unique_id=406324052]
-position = Vector2(5366.0664, 1330.1323)
-rotation = 0.00025853945
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("22_jsni3")
+[node name="Sprite2D" type="Sprite2D" parent="World/Background/Parallax/TreeLayer" unique_id=1654421540]
+texture = ExtResource("29_yc75k")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Floor" unique_id=685276364]
-position = Vector2(6198.0664, 1330.1323)
-texture = ExtResource("22_jsni3")
+[node name="PlantLayer" type="Node2D" parent="World/Background/Parallax" unique_id=1102246406]
+modulate = Color(0.89492244, 0.89492244, 0.8949224, 1)
+position = Vector2(-8, -150.00012)
+scale = Vector2(0.8, 0.8)
 
-[node name="Sprite2D7" type="Sprite2D" parent="Floor" unique_id=957968855]
-position = Vector2(7023.0664, 1332.1323)
-rotation = 0.00025853945
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("22_jsni3")
+[node name="Sprite2D" type="Sprite2D" parent="World/Background/Parallax/PlantLayer" unique_id=1509639342]
+modulate = Color(0.70796657, 0.7079665, 0.7079665, 1)
+z_index = -20
+texture = ExtResource("30_yc75k")
 
-[node name="Sprite2D8" type="Sprite2D" parent="Floor" unique_id=1510134517]
-position = Vector2(7855.0664, 1332.1323)
-texture = ExtResource("22_jsni3")
+[node name="TileMap" type="Node2D" parent="World" unique_id=85273555]
+position = Vector2(6056, 1420)
 
-[node name="Sprite2D11" type="Sprite2D" parent="Floor" unique_id=115665375]
-position = Vector2(8699, 1331)
-texture = ExtResource("22_jsni3")
+[node name="TileMapPlatforms" type="TileMapLayer" parent="World/TileMap" unique_id=989502355]
+modulate = Color(0.8192276, 0.81922776, 0.8192277, 1)
+z_index = 20
+position = Vector2(-6056, -1420)
+tile_map_data = PackedByteArray("AAB6AE0AAAAAAAEAACCDAE0AAAAAAAEAACCDAEUAAAAAAAEAAACMAE0AAAAAAAEAACCMAEUAAAAAAAEAAACMAD4AAAAAAAEAACCMADYAAAAAAAEAAACbAE0AAAAAAAEAACCbAEUAAAAAAAEAAACbAD0AAAAAAAEAACCbADUAAAAAAAEAAACbAC0AAAAAAAEAACCtAC0AAAAAAAEAACCtADUAAAAAAAEAAACtAD0AAAAAAAEAACCtAEUAAAAAAAEAAACtAE0AAAAAAAEAACC/AC0AAAAAAAEAACC/ADUAAAAAAAEAAAC/AD0AAAAAAAEAACC/AEUAAAAAAAEAAAC/AE0AAAAAAAEAACDQAC0AAAAAAAEAACDQADUAAAAAAAEAAADQAD0AAAAAAAEAACDQAEUAAAAAAAEAAADQAE0AAAAAAAEAACDlACwAAAAAAAEAACDlADQAAAAAAAEAAADlADwAAAAAAAEAACDlAEQAAAAAAAEAAADlAEwAAAAAAAEAACD5AC0AAAAAAAEAACD5ADUAAAAAAAEAAAD5AD0AAAAAAAEAACD5AEUAAAAAAAEAAAD5AE0AAAAAAAEAACAJAS0AAAAAAAEAACAJATUAAAAAAAEAAAAJAT0AAAAAAAEAACAJAUUAAAAAAAEAAAAJAU0AAAAAAAEAACAJAR0AAAAAAAEAAAAJASUAAAAAAAEAACDQACUAAAAAAAEAAADQAB0AAAAAAAEAACDlACQAAAAAAAEAAAB4AS4AAAAAAAEAACB4ATYAAAAAAAEAAAB4AT4AAAAAAAEAACB4AUYAAAAAAAEAAAB4AU4AAAAAAAEAACB4ASYAAAAAAAEAAAB+AEUAAAACAAAAAAB2AEUAAAACAAAAABB/AD0AAAACAAAAABCHAD0AAAACAAAAAACQAC4AAAACAAAAAACIAC4AAAACAAAAABCXACUAAAACAAAAABCfACUAAAACAAAAAACpACUAAAACAAAAABCxACUAAAACAAAAAAC/ACUAAAAAAAEAAADDAB0AAAACAAAAAAC7AB0AAAACAAAAABDUABUAAAACAAAAAADMABUAAAACAAAAABDpABwAAAAFAAAAAADhABwAAAAFAAAAABD9ACUAAAACAAAAAAD1ACUAAAACAAAAABANARUAAAAFAAAAAAAFARUAAAAFAAAAABArAU0AAAAEAAEAACA1AU0AAAAEAAEAADA2AU0AAAAFAAEAADA+AU0AAAAEAAEAADAoAUgAAAADAAQAAAAwAUgAAAAEAAQAAAA4AUgAAAAEAAQAAAA5AUgAAAAFAAQAAABBAUgAAAAGAAQAAABBAUAAAAAGAAQAACA5AUAAAAAFAAQAACAxAUAAAAAFAAQAACAvAUAAAAAFAAQAACAoAUAAAAADAAQAACAoAS4AAAADAAQAACAoATYAAAADAAQAAAArATsAAAAEAAEAACAvAS4AAAAFAAQAACAwATYAAAAEAAQAAAAxAS4AAAAFAAQAACA1ATsAAAAEAAEAADA2ATsAAAAFAAEAADA4ATYAAAAEAAQAAAA5AS4AAAAFAAQAACA5ATYAAAAFAAQAAAA+ATsAAAAEAAEAADBBAS4AAAAGAAQAACBBATYAAAAGAAQAAAArASkAAAAEAAAAAAA+ASkAAAAEAAAAABA7ASkAAAAEAAAAABA3ASkAAAAEAAAAABA0ASkAAAAEAAAAABAyASkAAAAEAAAAABA0AScAAAAAAAEAACA0AR8AAAAAAAEAAAAvARgAAAAEAAAAAAAyARgAAAAEAAAAAAA4ARgAAAAFAAAAAAB8AR4AAAACAAAAAAB0AR4AAAACAAAAABA=")
+tile_set = SubResource("TileSet_f1okb")
 
-[node name="Sprite2D12" type="Sprite2D" parent="Floor" unique_id=32646642]
-position = Vector2(9524, 1333)
-rotation = 0.00025853945
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("22_jsni3")
+[node name="TileMapFloor" type="TileMapLayer" parent="World/TileMap" unique_id=1761385254]
+position = Vector2(-5263, -1055)
+tile_map_data = PackedByteArray("AADT/0IAAAAAAAAAAAD7/0IAAAAAAAAAABD6/0IAAAAAAAAAABAjAEIAAAAAAAAAAABLAEIAAAAAAAAAABBzAEIAAAAAAAAAAACbAEIAAAAAAAAAABDDAEIAAAAAAAAAAADrAEIAAAAAAAAAABATAUIAAAAAAAAAAAA7AUIAAAAAAAAAABBjAUIAAAAAAAAAAACLAUIAAAAAAAAAABCyAUIAAAAAAAAAAADaAUIAAAAAAAAAABACAkIAAAAAAAAAAAAqAkIAAAAAAAAAABBSAkIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_yc75k")
 
-[node name="Sprite2D13" type="Sprite2D" parent="Floor" unique_id=2024829117]
-position = Vector2(10356, 1333)
-texture = ExtResource("22_jsni3")
+[node name="TileMapPlantBack" type="TileMapLayer" parent="World/TileMap" unique_id=387879683]
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_ppy38")
 
-[node name="LianaElevator" type="Node2D" parent="." unique_id=1992963402]
-position = Vector2(7447, 739)
+[node name="TileMapPlantFront" type="TileMapLayer" parent="World/TileMap" unique_id=1326007103]
+modulate = Color(0.62233794, 0.622338, 0.62233794, 1)
+z_index = 80
+position = Vector2(561, 94)
+scale = Vector2(1.2, 1)
+tile_map_data = PackedByteArray("AADR/vf/AAAEAAIAAAD1/vn/AAAGAAEAAADj/vf/AAADAAIAAAAG//f/AAADAAIAAAAZ//f/AAAAAAIAAAAp//f/AAAAAAIAABAA//f/AAAAAAIAABDp/vb/AAAAAAIAABDd/vb/AAAAAAIAABCq/vf/AAABAAEAAACg/vT/AAACAAAAAADA/vT/AAACAAAAAADJ/vX/AAACAAAAAADf/vf/AAABAAAAAAD4/vf/AAABAAAAAAAq//b/AAABAAAAAABW//f/AAAGAAAAAABu//f/AAAGAAIAAAB0//f/AAAGAAIAAABn//j/AAAGAAIAAABi//j/AAAGAAIAAABc//f/AAAGAAIAAABO//j/AAAGAAIAAABF//f/AAAEAAIAAAA+//b/AAACAAEAAAA0//r/AAAFAAEAAAC2//X/AAACAAAAAADA//X/AAACAAAAAADI//X/AAACAAAAAADT//X/AAACAAAAAADe//b/AAADAAEAAADr//j/AAABAAIAAAD0//f/AAABAAIAABAEAPf/AAABAAIAAABYAPb/AAAAAAIAAABlAPb/AAAAAAIAAAByAPb/AAAAAAIAAACBAPr/AAAEAAEAAACVAPj/AAAEAAEAAACGAPP/AAAEAAEAABB3APP/AAAFAAEAABBpAPP/AAAFAAEAAABaAPP/AAAFAAEAAAChAPn/AAAEAAIAAACiAPn/AAAEAAIAAACCAPj/AAAEAAIAAABrAPj/AAAEAAIAAADw//j/AAAEAAIAAACD//X/AAACAAAAAACO//b/AAADAAEAAACb//j/AAABAAIAAACg//j/AAAEAAIAAACk//f/AAABAAIAABC0//f/AAABAAIAAABh//X/AAACAAAAAABs//b/AAADAAEAAAB5//j/AAABAAIAAAB+//j/AAAEAAIAAACC//f/AAABAAIAABCS//f/AAABAAIAAAAY//b/AAACAAAAAAAj//f/AAADAAEAAAAw//n/AAABAAIAAAA1//n/AAAEAAIAAAA5//j/AAABAAIAABBJ//j/AAABAAIAAADz/vb/AAACAAAAAAD+/vf/AAADAAEAAAAL//n/AAABAAIAAAAQ//n/AAAEAAIAAAAU//j/AAABAAIAABAk//j/AAABAAIAAACe/vb/AAACAAAAAACp/vf/AAADAAEAAAC2/vn/AAABAAIAAAC7/vn/AAAEAAIAAAC//vj/AAABAAIAABDP/vj/AAABAAIAAAAQAPr/AAAFAAEAAAAfAPr/AAAFAAEAAAA=")
+tile_set = SubResource("TileSet_ppy38")
 
-[node name="ElevatorLiana" parent="LianaElevator" unique_id=2000748319 instance=ExtResource("11_p5uxy")]
+[node name="CollisionPlatforms" type="Node2D" parent="World" unique_id=1549227537]
+z_index = 60
+
+[node name="PlatformsCollision" type="StaticBody2D" parent="World/CollisionPlatforms" unique_id=1173081895]
+position = Vector2(734, -1811)
+scale = Vector2(0.089149, 0.144557)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=682810030]
+position = Vector2(16988.418, 17992.902)
+rotation = -3.14159
+scale = Vector2(286.449, -13.7806)
+shape = SubResource("RectangleShape2D_wajbs")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=555667]
+position = Vector2(26158.455, 16097.454)
+scale = Vector2(217.98804, 8.30556)
+shape = SubResource("RectangleShape2D_am3co")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=78601811]
+position = Vector2(13780.304, 20535.152)
+scale = Vector2(992.862, 8.2334)
+shape = SubResource("RectangleShape2D_ofnsq")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=265071110]
+position = Vector2(32944.85, 16000.609)
+scale = Vector2(222.01102, 12.5199)
+shape = SubResource("RectangleShape2D_vc1ff")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=437177044]
+position = Vector2(15368.935, 19670.441)
+scale = Vector2(300.99902, -7.56021)
+shape = SubResource("RectangleShape2D_kgp0u")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=1110045396]
+position = Vector2(36523.125, 16969.088)
+scale = Vector2(222.01102, 12.5199)
+shape = SubResource("RectangleShape2D_lr8k6")
+
+[node name="CollisionShape2D30" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=1852318435]
+position = Vector2(29201.117, 15198.159)
+scale = Vector2(222.01102, 12.5199)
+shape = SubResource("RectangleShape2D_cvxqb")
+
+[node name="CollisionShape2D31" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=408281495]
+position = Vector2(19641.275, 16996.758)
+scale = Vector2(222.01102, 12.5199)
+shape = SubResource("RectangleShape2D_26k7p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=552635228]
+position = Vector2(22905.473, 16989.84)
+rotation = -3.14159
+scale = Vector2(286.449, -13.7806)
+shape = SubResource("RectangleShape2D_uhs03")
+
+[node name="CollisionShape2D35" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=489949226]
+position = Vector2(39450.813, 15260.417)
+scale = Vector2(222.01102, 12.5199)
+shape = SubResource("RectangleShape2D_avxqp")
+
+[node name="CollisionShape2D36" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=1276394306]
+position = Vector2(59361.313, 16215.921)
+scale = Vector2(222.01102, 12.5199)
+shape = SubResource("RectangleShape2D_avxqp")
+
+[node name="CollisionShape2D27" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=1629477325]
+position = Vector2(47187.875, 18857.625)
+scale = Vector2(222.01102, 12.5199)
+shape = SubResource("RectangleShape2D_mlm52")
+
+[node name="CollisionShape2D34" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=364397335]
+position = Vector2(47065.875, 15550.96)
+scale = Vector2(222.01102, 12.5199)
+shape = SubResource("RectangleShape2D_myamh")
+
+[node name="BorderCollision" type="StaticBody2D" parent="World/CollisionPlatforms" unique_id=902890457]
+collision_layer = 256
+collision_mask = 9
+
+[node name="BorderRShape2D9" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=232197234]
+position = Vector2(9665.5, 575.00024)
+rotation = -3.1415884
+scale = Vector2(12.89157, 100.42418)
+shape = SubResource("RectangleShape2D_t3xnj")
+debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
+
+[node name="BorderLShape2D7" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=542489724]
+position = Vector2(-12.999939, 543)
+scale = Vector2(11.010882, -99.11146)
+shape = SubResource("RectangleShape2D_t3xnj")
+debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
+
+[node name="BorderTShape2D5" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=1764908885]
+position = Vector2(4742.501, -413)
+scale = Vector2(25.300756, 2.1391978)
+shape = SubResource("RectangleShape2D_pmo30")
+debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
+
+[node name="BorderBShape2D4" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=1878674279]
+light_mask = 4
+z_index = 5
+position = Vector2(3616.5015, 1450.1262)
+scale = Vector2(25.300756, 2.1391978)
+shape = SubResource("RectangleShape2D_dvpsw")
+debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
+
+[node name="BorderBShape2D5" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=118398063]
+light_mask = 4
+z_index = 5
+position = Vector2(8921.5, 1477.5)
+scale = Vector2(25.300756, 2.1391978)
+shape = SubResource("RectangleShape2D_2hs2i")
+debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
+
+[node name="Trees" type="Node2D" parent="World" unique_id=2136015294]
+modulate = Color(0.5899028, 0.5899029, 0.5899029, 1)
+position = Vector2(6056, 1420)
+
+[node name="Coconut" parent="World/Trees" unique_id=539869301 instance=ExtResource("8_n1s4q")]
+z_index = 20
+position = Vector2(-818, -120)
+
+[node name="Coconut2" parent="World/Trees" unique_id=1960314878 instance=ExtResource("8_n1s4q")]
+z_index = 20
+position = Vector2(-5307, -127)
+
+[node name="Bananier" parent="World/Trees" unique_id=1737612719 instance=ExtResource("9_wh82l")]
+z_index = 20
+position = Vector2(-4437, -107)
+
+[node name="Bananier2" parent="World/Trees" unique_id=204370001 instance=ExtResource("9_wh82l")]
+z_index = 10
+position = Vector2(-1519, -115)
+
+[node name="Loot" type="Node2D" parent="World/Trees" unique_id=617090188]
+position = Vector2(-5519, -361)
+
+[node name="CocoLoot2" parent="World/Trees/Loot" unique_id=667419175 instance=ExtResource("10_oicsw")]
+z_index = 10
+position = Vector2(246, -230)
+
+[node name="BananaLoot" parent="World/Trees/Loot" unique_id=470617441 instance=ExtResource("11_hkrhx")]
+z_index = 20
+position = Vector2(1145, -193)
+
+[node name="BananaLoot2" parent="World/Trees/Loot" unique_id=2014532649 instance=ExtResource("11_hkrhx")]
+z_index = 50
+position = Vector2(4060, -197)
+
+[node name="CocoLoot" parent="World/Trees/Loot" unique_id=1314676657 instance=ExtResource("10_oicsw")]
+z_index = 20
+position = Vector2(4724, -218)
+
+[node name="LianaElevator" type="Node2D" parent="World/Trees" unique_id=1992963402]
+position = Vector2(1391, -681)
+
+[node name="ElevatorLiana" parent="World/Trees/LianaElevator" unique_id=2000748319 instance=ExtResource("11_p5uxy")]
 modulate = Color(0.6847319, 0.6847319, 0.6847319, 1)
-position = Vector2(-1280, -70)
+position = Vector2(-1276, -122)
 scale = Vector2(1, 1.6)
 
-[node name="ElevatorTree" type="Sprite2D" parent="LianaElevator" unique_id=135223242]
-position = Vector2(-1071, -70)
+[node name="ElevatorTree" type="Sprite2D" parent="World/Trees/LianaElevator" unique_id=135223242]
+z_index = 20
+position = Vector2(-1076, -128)
 texture = ExtResource("23_2hs2i")
 
-[node name="LianaTree" type="Node2D" parent="." unique_id=1057297115]
-position = Vector2(7447, 739)
+[node name="LianaTree" type="Node2D" parent="World/Trees" unique_id=1057297115]
+z_index = 15
+position = Vector2(1379, -723)
 
-[node name="LianaTree" type="Sprite2D" parent="LianaTree" unique_id=725603047]
-modulate = Color(0.66492164, 0.66492164, 0.6649216, 1)
+[node name="LianaTree" type="Sprite2D" parent="World/Trees/LianaTree" unique_id=725603047]
 z_index = 5
+position = Vector2(-3, -23)
 texture = ExtResource("26_qhqjp")
 
-[node name="Liana" parent="LianaTree" unique_id=411276915 instance=ExtResource("24_2hs2i")]
+[node name="Liana" parent="World/Trees/LianaTree" unique_id=411276915 instance=ExtResource("24_2hs2i")]
 position = Vector2(408, -212)
 scale = Vector2(0.4, 0.6)
 
-[node name="LianaTree2" type="Sprite2D" parent="LianaTree" unique_id=493400102]
-modulate = Color(0.66492164, 0.66492164, 0.6649216, 1)
+[node name="Liana2" parent="World/Trees/LianaTree" unique_id=62892362 instance=ExtResource("24_2hs2i")]
+position = Vector2(-1905, -960)
+scale = Vector2(0.4, 0.6)
+
+[node name="Liana3" parent="World/Trees/LianaTree" unique_id=1749534826 instance=ExtResource("24_2hs2i")]
+position = Vector2(-3071, -995.00006)
+scale = Vector2(0.4, 0.6)
+
+[node name="Liana4" parent="World/Trees/LianaTree" unique_id=1020642656 instance=ExtResource("24_2hs2i")]
+position = Vector2(-2538, -956.00006)
+scale = Vector2(0.4, 0.6)
+
+[node name="LianaTree2" type="Sprite2D" parent="World/Trees/LianaTree" unique_id=493400102]
 z_index = 5
-position = Vector2(824, 5)
+position = Vector2(847, -25)
 rotation = 3.1415927
 scale = Vector2(1, -1)
 texture = ExtResource("26_qhqjp")
 
-[node name="HiddenTrap2" parent="." unique_id=2003431478 instance=ExtResource("25_p5uxy")]
-modulate = Color(0.49411765, 0.49411765, 0.49411765, 1)
-z_index = 10
-position = Vector2(7626, 1457)
+[node name="Butterfly" type="Node2D" parent="World" unique_id=380073951]
+z_index = 2
+position = Vector2(3329, 1040)
 
-[node name="HiddenTrap3" parent="." unique_id=1275044498 instance=ExtResource("25_p5uxy")]
-modulate = Color(0.49411765, 0.49411765, 0.49411765, 1)
-z_index = 10
-position = Vector2(8133, 1457)
+[node name="Butterfly1" parent="World/Butterfly" unique_id=1994102652 instance=ExtResource("16_xerpc")]
+position = Vector2(-2278, 298)
 
-[node name="HiddenTrap" parent="." unique_id=1245213246 instance=ExtResource("25_p5uxy")]
-modulate = Color(0.49433076, 0.49433076, 0.4943307, 1)
+[node name="Butterfly7" parent="World/Butterfly" unique_id=527939225 instance=ExtResource("16_xerpc")]
+position = Vector2(1827, -21)
+
+[node name="Butterfly2" parent="World/Butterfly" unique_id=1680537455 instance=ExtResource("16_xerpc")]
+position = Vector2(2387, 97)
+butterfly_color = Color(0.99785334, 0.9176539, 0.9126982, 1)
+
+[node name="Butterfly3" parent="World/Butterfly" unique_id=709357037 instance=ExtResource("16_xerpc")]
+position = Vector2(1419, 279)
+butterfly_color = Color(0.30679777, 0.024966344, 0.058257446, 1)
+
+[node name="Butterfly4" parent="World/Butterfly" unique_id=991427257 instance=ExtResource("16_xerpc")]
+position = Vector2(386, 83)
+butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
+
+[node name="Butterfly8" parent="World/Butterfly" unique_id=1995250690 instance=ExtResource("16_xerpc")]
+position = Vector2(3335, -2)
+butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
+
+[node name="Butterfly11" parent="World/Butterfly" unique_id=971964177 instance=ExtResource("16_xerpc")]
+position = Vector2(5208, -34)
+butterfly_color = Color(0.15141839, 0.5584926, 0.3596714, 1)
+
+[node name="Butterfly5" parent="World/Butterfly" unique_id=618754538 instance=ExtResource("16_xerpc")]
+position = Vector2(-629, -97)
+butterfly_color = Color(0.82884276, 0.66643363, 0.15861124, 1)
+
+[node name="Butterfly10" parent="World/Butterfly" unique_id=1419769218 instance=ExtResource("16_xerpc")]
+position = Vector2(3601, -32)
+butterfly_color = Color(0.82884276, 0.66643363, 0.15861124, 1)
+
+[node name="Butterfly6" parent="World/Butterfly" unique_id=1153317459 instance=ExtResource("16_xerpc")]
+position = Vector2(-1231, -55)
+butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
+
+[node name="Butterfly9" parent="World/Butterfly" unique_id=155758389 instance=ExtResource("16_xerpc")]
+position = Vector2(2536, -125)
+butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
+
+[node name="Carnivores" type="Node2D" parent="World" unique_id=726381797]
 z_index = 10
-position = Vector2(7880, 1457)
+position = Vector2(154, -136)
+
+[node name="Carnivore" parent="World/Carnivores" unique_id=967292307 instance=ExtResource("15_los52")]
+position = Vector2(2824, 1354)
+
+[node name="Carnivore2" parent="World/Carnivores" unique_id=1637013469 groups=["Enemies"] instance=ExtResource("15_los52")]
+position = Vector2(3647, 1338)
+
+[node name="Creatures" type="Node2D" parent="World" unique_id=1013611793]
+z_index = 20
+position = Vector2(3329, 1040)
+
+[node name="Mousquito" parent="World/Creatures" unique_id=1197171326 instance=ExtResource("13_oiu73")]
+position = Vector2(2259, -112)
+collision_mask = 256
+
+[node name="Mousquito2" parent="World/Creatures" unique_id=156221535 instance=ExtResource("13_oiu73")]
+position = Vector2(980, -356)
+collision_mask = 256
+
+[node name="Mousquito3" parent="World/Creatures" unique_id=55077267 instance=ExtResource("13_oiu73")]
+position = Vector2(-268, -627)
+collision_mask = 256
+
+[node name="Mousquito4" parent="World/Creatures" unique_id=1050341370 instance=ExtResource("13_oiu73")]
+position = Vector2(3742, -94)
+collision_mask = 256
+
+[node name="Mosquito" parent="World/Creatures" unique_id=915889274 instance=ExtResource("13_oiu73")]
+position = Vector2(-1497, -30)
+collision_mask = 256
+
+[node name="Snake" parent="World/Creatures" unique_id=88320707 instance=ExtResource("12_d0a2k")]
+z_index = 5
+position = Vector2(1798, 160)
+scale = Vector2(-0.6, 0.6)
+collision_mask = 256
+speed = 600
+
+[node name="Snake2" parent="World/Creatures" unique_id=1961381336 instance=ExtResource("12_d0a2k")]
+z_index = 5
+position = Vector2(2493, 242)
+scale = Vector2(-0.6, 0.6)
+collision_mask = 256
+
+[node name="Snake4" parent="World/Creatures" unique_id=1775735785 instance=ExtResource("12_d0a2k")]
+z_index = 5
+position = Vector2(-1276, 244)
+scale = Vector2(-0.6, 0.6)
+collision_mask = 256
+
+[node name="Snake3" parent="World/Creatures" unique_id=985537058 instance=ExtResource("12_d0a2k")]
+z_index = 5
+position = Vector2(3509, 254)
+scale = Vector2(-0.6, 0.6)
+collision_mask = 256
+speed = 500
+
+[node name="Items" type="Node2D" parent="World" unique_id=1086633539]
+z_index = 10
+
+[node name="Seeds" type="Node2D" parent="World/Items" unique_id=1818313655]
+z_index = 10
+position = Vector2(6128, 1255)
+script = ExtResource("18_p8qu6")
+
+[node name="Seed4" parent="World/Items/Seeds" unique_id=1191230243 instance=ExtResource("19_hs4kr")]
+position = Vector2(-1873, -903)
+
+[node name="Seed7" parent="World/Items/Seeds" unique_id=331514728 instance=ExtResource("19_hs4kr")]
+position = Vector2(-104, -753)
+
+[node name="Seed5" parent="World/Items/Seeds" unique_id=1170338854 instance=ExtResource("19_hs4kr")]
+position = Vector2(-4023, -254)
+
+[node name="Seed6" parent="World/Items/Seeds" unique_id=1727442955 instance=ExtResource("19_hs4kr")]
+position = Vector2(-3068, -774)
+
+[node name="WoodItem" parent="World/Items" unique_id=1848008734 instance=ExtResource("19_jsni3")]
+z_index = 40
+position = Vector2(2777.0002, 625)
+scale = Vector2(0.6, 0.6)
+
+[node name="Totem" parent="World/Items" unique_id=209721126 instance=ExtResource("21_t7ttw")]
+z_index = 12
+position = Vector2(3678, 461)
+
+[node name="Traps" type="Node2D" parent="World" unique_id=1538016097]
+position = Vector2(58, -36)
+
+[node name="HiddenTrap" type="Node2D" parent="World/Traps" unique_id=1024040246]
+position = Vector2(7633, 1423)
+
+[node name="HiddenTrap2" parent="World/Traps/HiddenTrap" unique_id=2003431478 instance=ExtResource("25_p5uxy")]
+z_index = 60
+
+[node name="HiddenTrap3" parent="World/Traps/HiddenTrap" unique_id=1275044498 instance=ExtResource("25_p5uxy")]
+z_index = 60
+position = Vector2(507, 0)
+
+[node name="HiddenTrap" parent="World/Traps/HiddenTrap" unique_id=1245213246 instance=ExtResource("25_p5uxy")]
+z_index = 60
+position = Vector2(254, 0)
+
+[node name="Arrows" type="Node2D" parent="World/Traps" unique_id=83345912]
+z_index = 20
+position = Vector2(3028.9998, 1338)
+scale = Vector2(0.635458, 0.141613)
+
+[node name="Arrow1" parent="World/Traps/Arrows" unique_id=155893927 instance=ExtResource("5_jneuh")]
+position = Vector2(-500.42606, -233.02945)
+scale = Vector2(1, 1)
+
+[node name="Arrow2" parent="World/Traps/Arrows" unique_id=758725078 instance=ExtResource("5_jneuh")]
+position = Vector2(-1376.9592, -310.70593)
+rotation = -3.14158
+scale = Vector2(0.397965, -1.02986)
+skew = -1.0848e-05
+
+[node name="Exit" parent="World" unique_id=550448380 instance=ExtResource("4_na1bk")]
+modulate = Color(0.7146291, 0.71462905, 0.71462905, 1)
+z_index = 20
+position = Vector2(9162, 1117)
+
+[node name="GazShooters" type="Node2D" parent="." unique_id=190973603]
+position = Vector2(-802, -1378)
+scale = Vector2(2, 2)
+
+[node name="GazShooter" parent="GazShooters" unique_id=2002798191 instance=ExtResource("29_ppy38")]
+position = Vector2(3218.5002, 1253.5)
+projectile_spawn_delay = 0.8
+attack_range = 500
+gravity = 0
+stop_distance = 0
+hit_lock_time = 0.0
+
+[node name="GazShooter2" parent="GazShooters" unique_id=1235441363 instance=ExtResource("29_ppy38")]
+position = Vector2(2613, 1249)
+projectile_spawn_delay = 1.0
+gravity = 0
+stop_distance = 0
+
+[node name="GazShooter3" parent="GazShooters" unique_id=1593820904 instance=ExtResource("29_ppy38")]
+position = Vector2(6211, 1206)
+projectile_spawn_delay = 1.0
+gravity = 0
+stop_distance = 0
+
+[node name="GazShooter4" parent="GazShooters" unique_id=605276124 instance=ExtResource("29_ppy38")]
+position = Vector2(1127.5, 1272.5)
+projectile_spawn_delay = 1.0
+gravity = 0
+stop_distance = 0
+
+[node name="GazShooter5" parent="GazShooters" unique_id=1198386164 instance=ExtResource("29_ppy38")]
+position = Vector2(4672, 1249)
+projectile_spawn_delay = 1.0
+gravity = 0
+stop_distance = 0
+
+[node name="GazShooter6" parent="GazShooters" unique_id=1248359002 instance=ExtResource("29_ppy38")]
+position = Vector2(6561, 1211)
+projectile_spawn_delay = 1.0
+gravity = 0
+stop_distance = 0
+
+[node name="GazShooter7" parent="GazShooters" unique_id=630843415 instance=ExtResource("29_ppy38")]
+position = Vector2(8525, 1227)
+projectile_spawn_delay = 1.0
+gravity = 0
+stop_distance = 0

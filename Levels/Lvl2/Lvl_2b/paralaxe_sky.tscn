@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0nnxjschrg38"]
 
-[ext_resource type="Script" uid="uid://dxfidt764bcqk" path="res://Levels/Lvl1/Environement/parallax_layer_ciel.gd" id="1_xs1ef"]
+[ext_resource type="Script" uid="uid://b321lcy7unqj0" path="res://Levels/Lvl1/Environement/parallax_layer_ciel.gd" id="1_xs1ef"]
 [ext_resource type="Texture2D" uid="uid://b2rojenu8t6kv" path="res://Levels/Lvl2/Lvl_2b/sky.png" id="2_eje0a"]
 
 [node name="ParalaxeCiel" type="Node2D" unique_id=634175650]
