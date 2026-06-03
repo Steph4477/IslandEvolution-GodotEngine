@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://j7ave7ddv36k" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.gd" id="1_it4j1"]
 [ext_resource type="Texture2D" uid="uid://hh078ixonxjb" path="res://ItemsDecors/Trees/Coconut_tree/1.png" id="2_koarn"]
+[ext_resource type="Texture2D" uid="uid://c6ma8anrfqfph" path="res://Levels/Lvl1/Environement/Fx/fx.png" id="3_ks8rw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
 size = Vector2(32.158302, 512.56036)
@@ -68,6 +69,44 @@ _data = {
 &"wind": SubResource("Animation_it4j1")
 }
 
+[sub_resource type="Animation" id="Animation_ysuxi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.36862746)]
+}
+
+[sub_resource type="Animation" id="Animation_gs1dx"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.36862746), Color(1, 1, 1, 0.6392157), Color(1, 1, 1, 0.36862746)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ub8fk"]
+_data = {
+&"RESET": SubResource("Animation_ysuxi"),
+&"idle": SubResource("Animation_gs1dx")
+}
+
 [node name="Cocotier" type="Node2D" unique_id=411375436]
 script = ExtResource("1_it4j1")
 
@@ -87,6 +126,21 @@ shape = SubResource("RectangleShape2D_it4j1")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1848912276]
 libraries/ = SubResource("AnimationLibrary_0slvd")
 autoplay = &"wind"
+
+[node name="LightRay" type="Node2D" parent="." unique_id=382348312]
+z_index = -10
+position = Vector2(709, -651)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LightRay" unique_id=519848828]
+libraries/ = SubResource("AnimationLibrary_ub8fk")
+autoplay = &"idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="LightRay" unique_id=1538755413]
+modulate = Color(1, 1, 1, 0.36862746)
+position = Vector2(-587.99994, 631)
+rotation = -0.17453295
+scale = Vector2(2, 1.1)
+texture = ExtResource("3_ks8rw")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
