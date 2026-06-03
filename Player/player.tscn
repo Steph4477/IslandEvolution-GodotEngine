@@ -58,9 +58,12 @@
 [ext_resource type="Texture2D" uid="uid://bwdhnvg3dgu8" path="res://Player/Sprite/web_effect/1.png" id="39_6qokg"]
 [ext_resource type="Texture2D" uid="uid://c36pajiiyg11t" path="res://Player/Sprite/onhit/3.png" id="39_r4aas"]
 [ext_resource type="Texture2D" uid="uid://16h2srh5efa8" path="res://Player/Sprite/web_effect/2.png" id="40_i7max"]
+[ext_resource type="Texture2D" uid="uid://cj7b1itxrrj5" path="res://Player/Sprite/clac/Jump Clac/1.png" id="40_vx8o5"]
 [ext_resource type="Texture2D" uid="uid://bjwy2qb34lt6a" path="res://Player/Sprite/onhit/Under_Swim/1.png" id="41_fatyj"]
 [ext_resource type="Texture2D" uid="uid://bgybx1uyf3vjk" path="res://Player/Sprite/web_effect/3.png" id="41_m2xt8"]
+[ext_resource type="Texture2D" uid="uid://t0imfhgipddp" path="res://Player/Sprite/clac/Jump Clac/2.png" id="41_w5pua"]
 [ext_resource type="Texture2D" uid="uid://cixjobd2ljgcq" path="res://Player/Sprite/onhit/Under_Swim/2.png" id="42_32uw3"]
+[ext_resource type="Texture2D" uid="uid://de60kaxq1vk0c" path="res://Player/Sprite/clac/Jump Clac/3.png" id="42_ca054"]
 [ext_resource type="Texture2D" uid="uid://bpgju52j02ey3" path="res://Player/Sprite/web_effect/4.png" id="42_y06ei"]
 [ext_resource type="Texture2D" uid="uid://bkf5ic4t14rh5" path="res://Player/Sprite/onhit/Under_Swim/3.png" id="43_ac8n6"]
 [ext_resource type="Texture2D" uid="uid://dl544wl76pk8n" path="res://Player/Sprite/swim/1.png" id="43_y06ei"]
@@ -403,6 +406,22 @@ tracks/0/keys = {
 "values": [ExtResource("51_uvbbp"), ExtResource("51_uvbbp")]
 }
 
+[sub_resource type="Animation" id="Animation_skhd2"]
+resource_name = "jump_clac"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("40_vx8o5"), ExtResource("41_w5pua"), ExtResource("42_ca054")]
+}
+
 [sub_resource type="Animation" id="Animation_typba"]
 resource_name = "jump_down"
 tracks/0/type = "value"
@@ -729,6 +748,7 @@ _data = {
 &"idle": SubResource("Animation_i1uru"),
 &"jump2_down": SubResource("Animation_8hx1r"),
 &"jump2_up": SubResource("Animation_m6nl3"),
+&"jump_clac": SubResource("Animation_skhd2"),
 &"jump_down": SubResource("Animation_typba"),
 &"jump_shoot": SubResource("Animation_soeee"),
 &"jump_up": SubResource("Animation_rbgwy"),

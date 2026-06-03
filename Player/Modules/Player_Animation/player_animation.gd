@@ -72,6 +72,12 @@ func process():
 			p.anim.play("sprint")
 		return
 
+		# --- Jump clac ---
+	if p.is_jump_clacing:
+		if p.anim.current_animation != "jump_clac":
+			p.anim.play("jump_clac")
+		return
+
 	# --- Ground locomotion ---
 	if p.is_on_floor():
 		if p.is_pushing_or_pulling and not p.is_ramping:

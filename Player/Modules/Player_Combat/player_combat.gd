@@ -20,25 +20,21 @@ func process():
 #                                 SHOOT
 # ============================================================================
 func shoot():
-	# lock simple pour éviter multi-await en parallèle
 	if firing_locked:
 		return
 
-	# Coco (shoot)
 	if Input.is_action_just_pressed(p.INPUT["fire"]) and p.can_fire_coco:
 		firing_locked = true
 		await coco()
 		firing_locked = false
 		return
 
-	# Bone (shoot)
 	if Input.is_action_pressed(p.INPUT["fire"]) and p.can_fire_bone:
 		firing_locked = true
 		await bone()
 		firing_locked = false
 		return
 
-	# Lance (shoot_spear)
 	if not p.can_camouflage and Input.is_action_pressed(p.INPUT["fire"]) and p.can_fire_lance:
 		firing_locked = true
 		await lance()
@@ -71,7 +67,8 @@ func coco():
 		scene = p.spell_coco_fire
 
 	var spell = scene.instantiate()
-	spell.z_index = 30 
+	spell.z_index = 30
+
 	var dir = 1
 	if p.sprite.flip_h:
 		dir = -1
@@ -125,10 +122,12 @@ func bone():
 		scene = p.spell_bone_fire
 
 	var spell = scene.instantiate()
-	spell.z_index = 80 
+	spell.z_index = 80
+
 	var dir = 1
 	if p.sprite.flip_h:
 		dir = -1
+
 	spell.start(p.get_node("ShootPoint").global_position, dir)
 	p.get_tree().current_scene.add_child(spell)
 
@@ -173,9 +172,11 @@ func lance():
 		scene = p.spell_lance_fire
 
 	var spell = scene.instantiate()
+
 	var dir = 1
 	if p.sprite.flip_h:
 		dir = -1
+
 	spell.start(p.get_node("ShootPoint").global_position, dir)
 	p.get_tree().current_scene.add_child(spell)
 
@@ -195,7 +196,7 @@ func clac():
 		return
 
 	await attack()
-		
+
 func headbutt():
 	if not p.is_swimming_under_water:
 		return
@@ -241,22 +242,32 @@ func headbutt():
 	p.can_headbutt = true
 
 func attack():
-	if not p.is_on_floor():
-		return
 	if p.is_attacking or p.is_dead:
 		return
 
-	p.is_attacking = true
-	p.animation_locked = true
+	if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_hanging or p.is_on_liana or p.is_camouflaged:
+		return
 
-	p.anim.play("clac")
+	p.is_attacking = true
 	p.get_node("ClacArea").monitoring = true
 
-	await p.anim.animation_finished
+	if p.is_on_floor():
+		p.animation_locked = true
+		p.anim.play("clac")
+
+		await p.anim.animation_finished
+
+		p.animation_locked = false
+	else:
+		p.is_jump_clacing = true
+		p.anim.play("jump_clac")
+
+		await p.anim.animation_finished
+
+		p.is_jump_clacing = false
 
 	p.get_node("ClacArea").monitoring = false
 	p.is_attacking = false
-	p.animation_locked = false
 
 # ============================================================================
 #                         ALIAS API (HUD)

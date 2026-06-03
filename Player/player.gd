@@ -170,6 +170,9 @@ var is_pushing_or_pulling = false
 var is_harpooned = false
 var harpoon_owner = null
 
+# --- Clac en sautant ---
+var is_jump_clacing = false
+
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
