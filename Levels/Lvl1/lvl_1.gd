@@ -13,12 +13,12 @@ func _ready():
 	cam = player.get_node("Camera2D")
 	cam.limit_right = 9500
 	cam.limit_top = -300
-	cam.limit_bottom = 1400
+	cam.limit_bottom = 1500
 	
 
 	if gs.lvl1_intro_seen == false:
 		gs.lvl1_intro_seen = true
-		#await start_intro_sequence()
+		await start_intro_sequence()
 
 	#$Sound.play()
 
