@@ -751,7 +751,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x5p2"]
-size = Vector2(137, 122)
+size = Vector2(67, 105)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5r0w"]
 radius = 20.0
@@ -790,7 +790,7 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_p7kcq")
 
 [node name="AttachMarker" type="Node2D" parent="Node2D" unique_id=1323279751]
-position = Vector2(164.16666, 61.666664)
+position = Vector2(145.83333, 60.833332)
 
 [node name="TurnAxis" type="Marker2D" parent="." unique_id=770474976]
 position = Vector2(10, 13.999992)
@@ -824,7 +824,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClacArea" unique_id=1215211945]
-position = Vector2(125.5, 118)
+position = Vector2(145.5, 134.5)
 shape = SubResource("RectangleShape2D_7x5p2")
 
 [node name="HeadbuttArea" type="Area2D" parent="." unique_id=1302658323]
