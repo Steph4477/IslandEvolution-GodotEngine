@@ -90,7 +90,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1069437686]
-position = Vector2(-35, -28.333336)
+position = Vector2(1.6666603, 21.666664)
 rotation = 0.78539795
 
 [node name="Rotator" type="Node2D" parent="." unique_id=896195456]
