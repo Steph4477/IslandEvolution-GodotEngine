@@ -32,11 +32,24 @@ func _ready():
 
 	gs = get_node("/root/GameState")
 	player = gs.player
+
+	apply_evolution_stats()
+
 	hp = max_hp
 
 	if health_bar:
 		health_bar.max_value = max_hp
 		health_bar.value = hp
+
+func apply_evolution_stats():
+	var multiplier = gs.score_system.get_enemy_evolution_multiplier(gs.enemy_evolution_percent)
+
+	max_hp = int(round(max_hp * multiplier))
+	damage = int(round(damage * multiplier))
+
+	print("ENEMY EVOLUTION - ", name, " +", gs.enemy_evolution_percent, "%")
+	print("ENEMY HP : ", max_hp)
+	print("ENEMY DAMAGE : ", damage)
 
 func setup_common_refs():
 	if has_node("HealthBar/ProgressBar"):

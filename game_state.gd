@@ -164,8 +164,8 @@ func _ready():
 	await get_tree().process_frame
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Test/test_scene.tscn")
-	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
-	await load_level("res://Levels/Lvl1/lvl_1.tscn")
+	await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
@@ -257,7 +257,25 @@ func is_menu_scene(scene_path):
 ######################################################################################
 #                                     SCORE                                          #
 ######################################################################################
+func can_show_score_screen():
+	if current_level_path == "res://Levels/Lvl1/lvl_1.tscn":
+		return true
+
+	if current_level_path == "res://Levels/Lvl2/lvl_2.tscn":
+		return true
+
+	if current_level_path == "res://Levels/Lvl3/lvl_3.tscn":
+		return true
+
+	if current_level_path == "res://Levels/Lvl4/lvl_4.tscn":
+		return true
+
+	return false
+
 func show_score_screen():
+	if not can_show_score_screen():
+		return
+
 	score_system.calculate_stars()
 	apply_moko_evolution()
 	score_screen.show_score(
@@ -303,9 +321,11 @@ func apply_moko_evolution():
 		return
 
 	var bonus = score_system.get_moko_evolution_bonus()
+	var enemy_bonus = score_system.get_enemy_evolution_bonus()
 
 	moko_damage_bonus_percent += bonus
 	moko_hp_bonus_percent += bonus
+	enemy_evolution_percent += enemy_bonus
 
 	score_evolution_applied = true
 
@@ -313,6 +333,7 @@ func apply_moko_evolution():
 	print("MOKO EVOLUTION - PV +", bonus, "%")
 	print("MOKO TOTAL - Dégâts +", moko_damage_bonus_percent, "%")
 	print("MOKO TOTAL - PV +", moko_hp_bonus_percent, "%")
+	print("ENNEMIS TOTAL +", enemy_evolution_percent, "%")
 
 func apply_moko_hp_evolution(player_instance):
 	var multiplier = score_system.get_moko_hp_multiplier(moko_hp_bonus_percent)
