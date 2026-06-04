@@ -285,7 +285,7 @@ position = Vector2(3816, 881)
 collision_mask = 256
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
-position = Vector2(129, 816)
+position = Vector2(256, 855)
 
 [node name="Sound" type="Node2D" parent="." unique_id=1907351730]
 position = Vector2(14, -90)

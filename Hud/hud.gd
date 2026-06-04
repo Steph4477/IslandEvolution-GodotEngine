@@ -438,11 +438,8 @@ func update_air_display():
 func set_gameplay_hud_visible(not_visible):
 	$MokoLives.visible = not_visible
 	$HBoxContainerSeed.visible = not_visible
-	$HBoxContainerBanane.visible = not_visible
-	$HBoxContainerHoney.visible = not_visible
 	$BarSlot.visible = not_visible
 	$HealthBar.visible = not_visible
-	$HBoxContainerBanane/TexturePotion.visible = not_visible
 	$Gamepad/Menu.visible = not_visible
 	$Gamepad/Break.visible = not_visible
 

@@ -121,7 +121,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1372434146]
 z_index = 30
-position = Vector2(9349, 853)
+position = Vector2(29, 746)
 
 [node name="Tiles" type="Node2D" parent="Node2D" unique_id=1203558698]
 position = Vector2(1327, -54)
@@ -407,9 +407,9 @@ scale = Vector2(1.03, 1.03)
 
 [node name="Exit" parent="Node2D/Items" unique_id=287702359 instance=ExtResource("12_vjssa")]
 z_index = 3
-position = Vector2(9417.001, 724.00006)
+position = Vector2(9389.001, 752.00006)
 rotation = -0.000533727
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1, 0.9)
 next_scene_path = "res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn"
 
 [node name="Bridge" parent="Node2D/Items" unique_id=87750588 instance=ExtResource("9_5rcsp")]
