@@ -128,6 +128,7 @@ var lvl1_key_done = false
 var score_system: ScoreSystem
 var score_screen_scene = preload("res://Hud/ScoreScreen/score_screen.tscn")
 var score_screen = null
+
 # --- Bonus ---
 var moko_damage_bonus_percent = 0
 var moko_hp_bonus_percent = 0
@@ -258,7 +259,7 @@ func is_menu_scene(scene_path):
 ######################################################################################
 func show_score_screen():
 	score_system.calculate_stars()
-
+	apply_moko_evolution()
 	score_screen.show_score(
 		get_current_level_title(),
 		score_system.enemies_killed,
@@ -272,6 +273,7 @@ func show_score_screen():
 
 func setup_level_score(level):
 	score_system.reset_level_score()
+	score_evolution_applied = false
 
 	var creatures = level.find_child("Creatures", true, false)
 	var total_enemies = 0
@@ -295,6 +297,23 @@ func get_current_level_title():
 
 	return "Territoire Inconnu"
 
+# --- Evolution ---
+func apply_moko_evolution():
+	if score_evolution_applied:
+		return
+
+	var bonus = score_system.get_moko_evolution_bonus()
+
+	moko_damage_bonus_percent += bonus
+	moko_hp_bonus_percent += bonus
+
+	score_evolution_applied = true
+
+	print("MOKO EVOLUTION - Dégâts +", bonus, "%")
+	print("MOKO EVOLUTION - PV +", bonus, "%")
+	print("MOKO TOTAL - Dégâts +", moko_damage_bonus_percent, "%")
+	print("MOKO TOTAL - PV +", moko_hp_bonus_percent, "%")
+	
 func load_level(scene_path):
 	resume_game()
 	await fade.fade_out()
