@@ -313,7 +313,16 @@ func apply_moko_evolution():
 	print("MOKO EVOLUTION - PV +", bonus, "%")
 	print("MOKO TOTAL - Dégâts +", moko_damage_bonus_percent, "%")
 	print("MOKO TOTAL - PV +", moko_hp_bonus_percent, "%")
-	
+
+func apply_moko_hp_evolution(player_instance):
+	var multiplier = score_system.get_moko_hp_multiplier(moko_hp_bonus_percent)
+
+	player_instance.max_pv = int(round(player_instance.max_pv * multiplier))
+	player_instance.pv = player_instance.max_pv
+
+	print("MOKO HP - Bonus total +", moko_hp_bonus_percent, "%")
+	print("MOKO HP - PV max :", player_instance.max_pv)
+
 func load_level(scene_path):
 	resume_game()
 	await fade.fade_out()
@@ -392,6 +401,8 @@ func load_level(scene_path):
 				p.reset_state()
 			else:
 				p.pv = p.max_pv
+
+		apply_moko_hp_evolution(p)
 
 		if health_bar:
 			health_bar.update_health_bar(p.pv, p.max_pv)
