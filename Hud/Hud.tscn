@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" uid="uid://cdnl4r3q0ukwv" path="res://Hud/Modules/dirt_spot.tscn" id="2_ll21l"]
+[ext_resource type="Texture2D" uid="uid://jenba2rl1rbn" path="res://Interface/Healt_Bar/portrait_3_lives.png" id="2_vfut1"]
+[ext_resource type="Texture2D" uid="uid://dj8qimiy5e5lc" path="res://Interface/Healt_Bar/portrait_1_life.png" id="4_y20lb"]
 [ext_resource type="Texture2D" uid="uid://cbxsnkrjxfbe2" path="res://Interface/gamePad/kick.png" id="6_eqavf"]
 [ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/gamePad/shoot.png" id="6_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/gamePad/Pressed/shoot.png" id="7_b0qj5"]
@@ -21,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://6fxh5qhlk01j" path="res://Interface/gamePad/ramp.png" id="14_e8y56"]
 [ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/gamePad/menu.png" id="14_tlm4v"]
 [ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/gamePad/Pressed/menu.png" id="15_ce0vt"]
-[ext_resource type="Texture2D" uid="uid://0ba0f02kisk1" path="res://Interface/gamePad/potion.png" id="15_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://dc4iqjhcmy6kl" path="res://Interface/gamePad/Pressed/ramp.png" id="15_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://cb16gwwsbvmu1" path="res://Interface/gamePad/sprint_button.png" id="16_8k643"]
 [ext_resource type="Texture2D" uid="uid://txkt8qoe6htt" path="res://Interface/gamePad/Pressed/camouflage.png" id="16_avv0v"]
@@ -29,7 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://g105usenq00p" path="res://Interface/gamePad/break.png" id="16_smsye"]
 [ext_resource type="Texture2D" uid="uid://dg30guwabvgev" path="res://Interface/gamePad/Pressed/sprint_button.png" id="17_f7l5a"]
 [ext_resource type="Texture2D" uid="uid://t8rigotc1j62" path="res://Interface/gamePad/Pressed/break.png" id="17_m6ehm"]
-[ext_resource type="Texture2D" uid="uid://dqs3b2dptcmqx" path="res://Hud/life.png" id="18_1hj8m"]
 [ext_resource type="Texture2D" uid="uid://cidw4mqlr5wka" path="res://Interface/gamePad/fire.png" id="19_mhl4i"]
 [ext_resource type="Script" uid="uid://5o2uu53uahf" path="res://Interface/Healt_Bar/health_bar.gd" id="19_s8lhr"]
 [ext_resource type="Texture2D" uid="uid://bcjanwneyrma" path="res://Interface/gamePad/Pressed/fire.png" id="20_legcx"]
@@ -37,15 +37,15 @@
 [ext_resource type="Texture2D" uid="uid://b0wt351ycqkuj" path="res://Interface/gamePad/Pressed/air.png" id="22_dd24r"]
 [ext_resource type="Texture2D" uid="uid://gynxfgu6u88u" path="res://Interface/gamePad/sprint.png" id="22_f2ifn"]
 [ext_resource type="PackedScene" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
-[ext_resource type="Texture2D" uid="uid://civywlo7n80ma" path="res://Hud/honey.png" id="25_akioh"]
-[ext_resource type="Texture2D" uid="uid://btm5j6wwh6x37" path="res://Interface/Speed_Bar/progress_bar.png" id="27_mltuv"]
 [ext_resource type="Script" uid="uid://bdoxhgt5axy6w" path="res://Interface/Speed_Bar/speed_bar.gd" id="27_wb1yk"]
 [ext_resource type="Texture2D" uid="uid://4eeskkiqb3uk" path="res://Hud/break.png" id="28_m6ehm"]
-[ext_resource type="Texture2D" uid="uid://jajk5i7vupby" path="res://Interface/Healt_Bar/progress_bar2.png" id="33_rjgrc"]
 [ext_resource type="Script" uid="uid://bf67m6j36omgj" path="res://Hud/bar_slot.gd" id="36_k3kan"]
 [ext_resource type="Texture2D" uid="uid://c3waywbrqy860" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 [ext_resource type="Texture2D" uid="uid://b5niu77ancmy6" path="res://Interface/Breath_Bar/progress_bar.png" id="37_rg2xt"]
 [ext_resource type="Script" uid="uid://dbxy0leaaep4o" path="res://Hud/breath_bar.gd" id="39_63x2m"]
+[ext_resource type="Texture2D" uid="uid://ctvx5exbhdwkw" path="res://Interface/Healt_Bar/portrait_0_life.png" id="42_1uhjb"]
+[ext_resource type="Texture2D" uid="uid://cbtbohoak4gcq" path="res://Interface/Healt_Bar/bar_under.png" id="42_ll21l"]
+[ext_resource type="Texture2D" uid="uid://cljehnxfugmw6" path="res://Interface/Healt_Bar/progress_bar.png" id="43_6yi51"]
 [ext_resource type="Script" uid="uid://cwkyllyodjga4" path="res://Hud/air_buff.gd" id="44_legcx"]
 [ext_resource type="Texture2D" uid="uid://badnwx43ud68l" path="res://Hud/fire.png" id="44_wxm5k"]
 [ext_resource type="Script" uid="uid://cj01grb1f4s7r" path="res://Hud/fire_buff.gd" id="45_k3kan"]
@@ -432,21 +432,6 @@ _data = {
 &"appear_ramp": SubResource("Animation_eqavf")
 }
 
-[sub_resource type="Animation" id="Animation_6yi51"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1676, 806)]
-}
-
 [sub_resource type="Animation" id="Animation_dd24r"]
 resource_name = "appear_fire"
 length = 0.8
@@ -489,7 +474,6 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_avv0v"]
 _data = {
-&"RESET": SubResource("Animation_6yi51"),
 &"appear_fire": SubResource("Animation_dd24r")
 }
 
@@ -626,6 +610,33 @@ _data = {
 &"appear_sprint": SubResource("Animation_ll21l")
 }
 
+[sub_resource type="Animation" id="Animation_xl0m0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(434.00003, 220.00002)]
+}
+
 [sub_resource type="Animation" id="Animation_x6mpx"]
 resource_name = "appear_fire_craft_quest"
 length = 0.8
@@ -639,7 +650,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(0.6, 0.6)]
+"values": [Vector2(2, 2), Vector2(0.8, 0.8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -648,10 +659,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3333333),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(804, 440), Vector2(82, 337)]
+"values": [Vector2(804, 440), Vector2(434.00003, 220.00002)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -720,106 +731,70 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
+tracks/3/path = NodePath("Seal:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(82, 337), Vector2(82, 337), Vector2(-355, 350)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.6, 0.6)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Seal:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Seal:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Seal:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.8, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(105.99999, -2.9999998), Vector2(97.99999, -13)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Seal:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Seal:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.8, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.4, 0.4), Vector2(0.15, 0.15)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath(".:modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 1.2, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("StoneRow:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("StoneRow:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("WoodRow:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WoodRow:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -828,8 +803,24 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_63qk1"]
 _data = {
+&"RESET": SubResource("Animation_xl0m0"),
 &"appear_fire_craft_quest": SubResource("Animation_x6mpx"),
 &"disappear_fire_craft_quest": SubResource("Animation_avv0v")
+}
+
+[sub_resource type="Animation" id="Animation_jnynh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(435.99997, 218)]
 }
 
 [sub_resource type="Animation" id="Animation_q4hkw"]
@@ -845,7 +836,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(7.450581e-09, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(0.6, 0.6)]
+"values": [Vector2(2, 2), Vector2(0.8, 0.8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -854,10 +845,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(7.450581e-09, 0.3333333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(7.450581e-09, 0.3333333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(804, 440), Vector2(82, 337)]
+"values": [Vector2(804, 440), Vector2(82, 337), Vector2(435.99997, 218)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -902,91 +893,91 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(82, 337), Vector2(82, 337), Vector2(-355, 350)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.6, 0.6)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(1.0666667, 1.3666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Seal:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Seal:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(105.99999, -2.9999998), Vector2(105.99999, -2.9999998)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Seal:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.2, 0.2)]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Seal:visible")
+tracks/5/path = NodePath("IdoleRow:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Seal:position")
+tracks/6/path = NodePath("RecipeAirRow:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.8, 1),
+"times": PackedFloat32Array(0, 0.36666667),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(105.99999, -2.9999998), Vector2(105.99999, -2.9999998)]
+"update": 1,
+"values": [true, false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Seal:scale")
+tracks/7/path = NodePath("AltarAirRow:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.8, 1),
+"times": PackedFloat32Array(0, 0.36666667),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.2, 0.2)]
+"update": 1,
+"values": [true, false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("IdoleRow:visible")
+tracks/8/path = NodePath("LeafRow:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -995,45 +986,10 @@ tracks/8/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("RecipeAirRow:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.36666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("AltarAirRow:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.36666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("LeafRow:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o1dn3"]
 _data = {
+&"RESET": SubResource("Animation_jnynh"),
 &"appear_air_craft_quest": SubResource("Animation_q4hkw"),
 &"disappear_air_craft_quest": SubResource("Animation_x0ufb")
 }
@@ -1055,6 +1011,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_n8eur"]
 resource_name = "appear_lvl1_quest"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1062,7 +1019,7 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.79999995),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(2, 2), Vector2(0.8, 0.8)]
@@ -1074,10 +1031,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.82),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(804, 440), Vector2(55, 177)]
+"values": [Vector2(804, 440), Vector2(101, 228)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1122,118 +1079,82 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(82, 337), Vector2(82, 337), Vector2(-355, 350)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.6, 0.6)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(1.0666667, 1.3666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Seal:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Seal:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(105.99999, -2.9999998), Vector2(105.99999, -2.9999998)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Seal:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.2, 0.2)]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Seal:visible")
+tracks/5/path = NodePath("SeedRow:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Seal:position")
+tracks/6/path = NodePath("TotemRow:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.8, 1),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(105.99999, -2.9999998), Vector2(105.99999, -2.9999998)]
+"update": 1,
+"values": [true, false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Seal:scale")
+tracks/7/path = NodePath("KeyRow:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.8, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.2, 0.2)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SeedRow:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("TotemRow:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("KeyRow:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0, 0.36666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -1367,6 +1288,18 @@ text = "0"
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_4dmrg")
 
+[node name="coolDownCircle" type="TextureProgressBar" parent="Gamepad/Health" unique_id=1759242886]
+z_index = 5
+offset_left = -22.85718
+offset_top = -25.396912
+offset_right = 1437.4607
+offset_bottom = 1485.7144
+scale = Vector2(0.1, 0.1)
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("16_b0qj5")
+
 [node name="Honey" type="TouchScreenButton" parent="Gamepad" unique_id=943434364]
 position = Vector2(1446.6667, 799.3334)
 scale = Vector2(0.125, 0.125)
@@ -1384,6 +1317,18 @@ text = "0"
 
 [node name="AnimHoney" type="AnimationPlayer" parent="Gamepad/Honey" unique_id=1499241443]
 libraries/ = SubResource("AnimationLibrary_wu565")
+
+[node name="coolDownCircle" type="TextureProgressBar" parent="Gamepad/Honey" unique_id=1686745286]
+z_index = 5
+offset_left = -90.66666
+offset_top = -101.33342
+offset_right = 12122.661
+offset_bottom = 12165.335
+scale = Vector2(0.1, 0.1)
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("16_b0qj5")
 
 [node name="Camouflage" type="TouchScreenButton" parent="Gamepad" unique_id=2051500428]
 position = Vector2(732, 806.00006)
@@ -1429,7 +1374,7 @@ reset_on_save = false
 libraries/ = SubResource("AnimationLibrary_ll21l")
 
 [node name="Fire" type="TouchScreenButton" parent="Gamepad" unique_id=1019016283]
-position = Vector2(1676, 806)
+position = Vector2(1566, 916.66656)
 rotation = 6.2831855
 scale = Vector2(0.12, 0.12)
 texture_normal = ExtResource("19_mhl4i")
@@ -1484,10 +1429,10 @@ action = "interact"
 modulate = Color(1, 1, 1, 0.43137255)
 layout_mode = 3
 anchors_preset = 0
-offset_left = -603.0
-offset_top = -477.0
-offset_right = 1308.0
-offset_bottom = 609.0
+offset_left = -601.0
+offset_top = -480.0
+offset_right = 1310.0
+offset_bottom = 606.0
 scale = Vector2(1.5, 1.5)
 
 [node name="ui_left" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1587167800]
@@ -1513,69 +1458,6 @@ texture_normal = ExtResource("62_jcaq3")
 texture_pressed = ExtResource("63_y20lb")
 action = "jump"
 
-[node name="HBoxContainerBanane" type="HBoxContainer" parent="." unique_id=837233078]
-offset_left = -1002.0
-offset_top = 357.0
-offset_right = -908.0
-offset_bottom = 431.0
-
-[node name="TexturePotion" type="Node2D" parent="HBoxContainerBanane" unique_id=849512269]
-position = Vector2(307, -20)
-scale = Vector2(0.715505, 0.715329)
-
-[node name="TextureRectBanane" type="TextureRect" parent="HBoxContainerBanane/TexturePotion" unique_id=600507141]
-offset_left = 1011.8726
-offset_top = -398.41803
-offset_right = 1111.8727
-offset_bottom = -296.41803
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("15_rgqxt")
-
-[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerBanane/TexturePotion" unique_id=1759242886]
-visible = false
-z_index = 5
-offset_left = 996.49896
-offset_top = -416.59152
-offset_right = 2020.499
-offset_bottom = 607.40845
-scale = Vector2(0.1, 0.1)
-value = 100.0
-fill_mode = 5
-nine_patch_stretch = true
-texture_progress = ExtResource("16_b0qj5")
-
-[node name="HBoxContainerHoney" type="HBoxContainer" parent="." unique_id=1638888567]
-offset_left = -1006.0
-offset_top = 353.0
-offset_right = -912.0
-offset_bottom = 427.0
-
-[node name="TexturePotion" type="Node2D" parent="HBoxContainerHoney" unique_id=805180826]
-position = Vector2(393.99994, -20)
-scale = Vector2(0.715505, 0.715329)
-
-[node name="TextureRectHoney" type="TextureRect" parent="HBoxContainerHoney/TexturePotion" unique_id=62312572]
-offset_left = 986.71576
-offset_top = -394.22418
-offset_right = 1086.7158
-offset_bottom = -288.22418
-rotation = 6.2831855
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("25_akioh")
-
-[node name="coolDownCircle" type="TextureProgressBar" parent="HBoxContainerHoney/TexturePotion" unique_id=1686745286]
-visible = false
-z_index = 5
-offset_left = 969.9445
-offset_top = -410.9997
-offset_right = 1993.9445
-offset_bottom = 613.0003
-scale = Vector2(0.1, 0.1)
-value = 100.0
-fill_mode = 5
-nine_patch_stretch = true
-texture_progress = ExtResource("16_b0qj5")
-
 [node name="HBoxContainerSeed" type="HBoxContainer" parent="." unique_id=418261100]
 offset_left = 1728.0
 offset_top = 50.0
@@ -1596,38 +1478,47 @@ offset_top = -28.0
 offset_right = 47.0
 offset_bottom = -5.0
 
-[node name="HBoxContainerLive" type="HBoxContainer" parent="." unique_id=1219303423]
-offset_left = 555.0
-offset_top = 64.0
-offset_right = 595.0
-offset_bottom = 104.0
-scale = Vector2(0.15, 0.15)
+[node name="MokoLives" type="Node2D" parent="." unique_id=1672920002]
+z_index = 100
+position = Vector2(71, 88)
+scale = Vector2(1.1, 1.1)
 
-[node name="Life1" type="Sprite2D" parent="HBoxContainerLive" unique_id=2020732208]
-position = Vector2(-846.6666, 59.999947)
-texture = ExtResource("18_1hj8m")
+[node name="Portrait3Lives" type="Sprite2D" parent="MokoLives" unique_id=297368903]
+position = Vector2(3.6363647, -2.9802322e-08)
+texture = ExtResource("2_vfut1")
 
-[node name="Life2" type="Sprite2D" parent="HBoxContainerLive" unique_id=1893897249]
-position = Vector2(-393.3333, 73.33328)
-texture = ExtResource("18_1hj8m")
+[node name="Portrait2lives" type="Sprite2D" parent="MokoLives" unique_id=759941397]
+position = Vector2(3.3635807, -2.1363497)
+texture = ExtResource("4_y20lb")
 
-[node name="Life3" type="Sprite2D" parent="HBoxContainerLive" unique_id=13903589]
-position = Vector2(60, 86.66661)
-texture = ExtResource("18_1hj8m")
+[node name="Portrait1Life" type="Sprite2D" parent="MokoLives" unique_id=725649516]
+position = Vector2(3.636365, -0.90909374)
+texture = ExtResource("4_y20lb")
+
+[node name="Portrait0Life" type="Sprite2D" parent="MokoLives" unique_id=1008948124]
+position = Vector2(6.0908756, 0.5909146)
+texture = ExtResource("42_1uhjb")
 
 [node name="HealthBar" type="CanvasLayer" parent="." unique_id=388120387]
 script = ExtResource("19_s8lhr")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar" unique_id=1104299560]
-modulate = Color(0.67481464, 0.67481464, 0.6748146, 1)
-offset_left = 149.0
-offset_top = 50.0
-offset_right = 399.0
-offset_bottom = 110.0
+anchors_preset = -1
+anchor_left = -0.034375
+anchor_top = 0.0055555557
+anchor_right = -0.034375
+anchor_bottom = 0.0055555557
+offset_left = 54.0
+offset_top = -19.0
+offset_right = 717.0
+offset_bottom = 195.0
+min_value = -500.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
-texture_progress = ExtResource("33_rjgrc")
+texture_under = ExtResource("42_ll21l")
+texture_progress = ExtResource("43_6yi51")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="HealthBar" unique_id=2081965030]
 offset_left = 7.0
@@ -1636,10 +1527,10 @@ offset_right = 47.0
 offset_bottom = 12.0
 
 [node name="BarSlot" type="VBoxContainer" parent="." unique_id=1375780569]
-offset_left = 86.0
-offset_top = 95.0
-offset_right = 386.0
-offset_bottom = 295.0
+offset_left = 97.0
+offset_top = 172.0
+offset_right = 397.0
+offset_bottom = 372.0
 theme_override_constants/separation = 40
 script = ExtResource("36_k3kan")
 
@@ -1648,11 +1539,12 @@ layout_mode = 2
 script = ExtResource("39_63x2m")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BreathBar" unique_id=991367002]
+modulate = Color(0.03529412, 0.18431373, 1, 1)
 layout_mode = 0
-offset_left = 63.0
-offset_top = -6.0
-offset_right = 313.0
-offset_bottom = 54.0
+offset_left = 61.0
+offset_top = -3.0
+offset_right = 311.0
+offset_bottom = 57.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
@@ -1670,36 +1562,11 @@ offset_bottom = -101.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("37_eqcma")
 
-[node name="BuffContainer" type="HBoxContainer" parent="BarSlot" unique_id=227980198]
-layout_mode = 2
-
-[node name="FireBuff" type="Control" parent="BarSlot/BuffContainer" unique_id=937312727]
-layout_mode = 2
-script = ExtResource("45_k3kan")
-
-[node name="TextureRect" type="TextureRect" parent="BarSlot/BuffContainer/FireBuff" unique_id=1626433841]
-layout_mode = 0
-offset_left = 6.0000005
-offset_right = 1030.0
-offset_bottom = 1024.0
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("44_wxm5k")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BuffContainer/FireBuff" unique_id=1113580750]
-layout_mode = 0
-offset_left = 62.999992
-offset_top = -5.9999924
-offset_right = 313.0
-offset_bottom = 54.000008
-value = 100.0
-nine_patch_stretch = true
-texture_progress = ExtResource("37_rg2xt")
-
-[node name="AirBuff" type="Control" parent="BarSlot/BuffContainer" unique_id=1981313556]
+[node name="AirBuff" type="Control" parent="BarSlot" unique_id=1981313556]
 layout_mode = 2
 script = ExtResource("44_legcx")
 
-[node name="TextureRect" type="TextureRect" parent="BarSlot/BuffContainer/AirBuff" unique_id=1519570993]
+[node name="TextureRect" type="TextureRect" parent="BarSlot/AirBuff" unique_id=1519570993]
 layout_mode = 0
 offset_left = -13.0
 offset_top = -17.0
@@ -1708,11 +1575,35 @@ offset_bottom = 1007.0
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("47_dd24r")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BuffContainer/AirBuff" unique_id=1654771645]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/AirBuff" unique_id=1654771645]
+modulate = Color(0.19215687, 1, 1, 1)
 layout_mode = 0
 offset_left = 58.999992
 offset_top = -5.9999924
 offset_right = 309.0
+offset_bottom = 54.000008
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("37_rg2xt")
+
+[node name="FireBuff" type="Control" parent="BarSlot" unique_id=937312727]
+layout_mode = 2
+script = ExtResource("45_k3kan")
+
+[node name="TextureRect" type="TextureRect" parent="BarSlot/FireBuff" unique_id=1626433841]
+layout_mode = 0
+offset_left = 6.0000005
+offset_right = 1030.0
+offset_bottom = 1024.0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("44_wxm5k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/FireBuff" unique_id=1113580750]
+modulate = Color(1, 1, 0.15294118, 1)
+layout_mode = 0
+offset_left = 62.999992
+offset_top = -5.9999924
+offset_right = 313.0
 offset_bottom = 54.000008
 value = 100.0
 nine_patch_stretch = true
@@ -1723,6 +1614,7 @@ layout_mode = 2
 script = ExtResource("27_wb1yk")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/SpeedBar" unique_id=224861362]
+modulate = Color(0.94509804, 0.24705882, 0.27058825, 1)
 layout_mode = 0
 offset_left = 62.999992
 offset_top = -4.9999924
@@ -1731,7 +1623,7 @@ offset_bottom = 55.0
 max_value = 2000.0
 value = 2000.0
 nine_patch_stretch = true
-texture_progress = ExtResource("27_mltuv")
+texture_progress = ExtResource("37_rg2xt")
 
 [node name="TextureSprint" type="Node2D" parent="BarSlot/SpeedBar" unique_id=563686409]
 position = Vector2(44, 95)
@@ -1758,14 +1650,16 @@ scale = Vector2(0.7216797, 0.7216797)
 texture = ExtResource("28_m6ehm")
 
 [node name="FireCraftChecklist" type="VBoxContainer" parent="." unique_id=511074019]
-offset_left = 82.0
-offset_top = 337.0
-offset_right = 281.9929
-offset_bottom = 521.0034
-scale = Vector2(0.6, 0.6)
+modulate = Color(1, 1, 1, 0)
+offset_left = 434.00003
+offset_top = 220.00002
+offset_right = 633.9928
+offset_bottom = 404.00342
+scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 6
 
 [node name="WoodRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=79236682]
+visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="FireCraftChecklist/WoodRow" unique_id=13807791]
@@ -1783,6 +1677,7 @@ layout_mode = 2
 text = "Bois"
 
 [node name="StoneRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=367941002]
+visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="FireCraftChecklist/StoneRow" unique_id=1237117097]
@@ -1800,6 +1695,7 @@ layout_mode = 2
 text = "Pierre"
 
 [node name="RecipeFireRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=676973476]
+visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="FireCraftChecklist/RecipeFireRow" unique_id=1975173592]
@@ -1817,6 +1713,7 @@ layout_mode = 2
 text = "Recette"
 
 [node name="AltarFireRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=2058270676]
+visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="FireCraftChecklist/AltarFireRow" unique_id=1826419777]
@@ -1837,23 +1734,22 @@ text = "Trouver l'autel"
 z_index = -20
 position = Vector2(103, 86)
 scale = Vector2(0.328125, 0.36914063)
-texture = ExtResource("49_4dmrg")
+texture = ExtResource("48_4dmrg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FireCraftChecklist" unique_id=1905188881]
 libraries/ = SubResource("AnimationLibrary_63qk1")
 
 [node name="Seal" type="Sprite2D" parent="FireCraftChecklist" unique_id=782068575]
-visible = false
-position = Vector2(105.99999, -2.9999998)
-scale = Vector2(0.4, 0.4)
+position = Vector2(97.99999, -13)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("52_wfxx7")
 
 [node name="AirCraftChecklist" type="VBoxContainer" parent="." unique_id=299491657]
-offset_left = 82.0
-offset_top = 337.0
-offset_right = 281.99072
-offset_bottom = 520.999
-scale = Vector2(0.6, 0.6)
+offset_left = 435.99997
+offset_top = 218.0
+offset_right = 635.99084
+offset_bottom = 401.99908
+scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 6
 
 [node name="LeafRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=2129590371]
@@ -1940,14 +1836,16 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("52_wfxx7")
 
 [node name="Lvl1Checklist" type="VBoxContainer" parent="." unique_id=2040972916]
+modulate = Color(1, 1, 1, 0)
 offset_left = 55.0
 offset_top = 177.0
-offset_right = 340.00192
-offset_bottom = 361.00052
+offset_right = 340.00134
+offset_bottom = 361.0024
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 6
 
 [node name="SeedRow" type="HBoxContainer" parent="Lvl1Checklist" unique_id=1985937639]
+visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="Lvl1Checklist/SeedRow" unique_id=82391285]
@@ -1965,6 +1863,7 @@ layout_mode = 2
 text = "Collecter toutes les graines"
 
 [node name="TotemRow" type="HBoxContainer" parent="Lvl1Checklist" unique_id=2005306354]
+visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="Lvl1Checklist/TotemRow" unique_id=398893161]
@@ -1982,6 +1881,7 @@ layout_mode = 2
 text = "Activer le totem"
 
 [node name="KeyRow" type="HBoxContainer" parent="Lvl1Checklist" unique_id=1752455795]
+visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="Lvl1Checklist/KeyRow" unique_id=1727917266]
@@ -2002,12 +1902,11 @@ text = "Récupérer la clé"
 z_index = -20
 position = Vector2(150, 86)
 scale = Vector2(0.4, 0.369)
-texture = ExtResource("49_4dmrg")
+texture = ExtResource("48_4dmrg")
 
 [node name="Seal" type="Sprite2D" parent="Lvl1Checklist" unique_id=469071952]
-visible = false
 position = Vector2(105.99999, -2.9999998)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("52_wfxx7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Lvl1Checklist" unique_id=1371496681]

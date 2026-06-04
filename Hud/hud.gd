@@ -3,6 +3,12 @@ extends CanvasLayer
 # -----------------------------
 #            NODES
 # -----------------------------
+@onready var moko_lives = $MokoLives
+@onready var portrait_3_lives = $MokoLives/Portrait3Lives
+@onready var portrait_2_lives = $MokoLives/Portrait2lives
+@onready var portrait_1_life = $MokoLives/Portrait1Life
+@onready var portrait_0_life = $MokoLives/Portrait0Life
+
 @onready var ramp_button = $Gamepad/Ramp
 @onready var sprint_button = $Gamepad/Sprint
 @onready var coco_button = $Gamepad/Coco
@@ -35,12 +41,8 @@ extends CanvasLayer
 @onready var fire_buff = $BarSlot/BuffContainer/FireBuff
 @onready var air_buff = $BarSlot/BuffContainer/AirBuff
 
-#@onready var skill_selector = $Gamepad/SkillSelector
-#@onready var heal_selector = $Gamepad/HealSelector
-#@onready var throw_selector = $Gamepad/ThrowSelector
-
-@onready var banane_cooldown = $HBoxContainerBanane/TexturePotion/coolDownCircle
-@onready var honey_cooldown = $HBoxContainerHoney/TexturePotion/coolDownCircle
+@onready var banane_cooldown = $Gamepad/Health/coolDownCircle
+@onready var honey_cooldown = $Gamepad/Honey/coolDownCircle
 
 @onready var anim_coco = get_node_or_null("Gamepad/Coco/AnimCoco")
 @onready var anim_spear = get_node_or_null("Gamepad/Spear/AnimSpear")
@@ -328,12 +330,12 @@ func update_air_buff_timer(time_left, duration):
 #        UPDATE HUD
 # -----------------------------
 func update_lives_display(lives):
-	var life_sprites = get_node_or_null("HBoxContainerLive")
-	if life_sprites == null:
-		return
-	var arr = life_sprites.get_children()
-	for i in range(arr.size()):
-		arr[i].visible = i < lives
+	portrait_3_lives.visible = lives >= 3
+	portrait_2_lives.visible = lives == 2
+	portrait_1_life.visible = lives <= 1
+	portrait_0_life.visible = lives <= 0
+	
+
 
 func set_button_enabled(button, enabled):
 	var shape = button.get_node_or_null("CollisionShape2D")
@@ -438,7 +440,7 @@ func update_air_display():
 #        BOSS FIGHT HUD
 # ============================================================================
 func set_gameplay_hud_visible(not_visible):
-	$HBoxContainerLive.visible = not_visible
+	$MokoLives.visible = not_visible
 	$HBoxContainerSeed.visible = not_visible
 	$HBoxContainerBanane.visible = not_visible
 	$HBoxContainerHoney.visible = not_visible
