@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" uid="uid://cdnl4r3q0ukwv" path="res://Hud/Modules/dirt_spot.tscn" id="2_ll21l"]
+[ext_resource type="Texture2D" uid="uid://cbxsnkrjxfbe2" path="res://Interface/gamePad/kick.png" id="6_eqavf"]
 [ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/gamePad/shoot.png" id="6_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/gamePad/Pressed/shoot.png" id="7_b0qj5"]
+[ext_resource type="Texture2D" uid="uid://cilrogcr86fd" path="res://Interface/gamePad/Pressed/kick.png" id="7_ll21l"]
 [ext_resource type="Texture2D" uid="uid://wctveqj65ef2" path="res://Interface/gamePad/coconut.png" id="8_b0qj5"]
 [ext_resource type="Texture2D" uid="uid://d4f3cla5rw51a" path="res://Interface/gamePad/healing_potion.png" id="8_voibu"]
 [ext_resource type="Texture2D" uid="uid://58np8hxbmkm4" path="res://Interface/gamePad/bone.png" id="8_wb1yk"]
@@ -59,21 +61,6 @@
 [ext_resource type="Texture2D" uid="uid://btncwe56qeima" path="res://Interface/gamePad/interact.png" id="64_uk4ib"]
 [ext_resource type="Texture2D" uid="uid://crujlx35whpxy" path="res://Interface/gamePad/Pressed/interact.png" id="65_xl0m0"]
 
-[sub_resource type="Animation" id="Animation_1uhjb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Coco:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1789, 805.99994)]
-}
-
 [sub_resource type="Animation" id="Animation_wxm5k"]
 resource_name = "appear_coco"
 tracks/0/type = "value"
@@ -86,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(780, 316), Vector2(1789, 805.99994)]
+"values": [Vector2(780, 316), Vector2(1682.6666, 918.6667)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -115,23 +102,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_26inf"]
 _data = {
-&"RESET": SubResource("Animation_1uhjb"),
 &"appear_coco": SubResource("Animation_wxm5k")
-}
-
-[sub_resource type="Animation" id="Animation_vfut1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Spear:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1789, 693)]
 }
 
 [sub_resource type="Animation" id="Animation_k3kan"]
@@ -146,7 +117,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(790, 329), Vector2(1789, 693)]
+"values": [Vector2(790, 329), Vector2(1678.6666, 807.3333)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -175,23 +146,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ogbjv"]
 _data = {
-&"RESET": SubResource("Animation_vfut1"),
 &"appear_spear": SubResource("Animation_k3kan")
-}
-
-[sub_resource type="Animation" id="Animation_jcaq3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Bone:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1788, 573)]
 }
 
 [sub_resource type="Animation" id="Animation_7iv5g"]
@@ -206,7 +161,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(740.99994, 255.00009), Vector2(1782, 574)]
+"values": [Vector2(740.99994, 255.00009), Vector2(1674, 695.3333)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -235,27 +190,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hsv3q"]
 _data = {
-&"RESET": SubResource("Animation_jcaq3"),
 &"appear_bone": SubResource("Animation_7iv5g")
-}
-
-[sub_resource type="Animation" id="Animation_y20lb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gamepad/Health:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1698, 925)]
 }
 
 [sub_resource type="Animation" id="Animation_ogbjv"]
 resource_name = "appear_health"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -266,7 +206,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(781, 335), Vector2(1698, 925)]
+"values": [Vector2(781, 335), Vector2(1466, 925.33344)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -290,17 +230,44 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(1, 1)]
+"values": [Vector2(4, 4), Vector2(1.05, 1.05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4dmrg"]
 _data = {
-&"RESET": SubResource("Animation_y20lb"),
 &"appear_health": SubResource("Animation_ogbjv")
+}
+
+[sub_resource type="Animation" id="Animation_1uhjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.125, 0.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1446.6667, 799.3334)]
 }
 
 [sub_resource type="Animation" id="Animation_wfxx7"]
 resource_name = "appear_honey"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -311,7 +278,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(784, 293.00006), Vector2(1594, 920)]
+"values": [Vector2(784, 293.00006), Vector2(1446.6667, 799.3334)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -335,12 +302,28 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.45, 0.45), Vector2(0.11, 0.11)]
+"values": [Vector2(0.45, 0.45), Vector2(0.125, 0.125)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu565"]
 _data = {
+&"RESET": SubResource("Animation_1uhjb"),
 &"appear_honey": SubResource("Animation_wfxx7")
+}
+
+[sub_resource type="Animation" id="Animation_vfut1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(732, 806.00006)]
 }
 
 [sub_resource type="Animation" id="Animation_legcx"]
@@ -356,7 +339,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.11, 0.11)]
+"values": [Vector2(0.4, 0.4), Vector2(0.11, 0.12)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -380,11 +363,12 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(745, 318), Vector2(1432, 910)]
+"values": [Vector2(745, 318), Vector2(732, 806.00006)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x6mpx"]
 _data = {
+&"RESET": SubResource("Animation_vfut1"),
 &"appear_camouflage": SubResource("Animation_legcx")
 }
 
@@ -439,7 +423,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(841, 381), Vector2(1320, 915)]
+"values": [Vector2(841, 381), Vector2(1077.3334, 911.3334)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ll21l"]
@@ -476,7 +460,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(729, 294), Vector2(1676, 806)]
+"values": [Vector2(729, 294), Vector2(1566, 916.66656)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -509,7 +493,7 @@ _data = {
 &"appear_fire": SubResource("Animation_dd24r")
 }
 
-[sub_resource type="Animation" id="Animation_uk4ib"]
+[sub_resource type="Animation" id="Animation_jcaq3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -521,35 +505,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(729, 294)]
+"values": [Vector2(1558, 799.3334)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gamepad/Air:rotation")
+tracks/1/path = NodePath("Gamepad/Air:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [6.208136]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gamepad/Air:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.43, 0.43)]
+"values": [Vector2(0.125, 0.125)]
 }
 
 [sub_resource type="Animation" id="Animation_oa44v"]
 resource_name = "appear_air"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -560,7 +533,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(796.0001, 290.00003), Vector2(1592.0001, 735)]
+"values": [Vector2(796.0001, 290.00003), Vector2(1558, 799.3334)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -584,16 +557,16 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.43, 0.43), Vector2(0.12, 0.116)]
+"values": [Vector2(0.43, 0.43), Vector2(0.125, 0.125)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnynh"]
 _data = {
-&"RESET": SubResource("Animation_uk4ib"),
+&"RESET": SubResource("Animation_jcaq3"),
 &"appear_air": SubResource("Animation_oa44v")
 }
 
-[sub_resource type="Animation" id="Animation_jnynh"]
+[sub_resource type="Animation" id="Animation_y20lb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -605,19 +578,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1275, 915)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(835.3334, 807.3333)]
 }
 
 [sub_resource type="Animation" id="Animation_ll21l"]
@@ -632,7 +593,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782, 307), Vector2(1200, 915)]
+"values": [Vector2(782, 307), Vector2(842.6667, 818)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -661,35 +622,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6yi51"]
 _data = {
-&"RESET": SubResource("Animation_jnynh"),
+&"RESET": SubResource("Animation_y20lb"),
 &"appear_sprint": SubResource("Animation_ll21l")
-}
-
-[sub_resource type="Animation" id="Animation_xl0m0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("StoneRow:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WoodRow:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_x6mpx"]
@@ -705,7 +639,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(1, 1)]
+"values": [Vector2(2, 2), Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -817,7 +751,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.6, 0.6)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -894,60 +828,8 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_63qk1"]
 _data = {
-&"RESET": SubResource("Animation_xl0m0"),
 &"appear_fire_craft_quest": SubResource("Animation_x6mpx"),
 &"disappear_fire_craft_quest": SubResource("Animation_avv0v")
-}
-
-[sub_resource type="Animation" id="Animation_qxfqj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IdoleRow:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RecipeAirRow:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AltarAirRow:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LeafRow:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_q4hkw"]
@@ -960,10 +842,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(7.450581e-09, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(1, 1)]
+"values": [Vector2(2, 2), Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -972,10 +854,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(7.450581e-09, 0.3333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(804, 440), Vector2(1556, 239)]
+"values": [Vector2(804, 440), Vector2(82, 337)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -984,10 +866,10 @@ tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(7.450581e-09, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-6.283185307179586, 0.0]
+"values": [-6.2831855, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -996,34 +878,10 @@ tracks/3/path = NodePath("Seal:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(7.450581e-09, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Seal:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.8, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(105.99999, -2.9999998), Vector2(105.99999, -2.9999998)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Seal:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.8, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.2, 0.2)]
 }
 
 [sub_resource type="Animation" id="Animation_x0ufb"]
@@ -1075,7 +933,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.6, 0.6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1176,144 +1034,23 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o1dn3"]
 _data = {
-&"RESET": SubResource("Animation_qxfqj"),
 &"appear_air_craft_quest": SubResource("Animation_q4hkw"),
 &"disappear_air_craft_quest": SubResource("Animation_x0ufb")
 }
 
-[sub_resource type="Animation" id="Animation_ddd4q"]
+[sub_resource type="Animation" id="Animation_uk4ib"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ShapeQuest:texture")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("49_4dmrg")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1556, 239)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Seal:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Seal:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(105.99999, -2.9999998)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Seal:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.4, 0.4)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SeedRow:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("TotemRow:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("KeyRow:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [Vector2(55, 177)]
 }
 
 [sub_resource type="Animation" id="Animation_n8eur"]
@@ -1325,10 +1062,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.79999995),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(1, 1)]
+"values": [Vector2(2, 2), Vector2(0.8, 0.8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1337,10 +1074,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6666667, 1),
+"times": PackedFloat32Array(0, 0.82),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(804, 440), Vector2(82, 337)]
+"values": [Vector2(804, 440), Vector2(55, 177)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1349,10 +1086,10 @@ tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.6666667, 1),
+"times": PackedFloat32Array(0, 0.79999995),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-6.283185307179586, 0.0]
+"values": [-6.2831855, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1361,82 +1098,10 @@ tracks/3/path = NodePath("Seal:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.79999995),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Seal:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.8, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(105.99999, -2.9999998), Vector2(105.99999, -2.9999998)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Seal:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.8, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.2, 0.2)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("ShapeQuest:texture")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [ExtResource("48_4dmrg"), ExtResource("51_hsv3q"), ExtResource("49_4dmrg")]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SeedRow:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.03333333, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("TotemRow:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("KeyRow:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.36666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_se3pq"]
@@ -1488,7 +1153,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.6, 0.6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1577,7 +1242,7 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qxfqj"]
 _data = {
-&"RESET": SubResource("Animation_ddd4q"),
+&"RESET": SubResource("Animation_uk4ib"),
 &"appear_lvl1_quest": SubResource("Animation_n8eur"),
 &"disappear_lvl1_quest": SubResource("Animation_se3pq")
 }
@@ -1608,6 +1273,11 @@ mouse_filter = 2
 [node name="Gamepad" type="Control" parent="." unique_id=1114488835]
 layout_mode = 3
 anchors_preset = 0
+offset_left = -935.0
+offset_top = -501.0
+offset_right = -935.0
+offset_bottom = -501.0
+scale = Vector2(1.5, 1.5)
 
 [node name="Hand" type="TouchScreenButton" parent="Gamepad" unique_id=503376199]
 position = Vector2(1786, 923.00006)
@@ -1615,9 +1285,16 @@ scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("6_rgqxt")
 texture_pressed = ExtResource("7_b0qj5")
 
+[node name="kick" type="TouchScreenButton" parent="Gamepad" unique_id=656840088]
+position = Vector2(1778.6666, 804.6666)
+texture_normal = ExtResource("6_eqavf")
+texture_pressed = ExtResource("7_ll21l")
+action = "kick"
+
 [node name="Coco" type="TouchScreenButton" parent="Gamepad" unique_id=1026696562]
-position = Vector2(1789, 805.99994)
+position = Vector2(1682.6666, 918.6667)
 rotation = 6.2831855
+scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("8_b0qj5")
 texture_pressed = ExtResource("9_870gb")
 action = "ui_cancel"
@@ -1634,7 +1311,7 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_26inf")
 
 [node name="Spear" type="TouchScreenButton" parent="Gamepad" unique_id=2046174989]
-position = Vector2(1789, 693)
+position = Vector2(1678.6666, 807.3333)
 rotation = 6.2831855
 scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("12_s8lhr")
@@ -1653,7 +1330,7 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_ogbjv")
 
 [node name="Bone" type="TouchScreenButton" parent="Gamepad" unique_id=981973535]
-position = Vector2(1788, 573)
+position = Vector2(1674, 695.3333)
 rotation = 6.2831855
 scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("8_wb1yk")
@@ -1672,7 +1349,8 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_hsv3q")
 
 [node name="Health" type="TouchScreenButton" parent="Gamepad" unique_id=2026643396]
-position = Vector2(1698, 925)
+position = Vector2(1466, 925.33344)
+scale = Vector2(1.05, 1.05)
 texture_normal = ExtResource("8_voibu")
 texture_pressed = ExtResource("11_e8y56")
 action = "ui_accept"
@@ -1690,8 +1368,8 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_4dmrg")
 
 [node name="Honey" type="TouchScreenButton" parent="Gamepad" unique_id=943434364]
-position = Vector2(1594, 920)
-scale = Vector2(0.11, 0.11)
+position = Vector2(1446.6667, 799.3334)
+scale = Vector2(0.125, 0.125)
 texture_normal = ExtResource("12_shgqx")
 texture_pressed = ExtResource("13_cpk68")
 action = "ui_accept"
@@ -1708,9 +1386,9 @@ text = "0"
 libraries/ = SubResource("AnimationLibrary_wu565")
 
 [node name="Camouflage" type="TouchScreenButton" parent="Gamepad" unique_id=2051500428]
-position = Vector2(1432, 910)
+position = Vector2(732, 806.00006)
 rotation = 6.2831855
-scale = Vector2(0.11, 0.11)
+scale = Vector2(0.11, 0.12)
 texture_normal = ExtResource("14_akioh")
 texture_pressed = ExtResource("16_avv0v")
 action = "camouflage"
@@ -1740,7 +1418,7 @@ texture_progress = ExtResource("16_b0qj5")
 libraries/ = SubResource("AnimationLibrary_x6mpx")
 
 [node name="Ramp" type="TouchScreenButton" parent="Gamepad" unique_id=770319580]
-position = Vector2(1073, 915)
+position = Vector2(1077.3334, 911.3334)
 texture_normal = ExtResource("14_e8y56")
 texture_pressed = ExtResource("15_s8lhr")
 passby_press = true
@@ -1762,9 +1440,8 @@ action = "fire_buff"
 libraries/ = SubResource("AnimationLibrary_avv0v")
 
 [node name="Air" type="TouchScreenButton" parent="Gamepad" unique_id=1695551520]
-position = Vector2(729, 294)
-rotation = 6.208136
-scale = Vector2(0.43, 0.43)
+position = Vector2(1558, 799.3334)
+scale = Vector2(0.125, 0.125)
 texture_normal = ExtResource("21_63qk1")
 texture_pressed = ExtResource("22_dd24r")
 action = "air_buff"
@@ -1774,7 +1451,7 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_jnynh")
 
 [node name="Sprint" type="TouchScreenButton" parent="Gamepad" unique_id=322998859]
-position = Vector2(1275, 915)
+position = Vector2(835.3334, 807.3333)
 texture_normal = ExtResource("16_8k643")
 texture_pressed = ExtResource("17_f7l5a")
 action = "sprint"
@@ -1783,14 +1460,14 @@ action = "sprint"
 libraries/ = SubResource("AnimationLibrary_6yi51")
 
 [node name="Menu" type="TouchScreenButton" parent="Gamepad" unique_id=394726589]
-position = Vector2(1597, 42)
+position = Vector2(1645.6666, 348.6667)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("14_tlm4v")
 texture_pressed = ExtResource("15_ce0vt")
 action = "ui_cancel"
 
 [node name="Break" type="TouchScreenButton" parent="Gamepad" unique_id=255944262]
-position = Vector2(1488, 40)
+position = Vector2(1536.6666, 346.6667)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("16_smsye")
 texture_pressed = ExtResource("17_m6ehm")
@@ -1798,7 +1475,7 @@ action = "ui_cancel"
 
 [node name="Interact" type="TouchScreenButton" parent="Gamepad" unique_id=1168241739]
 modulate = Color(0.85882354, 0.85882354, 0.85882354, 0.43137255)
-position = Vector2(391, 904)
+position = Vector2(958, 909.3334)
 texture_normal = ExtResource("64_uk4ib")
 texture_pressed = ExtResource("65_xl0m0")
 action = "interact"
@@ -1807,12 +1484,15 @@ action = "interact"
 modulate = Color(1, 1, 1, 0.43137255)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1911.0
-offset_bottom = 1086.0
+offset_left = -603.0
+offset_top = -477.0
+offset_right = 1308.0
+offset_bottom = 609.0
+scale = Vector2(1.5, 1.5)
 
 [node name="ui_left" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1587167800]
 modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(44.000004, 1024)
+position = Vector2(401.5, 1019)
 rotation = -1.5707964
 texture_normal = ExtResource("62_jcaq3")
 texture_pressed = ExtResource("63_y20lb")
@@ -1820,7 +1500,7 @@ action = "ui_left"
 
 [node name="ui_right" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1845974673]
 modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(375, 895)
+position = Vector2(732.5, 890)
 rotation = 1.5707964
 texture_normal = ExtResource("62_jcaq3")
 texture_pressed = ExtResource("63_y20lb")
@@ -1828,7 +1508,7 @@ action = "ui_right"
 
 [node name="ui_up" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1301371472]
 modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(144, 899)
+position = Vector2(501.5, 894)
 texture_normal = ExtResource("62_jcaq3")
 texture_pressed = ExtResource("63_y20lb")
 action = "jump"
@@ -2080,12 +1760,12 @@ texture = ExtResource("28_m6ehm")
 [node name="FireCraftChecklist" type="VBoxContainer" parent="." unique_id=511074019]
 offset_left = 82.0
 offset_top = 337.0
-offset_right = 281.99292
-offset_bottom = 521.003
+offset_right = 281.9929
+offset_bottom = 521.0034
+scale = Vector2(0.6, 0.6)
 theme_override_constants/separation = 6
 
 [node name="WoodRow" type="HBoxContainer" parent="FireCraftChecklist" unique_id=79236682]
-visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="FireCraftChecklist/WoodRow" unique_id=13807791]
@@ -2169,11 +1849,11 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("52_wfxx7")
 
 [node name="AirCraftChecklist" type="VBoxContainer" parent="." unique_id=299491657]
-visible = false
 offset_left = 82.0
 offset_top = 337.0
-offset_right = 281.99063
-offset_bottom = 520.9999
+offset_right = 281.99072
+offset_bottom = 520.999
+scale = Vector2(0.6, 0.6)
 theme_override_constants/separation = 6
 
 [node name="LeafRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=2129590371]
@@ -2211,7 +1891,6 @@ layout_mode = 2
 text = "Idole du vent"
 
 [node name="RecipeAirRow" type="HBoxContainer" parent="AirCraftChecklist" unique_id=203916892]
-visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="AirCraftChecklist/RecipeAirRow" unique_id=261877694]
@@ -2261,11 +1940,11 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("52_wfxx7")
 
 [node name="Lvl1Checklist" type="VBoxContainer" parent="." unique_id=2040972916]
-visible = false
-offset_left = 1556.0
-offset_top = 239.0
-offset_right = 1841.0018
-offset_bottom = 423.0
+offset_left = 55.0
+offset_top = 177.0
+offset_right = 340.00192
+offset_bottom = 361.00052
+scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 6
 
 [node name="SeedRow" type="HBoxContainer" parent="Lvl1Checklist" unique_id=1985937639]
@@ -2335,6 +2014,7 @@ texture = ExtResource("52_wfxx7")
 libraries/ = SubResource("AnimationLibrary_qxfqj")
 
 [connection signal="pressed" from="Gamepad/Hand" to="." method="_on_hand_pressed"]
+[connection signal="pressed" from="Gamepad/kick" to="." method="_on_kick_pressed"]
 [connection signal="pressed" from="Gamepad/Coco" to="." method="_on_coco_pressed"]
 [connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]
 [connection signal="pressed" from="Gamepad/Bone" to="." method="_on_bone_pressed"]

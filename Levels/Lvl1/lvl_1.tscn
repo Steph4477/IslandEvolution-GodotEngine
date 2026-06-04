@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
 [ext_resource type="Texture2D" uid="uid://s0vtyicveem5" path="res://Levels/Lvl1/Environement/TileMap/tileset_platform.png" id="14_f1okb"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
-[ext_resource type="PackedScene" uid="uid://c4dkk6vac7x2q" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
+[ext_resource type="PackedScene" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
 [ext_resource type="PackedScene" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
 [ext_resource type="Script" uid="uid://o41uset6a6qr" path="res://Levels/Lvl1/Environement/seeds.gd" id="18_p8qu6"]
 [ext_resource type="PackedScene" uid="uid://nqrb063x5buh" path="res://Loot/Seed/seed.tscn" id="19_hs4kr"]
@@ -746,26 +746,25 @@ collision_mask = 256
 [node name="Snake" parent="World/Creatures" unique_id=88320707 instance=ExtResource("12_d0a2k")]
 z_index = 5
 position = Vector2(1798, 160)
-scale = Vector2(-0.6, 0.6)
+scale = Vector2(0.8, 0.8)
 collision_mask = 256
 speed = 600
 
 [node name="Snake2" parent="World/Creatures" unique_id=1961381336 instance=ExtResource("12_d0a2k")]
 z_index = 5
 position = Vector2(2493, 242)
-scale = Vector2(-0.6, 0.6)
 collision_mask = 256
 
 [node name="Snake4" parent="World/Creatures" unique_id=1775735785 instance=ExtResource("12_d0a2k")]
 z_index = 5
 position = Vector2(-1696, 235)
-scale = Vector2(-0.6, 0.6)
+scale = Vector2(0.8, 0.8)
 collision_mask = 256
 
 [node name="Snake3" parent="World/Creatures" unique_id=985537058 instance=ExtResource("12_d0a2k")]
 z_index = 5
 position = Vector2(3509, 254)
-scale = Vector2(-0.6, 0.6)
+scale = Vector2(0.8, 0.8)
 collision_mask = 256
 speed = 500
 

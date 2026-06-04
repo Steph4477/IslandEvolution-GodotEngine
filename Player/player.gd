@@ -13,6 +13,7 @@ const INPUT = {
 	"heal": "heal",
 	"ramping": "ramping",
 	"clac": "clacing",
+	"kick": "kick",
 	"sprint": "sprint",
 	"camouflage": "camouflage",
 	"fire_buff": "fire_buff",        # F (InputMap)
@@ -24,6 +25,7 @@ const INPUT = {
 @export var gravity = 1200
 @export var climb_speed = 100
 @export var clac_damage = 100
+
 @export var max_pv = 2000
 @export var pv = max_pv
 @export var cooldown_potion = 10
@@ -173,6 +175,9 @@ var harpoon_owner = null
 # --- Clac en sautant ---
 var is_jump_clacing = false
 
+# --- Coup de pied ---
+@export var kick_damage = 150
+var is_kicking = false
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
@@ -453,3 +458,8 @@ func _on_clac_area_body_entered(body):
 func _on_headbutt_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(headbutt_damage)
+
+
+func _on_kick_area_body_entered(body):
+	if body and body.has_method("on_hit"):
+		body.on_hit(kick_damage)

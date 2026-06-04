@@ -15,6 +15,7 @@ func process():
 
 	shoot()
 	clac()
+	kick_input()
 
 # ============================================================================
 #                                 SHOOT
@@ -185,7 +186,7 @@ func lance():
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
 # ============================================================================
-#                           CLAC / HEADBUTT
+#                           CLAC / HEADBUTT / KICK
 # ============================================================================
 func clac():
 	if not Input.is_action_just_pressed(p.INPUT["clac"]):
@@ -196,6 +197,15 @@ func clac():
 		return
 
 	await attack()
+
+func kick_input():
+	if not p.is_on_floor():
+		return
+
+	if not Input.is_action_just_pressed(p.INPUT["kick"]):
+		return
+
+	await kick()
 
 func headbutt():
 	if not p.is_swimming_under_water:
@@ -269,6 +279,37 @@ func attack():
 	p.get_node("ClacArea").monitoring = false
 	p.is_attacking = false
 
+func kick():
+	if p.is_attacking or p.is_dead:
+		return
+
+	if not p.is_on_floor():
+		return
+
+	if p.is_swimming:
+		return
+
+	if p.is_swimming_under_water:
+		return
+
+	if p.is_ramping or p.is_hanging or p.is_on_liana or p.is_camouflaged:
+		return
+
+	p.is_attacking = true
+	p.is_kicking = true
+	p.animation_locked = true
+	p.velocity.x = 0
+
+	p.get_node("KickArea").monitoring = true
+	p.anim.play("kick")
+
+	await p.anim.animation_finished
+
+	p.get_node("KickArea").monitoring = false
+	p.animation_locked = false
+	p.is_kicking = false
+	p.is_attacking = false
+
 # ============================================================================
 #                         ALIAS API (HUD)
 # ============================================================================
@@ -304,3 +345,9 @@ func shoot_lance():
 	firing_locked = true
 	await lance()
 	firing_locked = false
+
+func process_kick():
+	if p.is_harpooned:
+		return
+
+	await kick()

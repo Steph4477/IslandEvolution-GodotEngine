@@ -820,3 +820,6 @@ func _on_fire_pressed():
 
 func _on_air_pressed():
 	gs.player.air_buff_mod.activate_air_buff()
+
+func _on_kick_pressed():
+	gs.player.combat_mod.process_kick()
