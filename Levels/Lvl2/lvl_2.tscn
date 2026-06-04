@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" path="res://ItemsDecors/Moving_Platform/Rock/rock.tscn" id="15_a6f7x"]
 [ext_resource type="PackedScene" uid="uid://bosgcqxhm1lmu" path="res://Enemies/Rat/rat.tscn" id="16_sdx3j"]
 [ext_resource type="Texture2D" uid="uid://berthi4xbc0vx" path="res://ItemsDecors/Symbol/Turn_off/bowl.png" id="17_kxq3y"]
-[ext_resource type="PackedScene" path="res://Loot/Seed/seed.tscn" id="17_mnvun"]
+[ext_resource type="PackedScene" uid="uid://nqrb063x5buh" path="res://Loot/Seed/seed.tscn" id="17_mnvun"]
 [ext_resource type="Texture2D" uid="uid://dmrct5ausn1rt" path="res://Levels/Lvl2/Accessory/rack.png" id="18_dadqh"]
 [ext_resource type="Texture2D" uid="uid://dx07f7ujhsyqw" path="res://Levels/Lvl2/Accessory/banner.png" id="18_dnr68"]
 [ext_resource type="Texture2D" uid="uid://bh7dswtyyf7oq" path="res://ItemsDecors/Symbol/Turn_on/bowl_symbol_transparent.png" id="18_igsey"]
@@ -375,15 +375,23 @@ scale = Vector2(1, 1)
 
 [node name="Snake" parent="Node2D/Creatures/Snakes" unique_id=88320707 instance=ExtResource("14_utbl0")]
 position = Vector2(-1330.0007, -204.99664)
+scale = Vector2(-0.6, 0.6)
 
 [node name="Snake2" parent="Node2D/Creatures/Snakes" unique_id=1230557295 instance=ExtResource("14_utbl0")]
 position = Vector2(-2994.9995, 191.0076)
+scale = Vector2(-0.6, 0.6)
 
 [node name="Snake3" parent="Node2D/Creatures/Snakes" unique_id=1924301690 instance=ExtResource("14_utbl0")]
 position = Vector2(3161.0022, 852.99194)
+scale = Vector2(-0.6, 0.6)
 
 [node name="Snake4" parent="Node2D/Creatures/Snakes" unique_id=1951045511 instance=ExtResource("14_utbl0")]
 position = Vector2(4519.0005, 93.988525)
+scale = Vector2(-0.6, 0.6)
+
+[node name="Snake5" parent="Node2D/Creatures/Snakes" unique_id=1164918728 instance=ExtResource("14_utbl0")]
+position = Vector2(5725.0015, 669.98584)
+scale = Vector2(-0.6, 0.6)
 
 [node name="Items" type="Node2D" parent="Node2D" unique_id=1309033006]
 
