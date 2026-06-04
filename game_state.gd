@@ -122,11 +122,17 @@ var lvl1_seeds_done = false
 var lvl1_totem_done = false
 var lvl1_key_done = false
 
-# --- Score ---
+##################################################################################
+#                            SCORE                                               #
+##################################################################################
 var score_system: ScoreSystem
 var score_screen_scene = preload("res://Hud/ScoreScreen/score_screen.tscn")
 var score_screen = null
-
+# --- Bonus ---
+var moko_damage_bonus_percent = 0
+var moko_hp_bonus_percent = 0
+var enemy_evolution_percent = 0
+var score_evolution_applied = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -251,11 +257,17 @@ func is_menu_scene(scene_path):
 #                                     SCORE                                          #
 ######################################################################################
 func show_score_screen():
+	score_system.calculate_stars()
+
 	score_screen.show_score(
+		get_current_level_title(),
 		score_system.enemies_killed,
 		score_system.enemies_total,
 		score_system.stars,
-		score_system.get_medal()
+		score_system.get_medal(),
+		score_system.get_kill_percent(),
+		score_system.get_moko_evolution_bonus(),
+		score_system.get_enemy_evolution_bonus()
 	)
 
 func setup_level_score(level):
@@ -271,7 +283,17 @@ func setup_level_score(level):
 
 	print("SCORE - Total ennemis :", total_enemies)
 
+func get_current_level_title():
+	if current_level_path == "res://Levels/Lvl1/lvl_1.tscn":
+		return "Jungle Tropicale"
 
+	if current_level_path == "res://Levels/Lvl2/lvl_2.tscn":
+		return "Mangrove"
+
+	if current_level_path == "res://Levels/Lvl3/lvl_3.tscn":
+		return "Village Cannibale"
+
+	return "Territoire Inconnu"
 
 func load_level(scene_path):
 	resume_game()

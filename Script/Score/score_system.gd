@@ -57,10 +57,7 @@ func print_level_stats():
 #                                CALCUL ETOILES                                  #
 ##################################################################################
 func calculate_stars():
-	var percent = 0.0
-
-	if enemies_total > 0:
-		percent = (float(enemies_killed) / float(enemies_total)) * 100.0
+	var percent = get_kill_percent()
 
 	if percent >= 100:
 		stars = 3
@@ -89,3 +86,43 @@ func get_medal():
 		return "bronze"
 
 	return "banana"
+
+##################################################################################
+#                                CALCUL EVOLUTION                                #
+##################################################################################
+func get_kill_percent():
+	if enemies_total <= 0:
+		return 0
+
+	return int(round(float(enemies_killed) / float(enemies_total) * 100.0))
+
+
+func get_moko_evolution_bonus():
+	var percent = get_kill_percent()
+
+	if percent >= 100:
+		return 10
+
+	if percent >= 80:
+		return 8
+
+	if percent >= 50:
+		return 6
+
+	return 2
+
+
+func get_enemy_evolution_bonus():
+	return 12
+
+
+func get_moko_damage_multiplier(total_bonus_percent):
+	return 1.0 + float(total_bonus_percent) / 100.0
+
+
+func get_moko_hp_multiplier(total_bonus_percent):
+	return 1.0 + float(total_bonus_percent) / 100.0
+
+
+func get_enemy_evolution_multiplier(total_bonus_percent):
+	return 1.0 + float(total_bonus_percent) / 100.0
