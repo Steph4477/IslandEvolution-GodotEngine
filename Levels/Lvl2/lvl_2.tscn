@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" path="res://ItemsDecors/Symbol/symbol.tscn" id="36_ureso"]
 [ext_resource type="PackedScene" uid="uid://cl7qxeo241o6d" path="res://Items/Stone/stone_item.tscn" id="39_5rcsp"]
 [ext_resource type="PackedScene" uid="uid://0nnxjschrg38" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="41_7462l"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/digicode.tscn" id="43_04g0o"]
+[ext_resource type="PackedScene" uid="uid://bk4h33lpsm8yx" path="res://ItemsDecors/digicode.tscn" id="43_04g0o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(203.375, 2607)
@@ -121,7 +121,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1372434146]
 z_index = 30
-position = Vector2(-12, 899)
+position = Vector2(9349, 853)
 
 [node name="Tiles" type="Node2D" parent="Node2D" unique_id=1203558698]
 position = Vector2(1327, -54)
@@ -419,7 +419,7 @@ rotation = 0.0
 scale = Vector2(0.65, 0.65)
 
 [node name="Digicode" parent="Node2D/Items" unique_id=654459137 instance=ExtResource("43_04g0o")]
-z_index = 3
+z_index = 20
 position = Vector2(8917, 699)
 scale = Vector2(0.1, 0.1)
 

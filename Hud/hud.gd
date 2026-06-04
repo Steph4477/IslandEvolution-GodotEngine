@@ -37,9 +37,8 @@ extends CanvasLayer
 @onready var breath_bar = $BarSlot/BreathBar
 @onready var breath_progress = $BarSlot/BreathBar/TextureProgressBar
 @onready var speed_bar = $BarSlot/SpeedBar
-@onready var buff_container = $BarSlot/BuffContainer
-@onready var fire_buff = $BarSlot/BuffContainer/FireBuff
-@onready var air_buff = $BarSlot/BuffContainer/AirBuff
+@onready var fire_buff = $BarSlot/FireBuff
+@onready var air_buff = $BarSlot/AirBuff
 
 @onready var banane_cooldown = $Gamepad/Health/coolDownCircle
 @onready var honey_cooldown = $Gamepad/Honey/coolDownCircle
@@ -280,9 +279,6 @@ func _show_air():
 func _hide_all_buffs():
 	if fire_buff and fire_buff.has_method("hide_buff"):
 		fire_buff.hide_buff()
-
-	if buff_container:
-		buff_container.visible = false
 
 	if bar_slot and bar_slot.has_method("hide_buffs"):
 		bar_slot.hide_buffs()

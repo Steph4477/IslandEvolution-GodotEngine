@@ -1347,7 +1347,6 @@ theme_override_font_sizes/font_size = 150
 text = "0"
 
 [node name="coolDownCircle" type="TextureProgressBar" parent="Gamepad/Camouflage" unique_id=1228205795]
-visible = false
 z_index = 50
 offset_left = -50.000046
 offset_top = -50.000175
@@ -1405,14 +1404,14 @@ action = "sprint"
 libraries/ = SubResource("AnimationLibrary_6yi51")
 
 [node name="Menu" type="TouchScreenButton" parent="Gamepad" unique_id=394726589]
-position = Vector2(1645.6666, 348.6667)
+position = Vector2(1547, 349.33334)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("14_tlm4v")
 texture_pressed = ExtResource("15_ce0vt")
 action = "ui_cancel"
 
 [node name="Break" type="TouchScreenButton" parent="Gamepad" unique_id=255944262]
-position = Vector2(1536.6666, 346.6667)
+position = Vector2(1438, 347.33334)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("16_smsye")
 texture_pressed = ExtResource("17_m6ehm")
@@ -1429,15 +1428,15 @@ action = "interact"
 modulate = Color(1, 1, 1, 0.43137255)
 layout_mode = 3
 anchors_preset = 0
-offset_left = -601.0
-offset_top = -480.0
-offset_right = 1310.0
-offset_bottom = 606.0
+offset_left = 17.999939
+offset_top = 874.0
+offset_right = 347.3333
+offset_bottom = 992.66675
 scale = Vector2(1.5, 1.5)
 
 [node name="ui_left" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1587167800]
 modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(401.5, 1019)
+position = Vector2(0.66667175, 123.66664)
 rotation = -1.5707964
 texture_normal = ExtResource("62_jcaq3")
 texture_pressed = ExtResource("63_y20lb")
@@ -1445,7 +1444,7 @@ action = "ui_left"
 
 [node name="ui_right" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1845974673]
 modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(732.5, 890)
+position = Vector2(331.66663, -5.333349)
 rotation = 1.5707964
 texture_normal = ExtResource("62_jcaq3")
 texture_pressed = ExtResource("63_y20lb")
@@ -1453,16 +1452,17 @@ action = "ui_right"
 
 [node name="ui_up" type="TouchScreenButton" parent="DirectionalArrow" unique_id=1301371472]
 modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
-position = Vector2(501.5, 894)
+position = Vector2(100.66664, -1.3333492)
 texture_normal = ExtResource("62_jcaq3")
 texture_pressed = ExtResource("63_y20lb")
 action = "jump"
 
 [node name="HBoxContainerSeed" type="HBoxContainer" parent="." unique_id=418261100]
-offset_left = 1728.0
-offset_top = 50.0
-offset_right = 1865.0
-offset_bottom = 156.0
+offset_left = 1533.0
+offset_top = 60.0
+offset_right = 1834.0
+offset_bottom = 310.0
+scale = Vector2(0.4, 0.4)
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainerSeed" unique_id=1230609772]
 layout_mode = 2
@@ -1470,6 +1470,7 @@ texture = ExtResource("13_voibu")
 
 [node name="SeedCountLabel" type="Label" parent="HBoxContainerSeed" unique_id=1053427974]
 layout_mode = 2
+theme_override_font_sizes/font_size = 80
 text = "0"
 
 [node name="ShowMessage" type="Label" parent="." unique_id=1425798223]
@@ -1836,16 +1837,14 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("52_wfxx7")
 
 [node name="Lvl1Checklist" type="VBoxContainer" parent="." unique_id=2040972916]
-modulate = Color(1, 1, 1, 0)
 offset_left = 55.0
 offset_top = 177.0
-offset_right = 340.00134
-offset_bottom = 361.0024
+offset_right = 340.0014
+offset_bottom = 361.0022
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 6
 
 [node name="SeedRow" type="HBoxContainer" parent="Lvl1Checklist" unique_id=1985937639]
-visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="Lvl1Checklist/SeedRow" unique_id=82391285]
@@ -1863,7 +1862,6 @@ layout_mode = 2
 text = "Collecter toutes les graines"
 
 [node name="TotemRow" type="HBoxContainer" parent="Lvl1Checklist" unique_id=2005306354]
-visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="Lvl1Checklist/TotemRow" unique_id=398893161]
@@ -1881,7 +1879,6 @@ layout_mode = 2
 text = "Activer le totem"
 
 [node name="KeyRow" type="HBoxContainer" parent="Lvl1Checklist" unique_id=1752455795]
-visible = false
 layout_mode = 2
 
 [node name="Check" type="TextureRect" parent="Lvl1Checklist/KeyRow" unique_id=1727917266]
@@ -1902,11 +1899,12 @@ text = "Récupérer la clé"
 z_index = -20
 position = Vector2(150, 86)
 scale = Vector2(0.4, 0.369)
-texture = ExtResource("48_4dmrg")
+texture = ExtResource("49_4dmrg")
 
 [node name="Seal" type="Sprite2D" parent="Lvl1Checklist" unique_id=469071952]
+visible = false
 position = Vector2(105.99999, -2.9999998)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("52_wfxx7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Lvl1Checklist" unique_id=1371496681]

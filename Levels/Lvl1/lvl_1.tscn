@@ -211,7 +211,7 @@ size = Vector2(25.452105, 18.510044)
 size = Vector2(7.983007, 16.991264)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhs03"]
-size = Vector2(3.2110648, 12.007721)
+size = Vector2(3.6026638, 12.007721)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avxqp"]
 size = Vector2(3.7641315, 10.739855)
@@ -432,7 +432,7 @@ scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_26k7p")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=552635228]
-position = Vector2(25406.902, 17460.242)
+position = Vector2(25350.82, 17460.242)
 rotation = -3.14159
 scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_uhs03")
@@ -714,7 +714,7 @@ butterfly_color = Color(0.35136813, 0.39468732, 0.94445723, 1)
 
 [node name="Carnivores" type="Node2D" parent="World" unique_id=726381797]
 z_index = 25
-position = Vector2(127, -305)
+position = Vector2(145, -305)
 
 [node name="Carnivore" parent="World/Carnivores" unique_id=967292307 instance=ExtResource("15_los52")]
 position = Vector2(2796, 1377)
