@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" uid="uid://cdnl4r3q0ukwv" path="res://Hud/Modules/dirt_spot.tscn" id="2_ll21l"]
-[ext_resource type="Texture2D" uid="uid://jenba2rl1rbn" path="res://Interface/Healt_Bar/portrait_3_lives.png" id="2_vfut1"]
-[ext_resource type="Texture2D" uid="uid://dj8qimiy5e5lc" path="res://Interface/Healt_Bar/portrait_1_life.png" id="4_y20lb"]
 [ext_resource type="Texture2D" uid="uid://cbxsnkrjxfbe2" path="res://Interface/gamePad/kick.png" id="6_eqavf"]
 [ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/gamePad/shoot.png" id="6_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/gamePad/Pressed/shoot.png" id="7_b0qj5"]
@@ -42,8 +40,11 @@
 [ext_resource type="Script" uid="uid://bf67m6j36omgj" path="res://Hud/bar_slot.gd" id="36_k3kan"]
 [ext_resource type="Texture2D" uid="uid://c3waywbrqy860" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 [ext_resource type="Texture2D" uid="uid://b5niu77ancmy6" path="res://Interface/Breath_Bar/progress_bar.png" id="37_rg2xt"]
+[ext_resource type="Texture2D" uid="uid://cwba5d4bqna74" path="res://Interface/Healt_Bar/portrait_0.png" id="38_ll21l"]
+[ext_resource type="Texture2D" uid="uid://2t58xla0pcmj" path="res://Interface/Healt_Bar/portrait_1.png" id="39_6yi51"]
 [ext_resource type="Script" uid="uid://dbxy0leaaep4o" path="res://Hud/breath_bar.gd" id="39_63x2m"]
-[ext_resource type="Texture2D" uid="uid://ctvx5exbhdwkw" path="res://Interface/Healt_Bar/portrait_0_life.png" id="42_1uhjb"]
+[ext_resource type="Texture2D" uid="uid://buogqxbhh8s8k" path="res://Interface/Healt_Bar/portrait_2.png" id="40_1uhjb"]
+[ext_resource type="Texture2D" uid="uid://opy5tm8q6c7v" path="res://Interface/Healt_Bar/portrait_3.png" id="41_vfut1"]
 [ext_resource type="Texture2D" uid="uid://cbtbohoak4gcq" path="res://Interface/Healt_Bar/bar_under.png" id="42_ll21l"]
 [ext_resource type="Texture2D" uid="uid://cljehnxfugmw6" path="res://Interface/Healt_Bar/progress_bar.png" id="43_6yi51"]
 [ext_resource type="Script" uid="uid://cwkyllyodjga4" path="res://Hud/air_buff.gd" id="44_legcx"]
@@ -1479,27 +1480,6 @@ offset_top = -28.0
 offset_right = 47.0
 offset_bottom = -5.0
 
-[node name="MokoLives" type="Node2D" parent="." unique_id=1672920002]
-z_index = 100
-position = Vector2(71, 88)
-scale = Vector2(1.1, 1.1)
-
-[node name="Portrait3Lives" type="Sprite2D" parent="MokoLives" unique_id=297368903]
-position = Vector2(3.6363647, -2.9802322e-08)
-texture = ExtResource("2_vfut1")
-
-[node name="Portrait2lives" type="Sprite2D" parent="MokoLives" unique_id=759941397]
-position = Vector2(3.3635807, -2.1363497)
-texture = ExtResource("4_y20lb")
-
-[node name="Portrait1Life" type="Sprite2D" parent="MokoLives" unique_id=725649516]
-position = Vector2(3.636365, -0.90909374)
-texture = ExtResource("4_y20lb")
-
-[node name="Portrait0Life" type="Sprite2D" parent="MokoLives" unique_id=1008948124]
-position = Vector2(6.0908756, 0.5909146)
-texture = ExtResource("42_1uhjb")
-
 [node name="HealthBar" type="CanvasLayer" parent="." unique_id=388120387]
 script = ExtResource("19_s8lhr")
 
@@ -1515,6 +1495,7 @@ offset_right = 717.0
 offset_bottom = 195.0
 min_value = -500.0
 max_value = 2000.0
+step = 10.0
 value = 2000.0
 nine_patch_stretch = true
 texture_under = ExtResource("42_ll21l")
@@ -1526,6 +1507,35 @@ offset_left = 7.0
 offset_top = -28.0
 offset_right = 47.0
 offset_bottom = 12.0
+
+[node name="HpLabel" type="Label" parent="HealthBar" unique_id=1601135723]
+offset_left = 299.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 30
+text = "0000/0000"
+
+[node name="MokoLives" type="Node2D" parent="HealthBar" unique_id=1672920002]
+z_index = -100
+position = Vector2(71, 88)
+scale = Vector2(1.1, 1.1)
+
+[node name="Portrait3Lives" type="Sprite2D" parent="HealthBar/MokoLives" unique_id=297368903]
+position = Vector2(3.6363647, -2.9802322e-08)
+texture = ExtResource("38_ll21l")
+
+[node name="Portrait2lives" type="Sprite2D" parent="HealthBar/MokoLives" unique_id=759941397]
+position = Vector2(3.3635807, -2.1363497)
+texture = ExtResource("39_6yi51")
+
+[node name="Portrait1Life" type="Sprite2D" parent="HealthBar/MokoLives" unique_id=725649516]
+position = Vector2(3.636365, -0.90909374)
+texture = ExtResource("40_1uhjb")
+
+[node name="Portrait0Life" type="Sprite2D" parent="HealthBar/MokoLives" unique_id=1008948124]
+position = Vector2(6.0908756, 0.5909146)
+texture = ExtResource("41_vfut1")
 
 [node name="BarSlot" type="VBoxContainer" parent="." unique_id=1375780569]
 offset_left = 97.0

@@ -3,11 +3,12 @@ extends CanvasLayer
 # -----------------------------
 #            NODES
 # -----------------------------
-@onready var moko_lives = $MokoLives
-@onready var portrait_3_lives = $MokoLives/Portrait3Lives
-@onready var portrait_2_lives = $MokoLives/Portrait2lives
-@onready var portrait_1_life = $MokoLives/Portrait1Life
-@onready var portrait_0_life = $MokoLives/Portrait0Life
+@onready var health_bar = $HealthBar
+@onready var moko_lives = $HealthBar/MokoLives
+@onready var portrait_3_lives = $HealthBar/MokoLives/Portrait3Lives
+@onready var portrait_2_lives = $HealthBar/MokoLives/Portrait2lives
+@onready var portrait_1_life = $HealthBar/MokoLives/Portrait1Life
+@onready var portrait_0_life = $HealthBar/MokoLives/Portrait0Life
 
 @onready var ramp_button = $Gamepad/Ramp
 @onready var sprint_button = $Gamepad/Sprint
@@ -112,6 +113,10 @@ func _ready():
 	gs = get_node("/root/GameState")
 	gs.hud = self
 
+	gs.health_bar = health_bar
+
+	if gs.player:
+		update_health_bar(gs.player.pv, gs.player.max_pv)
 	coco_button.visible = false
 	bone_button.visible = false
 	lance_button.visible = false
@@ -234,6 +239,14 @@ func _process(delta):
 		honey_cooldown.value = (honey_cd_left / honey_cd_total) * honey_cooldown.max_value
 		if honey_cd_left == 0.0:
 			honey_cooldown.visible = false
+
+# ---------------------------------------------
+#         MAJ BARRE DE VIE DE MOKO
+# ---------------------------------------------
+func update_health_bar(pv, max_pv):
+	if health_bar:
+		health_bar.set_max_value(max_pv)
+		health_bar.set_value(pv)
 
 # -----------------------------
 #        HELPERS VISIBILITÉ

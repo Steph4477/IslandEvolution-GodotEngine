@@ -20,8 +20,11 @@ func on_hit(damage):
 	p.pv -= damage
 	p.pv = clamp(p.pv, 0, p.max_pv)
 
-	if p.game_state and p.game_state.health_bar:
-		p.game_state.health_bar.set_value(p.pv)
+	if p.game_state and p.game_state.hud:
+		p.game_state.hud.update_health_bar(p.pv, p.max_pv)
+
+	if p.game_state and p.game_state.hud:
+		p.game_state.hud.update_health_bar(p.pv, p.max_pv)
 
 	if p.game_state:
 		p.game_state.update_boss_fight_hud()

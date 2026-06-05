@@ -760,6 +760,7 @@ z_index = 5
 position = Vector2(-1696, 235)
 scale = Vector2(0.8, 0.8)
 collision_mask = 256
+max_hp = 1000
 
 [node name="Snake3" parent="World/Creatures" unique_id=985537058 instance=ExtResource("12_d0a2k")]
 z_index = 5
