@@ -449,7 +449,6 @@ func update_air_display():
 #        BOSS FIGHT HUD
 # ============================================================================
 func set_gameplay_hud_visible(not_visible):
-	$MokoLives.visible = not_visible
 	$HBoxContainerSeed.visible = not_visible
 	$BarSlot.visible = not_visible
 	$HealthBar.visible = not_visible

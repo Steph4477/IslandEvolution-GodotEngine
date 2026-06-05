@@ -541,6 +541,15 @@ offset_right = 1832.0
 offset_bottom = 1444.0
 texture = ExtResource("5_aqhy2")
 
+[node name="HpMokoLabel" type="Label" parent="Control/HudMoko" unique_id=844248523]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 178.0
+offset_right = 522.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0000/0000"
+
 [node name="Versus" type="TextureRect" parent="Control" unique_id=34461187]
 z_index = 5
 layout_mode = 1
@@ -606,6 +615,15 @@ offset_top = 391.0
 offset_right = 297.0
 offset_bottom = 1471.0
 texture = ExtResource("11_ko504")
+
+[node name="HpBossLabel" type="Label" parent="Control/HudBoss" unique_id=781175065]
+layout_mode = 0
+offset_left = 1434.0
+offset_top = 184.0
+offset_right = 1514.0
+offset_bottom = 207.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0000/0000"
 
 [node name="Anim" type="AnimationPlayer" parent="Control" unique_id=1713051258]
 libraries/ = SubResource("AnimationLibrary_gl2h4")
