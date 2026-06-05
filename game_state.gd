@@ -135,6 +135,15 @@ var moko_hp_bonus_percent = 0
 var enemy_evolution_percent = 0
 var score_evolution_applied = false
 
+##################################################################################
+#                            DIFFICULTE                                          #
+##################################################################################
+var difficulty = "explorer"
+
+var explorer_unlocked = true
+var survivor_unlocked = false
+var king_unlocked = false
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -545,6 +554,11 @@ func save_game():
 	
 	data["lvl1_intro_seen"] = lvl1_intro_seen
 
+	data["difficulty"] = difficulty
+	data["explorer_unlocked"] = explorer_unlocked
+	data["survivor_unlocked"] = survivor_unlocked
+	data["king_unlocked"] = king_unlocked
+
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
 	file.close()
@@ -621,6 +635,11 @@ func apply_save_data(data):
 	air_altar_found = data.get("air_altar_found", false)
 	
 	lvl1_intro_seen = data.get("lvl1_intro_seen", false)
+
+	difficulty = data.get("difficulty", "explorer")
+	explorer_unlocked = data.get("explorer_unlocked", true)
+	survivor_unlocked = data.get("survivor_unlocked", false)
+	king_unlocked = data.get("king_unlocked", false)
 
 	# Recharge du niveau sauvegardé
 	await load_level(pending_level_path)
