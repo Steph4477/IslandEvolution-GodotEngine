@@ -44,8 +44,13 @@
 [ext_resource type="Texture2D" uid="uid://cjbgodwtb58uc" path="res://Enemies/Toucan/Speack/7.png" id="43_thwuj"]
 [ext_resource type="Texture2D" uid="uid://cjbq0wl8lualf" path="res://Enemies/Toucan/Speack/8.png" id="44_0dgkx"]
 [ext_resource type="Texture2D" uid="uid://lwn2wbh6c1d7" path="res://Enemies/Toucan/Speack/10.png" id="46_sc7r6"]
+[ext_resource type="Texture2D" uid="uid://3p05s65rwl2t" path="res://Hud/Difficulty/explorer.png" id="47_417gj"]
 [ext_resource type="Texture2D" uid="uid://ng8tkp41s0b" path="res://Enemies/Toucan/Speack/11.png" id="47_r0onk"]
+[ext_resource type="Texture2D" uid="uid://c504ul5iebj6j" path="res://Hud/Difficulty/survivor.png" id="48_o1sw5"]
 [ext_resource type="Texture2D" uid="uid://b0vjjlpxcxe54" path="res://Enemies/Toucan/Speack/12.png" id="48_y7xel"]
+[ext_resource type="Texture2D" uid="uid://byvi3o0pfsn2n" path="res://Hud/Difficulty/king.png" id="49_qqyoo"]
+[ext_resource type="Texture2D" uid="uid://bi8p58lo3tmd2" path="res://Hud/Difficulty/Locked/survivor.png" id="50_vrp4g"]
+[ext_resource type="Texture2D" uid="uid://dao52p0bk57qw" path="res://Hud/Difficulty/Locked/king.png" id="51_4qyy0"]
 
 [sub_resource type="Animation" id="Animation_b47am"]
 length = 0.001
@@ -90,58 +95,34 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainerOptions:position")
+tracks/0/path = NodePath("ToucanDialogue/Toucan:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1623, 929)]
+"update": 1,
+"values": [ExtResource("23_q7kkj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainerQuitter:position")
+tracks/1/path = NodePath("ToucanDialogue/Toucan:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(57, 929)]
+"values": [Vector2(1e-05, 1e-05)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ToucanDialogue/Toucan:texture")
+tracks/2/path = NodePath("ToucanDialogue/Toucan:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("23_q7kkj")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ToucanDialogue/Toucan:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ToucanDialogue/Toucan:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -151,30 +132,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_f18hj"]
 resource_name = "appear"
 length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainerOptions:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1969, 931), Vector2(1623, 929)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainerQuitter:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-291, 927), Vector2(57, 929)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2rdvj"]
 _data = {
@@ -383,21 +340,11 @@ autoplay = &"idle_moko"
 z_index = 5
 position = Vector2(787, 471)
 
-[node name="VBoxContainerLoad" type="VBoxContainer" parent="Load" unique_id=246444970]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Load" type="TextureButton" parent="Load" unique_id=1236002251]
 offset_left = -14.0
 offset_top = -94.0
 offset_right = 266.0
 offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="Load" type="TextureButton" parent="Load/VBoxContainerLoad" unique_id=1236002251]
-layout_mode = 2
 texture_normal = ExtResource("9_qmtbe")
 texture_pressed = ExtResource("9_plvp6")
 
@@ -405,21 +352,11 @@ texture_pressed = ExtResource("9_plvp6")
 z_index = 5
 position = Vector2(735, 638)
 
-[node name="VBoxContainerSave" type="VBoxContainer" parent="Save" unique_id=1093500135]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Save" type="TextureButton" parent="Save" unique_id=1793276006]
 offset_left = -14.0
 offset_top = -130.0
 offset_right = 382.0
 offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="Save" type="TextureButton" parent="Save/VBoxContainerSave" unique_id=1793276006]
-layout_mode = 2
 texture_normal = ExtResource("10_qfdsm")
 texture_pressed = ExtResource("11_oci4l")
 
@@ -427,72 +364,34 @@ texture_pressed = ExtResource("11_oci4l")
 z_index = 5
 position = Vector2(767, 637)
 
-[node name="VBoxContainerStart" type="VBoxContainer" parent="Continue" unique_id=347625118]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Continue" type="TextureButton" parent="Continue" unique_id=980017973]
 offset_right = 303.0
 offset_bottom = 99.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="Continue" type="TextureButton" parent="Continue/VBoxContainerStart" unique_id=980017973]
-layout_mode = 2
 texture_normal = ExtResource("9_7s5l6")
 texture_pressed = ExtResource("7_qfdsm")
 
 [node name="Restart" type="Node2D" parent="." unique_id=1989511834]
 position = Vector2(705, 773)
 
-[node name="VBoxContainerRestart" type="VBoxContainer" parent="Restart" unique_id=1195688488]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 442.0
-offset_bottom = 98.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="Restart" type="TextureButton" parent="Restart/VBoxContainerRestart" unique_id=1853942618]
-layout_mode = 2
-texture_normal = ExtResource("9_ss15l")
-texture_pressed = ExtResource("13_aj0cd")
-
-[node name="VBoxContainerOptions" type="VBoxContainer" parent="." unique_id=493358571]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1623.0
-offset_top = 929.0
-offset_right = 1887.001
-offset_bottom = 1031.002
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Options" type="TextureButton" parent="VBoxContainerOptions" unique_id=1277407320]
-layout_mode = 2
+[node name="Options" type="TextureButton" parent="Restart" unique_id=1277407320]
+offset_left = 918.0
+offset_top = 156.0
+offset_right = 1182.0
+offset_bottom = 258.0
 texture_normal = ExtResource("11_bfns0")
 texture_pressed = ExtResource("12_n1ip6")
 
-[node name="VBoxContainerQuitter" type="VBoxContainer" parent="." unique_id=1772656248]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 57.0
-offset_top = 929.0
-offset_right = 317.0
-offset_bottom = 1029.0002
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+[node name="Restart" type="TextureButton" parent="Restart" unique_id=1853942618]
+offset_right = 442.0
+offset_bottom = 98.0
+texture_normal = ExtResource("9_ss15l")
+texture_pressed = ExtResource("13_aj0cd")
 
-[node name="Quitter" type="TextureButton" parent="VBoxContainerQuitter" unique_id=1723617029]
-layout_mode = 2
+[node name="Quitter" type="TextureButton" parent="Restart" unique_id=1723617029]
+offset_left = -648.0
+offset_top = 156.0
+offset_right = -388.0
+offset_bottom = 256.0
 texture_normal = ExtResource("14_aj0cd")
 texture_pressed = ExtResource("14_usbvp")
 
@@ -515,10 +414,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 677.0
-offset_top = 915.0
-offset_right = 677.0
-offset_bottom = 915.0
+offset_left = 718.0
+offset_top = 917.0
+offset_right = 718.0
+offset_bottom = 917.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wvan0")
@@ -551,9 +450,40 @@ texture = ExtResource("23_q7kkj")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ToucanDialogue" unique_id=1916459181]
 libraries/ = SubResource("AnimationLibrary_jhr54")
 
-[connection signal="pressed" from="Load/VBoxContainerLoad/Load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="Save/VBoxContainerSave/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="Continue/VBoxContainerStart/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Restart/VBoxContainerRestart/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="VBoxContainerOptions/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainerQuitter/Quitter" to="." method="_on_options_pressed"]
+[node name="DifficultyButtons" type="Node2D" parent="." unique_id=692908063]
+z_index = 5
+position = Vector2(1367, 1093)
+scale = Vector2(0.35, 0.35)
+
+[node name="Unlocked" type="Node2D" parent="DifficultyButtons" unique_id=82071747]
+
+[node name="Explorer" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=1235083260]
+position = Vector2(-2202.8572, -45.714287)
+texture = ExtResource("47_417gj")
+
+[node name="Survivor" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=44727486]
+visible = false
+position = Vector2(-1303.3333, -20)
+texture = ExtResource("48_o1sw5")
+
+[node name="King" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=1746228927]
+visible = false
+position = Vector2(-30, -50)
+texture = ExtResource("49_qqyoo")
+
+[node name="Locked" type="Node2D" parent="DifficultyButtons" unique_id=1603997598]
+
+[node name="Survivor" type="Sprite2D" parent="DifficultyButtons/Locked" unique_id=1714292691]
+position = Vector2(-1060, -40.0001)
+texture = ExtResource("50_vrp4g")
+
+[node name="King" type="Sprite2D" parent="DifficultyButtons/Locked" unique_id=1262661424]
+position = Vector2(68.57142, -37.142857)
+texture = ExtResource("51_4qyy0")
+
+[connection signal="pressed" from="Load/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Save/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Continue/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Restart/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Restart/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Restart/Quitter" to="." method="_on_quitter_pressed"]

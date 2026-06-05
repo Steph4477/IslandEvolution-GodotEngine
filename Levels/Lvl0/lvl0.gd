@@ -28,3 +28,7 @@ func _on_save_pressed():
 
 func _on_continue_pressed():
 	await gs.continue_game()
+
+
+func _on_quitter_pressed() -> void:
+	pass # Replace with function body.
