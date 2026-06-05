@@ -19,13 +19,13 @@ var is_shooting = false
 var hit_locked = false
 var in_melee = false
 
+var hb = null
 var health_bar = null
 var anim = null
 var spawn_point = null
 var attack_timer = null
 var projectile_timer = null
 
-var hb = null
 
 func _ready():
 	setup_common_refs()
@@ -37,9 +37,10 @@ func _ready():
 
 	hp = max_hp
 
-	if health_bar:
-		health_bar.max_value = max_hp
-		health_bar.value = hp
+	if hb:
+		hb.set_max(max_hp)
+		hb.set_value(hp)
+
 
 func apply_evolution_stats():
 	var multiplier = gs.score_system.get_enemy_evolution_multiplier(gs.enemy_evolution_percent)
@@ -51,7 +52,11 @@ func apply_evolution_stats():
 	print("ENEMY HP : ", max_hp)
 	print("ENEMY DAMAGE : ", damage)
 
+
 func setup_common_refs():
+	if has_node("HealthBar"):
+		hb = $HealthBar
+
 	if has_node("HealthBar/ProgressBar"):
 		health_bar = $HealthBar/ProgressBar
 
@@ -71,11 +76,13 @@ func setup_common_refs():
 	elif has_node("Rotator/ProjectileTimer"):
 		projectile_timer = $Rotator/ProjectileTimer
 
+
 func refresh_player():
 	if gs == null:
 		gs = get_node("/root/GameState")
 
 	player = gs.player
+
 
 ##########################################################################
 #                             ATTAQUE                                    #
@@ -99,6 +106,7 @@ func can_attack_player():
 
 	return true
 
+
 func on_hit(amount):
 	if is_dead:
 		return
@@ -107,9 +115,10 @@ func on_hit(amount):
 		return
 
 	hp -= amount
+	hp = max(hp, 0)
 
-	if health_bar:
-		health_bar.value = max(hp, 0)
+	if hb:
+		hb.set_value(hp)
 
 	_show_damage_popup(amount)
 
@@ -125,8 +134,10 @@ func on_hit(amount):
 	await get_tree().create_timer(hit_lock_time).timeout
 	hit_locked = false
 
+
 func do_attack_damage():
 	player.damage_mod.on_hit(damage)
+
 
 func attack():
 	if not can_attack_player():
@@ -144,6 +155,7 @@ func attack():
 
 	is_attacking = false
 
+
 # --- Popup dégâts ---
 func _show_damage_popup(amount):
 	if health_bar == null:
@@ -158,6 +170,7 @@ func _show_damage_popup(amount):
 
 	popup.position = Vector2(0, -20)
 	popup.show_damage(amount)
+
 
 ##########################################################################
 #                             DIE                                        #
@@ -189,6 +202,7 @@ func die():
 
 	spawn_loot()
 	queue_free()
+
 
 func spawn_loot():
 	if not drop_loot_enabled:
