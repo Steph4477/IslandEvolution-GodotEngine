@@ -264,6 +264,9 @@ func on_hit(amount):
 #                                   DIE
 # ============================================================================
 func die():
+	print("BOSS CANNIBAL DIE")
+	print("DIFFICULTY BEFORE UNLOCK : ", gs.difficulty)
+
 	in_melee = false
 
 	is_quaking = false
@@ -276,6 +279,11 @@ func die():
 
 	if cam:
 		cam.offset = Vector2.ZERO
+
+	gs.unlock_next_difficulty()
+
+	print("SURVIVOR AFTER BOSS DIE : ", gs.survivor_unlocked)
+	print("KING AFTER BOSS DIE : ", gs.king_unlocked)
 
 	gs.hide_boss_fight_hud()
 

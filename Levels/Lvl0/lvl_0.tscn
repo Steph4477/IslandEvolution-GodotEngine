@@ -463,12 +463,12 @@ texture = ExtResource("47_417gj")
 
 [node name="Survivor" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=44727486]
 visible = false
-position = Vector2(-1303.3333, -20)
+position = Vector2(-1065.7144, -37.142857)
 texture = ExtResource("48_o1sw5")
 
 [node name="King" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=1746228927]
 visible = false
-position = Vector2(-30, -50)
+position = Vector2(77.14285, -34.285713)
 texture = ExtResource("49_qqyoo")
 
 [node name="Locked" type="Node2D" parent="DifficultyButtons" unique_id=1603997598]

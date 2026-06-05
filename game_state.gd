@@ -173,7 +173,7 @@ func _ready():
 	await get_tree().process_frame
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Test/test_scene.tscn")
-	await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn")
@@ -182,7 +182,16 @@ func _ready():
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
+	await get_tree().process_frame
 
+	load_global_progress()
+	difficulty = get_continue_difficulty()
+
+	print("TEST DIFFICULTY : ", difficulty)
+	print("SURVIVOR UNLOCKED : ", survivor_unlocked)
+	print("KING UNLOCKED : ", king_unlocked)
+
+	await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("break"):
@@ -324,7 +333,9 @@ func get_current_level_title():
 
 	return "Territoire Inconnu"
 
-# --- Evolution ---
+######################################################################################
+#                                 EVOLUTION                                          #
+######################################################################################
 func apply_moko_evolution():
 	if score_evolution_applied:
 		return
@@ -352,6 +363,89 @@ func apply_moko_hp_evolution(player_instance):
 
 	print("MOKO HP - Bonus total +", moko_hp_bonus_percent, "%")
 	print("MOKO HP - PV max :", player_instance.max_pv)
+
+######################################################################################
+#                                DIFFICULTES                                         #
+######################################################################################
+func get_continue_difficulty():
+	if king_unlocked:
+		return "king"
+	elif survivor_unlocked:
+		return "survivor"
+	else:
+		return "explorer"
+
+func unlock_next_difficulty():
+	print("DIFFICULTY AU BOSS : ", difficulty)
+
+	if difficulty == "explorer":
+		survivor_unlocked = true
+		difficulty = "survivor"
+		print("SURVIVANT DEBLOQUE")
+
+	elif difficulty == "survivor":
+		king_unlocked = true
+		difficulty = "king"
+		print("ROI DE L'ILE DEBLOQUE")
+
+	save_game()
+
+	print("DIFFICULTY APRES BOSS : ", difficulty)
+	print("SURVIVOR : ", survivor_unlocked)
+	print("KING : ", king_unlocked)
+
+
+# --- Relié au bouton nouvelle partie du lvl_0 ---
+func reset_progression():
+	difficulty = "explorer"
+
+	explorer_unlocked = true
+	survivor_unlocked = false
+	king_unlocked = false
+
+	moko_damage_bonus_percent = 0
+	moko_hp_bonus_percent = 0
+	enemy_evolution_percent = 0
+
+	current_level_path = "res://Levels/Lvl1/lvl_1.tscn"
+	last_player_pos = Vector2.ZERO
+	has_last_player_pos = true
+	has_pending_load = false
+	pending_level_path = ""
+	pending_player_pos = Vector2.ZERO
+
+	save_game()
+
+	print("RESET PROGRESSION")
+	print("DIFFICULTY : ", difficulty)
+	print("SURVIVOR : ", survivor_unlocked)
+	print("KING : ", king_unlocked)
+
+func load_global_progress():
+	if not FileAccess.file_exists(SAVE_PATH):
+		return false
+
+	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var content = file.get_as_text()
+	file.close()
+
+	var json = JSON.new()
+	var result = json.parse(content)
+	if result != OK:
+		return false
+
+	var data = json.data
+
+	difficulty = data.get("difficulty", "explorer")
+	explorer_unlocked = data.get("explorer_unlocked", true)
+	survivor_unlocked = data.get("survivor_unlocked", false)
+	king_unlocked = data.get("king_unlocked", false)
+
+	moko_damage_bonus_percent = int(data.get("moko_damage_bonus_percent", 0))
+	moko_hp_bonus_percent = int(data.get("moko_hp_bonus_percent", 0))
+	enemy_evolution_percent = int(data.get("enemy_evolution_percent", 0))
+
+	return true
 
 func load_level(scene_path):
 	resume_game()
@@ -388,7 +482,10 @@ func load_level(scene_path):
 	var spawn_point = _find_spawn(level)
 	var is_menu = spawn_point == null
 
-	# HUD (toujours actif)
+	if is_menu:
+		load_global_progress()
+
+	# HUD
 	if is_menu:
 		if hud:
 			hud.visible = false
@@ -559,6 +656,10 @@ func save_game():
 	data["survivor_unlocked"] = survivor_unlocked
 	data["king_unlocked"] = king_unlocked
 
+	data["moko_damage_bonus_percent"] = moko_damage_bonus_percent
+	data["moko_hp_bonus_percent"] = moko_hp_bonus_percent
+	data["enemy_evolution_percent"] = enemy_evolution_percent
+
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
 	file.close()
@@ -640,6 +741,10 @@ func apply_save_data(data):
 	explorer_unlocked = data.get("explorer_unlocked", true)
 	survivor_unlocked = data.get("survivor_unlocked", false)
 	king_unlocked = data.get("king_unlocked", false)
+
+	moko_damage_bonus_percent = int(data.get("moko_damage_bonus_percent", 0))
+	moko_hp_bonus_percent = int(data.get("moko_hp_bonus_percent", 0))
+	enemy_evolution_percent = int(data.get("enemy_evolution_percent", 0))
 
 	# Recharge du niveau sauvegardé
 	await load_level(pending_level_path)
