@@ -1,23 +1,29 @@
-extends CharacterBody2D
+extends EnemyBase
 
-@export var max_hp = 500
 @export var speed = 200
 @export var attack_range = 600
 @export var stop_distance = 100
 @export var cooldown = 1
-@export var damage = 100
 
 const GRAVITY = 2000
 
-@onready var health_bar = $HealthBar/ProgressBar
-@onready var anim = $Rotator/AnimationPlayer
 @onready var rotator = $Rotator
 
-var pv = 0
-var player = null
-var is_attacking = false
+var target = null
+var target_mod = EnemyModTarget.new()
+var melee_mod = EnemyModMelee.new()
+var dodge_mod = EnemyModDodgeJump.new()
+var jump_animation_name = "recoil"
+var patrol_mod = EnemyModPatrol.new()
+
+var is_patrolling = true
+var is_patrol_paused = false
+var patrol_direction = 1
+
+var patrol_speed = 120.0
+var patrol_change_interval = 4.0
+
 var is_swim_croco = false
-var is_dead = false
 var is_hurt = false
 var is_roaring = false
 var has_roared = false
@@ -33,12 +39,41 @@ var water_current = Vector2.ZERO
 var in_swim_zone = false
 var in_floor_zone = false
 
+
 func _ready():
-	pv = max_hp
-	health_bar.max_value = max_hp
-	health_bar.value = pv
+	setup_common_refs()
+
+	gs = get_node("/root/GameState")
+	player = gs.player
+	gs.connect("player_updated", Callable(self, "_on_player_changed"))
+
+	apply_evolution_stats()
+
+	hp = max_hp
+
+	if hb:
+		hb.set_max(max_hp)
+		hb.set_value(hp)
+
 	base_scale_x = rotator.scale.x
-	find_and_bind_player()
+
+	target_mod.setup(self)
+	melee_mod.setup(self)
+	patrol_mod.setup(self)
+	dodge_mod.setup(self)
+
+	attack_timer.wait_time = cooldown
+	attack_timer.stop()
+
+	patrol_timer.wait_time = patrol_change_interval
+	patrol_timer.start()
+
+	patrol_mod.start()
+
+	dodge_mod.hits_before_dodge = 1
+	dodge_mod.dodge_speed = 600
+	dodge_mod.dodge_jump_velocity = 0
+	dodge_mod.dodge_duration = 0.45
 
 # =============================================================
 #                      PHYSICS PROCESS
@@ -49,29 +84,30 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	# Eau = pas de gravité, sinon gravité normale
 	if is_swim_croco:
 		velocity.y = water_current.y
 	else:
 		apply_gravity(delta)
 
+	if dodge_mod.is_dodging:
+		move_and_slide()
+		return
+
+	if is_swim_croco and is_patrol_paused:
+		if anim.current_animation != "swim":
+			anim.play("swim")
+
 	if not is_instance_valid(player):
 		move_and_slide()
 		return
 
-	# Ciblage / orientation
-	target()
-	flip(dx)
+	target_mod.update()
+	update_flip()
 
-	# Logique: move / stop / attack
 	update_logic()
 
-	# Animations
-	process_swim()
-	process_walk()
-	process_idle()
-
 	move_and_slide()
+
 
 # =============================================================
 #                         GRAVITÉ
@@ -82,78 +118,99 @@ func apply_gravity(delta):
 	else:
 		velocity.y += GRAVITY * delta
 
-# =============================================================
-#                     GAME STATE / PLAYER
-# =============================================================
-func find_and_bind_player():
-	var gs = get_node_or_null("/root/GameState")
-	if gs:
-		player = gs.player
-		gs.connect("player_updated", Callable(self, "_on_player_changed"))
 
+# =============================================================
+#                     PLAYER / FLIP
+# =============================================================
 func _on_player_changed(new_player):
 	player = new_player
 
-# =============================================================
-#                  CIBLE / ORIENTATION
-# =============================================================
-func target():
-	if player == null:
-		return
-
-	var target_pos = player.global_position
-	if player.has_node("TurnAxis"):
-		target_pos = player.get_node("TurnAxis").global_position
-
-	var to_target = target_pos - global_position
-	dx = to_target.x
-	distance = to_target.length()
-
-
-func flip(_dx):
-	if dx > 1:
-		rotator.scale.x = -base_scale_x
-	elif dx < -1:
-		rotator.scale.x = base_scale_x
+func update_flip():
+	if is_patrolling:
+		if patrol_direction < 0:
+			rotator.scale.x = base_scale_x
+		else:
+			rotator.scale.x = -base_scale_x
+	else:
+		if dx > 0:
+			rotator.scale.x = -base_scale_x
+		elif dx < 0:
+			rotator.scale.x = base_scale_x
 
 # =============================================================
 #             LOGIQUE PRINCIPALE 
 # =============================================================
+func update_patrol_zone():
+	in_melee = false
+	has_roared = false
+	is_patrolling = true
+
+	attack_timer.stop()
+	$Sound/Roar.stop()
+
+	if patrol_timer and patrol_timer.is_stopped():
+		patrol_timer.start()
+
+	if is_swim_croco:
+		if is_patrol_paused:
+			is_patrol_paused = false
+
+		patrol_mod.update_movement()
+
+		if anim.current_animation != "swim":
+			anim.play("swim")
+
+		return
+
+	patrol_mod.update_movement()
+
+	if abs(velocity.x) > 0:
+		if anim.current_animation != "walk":
+			anim.play("walk")
+	else:
+		if anim.current_animation != "idle":
+			anim.play("idle")
+
 func update_logic():
 	if is_dead:
 		velocity.x = 0
 		return
 
-	# Si un hit, un roar ou une attaque est en cours :
-	# Laisse ces états gérer eux-mêmes velocity.x 
 	if is_attacking or is_hurt or is_roaring:
-		return
-
-	var horiz_distance = abs(dx) # distance horizontale absolue
-	
-	# Pas à portée -> stop son + reset roar
-	if horiz_distance > attack_range:
 		velocity.x = 0
-		has_roared = false
-		$Sound/Roar.stop()
 		return
 
-	# Moko détecté au sol -> boucle du son roar
-	if not is_swim_croco and horiz_distance <= attack_range:
+	if target == null:
+		update_patrol_zone()
+		return
+
+	var horiz_distance = distance
+
+	if horiz_distance > attack_range:
+		target = null
+		update_patrol_zone()
+		return
+
+	is_patrolling = false
+
+	if not is_swim_croco:
 		if not $Sound/Roar.playing:
 			$Sound/Roar.play()
 	else:
 		$Sound/Roar.stop()
 
-	# ROAR UNE FOIS seulement si AU SOL
 	if not is_swim_croco and not has_roared:
+		velocity.x = 0
+
 		if not is_roaring:
 			roar()
-		velocity.x = 0
+
 		return
 
-	# Dans la portée mais pas encore au contact -> on avance vers Moko
 	if horiz_distance > stop_distance:
+		in_melee = false
+		attack_timer.stop()
+
 		var dir = 0
 		if dx > 0:
 			dir = 1
@@ -162,19 +219,68 @@ func update_logic():
 
 		if is_swim_croco:
 			velocity.x = dir * speed + water_current.x
+
+			if anim.current_animation != "swim":
+				anim.play("swim")
 		else:
 			velocity.x = dir * speed
+
+			if anim.current_animation != "walk":
+				anim.play("walk")
+
 		return
 
-	# Assez proche : s'arrête et attaque si la zone correspond
 	velocity.x = 0
+	in_melee = false
 
 	if is_swim_croco and in_swim_zone:
-		if not is_attacking:
-			attack_swim()
+		in_melee = true
+
+		if attack_timer.is_stopped():
+			attack()
 	elif not is_swim_croco and in_floor_zone:
-		if not is_attacking:
-			attack_on_floor()
+		in_melee = true
+
+		if attack_timer.is_stopped():
+			attack()
+	else:
+		attack_timer.stop()
+
+
+func attack():
+	if is_dead:
+		return
+	if is_attacking or is_hurt or is_roaring:
+		return
+	if target == null:
+		in_melee = false
+		attack_timer.stop()
+		return
+
+	var horiz_distance = distance
+
+	if horiz_distance > stop_distance:
+		in_melee = false
+		attack_timer.stop()
+		return
+
+	if is_swim_croco:
+		if not in_swim_zone:
+			in_melee = false
+			attack_timer.stop()
+			return
+	else:
+		if not in_floor_zone:
+			in_melee = false
+			attack_timer.stop()
+			return
+
+	attack_timer.start()
+
+	if is_swim_croco:
+		attack_swim()
+	else:
+		attack_on_floor()
 
 # =============================================================
 #                         ROAR (SOL UNIQUEMENT)
@@ -185,7 +291,7 @@ func roar():
 	if is_roaring:
 		return
 	if is_swim_croco:
-		return  # pas de roar dans l'eau
+		return
 
 	is_roaring = true
 	is_attacking = false
@@ -206,25 +312,6 @@ func roar():
 	is_roaring = false
 	has_roared = true
 
-# =============================================================
-#                  PAS ARRIERE APRES ATTAQUE
-# =============================================================
-func steps_back():
-	# Pas de pas arrière dans l'eau
-	if is_swim_croco:
-		return
-
-	if anim.has_animation("recoil"):
-		anim.play("recoil")
-
-	var dir = sign(dx) # direction vers Moko
-	if dir == 0:
-		return
-
-	velocity.x = -dir * 150   # dash arrière
-	var recoil_timer = get_tree().create_timer(0.6)
-	await recoil_timer.timeout
-	velocity.x = 0
 
 # =============================================================
 #                         ATTAQUES
@@ -245,28 +332,20 @@ func attack_on_floor():
 	if anim.has_animation("floor_attack"):
 		anim.play("floor_attack")
 
-		# Impact à 0.2s après le début
 		var impact_timer = get_tree().create_timer(0.2)
 		await impact_timer.timeout
 
 		if is_instance_valid(player) and not is_dead:
 			player.damage_mod.on_hit(damage)
 
-		# attend la fin de l'anim d'attaque
 		await anim.animation_finished
 
-		# Pas arrière après l'attaque
-		await steps_back()
+		dx = -sign(dx)
 
-	if is_dead:
-		is_attacking = false
-		return
-
-	if cooldown > 0:
-		var t = get_tree().create_timer(cooldown)
-		await t.timeout
+		await dodge_mod.start_dodge()
 
 	is_attacking = false
+
 
 func attack_swim():
 	if is_dead:
@@ -282,21 +361,13 @@ func attack_swim():
 	if anim.has_animation("swim_attack"):
 		anim.play("swim_attack")
 
-		# Impact immédiat
 		if is_instance_valid(player) and not is_dead:
 			player.damage_mod.on_hit(damage)
 
 		await anim.animation_finished
 
-	if is_dead:
-		is_attacking = false
-		return
-
-	if cooldown > 0:
-		var t2 = get_tree().create_timer(cooldown)
-		await t2.timeout
-
 	is_attacking = false
+
 
 # =============================================================
 #                 DOMMAGES / MORT
@@ -305,14 +376,27 @@ func on_hit(damage_taken):
 	if is_dead:
 		return
 
-	# On stoppe attaque + roar
 	is_attacking = false
 	is_roaring = false
 	velocity.x = 0
 
 	var play_onhit = false
 
-	# En eau : pas d'anim onhit, pas de stun
+	hp -= damage_taken
+	if hp < 0:
+		hp = 0
+
+	if hb:
+		hb.set_value(hp)
+
+	_show_damage_popup(damage_taken)
+
+	if hp <= 0:
+		die()
+		return
+
+	dodge_mod.register_hit()
+
 	if is_swim_croco:
 		is_hurt = false
 	else:
@@ -321,19 +405,6 @@ func on_hit(damage_taken):
 			anim.play("onhit")
 			play_onhit = true
 
-	# PV
-	pv -= damage_taken
-	if pv < 0:
-		pv = 0
-	health_bar.value = pv
-	_show_damage_popup(damage_taken)
-
-	# Mort ?
-	if pv <= 0:
-		die()
-		return
-
-	# AU SOL : Attend la fin de l'anim onhit avant de pouvoir réattaquer
 	if play_onhit:
 		await anim.animation_finished
 
@@ -348,9 +419,11 @@ func _show_damage_popup(amount):
 	popup.scale.x = 1
 	popup.show_damage(amount)
 
+
 func die():
 	if is_dead:
 		return
+
 	is_dead = true
 	is_attacking = false
 	is_hurt = false
@@ -358,7 +431,6 @@ func die():
 	velocity = Vector2.ZERO
 	$Sound/Roar.stop()
 
-	# En eau : pas d'anim die
 	if is_swim_croco:
 		queue_free()
 		return
@@ -369,50 +441,35 @@ func die():
 
 	queue_free()
 
-# ============================ ZONES ===========================
+
+# =======================================================
+# =                           ZONES                     =
+# ======================================================= 
 func _on_swim_area_body_entered(body):
 	if not (body.is_in_group("Player") or body.name == "Player"):
 		return
 	in_swim_zone = true
+
 
 func _on_swim_area_body_exited(body):
 	if not (body.is_in_group("Player") or body.name == "Player"):
 		return
 	in_swim_zone = false
 
+
 func _on_floor_area_body_entered(body):
 	if not (body.is_in_group("Player") or body.name == "Player"):
 		return
 	in_floor_zone = true
+
 
 func _on_floor_area_body_exited(body):
 	if not (body.is_in_group("Player") or body.name == "Player"):
 		return
 	in_floor_zone = false
 
-# ============================ ANIMS ===========================
-func process_swim():
-	if is_swim_croco and not is_attacking and not is_dead and not is_hurt and not is_roaring:
-		if anim.has_animation("swim"):
-			if anim.current_animation != "swim":
-				anim.play("swim")
+func _on_attack_timer_timeout():
+	melee_mod.on_timer_timeout()
 
-func process_walk():
-	if not is_swim_croco and not is_attacking and not is_dead and not is_hurt and not is_roaring and is_on_floor():
-		if abs(velocity.x) > 0.1:
-			if anim.has_animation("walk"):
-				if anim.current_animation != "walk":
-					anim.play("walk")
-
-func process_idle():
-	if is_attacking or is_dead or is_hurt or is_roaring:
-		return
-
-	if is_swim_croco:
-		return
-
-	var horiz_distance = abs(dx)
-	if horiz_distance > attack_range and is_on_floor():
-		if anim.has_animation("idle"):
-			if anim.current_animation != "idle":
-				anim.play("idle")
+func _on_patrol_timer_timeout():
+	patrol_mod.on_timer_timeout()
