@@ -326,14 +326,15 @@ func die():
 	is_jumping = false
 	is_quaking = false
 	velocity = Vector2.ZERO
+
 	if cam:
 		cam.offset = Vector2.ZERO
-	
-	drop_double_jump_loot()
-	
+
+	call_deferred("drop_double_jump_loot")
+
 	anim.play("die")
 	await anim.animation_finished
-	
+
 	queue_free()
 
 func drop_double_jump_loot():

@@ -51,12 +51,15 @@ func move_horizontal():
 
 	var dir = Input.get_action_strength(p.INPUT["right"]) - Input.get_action_strength(p.INPUT["left"])
 	var current_speed = p.speed
+
 	if p.is_sprinting:
 		current_speed = p.speed * 1.5
 
 	p.velocity.x = dir * current_speed
 
 	if dir != 0 and not p.is_pushing_or_pulling:
+		p.sprite.scale.x = abs(p.sprite.scale.x)
+
 		if dir > 0:
 			p.sprite.flip_h = false
 		else:
@@ -115,6 +118,9 @@ func process_hang_swing(delta):
 func process_liana(_delta):
 	if not p.is_on_liana or p.current_liana == null or p.did_double_jump:
 		return
+
+	p.is_swimming = false
+	p.is_swimming_under_water = false
 
 	p.velocity = Vector2.ZERO
 	hand_to_grip()
@@ -233,10 +239,12 @@ func process_swim(delta):
 		p.velocity.y = 0
 
 		if h != 0:
+			p.sprite.scale.x = abs(p.sprite.scale.x)
+
 			if h > 0:
-				p.sprite.scale.x = abs(p.sprite.scale.x)
+				p.sprite.flip_h = false
 			else:
-				p.sprite.scale.x = -abs(p.sprite.scale.x)
+				p.sprite.flip_h = true
 
 func process_swim_under_water(delta):
 	if p.is_swimming_under_water:
@@ -248,10 +256,12 @@ func process_swim_under_water(delta):
 		p.velocity.y = v * p.speed * 0.35
 
 		if h != 0:
+			p.sprite.scale.x = abs(p.sprite.scale.x)
+
 			if h > 0:
-				p.sprite.scale.x = abs(p.sprite.scale.x)
+				p.sprite.flip_h = false
 			else:
-				p.sprite.scale.x = -abs(p.sprite.scale.x)
+				p.sprite.flip_h = true
 
 # ============================================================================
 #                           FALL DAMAGE
