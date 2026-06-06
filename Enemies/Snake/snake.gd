@@ -22,7 +22,6 @@ var patrol_mod = EnemyModPatrol.new()
 var target_mod = EnemyModTarget.new()
 
 var projectile_spawn = null
-var patrol_timer = null
 
 var is_patrolling = true
 var is_patrol_paused = false

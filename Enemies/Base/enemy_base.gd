@@ -25,7 +25,7 @@ var anim = null
 var spawn_point = null
 var attack_timer = null
 var projectile_timer = null
-
+var patrol_timer = null
 
 func _ready():
 	setup_common_refs()
@@ -75,6 +75,9 @@ func setup_common_refs():
 		projectile_timer = $ProjectileTimer
 	elif has_node("Rotator/ProjectileTimer"):
 		projectile_timer = $Rotator/ProjectileTimer
+	
+	if has_node("PatrolTimer"):
+		patrol_timer = $PatrolTimer
 
 
 func refresh_player():
