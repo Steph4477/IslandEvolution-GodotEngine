@@ -4,7 +4,7 @@ extends Node2D
 @export var froggle_scene = preload("res://Enemies/Froggle/froggle.tscn")
 @export var froggle_spawn_path = NodePath("Node2D/FroggleSpawn")
 
-@onready var anim = $Node2D/World/AnimationPlayer
+@onready var anim = $Node2D/World/ChronoChallenge/AnimationPlayer
 
 var froggle_spawned = false
 var focus_cam_frog = false # préparation du focus de la caméra si challenge_win
@@ -17,8 +17,8 @@ var gs
 
 func _ready():
 	# Musiques d’ambiance
-	$Node2D/Sound/BirdsSound.play()
-	$Node2D/Sound/WaterSound.play()
+	$Sound/BirdsSound.play()
+	$Sound/WaterSound.play()
 	# --- Limite caméra & assombrissement ---
 	await get_tree().process_frame
 	gs = get_node("/root/GameState")
@@ -27,7 +27,7 @@ func _ready():
 	cam.enabled = true
 	cam.make_current()
 
-	cam.limit_top = -150
+	cam.limit_top = -1500
 	cam.limit_right = 20000
 	cam.limit_bottom = 1400
 	
@@ -49,17 +49,18 @@ func _on_chrono_zone_challenge_win():
 	var prev_can_move = true
 	prev_can_move = player.can_move
 	player.can_move = false
-	
+
 	# 1) Chute des lianes
 	if anim.has_animation("fall"):
 		anim.play("fall")
 		
 		# Tremblement de la camera à l'impact du tronc dans l'eau avec son
 		await get_tree().create_timer(0.8).timeout
-		$Node2D/Sound/WaterSplashTree.play()
+		$Sound/WaterSplashTree.play()
 		camera_shake(intensity, duration)
 		
 		await anim.animation_finished
+		#anim.stop()
 		
 	# 2) Attente avant spawn
 	await get_tree().create_timer(2.0).timeout

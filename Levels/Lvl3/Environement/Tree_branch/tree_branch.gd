@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var flow = $flow
+@onready var branch_collision = $StaticArea2D/CollisionShape2D
 
 var flow_hidden = false
 
