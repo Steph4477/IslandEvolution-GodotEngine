@@ -490,7 +490,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6qokg"]
 resource_name = "onhit"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -498,10 +498,10 @@ tracks/0/path = NodePath("Node2D/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("39_r4aas")]
+"values": [ExtResource("39_r4aas"), ExtResource("51_uvbbp")]
 }
 
 [sub_resource type="Animation" id="Animation_pqfba"]

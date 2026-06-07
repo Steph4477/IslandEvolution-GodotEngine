@@ -11,6 +11,10 @@ func setup(player):
 # ============================================================================
 
 func process(delta, was_on_floor):
+	if p.is_hit_locked:
+		p.velocity.x = 0
+		return
+
 	process_harpooned(delta)
 
 	if not p.can_move:

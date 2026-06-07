@@ -16,12 +16,12 @@ func on_hit(damage):
 		return
 
 	p.can_be_damaged = false
+	p.is_hit_locked = true
+	p.can_move = false
+	p.velocity.x = 0
 
 	p.pv -= damage
 	p.pv = clamp(p.pv, 0, p.max_pv)
-
-	if p.game_state and p.game_state.hud:
-		p.game_state.hud.update_health_bar(p.pv, p.max_pv)
 
 	if p.game_state and p.game_state.hud:
 		p.game_state.hud.update_health_bar(p.pv, p.max_pv)
@@ -49,6 +49,8 @@ func on_hit(damage):
 			hud.set_button_enabled(hud.get_node("Gamepad/Honey"), can_honey_btn)
 
 	if p.pv <= 0:
+		p.is_hit_locked = false
+		p.can_move = true
 		await die()
 		return
 
@@ -59,6 +61,10 @@ func on_hit(damage):
 	else:
 		await p.play_anim("onhit")
 
+	await p.get_tree().create_timer(p.hit_lock_time).timeout
+
+	p.is_hit_locked = false
+	p.can_move = true
 	p.can_be_damaged = true
 
 func die():

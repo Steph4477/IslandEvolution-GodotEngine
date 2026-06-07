@@ -179,6 +179,11 @@ var is_jump_clacing = false
 @export var kick_damage = 150
 var is_kicking = false
 
+# --- Prends un coup ---
+var is_hit_locked = false
+var hit_lock_time = 0.6
+
+
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite
 @onready var anim = $Node2D/Anim
@@ -339,7 +344,7 @@ func _physics_process(delta):
 	if animation_locked:
 		velocity.x = 0
 
-		if is_jumping and not is_swimming and not is_swimming_under_water and climbing_anim == "":
+		if not is_swimming and not is_swimming_under_water and climbing_anim == "":
 			velocity.y += gravity * gravity_factor * delta
 
 		move_and_slide()
