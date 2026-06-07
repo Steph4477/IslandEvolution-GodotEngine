@@ -640,7 +640,6 @@ position = Vector2(-1871, 9)
 
 [node name="AmphibiousCroco" parent="Creatures" unique_id=939733752 instance=ExtResource("17_2nymq")]
 position = Vector2(13427, 1146)
-speed = 400
 max_hp = 1000
 
 [node name="Cannibal" parent="Creatures" unique_id=708931693 instance=ExtResource("16_qaw7r")]

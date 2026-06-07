@@ -97,13 +97,8 @@ func _physics_process(delta):
 		if anim.current_animation != "swim":
 			anim.play("swim")
 
-	if not is_instance_valid(player):
-		move_and_slide()
-		return
-
 	target_mod.update()
 	update_flip()
-
 	update_logic()
 
 	move_and_slide()
@@ -148,12 +143,11 @@ func update_patrol_zone():
 	attack_timer.stop()
 	$Sound/Roar.stop()
 
-	if patrol_timer and patrol_timer.is_stopped():
+	if patrol_timer.is_stopped():
 		patrol_timer.start()
 
 	if is_swim_croco:
-		if is_patrol_paused:
-			is_patrol_paused = false
+		is_patrol_paused = false
 
 		patrol_mod.update_movement()
 
@@ -186,11 +180,6 @@ func update_logic():
 
 	var horiz_distance = distance
 
-	if horiz_distance > attack_range:
-		target = null
-		update_patrol_zone()
-		return
-
 	is_patrolling = false
 
 	if not is_swim_croco:
@@ -211,11 +200,7 @@ func update_logic():
 		in_melee = false
 		attack_timer.stop()
 
-		var dir = 0
-		if dx > 0:
-			dir = 1
-		elif dx < 0:
-			dir = -1
+		var dir = sign(dx)
 
 		if is_swim_croco:
 			velocity.x = dir * speed + water_current.x
@@ -248,39 +233,28 @@ func update_logic():
 
 
 func attack():
-	if is_dead:
-		return
 	if is_attacking or is_hurt or is_roaring:
 		return
+
 	if target == null:
-		in_melee = false
-		attack_timer.stop()
 		return
 
-	var horiz_distance = distance
-
-	if horiz_distance > stop_distance:
-		in_melee = false
-		attack_timer.stop()
+	if distance > stop_distance:
 		return
 
 	if is_swim_croco:
 		if not in_swim_zone:
-			in_melee = false
-			attack_timer.stop()
 			return
-	else:
-		if not in_floor_zone:
-			in_melee = false
-			attack_timer.stop()
-			return
+
+		attack_timer.start()
+		attack_swim()
+		return
+
+	if not in_floor_zone:
+		return
 
 	attack_timer.start()
-
-	if is_swim_croco:
-		attack_swim()
-	else:
-		attack_on_floor()
+	attack_on_floor()
 
 # =============================================================
 #                         ROAR (SOL UNIQUEMENT)
@@ -305,13 +279,8 @@ func roar():
 		anim.play("roar")
 		await anim.animation_finished
 
-	if is_dead:
-		is_roaring = false
-		return
-
 	is_roaring = false
 	has_roared = true
-
 
 # =============================================================
 #                         ATTAQUES
