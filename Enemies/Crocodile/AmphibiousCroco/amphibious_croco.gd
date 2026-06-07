@@ -19,7 +19,8 @@ var patrol_mod = EnemyModPatrol.new()
 var is_patrolling = true
 var is_patrol_paused = false
 var patrol_direction = 1
-
+var patrol_enabled = true
+var patrol_pause_time = 2.0
 var patrol_speed = 120.0
 var patrol_change_interval = 4.0
 

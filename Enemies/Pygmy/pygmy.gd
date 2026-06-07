@@ -20,17 +20,20 @@ var jump_mod = EnemyModJumpSync.new()
 
 var projectile_spawn = null
 
+
 func _ready():
 	attack_anim_name = "cac"
 
 	super._ready()
 
 	projectile_spawn = $Rotator/ProjectileSpawn
+	patrol_timer = $PatrolTimer
 
 	target_mod.setup(self)
 	melee_mod.setup(self)
 	throw_mod.setup(self)
 	jump_mod.setup(self)
+	patrol_mod.setup(self)
 
 	if attack_timer:
 		attack_timer.wait_time = 1.0
@@ -39,6 +42,12 @@ func _ready():
 	if projectile_timer:
 		projectile_timer.wait_time = fire_interval
 		projectile_timer.start()
+
+	if patrol_timer:
+		patrol_timer.wait_time = patrol_change_interval
+		patrol_timer.start()
+
+	patrol_mod.start()
 
 func _physics_process(delta):
 	if is_dead:
@@ -63,9 +72,7 @@ func _physics_process(delta):
 		return
 
 	if target == null:
-		velocity.x = 0
-		stop_and_slide()
-		play_idle()
+		update_patrol_zone()
 		return
 
 	if is_attacking:
@@ -97,6 +104,27 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func update_patrol_zone():
+	is_patrolling = true
+
+	if patrol_timer and patrol_timer.is_stopped():
+		patrol_timer.start()
+
+	patrol_mod.update_movement()
+	
+	if patrol_direction < 0:
+		$Rotator.scale.x = -base_scale_x
+	else:
+		$Rotator.scale.x = base_scale_x
+	
+	move_and_slide()
+
+	if abs(velocity.x) > 0:
+		if anim.current_animation != "walk":
+			anim.play("walk")
+	else:
+		play_idle()
+
 func die():
 	in_melee = false
 	super.die()
@@ -106,3 +134,7 @@ func _on_attack_timer_timeout():
 
 func _on_projectile_timer_timeout():
 	throw_mod.on_timer_timeout()
+
+
+func _on_patrol_timer_timeout():
+	patrol_mod.on_timer_timeout()

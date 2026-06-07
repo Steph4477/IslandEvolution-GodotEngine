@@ -182,8 +182,9 @@ collision_mask = 3
 script = ExtResource("1_t1248")
 min_shoot_distance = 70.0
 max_shoot_distance = 500.0
-speed = 100
+speed = 300
 attack_range = 500
+max_hp = 1000
 drop_loot_enabled = true
 loot_scene_path = "res://Loot/Spear/spear.tscn"
 
@@ -219,5 +220,8 @@ texture = ExtResource("26_x8q6o")
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=999428820]
 position = Vector2(-131, -8)
 
+[node name="PatrolTimer" type="Timer" parent="." unique_id=2009031001]
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

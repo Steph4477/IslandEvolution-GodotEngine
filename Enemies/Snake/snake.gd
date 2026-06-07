@@ -6,26 +6,19 @@ extends EnemyGroundBase
 
 var fire_gaz = false
 var fire_interval = 2.0
-var melee_distance = 200.0
+var melee_distance = 70.0
 var chase_distance = 99999.0
-var min_shoot_distance = 201.0
+var min_shoot_distance = 140.0
 var max_shoot_distance = 360.0
-
-var patrol_speed = 120.0
-var patrol_change_interval = 1.0
 
 var target
 
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
-var patrol_mod = EnemyModPatrol.new()
 var target_mod = EnemyModTarget.new()
 
 var projectile_spawn = null
 
-var is_patrolling = true
-var is_patrol_paused = false
-var patrol_direction = 1
 
 func _ready():
 	attack_anim_name = "attack"
@@ -83,7 +76,7 @@ func _physics_process(delta):
 		stop_and_slide()
 		return
 
-	if in_melee:
+	if in_melee and distance <= melee_distance:
 		update_melee_state()
 		return
 
@@ -206,7 +199,7 @@ func _on_projectile_timer_timeout():
 	if is_dead:
 		return
 
-	if in_melee:
+	if in_melee and distance <= melee_distance:
 		return
 
 	if is_attacking:
