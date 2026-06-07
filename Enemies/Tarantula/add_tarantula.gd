@@ -17,7 +17,6 @@ var melee_mod = EnemyModMelee.new()
 var jump_mod = EnemyModJumpSync.new()
 
 # --- Patrol
-var patrol_timer = null
 var patrol_direction = 1
 var is_patrolling = true
 var is_patrol_paused = false

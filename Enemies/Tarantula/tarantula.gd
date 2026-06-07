@@ -37,7 +37,6 @@ var jump_mod = EnemyModJumpSync.new()
 var dodge_mod = EnemyModDodgeJump.new()
 
 #--- Patrol ---
-var patrol_timer = null
 var patrol_direction = 1
 var is_patrolling = true
 var is_patrol_paused = false

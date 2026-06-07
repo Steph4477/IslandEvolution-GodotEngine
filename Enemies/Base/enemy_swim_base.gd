@@ -13,7 +13,6 @@ var distance = 999999
 var target = null
 
 var rotator
-var patrol_timer
 var patrol_mod
 
 func _ready():
