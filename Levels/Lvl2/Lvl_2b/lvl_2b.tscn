@@ -147,7 +147,8 @@ next_scene_path = "res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn"
 [node name="Tarantula" parent="." unique_id=1228259155 instance=ExtResource("11_6sncs")]
 position = Vector2(1726, 180)
 scale = Vector2(0.5, 0.5)
-speed = 450
+speed = 550
+attack_range = 9000
 max_hp = 1000
 damage = 1
 

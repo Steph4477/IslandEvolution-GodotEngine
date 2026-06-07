@@ -2,8 +2,6 @@ extends EnemyGroundBase
 
 # --- Export ---
 @export var melee_distance = 80
-@export var patrol_speed = 50
-@export var patrol_change_interval = 3.0
 @export var jump_velocity = -450
 @export var chase_speed_multiplier = 3
 
@@ -11,15 +9,11 @@ extends EnemyGroundBase
 var target = null
 
 # --- Modules
-var patrol_mod = EnemyModPatrol.new()
 var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()
 var jump_mod = EnemyModJumpSync.new()
 
-# --- Patrol
-var patrol_direction = 1
-var is_patrolling = true
-var is_patrol_paused = false
+
 
 # -- death 
 var jump_animation_name = "jump"

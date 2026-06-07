@@ -31,7 +31,6 @@ radius = 30.1034
 [node name="Web" type="CharacterBody2D" unique_id=1201195186]
 collision_layer = 8
 script = ExtResource("1_jv0dl")
-damage = 100
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=791613112]
 scale = Vector2(0.3, 0.3)

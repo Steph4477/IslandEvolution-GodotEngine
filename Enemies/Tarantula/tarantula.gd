@@ -6,8 +6,6 @@ extends EnemyGroundBase
 @export var max_shoot_distance = 1000
 @export var projectile_spawn_delay = 0.6
 @export var projectile_timer_time = 2.0
-@export var patrol_speed = 50
-@export var patrol_change_interval = 3.0
 @export var jump_velocity = -550
 @export var chase_speed_multiplier = 4
 
@@ -29,17 +27,11 @@ var projectile_spawn = null
 var projectile_scene = preload("res://Shoot/Enemies/Web/web.tscn")
 
 # --- Modules ---
-var patrol_mod = EnemyModPatrol.new()
 var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
 var jump_mod = EnemyModJumpSync.new()
 var dodge_mod = EnemyModDodgeJump.new()
-
-#--- Patrol ---
-var patrol_direction = 1
-var is_patrolling = true
-var is_patrol_paused = false
 
 # --- Intro/death ---
 var jump_animation_name = "jump"
