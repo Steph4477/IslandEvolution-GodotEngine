@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @export var speed = 800.0
 @export var life_time = 3.0
-@export var damage = 10
+@export var damage = GameBalance.ENEMY_PROJECTILE["gaz"]
 
 var direction = Vector2.RIGHT
 var has_collided = false

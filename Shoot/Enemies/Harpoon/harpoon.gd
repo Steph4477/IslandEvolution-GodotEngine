@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var speed = 1000
-@export var damage = 500
+@export var damage = GameBalance.ENEMY_PROJECTILE["harpoon"]
 @export var arc_force = -350
 @export var gravity_force = 1.6
 

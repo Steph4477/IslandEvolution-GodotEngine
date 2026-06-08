@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 800.0
 @export var lifetime = 10.0
-@export var damage = 150
+@export var damage = GameBalance.ENEMY_PROJECTILE["web"]
 
 @onready var sprite = $anim
 @onready var area = $Area2D

@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var speed = 800
-@export var damage = 200
+@export var damage = GameBalance.ENEMY_PROJECTILE["lance"]
 @export var arc_force = -150
 @export var gravity_force = 1.2
 
