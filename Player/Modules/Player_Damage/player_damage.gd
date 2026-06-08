@@ -20,6 +20,9 @@ func on_hit(damage):
 	p.can_move = false
 	p.velocity.x = 0
 
+	if not p.is_on_floor() and not p.is_swimming and not p.is_swimming_under_water:
+		p.velocity.y = 2000
+
 	p.pv -= damage
 	p.pv = clamp(p.pv, 0, p.max_pv)
 
@@ -77,6 +80,11 @@ func die():
 
 	p.is_dead = true
 	p.animation_locked = true
+	p.velocity.x = 0
+
+	if not p.is_on_floor() and not p.is_swimming and not p.is_swimming_under_water:
+		p.velocity.y = 2000
+
 	p.anim.play("die")
 
 	if p.game_state:

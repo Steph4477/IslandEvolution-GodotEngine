@@ -66,6 +66,11 @@ func process():
 		return
 
 	if p.is_gazed:
+		p.velocity.x = 0
+
+		if not p.is_on_floor():
+			p.velocity.y = 2000
+
 		if p.anim.current_animation != "walk_gaz":
 			p.anim.play("walk_gaz")
 		return
