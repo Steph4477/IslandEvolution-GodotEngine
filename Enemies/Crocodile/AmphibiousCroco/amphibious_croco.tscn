@@ -27,8 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://hri1cwmvbpv3" path="res://Enemies/Crocodile/AmphibiousCroco/Die/2.png" id="26_nshgc"]
 [ext_resource type="AudioStream" uid="uid://x8505bhqtxei" path="res://sounds/roar_croco.ogg" id="27_ow40j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(109, 94)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5wxv"]
+radius = 28.003315
+height = 167.01114
 
 [sub_resource type="Animation" id="Animation_6utxn"]
 length = 0.001
@@ -247,8 +248,10 @@ script = ExtResource("1_co5vm")
 position = Vector2(-43, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1512054370]
+z_index = 5
 position = Vector2(47.5, 15)
-shape = SubResource("RectangleShape2D_x2fpe")
+rotation = -1.5273254
+shape = SubResource("CapsuleShape2D_b5wxv")
 
 [node name="Rotator" type="Node2D" parent="." unique_id=310207886]
 position = Vector2(1, -2)
