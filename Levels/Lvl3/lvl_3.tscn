@@ -537,11 +537,6 @@ z_index = 5
 position = Vector2(756, 241)
 scale = Vector2(0.4, 1)
 
-[node name="SwimCrocodile" parent="Node2D/World" unique_id=922786221 instance=ExtResource("12_12vmq")]
-z_index = 15
-position = Vector2(2144, 1257)
-scale = Vector2(2, 2)
-
 [node name="Nenuphars" type="Node2D" parent="Node2D/World" unique_id=1596580178]
 position = Vector2(21, 23)
 
@@ -634,8 +629,13 @@ z_index = 5
 position = Vector2(14127.999, 350.00003)
 rotation = -0.012217305
 
-[node name="Creatures" type="Node2D" parent="." unique_id=578715975]
+[node name="SwimCrocodile" parent="." unique_id=922786221 instance=ExtResource("12_12vmq")]
 z_index = 15
+position = Vector2(2144, 1257)
+scale = Vector2(2, 2)
+
+[node name="Creatures" type="Node2D" parent="." unique_id=578715975]
+z_index = 20
 position = Vector2(-1871, 9)
 
 [node name="AmphibiousCroco" parent="Creatures" unique_id=939733752 instance=ExtResource("17_2nymq")]
@@ -684,6 +684,13 @@ position = Vector2(16770, 867)
 z_index = 15
 position = Vector2(9855, 986)
 
+[node name="Snake" parent="Creatures" unique_id=88320707 instance=ExtResource("39_hw1l3")]
+z_index = 15
+position = Vector2(12273, 1071)
+attack_range = 1500
+stop_distance = 300
+max_hp = 250
+
 [node name="Sound" type="Node2D" parent="." unique_id=1740515804]
 position = Vector2(21, 23)
 
@@ -703,13 +710,6 @@ stream = ExtResource("4_06aic")
 volume_db = 4.65
 autoplay = true
 bus = &"Birds"
-
-[node name="Snake" parent="." unique_id=88320707 instance=ExtResource("39_hw1l3")]
-z_index = 15
-position = Vector2(10402, 1080)
-attack_range = 1500
-stop_distance = 300
-max_hp = 250
 
 [connection signal="body_entered" from="Node2D/World/SwimZone/Area2D" to="Node2D/World/SwimZone" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Node2D/World/SwimZone/Area2D" to="Node2D/World/SwimZone" method="_on_area_2d_body_exited"]
