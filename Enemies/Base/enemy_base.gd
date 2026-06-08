@@ -140,10 +140,14 @@ func on_hit(amount):
 	await get_tree().create_timer(hit_lock_time).timeout
 	hit_locked = false
 
+func start_hit_lock():
+	hit_locked = true
+	await get_tree().create_timer(hit_lock_time).timeout
+	hit_locked = false
 
 func do_attack_damage():
 	player.damage_mod.on_hit(damage)
-
+	start_hit_lock()
 
 func attack():
 	if not can_attack_player():

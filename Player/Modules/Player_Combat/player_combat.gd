@@ -10,6 +10,15 @@ func setup(player):
 #                                 PROCESS
 # ============================================================================
 func process():
+	if p == null:
+		return
+
+	if p.is_hit_locked:
+		p.is_attacking = false
+		p.is_kicking = false
+		p.is_jump_clacing = false
+		return
+
 	if p.is_harpooned:
 		return
 
@@ -21,6 +30,9 @@ func process():
 #                                 SHOOT
 # ============================================================================
 func shoot():
+	if p.is_hit_locked:
+		return
+
 	if firing_locked:
 		return
 
@@ -43,6 +55,9 @@ func shoot():
 		return
 
 func coco():
+	if p.is_hit_locked:
+		return
+
 	if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_hanging or p.is_on_liana or p.is_camouflaged:
 		return
 
@@ -62,6 +77,10 @@ func coco():
 		p.anim.play("jump_shoot")
 
 	await p.anim.animation_finished
+
+	if p.is_hit_locked:
+		p.animation_locked = false
+		return
 
 	var scene = p.spell_coco
 	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
@@ -90,6 +109,9 @@ func coco():
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
 func bone():
+	if p.is_hit_locked:
+		return
+
 	if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_hanging or p.is_on_liana or p.is_camouflaged:
 		return
 
@@ -118,6 +140,10 @@ func bone():
 
 	await p.anim.animation_finished
 
+	if p.is_hit_locked:
+		p.animation_locked = false
+		return
+
 	var scene = p.spell_bone
 	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
 		scene = p.spell_bone_fire
@@ -137,6 +163,9 @@ func bone():
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
 func lance():
+	if p.is_hit_locked:
+		return
+
 	if p.can_camouflage:
 		return
 
@@ -168,6 +197,10 @@ func lance():
 
 	await p.anim.animation_finished
 
+	if p.is_hit_locked:
+		p.animation_locked = false
+		return
+
 	var scene = p.spell_lance
 	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
 		scene = p.spell_lance_fire
@@ -189,6 +222,9 @@ func lance():
 #                           CLAC / HEADBUTT / KICK
 # ============================================================================
 func clac():
+	if p.is_hit_locked:
+		return
+
 	if not Input.is_action_just_pressed(p.INPUT["clac"]):
 		return
 
@@ -199,6 +235,9 @@ func clac():
 	await attack()
 
 func kick_input():
+	if p.is_hit_locked:
+		return
+
 	if not p.is_on_floor():
 		return
 
@@ -208,6 +247,9 @@ func kick_input():
 	await kick()
 
 func headbutt():
+	if p.is_hit_locked:
+		return
+
 	if not p.is_swimming_under_water:
 		return
 
@@ -233,6 +275,14 @@ func headbutt():
 	var elapsed = 0.0
 
 	while elapsed < p.headbutt_duration:
+		if p.is_hit_locked:
+			p.get_node("HeadbuttArea").monitoring = false
+			p.velocity.x = 0
+			p.velocity.y = 0
+			p.is_headbutting = false
+			p.is_attacking = false
+			return
+
 		p.velocity.x = dir * p.headbutt_speed
 		p.velocity.y = 0
 
@@ -252,6 +302,9 @@ func headbutt():
 	p.can_headbutt = true
 
 func attack():
+	if p.is_hit_locked:
+		return
+
 	if p.is_attacking or p.is_dead:
 		return
 
@@ -267,6 +320,12 @@ func attack():
 
 		await p.anim.animation_finished
 
+		if p.is_hit_locked:
+			p.get_node("ClacArea").monitoring = false
+			p.animation_locked = false
+			p.is_attacking = false
+			return
+
 		p.animation_locked = false
 	else:
 		p.is_jump_clacing = true
@@ -274,12 +333,21 @@ func attack():
 
 		await p.anim.animation_finished
 
+		if p.is_hit_locked:
+			p.get_node("ClacArea").monitoring = false
+			p.is_jump_clacing = false
+			p.is_attacking = false
+			return
+
 		p.is_jump_clacing = false
 
 	p.get_node("ClacArea").monitoring = false
 	p.is_attacking = false
 
 func kick():
+	if p.is_hit_locked:
+		return
+
 	if p.is_attacking or p.is_dead:
 		return
 
@@ -305,6 +373,13 @@ func kick():
 
 	await p.anim.animation_finished
 
+	if p.is_hit_locked:
+		p.get_node("KickArea").monitoring = false
+		p.animation_locked = false
+		p.is_kicking = false
+		p.is_attacking = false
+		return
+
 	p.get_node("KickArea").monitoring = false
 	p.animation_locked = false
 	p.is_kicking = false
@@ -314,6 +389,9 @@ func kick():
 #                         ALIAS API (HUD)
 # ============================================================================
 func shoot_coco():
+	if p.is_hit_locked:
+		return
+
 	if p.is_harpooned:
 		return
 
@@ -325,6 +403,9 @@ func shoot_coco():
 	firing_locked = false
 
 func process_bone():
+	if p.is_hit_locked:
+		return
+
 	if p.is_harpooned:
 		return
 
@@ -336,6 +417,9 @@ func process_bone():
 	firing_locked = false
 
 func shoot_lance():
+	if p.is_hit_locked:
+		return
+
 	if p.is_harpooned:
 		return
 
@@ -347,6 +431,9 @@ func shoot_lance():
 	firing_locked = false
 
 func process_kick():
+	if p.is_hit_locked:
+		return
+
 	if p.is_harpooned:
 		return
 

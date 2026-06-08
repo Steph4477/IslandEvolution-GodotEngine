@@ -14,6 +14,11 @@ func setup(player):
 #                                 PROCESS
 # ============================================================================
 func process(delta):
+	if p.is_hit_locked:
+		p.is_sprinting = false
+		sprint_button_active = false
+		return
+
 	if p.is_harpooned:
 		p.is_sprinting = false
 		return
@@ -22,15 +27,22 @@ func process(delta):
 	process_sprint(delta)
 	process_camouflage()
 	process_fire_buff()
+	process_air_buff()
 
 # ============================================================================
 #                                 RAMP
 # ============================================================================
 func process_ramp():
+	if p.is_hit_locked:
+		return
+
 	if p.can_ramp and Input.is_action_just_pressed(p.INPUT["ramping"]) and p.is_on_floor() and not p.ramp_locked:
 		toggle_ramp()
 
 func toggle_ramp():
+	if p.is_hit_locked:
+		return
+
 	if not p.can_ramp :
 		return
 	if not p.is_on_floor():
@@ -53,6 +65,9 @@ func toggle_ramp():
 	await p.get_tree().create_timer(0.2).timeout
 	p.ramp_locked = false
 
+	if p.is_hit_locked:
+		return
+
 	if p.is_ramping:
 		var rdir = Input.get_action_strength(p.INPUT["right"]) - Input.get_action_strength(p.INPUT["left"])
 		p.velocity.x = rdir * p.speed * 0.4
@@ -62,6 +77,11 @@ func toggle_ramp():
 #                                 SPRINT
 # ============================================================================
 func process_sprint(delta):
+	if p.is_hit_locked:
+		p.is_sprinting = false
+		sprint_button_active = false
+		return
+
 	if not p.game_state:
 		return
 
@@ -100,6 +120,11 @@ func process_sprint(delta):
 		p.game_state.speed_bar.update_speed_bar_current(p.game_state.sprint_stamina)
 
 func use_sprint():
+	if p.is_hit_locked:
+		p.is_sprinting = false
+		sprint_button_active = false
+		return
+
 	if p.is_harpooned:
 		return
 
@@ -114,12 +139,18 @@ func use_sprint():
 #                                 CAMOUFLAGE
 # ============================================================================
 func process_camouflage():
+	if p.is_hit_locked:
+		return
+
 	if not p.can_camouflage:
 		return
 	if Input.is_action_just_pressed(p.INPUT["camouflage"]):
 		use_camouflage()
 
 func use_camouflage():
+	if p.is_hit_locked:
+		return
+
 	if p.is_harpooned:
 		return
 
@@ -144,6 +175,9 @@ func use_camouflage():
 	start_camouflage()
 
 func start_camouflage():
+	if p.is_hit_locked:
+		return
+
 	p.is_camouflaged = true
 	p.game_state.is_camouflaged = true
 
@@ -176,10 +210,16 @@ func stop_camouflage():
 # ============================================================================
 # --- Fire ___
 func process_fire_buff():
+	if p.is_hit_locked:
+		return
+
 	if Input.is_action_just_pressed(p.INPUT["fire_buff"]):
 		use_fire_buff()
 
 func use_fire_buff():
+	if p.is_hit_locked:
+		return
+
 	if p.is_harpooned:
 		return
 
@@ -197,10 +237,16 @@ func use_fire_buff():
 
 # --- Air ---
 func process_air_buff():
+	if p.is_hit_locked:
+		return
+
 	if Input.is_action_just_pressed(p.INPUT["air_buff"]):
-		use_fire_buff()
+		use_air_buff()
 
 func use_air_buff():
+	if p.is_hit_locked:
+		return
+
 	if p.is_harpooned:
 		return
 
