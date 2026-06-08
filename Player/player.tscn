@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bcc0ubbuqgkn5"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/player.gd" id="1_5psm4"]
-[ext_resource type="Texture2D" uid="uid://borwqccp5elgv" path="res://Player/Sprite/onhit/1.png" id="2_2paov"]
 [ext_resource type="Texture2D" uid="uid://dd0tbn5nklm5p" path="res://Player/Sprite/Swim_under_water/3.png" id="2_8hx1r"]
 [ext_resource type="Texture2D" uid="uid://dtvm6b751qk7o" path="res://Player/Sprite/idle/2.png" id="2_btooi"]
 [ext_resource type="Texture2D" uid="uid://bijnhreet44f4" path="res://Player/Sprite/jump/3.png" id="2_l6ey7"]
@@ -11,12 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://31re10knbh5p" path="res://Player/Sprite/exit/2.png" id="6_m3p76"]
 [ext_resource type="Texture2D" uid="uid://crbo7w8f0kgve" path="res://Player/Sprite/walk/1.png" id="6_tj6lq"]
 [ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="7_p7kcq"]
-[ext_resource type="Texture2D" uid="uid://w837apwrsrjn" path="res://Player/Sprite/die/4.png" id="9_dyo71"]
+[ext_resource type="Texture2D" uid="uid://b68wfflnsjwdd" path="res://Player/Sprite/die/5.png" id="10_pfstq"]
 [ext_resource type="AudioStream" uid="uid://dk6xftm8op4x0" path="res://sounds/walk.wav" id="11_leyao"]
+[ext_resource type="Texture2D" uid="uid://bm68bgmyg1d2n" path="res://Player/Sprite/die/2.png" id="11_tklvp"]
 [ext_resource type="AudioStream" uid="uid://bv322khn0hr7k" path="res://sounds/jump.wav" id="12_5vkkw"]
+[ext_resource type="Texture2D" uid="uid://cvg0wn0qur845" path="res://Player/Sprite/die/3.png" id="12_gv7t5"]
+[ext_resource type="Texture2D" uid="uid://e2sotn1npn3m" path="res://Player/Sprite/die/6.png" id="13_hhxpw"]
 [ext_resource type="Texture2D" uid="uid://bgsvxehy3s05l" path="res://Player/Sprite/gaz/walk_gaz1.png" id="13_p7kcq"]
+[ext_resource type="Texture2D" uid="uid://b0800ouqit5v8" path="res://Player/Sprite/die/7.png" id="14_ghd3c"]
 [ext_resource type="Texture2D" uid="uid://c3cv7i60vltr1" path="res://Player/Sprite/gaz/walk_gaz3.png" id="14_vbwkl"]
 [ext_resource type="Texture2D" uid="uid://5w5jxrr750c" path="res://Player/Sprite/walk/2.png" id="15_rbgwy"]
+[ext_resource type="Texture2D" uid="uid://dfmj8fpvdb02c" path="res://Player/Sprite/die/8.png" id="15_tea4v"]
+[ext_resource type="Texture2D" uid="uid://c05qp0qp3pvd5" path="res://Player/Sprite/die/9.png" id="16_htm5v"]
 [ext_resource type="Texture2D" uid="uid://db28b015047ue" path="res://Player/Sprite/fire_skill/1.png" id="16_qpoj2"]
 [ext_resource type="Texture2D" uid="uid://n5ee10vrrw3u" path="res://Player/Sprite/ramp/1.png" id="16_rbgwy"]
 [ext_resource type="Texture2D" uid="uid://busn6ygkffbo2" path="res://Player/Sprite/fire_skill/2.png" id="17_3e3ym"]
@@ -84,11 +89,19 @@
 [ext_resource type="Texture2D" uid="uid://bp16bdqumc7g8" path="res://Player/Sprite/Kick/3.png" id="50_ppx2g"]
 [ext_resource type="Texture2D" uid="uid://c8y36tl6o0ufu" path="res://Player/Sprite/sprint_skill/4.png" id="50_x0uyb"]
 [ext_resource type="Texture2D" uid="uid://c3o5qqxuveny4" path="res://Player/Sprite/shoot_lance/4.png" id="51_8hx1r"]
+[ext_resource type="Texture2D" uid="uid://mf1o2hd612rw" path="res://Player/Sprite/onhit/4.png" id="51_c7st8"]
 [ext_resource type="Texture2D" uid="uid://ba78ku8211oqi" path="res://Player/Sprite/jump/6.png" id="51_uvbbp"]
 [ext_resource type="Texture2D" uid="uid://bd3uqjee7o7up" path="res://Player/Sprite/jump/5.png" id="52_7v2uk"]
+[ext_resource type="Texture2D" uid="uid://dh5c4snbi0mk7" path="res://Player/Sprite/onhit/5.png" id="52_i8h25"]
+[ext_resource type="Texture2D" uid="uid://cchxwh8ys5qxs" path="res://Player/Sprite/onhit/6.png" id="53_2krxc"]
 [ext_resource type="Texture2D" uid="uid://dasawejid7od" path="res://Player/Sprite/Swim_under_water/1.png" id="53_m6nl3"]
 [ext_resource type="Texture2D" uid="uid://bekxofdeqmpm7" path="res://Player/Sprite/Swim_under_water/2.png" id="54_8hx1r"]
+[ext_resource type="Texture2D" uid="uid://dv15hpg4fftvr" path="res://Player/Sprite/onhit/7.png" id="54_mw2es"]
 [ext_resource type="Texture2D" uid="uid://brgi5n4fdogwi" path="res://Player/Sprite/climb/1.png" id="55_8hx1r"]
+[ext_resource type="Texture2D" uid="uid://s2vpqhj5hyp1" path="res://Player/Sprite/onhit/8.png" id="55_p7odc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_beqdq"]
+load_path = "res://.godot/imported/1.png-7f4d03be027a0dc761baaffa90fe41d4.ctex"
 
 [sub_resource type="Animation" id="Animation_i7max"]
 length = 0.001
@@ -102,7 +115,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2paov")]
+"values": [SubResource("CompressedTexture2D_beqdq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_bpa77"]
@@ -160,50 +185,26 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:rotation")
+tracks/0/path = NodePath("Node2D/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 6.28319, 0.0]
+"values": [ExtResource("39_r4aas"), ExtResource("10_pfstq"), ExtResource("11_tklvp"), ExtResource("12_gv7t5"), ExtResource("13_hhxpw"), ExtResource("14_ghd3c"), ExtResource("15_tea4v"), ExtResource("16_htm5v")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Sprite:scale")
+tracks/1/path = NodePath("Node2D/Sprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.796351, 1.26801),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.03, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.07, 0.07), Vector2(0.2, 0.2), Vector2(0.05, 0.05)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/Sprite:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1.26667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.611765, 0, 0.321569, 1), Color(1, 1, 1, 1), Color(0.611765, 0, 0.321569, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Sprite:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [ExtResource("9_dyo71"), ExtResource("9_dyo71")]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.7245642, 0.06464417, 2.8878452e-07, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ifp5e"]
@@ -490,7 +491,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6qokg"]
 resource_name = "onhit"
-length = 0.4
+length = 0.55
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -498,10 +499,10 @@ tracks/0/path = NodePath("Node2D/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.43333334, 0.46666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("39_r4aas"), ExtResource("51_uvbbp")]
+"values": [ExtResource("39_r4aas"), ExtResource("51_c7st8"), ExtResource("52_i8h25"), ExtResource("53_2krxc"), ExtResource("54_mw2es"), ExtResource("55_p7odc")]
 }
 
 [sub_resource type="Animation" id="Animation_pqfba"]
@@ -823,10 +824,9 @@ scale = Vector2(0.19565926, 0.19565926)
 texture = ExtResource("2_8hx1r")
 
 [node name="Sprite" type="Sprite2D" parent="Node2D" unique_id=1543697993]
-modulate = Color(1, 1, 1, 0.9785716)
 position = Vector2(142.49998, 70)
-scale = Vector2(0.19565926, 0.19565926)
-texture = ExtResource("2_2paov")
+scale = Vector2(0.2, 0.2)
+texture = SubResource("CompressedTexture2D_beqdq")
 
 [node name="Anim" type="AnimationPlayer" parent="Node2D" unique_id=2016811510]
 root_node = NodePath("../..")
@@ -834,6 +834,8 @@ libraries/ = SubResource("AnimationLibrary_p7kcq")
 
 [node name="AttachMarker" type="Node2D" parent="Node2D" unique_id=1323279751]
 position = Vector2(145.83333, 60.833332)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1518189628]
 
 [node name="TurnAxis" type="Marker2D" parent="." unique_id=770474976]
 position = Vector2(10, 13.999992)
