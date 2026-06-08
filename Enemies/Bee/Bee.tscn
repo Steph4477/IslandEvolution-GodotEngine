@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://j7o1146kq5ck"]
 
-[ext_resource type="Script" path="res://Enemies/Bee/bee.gd" id="1_307ui"]
-[ext_resource type="Texture2D" path="res://Enemies/Bee/bee_spriteSheet.png" id="3_fivhf"]
+[ext_resource type="Script" uid="uid://ch0xkoiyeyjhm" path="res://Enemies/Bee/bee.gd" id="1_307ui"]
+[ext_resource type="Texture2D" uid="uid://cgu2g5jydj62a" path="res://Enemies/Bee/bee_spriteSheet.png" id="3_fivhf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1fhx"]
 radius = 28.944391
@@ -82,28 +82,6 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_307ui")
-chase_speed = null
-attack_range = null
-contact_attack_radius = null
-cooldown = null
-patrol_speed = null
-patrol_change_interval = null
-orbit_radius_x = null
-orbit_radius_y = null
-orbit_angular_speed = null
-orbit_duration = null
-osc_radial_amplitude = null
-osc_radial_frequency = null
-osc_angle_amplitude = null
-osc_angle_frequency = null
-swarm_count = null
-swarm_spawn_radius = null
-swarm_orbit_step_x = null
-swarm_orbit_step_y = null
-max_hp = null
-damage = null
-hit_lock_time = null
-attack_anim_name = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=186847227]
 position = Vector2(-2, -29)

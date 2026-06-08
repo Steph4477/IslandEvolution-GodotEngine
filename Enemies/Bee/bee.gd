@@ -1,9 +1,9 @@
 extends EnemyFlightBase
 
-@export var chase_speed = 200
-@export var attack_range = 800
+var chase_speed = 0
+var attack_range = 0
 @export var contact_attack_radius = 24.0
-@export var cooldown = 0.8
+var cooldown = 0
 @export var patrol_speed = 80
 @export var swarm_count = 3
 
@@ -38,7 +38,7 @@ var spawn_swarm_on_ready = true
 var swarm_controller = null
 var spawned_by_hive = false
 
-var speed = 0.0
+var speed = 0
 var attack_contact_radius = 0.0
 
 var patrol_mod = EnemyModFlightPatrol.new()
@@ -48,71 +48,36 @@ var swarm_mod = EnemyModFlightSwarm.new()
 
 
 func _ready():
-	max_hp = 20
-	damage = 200
-	attack_anim_name = "attack"
+	max_hp = GameBalance.ENEMY_HP["bee"]
+	damage = GameBalance.ENEMY_DAMAGE["bee"]
+	chase_speed = GameBalance.ENEMY_SPEED["bee"]
+	speed = GameBalance.ENEMY_SPEED["bee"]
+	attack_range = GameBalance.ENEMY_RANGE["bee"]
+	cooldown = GameBalance.ENEMY_COOLDOWN["bee"]
 
-	if chase_speed == null:
-		chase_speed = 200
+	contact_attack_radius = 24.0
+	patrol_speed = 80
+	swarm_count = 3
 
-	if attack_range == null:
-		attack_range = 800
+	patrol_change_interval = 2.0
 
-	if contact_attack_radius == null:
-		contact_attack_radius = 24.0
+	orbit_radius_x = 90.0
+	orbit_radius_y = 55.0
+	orbit_angular_speed = 6.0
+	orbit_duration = 1.2
 
-	if cooldown == null:
-		cooldown = 0.8
+	osc_radial_amplitude = 6.0
+	osc_radial_frequency = 10.0
+	osc_angle_amplitude = 0.12
+	osc_angle_frequency = 7.0
 
-	if patrol_speed == null:
-		patrol_speed = 80
-
-	if swarm_count == null:
-		swarm_count = 3
-
-	if patrol_change_interval == null:
-		patrol_change_interval = 2.0
-
-	if orbit_radius_x == null:
-		orbit_radius_x = 90.0
-
-	if orbit_radius_y == null:
-		orbit_radius_y = 55.0
-
-	if orbit_angular_speed == null:
-		orbit_angular_speed = 6.0
-
-	if orbit_duration == null:
-		orbit_duration = 1.2
-
-	if osc_radial_amplitude == null:
-		osc_radial_amplitude = 6.0
-
-	if osc_radial_frequency == null:
-		osc_radial_frequency = 10.0
-
-	if osc_angle_amplitude == null:
-		osc_angle_amplitude = 0.12
-
-	if osc_angle_frequency == null:
-		osc_angle_frequency = 7.0
-
-	if swarm_spawn_radius == null:
-		swarm_spawn_radius = 50.0
-
-	if swarm_orbit_step_x == null:
-		swarm_orbit_step_x = 28.0
-
-	if swarm_orbit_step_y == null:
-		swarm_orbit_step_y = 18.0
-
-	if swarm_slot == null:
-		swarm_slot = 0
+	swarm_spawn_radius = 50.0
+	swarm_orbit_step_x = 28.0
+	swarm_orbit_step_y = 18.0
 
 	base_orbit_radius_x = orbit_radius_x
 	base_orbit_radius_y = orbit_radius_y
 
-	speed = chase_speed
 	attack_contact_radius = contact_attack_radius
 
 	if is_swarm_clone:

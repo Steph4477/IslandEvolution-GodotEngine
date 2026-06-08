@@ -2,14 +2,14 @@ extends EnemyGroundBase
 
 @export var projectile_scene = preload("res://Shoot/Enemies/Spear/spear.tscn")
 @export var projectile_spawn_delay = 0.40
-@export var melee_distance = 70.0
-@export var min_shoot_distance = 300.0
-@export var max_shoot_distance = 2000.0
+var melee_distance = 0.0
+var min_shoot_distance = 0.0
+var max_shoot_distance = 0.0
 
 var projectile_attack_animation = "attack"
 var jump_animation_name = "jump"
 
-var fire_interval = 3.0
+var fire_interval = 0.0
 var jump_velocity = -600.0
 var target = null
 
@@ -22,6 +22,14 @@ var projectile_spawn = null
 
 
 func _ready():
+	max_hp = GameBalance.ENEMY_HP["pyg"]
+	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["pyg"]
+	min_shoot_distance = GameBalance.ENEMY_MIN_SHOOT_DISTANCE["pyg"]
+	max_shoot_distance = GameBalance.ENEMY_MAX_SHOOT_DISTANCE["pyg"]
+	damage = GameBalance.ENEMY_DAMAGE["pyg"]
+	speed = GameBalance.ENEMY_SPEED["pyg"]
+	attack_range = GameBalance.ENEMY_RANGE["pyg"]
+
 	attack_anim_name = "cac"
 
 	super._ready()

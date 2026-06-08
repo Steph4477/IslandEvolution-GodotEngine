@@ -4,7 +4,7 @@ class_name GameBalance
 # ============================================================================
 #                           PLAYER - PV / SOINS
 # ============================================================================
-const PLAYER_MAX_PV = 100
+const PLAYER_MAX_PV = 500
 const PLAYER_COOLDOWN_POTION = 10
 const PLAYER_HEAL_AMOUNT = 50
 
@@ -84,3 +84,102 @@ const PLAYER_HIT_LOCK_TIME = 0.6
 const PLAYER_FIRE_BUFF_DURATION = 8.0
 const PLAYER_AIR_BUFF_DURATION = 8.0
 const PLAYER_CAMOUFLAGE_DURATION = 5.0
+
+# ============================================================================
+#                              ENEMIES
+# ============================================================================
+
+const ENEMY_HP = {
+	"bee": 10,
+	"mosquito": 10,
+	"rat": 60,
+	"snake": 80,
+	"pyg": 100,
+	"swim_croco": 600,
+	"croco": 200,
+	"cannibal": 120,
+	"boss_cannibal": 600,
+	"boss_tarantula": 700
+}
+
+const ENEMY_DAMAGE = {
+	"bee": 5,
+	"mosquito": 20,
+	"rat": 10,
+	"snake": 12,
+	"pyg": 20,
+	"croco": 18,
+	"cannibal": 22,
+	"boss": 30
+}
+
+const ENEMY_PROJECTILE = {
+	"gaz": 50,
+	"lance": 70,
+	"bone": 90,
+	"web": 80,
+	"harpoon": 150
+}
+
+const ENEMY_SPEED = {
+	"bee": 200,
+	"mosquito" : 300,
+	"rat": 400,
+	"snake": 350,
+	"pyg": 200,
+	"swim_croco": 400,
+	"croco": 300,
+	"cannibal": 300,
+	"boss_cannibal": 400,
+	"boss_tarantula": 500
+}
+
+const ENEMY_RANGE = {
+	"bee": 800,
+	"mosquito": 1000,
+	"rat": 600,
+	"swim_croco": 1000,
+	"croco": 500,
+	"snake": 600,
+	"pyg": 1000,
+	"cannibal": 1500,
+	"boss_cannibal": 2500,
+	"boss_tarantula": 5000
+}
+
+const ENEMY_MELEE_DISTANCE = {
+	"rat": 50,
+	"snake": 100,
+	"pyg": 70,
+	"croco": 100,
+	"cannibal": 100,
+	"boss_cannibal": 120,
+	"boss_tarantula": 80
+}
+
+const ENEMY_MIN_SHOOT_DISTANCE = {
+	"snake": 80,
+	"pyg": 200,
+	"cannibal": 300,
+	"boss_cannibal": 1000,
+	"boss_tarantula": 100
+}
+
+const ENEMY_MAX_SHOOT_DISTANCE = {
+	"snake": 360,
+	"pyg": 2000,
+	"cannibal": 2000,
+	"boss_cannibal": 2000,
+	"boss_tarantula": 1000,
+}
+const ENEMY_COOLDOWN = {
+	"bee": 0.8,
+	"mosquito": 0.6,
+	"rat": 1.0,
+	"snake": 2.0,
+	"pyg": 1.5,
+	"croco": 1.5,
+	"cannibal": 3.0,
+	"boss_cannibal": 0.4,
+	"boss_tarantula": 2.0
+}

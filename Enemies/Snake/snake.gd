@@ -5,11 +5,11 @@ extends EnemyGroundBase
 @export var projectile_attack_animation = "attack"
 
 var fire_gaz = false
-var fire_interval = 2.0
-var melee_distance = 70.0
-var chase_distance = 99999.0
-var min_shoot_distance = 140.0
-var max_shoot_distance = 360.0
+var fire_interval = 0.0
+var melee_distance = 0.0
+var chase_distance = 0.0
+var min_shoot_distance = 0.0
+var max_shoot_distance = 0.0
 
 var target
 
@@ -21,6 +21,16 @@ var projectile_spawn = null
 
 
 func _ready():
+	max_hp = GameBalance.ENEMY_HP["snake"]
+	damage = GameBalance.ENEMY_DAMAGE["snake"]
+	speed = GameBalance.ENEMY_SPEED["snake"]
+	chase_distance = GameBalance.ENEMY_RANGE["snake"]
+	attack_range = GameBalance.ENEMY_RANGE["snake"]
+	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["snake"]
+	min_shoot_distance = GameBalance.ENEMY_MIN_SHOOT_DISTANCE["snake"]
+	max_shoot_distance = GameBalance.ENEMY_MAX_SHOOT_DISTANCE["snake"]
+	fire_interval = GameBalance.ENEMY_COOLDOWN["snake"]
+
 	attack_anim_name = "attack"
 
 	super._ready()

@@ -1,15 +1,17 @@
 extends EnemyGroundBase
 
-@export var melee_distance = 70.0
+var melee_distance = 0.0
 
 var melee_mod = EnemyModMelee.new()
 var target_mod = EnemyModTarget.new()
 var target 
+
 func _ready():
-	max_hp = 300
-	damage = 100
-	speed = 400
-	attack_range = 500
+	max_hp = GameBalance.ENEMY_HP["rat"]
+	damage = GameBalance.ENEMY_DAMAGE["rat"]
+	speed = GameBalance.ENEMY_SPEED["rat"]
+	attack_range = GameBalance.ENEMY_RANGE["rat"]
+	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["rat"]
 	stop_distance = 40
 	gravity = 2000
 	attack_anim_name = "attack"

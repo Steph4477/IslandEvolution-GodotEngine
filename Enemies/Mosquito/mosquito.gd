@@ -1,9 +1,9 @@
 extends EnemyFlightBase
 
-@export var chase_speed = 200
-@export var attack_range = 800
+var chase_speed = 0
+var attack_range = 0
 @export var contact_attack_radius = 24.0
-@export var cooldown = 0.8
+var cooldown = 0.8
 @export var patrol_speed = 80
 @export var patrol_change_interval = 2.0
 
@@ -31,10 +31,16 @@ var orbit_mod = EnemyModFlightOrbit.new()
 var charge_mod = EnemyModFlightCharge.new()
 
 func _ready():
-	max_hp = 20
-	damage = 200
+	max_hp = GameBalance.ENEMY_HP["mosquito"]
+	damage = GameBalance.ENEMY_DAMAGE["mosquito"]
+
+	chase_speed = GameBalance.ENEMY_SPEED["mosquito"]
+	speed = GameBalance.ENEMY_SPEED["mosquito"]
+
+	attack_range = GameBalance.ENEMY_RANGE["mosquito"]
+	cooldown = GameBalance.ENEMY_COOLDOWN["mosquito"]
+
 	attack_anim_name = "attack"
-	speed = chase_speed
 	attack_contact_radius = contact_attack_radius
 
 	super._ready()

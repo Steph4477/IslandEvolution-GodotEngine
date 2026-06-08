@@ -1,11 +1,10 @@
 extends EnemyGroundBase
 
 @export var projectile_scene = preload("res://Shoot/Enemies/Harpoon/harpoon.tscn")
-@export var projectile_spawn_delay = 0.40
-
-@export var melee_distance = 120.0
-@export var min_shoot_distance = 120.0
-@export var max_shoot_distance = 2000.0
+var projectile_spawn_delay = 0.40
+var melee_distance = 0
+var min_shoot_distance = 0
+var max_shoot_distance = 0
 
 @export var jump_attack_interval = 15.0
 @export var jump_velocity = -900.0
@@ -17,7 +16,7 @@ extends EnemyGroundBase
 var projectile_attack_animation = "attack"
 var jump_animation_name = "jump"
 
-var fire_interval = 3.0
+var fire_interval = 0.0
 
 var target = null
 var projectile_spawn = null
@@ -39,6 +38,15 @@ var after_pull_idle = false
 #                                  READY
 # ============================================================================
 func _ready():
+	max_hp = GameBalance.ENEMY_HP["boss_cannibal"]
+	damage = GameBalance.ENEMY_DAMAGE["boss"]
+	speed = GameBalance.ENEMY_SPEED["boss_cannibal"]
+	attack_range = GameBalance.ENEMY_RANGE["boss_cannibal"]
+	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["boss_cannibal"]
+	min_shoot_distance = GameBalance.ENEMY_MIN_SHOOT_DISTANCE["boss_cannibal"]
+	max_shoot_distance = GameBalance.ENEMY_MAX_SHOOT_DISTANCE["boss_cannibal"]
+	fire_interval = GameBalance.ENEMY_COOLDOWN["boss_cannibal"]
+
 	attack_anim_name = "cac"
 
 	super._ready()

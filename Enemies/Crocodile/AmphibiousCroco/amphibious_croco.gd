@@ -42,6 +42,12 @@ var in_floor_zone = false
 
 
 func _ready():
+	max_hp = GameBalance.ENEMY_HP["swim_croco"]
+	damage = GameBalance.ENEMY_DAMAGE["croco"]
+	speed = GameBalance.ENEMY_SPEED["swim_croco"]
+	attack_range = GameBalance.ENEMY_RANGE["swim_croco"]
+	cooldown = GameBalance.ENEMY_COOLDOWN["croco"]
+
 	setup_common_refs()
 
 	gs = get_node("/root/GameState")

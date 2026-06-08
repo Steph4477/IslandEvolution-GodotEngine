@@ -1,11 +1,11 @@
 extends EnemyGroundBase
 
 # --- Exports ---
-@export var melee_distance = 80
-@export var min_shoot_distance = 100
-@export var max_shoot_distance = 1000
-@export var projectile_spawn_delay = 0.6
-@export var projectile_timer_time = 2.0
+var melee_distance = 0
+var min_shoot_distance = 0
+var max_shoot_distance = 0
+var projectile_spawn_delay = GameBalance.ENEMY_COOLDOWN["boss_tarantula"]
+var projectile_timer_time = 0
 @export var jump_velocity = -550
 @export var chase_speed_multiplier = 4
 
@@ -56,6 +56,19 @@ var ground_position = Vector2.ZERO
 
 
 func _ready():
+	max_hp = GameBalance.ENEMY_HP["boss_tarantula"]
+	damage = GameBalance.ENEMY_DAMAGE["boss"]
+
+	speed = GameBalance.ENEMY_SPEED["boss_tarantula"]
+	attack_range = GameBalance.ENEMY_RANGE["boss_tarantula"]
+
+	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["boss_tarantula"]
+
+	min_shoot_distance = GameBalance.ENEMY_MIN_SHOOT_DISTANCE["boss_tarantula"]
+	max_shoot_distance = GameBalance.ENEMY_MAX_SHOOT_DISTANCE["boss_tarantula"]
+
+	projectile_timer_time = GameBalance.ENEMY_COOLDOWN["boss_tarantula"]
+	
 	randomize()
 
 	attack_anim_name = "attack"
