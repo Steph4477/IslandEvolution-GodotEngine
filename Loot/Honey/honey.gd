@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var honey_value = 5
-@export var heal_amount = 500
+@export var heal_amount = GameBalance.PLAYER_HEAL["honey"]
 
 @onready var follower = $Path2D/PathFollow2D
 @onready var collision = $Path2D/PathFollow2D/PickupArea/CollisionShape2D

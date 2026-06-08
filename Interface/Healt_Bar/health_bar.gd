@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var max_value = 2000
+@export var max_value = GameBalance.PLAYER_MAX_PV
 
 @onready var bar = $TextureProgressBar
 @onready var hp_label = $HpLabel

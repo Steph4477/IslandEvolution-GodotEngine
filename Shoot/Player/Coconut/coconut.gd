@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @export var speed = 1000
 @export var life_time = 3.0
-@export var damage = 100
+var damage = GameBalance.PLAYER_DAMAGE["coco"]
 
 var direction = 1
 

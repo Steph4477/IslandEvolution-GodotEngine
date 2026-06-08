@@ -17,6 +17,7 @@ var coco_count = 0
 var seed_count = 0
 var bone_count = 0
 var heal_amount = 0
+var honey_amount = 0
 var lance_count = 0
 var can_fire_coco = false
 var can_fire_lance = false

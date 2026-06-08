@@ -20,24 +20,23 @@ const INPUT = {
 	"air_buff": "air_buff"           # A (InputMap)
 }
 
-@export var speed = 400
-@export var jump_force = -800
-@export var gravity = 1200
-@export var climb_speed = 100
-@export var clac_damage = 100
+var speed = GameBalance.PLAYER_SPEED
+var jump_force = GameBalance.PLAYER_JUMP_FORCE
+var gravity = GameBalance.PLAYER_GRAVITY
+var climb_speed = GameBalance.PLAYER_CLIMB_SPEED
 
-@export var max_pv = 2000
-@export var pv = max_pv
-@export var cooldown_potion = 10
-@export var heal_amount = 50
+var max_pv = GameBalance.PLAYER_MAX_PV
+var pv = max_pv
+var cooldown_potion = GameBalance.PLAYER_COOLDOWN_POTION
+var heal_amount = GameBalance.PLAYER_HEAL_AMOUNT
 @export var total_seeds_in_level = 10
 
 # --- Dégâts de chute ---
-@export var fall_damage_enabled = true
-@export var fall_safe_limit = 1200
-@export var fall_speed_max = 1800
-@export var fall_damage_max = 600
-@export var fall_damage_min = 50
+var fall_damage_enabled = GameBalance.PLAYER_FALL_DAMAGE_ENABLED
+var fall_safe_limit = GameBalance.PLAYER_FALL_SAFE_LIMIT
+var fall_speed_max = GameBalance.PLAYER_FALL_SPEED_MAX
+var fall_damage_max = GameBalance.PLAYER_FALL_DAMAGE_MAX
+var fall_damage_min = GameBalance.PLAYER_FALL_DAMAGE_MIN
 
 # --- Suivie vitesse de chute ---
 var fall_speed_track = 0.0
@@ -88,28 +87,28 @@ var can_swim = false
 var is_swimming = false
 var can_swim_under_water = false
 var is_swimming_under_water = false
-var swim_speed_x = 150
-var swim_speed_y = 110
+var swim_speed_x = GameBalance.PLAYER_SWIM_SPEED_X
+var swim_speed_y = GameBalance.PLAYER_SWIM_SPEED_Y
 var swim_timer = 0.0
 
 # --- Respiration sous l'eau ---
-@export var max_breath = 30
-@export var panic_start = 15
-@export var drown_damage_per_second = 500
+var max_breath = GameBalance.PLAYER_MAX_BREATH
+var panic_start = GameBalance.PLAYER_PANIC_START
+var drown_damage_per_second = GameBalance.PLAYER_DROWN_DAMAGE_PER_SECOND
 
-@export var bubble_interval_normal = 1
-@export var bubble_interval_min = 0.06
-@export var mouth_show_time = 0.2
+var bubble_interval_normal = GameBalance.PLAYER_BUBBLE_INTERVAL_NORMAL
+var bubble_interval_min = GameBalance.PLAYER_BUBBLE_INTERVAL_MIN
+var mouth_show_time = GameBalance.PLAYER_MOUTH_SHOW_TIME
 
 var breath_left = 0
 var is_underwater = false
 var air_bubble_scene = preload("res://Effects/Aquatic_breathing/Air_bubble/air_bubble.tscn")
 
 # --- Coup de boule sous l'eau ---
-@export var headbutt_damage = 200
-@export var headbutt_speed = 300
-@export var headbutt_duration = 0.4
-@export var headbutt_cooldown = 1.5
+var headbutt_damage = GameBalance.PLAYER_DAMAGE["headbutt"]
+var headbutt_speed = GameBalance.PLAYER_HEADBUTT_SPEED
+var headbutt_duration = GameBalance.PLAYER_HEADBUTT_DURATION
+var headbutt_cooldown = GameBalance.PLAYER_HEADBUTT_COOLDOWN
 var is_headbutting = false
 var can_headbutt = true
 
@@ -124,20 +123,20 @@ var is_web = false
 var can_fire_coco = false
 var can_fire_bone = false
 var can_fire_lance = false
-var rate_of_fire = 0.4
+var rate_of_fire = GameBalance.PLAYER_RATE_OF_FIRE
 var is_attacking = false
 
 # --- fire buff ---
 var fire_buff_active = false
-@export var fire_buff_duration = 8.0
+var fire_buff_duration = GameBalance.PLAYER_FIRE_BUFF_DURATION
 
 # --- air buff ---
 var air_buff_active = false
-@export var air_buff_duration = 8.0
+var air_buff_duration = GameBalance.PLAYER_AIR_BUFF_DURATION
 
 # --- Camouflage ---
 var can_camouflage = false
-@export var camouflage_duration = 5.0
+var camouflage_duration = GameBalance.PLAYER_CAMOUFLAGE_DURATION
 var is_camouflaged = false
 
 # --- Jump / double jump ---
@@ -176,13 +175,13 @@ var harpoon_owner = null
 var is_jump_clacing = false
 
 # --- Coup de pied ---
-@export var kick_damage = 150
+var clac_damage = GameBalance.PLAYER_DAMAGE["clac"]
+var kick_damage = GameBalance.PLAYER_DAMAGE["kick"]
 var is_kicking = false
 
 # --- Prends un coup ---
 var is_hit_locked = false
-var hit_lock_time = 0.6
-
+var hit_lock_time = GameBalance.PLAYER_HIT_LOCK_TIME
 
 # --- Nodes ---
 @onready var sprite = $Node2D/Sprite

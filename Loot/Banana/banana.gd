@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var banane_value = 5 
-@export var heal_amount = 500
+@export var heal_amount = GameBalance.PLAYER_HEAL["banana"]
 
 var game_state
 var collected = false

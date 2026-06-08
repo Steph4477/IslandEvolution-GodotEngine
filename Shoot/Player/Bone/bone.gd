@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @export var speed = 1000
 @export var max_distance = 800
-@export var damage = 100
+@export var damage = GameBalance.PLAYER_DAMAGE["bone"]
 @export var lifetime = 3.0   # durée de vie en secondes
 
 var direction = Vector2.RIGHT
