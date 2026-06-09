@@ -5,6 +5,7 @@ class_name EnemyBase
 @export var damage = 10
 @export var hit_lock_time = 0.20
 @export var attack_anim_name = "attack"
+@export var count_in_score = true
 
 @export var drop_loot_enabled = false
 @export_file("*.tscn") var loot_scene_path = ""
@@ -215,7 +216,8 @@ func die():
 		await anim.animation_finished
 
 	# --- Comptage d'ennemis tués pour le score --- 
-	gs.score_system.add_enemy_kill()
+	if count_in_score:
+		gs.score_system.add_enemy_kill()
 
 	spawn_loot()
 	queue_free()
