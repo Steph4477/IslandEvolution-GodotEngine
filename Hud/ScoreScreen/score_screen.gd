@@ -19,10 +19,13 @@ var banana_medal = preload("res://Hud/ScoreScreen/Medals/medal_banana.png")
 
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 
 
 func show_score(level_name, killed, total, stars, medal, percent, _moko_bonus, enemy_bonus):
+	get_tree().paused = true
+
 	level_name_label.text = level_name
 
 	title_label.text = "ENNEMIS TUÉS"
