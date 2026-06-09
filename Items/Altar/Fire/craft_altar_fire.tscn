@@ -89,29 +89,25 @@ libraries/ = SubResource("AnimationLibrary_wec7v")
 
 [node name="FireLeft" type="Node2D" parent="." unique_id=1765328215]
 visible = false
-position = Vector2(-240, -45)
+position = Vector2(533.00006, 583)
 scale = Vector2(1.2, 1.3)
 
 [node name="2" parent="FireLeft" unique_id=2107376780 instance=ExtResource("12_v3tro")]
-position = Vector2(818, 353)
 color = Color(0.88235295, 0.28627452, 0.13725491, 0.4509804)
 radius = 40
 
 [node name="1" parent="FireLeft" unique_id=1356080770 instance=ExtResource("12_v3tro")]
-position = Vector2(818, 370)
 
 [node name="FireRight" type="Node2D" parent="." unique_id=1992544032]
 visible = false
-position = Vector2(374, -40)
+position = Vector2(1135, 581)
 scale = Vector2(1.2, 1.3)
 
 [node name="2" parent="FireRight" unique_id=575346635 instance=ExtResource("12_v3tro")]
-position = Vector2(818, 353)
 color = Color(0.88235295, 0.28627452, 0.13725491, 0.4509804)
 radius = 40
 
 [node name="1" parent="FireRight" unique_id=1146522447 instance=ExtResource("12_v3tro")]
-position = Vector2(818, 370)
 
 [node name="SpawnSkill" type="Marker2D" parent="." unique_id=1324404362]
 position = Vector2(834, 666)

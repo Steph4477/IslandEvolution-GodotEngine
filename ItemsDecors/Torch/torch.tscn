@@ -1,170 +1,25 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://cwjigpn23f13r"]
 
-[ext_resource type="Texture2D" path="res://ItemsDecors/Torch/light_halo_circle.png" id="1_epjmm"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Torch/arm.png" id="2_xs22i"]
-[ext_resource type="Texture2D" path="res://ItemsDecors/Torch/flame.png" id="3_r44cd"]
+[ext_resource type="Texture2D" uid="uid://dmp5y3f7xpava" path="res://ItemsDecors/Torch/light_halo_circle.png" id="1_epjmm"]
+[ext_resource type="Texture2D" uid="uid://cu8v0x2ex6or" path="res://ItemsDecors/Torch/arm.png" id="2_xs22i"]
+[ext_resource type="PackedScene" uid="uid://bcleaa6gwlx7s" path="res://Items/Altar/Fire/fire.tscn" id="4_ehtcq"]
 
-[sub_resource type="Animation" id="Animation_ochkp"]
-resource_name = "Flame"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.1, 0.15), Vector2(0.1, 0.1), Vector2(0.1, 0.15)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(568, 1219), Vector2(568.2, 1239.5), Vector2(568, 1219)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../PointLight2D:energy")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [3.0, 2.0, 3.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../PointLight2D:texture_scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [3.0, 2.5, 3.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../PointLight2D:color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.99026644, 0.47657922, 0.07846785, 1), Color(0.86716837, 0.73006314, 0.1428257, 1), Color(0.99026644, 0.47657922, 0.07846785, 1)]
-}
+[node name="Torch" type="Node2D" unique_id=567760127]
 
-[sub_resource type="Animation" id="Animation_2ivwu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.1, 0.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(568.2, 1239.5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../PointLight2D:energy")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../PointLight2D:texture_scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.5]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../PointLight2D:color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.8669446, 0.7303677, 0.14362484, 0.239216)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjssa"]
-_data = {
-&"Flame": SubResource("Animation_ochkp"),
-&"RESET": SubResource("Animation_2ivwu")
-}
-
-[node name="Torch" type="Node2D"]
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(576, 1206)
-color = Color(0.8669446, 0.7303677, 0.14362484, 0.239216)
-energy = 2.0
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1608954782]
+color = Color(0.99026644, 0.47657922, 0.07846785, 1)
+energy = 3.0
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.851)
 texture = ExtResource("1_epjmm")
-texture_scale = 2.5
+texture_scale = 3.0
 
-[node name="Handle" type="Sprite2D" parent="."]
+[node name="Handle" type="Sprite2D" parent="." unique_id=716358197]
 z_index = 5
-position = Vector2(568, 1266)
 scale = Vector2(0.0900391, 0.1)
 texture = ExtResource("2_xs22i")
 
-[node name="Flame" type="Sprite2D" parent="."]
-z_index = 5
-position = Vector2(568.2, 1239.5)
-rotation = -0.0349066
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_r44cd")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Flame")
-libraries = {
-&"": SubResource("AnimationLibrary_vjssa")
-}
-autoplay = "Flame"
+[node name="Fire" parent="Handle" unique_id=2107376780 instance=ExtResource("4_ehtcq")]
+position = Vector2(-1.9073486e-06, 30)
+scale = Vector2(6.106, 10)
+radius = 15

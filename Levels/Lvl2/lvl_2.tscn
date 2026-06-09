@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dda1wc4o60dew" path="res://Levels/Lvl2/lvl_2.gd" id="1_vnrni"]
 [ext_resource type="Script" uid="uid://cr1lum0yb4uny" path="res://Levels/Lvl2/Environement/torch.gd" id="4_3p2tf"]
 [ext_resource type="TileSet" uid="uid://cemt1gubeih8b" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="6_04g0o"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Torch/torch.tscn" id="6_ochkp"]
+[ext_resource type="PackedScene" uid="uid://cwjigpn23f13r" path="res://ItemsDecors/Torch/torch.tscn" id="6_ochkp"]
 [ext_resource type="PackedScene" uid="uid://da0iejmapb6go" path="res://ItemsDecors/Bridge/bridge.tscn" id="9_5rcsp"]
 [ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="10_ochkp"]
 [ext_resource type="PackedScene" uid="uid://bknqb0hd0lghx" path="res://ItemsDecors/KillZone/kill_zone.tscn" id="11_0vnxp"]
@@ -2444,11 +2444,8 @@ texture = ExtResource("29_wpmwo")
 light_mask = 0
 z_index = -2
 z_as_relative = false
-position = Vector2(-1356, -250)
+position = Vector2(-803, 1014)
 script = ExtResource("4_3p2tf")
-
-[node name="Torch1" parent="Node2D/Deco/Torchs" unique_id=1933736155 instance=ExtResource("6_ochkp")]
-position = Vector2(3394, -1297)
 
 [node name="Torch2" parent="Node2D/Deco/Torchs" unique_id=1964241611 instance=ExtResource("6_ochkp")]
 position = Vector2(3408, -1687)

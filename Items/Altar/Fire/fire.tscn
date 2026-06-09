@@ -69,7 +69,6 @@ color = Color(0.88235295, 0.46666667, 0.13725491, 0.4509804)
 
 [node name="Embers" type="GPUParticles2D" parent="." unique_id=393721448]
 material = SubResource("CanvasItemMaterial_b38yp")
-position = Vector2(-181, 105)
 amount = 40
 texture = ExtResource("2_sxea6")
 visibility_rect = Rect2(-400, -100, 200, 200)

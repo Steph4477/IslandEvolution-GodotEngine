@@ -249,7 +249,7 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(542, 686)
+position = Vector2(1175, 988)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -604,10 +604,10 @@ z_index = 10
 position = Vector2(16839, 1266)
 
 [node name="BagLoot" parent="." unique_id=1156845004 instance=ExtResource("27_twwc1")]
-position = Vector2(5844, 1125)
+position = Vector2(6197, 1007)
 
 [node name="BagLoot2" parent="." unique_id=1352850771 instance=ExtResource("27_twwc1")]
-position = Vector2(6323, 1120)
+position = Vector2(6720.0005, 1043)
 
 [node name="BagLoot3" parent="." unique_id=1754575156 instance=ExtResource("27_twwc1")]
 position = Vector2(9711, 1111)
@@ -670,7 +670,7 @@ position = Vector2(9047, 771.00006)
 
 [node name="Mosquito2" parent="Creatures" unique_id=1731938295 instance=ExtResource("18_8uqfc")]
 z_index = 15
-position = Vector2(8165, 838)
+position = Vector2(8548, 733)
 
 [node name="Mosquito3" parent="Creatures" unique_id=1312555607 instance=ExtResource("18_8uqfc")]
 z_index = 15
