@@ -828,11 +828,6 @@ rotation = -3.14158
 scale = Vector2(0.397965, -1.02986)
 skew = -1.0848e-05
 
-[node name="lvl1" type="AudioStreamPlayer2D" parent="World/Traps" unique_id=1778967354]
-position = Vector2(1263, 1349)
-stream = ExtResource("20_qky26")
-volume_db = 4.837
-
 [node name="GazShooters" type="Node2D" parent="World" unique_id=190973603]
 z_index = -5
 position = Vector2(-570, -1498)
