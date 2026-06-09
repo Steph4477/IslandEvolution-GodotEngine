@@ -20,23 +20,23 @@ const PLAYER_CLIMB_SPEED = 100
 #                          PLAYER - DÉGÂTS
 # ============================================================================
 const PLAYER_DAMAGE = {
-	"clac": 10,
-	"kick": 20,
-	"headbutt": 15,
-	"coco": 20,
-	"bone": 25,
-	"lance": 30,
-	"coco_fire": 40,
-	"bone_fire": 50,
-	"lance_fire": 60
+	"clac": 20,
+	"kick": 30,
+	"headbutt": 35,
+	"coco": 40,
+	"bone": 45,
+	"lance": 50,
+	"coco_fire": 60,
+	"bone_fire": 70,
+	"lance_fire": 80
 }
 
 # ============================================================================
 #                          PLAYER - SOINS
 # ============================================================================
 const PLAYER_HEAL = {
-	"banana": 500,
-	"honey": 600
+	"banana": 400,
+	"honey": 500
 }
 
 # ============================================================================
@@ -45,15 +45,15 @@ const PLAYER_HEAL = {
 const PLAYER_FALL_DAMAGE_ENABLED = true
 const PLAYER_FALL_SAFE_LIMIT = 1200
 const PLAYER_FALL_SPEED_MAX = 1800
-const PLAYER_FALL_DAMAGE_MAX = 600
-const PLAYER_FALL_DAMAGE_MIN = 50
+const PLAYER_FALL_DAMAGE_MAX = 200
+const PLAYER_FALL_DAMAGE_MIN = 10
 
 # ============================================================================
 #                       PLAYER - RESPIRATION
 # ============================================================================
 const PLAYER_MAX_BREATH = 30
 const PLAYER_PANIC_START = 15
-const PLAYER_DROWN_DAMAGE_PER_SECOND = 500
+const PLAYER_DROWN_DAMAGE_PER_SECOND = 50
 const PLAYER_BUBBLE_INTERVAL_NORMAL = 1
 const PLAYER_BUBBLE_INTERVAL_MIN = 0.06
 const PLAYER_MOUTH_SHOW_TIME = 0.2
@@ -76,7 +76,7 @@ const PLAYER_HEADBUTT_COOLDOWN = 1.5
 #                    PLAYER - TIRS / COMBAT
 # ============================================================================
 const PLAYER_RATE_OF_FIRE = 0.4
-const PLAYER_HIT_LOCK_TIME = 0.6
+const PLAYER_HIT_LOCK_TIME = 0.2
 
 # ============================================================================
 #                    PLAYER - BUFFS / CAMOUFLAGE
@@ -99,7 +99,9 @@ const ENEMY_HP = {
 	"croco": 200,
 	"cannibal": 120,
 	"boss_cannibal": 600,
-	"boss_tarantula": 700
+	"boss_tarantula": 700,
+	"add_tarantula": 10
+	
 }
 
 const ENEMY_DAMAGE = {
@@ -110,11 +112,12 @@ const ENEMY_DAMAGE = {
 	"pyg": 20,
 	"croco": 18,
 	"cannibal": 22,
-	"boss": 30
+	"boss": 30,
+	"add_tarantula":10
 }
 
 const ENEMY_PROJECTILE = {
-	"gaz": 50,
+	"gaz": 20,
 	"lance": 70,
 	"bone": 90,
 	"web": 80,
@@ -131,7 +134,8 @@ const ENEMY_SPEED = {
 	"croco": 300,
 	"cannibal": 300,
 	"boss_cannibal": 400,
-	"boss_tarantula": 500
+	"boss_tarantula": 500,
+	"add_tarantula":400
 }
 
 const ENEMY_RANGE = {
@@ -144,7 +148,8 @@ const ENEMY_RANGE = {
 	"pyg": 1000,
 	"cannibal": 1500,
 	"boss_cannibal": 2500,
-	"boss_tarantula": 5000
+	"boss_tarantula": 5000,
+	"add_tarantula": 5000
 }
 
 const ENEMY_MELEE_DISTANCE = {
@@ -154,7 +159,8 @@ const ENEMY_MELEE_DISTANCE = {
 	"croco": 100,
 	"cannibal": 100,
 	"boss_cannibal": 120,
-	"boss_tarantula": 80
+	"boss_tarantula": 80,
+	"add_tarantula": 40
 }
 
 const ENEMY_MIN_SHOOT_DISTANCE = {
@@ -173,13 +179,14 @@ const ENEMY_MAX_SHOOT_DISTANCE = {
 	"boss_tarantula": 1000,
 }
 const ENEMY_COOLDOWN = {
-	"bee": 0.8,
+	"bee": 0.5,
 	"mosquito": 0.6,
 	"rat": 1.0,
 	"snake": 2.0,
-	"pyg": 1.5,
+	"pyg": 2.5,
 	"croco": 1.5,
-	"cannibal": 3.0,
-	"boss_cannibal": 0.4,
-	"boss_tarantula": 2.0
+	"cannibal": 2.0,
+	"boss_cannibal": 2.0,
+	"boss_tarantula": 2.0,
+	"add_tarantula": 0.6
 }
