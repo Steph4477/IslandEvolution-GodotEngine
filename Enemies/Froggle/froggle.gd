@@ -16,7 +16,7 @@ extends CharacterBody2D
 # --- Réglages du tremblement caméra et dégâts ---
 @export var quake_intensity = 70.0   # Intensité du shake de caméra
 @export var quake_duration = 3.0     # Durée du tremblement
-@export var quake_damage = 400       # Dégâts par seconde pendant la secousse
+@export var quake_damage = 50       # Dégâts par seconde pendant la secousse
 
 const GRAVITY = 2000
 
