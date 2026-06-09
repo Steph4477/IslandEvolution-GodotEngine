@@ -4,7 +4,7 @@ extends EnemyGroundBase
 var melee_distance = 0
 var min_shoot_distance = 0
 var max_shoot_distance = 0
-var projectile_spawn_delay = GameBalance.ENEMY_COOLDOWN["boss_tarantula"]
+var projectile_spawn_delay = 0.2
 var projectile_timer_time = 0
 @export var jump_velocity = -550
 @export var chase_speed_multiplier = 4
@@ -58,6 +58,7 @@ var ground_position = Vector2.ZERO
 func _ready():
 	max_hp = GameBalance.ENEMY_HP["boss_tarantula"]
 	damage = GameBalance.ENEMY_DAMAGE["boss"]
+	projectile_damage = GameBalance.ENEMY_PROJECTILE["web"]
 
 	speed = GameBalance.ENEMY_SPEED["boss_tarantula"]
 	attack_range = GameBalance.ENEMY_RANGE["boss_tarantula"]
@@ -129,7 +130,6 @@ func _physics_process(delta):
 	melee_mod.update_state()
 	jump_mod.update()
 	update_projectile_animation()
-	shoot_while_jumping()
 
 	apply_gravity(delta)
 	flip()
@@ -224,20 +224,6 @@ func chase_target():
 # ============================================================================
 #                               PROJECTILE ATTACK
 # ============================================================================
-
-func shoot_while_jumping():
-	if is_on_floor():
-		return
-
-	if target == null:
-		return
-
-	if in_melee:
-		return
-
-	throw_mod.on_timer_timeout()
-
-
 func update_projectile_animation():
 	if is_on_floor():
 		projectile_attack_animation = "attack"

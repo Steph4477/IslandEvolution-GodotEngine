@@ -90,6 +90,6 @@ func throw_projectile():
 	if projectile.has_method("setup_owner"):
 		projectile.setup_owner(enemy)
 
-	projectile.start(enemy.projectile_spawn.global_position, dir.normalized())
+	projectile.start(enemy.projectile_spawn.global_position, dir.normalized(), enemy.projectile_damage)
 
 	enemy.is_shooting = false

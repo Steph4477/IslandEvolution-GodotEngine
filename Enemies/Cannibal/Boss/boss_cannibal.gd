@@ -40,6 +40,7 @@ var after_pull_idle = false
 func _ready():
 	max_hp = GameBalance.ENEMY_HP["boss_cannibal"]
 	damage = GameBalance.ENEMY_DAMAGE["boss"]
+	projectile_damage = GameBalance.ENEMY_PROJECTILE["harpoon"]
 	speed = GameBalance.ENEMY_SPEED["boss_cannibal"]
 	attack_range = GameBalance.ENEMY_RANGE["boss_cannibal"]
 	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["boss_cannibal"]

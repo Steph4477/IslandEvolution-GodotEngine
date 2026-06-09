@@ -5,7 +5,7 @@ extends RigidBody2D
 
 @export var speed = 1000
 @export var max_distance = 800
-@export var damage = GameBalance.ENEMY_PROJECTILE["bone"]
+var damage = 0
 
 var direction = Vector2.RIGHT
 var start_position = Vector2.ZERO
@@ -26,7 +26,8 @@ func _ready():
 
 	set_physics_process(true)
 
-func start(pos, dir):
+func start(pos, dir, projectile_damage):
+	damage = projectile_damage
 	global_position = pos
 	start_position = global_position
 	has_initialized_trajectory = false

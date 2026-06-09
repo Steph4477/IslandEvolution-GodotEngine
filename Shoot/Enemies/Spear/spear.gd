@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var speed = 800
-@export var damage = GameBalance.ENEMY_PROJECTILE["lance"]
+@export var damage = 0
 @export var arc_force = -150
 @export var gravity_force = 1.2
 
@@ -19,7 +19,8 @@ func _ready():
 func _physics_process(_delta):
 	rotation = linear_velocity.angle()
 
-func start(pos, dir):
+func start(pos, dir, projectile_damage):
+	damage = projectile_damage
 	global_position = pos
 
 	if typeof(dir) == TYPE_VECTOR2:

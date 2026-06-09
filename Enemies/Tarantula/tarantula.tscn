@@ -239,7 +239,6 @@ chase_speed_multiplier = 3
 add_phase_hp_ratio = 0.3
 speed = 100
 attack_range = 1000
-max_hp = 10
 drop_loot_enabled = true
 loot_scene_path = "res://Player/Skills/Ramp/ramp.tscn"
 
@@ -261,9 +260,6 @@ texture = ExtResource("14_3ypbs")
 [node name="Muzzle" type="Marker2D" parent="Rotator" unique_id=2080624031]
 position = Vector2(153, -9.000015)
 rotation = 0.785398
-
-[node name="FlipNode" type="Node2D" parent="." unique_id=952593486]
-position = Vector2(-20, -26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1029579919]
 position = Vector2(3, 30.999996)

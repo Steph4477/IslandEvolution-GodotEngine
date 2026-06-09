@@ -1,11 +1,11 @@
 extends RigidBody2D
 
 @export var speed = 1000
-@export var damage = GameBalance.ENEMY_PROJECTILE["harpoon"]
 @export var arc_force = -350
 @export var gravity_force = 1.6
 
 var direction = Vector2.RIGHT
+var damage = 0
 var shooter_node = null
 var has_hooked = false
 
@@ -24,7 +24,8 @@ func setup_owner(shooter):
 func _physics_process(_delta):
 	rotation = linear_velocity.angle()
 
-func start(pos, dir):
+func start(pos, dir, projectile_damage):
+	damage = projectile_damage
 	global_position = pos
 
 	if typeof(dir) == TYPE_VECTOR2:

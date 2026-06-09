@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @export var speed = 800.0
 @export var lifetime = 10.0
-@export var damage = GameBalance.ENEMY_PROJECTILE["web"]
 
 @onready var sprite = $anim
 @onready var area = $Area2D
@@ -11,6 +10,7 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 var has_collided = false
 var is_web = true
+var damage = 0
 
 func _ready():
 	top_level = true
@@ -27,7 +27,8 @@ func _ready():
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
-func start(spawn_position, dir):
+func start(spawn_position, dir, projectile_damage):
+	damage = projectile_damage
 	global_position = spawn_position
 
 	if typeof(dir) == TYPE_VECTOR2:

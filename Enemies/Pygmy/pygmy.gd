@@ -27,8 +27,10 @@ func _ready():
 	min_shoot_distance = GameBalance.ENEMY_MIN_SHOOT_DISTANCE["pyg"]
 	max_shoot_distance = GameBalance.ENEMY_MAX_SHOOT_DISTANCE["pyg"]
 	damage = GameBalance.ENEMY_DAMAGE["pyg"]
+	projectile_damage = GameBalance.ENEMY_PROJECTILE["lance"]
 	speed = GameBalance.ENEMY_SPEED["pyg"]
 	attack_range = GameBalance.ENEMY_RANGE["pyg"]
+	fire_interval = GameBalance.ENEMY_COOLDOWN["pyg"]
 
 	attack_anim_name = "cac"
 

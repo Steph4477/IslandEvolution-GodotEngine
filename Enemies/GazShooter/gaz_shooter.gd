@@ -1,12 +1,12 @@
 extends EnemyGroundBase
 
 @export var projectile_scene = preload("res://Shoot/Enemies/Gaz/gaz.tscn")
-@export var projectile_spawn_delay = 0.40
+@export var projectile_spawn_delay = 0.0
 @export var projectile_attack_animation = "attack"
 
-var fire_interval = 2.0
+var fire_interval = 0.0
 var min_shoot_distance = 0.0
-var max_shoot_distance = 360.0
+var max_shoot_distance = 0.0
 var melee_distance = 0.0
 
 var target
@@ -17,7 +17,14 @@ var target_mod = EnemyModTarget.new()
 var projectile_spawn = null
 
 func _ready():
-	attack_anim_name = "attack"
+	projectile_spawn_delay = 0.40
+	fire_interval = GameBalance.ENEMY_COOLDOWN["snake"]
+	min_shoot_distance = GameBalance.ENEMY_MIN_SHOOT_DISTANCE["snake"]
+	max_shoot_distance = GameBalance.ENEMY_MAX_SHOOT_DISTANCE["snake"]
+	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["snake"]
+	projectile_damage = GameBalance.ENEMY_PROJECTILE["gaz"]
+
+	projectile_attack_animation = "attack"
 
 	super._ready()
 

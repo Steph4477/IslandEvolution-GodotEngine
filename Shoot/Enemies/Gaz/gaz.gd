@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @export var speed = 800.0
 @export var life_time = 3.0
-@export var damage = GameBalance.ENEMY_PROJECTILE["gaz"]
+var damage = 0
 
 var direction = Vector2.RIGHT
 var has_collided = false
@@ -27,11 +27,16 @@ func _ready():
 func setup_owner(shooter):
 	shooter_node = shooter
 
-func start(pos, dir):
+func start(pos, dir, projectile_damage):
+	damage = projectile_damage
 	global_position = pos
 	set_direction(dir)
 
 	await get_tree().create_timer(0.2).timeout
+
+	if has_collided:
+		return
+
 	$Area2D/CollisionShape2D.disabled = false
 
 func set_direction(dir):
@@ -48,24 +53,29 @@ func set_direction(dir):
 		$Sprite2D.flip_h = false
 
 func _on_area_2d_body_entered(body):
+	if has_collided:
+		return
+
 	if body == shooter_node:
 		return
 
 	if body is StaticBody2D:
 		return
 
-	if has_collided:
-		return
-
 	if not body.is_in_group("Player"):
 		return
 
 	has_collided = true
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 
-	if body.effects_mod:
-		body.effects_mod.apply_gaz()
+	if not body.can_be_damaged:
+		queue_free()
+		return
 
 	if body.damage_mod:
 		body.damage_mod.on_hit(damage)
+
+	#if body.effects_mod:
+		#body.effects_mod.apply_gaz()
 
 	queue_free()

@@ -1,7 +1,7 @@
 extends EnemyGroundBase
 
 # --- Export ---
-@export var melee_distance = 80
+@export var melee_distance = 0.0
 @export var jump_velocity = -450
 @export var chase_speed_multiplier = 3
 
@@ -26,11 +26,16 @@ var clim = preload("res://Enemies/Tarantula/Effects/ClimAdd/clim_Add.tscn")
 # ============================================================================
 #                               READY
 # ============================================================================
-
 func _ready():
+	max_hp = GameBalance.ENEMY_HP["add_tarantula"]
+	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["add_tarantula"]
+	speed = GameBalance.ENEMY_SPEED["add_tarantula"]
+	damage = GameBalance.ENEMY_DAMAGE["add_tarantula"]
 	attack_anim_name = "attack"
-
+	
 	super._ready()
+	
+	attack_timer.wait_time = GameBalance.ENEMY_COOLDOWN["add_tarantula"]
 
 	patrol_timer = $PatrolTimer
 
@@ -48,7 +53,6 @@ func _ready():
 # ============================================================================
 #                               PHYSICS PROCESS
 # ============================================================================
-
 func _physics_process(delta):
 	if is_dead:
 		return
@@ -72,7 +76,6 @@ func _physics_process(delta):
 # ============================================================================
 #                               INTRO PLAFOND
 # ============================================================================
-
 func play_plafond_intro():
 	visible = false
 	set_physics_process(false)
@@ -96,7 +99,6 @@ func play_plafond_intro():
 # ============================================================================
 #                               MOVEMENT
 # ============================================================================
-
 func update_movement():
 	if target == null:
 		is_patrolling = true
@@ -128,7 +130,6 @@ func chase_target():
 # ============================================================================
 #                               ANIMATIONS
 # ============================================================================
-
 func play_patrol_animation():
 	if velocity.x != 0:
 		if anim.current_animation != "walk":
@@ -140,7 +141,6 @@ func play_patrol_animation():
 # ============================================================================
 #                               MELEE ATTACK
 # ============================================================================
-
 func attack():
 	if not can_attack_player():
 		return
@@ -158,7 +158,6 @@ func attack():
 # ============================================================================
 #                               DEATH
 # ============================================================================
-
 func die():
 	if death_requested:
 		return
@@ -189,7 +188,6 @@ func _do_die():
 # ============================================================================
 #                               SIGNALS
 # ============================================================================
-
 func _on_timer_timeout():
 	melee_mod.on_timer_timeout()
 

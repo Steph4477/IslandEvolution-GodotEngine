@@ -24,6 +24,7 @@ var projectile_spawn = null
 func _ready():
 	max_hp = GameBalance.ENEMY_HP["cannibal"]
 	damage = GameBalance.ENEMY_DAMAGE["cannibal"]
+	projectile_damage = GameBalance.ENEMY_PROJECTILE["bone"]
 	speed = GameBalance.ENEMY_SPEED["cannibal"]
 	attack_range = GameBalance.ENEMY_RANGE["cannibal"]
 	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["cannibal"]

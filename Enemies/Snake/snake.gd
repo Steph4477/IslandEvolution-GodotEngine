@@ -23,6 +23,7 @@ var projectile_spawn = null
 func _ready():
 	max_hp = GameBalance.ENEMY_HP["snake"]
 	damage = GameBalance.ENEMY_DAMAGE["snake"]
+	projectile_damage = GameBalance.ENEMY_PROJECTILE["gaz"]
 	speed = GameBalance.ENEMY_SPEED["snake"]
 	chase_distance = GameBalance.ENEMY_RANGE["snake"]
 	attack_range = GameBalance.ENEMY_RANGE["snake"]

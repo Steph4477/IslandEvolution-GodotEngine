@@ -25,6 +25,7 @@ var anim = null
 var spawn_point = null
 var attack_timer = null
 var projectile_timer = null
+var projectile_damage = 0
 var patrol_timer = null
 
 func _ready():
@@ -48,9 +49,15 @@ func apply_evolution_stats():
 	max_hp = int(round(max_hp * multiplier))
 	damage = int(round(damage * multiplier))
 
+	if projectile_damage > 0:
+		projectile_damage = int(round(projectile_damage * multiplier))
+
 	print("ENEMY EVOLUTION - ", name, " +", gs.enemy_evolution_percent, "%")
 	print("ENEMY HP : ", max_hp)
 	print("ENEMY DAMAGE : ", damage)
+
+	if projectile_damage > 0:
+		print("ENEMY PROJECTILE DAMAGE : ", projectile_damage)
 
 
 func setup_common_refs():
