@@ -176,11 +176,11 @@ func update_jump(delta):
 		p.jump_count = 0
 		return
 
-	# Bloque toute logique de saut sous l'eau (surface + underwater)
 	if p.is_swimming or p.is_swimming_under_water:
 		p.is_jumping = false
 		return
 
+	# Si Moko est sur un arbre, ui_up sert à grimper, pas à sauter
 	if p.climbing_anim != "":
 		p.is_jumping = false
 		return
@@ -193,7 +193,9 @@ func update_jump(delta):
 	if p.game_state and p.game_state.double_jump_unlocked:
 		p.max_jump_count = 2
 
-	if Input.is_action_just_pressed(p.INPUT["jump"]) and p.jump_count < p.max_jump_count:
+	var jump_pressed = Input.is_action_just_pressed(p.INPUT["jump"]) or Input.is_action_just_pressed("ui_up")
+
+	if jump_pressed and p.jump_count < p.max_jump_count:
 		p.velocity.y = p.jump_force
 		p.is_ramping = false
 		p.jump_count += 1

@@ -1456,7 +1456,7 @@ modulate = Color(0.8569273, 0.8569273, 0.8569273, 1)
 position = Vector2(100.66664, -1.3333492)
 texture_normal = ExtResource("62_jcaq3")
 texture_pressed = ExtResource("63_y20lb")
-action = "jump"
+action = "ui_up"
 
 [node name="HBoxContainerSeed" type="HBoxContainer" parent="." unique_id=418261100]
 offset_left = 1533.0
