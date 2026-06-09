@@ -26,7 +26,7 @@ func _ready():
 		gs.lvl1_intro_seen = true
 		await start_intro_sequence()
 
-	#$Sound/lvl1.play()
+	$Sound/Lvl1.play()
 
 func _on_all_seeds_collected():
 	player.can_move = false

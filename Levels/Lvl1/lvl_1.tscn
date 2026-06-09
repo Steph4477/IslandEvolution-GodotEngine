@@ -290,6 +290,9 @@ position = Vector2(256, 855)
 [node name="Sound" type="Node2D" parent="." unique_id=1907351730]
 position = Vector2(14, -90)
 
+[node name="Lvl1" type="AudioStreamPlayer2D" parent="Sound" unique_id=747837696]
+stream = ExtResource("20_qky26")
+
 [node name="World" type="Node2D" parent="." unique_id=364883991]
 modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
 
