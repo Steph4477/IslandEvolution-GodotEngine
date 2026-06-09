@@ -63,16 +63,17 @@ _data = {
 script = ExtResource("1_m1g1l")
 
 [node name="Door" type="Sprite2D" parent="." unique_id=807276985]
-z_index = 3
+z_index = 15
 position = Vector2(4, -5)
 texture = ExtResource("2_m1g1l")
 
 [node name="Full" type="Sprite2D" parent="." unique_id=239060357]
-z_index = 10
+z_index = 15
 position = Vector2(4, -3)
 texture = ExtResource("1_1mhcq")
 
 [node name="Open" type="Sprite2D" parent="." unique_id=992057231]
+z_index = 12
 position = Vector2(4, -3)
 texture = ExtResource("2_tt4of")
 
