@@ -119,6 +119,9 @@ func get_enemy_evolution_bonus():
 func get_moko_damage_multiplier(total_bonus_percent):
 	return 1.0 + float(total_bonus_percent) / 100.0
 
+func get_player_damage(base_damage, total_bonus_percent):
+	return int(round(base_damage * get_moko_damage_multiplier(total_bonus_percent)))
+
 
 func get_moko_hp_multiplier(total_bonus_percent):
 	return 1.0 + float(total_bonus_percent) / 100.0
