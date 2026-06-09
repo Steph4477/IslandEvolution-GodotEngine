@@ -62,6 +62,7 @@ script = SubResource("GDScript_msolp")
 [node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1014837249]
 offset_right = 117.0
 offset_bottom = 23.0
+scale = Vector2(0.8, 0.8)
 max_value = 1000.0
 step = 10.0
 value = 100.0
@@ -69,9 +70,9 @@ texture_under = ExtResource("1_1s6w2")
 texture_progress = ExtResource("2_yfd53")
 
 [node name="HpLabel" type="Label" parent="." unique_id=1071267428]
-offset_left = 24.0
-offset_top = 1.0
-offset_right = 94.0
-offset_bottom = 24.0
-theme_override_font_sizes/font_size = 14
+offset_left = 23.0
+offset_top = 2.0
+offset_right = 93.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 10
 text = "0000/0000"
