@@ -100,7 +100,7 @@ const ENEMY_HP = {
 	"cannibal": 120,
 	"boss_cannibal": 600,
 	"boss_tarantula": 700,
-	"add_tarantula": 10
+	"add_tarantula": 2
 	
 }
 

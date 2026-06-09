@@ -12,7 +12,7 @@ var projectile_timer_time = 0
 @export var add_phase_hp_ratio = 0.5
 @export var ceiling_offset = -300
 @export var ceiling_move_speed = 4
-@export var regen_per_second = 50
+@export var regen_per_second = 20
 
 @export var add_spawn_offset_x = 220
 @export var add_spawn_interval_min = 0.35
@@ -309,7 +309,13 @@ func start_add_phase():
 
 	await go_to_ceiling()
 
+	if is_dead:
+		return
+
 	await spawn_adds()
+
+	if is_dead:
+		return
 
 	start_regen_loop()
 
@@ -368,6 +374,9 @@ func spawn_adds():
 	spawned_adds.clear()
 
 	for spawn in add_spawns:
+		if is_dead:
+			return
+
 		var add = add_scene.instantiate()
 		var offset_x = randf_range(-add_spawn_offset_x, add_spawn_offset_x)
 
@@ -396,6 +405,9 @@ func update_health_bar():
 
 func start_regen_loop():
 	while is_in_add_phase:
+		if is_dead:
+			return
+
 		clean_dead_adds()
 
 		if spawned_adds.size() == 0:
@@ -494,6 +506,22 @@ func _do_die():
 	attack_timer.stop()
 	projectile_timer.stop()
 	patrol_timer.stop()
+
+	for add in spawned_adds:
+		if is_instance_valid(add):
+			add.queue_free()
+
+	spawned_adds.clear()
+
+	if ceiling_effect:
+		ceiling_effect.queue_free()
+		ceiling_effect = null
+
+	if on_ceiling:
+		global_position = ground_position
+		on_ceiling = false
+		visible = true
+		$Rotator.visible = true
 
 	anim.play("die")
 	await anim.animation_finished
