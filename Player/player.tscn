@@ -100,36 +100,6 @@
 [ext_resource type="Texture2D" uid="uid://brgi5n4fdogwi" path="res://Player/Sprite/climb/1.png" id="55_8hx1r"]
 [ext_resource type="Texture2D" uid="uid://s2vpqhj5hyp1" path="res://Player/Sprite/onhit/8.png" id="55_p7odc"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_beqdq"]
-load_path = "res://.godot/imported/1.png-7f4d03be027a0dc761baaffa90fe41d4.ctex"
-
-[sub_resource type="Animation" id="Animation_i7max"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("CompressedTexture2D_beqdq")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_bpa77"]
 resource_name = "clac"
 length = 0.72
@@ -491,7 +461,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6qokg"]
 resource_name = "onhit"
-length = 0.55
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -499,7 +469,7 @@ tracks/0/path = NodePath("Node2D/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.43333334, 0.46666667, 0.5),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.26666668, 0.3, 0.33333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("39_r4aas"), ExtResource("51_c7st8"), ExtResource("52_i8h25"), ExtResource("53_2krxc"), ExtResource("54_mw2es"), ExtResource("55_p7odc")]
@@ -752,7 +722,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7kcq"]
 _data = {
-&"RESET": SubResource("Animation_i7max"),
 &"clac": SubResource("Animation_bpa77"),
 &"climb": SubResource("Animation_kdg72"),
 &"climb_coco": SubResource("Animation_p8mbp"),
@@ -826,7 +795,7 @@ texture = ExtResource("2_8hx1r")
 [node name="Sprite" type="Sprite2D" parent="Node2D" unique_id=1543697993]
 position = Vector2(142.49998, 70)
 scale = Vector2(0.2, 0.2)
-texture = SubResource("CompressedTexture2D_beqdq")
+texture = ExtResource("21_bj58r")
 
 [node name="Anim" type="AnimationPlayer" parent="Node2D" unique_id=2016811510]
 root_node = NodePath("../..")

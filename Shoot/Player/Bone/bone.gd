@@ -2,8 +2,9 @@ extends RigidBody2D
 
 @export var speed = 1000
 @export var max_distance = 800
-@export var damage = GameBalance.PLAYER_DAMAGE["bone"]
-@export var lifetime = 3.0   # durée de vie en secondes
+@export var lifetime = 3.0
+
+var damage = 0
 
 var direction = Vector2.RIGHT
 var start_position = Vector2.ZERO
@@ -33,11 +34,19 @@ func _ready():
 			_finish()
 
 # Appelé par le Player : spell.start(pos, dir)
-func start(spawn_position, dir):
-	# spawn_position : position du CastPoint
-	# dir : 1 ou -1 (sens de tir)
+func start(spawn_position, dir, projectile_damage):
+	damage = projectile_damage
+
 	global_position = spawn_position
-	direction = Vector2(dir, 0)
+
+	if typeof(dir) == TYPE_VECTOR2:
+		direction = dir.normalized()
+	else:
+		if dir < 0:
+			direction = Vector2.LEFT
+		else:
+			direction = Vector2.RIGHT
+
 	start_position = global_position
 
 func _physics_process(_delta):

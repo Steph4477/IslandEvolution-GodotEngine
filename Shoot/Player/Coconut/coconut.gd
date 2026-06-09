@@ -2,11 +2,12 @@ extends RigidBody2D
 
 @export var speed = 1000
 @export var life_time = 3.0
-var damage = GameBalance.PLAYER_DAMAGE["coco"]
 
+var damage = 0
 var direction = 1
 
-func start(pos, dir):
+func start(pos, dir, projectile_damage):
+	damage = projectile_damage
 	direction = dir
 	global_position = pos
 	linear_velocity = Vector2(speed * direction, 0)

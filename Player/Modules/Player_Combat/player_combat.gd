@@ -2,6 +2,8 @@ extends Node
 
 var p
 var firing_locked = false
+var evolution = 0
+
 
 func setup(player):
 	p = player
@@ -25,6 +27,17 @@ func process():
 	shoot()
 	clac()
 	kick_input()
+
+# ============================================================================
+#                                 DAMAGE
+# ============================================================================
+func get_evolved_damage(base_damage):
+	if p.game_state.moko_evolution_percent != null:
+		evolution = p.game_state.moko_evolution_percent
+	return p.game_state.score_system.get_player_damage(
+		base_damage,
+		p.game_state.moko_evolution_percent
+	)
 
 # ============================================================================
 #                                 SHOOT
@@ -83,8 +96,13 @@ func coco():
 		return
 
 	var scene = p.spell_coco
+	var projectile_damage = GameBalance.PLAYER_DAMAGE["coco"]
+
 	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
 		scene = p.spell_coco_fire
+		projectile_damage = GameBalance.PLAYER_DAMAGE["coco_fire"]
+
+	projectile_damage = get_evolved_damage(projectile_damage)
 
 	var spell = scene.instantiate()
 	spell.z_index = 30
@@ -92,8 +110,12 @@ func coco():
 	var dir = 1
 	if p.sprite.flip_h:
 		dir = -1
-
-	spell.start(p.get_node("ShootPoint").global_position, dir)
+	
+	print("FIRE =", p.fire_buff_active)
+	print("DAMAGE =", projectile_damage)
+	print("EVOLUTION =", p.game_state.moko_evolution_percent)
+	
+	spell.start(p.get_node("ShootPoint").global_position, dir, projectile_damage)
 	p.get_tree().current_scene.add_child(spell)
 
 	p.coco_count -= 1
@@ -145,8 +167,13 @@ func bone():
 		return
 
 	var scene = p.spell_bone
+	var projectile_damage = GameBalance.PLAYER_DAMAGE["bone"]
+
 	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
 		scene = p.spell_bone_fire
+		projectile_damage = GameBalance.PLAYER_DAMAGE["bone_fire"]
+
+	projectile_damage = get_evolved_damage(projectile_damage)
 
 	var spell = scene.instantiate()
 	spell.z_index = 80
@@ -155,7 +182,7 @@ func bone():
 	if p.sprite.flip_h:
 		dir = -1
 
-	spell.start(p.get_node("ShootPoint").global_position, dir)
+	spell.start(p.get_node("ShootPoint").global_position, dir, projectile_damage)
 	p.get_tree().current_scene.add_child(spell)
 
 	p.animation_locked = false
@@ -202,8 +229,13 @@ func lance():
 		return
 
 	var scene = p.spell_lance
+	var projectile_damage = GameBalance.PLAYER_DAMAGE["lance"]
+
 	if p.game_state.fire_buff_unlocked and p.fire_buff_active:
 		scene = p.spell_lance_fire
+		projectile_damage = GameBalance.PLAYER_DAMAGE["lance_fire"]
+
+	projectile_damage = get_evolved_damage(projectile_damage)
 
 	var spell = scene.instantiate()
 
@@ -211,7 +243,7 @@ func lance():
 	if p.sprite.flip_h:
 		dir = -1
 
-	spell.start(p.get_node("ShootPoint").global_position, dir)
+	spell.start(p.get_node("ShootPoint").global_position, dir, projectile_damage)
 	p.get_tree().current_scene.add_child(spell)
 
 	p.animation_locked = false

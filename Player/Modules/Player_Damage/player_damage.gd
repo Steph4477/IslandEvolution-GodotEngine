@@ -58,11 +58,11 @@ func on_hit(damage):
 		return
 
 	if p.is_swimming_under_water:
-		await p.play_anim("onhit_under_swim")
+		p.anim.play("onhit_under_swim")
 	elif p.is_swimming:
-		await p.play_anim("onhit_swim")
+		p.anim.play("onhit_swim")
 	else:
-		await p.play_anim("onhit")
+		p.anim.play("onhit")
 
 	await p.get_tree().create_timer(p.hit_lock_time).timeout
 
