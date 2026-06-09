@@ -249,7 +249,7 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(9192, 922)
+position = Vector2(542, 686)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -650,22 +650,18 @@ position = Vector2(8468, 1062)
 
 [node name="Cannibal2" parent="Creatures" unique_id=1776202316 instance=ExtResource("16_qaw7r")]
 position = Vector2(17982, 1128)
-min_shoot_distance = 400.0
 attack_range = 500
 
 [node name="Cannibal3" parent="Creatures" unique_id=1130625183 instance=ExtResource("16_qaw7r")]
 position = Vector2(23468, 1097)
-min_shoot_distance = 500.0
 attack_range = 1000
 
 [node name="Cannibal4" parent="Creatures" unique_id=881252677 instance=ExtResource("16_qaw7r")]
 position = Vector2(25316, 1104)
-min_shoot_distance = 400.0
 attack_range = 1500
 
 [node name="Cannibal5" parent="Creatures" unique_id=77513344 instance=ExtResource("16_qaw7r")]
 position = Vector2(20058, 1059)
-min_shoot_distance = 400.0
 attack_range = 1500
 
 [node name="Mosquito" parent="Creatures" unique_id=55077267 instance=ExtResource("18_8uqfc")]

@@ -4,7 +4,7 @@ extends Node2D
 @onready var boss = $Tarantula
 
 func _ready():
-	#$Node2D/Sound/lvl2.play()
+	$Node2D/Sound/lvl2.play()
 	await get_tree().process_frame
 
 	var gs = get_node("/root/GameState")

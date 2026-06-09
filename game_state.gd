@@ -131,6 +131,7 @@ var score_screen_scene = preload("res://Hud/ScoreScreen/score_screen.tscn")
 var score_screen = null
 
 # --- Bonus ---
+var moko_evolution_percent = 0
 var moko_damage_bonus_percent = 0
 var moko_hp_bonus_percent = 0
 var enemy_evolution_percent = 0
@@ -183,12 +184,12 @@ func _ready():
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
-	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
+	await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
-	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 	await get_tree().process_frame
@@ -343,7 +344,8 @@ func apply_moko_evolution():
 	var bonus = score_system.get_moko_evolution_bonus()
 	var enemy_bonus = score_system.get_enemy_evolution_bonus()
 
-	moko_damage_bonus_percent += bonus
+	moko_evolution_percent += bonus
+	moko_damage_bonus_percent = moko_evolution_percent
 	moko_hp_bonus_percent += bonus
 	enemy_evolution_percent += enemy_bonus
 
@@ -405,6 +407,7 @@ func reset_progression():
 
 	moko_damage_bonus_percent = 0
 	moko_hp_bonus_percent = 0
+	moko_evolution_percent = 0
 	enemy_evolution_percent = 0
 
 	current_level_path = "res://Levels/Lvl1/lvl_1.tscn"
@@ -443,6 +446,7 @@ func load_global_progress():
 
 	moko_damage_bonus_percent = int(data.get("moko_damage_bonus_percent", 0))
 	moko_hp_bonus_percent = int(data.get("moko_hp_bonus_percent", 0))
+	moko_evolution_percent = int(data.get("moko_evolution_percent", 0))
 	enemy_evolution_percent = int(data.get("enemy_evolution_percent", 0))
 
 	return true
@@ -658,6 +662,7 @@ func save_game():
 
 	data["moko_damage_bonus_percent"] = moko_damage_bonus_percent
 	data["moko_hp_bonus_percent"] = moko_hp_bonus_percent
+	data["moko_evolution_percent"] = moko_evolution_percent
 	data["enemy_evolution_percent"] = enemy_evolution_percent
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -744,6 +749,7 @@ func apply_save_data(data):
 
 	moko_damage_bonus_percent = int(data.get("moko_damage_bonus_percent", 0))
 	moko_hp_bonus_percent = int(data.get("moko_hp_bonus_percent", 0))
+	moko_evolution_percent = int(data.get("moko_evolution_percent", 0))
 	enemy_evolution_percent = int(data.get("enemy_evolution_percent", 0))
 
 	# Recharge du niveau sauvegardé
