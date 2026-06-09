@@ -290,11 +290,6 @@ position = Vector2(256, 855)
 [node name="Sound" type="Node2D" parent="." unique_id=1907351730]
 position = Vector2(14, -90)
 
-[node name="lvl1" type="AudioStreamPlayer2D" parent="Sound" unique_id=1778967354]
-position = Vector2(1226, 1228)
-stream = ExtResource("20_qky26")
-volume_db = 4.837
-
 [node name="World" type="Node2D" parent="." unique_id=364883991]
 modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
 
@@ -790,10 +785,6 @@ position = Vector2(-4059, -344)
 [node name="Seed6" parent="World/Items/Seeds" unique_id=1727442955 instance=ExtResource("19_hs4kr")]
 position = Vector2(-3297, -35)
 
-[node name="Totem" parent="World/Items" unique_id=209721126 instance=ExtResource("21_t7ttw")]
-z_index = 12
-position = Vector2(3333, 357)
-
 [node name="WoodItem" parent="World/Items" unique_id=1848008734 instance=ExtResource("19_jsni3")]
 z_index = 40
 position = Vector2(2968, 636)
@@ -834,10 +825,10 @@ rotation = -3.14158
 scale = Vector2(0.397965, -1.02986)
 skew = -1.0848e-05
 
-[node name="Exit" parent="World" unique_id=550448380 instance=ExtResource("4_na1bk")]
-modulate = Color(0.7146291, 0.71462905, 0.71462905, 1)
-z_index = 20
-position = Vector2(9129, 957)
+[node name="lvl1" type="AudioStreamPlayer2D" parent="World/Traps" unique_id=1778967354]
+position = Vector2(1263, 1349)
+stream = ExtResource("20_qky26")
+volume_db = 4.837
 
 [node name="GazShooters" type="Node2D" parent="World" unique_id=190973603]
 z_index = -5
@@ -900,3 +891,12 @@ texture = ExtResource("31_ppy38")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GroundFog" unique_id=422152376]
 libraries/ = SubResource("AnimationLibrary_gs1dx")
 autoplay = &"idle"
+
+[node name="Totem" parent="." unique_id=209721126 instance=ExtResource("21_t7ttw")]
+z_index = 12
+position = Vector2(3312, 287)
+
+[node name="Exit" parent="." unique_id=550448380 instance=ExtResource("4_na1bk")]
+modulate = Color(0.7146291, 0.71462905, 0.71462905, 1)
+z_index = 20
+position = Vector2(9129, 957)
