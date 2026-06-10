@@ -13,11 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://dem6aecic7fr5" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.tscn" id="11_p5uxy"]
 [ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
 [ext_resource type="Texture2D" uid="uid://b1hd2mhorqrne" path="res://Levels/Lvl1/Environement/TileMap/tileset_jungle_ground.png" id="12_f1okb"]
-[ext_resource type="PackedScene" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
+[ext_resource type="PackedScene" uid="uid://d1xptwkykbjlu" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
 [ext_resource type="Texture2D" uid="uid://s0vtyicveem5" path="res://Levels/Lvl1/Environement/TileMap/tileset_platform.png" id="14_f1okb"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
 [ext_resource type="PackedScene" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
-[ext_resource type="PackedScene" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
+[ext_resource type="PackedScene" uid="uid://cbphsuuibdtbw" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
 [ext_resource type="Script" uid="uid://o41uset6a6qr" path="res://Levels/Lvl1/Environement/seeds.gd" id="18_p8qu6"]
 [ext_resource type="PackedScene" uid="uid://nqrb063x5buh" path="res://Loot/Seed/seed.tscn" id="19_hs4kr"]
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="19_jsni3"]
@@ -723,23 +723,18 @@ position = Vector2(3309, 916)
 
 [node name="Mousquito" parent="World/Creatures" unique_id=1197171326 instance=ExtResource("13_oiu73")]
 position = Vector2(2259, -112)
-collision_mask = 256
 
 [node name="Mousquito2" parent="World/Creatures" unique_id=156221535 instance=ExtResource("13_oiu73")]
 position = Vector2(980, -356)
-collision_mask = 256
 
 [node name="Mousquito3" parent="World/Creatures" unique_id=55077267 instance=ExtResource("13_oiu73")]
 position = Vector2(96, -116)
-collision_mask = 256
 
 [node name="Mousquito4" parent="World/Creatures" unique_id=1050341370 instance=ExtResource("13_oiu73")]
 position = Vector2(3742, -94)
-collision_mask = 256
 
 [node name="Mosquito" parent="World/Creatures" unique_id=915889274 instance=ExtResource("13_oiu73")]
 position = Vector2(-1497, -30)
-collision_mask = 256
 
 [node name="Snake" parent="World/Creatures" unique_id=88320707 instance=ExtResource("12_d0a2k")]
 z_index = 5
