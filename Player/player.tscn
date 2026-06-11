@@ -11,9 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://crbo7w8f0kgve" path="res://Player/Sprite/walk/1.png" id="6_tj6lq"]
 [ext_resource type="Texture2D" uid="uid://lrae17eeknlf" path="res://Player/Sprite/exit/3.png" id="7_p7kcq"]
 [ext_resource type="Texture2D" uid="uid://b68wfflnsjwdd" path="res://Player/Sprite/die/5.png" id="10_pfstq"]
-[ext_resource type="AudioStream" uid="uid://dk6xftm8op4x0" path="res://sounds/walk.wav" id="11_leyao"]
 [ext_resource type="Texture2D" uid="uid://bm68bgmyg1d2n" path="res://Player/Sprite/die/2.png" id="11_tklvp"]
-[ext_resource type="AudioStream" uid="uid://bv322khn0hr7k" path="res://sounds/jump.wav" id="12_5vkkw"]
 [ext_resource type="Texture2D" uid="uid://cvg0wn0qur845" path="res://Player/Sprite/die/3.png" id="12_gv7t5"]
 [ext_resource type="Texture2D" uid="uid://e2sotn1npn3m" path="res://Player/Sprite/die/6.png" id="13_hhxpw"]
 [ext_resource type="Texture2D" uid="uid://bgsvxehy3s05l" path="res://Player/Sprite/gaz/walk_gaz1.png" id="13_p7kcq"]
@@ -821,15 +819,6 @@ limit_top = 0
 limit_right = 7600
 limit_bottom = 1500
 position_smoothing_enabled = true
-
-[node name="Sound" type="Node2D" parent="." unique_id=2118294469]
-
-[node name="Walk" type="AudioStreamPlayer2D" parent="Sound" unique_id=1150133122]
-stream = ExtResource("11_leyao")
-
-[node name="Jump" type="AudioStreamPlayer2D" parent="Sound" unique_id=502661173]
-stream = ExtResource("12_5vkkw")
-volume_db = -6.287
 
 [node name="ClacArea" type="Area2D" parent="." unique_id=1323133612]
 position = Vector2(-100, -130)

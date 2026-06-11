@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c2w24rymygghn" path="res://Levels/Lvl2/Lvl_2b/lvl_2b.gd" id="1_ribhp"]
 [ext_resource type="PackedScene" uid="uid://b3h7ccwydh4md" path="res://Levels/Lvl2/Environement/Background/Tiles/tileMap.tscn" id="3_sbfsf"]
 [ext_resource type="AudioStream" uid="uid://cm1dmju0qo7fk" path="res://sounds/cinematic.wav" id="3_v5rf0"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Torch/torch.tscn" id="6_dntyv"]
+[ext_resource type="PackedScene" uid="uid://cwjigpn23f13r" path="res://ItemsDecors/Torch/torch.tscn" id="6_dntyv"]
 [ext_resource type="PackedScene" uid="uid://p1ewpn30hpnw" path="res://Enemies/Tarantula/tarantula.tscn" id="11_6sncs"]
 [ext_resource type="Texture2D" uid="uid://hg8mtdcl1ndv" path="res://Levels/Lvl2/Accessory/web.png" id="11_fyxfs"]
 [ext_resource type="Texture2D" uid="uid://dj1o6yasqb48h" path="res://Levels/Lvl2/Accessory/web1.png" id="11_sbfsf"]

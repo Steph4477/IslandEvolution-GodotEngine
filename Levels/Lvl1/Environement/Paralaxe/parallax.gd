@@ -22,6 +22,8 @@ var ready_parallax = false
 
 
 func _ready():
+
+
 	gs = get_node("/root/GameState")
 
 	setup_layer(tree_layer, tree_sprite)
@@ -29,6 +31,7 @@ func _ready():
 	setup_layer(plant_layer, plant_sprite)
 
 	await get_tree().process_frame
+	await get_tree().create_timer(5.0).timeout
 
 	camera = gs.player.get_node("Camera2D")
 	last_camera_x = camera.global_position.x

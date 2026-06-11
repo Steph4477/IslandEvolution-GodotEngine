@@ -830,3 +830,8 @@ func _on_air_pressed():
 
 func _on_kick_pressed():
 	gs.player.combat_mod.process_kick()
+
+func _on_jump_pressed():
+	Input.action_press("jump")
+	await get_tree().process_frame
+	Input.action_release("jump")

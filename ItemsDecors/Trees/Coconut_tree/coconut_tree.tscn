@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c6ma8anrfqfph" path="res://Levels/Lvl1/Environement/Fx/fx.png" id="3_ks8rw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
-size = Vector2(32.158302, 512.56036)
+size = Vector2(48.807976, 512.56036)
 
 [sub_resource type="Animation" id="Animation_i7hbb"]
 length = 0.001
@@ -119,7 +119,7 @@ offset = Vector2(-288, -844)
 [node name="Area2D" type="Area2D" parent="." unique_id=1146328630]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=238588019]
-position = Vector2(0.27116203, -219.05688)
+position = Vector2(8.596003, -219.05688)
 scale = Vector2(1.0000005, 1.0000005)
 shape = SubResource("RectangleShape2D_it4j1")
 

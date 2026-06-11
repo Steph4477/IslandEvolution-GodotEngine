@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bvdkvbagxio42" path="res://Levels/Lvl2/Lvl_2c/lvl_2c.gd" id="1_vu4rr"]
 [ext_resource type="Texture2D" uid="uid://b1mxnmvvpabo4" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="3_yvmm5"]
 [ext_resource type="Texture2D" uid="uid://bmtf5s61pn0yo" path="res://Levels/Lvl2/Environement/Cliff/1.png" id="4_r0stp"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="5_k5re1"]
+[ext_resource type="PackedScene" uid="uid://dsnkgl7du6i1b" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="5_k5re1"]
 [ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="6_s15ql"]
 [ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="9_jo6m1"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="16_irelo"]

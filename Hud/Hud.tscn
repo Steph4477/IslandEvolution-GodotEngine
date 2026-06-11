@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dkx3elblvxe12" path="res://Hud/hud.gd" id="1_0b1lv"]
 [ext_resource type="PackedScene" uid="uid://cdnl4r3q0ukwv" path="res://Hud/Modules/dirt_spot.tscn" id="2_ll21l"]
+[ext_resource type="Texture2D" uid="uid://u6lx4i4bv3b7" path="res://Interface/gamePad/jump.png" id="6_1uhjb"]
 [ext_resource type="Texture2D" uid="uid://cbxsnkrjxfbe2" path="res://Interface/gamePad/kick.png" id="6_eqavf"]
 [ext_resource type="Texture2D" uid="uid://dfg8g25gat8yy" path="res://Interface/gamePad/shoot.png" id="6_rgqxt"]
 [ext_resource type="Texture2D" uid="uid://ctvwrlymubomo" path="res://Interface/gamePad/Pressed/shoot.png" id="7_b0qj5"]
 [ext_resource type="Texture2D" uid="uid://cilrogcr86fd" path="res://Interface/gamePad/Pressed/kick.png" id="7_ll21l"]
+[ext_resource type="Texture2D" uid="uid://ctav1ywj1ouxr" path="res://Interface/gamePad/Pressed/jump.png" id="7_vfut1"]
 [ext_resource type="Texture2D" uid="uid://wctveqj65ef2" path="res://Interface/gamePad/coconut.png" id="8_b0qj5"]
 [ext_resource type="Texture2D" uid="uid://d4f3cla5rw51a" path="res://Interface/gamePad/healing_potion.png" id="8_voibu"]
 [ext_resource type="Texture2D" uid="uid://58np8hxbmkm4" path="res://Interface/gamePad/bone.png" id="8_wb1yk"]
@@ -1202,13 +1204,19 @@ offset_bottom = -501.0
 scale = Vector2(1.5, 1.5)
 
 [node name="Hand" type="TouchScreenButton" parent="Gamepad" unique_id=503376199]
-position = Vector2(1786, 923.00006)
+position = Vector2(1787.3334, 810.33344)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("6_rgqxt")
 texture_pressed = ExtResource("7_b0qj5")
 
+[node name="Jump" type="TouchScreenButton" parent="Gamepad" unique_id=1966137393]
+position = Vector2(1782.6667, 922.6667)
+texture_normal = ExtResource("6_1uhjb")
+texture_pressed = ExtResource("7_vfut1")
+action = "jump"
+
 [node name="kick" type="TouchScreenButton" parent="Gamepad" unique_id=656840088]
-position = Vector2(1778.6666, 804.6666)
+position = Vector2(1780, 692)
 texture_normal = ExtResource("6_eqavf")
 texture_pressed = ExtResource("7_ll21l")
 action = "kick"
@@ -1917,6 +1925,7 @@ texture = ExtResource("52_wfxx7")
 libraries/ = SubResource("AnimationLibrary_qxfqj")
 
 [connection signal="pressed" from="Gamepad/Hand" to="." method="_on_hand_pressed"]
+[connection signal="pressed" from="Gamepad/Jump" to="." method="_on_jump_pressed"]
 [connection signal="pressed" from="Gamepad/kick" to="." method="_on_kick_pressed"]
 [connection signal="pressed" from="Gamepad/Coco" to="." method="_on_coco_pressed"]
 [connection signal="pressed" from="Gamepad/Spear" to="." method="_on_spear_pressed"]

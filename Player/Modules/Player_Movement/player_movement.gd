@@ -139,7 +139,7 @@ func process_liana(_delta):
 		else:
 			p.current_liana.angle_direction = 0
 
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("ui_up"):
 		var power = 900
 		var angle_deg = p.current_liana.get_node("Pivot").rotation_degrees
 		p.velocity = Vector2(0, -power).rotated(deg_to_rad(angle_deg))
@@ -193,7 +193,7 @@ func update_jump(delta):
 	if p.game_state and p.game_state.double_jump_unlocked:
 		p.max_jump_count = 2
 
-	var jump_pressed = Input.is_action_just_pressed(p.INPUT["jump"]) or Input.is_action_just_pressed("ui_up")
+	var jump_pressed = Input.is_action_just_pressed(p.INPUT["jump"])
 
 	if jump_pressed and p.jump_count < p.max_jump_count:
 		p.velocity.y = p.jump_force

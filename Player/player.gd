@@ -265,7 +265,7 @@ func setup_state_sync_module():
 	state_sync_mod.setup(self)
 
 func setup_hud_module():
-	hud_mod = preload("res://Player/Modules/Player_HUD/player_hud.gd").new()
+	hud_mod = preload("res://Player/Modules/Player_Hud/player_hud.gd").new()
 	add_child(hud_mod)
 	hud_mod.setup(self)
 

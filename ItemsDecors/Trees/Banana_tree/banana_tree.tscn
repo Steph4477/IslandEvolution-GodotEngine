@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cjhkjrlyxfrf7" path="res://ItemsDecors/Trees/Banana_tree/1.png" id="2_l2fy6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsyrc"]
-size = Vector2(19, 479)
+size = Vector2(40.976303, 479)
 
 [sub_resource type="Animation" id="Animation_fnr4t"]
 length = 0.001
@@ -79,7 +79,7 @@ texture = ExtResource("2_l2fy6")
 [node name="Area2D" type="Area2D" parent="." unique_id=803545329]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=781706807]
-position = Vector2(-2.6773152, -222.00414)
+position = Vector2(-7.5246325, -222.08875)
 rotation = 0.017453292
 shape = SubResource("RectangleShape2D_fsyrc")
 

@@ -121,7 +121,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1372434146]
 z_index = 30
-position = Vector2(29, 746)
+position = Vector2(9411, 1023)
 
 [node name="Tiles" type="Node2D" parent="Node2D" unique_id=1203558698]
 position = Vector2(1327, -54)
@@ -349,7 +349,7 @@ position = Vector2(-547.9995, 191.0014)
 scale = Vector2(1, 1)
 
 [node name="Rat5" parent="Node2D/Creatures/Rats" unique_id=1552802944 instance=ExtResource("16_sdx3j")]
-position = Vector2(-1953.9976, 996.0049)
+position = Vector2(-686.0016, -587.9983)
 scale = Vector2(1, 1)
 
 [node name="Rat6" parent="Node2D/Creatures/Rats" unique_id=1805843549 instance=ExtResource("16_sdx3j")]
@@ -378,7 +378,7 @@ position = Vector2(-1330.0007, -204.99664)
 scale = Vector2(-0.6, 0.6)
 
 [node name="Snake2" parent="Node2D/Creatures/Snakes" unique_id=1230557295 instance=ExtResource("14_utbl0")]
-position = Vector2(-2994.9995, 191.0076)
+position = Vector2(-3643.0005, -237.99075)
 scale = Vector2(-0.6, 0.6)
 
 [node name="Snake3" parent="Node2D/Creatures/Snakes" unique_id=1924301690 instance=ExtResource("14_utbl0")]
@@ -410,7 +410,7 @@ z_index = 3
 position = Vector2(9389.001, 752.00006)
 rotation = -0.000533727
 scale = Vector2(1, 0.9)
-next_scene_path = "res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn"
+next_scene_path = "res://Levels/Lvl2/lvl_2a/lvl_2a.tscn"
 
 [node name="Bridge" parent="Node2D/Items" unique_id=87750588 instance=ExtResource("9_5rcsp")]
 z_index = 10
