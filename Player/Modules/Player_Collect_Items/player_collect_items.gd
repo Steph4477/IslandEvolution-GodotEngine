@@ -119,11 +119,11 @@ func collect_lance(amount = 1):
 	p.hud_mod.refresh_hud_buttons()
 
 
-func collect_seed(amount = 1):
+func collect_seed(seed_id, amount = 1):
 	var gs = p.game_state
 
 	for i in range(amount):
-		gs.add_seed_collected()
+		gs.add_seed_collected(seed_id)
 
 	p.hud_mod.update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
 
