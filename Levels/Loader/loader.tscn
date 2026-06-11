@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bd7764h26bm67"]
+
+[ext_resource type="Script" uid="uid://chufj13eirocc" path="res://splash_screen.gd" id="1_ekh3u"]
+[ext_resource type="Texture2D" uid="uid://bxgjekam2cmwf" path="res://Levels/Loader/stfevolution.png" id="2_4c2c6"]
+[ext_resource type="Texture2D" uid="uid://b5tp6tvxgrpk3" path="res://logo.png" id="2_p0t2h"]
+
+[sub_resource type="Animation" id="Animation_ovyd1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Game:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/Game:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/Studio:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/PresenteLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bf24i"]
+resource_name = "appear"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Game:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/Game:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.7999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/Studio:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/PresenteLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.8999999, 2.1333334, 3.8333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c3i1d"]
+_data = {
+&"RESET": SubResource("Animation_ovyd1"),
+&"appear": SubResource("Animation_bf24i")
+}
+
+[node name="Loader" type="Control" unique_id=1186611375]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekh3u")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1667448072]
+layout_mode = 0
+offset_right = 1928.0
+offset_bottom = 1092.0
+color = Color(0, 0, 0, 1)
+
+[node name="Node" type="Node" parent="." unique_id=927396059]
+
+[node name="Studio" type="Sprite2D" parent="Node" unique_id=1734292627]
+visible = false
+position = Vector2(962, 198)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_4c2c6")
+
+[node name="PresenteLabel" type="Label" parent="Node" unique_id=54415891]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -4.0
+offset_top = 498.0
+offset_right = -4.0
+offset_bottom = 567.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "présente"
+horizontal_alignment = 1
+
+[node name="Game" type="Sprite2D" parent="Node" unique_id=214553840]
+position = Vector2(974, 538)
+scale = Vector2(1e-05, 0.5)
+texture = ExtResource("2_p0t2h")
+
+[node name="CopyrightLabel" type="Label" parent="." unique_id=187261860]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 1035.0
+offset_right = 793.0
+offset_bottom = 1122.0
+theme_override_font_sizes/font_size = 30
+text = "© 2026 STF EVOLUTION STUDIO Tous droits réservés."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1780283812]
+libraries/ = SubResource("AnimationLibrary_c3i1d")
+autoplay = &"appear"

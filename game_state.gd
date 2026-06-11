@@ -181,13 +181,14 @@ func _ready():
 	print("SURVIVOR UNLOCKED : ", survivor_unlocked)
 	print("KING UNLOCKED : ", king_unlocked)
 	
+	await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2a/lvl_2a.tscn")
-	await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
+	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
@@ -294,6 +295,11 @@ func can_show_score_screen():
 func show_score_screen():
 	if not can_show_score_screen():
 		return
+
+	if player:
+		player.can_be_damaged = false
+		player.can_move = false
+		player.velocity = Vector2.ZERO
 
 	score_system.calculate_stars()
 	apply_moko_evolution()
@@ -526,15 +532,34 @@ func load_level(scene_path):
 			p.global_position = pending_player_pos
 		else:
 			p.global_position = spawn_point.global_position
-			p.global_position.y += 60
 			p.velocity = Vector2.ZERO
-			p.anim.play("idle")
 
 		if not is_loading_save:
 			if p.has_method("reset_state"):
 				p.reset_state()
 			else:
 				p.pv = p.max_pv
+
+		if not is_loading_save:
+			p.velocity = Vector2.ZERO
+			p.can_move = false
+
+			await get_tree().physics_frame
+
+			var ray = RayCast2D.new()
+			ray.target_position = Vector2(0, 600)
+			ray.collision_mask = p.collision_mask
+			p.add_child(ray)
+			ray.force_raycast_update()
+
+			if ray.is_colliding():
+				p.global_position.y = ray.get_collision_point().y
+
+			ray.queue_free()
+
+			p.velocity = Vector2.ZERO
+			p.anim.play("idle")
+			p.can_move = true
 
 		apply_moko_hp_evolution(p)
 
