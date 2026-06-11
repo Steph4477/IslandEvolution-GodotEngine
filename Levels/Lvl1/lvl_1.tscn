@@ -293,9 +293,10 @@ position = Vector2(415, 1055)
 [node name="Sound" type="Node2D" parent="." unique_id=1907351730]
 position = Vector2(14, -90)
 
-[node name="Lvl1" type="AudioStreamPlayer2D" parent="Sound" unique_id=747837696]
-position = Vector2(5347, 631)
+[node name="Lvl1" type="AudioStreamPlayer" parent="Sound" unique_id=626687880]
 stream = ExtResource("20_qky26")
+volume_db = -6.0
+autoplay = true
 parameters/looping = true
 
 [node name="Trees" type="Node2D" parent="." unique_id=2136015294]
