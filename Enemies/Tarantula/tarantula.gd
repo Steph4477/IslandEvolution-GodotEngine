@@ -495,6 +495,8 @@ func _do_die():
 	if is_dead:
 		return
 
+	var died_on_ceiling = on_ceiling
+
 	is_dead = true
 	is_attacking = false
 	is_shooting = false
@@ -517,11 +519,19 @@ func _do_die():
 		ceiling_effect.queue_free()
 		ceiling_effect = null
 
-	if on_ceiling:
-		global_position = ground_position
-		on_ceiling = false
+	if died_on_ceiling:
 		visible = true
 		$Rotator.visible = true
+		set_physics_process(false)
+
+		global_position = ceiling_point.global_position
+		anim.play("jump")
+
+		var tween = create_tween()
+		tween.tween_property(self, "global_position", ground_position, 0.8)
+		await tween.finished
+
+		on_ceiling = false
 
 	anim.play("die")
 	await anim.animation_finished
