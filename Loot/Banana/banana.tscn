@@ -48,9 +48,11 @@ _data = {
 script = ExtResource("1_rvtjo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=598903984]
+modulate = Color(1, 1, 0, 1)
+self_modulate = Color(1, 1, 0, 1)
 position = Vector2(12.201012, 28.520721)
 rotation = -0.034906585
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_rvtjo")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=46387584]

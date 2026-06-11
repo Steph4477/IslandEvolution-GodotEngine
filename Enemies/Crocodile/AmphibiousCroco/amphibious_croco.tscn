@@ -285,8 +285,9 @@ position = Vector2(-42.267517, 13.5)
 shape = SubResource("CircleShape2D_7isv1")
 
 [node name="Sound" type="Node2D" parent="." unique_id=1001095364]
+position = Vector2(-36, 11)
 
-[node name="Roar" type="AudioStreamPlayer" parent="Sound" unique_id=554223891]
+[node name="Roar" type="AudioStreamPlayer2D" parent="Sound" unique_id=166679855]
 stream = ExtResource("27_ow40j")
 volume_db = 4.388
 bus = &"Water"

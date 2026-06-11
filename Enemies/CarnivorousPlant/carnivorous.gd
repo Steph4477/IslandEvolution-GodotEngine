@@ -54,12 +54,12 @@ func _on_area_2d_body_entered(body):
 	burp_sprite.visible = false
 
 	# 💥 oneshot
-	if body.damage_mod:
-		body.damage_mod.on_hit(body.max_pv)
-	else:
-		body.on_hit(body.max_pv)
+	var damage = body.pv
 
-	attacking = false
+	if body.damage_mod:
+		body.damage_mod.on_hit(damage)
+	else:
+		body.on_hit(damage)
 
 
 func _spawn_ghost_from_player():
