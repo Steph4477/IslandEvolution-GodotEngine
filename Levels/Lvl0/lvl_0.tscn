@@ -399,7 +399,7 @@ texture_pressed = ExtResource("14_usbvp")
 
 [node name="dijee" type="AudioStreamPlayer" parent="sound" unique_id=1683550365]
 stream = ExtResource("4_1tkva")
-volume_db = -6.45
+volume_db = -13.9
 autoplay = true
 
 [node name="Anim" type="AnimationPlayer" parent="." unique_id=175262954]
