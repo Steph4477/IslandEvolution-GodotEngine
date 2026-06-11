@@ -11,4 +11,7 @@ func change_scene():
 	var gs = get_node_or_null("/root/GameState")
 	if not gs:
 		return
+
+	gs.unlocked_level_path = next_scene_path
+	gs.save_game()
 	gs.load_level(next_scene_path)
