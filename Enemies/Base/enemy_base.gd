@@ -6,6 +6,7 @@ class_name EnemyBase
 @export var hit_lock_time = 0.20
 @export var attack_anim_name = "attack"
 @export var count_in_score = true
+@export var enemy_id = ""
 
 @export var drop_loot_enabled = false
 @export_file("*.tscn") var loot_scene_path = ""
@@ -30,9 +31,17 @@ var projectile_damage = 0
 var patrol_timer = null
 
 func _ready():
+	gs = get_node("/root/GameState")
+
+	if enemy_id == "":
+		enemy_id = name
+
+	if gs.has_pending_load and gs.killed_enemy_ids.has(enemy_id):
+		queue_free()
+		return
+
 	setup_common_refs()
 
-	gs = get_node("/root/GameState")
 	player = gs.player
 
 	apply_evolution_stats()
@@ -219,7 +228,11 @@ func die():
 	if count_in_score:
 		gs.score_system.add_enemy_kill()
 
+	if count_in_score and enemy_id != "":
+		gs.add_enemy_killed(enemy_id)
+
 	spawn_loot()
+
 	queue_free()
 
 

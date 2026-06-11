@@ -5,6 +5,7 @@ const SAVE_PATH = "user://savegame.json"
 var has_pending_load = false
 var pending_player_pos = Vector2.ZERO
 var pending_level_path = ""
+var unlocked_level_path = "res://Levels/Lvl1/lvl_1.tscn"
 
 # Permet de sauvegarder depuis le menu (lvl0) quand player = null
 var last_player_pos = Vector2.ZERO
@@ -14,7 +15,6 @@ var has_last_player_pos = false
 var banane_count = 0
 var honey_count = 0
 var coco_count = 0
-var seed_count = 0
 var bone_count = 0
 var heal_amount = 0
 var honey_amount = 0
@@ -28,6 +28,16 @@ var has_lance = false
 var has_flower = false
 var toucan_challenge_retry = false
 var focus_cam_frog = false
+
+# --- Collecte  ---
+var seed_count = 0
+var collected_seed_ids = []
+var seed_level_path = ""
+
+var killed_enemy_ids = []
+
+var collected_loot_ids = []
+var loot_level_path = ""
 
 # --- Camouflage ---
 var camouflage_unlocked = false
@@ -181,13 +191,13 @@ func _ready():
 	print("SURVIVOR UNLOCKED : ", survivor_unlocked)
 	print("KING UNLOCKED : ", king_unlocked)
 	
-	#await load_level("res://Levels/Loader/loader.tscn")
+	await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
-	await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
+	#await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
@@ -255,6 +265,17 @@ func continue_game():
 		pending_level_path = ""
 
 	await load_level(current_level_path)
+
+func continue_from_unlocked_level():
+	reset_lives()
+	reinitialise()
+	reset_session_dialogues()
+
+	has_pending_load = false
+	pending_level_path = ""
+	pending_player_pos = Vector2.ZERO
+
+	await load_level(unlocked_level_path)
 
 func reset_session_dialogues():
 	toucan_dialogue_seen = false
@@ -326,7 +347,11 @@ func setup_level_score(level):
 
 	score_system.set_enemies_total(total_enemies)
 
+	if has_pending_load:
+		score_system.enemies_killed = killed_enemy_ids.size()
+
 	print("SCORE - Total ennemis :", total_enemies)
+	print("SCORE - Ennemis déjà tués :", score_system.enemies_killed)
 
 func get_current_level_title():
 	if current_level_path == "res://Levels/Lvl1/lvl_1.tscn":
@@ -417,13 +442,12 @@ func reset_progression():
 	enemy_evolution_percent = 0
 
 	current_level_path = "res://Levels/Lvl1/lvl_1.tscn"
+	unlocked_level_path = "res://Levels/Lvl1/lvl_1.tscn"
 	last_player_pos = Vector2.ZERO
 	has_last_player_pos = true
 	has_pending_load = false
 	pending_level_path = ""
 	pending_player_pos = Vector2.ZERO
-
-	save_game()
 
 	print("RESET PROGRESSION")
 	print("DIFFICULTY : ", difficulty)
@@ -444,6 +468,8 @@ func load_global_progress():
 		return false
 
 	var data = json.data
+
+	unlocked_level_path = data.get("unlocked_level_path", "res://Levels/Lvl1/lvl_1.tscn")
 
 	difficulty = data.get("difficulty", "explorer")
 	explorer_unlocked = data.get("explorer_unlocked", true)
@@ -522,6 +548,7 @@ func load_level(scene_path):
 	if not is_menu:
 		current_level_path = scene_path
 		reset_seed_tracking_from_scene()
+		reset_loot_tracking_from_scene()
 
 		var is_loading_save = has_pending_load
 
@@ -639,6 +666,7 @@ func save_game():
 	var data = {}
 
 	data["level_path"] = current_level_path
+	data["unlocked_level_path"] = unlocked_level_path
 	data["player_pos"] = {"x": pos.x, "y": pos.y}
 
 	data["banane_count"] = banane_count
@@ -662,7 +690,9 @@ func save_game():
 	data["ramp_unlocked"] = ramp_unlocked
 	data["fire_buff_unlocked"] = fire_buff_unlocked
 	data["air_buff_unlocked"] = air_buff_unlocked
-	
+
+	data["killed_enemy_ids"] = killed_enemy_ids
+
 	data["has_key"] = has_key
 	data["has_lance"] = has_lance
 	data["has_flower"] = has_flower
@@ -728,6 +758,8 @@ func apply_save_data(data):
 	else:
 		has_pending_load = false
 
+	unlocked_level_path = data.get("unlocked_level_path", "res://Levels/Lvl1/lvl_1.tscn")
+
 	banane_count = int(data.get("banane_count", 0))
 	honey_count = int(data.get("honey_count", 0))
 	coco_count = int(data.get("coco_count", 0))
@@ -749,7 +781,9 @@ func apply_save_data(data):
 	ramp_unlocked = data.get("ramp_unlocked", false)
 	fire_buff_unlocked = data.get("fire_buff_unlocked", false)
 	air_buff_unlocked = data.get("air_buff_unlocked", false)
-	
+
+	killed_enemy_ids = data.get("killed_enemy_ids", [])
+
 	has_key = data.get("has_key", false)
 	has_lance = data.get("has_lance", false)
 	has_flower = data.get("has_flower", false)
@@ -826,34 +860,16 @@ func lose_life():
 		request_reload_after_delay(0.5)
 
 func reset_after_death():
-	banane_count = 0
-	honey_count = 0
-	coco_count = 0
-	bone_count = 0
-	seed_count = 0
-	lance_count = 0
-	camouflage_count = 0
-
-	can_fire_coco = false
-	can_fire_lance = false
-	can_fire_bone = false
-	can_camouflage = false
+	is_camouflaged = false
 
 	get_tree().paused = false
 	is_paused = false
+
 	if hud and hud.has_method("set_pause_visual"):
 		hud.set_pause_visual(false)
 
 	if hud:
-		var gamepad = hud.get_node("Gamepad")
-		hud.set_button_enabled(gamepad.get_node("Coco"), false)
-		hud.set_button_enabled(gamepad.get_node("Bone"), false)
-		hud.set_button_enabled(gamepad.get_node("Spear"), false)
-		hud.set_button_enabled(gamepad.get_node("Health"), false)
-		hud.set_button_enabled(gamepad.get_node("Honey"), false)
-		hud.set_button_enabled(gamepad.get_node("Camouflage"), false)
-
-		hud.update_seed_display(0, total_seeds_in_level)
+		hud.update_seed_display(collected_seeds, total_seeds_in_level)
 		hud.update_lance_display()
 		hud.update_banane_display()
 		hud.update_honey_display()
@@ -868,18 +884,32 @@ func request_reload_after_delay(delay = 0.5):
 	else:
 		load_level(current_level_path)
 
-
-# --- Graines ---
+###############################################################################
+#                             COLLECTE PERSISTANTE
+###############################################################################
 func reset_seed_tracking_from_scene():
 	var seeds = current_level.get_tree().get_nodes_in_group("Seed")
-	total_seeds_in_level = seeds.size()
-	collected_seeds = 0
+
+	if seed_level_path != current_level_path:
+		seed_level_path = current_level_path
+		collected_seed_ids.clear()
+		collected_seeds = 0
+		seed_count = 0
+		total_seeds_in_level = seeds.size()
+
+	collected_seeds = collected_seed_ids.size()
+	seed_count = collected_seeds
 	if hud:
 		hud.update_seed_display(collected_seeds, total_seeds_in_level)
 
 
-func add_seed_collected():
-	collected_seeds += 1
+func add_seed_collected(seed_id):
+	if collected_seed_ids.has(seed_id):
+		return
+
+	collected_seed_ids.append(seed_id)
+	collected_seeds = collected_seed_ids.size()
+	seed_count = collected_seeds
 
 	if hud:
 		hud.update_seed_display(collected_seeds, total_seeds_in_level)
@@ -891,6 +921,23 @@ func add_seed_collected():
 			hud.update_lvl1_checklist()
 
 		emit_signal("all_seeds_collected")
+
+func add_enemy_killed(enemy_id):
+	if killed_enemy_ids.has(enemy_id):
+		return
+
+	killed_enemy_ids.append(enemy_id)
+
+func add_loot_collected(loot_id):
+	if collected_loot_ids.has(loot_id):
+		return
+
+	collected_loot_ids.append(loot_id)
+
+func reset_loot_tracking_from_scene():
+	if loot_level_path != current_level_path:
+		loot_level_path = current_level_path
+		collected_loot_ids.clear()
 
 
 # --- Signaux ---
@@ -917,8 +964,15 @@ func reinitialise():
 	coco_count = 0
 	bone_count = 0
 	seed_count = 0
+	collected_seed_ids.clear()
+	seed_level_path = ""
+	collected_seeds = 0
 	lance_count = 0
 	camouflage_count = 0
+
+	killed_enemy_ids.clear()
+	collected_loot_ids.clear()
+	loot_level_path = ""
 
 	can_fire_coco = false
 	can_fire_lance = false
@@ -947,6 +1001,7 @@ func reinitialise():
 	lvl1_seeds_done = false
 	lvl1_totem_done = false
 	lvl1_key_done = false
+
 
 	if hud:
 		var gamepad = hud.get_node("Gamepad")
