@@ -8,9 +8,11 @@ func _ready():
 	await get_tree().process_frame
 
 	var gs = get_node("/root/GameState")
-	
-	set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantula.png"))
-	set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantulaName.png"))
+
+	boss.set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantula.png"))
+	boss.set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantulaName.png"))
+
+	gs.show_boss_fight_hud(boss)
 	
 	# Caméra + assombrissement Moko
 	if gs.player:

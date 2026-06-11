@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://c3cse70hwd1p0"]
 
-[ext_resource type="Script" path="res://Levels/Lvl2/Environement/Door/door.gd" id="1_80iex"]
-[ext_resource type="Texture2D" path="res://Levels/Lvl2/Environement/Door/door.png" id="2_stmkj"]
+[ext_resource type="Script" uid="uid://cndbe5xn6w044" path="res://Levels/Lvl2/Environement/Door/door.gd" id="1_80iex"]
+[ext_resource type="Texture2D" uid="uid://5t7xkkuog5xj" path="res://Levels/Lvl2/Environement/Door/door.png" id="2_stmkj"]
 
 [sub_resource type="Animation" id="Animation_yh81q"]
 length = 0.001
@@ -67,37 +67,35 @@ _data = {
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(27, 217)
 
-[node name="Door" type="Area2D"]
+[node name="Door" type="Area2D" unique_id=1518298732]
 z_index = 5
 collision_layer = 256
 script = ExtResource("1_80iex")
-next_scene_path = "res://lvl2/lvl_2b.tscn"
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=597407012]
 clip_contents = true
 custom_minimum_size = Vector2(1024, 824)
 layout_direction = 2
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_left = 985.98975
 offset_top = -412.0
-offset_right = 98600000.0
-offset_bottom = 412.0
+offset_right = 2009.9897
+offset_bottom = 428.0
 grow_vertical = 2
 scale = Vector2(1e-05, 1)
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=105312230]
 layout_mode = 0
 offset_right = 98600000.0
 offset_bottom = 824.0
 texture = ExtResource("2_stmkj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rjagk")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=477396522]
+libraries/ = SubResource("AnimationLibrary_rjagk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=333153775]
 position = Vector2(503.5, 303)
 shape = SubResource("2")
 

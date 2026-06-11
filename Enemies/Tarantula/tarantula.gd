@@ -38,7 +38,7 @@ var jump_animation_name = "jump"
 var scene_camera = null
 var death_requested = false
 
-var death_effect = preload("res://Enemies/Tarantula/effects/enemy_death_particles.tscn")
+var death_effect = preload("res://Enemies/Tarantula/Effects/enemy_death_particles.tscn")
 var clim = preload("res://Enemies/Tarantula/Effects/ClimTarantula/clim_tarantula.tscn")
 
 # --- Add Phase ---

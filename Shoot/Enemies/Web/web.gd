@@ -58,7 +58,7 @@ func _on_area_2d_body_entered(body):
 	has_collided = true
 	is_web = true
 
-	var effet_scene = preload("res://Enemies/Tarantula/effects/glued_web.tscn")
+	var effet_scene = preload("res://Enemies/Tarantula/Effects/glued_web.tscn")
 	var effet = effet_scene.instantiate()
 
 	get_tree().current_scene.add_child(effet)
