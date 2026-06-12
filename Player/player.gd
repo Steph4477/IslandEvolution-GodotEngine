@@ -421,10 +421,14 @@ func update_can_heal():
 
 func disable_controls():
 	can_move = false
+	can_be_damaged = false
 	velocity = Vector2.ZERO
+	anim.play("idle")
 
 func enable_controls():
+	await get_tree().create_timer(1.0).timeout
 	can_move = true
+	can_be_damaged = true
 
 # --- Harpon ---
 func start_harpooned(shooter):

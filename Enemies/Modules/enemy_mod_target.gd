@@ -26,6 +26,12 @@ func update():
 		e.distance = 999999
 		return
 
+	if e.player.can_move == false:
+		e.target = null
+		e.dx = 0
+		e.distance = 999999
+		return
+
 	if e.target == null:
 		var first_target_position = e.player.global_position
 

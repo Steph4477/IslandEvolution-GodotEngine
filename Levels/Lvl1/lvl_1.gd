@@ -35,6 +35,8 @@ func _on_all_seeds_collected():
 	await focus_camera_on_node("Totem")
 	await return_camera_to_player()
 
+	await get_tree().create_timer(1.0).timeout
+
 	set_enemies_blocked(false)
 	player.can_move = true
 	
@@ -42,7 +44,8 @@ func _on_all_seeds_collected():
 
 # === CINÉMATIQUE D’INTRO ===
 func start_intro_sequence():
-	player.can_move = false
+	player.disable_controls()
+
 	set_enemies_blocked(true)
 
 	cam.top_level = true
@@ -56,8 +59,8 @@ func start_intro_sequence():
 	await focus_camera_on_node("Exit")
 	await return_camera_to_player()
 
+	player.enable_controls()
 	set_enemies_blocked(false)
-	player.can_move = true
 
 
 # === BLOQUAGE / DÉBLOQUAGE ENNEMIS ===
@@ -114,7 +117,7 @@ func _on_key_collected():
 
 # === FOCUS SORTIE + FADE + RETOUR MOKO ===
 func focus_camera_on_exit_and_fade():
-	player.can_move = false
+	player.disable_controls()
 	set_enemies_blocked(true)
 
 	cam.top_level = true
@@ -124,8 +127,9 @@ func focus_camera_on_exit_and_fade():
 	if not exit:
 		cam.top_level = false
 		cam.position = Vector2.ZERO
+
 		set_enemies_blocked(false)
-		player.can_move = true
+		player.enable_controls()
 		return
 
 	var original_position = player.global_position
@@ -150,5 +154,6 @@ func focus_camera_on_exit_and_fade():
 	cam.top_level = false
 	cam.position = Vector2.ZERO
 
+	player.enable_controls()
 	set_enemies_blocked(false)
-	player.can_move = true
+	
