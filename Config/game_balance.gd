@@ -98,9 +98,9 @@ const ENEMY_HP = {
 	"swim_croco": 600,
 	"croco": 200,
 	"cannibal": 120,
-	"boss_cannibal": 600,
-	"boss_tarantula": 700,
-	"add_tarantula": 2
+	"boss_cannibal": 300,
+	"boss_tarantula": 600,
+	"add_tarantula": 1
 	
 }
 
@@ -125,17 +125,17 @@ const ENEMY_PROJECTILE = {
 }
 
 const ENEMY_SPEED = {
-	"bee": 200,
-	"mosquito" : 300,
-	"rat": 400,
-	"snake": 350,
-	"pyg": 200,
-	"swim_croco": 400,
-	"croco": 300,
-	"cannibal": 300,
-	"boss_cannibal": 400,
-	"boss_tarantula": 500,
-	"add_tarantula":400
+	"bee": 300,
+	"mosquito" : 400,
+	"rat": 500,
+	"snake": 450,
+	"pyg": 300,
+	"swim_croco": 500,
+	"croco": 400,
+	"cannibal": 500,
+	"boss_cannibal": 500,
+	"boss_tarantula": 600,
+	"add_tarantula":500
 }
 
 const ENEMY_RANGE = {
@@ -144,9 +144,9 @@ const ENEMY_RANGE = {
 	"rat": 600,
 	"swim_croco": 1000,
 	"croco": 500,
-	"snake": 600,
+	"snake": 1000,
 	"pyg": 1000,
-	"cannibal": 1500,
+	"cannibal": 1000,
 	"boss_cannibal": 2500,
 	"boss_tarantula": 5000,
 	"add_tarantula": 5000

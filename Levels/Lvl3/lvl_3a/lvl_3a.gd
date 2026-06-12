@@ -36,8 +36,8 @@ func _ready():
 		gs.player.set_process(false)
 		gs.player.velocity = Vector2.ZERO
 
-	hud = gs.hud
-	hud.visible = false
+	#hud = gs.hud
+	#hud.visible = false
 
 	scene_camera.make_current()
 
