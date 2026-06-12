@@ -229,7 +229,7 @@ size = Vector2(39.16342, 33.857117)
 size = Vector2(15.281317, 20.38168)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmo30"]
-size = Vector2(383.90152, 53.526)
+size = Vector2(432.16095, 53.526)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(307.69836, 161.77246)
@@ -650,7 +650,7 @@ shape = SubResource("RectangleShape2D_t3xnj")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
 
 [node name="BorderTShape2D5" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=1764908885]
-position = Vector2(3682.501, -413)
+position = Vector2(4293.001, -413)
 scale = Vector2(25.300756, 2.1391978)
 shape = SubResource("RectangleShape2D_pmo30")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
@@ -741,7 +741,7 @@ position = Vector2(96, -116)
 position = Vector2(3742, -94)
 
 [node name="Mosquito" parent="World/Creatures" unique_id=915889274 instance=ExtResource("13_oiu73")]
-position = Vector2(-1497, -30)
+position = Vector2(-1197, -187)
 
 [node name="Snake" parent="World/Creatures" unique_id=88320707 instance=ExtResource("12_d0a2k")]
 z_index = 5
@@ -752,19 +752,19 @@ speed = 600
 
 [node name="Snake2" parent="World/Creatures" unique_id=1961381336 instance=ExtResource("12_d0a2k")]
 z_index = 5
-position = Vector2(2493, 242)
+position = Vector2(3076, 210)
 collision_mask = 256
 
 [node name="Snake4" parent="World/Creatures" unique_id=1775735785 instance=ExtResource("12_d0a2k")]
 z_index = 5
-position = Vector2(-1696, 235)
+position = Vector2(-866.0002, 227)
 scale = Vector2(0.8, 0.8)
 collision_mask = 256
 max_hp = 1000
 
 [node name="Snake3" parent="World/Creatures" unique_id=985537058 instance=ExtResource("12_d0a2k")]
 z_index = 5
-position = Vector2(3509, 254)
+position = Vector2(5361, 267)
 scale = Vector2(0.8, 0.8)
 collision_mask = 256
 speed = 500

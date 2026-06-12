@@ -28,11 +28,19 @@ z_index = 5
 position = Vector2(-11, 29)
 scale = Vector2(0.5, 0.277)
 
-[node name="Area2D" type="StaticBody2D" parent="." unique_id=333889187]
+[node name="CollEnemies" type="StaticBody2D" parent="." unique_id=333889187]
 z_index = 10
-collision_layer = 2
+collision_layer = 1024
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1744801929]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollEnemies" unique_id=1744801929]
 position = Vector2(-11.5, -24.5)
 shape = SubResource("RectangleShape2D_ywaqi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1185915676]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=2135777046]
+position = Vector2(-11, 31)
+shape = SubResource("RectangleShape2D_ywaqi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dbqxuv0ffeqjo" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="Texture2D" uid="uid://jo6ij73tafq8" path="res://Levels/Lvl3/Environement/tiles_platforms/exit.png" id="20_8uqfc"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
-[ext_resource type="PackedScene" uid="uid://dynitxv1hhc1y" path="res://Loot/Coconut/coconut.tscn" id="21_2c4og"]
+[ext_resource type="PackedScene" uid="uid://8ui0q0lf31sc" path="res://Loot/Coconut/coco_loot_lvl3.tscn" id="21_hw1l3"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
 [ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="22_qskf4"]
 [ext_resource type="PackedScene" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
@@ -92,7 +92,7 @@ size = Vector2(143, 2820.9375)
 size = Vector2(26091.5, 167.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
-size = Vector2(20425, 317)
+size = Vector2(25876, 317)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(290, 572.8906)
@@ -154,7 +154,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2366.25, -618)]
+"values": [Vector2(2366.25, -606)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -168,10 +168,58 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CocoLoot3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2788.7502, 2172)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CocoLoot2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2133.7502, 2226)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CocoLoot2:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.017822]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CocoLoot3:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.017822]
+}
 
 [sub_resource type="Animation" id="Animation_4esaq"]
 resource_name = "fall"
-length = 1.4
+length = 2.6666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -215,7 +263,7 @@ tracks/3/path = NodePath("../CocoLoot:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.96666664, 1.2, 1.4),
+"times": PackedFloat32Array(1.1666667, 1.4000002, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(2366.25, -618), Vector2(2352.5, 2184), Vector2(2480, 2192.0002)]
@@ -227,7 +275,55 @@ tracks/4/path = NodePath("../CocoLoot:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.97, 1.4),
+"times": PackedFloat32Array(1.1700001, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 5.017822]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CocoLoot3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.6166667, 1.8666667, 2.1266665),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2687.5, -674.00024), Vector2(2633.75, 2186), Vector2(2788.7502, 2172)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CocoLoot2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.1833334, 2.4333334, 2.6933334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2055, -568), Vector2(2267.4998, 2211.9998), Vector2(2133.7502, 2226)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CocoLoot2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.1933334, 2.66),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.017822, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CocoLoot3:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.5933334, 2.1266665),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 5.017822]
@@ -249,7 +345,7 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(23156, 710)
+position = Vector2(548, 743)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -337,6 +433,7 @@ tile_set = SubResource("TileSet_6qdkx")
 z_index = 10
 position = Vector2(-4, 34)
 collision_layer = 2
+collision_mask = 9
 
 [node name="Border" type="CollisionShape2D" parent="Node2D/platform" unique_id=564876443]
 position = Vector2(-258, 399)
@@ -351,7 +448,7 @@ position = Vector2(12518.25, 1426)
 shape = SubResource("RectangleShape2D_1lpgc")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform" unique_id=78992822]
-position = Vector2(9871.5, -851)
+position = Vector2(12597, -851)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform" unique_id=119263704]
@@ -507,9 +604,21 @@ root_node = NodePath("../ItemChronoLianas")
 libraries/ = SubResource("AnimationLibrary_6n0ay")
 autoplay = &"fall"
 
-[node name="CocoLoot" parent="Node2D/World/ChronoChallenge" unique_id=932427933 instance=ExtResource("21_2c4og")]
+[node name="CocoLoot" parent="Node2D/World/ChronoChallenge" unique_id=1173380173 instance=ExtResource("21_hw1l3")]
 z_index = 15
-position = Vector2(2366.25, -618)
+position = Vector2(2366.25, -606)
+scale = Vector2(2.5, 2.5)
+
+[node name="CocoLoot2" parent="Node2D/World/ChronoChallenge" unique_id=2088171656 instance=ExtResource("21_hw1l3")]
+z_index = 15
+position = Vector2(2133.7502, 2226)
+rotation = 5.017822
+scale = Vector2(2.5, 2.5)
+
+[node name="CocoLoot3" parent="Node2D/World/ChronoChallenge" unique_id=859936532 instance=ExtResource("21_hw1l3")]
+z_index = 15
+position = Vector2(2788.7502, 2172)
+rotation = 5.017822
 scale = Vector2(2.5, 2.5)
 
 [node name="Liana7" parent="Node2D/World" unique_id=545184550 instance=ExtResource("11_sdlip")]
