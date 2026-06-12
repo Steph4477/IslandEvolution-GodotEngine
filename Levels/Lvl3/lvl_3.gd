@@ -28,7 +28,7 @@ func _ready():
 	cam.make_current()
 
 	cam.limit_top = -1500
-	cam.limit_right = 20000
+	cam.limit_right = 25000
 	cam.limit_bottom = 1400
 	
 	# Position initiale de l’anim “fall” à 0.0

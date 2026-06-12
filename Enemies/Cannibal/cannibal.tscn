@@ -201,7 +201,7 @@ libraries/ = SubResource("AnimationLibrary_giy1g")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=2125340867]
 position = Vector2(-36, -16)
-scale = Vector2(-0.25, 0.25)
+scale = Vector2(-1, 1)
 texture = ExtResource("3_gf82a")
 vframes = 23
 frame = 1

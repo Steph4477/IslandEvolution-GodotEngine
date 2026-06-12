@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dbqxuv0ffeqjo" path="res://Levels/Lvl3/Environement/Tree_perch/tree_perch.tscn" id="19_8n178"]
 [ext_resource type="Texture2D" uid="uid://jo6ij73tafq8" path="res://Levels/Lvl3/Environement/tiles_platforms/exit.png" id="20_8uqfc"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
-[ext_resource type="PackedScene" path="res://Loot/Coconut/coconut.tscn" id="21_2c4og"]
+[ext_resource type="PackedScene" uid="uid://dynitxv1hhc1y" path="res://Loot/Coconut/coconut.tscn" id="21_2c4og"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
 [ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="22_qskf4"]
 [ext_resource type="PackedScene" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
@@ -98,10 +98,10 @@ size = Vector2(20425, 317)
 size = Vector2(290, 572.8906)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqfku"]
-size = Vector2(2959, 66.75)
+size = Vector2(2990, 65.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrd0c"]
-size = Vector2(8525, 196)
+size = Vector2(8532, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
 size = Vector2(591, 639.25)
@@ -249,7 +249,7 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(534, 1032)
+position = Vector2(543, 867)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -367,7 +367,7 @@ position = Vector2(3630, 1470)
 shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1405275903]
-position = Vector2(9599.5, 1164.375)
+position = Vector2(9584, 1164.875)
 shape = SubResource("RectangleShape2D_nqfku")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=1806785334]
@@ -376,12 +376,12 @@ polygon = PackedVector2Array(11936, 1108, 12137, 1168, 11936, 1192)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=133540081]
 position = Vector2(-662.3999, 329.57672)
-polygon = PackedVector2Array(5388, 784, 8470.4, 782.4233, 8467.4, 810.4233, 5624, 812, 5499, 914, 5345, 826)
+polygon = PackedVector2Array(5388, 784, 8498.4, 802.4233, 8498.4, 820.4233, 5624, 812, 5499, 914, 5345, 826)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=1719473825]
 position = Vector2(426.4313, 16.745483)
 scale = Vector2(0.904927, 1.0011786)
-polygon = PackedVector2Array(14434.941, 1224.0001, 14702, 1128, 17956.773, 1149.8993, 17956.773, 1251.7792, 14946, 1290)
+polygon = PackedVector2Array(14434.941, 1224.0001, 14702, 1128, 17965.613, 1131.9204, 17956.773, 1251.7792, 14946, 1290)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=361860858]
 position = Vector2(5579.6, 671.57666)
@@ -390,7 +390,7 @@ scale = Vector2(0.24999994, -0.24999994)
 polygon = PackedVector2Array(-174.3457, -46.342773, -424.93555, -17.143555, -676.6914, -9.454102, -833.6074, 4.9990234, -1024.3926, -42.685547, -845.38477, 89.694824, -693.53906, 77.74805, -425.75586, 159.94214, -209.49805, 169.79712, 1.5117188, 220.10522, 169.26953, 323.3401, 400.6211, 350.97363, 320.53516, 163.39453, -2.5078125, -5.0703125)
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/platform" unique_id=406604896]
-position = Vector2(21206.5, 1232)
+position = Vector2(21203, 1240)
 shape = SubResource("RectangleShape2D_wrd0c")
 
 [node name="World" type="Node2D" parent="Node2D" unique_id=277901197]
@@ -499,7 +499,7 @@ scale = Vector2(6.25, 2)
 
 [node name="Flower" parent="Node2D/World/ChronoChallenge" unique_id=1069062389 instance=ExtResource("14_4esaq")]
 z_index = 15
-position = Vector2(1606.25, 2366)
+position = Vector2(4480, 2396)
 scale = Vector2(0.625, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/World/ChronoChallenge" unique_id=188075058]
@@ -589,8 +589,9 @@ scale = Vector2(0.25, 8)
 next_scene_path = "res://Levels/Lvl3/Lvl_3a/lvl_3a.tscn"
 
 [node name="Spear_rack" parent="." unique_id=438431408 instance=ExtResource("20_xni6f")]
+modulate = Color(0.54816455, 0.5481646, 0.5481646, 1)
 z_index = 5
-position = Vector2(7141, 1061)
+position = Vector2(8642, 998.00006)
 scale = Vector2(0.15, 0.15)
 
 [node name="HiddenTrap" parent="." unique_id=2101416875 instance=ExtResource("21_odqky")]
@@ -604,13 +605,16 @@ z_index = 10
 position = Vector2(16839, 1266)
 
 [node name="BagLoot" parent="." unique_id=1156845004 instance=ExtResource("27_twwc1")]
-position = Vector2(6197, 1007)
+modulate = Color(0.6028433, 0.60284287, 0.602843, 1)
+position = Vector2(6203, 1074)
 
 [node name="BagLoot2" parent="." unique_id=1352850771 instance=ExtResource("27_twwc1")]
+modulate = Color(0.5996037, 0.5996037, 0.5996037, 1)
 position = Vector2(6720.0005, 1043)
 
 [node name="BagLoot3" parent="." unique_id=1754575156 instance=ExtResource("27_twwc1")]
-position = Vector2(9711, 1111)
+modulate = Color(0.52906674, 0.5290667, 0.5290667, 1)
+position = Vector2(9667, 1052)
 
 [node name="BagLoot4" parent="." unique_id=189804655 instance=ExtResource("27_twwc1")]
 position = Vector2(13977, 1153)
