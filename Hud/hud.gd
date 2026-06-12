@@ -835,3 +835,7 @@ func _on_jump_pressed():
 	Input.action_press("jump")
 	await get_tree().process_frame
 	Input.action_release("jump")
+
+
+func _on_save_pressed():
+	gs.save_game()
