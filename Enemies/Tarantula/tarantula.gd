@@ -468,9 +468,9 @@ func on_hit(amount):
 		return
 
 	if is_in_add_phase:
-		super.on_hit(amount)
+		return
 
-		gs.update_boss_fight_hud()
+	if on_ceiling:
 		return
 
 	dodge_mod.register_hit()
