@@ -21,6 +21,7 @@ extends CanvasLayer
 @onready var fire_button = $Gamepad/Fire
 @onready var air_button = $Gamepad/Air
 
+@onready var save_button = $Gamepad/Save
 @onready var pause_button = $Gamepad/Break
 @onready var break_sprite = get_node_or_null("BreakSprite")
 
@@ -454,6 +455,7 @@ func set_gameplay_hud_visible(not_visible):
 	$HealthBar.visible = not_visible
 	$Gamepad/Menu.visible = not_visible
 	$Gamepad/Break.visible = not_visible
+	$Gamepad/Save.visible = not_visible
 
 	if fire_craft_checklist:
 		fire_craft_checklist.visible = is_visible and gs.fire_craft_revealed
