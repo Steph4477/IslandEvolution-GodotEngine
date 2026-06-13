@@ -443,6 +443,13 @@ func reset_progression():
 
 	current_level_path = "res://Levels/Lvl1/lvl_1.tscn"
 	unlocked_level_path = "res://Levels/Lvl1/lvl_1.tscn"
+
+	var dir = DirAccess.open("user://")
+	if dir and dir.file_exists("savegame.json"):
+		dir.remove("savegame.json")
+
+		reinitialise()
+
 	last_player_pos = Vector2.ZERO
 	has_last_player_pos = true
 	has_pending_load = false
@@ -980,7 +987,15 @@ func reinitialise():
 	can_camouflage = false
 	fire_buff_unlocked = false
 	air_buff_unlocked = false
-	
+
+	has_key = false
+	has_lance = false
+	has_flower = false
+
+	sprint_unlocked = false
+	double_jump_unlocked = false
+	ramp_unlocked = false
+
 	wood_collected = false
 	stone_collected = false
 	fire_recipe_unlocked = false
