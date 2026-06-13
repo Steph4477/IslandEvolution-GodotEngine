@@ -352,10 +352,12 @@ func _physics_process(delta):
 	if not can_move:
 		velocity.x = 0
 
-		if is_harpooned and not is_on_floor():
+		if not is_on_floor():
 			velocity.y += gravity * gravity_factor * delta
 		else:
 			velocity.y = 0
+			if anim.current_animation != "idle":
+				anim.play("idle")
 
 		move_and_slide()
 		return
@@ -421,9 +423,8 @@ func update_can_heal():
 
 func disable_controls():
 	can_move = false
-	can_be_damaged = false
-	velocity = Vector2.ZERO
-	anim.play("idle")
+	velocity.x = 0
+	is_attacking = false
 
 func enable_controls():
 	await get_tree().create_timer(1.0).timeout

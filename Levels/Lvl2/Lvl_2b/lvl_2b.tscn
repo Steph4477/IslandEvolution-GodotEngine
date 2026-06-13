@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dj1o6yasqb48h" path="res://Levels/Lvl2/Accessory/web1.png" id="11_sbfsf"]
 [ext_resource type="PackedScene" uid="uid://5ifnsceh6ylv" path="res://Loot/Coconut/Pile/pile.tscn" id="12_v5rf0"]
 [ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="13_csm35"]
+[ext_resource type="PackedScene" path="res://Player/Skills/Ramp/ramp.tscn" id="13_u6y20"]
+[ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="14_xsoyn"]
 [ext_resource type="Texture2D" uid="uid://5ms27nx7k6rp" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/z-index10.png" id="18_uikls"]
 [ext_resource type="Texture2D" uid="uid://do5uhl3cs36a0" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/halo_z-index10.png" id="19_gr680"]
 [ext_resource type="Texture2D" uid="uid://bu34beoslp2lx" path="res://Levels/Lvl2/Lvl_2b/SpriteExitTemple/z-index0.png" id="20_4s17o"]
@@ -24,6 +26,63 @@ size = Vector2(3514, 146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1c1k"]
 size = Vector2(182.5, 1260)
+
+[sub_resource type="Animation" id="Animation_xr8ay"]
+resource_name = "appear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ramp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01, 0.42, 0.6, 0.8, 0.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, -838), Vector2(92.000084, 24), Vector2(119, -146), Vector2(174, 21), Vector2(245, 26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LifeLoot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01, 0.55, 0.75, 0.96, 1.08, 1.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-97.99999, -847.99994), Vector2(-250.99997, 23.999878), Vector2(-111.999985, -244.99997), Vector2(-47.99999, 31), Vector2(43.000004, -87.99999), Vector2(86, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ramp:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LifeLoot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.61, 0.96, 1.09, 1.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.2831855, 2.7977629, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0pdjv"]
+_data = {
+&"appear": SubResource("Animation_xr8ay")
+}
 
 [node name="lvl2b" type="Node2D" unique_id=1426909367]
 script = ExtResource("1_ribhp")
@@ -151,6 +210,7 @@ speed = 550
 attack_range = 9000
 max_hp = 1000
 damage = 1
+drop_loot_enabled = false
 
 [node name="AddSpawns" type="Node2D" parent="." unique_id=847106123]
 
@@ -174,3 +234,17 @@ position = Vector2(1542, 178)
 
 [node name="Pile" parent="." unique_id=477987675 instance=ExtResource("12_v5rf0")]
 position = Vector2(388, 965)
+
+[node name="Loots" type="Node2D" parent="." unique_id=1549387268]
+position = Vector2(2634, 961)
+
+[node name="Ramp" parent="Loots" unique_id=1540627516 instance=ExtResource("13_u6y20")]
+z_index = 15
+position = Vector2(-16, -838)
+
+[node name="LifeLoot" parent="Loots" unique_id=1648850692 instance=ExtResource("14_xsoyn")]
+position = Vector2(-97.99999, -847.99994)
+scale = Vector2(0.2, 0.2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Loots" unique_id=1376019698]
+libraries/ = SubResource("AnimationLibrary_0pdjv")

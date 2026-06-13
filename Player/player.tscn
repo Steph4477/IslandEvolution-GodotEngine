@@ -779,7 +779,7 @@ collision_mask = 4390
 script = ExtResource("1_5psm4")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1565517736]
-position = Vector2(-149, -114)
+position = Vector2(-185, -110)
 scale = Vector2(1.2, 1.2)
 
 [node name="OpenMouth" type="Sprite2D" parent="Node2D" unique_id=592179325]
@@ -805,23 +805,24 @@ position = Vector2(145.83333, 60.833332)
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1518189628]
 
 [node name="TurnAxis" type="Marker2D" parent="." unique_id=770474976]
-position = Vector2(10, 13.999992)
+position = Vector2(-26, 17.999992)
 rotation = 0.785398
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1847097831]
-position = Vector2(48, -27)
+position = Vector2(12, -23)
 rotation = 0.785398
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1435274399]
 position = Vector2(151, 61)
-limit_left = 0
-limit_top = 0
-limit_right = 7600
-limit_bottom = 1500
+zoom = Vector2(1.1, 1.1)
+limit_left = 3
+limit_top = 3
+limit_right = 7603
+limit_bottom = 1503
 position_smoothing_enabled = true
 
 [node name="ClacArea" type="Area2D" parent="." unique_id=1323133612]
-position = Vector2(-100, -130)
+position = Vector2(-136, -126)
 collision_mask = 8
 monitoring = false
 monitorable = false
@@ -831,7 +832,7 @@ position = Vector2(155, 105)
 shape = SubResource("CircleShape2D_c7st8")
 
 [node name="KickArea" type="Area2D" parent="." unique_id=657735948]
-position = Vector2(-100, -130)
+position = Vector2(-136, -126)
 collision_mask = 8
 monitoring = false
 monitorable = false
@@ -841,7 +842,7 @@ position = Vector2(147, 172)
 shape = SubResource("CircleShape2D_i8h25")
 
 [node name="HeadbuttArea" type="Area2D" parent="." unique_id=1302658323]
-position = Vector2(-100, -130)
+position = Vector2(-136, -126)
 collision_mask = 8
 monitoring = false
 monitorable = false
@@ -851,17 +852,17 @@ position = Vector2(159, 161)
 shape = SubResource("CircleShape2D_o5r0w")
 
 [node name="ColStand" type="CollisionShape2D" parent="." unique_id=1265538359 groups=["Player"]]
-position = Vector2(10, 6.0000076)
+position = Vector2(-26, 10.000008)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_uvbbp")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." unique_id=1451828545 groups=["Player"]]
-position = Vector2(9.5, 39)
+position = Vector2(-26.5, 43)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_7v2uk")
 
 [node name="AirBubbleSpawn" type="Marker2D" parent="." unique_id=214021573]
-position = Vector2(51, 39)
+position = Vector2(15, 43)
 
 [node name="BreathTickTimer" type="Timer" parent="." unique_id=1186615154]
 
@@ -870,7 +871,7 @@ position = Vector2(51, 39)
 [node name="DrownTimer" type="Timer" parent="." unique_id=1850105644]
 
 [node name="HarpoonAttachPoint" type="Marker2D" parent="." unique_id=1171941515]
-position = Vector2(1, 28)
+position = Vector2(-35, 32)
 
 [connection signal="body_entered" from="ClacArea" to="." method="_on_clac_area_body_entered"]
 [connection signal="body_entered" from="KickArea" to="." method="_on_kick_area_body_entered"]

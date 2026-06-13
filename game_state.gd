@@ -200,7 +200,7 @@ func _ready():
 	#await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
-	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 	await get_tree().process_frame
@@ -358,10 +358,10 @@ func get_current_level_title():
 		return "Jungle Tropicale"
 
 	if current_level_path == "res://Levels/Lvl2/lvl_2.tscn":
-		return "Mangrove"
+		return "Temple Pygmée"
 
 	if current_level_path == "res://Levels/Lvl3/lvl_3.tscn":
-		return "Village Cannibale"
+		return "Mangrove"
 
 	return "Territoire Inconnu"
 

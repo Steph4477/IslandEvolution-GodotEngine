@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dr55tn71k7w0e" path="res://Levels/Lvl2/lvl_2a/lvl_2a.gd" id="1_36v5b"]
 [ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="3_fftrx"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Torch/torch.tscn" id="4_nennu"]
+[ext_resource type="PackedScene" uid="uid://cwjigpn23f13r" path="res://ItemsDecors/Torch/torch.tscn" id="4_nennu"]
 [ext_resource type="PackedScene" uid="uid://0nnxjschrg38" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="5_6d4ot"]
 [ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/Fire/craft_altar_fire.tscn" id="6_ogfxi"]
 [ext_resource type="PackedScene" uid="uid://quhodd6dw16j" path="res://Levels/Lvl2/lvl_2a/tile_map.tscn" id="7_36v5b"]
@@ -31,7 +31,7 @@ modulate = Color(0.60933006, 0.6093302, 0.60932994, 1)
 position = Vector2(-65, -1453)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1742229482]
-position = Vector2(891, 2338)
+position = Vector2(1062, 2335)
 
 [node name="Background" type="Node2D" parent="Node2D" unique_id=1230901932]
 position = Vector2(8313, 1319)
