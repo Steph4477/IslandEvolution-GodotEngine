@@ -293,6 +293,7 @@ pointing/handheld/orientation=1
 2d_physics/layer_10="box"
 2d_physics/layer_11="col_enemies"
 2d_physics/layer_13="Traper"
+2d_physics/layer_28="amphibioous_croco"
 
 [rendering]
 

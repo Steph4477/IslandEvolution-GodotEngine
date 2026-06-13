@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var dialogue_scene = preload("res://Interface/Dialogue/pyg_dialogue.tscn")
 @onready var boss = $Tarantula
 
 var cam

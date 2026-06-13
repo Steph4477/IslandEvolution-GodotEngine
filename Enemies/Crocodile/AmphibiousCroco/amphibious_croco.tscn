@@ -28,7 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://x8505bhqtxei" path="res://sounds/roar_croco.ogg" id="27_ow40j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5wxv"]
-size = Vector2(51.343414, 121.27684)
+size = Vector2(108.000046, 47.000023)
 
 [sub_resource type="Animation" id="Animation_6utxn"]
 length = 0.001
@@ -239,18 +239,17 @@ radius = 56.568542
 
 [node name="AmphibiousCroco" type="CharacterBody2D" unique_id=1403221519 groups=["Enemies", "EnemiesSwim"]]
 z_index = 5
-collision_layer = 8
+collision_layer = 134217728
 collision_mask = 34
 script = ExtResource("1_co5vm")
 
 [node name="HealthBar" parent="." unique_id=67917745 instance=ExtResource("2_01lnk")]
 position = Vector2(-43, -75)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1512054370]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1182542734]
 z_index = 5
-position = Vector2(63.333885, 19.319012)
-rotation = -1.5273254
-scale = Vector2(0.9999996, 0.9999996)
+position = Vector2(62, 10.5)
+scale = Vector2(0.99999946, 0.99999946)
 shape = SubResource("RectangleShape2D_b5wxv")
 
 [node name="Rotator" type="Node2D" parent="." unique_id=310207886]

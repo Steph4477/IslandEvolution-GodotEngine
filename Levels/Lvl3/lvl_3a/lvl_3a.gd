@@ -22,8 +22,6 @@ var end_moko_color = Color(0.207, 0.142, 0.096, 1.0)
 var is_transitioning = false
 var gate_closed = false
 
-var hud = null
-
 
 func _ready():
 	await get_tree().process_frame
@@ -35,9 +33,6 @@ func _ready():
 		gs.player.set_physics_process(false)
 		gs.player.set_process(false)
 		gs.player.velocity = Vector2.ZERO
-
-	#hud = gs.hud
-	#hud.visible = false
 
 	scene_camera.make_current()
 

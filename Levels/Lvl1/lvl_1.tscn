@@ -205,7 +205,7 @@ size = Vector2(3.1210675, 24.705214)
 size = Vector2(18.138578, 12.984581)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvxqb"]
-size = Vector2(25.452105, 18.510044)
+size = Vector2(25.452105, 51.662086)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26k7p"]
 size = Vector2(7.983007, 16.991264)
@@ -229,13 +229,13 @@ size = Vector2(39.16342, 33.857117)
 size = Vector2(15.281317, 20.38168)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmo30"]
-size = Vector2(432.16095, 53.526)
+size = Vector2(389.94885, 53.526)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
-size = Vector2(307.69836, 161.77246)
+size = Vector2(307.46118, 149.15094)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs2i"]
-size = Vector2(53.516193, 78.53412)
+size = Vector2(53.12095, 106.582)
 
 [sub_resource type="Animation" id="Animation_ppy38"]
 length = 0.001
@@ -597,7 +597,7 @@ scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_lr8k6")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=1852318435]
-position = Vector2(21213.088, 21162.932)
+position = Vector2(21213.088, 21370.463)
 scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_cvxqb")
 
@@ -650,7 +650,7 @@ shape = SubResource("RectangleShape2D_t3xnj")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
 
 [node name="BorderTShape2D5" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=1764908885]
-position = Vector2(4293.001, -413)
+position = Vector2(4827, -413)
 scale = Vector2(25.300756, 2.1391978)
 shape = SubResource("RectangleShape2D_pmo30")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
@@ -658,7 +658,7 @@ debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
 [node name="BorderBShape2D4" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=1878674279]
 light_mask = 4
 z_index = 5
-position = Vector2(3720.5, 1469.0316)
+position = Vector2(3723.5002, 1482.5316)
 scale = Vector2(25.300756, 2.1391978)
 shape = SubResource("RectangleShape2D_dvpsw")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
@@ -666,7 +666,7 @@ debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
 [node name="BorderBShape2D5" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=118398063]
 light_mask = 4
 z_index = 5
-position = Vector2(8914, 1474)
+position = Vector2(8919, 1444)
 scale = Vector2(25.300756, 2.1391978)
 shape = SubResource("RectangleShape2D_2hs2i")
 debug_color = Color(0.9607843, 0.13725491, 0.3882353, 0.41960785)
@@ -757,14 +757,14 @@ collision_mask = 256
 
 [node name="Snake4" parent="World/Creatures" unique_id=1775735785 instance=ExtResource("12_d0a2k")]
 z_index = 5
-position = Vector2(-866.0002, 227)
+position = Vector2(-1142.0001, 207)
 scale = Vector2(0.8, 0.8)
 collision_mask = 256
 max_hp = 1000
 
 [node name="Snake3" parent="World/Creatures" unique_id=985537058 instance=ExtResource("12_d0a2k")]
 z_index = 5
-position = Vector2(5361, 267)
+position = Vector2(5357, 216)
 scale = Vector2(0.8, 0.8)
 collision_mask = 256
 speed = 500

@@ -58,6 +58,10 @@ var toucan_dialogue_seen = false
 var pygmy_dialogue_seen = false
 var lvl1_intro_seen = false
 
+# -- Défi du Toucan ---
+var toucan_challenge_done = false
+var respawn_point_name = ""
+
 # --- Joueur, HUD & Scènes ---
 var player_scene = preload("res://Player/player.tscn")
 var player = null
@@ -201,6 +205,7 @@ func _ready():
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/Lvl_3a/lvl_3a.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 	await get_tree().process_frame
@@ -267,9 +272,25 @@ func continue_game():
 	await load_level(current_level_path)
 
 func continue_from_unlocked_level():
+	load_global_progress()
+
+	var keep_sprint = sprint_unlocked
+	var keep_double_jump = double_jump_unlocked
+	var keep_ramp = ramp_unlocked
+	var keep_fire = fire_buff_unlocked
+	var keep_air = air_buff_unlocked
+	var keep_camouflage = camouflage_unlocked
+
 	reset_lives()
 	reinitialise()
 	reset_session_dialogues()
+
+	sprint_unlocked = keep_sprint
+	double_jump_unlocked = keep_double_jump
+	ramp_unlocked = keep_ramp
+	fire_buff_unlocked = keep_fire
+	air_buff_unlocked = keep_air
+	camouflage_unlocked = keep_camouflage
 
 	has_pending_load = false
 	pending_level_path = ""
@@ -488,6 +509,13 @@ func load_global_progress():
 	moko_evolution_percent = int(data.get("moko_evolution_percent", 0))
 	enemy_evolution_percent = int(data.get("enemy_evolution_percent", 0))
 
+	sprint_unlocked = data.get("sprint_unlocked", false)
+	double_jump_unlocked = data.get("double_jump_unlocked", false)
+	ramp_unlocked = data.get("ramp_unlocked", false)
+	fire_buff_unlocked = data.get("fire_buff_unlocked", false)
+	air_buff_unlocked = data.get("air_buff_unlocked", false)
+	camouflage_unlocked = data.get("camouflage_unlocked", false)
+
 	return true
 
 func load_level(scene_path):
@@ -522,7 +550,15 @@ func load_level(scene_path):
 	# --- Score ---
 	setup_level_score(level)
 
-	var spawn_point = _find_spawn(level)
+	var spawn_point = null
+
+	if respawn_point_name != "":
+		spawn_point = level.find_child(respawn_point_name, true, false)
+		respawn_point_name = ""
+
+	if spawn_point == null:
+		spawn_point = _find_spawn(level)
+
 	var is_menu = spawn_point == null
 
 	if is_menu:
@@ -733,6 +769,9 @@ func save_game():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
 	file.close()
+
+	if player and player.popups_mod:
+		player.popups_mod.show_info("💾 Partie sauvegardée")
 
 	return true
 

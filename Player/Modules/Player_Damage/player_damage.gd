@@ -15,13 +15,15 @@ func on_hit(damage):
 	if not p.can_be_damaged or p.is_dead:
 		return
 
+	var hit_swim_y = p.global_position.y
+
 	p.can_be_damaged = false
 	p.is_hit_locked = true
 	p.can_move = false
 	p.velocity.x = 0
 
-	if not p.is_on_floor() and not p.is_swimming and not p.is_swimming_under_water:
-		p.velocity.y = 2000
+	if p.is_swimming or p.is_swimming_under_water:
+		p.velocity.y = 0
 
 	p.pv -= damage
 	p.pv = clamp(p.pv, 0, p.max_pv)
@@ -66,6 +68,10 @@ func on_hit(damage):
 
 	await p.get_tree().create_timer(p.hit_lock_time).timeout
 
+	if p.is_swimming or p.is_swimming_under_water:
+		p.global_position.y = hit_swim_y
+		p.velocity.y = 0
+
 	p.is_hit_locked = false
 	p.can_move = true
 	p.can_be_damaged = true
@@ -82,8 +88,8 @@ func die():
 	p.animation_locked = true
 	p.velocity.x = 0
 
-	if not p.is_on_floor() and not p.is_swimming and not p.is_swimming_under_water:
-		p.velocity.y = 2000
+	if p.is_swimming and p.is_swimming_under_water:
+		p.velocity.y = 0
 
 	p.anim.play("die")
 

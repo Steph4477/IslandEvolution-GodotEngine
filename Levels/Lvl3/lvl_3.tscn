@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
 [ext_resource type="PackedScene" uid="uid://8ui0q0lf31sc" path="res://Loot/Coconut/coco_loot_lvl3.tscn" id="21_hw1l3"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
-[ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="22_qskf4"]
+[ext_resource type="PackedScene" uid="uid://dhisslomg4xu1" path="res://Loot/Life/life_loot.tscn" id="22_qskf4"]
 [ext_resource type="PackedScene" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
 [ext_resource type="PackedScene" uid="uid://c7vh70a2fcrkf" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
 [ext_resource type="PackedScene" uid="uid://bqp01rii57bt0" path="res://Levels/Lvl3/Environement/Exit/exit.tscn" id="26_twwc1"]
@@ -97,11 +97,20 @@ size = Vector2(25876, 317)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hag10"]
 size = Vector2(290, 572.8906)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqfku"]
-size = Vector2(2990, 65.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c4og"]
+size = Vector2(3305, 276)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32yx8"]
+size = Vector2(3487.628, 268.68332)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrd0c"]
-size = Vector2(8532, 180)
+size = Vector2(8543, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8bpj"]
+size = Vector2(3210, 268)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hw1l3"]
+size = Vector2(47.25, 276)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7unt"]
 size = Vector2(591, 639.25)
@@ -113,10 +122,10 @@ size = Vector2(389, 641.25)
 size = Vector2(2214, 637)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06aic"]
-size = Vector2(1499, 324)
+size = Vector2(1004, 348)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3eyb"]
-size = Vector2(2526, 134)
+size = Vector2(2370, 290)
 
 [sub_resource type="Animation" id="Animation_hw1l3"]
 length = 0.001
@@ -345,7 +354,12 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(548, 743)
+position = Vector2(10584, 631)
+
+[node name="SpawnPoint2" type="Marker2D" parent="Node2D" unique_id=1192111431]
+modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
+z_index = 10
+position = Vector2(3566, 890)
 
 [node name="FroggleSpawn" type="Marker2D" parent="Node2D" unique_id=415096293]
 z_index = 5
@@ -433,7 +447,7 @@ tile_set = SubResource("TileSet_6qdkx")
 z_index = 10
 position = Vector2(-4, 34)
 collision_layer = 2
-collision_mask = 9
+collision_mask = 134217737
 
 [node name="Border" type="CollisionShape2D" parent="Node2D/platform" unique_id=564876443]
 position = Vector2(-258, 399)
@@ -463,22 +477,14 @@ shape = SubResource("RectangleShape2D_hag10")
 position = Vector2(3630, 1470)
 shape = SubResource("RectangleShape2D_hag10")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1405275903]
-position = Vector2(9584, 1164.875)
-shape = SubResource("RectangleShape2D_nqfku")
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Node2D/platform" unique_id=603818646]
+position = Vector2(6263.5, 1309)
+shape = SubResource("RectangleShape2D_2c4og")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=1806785334]
-position = Vector2(-857, 23)
-polygon = PackedVector2Array(11936, 1108, 12137, 1168, 11936, 1192)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=133540081]
-position = Vector2(-662.3999, 329.57672)
-polygon = PackedVector2Array(5388, 784, 8498.4, 802.4233, 8498.4, 820.4233, 5624, 812, 5499, 914, 5345, 826)
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=1719473825]
-position = Vector2(426.4313, 16.745483)
+[node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Node2D/platform" unique_id=1752362063]
+position = Vector2(15114.977, 1303.5)
 scale = Vector2(0.904927, 1.0011786)
-polygon = PackedVector2Array(14434.941, 1224.0001, 14702, 1128, 17965.613, 1131.9204, 17956.773, 1251.7792, 14946, 1290)
+shape = SubResource("RectangleShape2D_32yx8")
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=361860858]
 position = Vector2(5579.6, 671.57666)
@@ -487,8 +493,30 @@ scale = Vector2(0.24999994, -0.24999994)
 polygon = PackedVector2Array(-174.3457, -46.342773, -424.93555, -17.143555, -676.6914, -9.454102, -833.6074, 4.9990234, -1024.3926, -42.685547, -845.38477, 89.694824, -693.53906, 77.74805, -425.75586, 159.94214, -209.49805, 169.79712, 1.5117188, 220.10522, 169.26953, 323.3401, 400.6211, 350.97363, 320.53516, 163.39453, -2.5078125, -5.0703125)
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/platform" unique_id=406604896]
-position = Vector2(21203, 1240)
+position = Vector2(21197.5, 1247)
 shape = SubResource("RectangleShape2D_wrd0c")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1212728006]
+position = Vector2(9688, 1297)
+shape = SubResource("RectangleShape2D_r8bpj")
+
+[node name="CollSwimEnemies" type="StaticBody2D" parent="Node2D" unique_id=1427173601]
+z_index = 10
+position = Vector2(-4, 34)
+collision_layer = 1024
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CollSwimEnemies" unique_id=2005040917]
+position = Vector2(4708.25, 1026)
+shape = SubResource("RectangleShape2D_hw1l3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/CollSwimEnemies" unique_id=695504629]
+position = Vector2(11213, 1028)
+shape = SubResource("RectangleShape2D_hw1l3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/CollSwimEnemies" unique_id=822502620]
+position = Vector2(13613, 1029)
+shape = SubResource("RectangleShape2D_hw1l3")
 
 [node name="World" type="Node2D" parent="Node2D" unique_id=277901197]
 position = Vector2(-21, -23)
@@ -498,7 +526,7 @@ script = ExtResource("10_4tc27")
 
 [node name="Area2D" type="Area2D" parent="Node2D/World/SwimZone" unique_id=1266717649]
 collision_layer = 32
-collision_mask = 9
+collision_mask = 134217737
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=517564053]
 position = Vector2(131.5, 1522.625)
@@ -513,11 +541,13 @@ position = Vector2(2395, 1524.5)
 shape = SubResource("RectangleShape2D_sdlip")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=746719110]
-position = Vector2(4453.5, 1367)
+z_index = 20
+position = Vector2(4202, 1355)
 shape = SubResource("RectangleShape2D_06aic")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=1639978179]
-position = Vector2(12442, 1303)
+z_index = 20
+position = Vector2(12419, 1284)
 shape = SubResource("RectangleShape2D_h3eyb")
 
 [node name="Trees" type="Node2D" parent="Node2D/World" unique_id=544940475]
@@ -623,17 +653,17 @@ scale = Vector2(2.5, 2.5)
 
 [node name="Liana7" parent="Node2D/World" unique_id=545184550 instance=ExtResource("11_sdlip")]
 z_index = 15
-position = Vector2(11518, 240)
+position = Vector2(11518, 127)
 scale = Vector2(0.4, 1)
 
 [node name="Liana8" parent="Node2D/World" unique_id=411276915 instance=ExtResource("11_sdlip")]
 z_index = 15
-position = Vector2(13260, 275)
+position = Vector2(13260, 162)
 scale = Vector2(0.4, 1)
 
 [node name="Liana9" parent="Node2D/World" unique_id=1044953259 instance=ExtResource("11_sdlip")]
 z_index = 15
-position = Vector2(12358, 267)
+position = Vector2(12358, 154)
 scale = Vector2(0.4, 1)
 
 [node name="Liana5" parent="Node2D/World" unique_id=210638943 instance=ExtResource("11_sdlip")]
@@ -711,7 +741,7 @@ position = Vector2(7991, 1248)
 [node name="HiddenTrap2" parent="." unique_id=454844292 instance=ExtResource("21_odqky")]
 modulate = Color(0.49747366, 0.49747366, 0.49747366, 1)
 z_index = 10
-position = Vector2(16839, 1266)
+position = Vector2(16839, 1262)
 
 [node name="BagLoot" parent="." unique_id=1156845004 instance=ExtResource("27_twwc1")]
 modulate = Color(0.6028433, 0.60284287, 0.602843, 1)
@@ -752,8 +782,8 @@ z_index = 20
 position = Vector2(-1871, 9)
 
 [node name="AmphibiousCroco" parent="Creatures" unique_id=939733752 instance=ExtResource("17_2nymq")]
-position = Vector2(13427, 1146)
-max_hp = 1000
+position = Vector2(13788, 1008)
+collision_mask = 290
 
 [node name="Cannibal" parent="Creatures" unique_id=708931693 instance=ExtResource("16_qaw7r")]
 position = Vector2(9370, 1104)
@@ -796,6 +826,7 @@ position = Vector2(9855, 986)
 [node name="Snake" parent="Creatures" unique_id=88320707 instance=ExtResource("39_hw1l3")]
 z_index = 15
 position = Vector2(12273, 1071)
+collision_mask = 1282
 attack_range = 1500
 stop_distance = 300
 max_hp = 250

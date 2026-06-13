@@ -767,11 +767,11 @@ radius = 31.144823
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5r0w"]
 radius = 20.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvbbp"]
-size = Vector2(46.66664, 365.24823)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7odc"]
+size = Vector2(66.666664, 290.78015)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v2uk"]
-size = Vector2(43.333313, 141.84393)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beqdq"]
+size = Vector2(66.666664, 102.83688)
 
 [node name="Player" type="CharacterBody2D" unique_id=1482889488 groups=["Player"]]
 z_index = 22
@@ -852,14 +852,14 @@ position = Vector2(159, 161)
 shape = SubResource("CircleShape2D_o5r0w")
 
 [node name="ColStand" type="CollisionShape2D" parent="." unique_id=1265538359 groups=["Player"]]
-position = Vector2(-26, 10.000008)
+position = Vector2(-26, 16.999998)
 scale = Vector2(0.3, 0.282)
-shape = SubResource("RectangleShape2D_uvbbp")
+shape = SubResource("RectangleShape2D_p7odc")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." unique_id=1451828545 groups=["Player"]]
-position = Vector2(-26.5, 43)
+position = Vector2(-26, 43.5)
 scale = Vector2(0.3, 0.282)
-shape = SubResource("RectangleShape2D_7v2uk")
+shape = SubResource("RectangleShape2D_beqdq")
 
 [node name="AirBubbleSpawn" type="Marker2D" parent="." unique_id=214021573]
 position = Vector2(15, 43)
