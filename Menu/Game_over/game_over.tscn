@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dksqtymolgkg8" path="res://Menu/Buttons/play.png" id="7_1s1kn"]
 [ext_resource type="Texture2D" uid="uid://cv8bn6lc2rnnv" path="res://Menu/Buttons/options.png" id="8_jfwx8"]
 [ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/gamePad/menu.png" id="9_av6lx"]
+[ext_resource type="Texture2D" uid="uid://cia8yk03fjvxb" path="res://Menu/Buttons/restart.png" id="10_av6lx"]
 [ext_resource type="AudioStream" uid="uid://b1y8jhh18q4f1" path="res://sounds/gameover.ogg" id="10_jfwx8"]
 [ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/gamePad/Pressed/menu.png" id="10_rsbxp"]
+[ext_resource type="Texture2D" uid="uid://b6afrl1mru2f3" path="res://Menu/Buttons/Pressed/restart.png" id="11_rsbxp"]
 
 [sub_resource type="Animation" id="Animation_av6lx"]
 length = 0.001
@@ -174,6 +176,25 @@ scale = Vector2(2.10789, 2.42027)
 [node name="GameOver" type="AudioStreamPlayer" parent="sound" unique_id=774660995]
 stream = ExtResource("10_jfwx8")
 
+[node name="Continue" type="Node2D" parent="." unique_id=2059467310]
+z_index = 5
+position = Vector2(1580, 761)
+
+[node name="Continue" type="TextureButton" parent="Continue" unique_id=1742717970]
+offset_right = 303.0
+offset_bottom = 99.0
+texture_normal = ExtResource("10_av6lx")
+texture_pressed = ExtResource("11_rsbxp")
+
+[node name="Menu" type="TouchScreenButton" parent="." unique_id=683578541]
+position = Vector2(1758, -217)
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("9_av6lx")
+texture_pressed = ExtResource("10_rsbxp")
+action = "ui_cancel"
+
 [connection signal="pressed" from="Gamepad/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Gamepad/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Gamepad/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Continue/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
