@@ -6,6 +6,10 @@ var min_shoot_distance = 0
 var max_shoot_distance = 0
 var projectile_spawn_delay = 0.2
 var projectile_timer_time = 0
+
+var regen_count = 0
+var regen_max = 3
+
 @export var jump_velocity = -550
 @export var chase_speed_multiplier = 4
 
@@ -56,6 +60,7 @@ var ground_position = Vector2.ZERO
 
 
 func _ready():
+	count_in_score = false
 	max_hp = GameBalance.ENEMY_HP["boss_tarantula"]
 	damage = GameBalance.ENEMY_DAMAGE["boss"]
 	projectile_damage = GameBalance.ENEMY_PROJECTILE["web"]
@@ -414,12 +419,14 @@ func start_regen_loop():
 			end_add_phase()
 			return
 
-		hp += regen_per_second
+		if regen_count < regen_max:
+			hp += regen_per_second
+			regen_count += 1
 
-		if hp > max_hp:
-			hp = max_hp
+			if hp > max_hp:
+				hp = max_hp
 
-		update_health_bar()
+			update_health_bar()
 
 		await get_tree().create_timer(1.0).timeout
 
@@ -541,9 +548,12 @@ func _do_die():
 	get_parent().add_child(particles)
 	particles.get_node("CPUParticles2D").emitting = true
 
-	spawn_loot()
-
 	gs.hide_boss_fight_hud()
+
+	if get_parent().has_method("on_tarantula_dead"):
+		get_parent().on_tarantula_dead(global_position)
+	
+	await get_tree().create_timer(1.0).timeout
 
 	queue_free()
 
