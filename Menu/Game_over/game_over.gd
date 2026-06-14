@@ -19,7 +19,9 @@ func _on_menu_pressed():
 func _on_options_pressed():
 	gs.load_level("res://Interface/Configuration/configuration.tscn")
 
-
 func _on_continue_pressed():
 	gs.load_global_progress()
 	await gs.continue_from_unlocked_level()
+
+func _on_quitter_pressed():
+	get_tree().quit()

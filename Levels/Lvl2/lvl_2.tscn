@@ -121,7 +121,7 @@ position = Vector2(88, 153)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=1372434146]
 z_index = 30
-position = Vector2(-79, 949)
+position = Vector2(-51, 676)
 
 [node name="Tiles" type="Node2D" parent="Node2D" unique_id=1203558698]
 position = Vector2(1327, -54)
