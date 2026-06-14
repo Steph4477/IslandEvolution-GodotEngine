@@ -97,7 +97,7 @@ func _finish():
 	queue_free()
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("Enemies"):
+	if body.is_in_group("Enemies") or body.is_in_group("amphibious_croco"):
 		if body.has_method("on_hit"):
 			body.on_hit(damage)
 		

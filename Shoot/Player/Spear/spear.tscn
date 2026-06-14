@@ -4,11 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://rgysxhr1dxge" path="res://Shoot/Enemies/Spear/spear.png" id="2_vv7jm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyw12"]
-size = Vector2(6.75, 3.5)
+size = Vector2(136, 4.750007)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpg4f"]
+size = Vector2(131, 16)
 
 [node name="Spear" type="CharacterBody2D" unique_id=1282302877]
-z_index = 5
-collision_mask = 10
+z_index = 20
+collision_mask = 134217994
 script = ExtResource("1_lpg4f")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=977760587]
@@ -18,17 +21,15 @@ texture = ExtResource("2_vv7jm")
 [node name="Timer" type="Timer" parent="." unique_id=1430706764]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=633479935]
-position = Vector2(45, 1)
+position = Vector2(-2, 1.6249964)
 rotation = -3.1415925
 scale = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_yyw12")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=208995778]
-collision_mask = 266
+[node name="LootArea" type="Area2D" parent="." unique_id=976141745]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1292036557]
-position = Vector2(-14, 1)
-scale = Vector2(-1, -1)
-polygon = PackedVector2Array(-59, -8, -82, -1, -59, 6, -52, 2, -52, -3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LootArea" unique_id=165805086]
+position = Vector2(-1.5, 2)
+shape = SubResource("RectangleShape2D_lpg4f")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="LootArea" to="." method="_on_loot_area_body_entered"]

@@ -26,7 +26,8 @@ func _self_destruct():
 	queue_free()
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("Enemies") and body.has_method("on_hit"):
-		body.on_hit(damage)
+	if body.is_in_group("Enemies") or body.is_in_group("amphibious_croco"):
+		if body.has_method("on_hit"):
+			body.on_hit(damage)
 
 	queue_free()
