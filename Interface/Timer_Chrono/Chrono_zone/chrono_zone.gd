@@ -31,7 +31,7 @@ func _ready():
 	gs = get_node("/root/GameState")
 	timer = $Timer
 
-	if gs.air_recipe_unlocked:
+	if gs.air_recipe_unlocked or gs.toucan_challenge_done:
 		queue_free()
 		return
 
@@ -150,9 +150,13 @@ func lose():
 	timer.stop()
 	chrono.stop_chrono()
 	chrono.visible = false
+
 	gs.has_flower = false
-	gs.toucan_challenge_retry = true
-	gs.player.popups_mod.show_info("⏳ Temps écoulé, tu vas y arriver Moko !")
+	gs.toucan_challenge_retry = false
+	gs.toucan_challenge_done = true
+	gs.respawn_point_name = "SpawnPoint2"
+
+	gs.player.popups_mod.show_info("⏳ Défi raté, Moko continue plus loin !")
 	gs.player.damage_mod.die()
 
 func retry_then_start():
