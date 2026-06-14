@@ -1,34 +1,34 @@
-[gd_scene load_steps=41 format=3]
+[gd_scene format=3 uid="uid://btfcgr78hm306"]
 
-[ext_resource type="Script" path="res://Enemies/Froggle/froggle.gd" id="1_8j4gp"]
-[ext_resource type="PackedScene" path="res://Enemies/health_bar.tscn" id="2_hui0c"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Attack/1.png" id="4_a6b7o"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Attack/2.png" id="5_ricjb"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Attack/3.png" id="6_4ppl1"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Attack/4.png" id="7_cvs1a"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Die/1.png" id="8_1d0q6"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Die/2.png" id="9_6une6"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Die/3.png" id="10_gf6fb"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Die/4.png" id="11_x1jqt"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Idle/1.png" id="12_b5yhw"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Idle/2.png" id="13_vox5d"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Idle/3.png" id="14_l0nb2"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Walk/1.png" id="15_614lx"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Walk/2.png" id="16_mlotn"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Walk/3.png" id="17_dt3mn"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Walk/4.png" id="18_a3577"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Walk/5.png" id="19_wyr8o"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Drool/1.png" id="20_1i8k8"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Drool/2.png" id="21_4my4o"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Drool/3.png" id="22_c4rvl"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Drool/4.png" id="23_dgcif"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Jump_Attack/1.png" id="24_61ogj"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Jump_Attack/2.png" id="25_cc3aa"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Jump_Attack/3.png" id="26_ecfuu"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/Jump_Attack/4.png" id="27_0uyrs"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/OneHit/1.png" id="28_gdpa4"]
-[ext_resource type="AudioStream" path="res://sounds/lvl3/drool.wav" id="29_8j4gp"]
-[ext_resource type="Texture2D" path="res://Enemies/Froggle/OneHit/2.png" id="29_mit5x"]
+[ext_resource type="Script" uid="uid://cpxyhdihwqfj7" path="res://Enemies/Froggle/froggle.gd" id="1_8j4gp"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_hui0c"]
+[ext_resource type="Texture2D" uid="uid://147dqrptc8a" path="res://Enemies/Froggle/Attack/1.png" id="4_a6b7o"]
+[ext_resource type="Texture2D" uid="uid://bcg74vwtp2qmd" path="res://Enemies/Froggle/Attack/2.png" id="5_ricjb"]
+[ext_resource type="Texture2D" uid="uid://bkrws0sh2x22s" path="res://Enemies/Froggle/Attack/3.png" id="6_4ppl1"]
+[ext_resource type="Texture2D" uid="uid://colt32udorwbn" path="res://Enemies/Froggle/Attack/4.png" id="7_cvs1a"]
+[ext_resource type="Texture2D" uid="uid://5uvmin2v3c2k" path="res://Enemies/Froggle/Die/1.png" id="8_1d0q6"]
+[ext_resource type="Texture2D" uid="uid://daaq1qf0p66wj" path="res://Enemies/Froggle/Die/2.png" id="9_6une6"]
+[ext_resource type="Texture2D" uid="uid://cn1vnyqipfi7a" path="res://Enemies/Froggle/Die/3.png" id="10_gf6fb"]
+[ext_resource type="Texture2D" uid="uid://b8iitmd0jrsag" path="res://Enemies/Froggle/Die/4.png" id="11_x1jqt"]
+[ext_resource type="Texture2D" uid="uid://l7iu4g2rujio" path="res://Enemies/Froggle/Idle/1.png" id="12_b5yhw"]
+[ext_resource type="Texture2D" uid="uid://dw3y4q4gil7q5" path="res://Enemies/Froggle/Idle/2.png" id="13_vox5d"]
+[ext_resource type="Texture2D" uid="uid://b23mnkjnx4dms" path="res://Enemies/Froggle/Idle/3.png" id="14_l0nb2"]
+[ext_resource type="Texture2D" uid="uid://bwet2whmeea68" path="res://Enemies/Froggle/Walk/1.png" id="15_614lx"]
+[ext_resource type="Texture2D" uid="uid://c1vk5hm2upcqd" path="res://Enemies/Froggle/Walk/2.png" id="16_mlotn"]
+[ext_resource type="Texture2D" uid="uid://hkkxjge25h1" path="res://Enemies/Froggle/Walk/3.png" id="17_dt3mn"]
+[ext_resource type="Texture2D" uid="uid://klyj24s4yp3j" path="res://Enemies/Froggle/Walk/4.png" id="18_a3577"]
+[ext_resource type="Texture2D" uid="uid://be21qf57lcv40" path="res://Enemies/Froggle/Walk/5.png" id="19_wyr8o"]
+[ext_resource type="Texture2D" uid="uid://ej6iw7me8cqs" path="res://Enemies/Froggle/Drool/1.png" id="20_1i8k8"]
+[ext_resource type="Texture2D" uid="uid://c5cogef5bh7ks" path="res://Enemies/Froggle/Drool/2.png" id="21_4my4o"]
+[ext_resource type="Texture2D" uid="uid://2rr3w4pe2ub3" path="res://Enemies/Froggle/Drool/3.png" id="22_c4rvl"]
+[ext_resource type="Texture2D" uid="uid://5sc0jb5d0wvp" path="res://Enemies/Froggle/Drool/4.png" id="23_dgcif"]
+[ext_resource type="Texture2D" uid="uid://dp3366av5w6kl" path="res://Enemies/Froggle/Jump_Attack/1.png" id="24_61ogj"]
+[ext_resource type="Texture2D" uid="uid://c3od4ch01n7ji" path="res://Enemies/Froggle/Jump_Attack/2.png" id="25_cc3aa"]
+[ext_resource type="Texture2D" uid="uid://bowv5p30mah4a" path="res://Enemies/Froggle/Jump_Attack/3.png" id="26_ecfuu"]
+[ext_resource type="Texture2D" uid="uid://3dr4uqpjiaw2" path="res://Enemies/Froggle/Jump_Attack/4.png" id="27_0uyrs"]
+[ext_resource type="Texture2D" uid="uid://ckoc624r2l0sr" path="res://Enemies/Froggle/OneHit/1.png" id="28_gdpa4"]
+[ext_resource type="AudioStream" uid="uid://3mfvfdskfypf" path="res://sounds/lvl3/drool.wav" id="29_8j4gp"]
+[ext_resource type="Texture2D" uid="uid://cnpvg00kvyewm" path="res://Enemies/Froggle/OneHit/2.png" id="29_mit5x"]
 
 [sub_resource type="Animation" id="Animation_gg55r"]
 length = 0.001
@@ -221,7 +221,7 @@ size = Vector2(84, 68)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(95, 13.5)
 
-[node name="Froggle" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Froggle" type="CharacterBody2D" unique_id=1218094376 groups=["Enemies"]]
 modulate = Color(0.8289096, 0.82890964, 0.82890975, 1)
 z_index = 10
 scale = Vector2(-1, 1)
@@ -230,52 +230,50 @@ collision_mask = 2
 script = ExtResource("1_8j4gp")
 max_hp = 100
 
-[node name="HealthBar" parent="." instance=ExtResource("2_hui0c")]
+[node name="HealthBar" parent="." unique_id=742088931 instance=ExtResource("2_hui0c")]
 position = Vector2(46, -68)
 rotation = 3.14159
 scale = Vector2(1, -1.00374)
 
-[node name="Rotator" type="Node2D" parent="."]
+[node name="Rotator" type="Node2D" parent="." unique_id=167978348]
 
-[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=906811860]
 position = Vector2(-55, -30)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
 texture = ExtResource("12_b5yhw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" groups=["Enemies"]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1913958909 groups=["Enemies"]]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_1lwxd")
-}
+libraries/ = SubResource("AnimationLibrary_1lwxd")
 
-[node name="Area2D" type="Area2D" parent="Rotator" groups=["Enemies"]]
+[node name="Area2D" type="Area2D" parent="Rotator" unique_id=1349608074 groups=["Enemies"]]
 collision_layer = 0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Rotator/Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Rotator/Area2D" unique_id=1515251182]
 position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_73kmb")
 
-[node name="Muzzle" type="Marker2D" parent="Rotator"]
+[node name="Muzzle" type="Marker2D" parent="Rotator" unique_id=1496319887]
 position = Vector2(-31, -4)
 
-[node name="LootSpawn" type="Marker2D" parent="Rotator"]
+[node name="LootSpawn" type="Marker2D" parent="Rotator" unique_id=760227836]
 position = Vector2(77, -44)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692598105]
 position = Vector2(1, 36)
 shape = SubResource("RectangleShape2D_x2fpe")
 
-[node name="CacTimer" type="Timer" parent="."]
+[node name="CacTimer" type="Timer" parent="." unique_id=61840091]
 wait_time = 5.0
 autostart = true
 
-[node name="DroolTimer" type="Timer" parent="."]
+[node name="DroolTimer" type="Timer" parent="." unique_id=653630646]
 one_shot = true
 
-[node name="JumpTimer" type="Timer" parent="."]
+[node name="JumpTimer" type="Timer" parent="." unique_id=876580417]
 
-[node name="DroolSound" type="AudioStreamPlayer" parent="."]
+[node name="DroolSound" type="AudioStreamPlayer" parent="." unique_id=1800220172]
 stream = ExtResource("29_8j4gp")
 volume_db = -10.481
 

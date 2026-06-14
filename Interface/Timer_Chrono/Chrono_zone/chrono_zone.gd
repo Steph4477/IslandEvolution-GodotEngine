@@ -94,7 +94,7 @@ func _on_zone_body_exited(body):
 		chrono.visible = false
 
 func intro_then_start():
-	gs.player.can_move = false
+	gs.player.disable_controls()
 	await get_tree().process_frame
 
 	var dlg = dialogue_scene.instantiate()
@@ -102,7 +102,7 @@ func intro_then_start():
 	dlg.start(dialogue_lines)
 	await dlg.finished
 
-	gs.player.can_move = true
+	gs.player.enable_controls()
 	start()
 
 func start():
@@ -160,7 +160,7 @@ func lose():
 	gs.player.damage_mod.die()
 
 func retry_then_start():
-	gs.player.can_move = false
+	gs.player.disable_controls()
 	await get_tree().process_frame
 
 	var dlg = dialogue_scene.instantiate()
@@ -168,22 +168,22 @@ func retry_then_start():
 	dlg.start(["Retente !"])
 	await dlg.finished
 
-	gs.player.can_move = true
+	gs.player.enable_controls()
 	counter_time_start()
 
 func counter_time_start():
-	gs.player.can_move = false
+	gs.player.disable_controls()
 	await get_tree().process_frame
 
 	var cptanim = counter_time.instantiate()
 	add_child(cptanim)
 
 	await get_tree().create_timer(1.6).timeout
-	gs.player.can_move = true
+	gs.player.enable_controls()
 	start()
 
 func dialogue_win_toucan():
-	gs.player.can_move = false
+	gs.player.disable_controls()
 	await get_tree().process_frame
 
 	var dlg = dialogue_scene.instantiate()
@@ -192,7 +192,7 @@ func dialogue_win_toucan():
 	dlg.start(dialogue_win)
 	await dlg.finished
 
-	gs.player.can_move = true
+	gs.player.enable_controls()
 
 func _on_timer_timeout():
 	if not started:

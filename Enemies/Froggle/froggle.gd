@@ -331,6 +331,11 @@ func die():
 		cam.offset = Vector2.ZERO
 
 	call_deferred("drop_double_jump_loot")
+	
+	var gs = get_node("/root/GameState")
+	gs.toucan_froggle_spawned = false
+	gs.toucan_challenge_done = true
+	gs.respawn_point_name = "SpawnPoint2"
 
 	anim.play("die")
 	await anim.animation_finished

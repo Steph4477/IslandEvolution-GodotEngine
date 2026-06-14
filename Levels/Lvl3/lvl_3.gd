@@ -30,14 +30,20 @@ func _ready():
 	cam.limit_top = -1500
 	cam.limit_right = 25000
 	cam.limit_bottom = 1400
-	
-	# Position initiale de l’anim “fall” à 0.0
+
+	# Position initiale ou finale de l’anim “fall”
 	if anim.has_animation("fall"):
-		anim.current_animation = "fall"
-		anim.seek(0.0, true)
-		anim.stop()
-		
-	await get_tree().process_frame
+		if gs.toucan_fall_done:
+			anim.play("fall")
+			anim.seek(2.9, true)
+			anim.pause()
+		else:
+			anim.play("fall")
+			anim.seek(0.0, true)
+			anim.pause()
+
+	if gs.toucan_froggle_spawned and not gs.toucan_challenge_done:
+		_spawn_froggle()
 
 # --- Signals ---
 func _on_chrono_zone_challenge_win():
@@ -60,7 +66,11 @@ func _on_chrono_zone_challenge_win():
 		camera_shake(intensity, duration)
 		
 		await anim.animation_finished
-		#anim.stop()
+
+		gs.toucan_fall_done = true
+		anim.play("fall")
+		anim.seek(2.9, true)
+		anim.pause()
 		
 	# 2) Attente avant spawn
 	await get_tree().create_timer(2.0).timeout
@@ -112,7 +122,12 @@ func _on_chrono_zone_challenge_win():
 	player.can_move = prev_can_move
 
 func _spawn_froggle():
+	if get_node_or_null("Froggle"):
+		return
+
 	froggle_spawned = true
+	gs.toucan_froggle_spawned = true
+
 	var spawn_node = get_node_or_null(froggle_spawn_path)
 	var spawn_pos = Vector2.ZERO
 	if spawn_node:
