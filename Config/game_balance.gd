@@ -26,6 +26,7 @@ const PLAYER_DAMAGE = {
 	"coco": 40,
 	"bone": 45,
 	"lance": 50,
+	"spear": 50,
 	"coco_fire": 80,
 	"bone_fire": 90,
 	"lance_fire": 100
@@ -166,16 +167,16 @@ const ENEMY_MELEE_DISTANCE = {
 const ENEMY_MIN_SHOOT_DISTANCE = {
 	"snake": 80,
 	"pyg": 200,
-	"cannibal": 300,
-	"boss_cannibal": 1000,
+	"cannibal": 200,
+	"boss_cannibal": 200,
 	"boss_tarantula": 100
 }
 
 const ENEMY_MAX_SHOOT_DISTANCE = {
 	"snake": 360,
-	"pyg": 2000,
-	"cannibal": 2000,
-	"boss_cannibal": 2000,
+	"pyg": 1000,
+	"cannibal": 1000,
+	"boss_cannibal": 1000,
 	"boss_tarantula": 1000,
 }
 const ENEMY_COOLDOWN = {
@@ -183,7 +184,7 @@ const ENEMY_COOLDOWN = {
 	"mosquito": 0.6,
 	"rat": 1.0,
 	"snake": 2.0,
-	"pyg": 2.5,
+	"pyg": 1.5,
 	"croco": 1.5,
 	"cannibal": 2.0,
 	"boss_cannibal": 2.0,
