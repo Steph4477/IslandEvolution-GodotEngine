@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyw12"]
 size = Vector2(8, 3)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6by6y"]
+size = Vector2(90, 10)
+
 [node name="Spear" type="CharacterBody2D" unique_id=1989084004]
 z_index = 20
 collision_layer = 8
@@ -27,4 +30,11 @@ position = Vector2(-16, 0)
 rotation = -3.1415927
 polygon = PackedVector2Array(-60, -11, -99, -1, -58, 8, -53, 1, -52, -8)
 
+[node name="LootArea" type="Area2D" parent="." unique_id=583800057]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LootArea" unique_id=1354048571]
+position = Vector2(-9, 1)
+shape = SubResource("RectangleShape2D_6by6y")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="LootArea" to="." method="_on_loot_area_body_entered"]

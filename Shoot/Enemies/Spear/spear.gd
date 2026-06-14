@@ -6,18 +6,23 @@ extends CharacterBody2D
 @export var gravity_force = 1200
 
 var direction = Vector2.RIGHT
+var is_planted = false
 
 func _ready():
-	get_node("Area2D/CollisionPolygon2D").disabled = true
+	$LootArea/CollisionShape2D.disabled = true
+	$Area2D/CollisionPolygon2D.disabled = true
 
 func _physics_process(delta):
+	if is_planted:
+		return
+
 	velocity.y += gravity_force * delta
 	rotation = velocity.angle()
 
 	var collision = move_and_collide(velocity * delta)
 
 	if collision:
-		queue_free()
+		plant_spear()
 
 func start(pos, dir, projectile_damage):
 	damage = projectile_damage
@@ -31,7 +36,7 @@ func start(pos, dir, projectile_damage):
 		else:
 			direction = Vector2.RIGHT
 
-	get_node("Area2D/CollisionPolygon2D").disabled = false
+	$Area2D/CollisionPolygon2D.disabled = false
 
 	velocity = Vector2(
 		direction.x * speed,
@@ -39,13 +44,33 @@ func start(pos, dir, projectile_damage):
 	)
 
 	if direction.x < 0:
-		get_node("SpearSprite").flip_v = true
+		$SpearSprite.flip_v = true
 	else:
-		get_node("SpearSprite").flip_v = false
+		$SpearSprite.flip_v = false
+
+func plant_spear():
+	is_planted = true
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	$Area2D/CollisionPolygon2D.disabled = true
+	$LootArea/CollisionShape2D.disabled = false
 
 func _on_area_2d_body_entered(body):
+	if is_planted:
+		return
+
 	if not body.is_in_group("Player"):
 		return
 
 	body.damage_mod.on_hit(damage)
+	queue_free()
+
+func _on_loot_area_body_entered(body):
+	if not is_planted:
+		return
+
+	if not body.is_in_group("Player"):
+		return
+
+	body.collect_items.collect_lance()
 	queue_free()
