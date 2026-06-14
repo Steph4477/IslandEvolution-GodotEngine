@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
-[ext_resource type="PackedScene" uid="uid://cy3bsh6oopd0n" path="res://Enemies/Cannibal/Boss/BossCannibal.tscn" id="2_g514y"]
+[ext_resource type="PackedScene" path="res://Loot/Spear/spear.tscn" id="3_qvx8w"]
+[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="3_urigi"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
@@ -17,7 +18,7 @@ size = Vector2(312.20395, 53.526)
 [node name="Node2D" type="Node2D" parent="." unique_id=1402871080]
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=157147786]
-position = Vector2(1164, 1137)
+position = Vector2(1211, 640)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=582993913]
 
@@ -55,6 +56,20 @@ position = Vector2(1435, 1461)
 [node name="BagLoot2" parent="." unique_id=1955692160 instance=ExtResource("7_t726j")]
 position = Vector2(1435, 1461)
 
-[node name="BossCannibal" parent="." unique_id=708931693 instance=ExtResource("2_g514y")]
-position = Vector2(2764, 1209)
-melee_distance = 170.0
+[node name="Lance" parent="." unique_id=1176398183 instance=ExtResource("3_qvx8w")]
+position = Vector2(1474, 1214)
+
+[node name="Lance2" parent="." unique_id=897770903 instance=ExtResource("3_qvx8w")]
+position = Vector2(1474, 1214)
+
+[node name="Lance3" parent="." unique_id=1855133208 instance=ExtResource("3_qvx8w")]
+position = Vector2(1474, 1214)
+
+[node name="Lance4" parent="." unique_id=1869253383 instance=ExtResource("3_qvx8w")]
+position = Vector2(1474, 1214)
+
+[node name="Lance5" parent="." unique_id=489397827 instance=ExtResource("3_qvx8w")]
+position = Vector2(1474, 1214)
+
+[node name="Snake" parent="." unique_id=88320707 instance=ExtResource("3_urigi")]
+position = Vector2(2415, 1308)

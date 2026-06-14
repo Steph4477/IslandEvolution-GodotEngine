@@ -26,7 +26,6 @@ const PLAYER_DAMAGE = {
 	"coco": 40,
 	"bone": 45,
 	"lance": 50,
-	"spear": 50,
 	"coco_fire": 80,
 	"bone_fire": 90,
 	"lance_fire": 100

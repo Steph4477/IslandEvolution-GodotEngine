@@ -69,6 +69,7 @@ var fire_buff_mod
 var air_buff_mod
 
 var can_move = true
+var controls_locked = false
 var can_be_damaged = true
 var is_dead = false
 var is_jumping = false
@@ -335,6 +336,12 @@ func setup_animation_module():
 	animation_mod.setup(self)
 
 func _physics_process(delta):
+	if controls_locked:
+		velocity = Vector2.ZERO
+		anim.play("idle")
+		move_and_slide()
+		return
+
 	if is_headbutting:
 		velocity.y = 0
 		move_and_slide()
@@ -422,12 +429,14 @@ func update_can_heal():
 	can_heal = heal_potions.size() > 0 and pv < max_pv and not in_cooldown
 
 func disable_controls():
+	controls_locked = true
 	can_move = false
-	velocity.x = 0
+	velocity = Vector2.ZERO
 	is_attacking = false
 
 func enable_controls():
-	await get_tree().create_timer(1.0).timeout
+	#await get_tree().create_timer(1.0).timeout
+	controls_locked = false
 	can_move = true
 	can_be_damaged = true
 
