@@ -28,7 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://x8505bhqtxei" path="res://sounds/roar_croco.ogg" id="27_ow40j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5wxv"]
-size = Vector2(108.000046, 47.000023)
+size = Vector2(200.00009, 79.00004)
 
 [sub_resource type="Animation" id="Animation_6utxn"]
 length = 0.001
@@ -248,7 +248,7 @@ position = Vector2(-43, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1182542734]
 z_index = 5
-position = Vector2(62, 10.5)
+position = Vector2(16.000004, 17.499998)
 scale = Vector2(0.99999946, 0.99999946)
 shape = SubResource("RectangleShape2D_b5wxv")
 

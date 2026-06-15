@@ -823,7 +823,7 @@ position_smoothing_enabled = true
 
 [node name="ClacArea" type="Area2D" parent="." unique_id=1323133612]
 position = Vector2(-136, -126)
-collision_mask = 8
+collision_mask = 134217736
 monitoring = false
 monitorable = false
 
@@ -833,7 +833,7 @@ shape = SubResource("CircleShape2D_c7st8")
 
 [node name="KickArea" type="Area2D" parent="." unique_id=657735948]
 position = Vector2(-136, -126)
-collision_mask = 8
+collision_mask = 134217736
 monitoring = false
 monitorable = false
 
@@ -843,7 +843,7 @@ shape = SubResource("CircleShape2D_i8h25")
 
 [node name="HeadbuttArea" type="Area2D" parent="." unique_id=1302658323]
 position = Vector2(-136, -126)
-collision_mask = 8
+collision_mask = 134217736
 monitoring = false
 monitorable = false
 
