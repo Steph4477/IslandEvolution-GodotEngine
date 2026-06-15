@@ -1,11 +1,23 @@
 extends Area2D
 
+@export var loot_id = ""
 @export var lance_amount = 4
+
 var gs
 var already_looted = false
 
 func _ready():
 	gs = get_node("/root/GameState")
+
+	if loot_id == "":
+		loot_id = name
+
+	if gs.collected_loot_ids.has(loot_id):
+		$FullSprite.visible = false
+		$CollisionPolygon2D.disabled = true
+		already_looted = true
+		return
+
 	$FullSprite.visible = true
 
 func _on_body_entered(body):
@@ -17,11 +29,9 @@ func _on_body_entered(body):
 
 	already_looted = true
 
-	# Collecte côté Player (c'est lui qui met à jour GS + HUD)
 	body.collect_items.collect_lance(lance_amount)
 
-	# Visuel rack vide
-	$FullSprite.visible = false
+	gs.add_loot_collected(loot_id)
 
-	# Désactive la collision APRES la frame physics (fix flushing queries)
+	$FullSprite.visible = false
 	$CollisionPolygon2D.call_deferred("set_disabled", true)
