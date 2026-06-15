@@ -57,6 +57,7 @@ var ramp_unlocked = false
 var toucan_dialogue_seen = false
 var pygmy_dialogue_seen = false
 var lvl1_intro_seen = false
+var toucan_challenge_intro_seen = false
 
 # -- Défi du Toucan ---
 var toucan_challenge_done = false
@@ -198,7 +199,7 @@ func _ready():
 	print("KING UNLOCKED : ", king_unlocked)
 	
 	#await load_level("res://Levels/Test/test_scene.tscn")
-	#await load_level("res://Levels/Loader/loader.tscn")
+	await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
@@ -206,7 +207,7 @@ func _ready():
 	#await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
-	await load_level("res://Levels/Lvl3/lvl_3.tscn")
+	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3a/lvl_3a.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
@@ -793,6 +794,7 @@ func save_game():
 	data["air_altar_found"] = air_altar_found
 	
 	data["lvl1_intro_seen"] = lvl1_intro_seen
+	data["toucan_challenge_intro_seen"] = toucan_challenge_intro_seen
 
 	data["difficulty"] = difficulty
 	data["explorer_unlocked"] = explorer_unlocked
@@ -896,6 +898,7 @@ func apply_save_data(data):
 	air_altar_found = data.get("air_altar_found", false)
 	
 	lvl1_intro_seen = data.get("lvl1_intro_seen", false)
+	toucan_challenge_intro_seen = data.get("toucan_challenge_intro_seen", false)
 
 	difficulty = data.get("difficulty", "explorer")
 	explorer_unlocked = data.get("explorer_unlocked", true)
@@ -1101,6 +1104,7 @@ func reinitialise():
 	air_altar_found = false
 	
 	lvl1_intro_seen = false
+	toucan_challenge_intro_seen = false
 
 	lvl1_quest_revealed = false
 	lvl1_seeds_done = false

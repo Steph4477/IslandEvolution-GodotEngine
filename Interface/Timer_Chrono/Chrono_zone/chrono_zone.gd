@@ -67,12 +67,12 @@ func _on_zone_body_entered(body):
 		return
 
 	if not started:
-		if gs.toucan_dialogue_seen:
+		if gs.toucan_challenge_intro_seen:
 			start()
 		else:
 			in_intro = true
 			await intro_then_start()
-			gs.toucan_dialogue_seen = true
+			gs.toucan_challenge_intro_seen = true
 			in_intro = false
 		return
 
