@@ -196,10 +196,10 @@ size = Vector2(15.797518, 18.73994)
 size = Vector2(0.98291415, 17.644089)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vc1ff"]
-size = Vector2(6.366182, 12.984623)
+size = Vector2(7.073548, 20.305473)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgp0u"]
-size = Vector2(3.1210675, 24.705214)
+size = Vector2(3.1210675, 27.907784)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lr8k6"]
 size = Vector2(18.138578, 12.984581)
@@ -211,7 +211,7 @@ size = Vector2(25.452105, 51.662086)
 size = Vector2(7.983007, 16.991264)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhs03"]
-size = Vector2(3.6026638, 12.007721)
+size = Vector2(3.6026638, 14.5377655)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs1dx"]
 size = Vector2(8.336639, 20)
@@ -582,12 +582,12 @@ scale = Vector2(992.862, 8.2334)
 shape = SubResource("RectangleShape2D_ofnsq")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=265071110]
-position = Vector2(29131.006, 15696.229)
+position = Vector2(29119.79, 15650.398)
 scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_vc1ff")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=437177044]
-position = Vector2(14963.714, 19106.65)
+position = Vector2(14963.717, 19094.543)
 scale = Vector2(300.99902, -7.56021)
 shape = SubResource("RectangleShape2D_kgp0u")
 
@@ -607,7 +607,7 @@ scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_26k7p")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/CollisionPlatforms/PlatformsCollision" unique_id=552635228]
-position = Vector2(25350.82, 17460.242)
+position = Vector2(25350.82, 17442.809)
 rotation = -3.14159
 scale = Vector2(286.449, -13.7806)
 shape = SubResource("RectangleShape2D_uhs03")
