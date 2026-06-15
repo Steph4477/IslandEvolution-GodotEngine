@@ -1,7 +1,8 @@
 extends Node
 
 # --- Sauvegarde ---
-const SAVE_PATH = "user://savegame.json"
+const SAVE_PATH = "user://savegame.json"          # Load = position exacte
+const PROGRESS_PATH = "user://progress.json"      # Continuer = niveau débloqué + unlocks"
 var has_pending_load = false
 var pending_player_pos = Vector2.ZERO
 var pending_level_path = ""
@@ -202,11 +203,11 @@ func _ready():
 	print("KING UNLOCKED : ", king_unlocked)
 	
 	#await load_level("res://Levels/Test/test_scene.tscn")
-	#await load_level("res://Levels/Loader/loader.tscn")
+	await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
-	await load_level("res://Levels/Lvl2/lvl_2.tscn")
+	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
@@ -243,71 +244,35 @@ func set_player(p):
 
 	emit_signal("player_updated", p)
 
+# Nouvelle partie
 func restart_game():
-	reinitialise()
-	reset_session_dialogues()
+	reset_progression()
+	await load_level("res://Levels/Lvl1/lvl_1.tscn")
 
-	# Forces une nouvelle partie
-	current_level_path = "res://Levels/Lvl1/lvl_1.tscn"
 
-	# Oublies tout pending load
-	has_pending_load = false
-	pending_level_path = ""
-	pending_player_pos = Vector2.ZERO
-
-	await get_tree().process_frame
-	await load_level(current_level_path)
-
+# Continuer
 func continue_game():
 	var loaded = await load_game()
 
-	if not loaded:
-		await load_level("res://Levels/Lvl1/lvl_1.tscn")
-
-	# Si aucune partie n'a encore été lancée, revient lvl1
-	if current_level_path == "":
-		await load_level("res://Levels/Lvl1/lvl_1.tscn")
-		return
-
-	# On force un "pending load" sur la dernière position connue
-	if has_last_player_pos:
-		has_pending_load = true
-		pending_player_pos = last_player_pos
-		pending_level_path = current_level_path
-	else:
-		# Pas de position mémorisée -> Continue au SpawnPoint
+	if loaded:
 		has_pending_load = false
 		pending_player_pos = Vector2.ZERO
-		pending_level_path = ""
+		print("CONTINUE -> ", unlocked_level_path)
+		print("CONTINUE SPRINT -> ", sprint_unlocked)
+		print("CONTINUE LANCE -> ", lance_count)
+		await load_level(unlocked_level_path)
+	else:
+		await load_level("res://Levels/Lvl1/lvl_1.tscn")
 
-	await load_level(current_level_path)
 
-func continue_from_unlocked_level():
-	load_global_progress()
+# Load
+func load_save():
+	var loaded = await load_game()
 
-	var keep_sprint = sprint_unlocked
-	var keep_double_jump = double_jump_unlocked
-	var keep_ramp = ramp_unlocked
-	var keep_fire = fire_buff_unlocked
-	var keep_air = air_buff_unlocked
-	var keep_camouflage = camouflage_unlocked
-
-	reset_lives()
-	reinitialise()
-	reset_session_dialogues()
-
-	sprint_unlocked = keep_sprint
-	double_jump_unlocked = keep_double_jump
-	ramp_unlocked = keep_ramp
-	fire_buff_unlocked = keep_fire
-	air_buff_unlocked = keep_air
-	camouflage_unlocked = keep_camouflage
-
-	has_pending_load = false
-	pending_level_path = ""
-	pending_player_pos = Vector2.ZERO
-
-	await load_level(unlocked_level_path)
+	if loaded:
+		await load_level(pending_level_path)
+	else:
+		await load_level("res://Levels/Lvl1/lvl_1.tscn")
 
 func reset_session_dialogues():
 	toucan_dialogue_seen = false
@@ -453,7 +418,7 @@ func unlock_next_difficulty():
 		difficulty = "king"
 		print("ROI DE L'ILE DEBLOQUE")
 
-	save_game()
+	save_progress()
 
 	print("DIFFICULTY APRES BOSS : ", difficulty)
 	print("SURVIVOR : ", survivor_unlocked)
@@ -461,6 +426,7 @@ func unlock_next_difficulty():
 
 
 # --- Relié au bouton nouvelle partie du lvl_0 ---
+
 func reset_progression():
 	difficulty = "explorer"
 
@@ -476,22 +442,21 @@ func reset_progression():
 	current_level_path = "res://Levels/Lvl1/lvl_1.tscn"
 	unlocked_level_path = "res://Levels/Lvl1/lvl_1.tscn"
 
-	var dir = DirAccess.open("user://")
-	if dir and dir.file_exists("savegame.json"):
-		dir.remove("savegame.json")
-
-		reinitialise()
+	reinitialise()
+	reset_lives()
+	reset_session_dialogues()
 
 	last_player_pos = Vector2.ZERO
-	has_last_player_pos = true
+	has_last_player_pos = false
 	has_pending_load = false
 	pending_level_path = ""
 	pending_player_pos = Vector2.ZERO
 
+	var dir = DirAccess.open("user://")
+	if dir and dir.file_exists("savegame.json"):
+		dir.remove("savegame.json")
+
 	print("RESET PROGRESSION")
-	print("DIFFICULTY : ", difficulty)
-	print("SURVIVOR : ", survivor_unlocked)
-	print("KING : ", king_unlocked)
 
 func load_global_progress():
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -663,6 +628,7 @@ func load_level(scene_path):
 		p.can_fire_coco = can_fire_coco
 		p.can_fire_bone = can_fire_bone
 		p.can_fire_lance = can_fire_lance
+		p.can_sprint = sprint_unlocked
 
 		p.heal_potions.clear()
 		for i in range(banane_count):
@@ -671,10 +637,28 @@ func load_level(scene_path):
 		p.honey_potions.clear()
 		for i in range(honey_count):
 			p.honey_potions.append("honey")
-
+		if lance_count > 0:
+			has_lance = true
+			can_fire_lance = true
+			p.can_fire_lance = true
+			p.lance_count = lance_count
 		if hud:
 			hud.update_lives_display(lives)
 			hud.update_seed_display(collected_seeds, total_seeds_in_level)
+
+			if lance_count > 0:
+				hud.lance_button.visible = true
+				hud.set_button_enabled(hud.lance_button, true)
+				hud.update_lance_display()
+			else:
+				hud.lance_button.visible = false
+				hud.set_button_enabled(hud.lance_button, false)
+				hud.update_lance_display()
+
+			if sprint_unlocked:
+				hud.sprint_button.visible = true
+				hud.set_button_enabled(hud.sprint_button, true)
+
 			hud.update_lance_display()
 			hud.update_banane_display()
 			hud.update_honey_display()
@@ -912,11 +896,66 @@ func apply_save_data(data):
 	moko_hp_bonus_percent = int(data.get("moko_hp_bonus_percent", 0))
 	moko_evolution_percent = int(data.get("moko_evolution_percent", 0))
 	enemy_evolution_percent = int(data.get("enemy_evolution_percent", 0))
+	print("SPRINT :", sprint_unlocked)
+	print("LANCES :", lance_count)
+	print("CAN_FIRE_LANCE :", can_fire_lance)
 
-	# Recharge du niveau sauvegardé
-	await load_level(pending_level_path)
 
+# ===================================================================
+#                          SAVEGARDE DE LA PROGRESSION (continuer)
+# ===================================================================
+func save_progress():
+	var data = {}
 
+	data["unlocked_level_path"] = unlocked_level_path
+	data["difficulty"] = difficulty
+	data["explorer_unlocked"] = explorer_unlocked
+	data["survivor_unlocked"] = survivor_unlocked
+	data["king_unlocked"] = king_unlocked
+
+	data["banane_count"] = banane_count
+	data["honey_count"] = honey_count
+	data["coco_count"] = coco_count
+	data["bone_count"] = bone_count
+	data["lance_count"] = lance_count
+
+	data["can_fire_coco"] = can_fire_coco
+	data["can_fire_lance"] = can_fire_lance
+	data["can_fire_bone"] = can_fire_bone
+
+	data["sprint_unlocked"] = sprint_unlocked
+	data["double_jump_unlocked"] = double_jump_unlocked
+	data["ramp_unlocked"] = ramp_unlocked
+	data["fire_buff_unlocked"] = fire_buff_unlocked
+	data["air_buff_unlocked"] = air_buff_unlocked
+	data["camouflage_unlocked"] = camouflage_unlocked
+	data["camouflage_count"] = camouflage_count
+	data["can_camouflage"] = can_camouflage
+
+	data["wood_collected"] = wood_collected
+	data["stone_collected"] = stone_collected
+	data["fire_recipe_unlocked"] = fire_recipe_unlocked
+	data["fire_craft_revealed"] = fire_craft_revealed
+	data["fire_altar_found"] = fire_altar_found
+
+	data["leaf_collected"] = leaf_collected
+	data["idole_collected"] = idole_collected
+	data["air_recipe_unlocked"] = air_recipe_unlocked
+	data["air_craft_revealed"] = air_craft_revealed
+	data["air_altar_found"] = air_altar_found
+
+	data["killed_enemy_ids"] = killed_enemy_ids
+	data["collected_loot_ids"] = collected_loot_ids
+	data["collected_seed_ids"] = collected_seed_ids
+
+	data["moko_damage_bonus_percent"] = moko_damage_bonus_percent
+	data["moko_hp_bonus_percent"] = moko_hp_bonus_percent
+	data["moko_evolution_percent"] = moko_evolution_percent
+	data["enemy_evolution_percent"] = enemy_evolution_percent
+
+	var file = FileAccess.open(PROGRESS_PATH, FileAccess.WRITE)
+	file.store_string(JSON.stringify(data))
+	file.close()
 # ===================================================================
 
 # --- Vies ---
@@ -1131,6 +1170,9 @@ func reinitialise():
 		hud.update_coco_display()
 		hud.update_bone_display()
 		hud.update_camouflage_display()
+
+	if hud and hud.has_method("reset_hud"):
+		hud.reset_hud()
 
 
 # --- Pause ---

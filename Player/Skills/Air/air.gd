@@ -6,7 +6,7 @@ var collected = false
 @onready var anim = $AnimationPlayer
 
 func _ready():
-	anim.play("appear_skill_fire")
+	anim.play("appear_skill_air")
 	gs = get_node("/root/GameState")
 
 	if gs.air_buff_unlocked:

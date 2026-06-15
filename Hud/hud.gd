@@ -867,8 +867,63 @@ func anim_to_honey_mode():
 func unlock_camouflage_hud():
 	appear_camouflage()
 
+# ---------------------------------------------------------------------------------
+#                                       RESET HUD (nouvelle partie)
+# -----------------------------------------------------------------------------------
+func reset_hud():
+	coco_button.visible = false
+	bone_button.visible = false
+	lance_button.visible = false
+	camouflage_button.visible = false
+	health_button.visible = false
+	honey_button.visible = false
+	ramp_button.visible = false
+	fire_button.visible = false
+	air_button.visible = false
+	sprint_button.visible = false
 
+	if banane_hbox:
+		banane_hbox.visible = false
 
+	if honey_hbox:
+		honey_hbox.visible = false
+
+	if fire_craft_checklist:
+		fire_craft_checklist.visible = false
+
+	if air_craft_checklist:
+		air_craft_checklist.visible = false
+
+	if lvl1_checklist:
+		lvl1_checklist.visible = false
+
+	set_button_enabled(ramp_button, false)
+	set_button_enabled(sprint_button, false)
+	set_button_enabled(coco_button, false)
+	set_button_enabled(lance_button, false)
+	set_button_enabled(health_button, false)
+	set_button_enabled(honey_button, false)
+	set_button_enabled(bone_button, false)
+	set_button_enabled(camouflage_button, false)
+	set_button_enabled(fire_button, false)
+	set_button_enabled(air_button, false)
+
+	update_lives_display(gs.lives)
+	update_lance_display()
+	update_bone_display()
+	update_banane_display()
+	update_honey_display()
+	update_coco_display()
+	update_camouflage_display()
+	update_fire_display()
+	update_air_display()
+	update_seed_display(0, 0)
+
+	hide_breathbar()
+	_hide_all_buffs()
+
+	if speed_bar and speed_bar.has_method("hide_bar"):
+		speed_bar.hide_bar()
 #---------------------------------------
 #            BUTTONS
 # --------------------------------------

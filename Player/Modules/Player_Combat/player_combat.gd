@@ -61,7 +61,7 @@ func shoot():
 		firing_locked = false
 		return
 
-	if not p.can_camouflage and Input.is_action_pressed(p.INPUT["fire"]) and p.can_fire_lance:
+	if Input.is_action_pressed(p.INPUT["fire"]) and p.can_fire_lance:
 		firing_locked = true
 		await lance()
 		firing_locked = false
@@ -190,10 +190,10 @@ func bone():
 	await p.get_tree().create_timer(p.rate_of_fire).timeout
 
 func lance():
+	print("LANCE START")
+	print("COUNT =", p.lance_count)
+	print("CAN_FIRE =", p.can_fire_lance)
 	if p.is_hit_locked:
-		return
-
-	if p.can_camouflage:
 		return
 
 	if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_hanging or p.is_on_liana or p.is_camouflaged:
@@ -243,6 +243,7 @@ func lance():
 	if p.sprite.flip_h:
 		dir = -1
 
+	print("SPAWN LANCE")
 	spell.start(p.get_node("ShootPoint").global_position, dir, projectile_damage)
 	p.get_tree().current_scene.add_child(spell)
 
