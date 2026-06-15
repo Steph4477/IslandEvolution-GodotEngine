@@ -84,7 +84,7 @@ const PLAYER_HIT_LOCK_TIME = 0.2
 const PLAYER_FIRE_BUFF_DURATION = 8.0
 const PLAYER_AIR_BUFF_DURATION = 8.0
 const PLAYER_CAMOUFLAGE_DURATION = 5.0
-
+const PLAYER_SPRINT_DURATION = 3.0
 # ============================================================================
 #                              ENEMIES
 # ============================================================================

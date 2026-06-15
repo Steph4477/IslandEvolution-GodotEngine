@@ -116,6 +116,7 @@ var can_headbutt = true
 # --- Skills ---
 var can_sprint = false
 var is_sprinting = false
+var sprint_duration = GameBalance.PLAYER_SPRINT_DURATION
 var ramp_locked = false
 var is_gazed = false
 var is_web = false

@@ -910,10 +910,10 @@ func set_pause_visual(paused):
 		break_sprite.visible = paused
 
 func _on_fire_pressed():
-	gs.player.fire_buff_mod.activate_fire_buff()
+	gs.player.skills_mod.use_fire_buff()
 
 func _on_air_pressed():
-	gs.player.air_buff_mod.activate_air_buff()
+	gs.player.skills_mod.use_air_buff()
 
 func _on_kick_pressed():
 	gs.player.combat_mod.process_kick()
