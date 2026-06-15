@@ -45,6 +45,7 @@ cache/0/40/0/scale = 1.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="ScoreScreen" type="CanvasLayer" unique_id=807427587]
+layer = 150
 script = ExtResource("1_17xng")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=816817712]
