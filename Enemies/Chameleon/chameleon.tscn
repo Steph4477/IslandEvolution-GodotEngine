@@ -176,7 +176,7 @@ texture = ExtResource("1_nwt3p")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1601558411]
 root_node = NodePath("../ChameleonSprite")
 libraries/ = SubResource("AnimationLibrary_wftd7")
-autoplay = &"idle"
+autoplay = &"RESET"
 
 [node name="WindowTimer" type="Timer" parent="." unique_id=92576908]
 wait_time = 0.3
