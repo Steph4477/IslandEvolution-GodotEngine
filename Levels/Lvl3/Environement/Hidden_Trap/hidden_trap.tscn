@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ctgnjk50pes4w" path="res://Levels/Lvl3/Environement/Hidden_Trap/hole.png" id="4_rrqtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywaqi"]
-size = Vector2(253, 69)
+size = Vector2(254, 37)
 
 [node name="HiddenTrap" type="Node2D" unique_id=454844292]
 script = ExtResource("1_vqit1")
@@ -30,14 +30,17 @@ scale = Vector2(0.5, 0.277)
 
 [node name="CollEnemies" type="StaticBody2D" parent="." unique_id=333889187]
 z_index = 10
+position = Vector2(3, 36)
 collision_layer = 1024
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollEnemies" unique_id=1744801929]
-position = Vector2(-11.5, -24.5)
+position = Vector2(-16, -8.5)
 shape = SubResource("RectangleShape2D_ywaqi")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1185915676]
+z_index = 5
+position = Vector2(3, 38)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=2135777046]
 position = Vector2(-11, 31)

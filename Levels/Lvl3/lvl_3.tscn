@@ -98,13 +98,13 @@ size = Vector2(25876, 317)
 size = Vector2(290, 572.8906)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c4og"]
-size = Vector2(3305, 276)
+size = Vector2(3228, 258)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32yx8"]
-size = Vector2(3487.628, 268.68332)
+size = Vector2(3487.6265, 243.71275)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrd0c"]
-size = Vector2(8543, 166)
+size = Vector2(8535, 165)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8bpj"]
 size = Vector2(3210, 268)
@@ -478,11 +478,13 @@ position = Vector2(3630, 1470)
 shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Node2D/platform" unique_id=603818646]
-position = Vector2(6263.5, 1309)
+z_index = 15
+position = Vector2(6225, 1318)
 shape = SubResource("RectangleShape2D_2c4og")
 
 [node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Node2D/platform" unique_id=1752362063]
-position = Vector2(15114.977, 1303.5)
+z_index = 15
+position = Vector2(15114.976, 1316)
 scale = Vector2(0.904927, 1.0011786)
 shape = SubResource("RectangleShape2D_32yx8")
 
@@ -493,10 +495,12 @@ scale = Vector2(0.24999994, -0.24999994)
 polygon = PackedVector2Array(-174.3457, -46.342773, -424.93555, -17.143555, -676.6914, -9.454102, -833.6074, 4.9990234, -1024.3926, -42.685547, -845.38477, 89.694824, -693.53906, 77.74805, -425.75586, 159.94214, -209.49805, 169.79712, 1.5117188, 220.10522, 169.26953, 323.3401, 400.6211, 350.97363, 320.53516, 163.39453, -2.5078125, -5.0703125)
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/platform" unique_id=406604896]
-position = Vector2(21197.5, 1247)
+z_index = 15
+position = Vector2(21201.5, 1247.5)
 shape = SubResource("RectangleShape2D_wrd0c")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1212728006]
+z_index = 15
 position = Vector2(9688, 1297)
 shape = SubResource("RectangleShape2D_r8bpj")
 
@@ -507,7 +511,7 @@ collision_layer = 1024
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CollSwimEnemies" unique_id=2005040917]
-position = Vector2(4708.25, 1026)
+position = Vector2(4710, 1050)
 shape = SubResource("RectangleShape2D_hw1l3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/CollSwimEnemies" unique_id=695504629]
@@ -515,7 +519,7 @@ position = Vector2(11213, 1028)
 shape = SubResource("RectangleShape2D_hw1l3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/CollSwimEnemies" unique_id=822502620]
-position = Vector2(13613, 1029)
+position = Vector2(13612, 1055)
 shape = SubResource("RectangleShape2D_hw1l3")
 
 [node name="World" type="Node2D" parent="Node2D" unique_id=277901197]
@@ -729,12 +733,12 @@ scale = Vector2(0.15, 0.15)
 [node name="HiddenTrap" parent="." unique_id=2101416875 instance=ExtResource("21_odqky")]
 modulate = Color(0.49747366, 0.49747366, 0.49747366, 1)
 z_index = 10
-position = Vector2(7991, 1248)
+position = Vector2(7990, 1225)
 
 [node name="HiddenTrap2" parent="." unique_id=454844292 instance=ExtResource("21_odqky")]
 modulate = Color(0.49747366, 0.49747366, 0.49747366, 1)
 z_index = 10
-position = Vector2(16839, 1262)
+position = Vector2(16840, 1224)
 
 [node name="BagLoot" parent="." unique_id=1156845004 instance=ExtResource("27_twwc1")]
 modulate = Color(0.6028433, 0.60284287, 0.602843, 1)
