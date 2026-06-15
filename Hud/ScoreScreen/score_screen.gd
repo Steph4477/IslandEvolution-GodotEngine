@@ -19,6 +19,7 @@ var banana_medal = preload("res://Hud/ScoreScreen/Medals/medal_banana.png")
 
 
 func _ready():
+	layer = 150
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 
