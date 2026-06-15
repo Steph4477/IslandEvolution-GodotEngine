@@ -64,7 +64,7 @@ func _ready():
 	add_child(dlg)
 	dlg.start([
 		"J'ai faim, Moko.",
-		"Trouve-moi 5 graines...",
+		"Trouve-moi 3 graines...",
 		"Et peut-être que je pourrai t'aider..."
 	])
 	await dlg.finished

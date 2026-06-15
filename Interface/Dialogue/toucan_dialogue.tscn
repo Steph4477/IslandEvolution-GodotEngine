@@ -65,6 +65,7 @@ _data = {
 }
 
 [node name="DialogueUi" type="CanvasLayer" unique_id=2081740230]
+layer = 100
 script = ExtResource("1_fob3j")
 
 [node name="Box" type="Panel" parent="." unique_id=1645740404]

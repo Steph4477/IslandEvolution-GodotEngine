@@ -26,6 +26,7 @@ var pause_left := 0.0
 var challenge_win = false
 
 func _ready():
+	layer = 100
 	text.text = ""
 	flower.visible = false   # Par défaut, la fleur est masquée
 	if auto_start:
