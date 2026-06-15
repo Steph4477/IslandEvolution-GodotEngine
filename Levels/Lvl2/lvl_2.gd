@@ -54,6 +54,16 @@ func _ready():
 	## --- Si déjà vu -> pas de dialogue ni de focus, mais on garde l'effet ---
 	if gs.toucan_dialogue_seen:
 		_set_digicode_symbols(gs)
+
+		if gs.crank_unlocked:
+			var crank = get_node_or_null(crank_path)
+			if crank:
+				var area = crank.get_node_or_null("Crank")
+				if area:
+					area.visible = true
+					area.set_deferred("monitoring", true)
+					area.get_node("CollisionShape2D").disabled = false
+
 		gs.player.can_move = true
 		return
 
@@ -103,8 +113,10 @@ func _on_all_seeds_collected():
 	
 	# --- Focus caméra sur la manivelle ---
 	await focus_camera_on_node(crank_path)
-	
+
 	# --- Déverrouille et rend visible la manivelle ---
+	gs.crank_unlocked = true
+
 	var crank = get_node_or_null(crank_path)
 	if crank:
 		var area = crank.get_node_or_null("Crank")
