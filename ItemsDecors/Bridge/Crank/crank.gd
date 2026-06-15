@@ -12,12 +12,23 @@ var is_activated = false
 var is_using = false
 
 func _ready():
-	visible = false
-	monitoring = false
-	col.disabled = true
-
 	gs = get_node("/root/GameState")
 	gs.connect("all_seeds_collected", Callable(self, "_on_all_seeds_collected"))
+
+	if gs.crank_unlocked:
+		show_crank()
+	else:
+		hide_crank()
+
+func show_crank():
+	visible = true
+	set_deferred("monitoring", true)
+	col.set_deferred("disabled", false)
+
+func hide_crank():
+	visible = false
+	set_deferred("monitoring", false)
+	col.set_deferred("disabled", true)
 
 func _on_all_seeds_collected():
 	visible = true

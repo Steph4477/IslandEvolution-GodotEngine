@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://da0iejmapb6go"]
 
 [ext_resource type="Script" uid="uid://depoa6xt4cvl" path="res://ItemsDecors/Bridge/bridge.gd" id="1_lvakd"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="1_nl1ov"]
+[ext_resource type="PackedScene" uid="uid://dsnkgl7du6i1b" path="res://ItemsDecors/Bridge/DisappearingPlatform/DisappearingPlatform.tscn" id="1_nl1ov"]
 [ext_resource type="Texture2D" uid="uid://b1mxnmvvpabo4" path="res://ItemsDecors/Bridge/DisappearingPlatform/cabling.png" id="2_lvakd"]
 [ext_resource type="PackedScene" uid="uid://dc7jpqg8bkvhh" path="res://ItemsDecors/Bridge/Crank/crank.tscn" id="4_2xfxl"]
 
