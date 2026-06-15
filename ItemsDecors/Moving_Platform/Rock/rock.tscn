@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cp42gjlp5xqmt"]
 
 [ext_resource type="Script" uid="uid://c2gwqc2veghiu" path="res://ItemsDecors/Moving_Platform/Jungle/jungle.gd" id="1_7272f"]
 [ext_resource type="Texture2D" uid="uid://dvy5mmroq2iws" path="res://Levels/Lvl2/Environement/Background/Tiles/TilesPlatforms/T5.png" id="2_7272f"]
@@ -9,35 +9,35 @@ size = Vector2(134, 21.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dj8e"]
 size = Vector2(120, 17)
 
-[node name="MobilePlatForm" type="StaticBody2D"]
-collision_layer = 2
+[node name="MobilePlatForm" type="StaticBody2D" unique_id=183049644]
+collision_layer = 2147483648
 script = ExtResource("1_7272f")
 speed = 200.0
 distance = 600.0
 direction = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1458441201]
 modulate = Color(0.646029, 0.646029, 0.646029, 1)
 z_index = 1
 position = Vector2(34, 12)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_7272f")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=2147324818]
 modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.239216)
 position = Vector2(112, 17)
 scale = Vector2(0.130273, 0.143945)
 texture = ExtResource("2_7272f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1047862886]
 position = Vector2(34, -28.125)
 shape = SubResource("RectangleShape2D_rfqmu")
 
-[node name="PlayerDetector" type="Area2D" parent="."]
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=68188606]
 position = Vector2(4, 11)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=848256891]
 position = Vector2(34, -43.5)
 shape = SubResource("RectangleShape2D_8dj8e")
 
