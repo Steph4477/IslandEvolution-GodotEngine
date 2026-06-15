@@ -198,12 +198,12 @@ func _ready():
 	print("KING UNLOCKED : ", king_unlocked)
 	
 	#await load_level("res://Levels/Test/test_scene.tscn")
-	#await load_level("res://Levels/Loader/loader.tscn")
+	await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
-	await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
+	#await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
@@ -255,6 +255,11 @@ func restart_game():
 	await load_level(current_level_path)
 
 func continue_game():
+	var loaded = await load_game()
+
+	if not loaded:
+		await load_level("res://Levels/Lvl1/lvl_1.tscn")
+
 	# Si aucune partie n'a encore été lancée, revient lvl1
 	if current_level_path == "":
 		await load_level("res://Levels/Lvl1/lvl_1.tscn")
@@ -518,6 +523,12 @@ func load_global_progress():
 	air_buff_unlocked = data.get("air_buff_unlocked", false)
 	camouflage_unlocked = data.get("camouflage_unlocked", false)
 
+	has_lance = data.get("has_lance", false)
+	can_fire_lance = data.get("can_fire_lance", false)
+
+	if has_lance:
+		can_fire_lance = true
+
 	return true
 
 func load_level(scene_path):
@@ -640,6 +651,23 @@ func load_level(scene_path):
 
 		set_player(p)
 
+		p.coco_count = coco_count
+		p.bone_count = bone_count
+		p.lance_count = lance_count
+		p.seed_count = seed_count
+
+		p.can_fire_coco = can_fire_coco
+		p.can_fire_bone = can_fire_bone
+		p.can_fire_lance = can_fire_lance
+
+		p.heal_potions.clear()
+		for i in range(banane_count):
+			p.heal_potions.append("banane")
+
+		p.honey_potions.clear()
+		for i in range(honey_count):
+			p.honey_potions.append("honey")
+
 		if hud:
 			hud.update_lives_display(lives)
 			hud.update_seed_display(collected_seeds, total_seeds_in_level)
@@ -714,6 +742,11 @@ func save_game():
 	data["unlocked_level_path"] = unlocked_level_path
 	data["player_pos"] = {"x": pos.x, "y": pos.y}
 
+	if player:
+		banane_count = player.heal_potions.size()
+		honey_count = player.honey_potions.size()
+		seed_count = player.seed_count
+
 	data["banane_count"] = banane_count
 	data["honey_count"] = honey_count
 	data["coco_count"] = coco_count
@@ -737,6 +770,9 @@ func save_game():
 	data["air_buff_unlocked"] = air_buff_unlocked
 
 	data["killed_enemy_ids"] = killed_enemy_ids
+
+	data["collected_loot_ids"] = collected_loot_ids
+	data["loot_level_path"] = loot_level_path
 
 	data["has_key"] = has_key
 	data["has_lance"] = has_lance
@@ -767,6 +803,7 @@ func save_game():
 	data["moko_hp_bonus_percent"] = moko_hp_bonus_percent
 	data["moko_evolution_percent"] = moko_evolution_percent
 	data["enemy_evolution_percent"] = enemy_evolution_percent
+
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -817,7 +854,13 @@ func apply_save_data(data):
 	lives = int(data.get("lives", max_lives))
 
 	can_fire_coco = data.get("can_fire_coco", false)
+
 	can_fire_lance = data.get("can_fire_lance", false)
+	has_lance = data.get("has_lance", false)
+
+	if has_lance:
+		can_fire_lance = true
+
 	can_fire_bone = data.get("can_fire_bone", false)
 
 	camouflage_unlocked = data.get("camouflage_unlocked", false)
@@ -832,8 +875,10 @@ func apply_save_data(data):
 
 	killed_enemy_ids = data.get("killed_enemy_ids", [])
 
+	collected_loot_ids = data.get("collected_loot_ids", [])
+	loot_level_path = data.get("loot_level_path", "")
+
 	has_key = data.get("has_key", false)
-	has_lance = data.get("has_lance", false)
 	has_flower = data.get("has_flower", false)
 	
 	wood_collected = data.get("wood_collected", false)
@@ -983,6 +1028,10 @@ func add_loot_collected(loot_id):
 	collected_loot_ids.append(loot_id)
 
 func reset_loot_tracking_from_scene():
+	if loot_level_path == "":
+		loot_level_path = current_level_path
+		return
+
 	if loot_level_path != current_level_path:
 		loot_level_path = current_level_path
 		collected_loot_ids.clear()
