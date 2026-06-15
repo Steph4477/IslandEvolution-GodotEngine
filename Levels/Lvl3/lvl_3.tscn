@@ -98,16 +98,16 @@ size = Vector2(25876, 317)
 size = Vector2(290, 572.8906)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c4og"]
-size = Vector2(3228, 258)
+size = Vector2(3222, 270)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32yx8"]
-size = Vector2(3487.6265, 243.71275)
+size = Vector2(3476.577, 261.6916)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrd0c"]
-size = Vector2(8535, 165)
+size = Vector2(8532, 154)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8bpj"]
-size = Vector2(3210, 268)
+size = Vector2(3206, 254)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw1l3"]
 size = Vector2(47.25, 276)
@@ -479,12 +479,12 @@ shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Node2D/platform" unique_id=603818646]
 z_index = 15
-position = Vector2(6225, 1318)
+position = Vector2(6222, 1312)
 shape = SubResource("RectangleShape2D_2c4og")
 
 [node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Node2D/platform" unique_id=1752362063]
 z_index = 15
-position = Vector2(15114.976, 1316)
+position = Vector2(15109.976, 1307)
 scale = Vector2(0.904927, 1.0011786)
 shape = SubResource("RectangleShape2D_32yx8")
 
@@ -496,12 +496,12 @@ polygon = PackedVector2Array(-174.3457, -46.342773, -424.93555, -17.143555, -676
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/platform" unique_id=406604896]
 z_index = 15
-position = Vector2(21201.5, 1247.5)
+position = Vector2(21203, 1253)
 shape = SubResource("RectangleShape2D_wrd0c")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1212728006]
 z_index = 15
-position = Vector2(9688, 1297)
+position = Vector2(9690, 1304)
 shape = SubResource("RectangleShape2D_r8bpj")
 
 [node name="CollSwimEnemies" type="StaticBody2D" parent="Node2D" unique_id=1427173601]

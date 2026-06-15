@@ -309,11 +309,11 @@ position = Vector2(-2267, -122)
 
 [node name="Coconut2" parent="Trees" unique_id=1960314878 instance=ExtResource("8_n1s4q")]
 z_index = 20
-position = Vector2(-5307, -127)
+position = Vector2(-5305, -106)
 
 [node name="Bananier" parent="Trees" unique_id=1737612719 instance=ExtResource("9_wh82l")]
 z_index = 20
-position = Vector2(-4437, -107)
+position = Vector2(-4435, -86)
 
 [node name="Loot" type="Node2D" parent="Trees" unique_id=617090188]
 position = Vector2(-5519, -361)
@@ -371,7 +371,7 @@ position = Vector2(-246, -306)
 scale = Vector2(0.4, 0.7)
 
 [node name="Liana5" parent="Trees/LianaTree" unique_id=559319775 instance=ExtResource("24_2hs2i")]
-position = Vector2(-1962, -303)
+position = Vector2(-1960, -225)
 scale = Vector2(0.4, 0.7)
 
 [node name="LianaTree2" type="Sprite2D" parent="Trees/LianaTree" unique_id=493400102]

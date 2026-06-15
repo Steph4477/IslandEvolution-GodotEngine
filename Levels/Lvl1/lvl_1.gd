@@ -29,7 +29,7 @@ func _ready():
 	$Sound/Lvl1.play()
 
 func _on_all_seeds_collected():
-	player.can_move = false
+	player.disable_controls()
 	set_enemies_blocked(true)
 
 	await focus_camera_on_node("Totem")
@@ -37,8 +37,8 @@ func _on_all_seeds_collected():
 
 	await get_tree().create_timer(1.0).timeout
 
+	player.enable_controls()
 	set_enemies_blocked(false)
-	player.can_move = true
 	
 
 

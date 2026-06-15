@@ -432,11 +432,11 @@ func update_can_heal():
 func disable_controls():
 	controls_locked = true
 	can_move = false
+	can_be_damaged = false
 	velocity = Vector2.ZERO
 	is_attacking = false
 
 func enable_controls():
-	#await get_tree().create_timer(1.0).timeout
 	controls_locked = false
 	can_move = true
 	can_be_damaged = true

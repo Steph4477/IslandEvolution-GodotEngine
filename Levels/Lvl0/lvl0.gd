@@ -27,24 +27,18 @@ func _on_options_pressed():
 
 
 func _on_restart_pressed():
-	gs.reset_progression()
-	gs.reset_lives()
-	gs.reinitialise()
-	gs.reset_session_dialogues()
-	gs.load_level("res://Levels/Lvl1/lvl_1.tscn")
+	await gs.restart_game()
 
 
 func _on_load_pressed():
-	await gs.load_game()
-	refresh_difficulty_buttons()
+	await gs.load_save()
 
 
 func _on_save_pressed():
 	gs.save_game()
 
 func _on_continue_pressed():
-	gs.load_global_progress()
-	await gs.continue_from_unlocked_level()
+	await gs.continue_game()
 
 
 func _on_quitter_pressed():
