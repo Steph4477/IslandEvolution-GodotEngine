@@ -882,10 +882,10 @@ func _on_coco_pressed():
 	gs.player.combat_mod.shoot_coco()
 
 func _on_health_pressed():
-	gs.player.heal_mod.use_heal_item()
+	gs.player.heal_mod.use_banane()
 
 func _on_honey_pressed():
-	gs.player.heal_mod.use_heal_item()
+	gs.player.heal_mod.use_honey()
 
 func _on_spear_pressed():
 	gs.player.combat_mod.shoot_lance()
