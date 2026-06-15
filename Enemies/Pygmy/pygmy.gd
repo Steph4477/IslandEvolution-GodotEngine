@@ -2,6 +2,8 @@ extends EnemyGroundBase
 
 @export var projectile_scene = preload("res://Shoot/Enemies/Spear/spear.tscn")
 @export var projectile_spawn_delay = 0.40
+@export var max_lances = 5
+
 var melee_distance = 0.0
 var min_shoot_distance = 0.0
 var max_shoot_distance = 0.0
@@ -12,6 +14,8 @@ var jump_animation_name = "jump"
 var fire_interval = 0.0
 var jump_velocity = -600.0
 var target = null
+
+var lances_thrown = 0
 
 var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()
@@ -59,6 +63,7 @@ func _ready():
 
 	patrol_mod.start()
 
+
 func _physics_process(delta):
 	if is_dead:
 		return
@@ -100,11 +105,16 @@ func _physics_process(delta):
 		stop_and_slide()
 		return
 
+	var current_speed = speed
+
+	if lances_thrown >= max_lances:
+		current_speed = speed * 2
+
 	if distance > stop_distance:
 		if dx > 0:
-			velocity.x = speed
+			velocity.x = current_speed
 		else:
-			velocity.x = -speed
+			velocity.x = -current_speed
 
 		if anim.current_animation != "walk":
 			anim.play("walk")
@@ -113,6 +123,7 @@ func _physics_process(delta):
 		play_idle()
 
 	move_and_slide()
+
 
 func update_patrol_zone():
 	is_patrolling = true
@@ -135,15 +146,32 @@ func update_patrol_zone():
 	else:
 		play_idle()
 
+
 func die():
 	in_melee = false
 	super.die()
 
+
 func _on_attack_timer_timeout():
 	melee_mod.on_timer_timeout()
 
+
 func _on_projectile_timer_timeout():
+	if lances_thrown >= max_lances:
+		if projectile_timer:
+			projectile_timer.stop()
+		is_shooting = false
+		return
+
 	throw_mod.on_timer_timeout()
+
+	if is_shooting:
+		lances_thrown += 1
+
+	if lances_thrown >= max_lances:
+		if projectile_timer:
+			projectile_timer.stop()
+		is_shooting = false
 
 
 func _on_patrol_timer_timeout():
