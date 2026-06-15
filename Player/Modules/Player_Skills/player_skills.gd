@@ -4,6 +4,8 @@ var p
 var saved_turnaxis_local_pos = Vector2.ZERO
 var saved_turnaxis_top_level = false
 
+var sprint_on_cooldown = false
+
 # sprint button state = module (pas Player)
 var sprint_button_active = false
 
@@ -76,65 +78,113 @@ func toggle_ramp():
 # ============================================================================
 #                                 SPRINT
 # ============================================================================
-func process_sprint(delta):
+# --- Stamia (TextureProgressBar) ---
+#func process_sprint(delta):
+	#if p.is_hit_locked:
+		#p.is_sprinting = false
+		#sprint_button_active = false
+		#return
+#
+	#if not p.game_state:
+		#return
+#
+	#if not p.game_state.sprint_unlocked:
+		#p.is_sprinting = false
+		#sprint_button_active = false
+		#return
+#
+	#if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_on_liana:
+		#p.is_sprinting = false
+		#if p.game_state.sprint_stamina < p.game_state.sprint_stamina_max:
+			#p.game_state.sprint_stamina += p.game_state.sprint_stamina_regen * delta
+			#if p.game_state.sprint_stamina > p.game_state.sprint_stamina_max:
+				#p.game_state.sprint_stamina = p.game_state.sprint_stamina_max
+		#if p.game_state.speed_bar:
+			#p.game_state.speed_bar.update_speed_bar_current(p.game_state.sprint_stamina)
+		#return
+#
+	#var wants_sprint = Input.is_action_pressed(p.INPUT["sprint"]) or sprint_button_active
+#
+	#if wants_sprint and p.game_state.sprint_stamina > 0:
+		#p.is_sprinting = true
+		#p.game_state.sprint_stamina -= p.game_state.sprint_stamina_cost * delta
+		#if p.game_state.sprint_stamina <= 0:
+			#p.game_state.sprint_stamina = 0
+			#p.is_sprinting = false
+			#sprint_button_active = false
+	#else:
+		#p.is_sprinting = false
+		#if p.game_state.sprint_stamina < p.game_state.sprint_stamina_max:
+			#p.game_state.sprint_stamina += p.game_state.sprint_stamina_regen * delta
+			#if p.game_state.sprint_stamina > p.game_state.sprint_stamina_max:
+				#p.game_state.sprint_stamina = p.game_state.sprint_stamina_max
+#
+	#if p.game_state.speed_bar:
+		#p.game_state.speed_bar.update_speed_bar_current(p.game_state.sprint_stamina)
+
+
+#func use_sprint():
+	#if p.is_hit_locked:
+		#p.is_sprinting = false
+		#sprint_button_active = false
+		#return
+#
+	#if p.is_harpooned:
+		#return
+#
+	#if not p.game_state:
+		#return
+	#if not p.game_state.sprint_unlocked:
+		#return
+#
+	#sprint_button_active = not sprint_button_active
+func process_sprint(_delta):
 	if p.is_hit_locked:
 		p.is_sprinting = false
-		sprint_button_active = false
 		return
 
-	if not p.game_state:
-		return
-
-	if not p.game_state.sprint_unlocked:
+	if p.is_harpooned:
 		p.is_sprinting = false
-		sprint_button_active = false
 		return
 
-	if p.is_swimming or p.is_swimming_under_water or p.is_ramping or p.is_on_liana:
+	if p.is_swimming:
 		p.is_sprinting = false
-		if p.game_state.sprint_stamina < p.game_state.sprint_stamina_max:
-			p.game_state.sprint_stamina += p.game_state.sprint_stamina_regen * delta
-			if p.game_state.sprint_stamina > p.game_state.sprint_stamina_max:
-				p.game_state.sprint_stamina = p.game_state.sprint_stamina_max
-		if p.game_state.speed_bar:
-			p.game_state.speed_bar.update_speed_bar_current(p.game_state.sprint_stamina)
-		return
 
-	var wants_sprint = Input.is_action_pressed(p.INPUT["sprint"]) or sprint_button_active
-
-	if wants_sprint and p.game_state.sprint_stamina > 0:
-		p.is_sprinting = true
-		p.game_state.sprint_stamina -= p.game_state.sprint_stamina_cost * delta
-		if p.game_state.sprint_stamina <= 0:
-			p.game_state.sprint_stamina = 0
-			p.is_sprinting = false
-			sprint_button_active = false
-	else:
+	if p.is_swimming_under_water:
 		p.is_sprinting = false
-		if p.game_state.sprint_stamina < p.game_state.sprint_stamina_max:
-			p.game_state.sprint_stamina += p.game_state.sprint_stamina_regen * delta
-			if p.game_state.sprint_stamina > p.game_state.sprint_stamina_max:
-				p.game_state.sprint_stamina = p.game_state.sprint_stamina_max
 
-	if p.game_state.speed_bar:
-		p.game_state.speed_bar.update_speed_bar_current(p.game_state.sprint_stamina)
+	if p.is_ramping:
+		p.is_sprinting = false
+
+	if p.is_on_liana:
+		p.is_sprinting = false
 
 func use_sprint():
 	if p.is_hit_locked:
-		p.is_sprinting = false
-		sprint_button_active = false
 		return
 
 	if p.is_harpooned:
 		return
 
-	if not p.game_state:
-		return
 	if not p.game_state.sprint_unlocked:
 		return
 
-	sprint_button_active = not sprint_button_active
+	if sprint_on_cooldown:
+		return
 
+	start_sprint()
+
+func start_sprint():
+	sprint_on_cooldown = true
+	p.is_sprinting = true
+
+	if p.game_state.hud:
+		p.game_state.hud.start_sprint_cooldown(p.sprint_duration)
+
+	await p.get_tree().create_timer(p.sprint_duration).timeout
+
+	p.is_sprinting = false
+	sprint_on_cooldown = false
 # ============================================================================
 #                                 CAMOUFLAGE
 # ============================================================================
@@ -170,6 +220,7 @@ func use_camouflage():
 
 	if p.game_state.hud:
 		p.game_state.hud.update_camouflage_display()
+		p.game_state.hud.start_camouflage_cooldown(p.camouflage_duration)
 
 	p.hud_mod.refresh_hud_buttons()
 	start_camouflage()
@@ -233,6 +284,10 @@ func use_fire_buff():
 		return
 
 	p.fire_buff_mod.activate_fire_buff()
+
+	if p.game_state.hud:
+		p.game_state.hud.start_fire_cooldown(p.fire_buff_duration)
+
 	p.popups_mod.show_info("🔥 Buff feu activé !")
 
 # --- Air ---
@@ -260,4 +315,8 @@ func use_air_buff():
 		return
 
 	p.air_buff_mod.activate_air_buff()
+
+	if p.game_state.hud:
+		p.game_state.hud.start_air_cooldown(p.air_buff_duration)
+
 	p.popups_mod.show_info("🌀 Buff air activé !")

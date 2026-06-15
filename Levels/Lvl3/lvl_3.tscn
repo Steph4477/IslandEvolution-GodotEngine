@@ -354,7 +354,7 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(539, 741)
+position = Vector2(5607, 14)
 
 [node name="SpawnPoint2" type="Marker2D" parent="Node2D" unique_id=1192111431]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)

@@ -44,6 +44,10 @@ extends CanvasLayer
 
 @onready var banane_cooldown = $Gamepad/Health/coolDownCircle
 @onready var honey_cooldown = $Gamepad/Honey/coolDownCircle
+@onready var camouflage_cooldown = $Gamepad/Camouflage/coolDownCircle
+@onready var fire_cooldown = $Gamepad/Fire/coolDownCircle
+@onready var air_cooldown = $Gamepad/Air/coolDownCircle
+@onready var sprint_cooldown = $Gamepad/Sprint/coolDownCircle
 
 @onready var anim_coco = get_node_or_null("Gamepad/Coco/AnimCoco")
 @onready var anim_spear = get_node_or_null("Gamepad/Spear/AnimSpear")
@@ -90,10 +94,24 @@ extends CanvasLayer
 # -----------------------------
 var gs
 
+# ---- Cooldowns ---
 var banane_cd_left = 0.0
 var banane_cd_total = 1.0
+
 var honey_cd_left = 0.0
 var honey_cd_total = 1.0
+
+var camouflage_cd_left = 0.0
+var camouflage_cd_total = 1.0
+
+var fire_cd_left = 0.0
+var fire_cd_total = 1.0
+
+var air_cd_left = 0.0
+var air_cd_total = 1.0
+
+var sprint_cd_left = 0.0
+var sprint_cd_total = 1.0
 
 #--- Mode Dirt ---
 @export var dirt_spot_scene: PackedScene
@@ -215,6 +233,10 @@ func _ready():
 
 	banane_cooldown.visible = false
 	honey_cooldown.visible = false
+	camouflage_cooldown.visible = false
+	fire_cooldown.visible = false
+	air_cooldown.visible = false
+	sprint_cooldown.visible = false
 
 	if bar_slot and bar_slot.has_method("refresh_layout"):
 		bar_slot.refresh_layout()
@@ -225,6 +247,7 @@ func _ready():
 
 
 func _process(delta):
+	# --- CoolDown ---
 	if banane_cd_left > 0.0:
 		banane_cd_left -= delta
 		if banane_cd_left < 0.0:
@@ -240,6 +263,44 @@ func _process(delta):
 		honey_cooldown.value = (honey_cd_left / honey_cd_total) * honey_cooldown.max_value
 		if honey_cd_left == 0.0:
 			honey_cooldown.visible = false
+
+	if camouflage_cd_left > 0.0:
+		camouflage_cd_left -= delta
+		if camouflage_cd_left < 0.0:
+			camouflage_cd_left = 0.0
+		camouflage_cooldown.value = (camouflage_cd_left / camouflage_cd_total) * camouflage_cooldown.max_value
+		if camouflage_cd_left == 0.0:
+			camouflage_cooldown.visible = false
+
+	if fire_cd_left > 0.0:
+		fire_cd_left -= delta
+		if fire_cd_left < 0.0:
+			fire_cd_left = 0.0
+
+		fire_cooldown.value = (fire_cd_left / fire_cd_total) * fire_cooldown.max_value
+
+		if fire_cd_left == 0.0:
+			fire_cooldown.visible = false
+
+	if air_cd_left > 0.0:
+		air_cd_left -= delta
+		if air_cd_left < 0.0:
+			air_cd_left = 0.0
+
+		air_cooldown.value = (air_cd_left / air_cd_total) * air_cooldown.max_value
+
+		if air_cd_left == 0.0:
+			air_cooldown.visible = false
+
+	if sprint_cd_left > 0.0:
+		sprint_cd_left -= delta
+		if sprint_cd_left < 0.0:
+			sprint_cd_left = 0.0
+
+		sprint_cooldown.value = (sprint_cd_left / sprint_cd_total) * sprint_cooldown.max_value
+
+		if sprint_cd_left == 0.0:
+			sprint_cooldown.visible = false
 
 # ---------------------------------------------
 #         MAJ BARRE DE VIE DE MOKO
@@ -589,6 +650,30 @@ func start_honey_cooldown(duration):
 	honey_cd_left = duration
 	honey_cooldown.visible = true
 	honey_cooldown.value = honey_cooldown.max_value
+
+func start_camouflage_cooldown(duration):
+	camouflage_cd_total = duration
+	camouflage_cd_left = duration
+	camouflage_cooldown.visible = true
+	camouflage_cooldown.value = camouflage_cooldown.max_value
+
+func start_fire_cooldown(duration):
+	fire_cd_total = duration
+	fire_cd_left = duration
+	fire_cooldown.visible = true
+	fire_cooldown.value = fire_cooldown.max_value
+
+func start_air_cooldown(duration):
+	air_cd_total = duration
+	air_cd_left = duration
+	air_cooldown.visible = true
+	air_cooldown.value = air_cooldown.max_value
+
+func start_sprint_cooldown(duration):
+	sprint_cd_total = duration
+	sprint_cd_left = duration
+	sprint_cooldown.visible = true
+	sprint_cooldown.value = sprint_cooldown.max_value
 
 
 # --- Respiration sous l'eau ---
