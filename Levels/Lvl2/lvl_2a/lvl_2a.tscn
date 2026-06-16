@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cvdbwtacduj5d" path="res://Items/Altar/Fire/craft_altar_fire.tscn" id="6_ogfxi"]
 [ext_resource type="PackedScene" uid="uid://quhodd6dw16j" path="res://Levels/Lvl2/lvl_2a/tile_map.tscn" id="7_36v5b"]
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="8_fftrx"]
-[ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="8_sl4rp"]
 [ext_resource type="PackedScene" uid="uid://cl7qxeo241o6d" path="res://Items/Stone/stone_item.tscn" id="9_nennu"]
+[ext_resource type="Script" uid="uid://yie362u42fmd" path="res://Levels/Lvl2/lvl_2a/fire_blocker_exit.gd" id="10_6d4ot"]
 [ext_resource type="PackedScene" uid="uid://5ifnsceh6ylv" path="res://Loot/Coconut/Pile/pile.tscn" id="10_nennu"]
+[ext_resource type="PackedScene" uid="uid://k2vpkcuegvv6" path="res://Levels/Lvl2/Environement/exit.tscn" id="11_6d4ot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrdk"]
 size = Vector2(152.5, 1491)
@@ -22,6 +23,12 @@ size = Vector2(3065, 146)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekue3"]
 bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nennu"]
+size = Vector2(60, 1110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogfxi"]
+size = Vector2(51, 1145)
 
 [node name="lvl2a" type="Node2D" unique_id=1426909367]
 script = ExtResource("1_36v5b")
@@ -77,7 +84,10 @@ autoplay = true
 position = Vector2(61, 795)
 
 [node name="SlowTorch" parent="TorchGroup" unique_id=1743031450 instance=ExtResource("4_nennu")]
-position = Vector2(608, -1504)
+position = Vector2(1565, -121)
+
+[node name="SlowTorch2" parent="TorchGroup" unique_id=567760127 instance=ExtResource("4_nennu")]
+position = Vector2(1912, -118)
 
 [node name="ParalaxeCiel" parent="." unique_id=606126652 instance=ExtResource("5_6d4ot")]
 position = Vector2(-5, -137)
@@ -127,13 +137,6 @@ scroll_active = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Exit" parent="." unique_id=538880673 instance=ExtResource("8_sl4rp")]
-z_index = 20
-position = Vector2(2613.9998, -180.99998)
-rotation = 1.5707964
-scale = Vector2(1.6, 0.8)
-next_scene_path = "res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn"
-
 [node name="IntroToucanSpawn" type="Marker2D" parent="." unique_id=489263013]
 position = Vector2(374, 331)
 
@@ -149,3 +152,31 @@ position = Vector2(1196, 988)
 z_index = 3
 position = Vector2(1377, 969.00006)
 scale = Vector2(0.6, 0.6)
+
+[node name="FireBlockerExit" type="Node2D" parent="." unique_id=1312174035]
+position = Vector2(-48, -7)
+script = ExtResource("10_6d4ot")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FireBlockerExit" unique_id=956521233]
+position = Vector2(16, 2)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireBlockerExit/StaticBody2D" unique_id=1811977835]
+position = Vector2(2281, 537)
+shape = SubResource("RectangleShape2D_nennu")
+
+[node name="PopupZone" type="Area2D" parent="FireBlockerExit" unique_id=1267135333]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireBlockerExit/PopupZone" unique_id=1889189972]
+position = Vector2(2238.5, 551.5)
+shape = SubResource("RectangleShape2D_ogfxi")
+
+[node name="Exit" parent="FireBlockerExit" unique_id=1362077873 instance=ExtResource("11_6d4ot")]
+z_index = 4
+position = Vector2(2928, 16)
+rotation = 1.5707964
+scale = Vector2(1.8, 3)
+next_scene_path = "res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn"
+
+[connection signal="body_entered" from="FireBlockerExit/PopupZone" to="FireBlockerExit" method="_on_popup_zone_body_entered"]
+[connection signal="body_exited" from="FireBlockerExit/PopupZone" to="FireBlockerExit" method="_on_popup_zone_body_exited"]

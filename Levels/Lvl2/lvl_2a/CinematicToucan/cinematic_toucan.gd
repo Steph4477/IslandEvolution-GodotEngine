@@ -43,7 +43,7 @@ func _ready():
 	loot_craft()  
 
 func start_cinematic():
-	player.can_move = false
+	player.disable_controls()
 	anim.play("intro")
 
 func start(new_lines = null):
@@ -90,13 +90,13 @@ func _process(delta):
 
 func _render():
 	text.text = full_line.substr(0, shown_chars)
-	player.can_move = true
 
 func _end_dialogue():
 	if hide_when_done:
 		box.visible = false
 		visible = false
 	set_process(false)
+	player.enable_controls()
 
 func loot_craft():
 	var loot = preload("res://Items/Fire_Recipe/fire_recipe.tscn").instantiate()

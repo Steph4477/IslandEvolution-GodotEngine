@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://k2vpkcuegvv6"]
 
-[ext_resource type="Script" path="res://Levels/Lvl2/Environement/exit.gd" id="1_73vdr"]
+[ext_resource type="Script" uid="uid://r762qj6gnval" path="res://Levels/Lvl2/Environement/exit.gd" id="1_73vdr"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(623.75006, 18.500015)
 
-[node name="Exit" type="Area2D"]
+[node name="Exit" type="Area2D" unique_id=324967016]
 scale = Vector2(0.8, 0.8)
 collision_layer = 256
 script = ExtResource("1_73vdr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1407790526]
 position = Vector2(308.12497, 144.24994)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("2")
+debug_color = Color(0.9063229, 0.22356227, 0.52316093, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
