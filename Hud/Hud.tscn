@@ -35,12 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://bcjanwneyrma" path="res://Interface/gamePad/Pressed/fire.png" id="20_legcx"]
 [ext_resource type="Texture2D" uid="uid://8xhj4q35rg10" path="res://Interface/gamePad/air.png" id="21_63qk1"]
 [ext_resource type="Texture2D" uid="uid://b0wt351ycqkuj" path="res://Interface/gamePad/Pressed/air.png" id="22_dd24r"]
-[ext_resource type="Texture2D" uid="uid://gynxfgu6u88u" path="res://Interface/gamePad/sprint.png" id="22_f2ifn"]
 [ext_resource type="PackedScene" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
-[ext_resource type="Script" uid="uid://bdoxhgt5axy6w" path="res://Interface/Speed_Bar/speed_bar.gd" id="27_wb1yk"]
 [ext_resource type="Texture2D" uid="uid://4eeskkiqb3uk" path="res://Hud/break.png" id="28_m6ehm"]
 [ext_resource type="Texture2D" uid="uid://d4g8nxb3vayf0" path="res://Interface/gamePad/save.png" id="35_uk4ib"]
-[ext_resource type="Script" uid="uid://bf67m6j36omgj" path="res://Hud/bar_slot.gd" id="36_k3kan"]
 [ext_resource type="Texture2D" uid="uid://c1ocobukg1phj" path="res://Interface/gamePad/Pressed/save.png" id="36_xl0m0"]
 [ext_resource type="Texture2D" uid="uid://c3waywbrqy860" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 [ext_resource type="Texture2D" uid="uid://b5niu77ancmy6" path="res://Interface/Breath_Bar/progress_bar.png" id="37_rg2xt"]
@@ -51,10 +48,6 @@
 [ext_resource type="Texture2D" uid="uid://opy5tm8q6c7v" path="res://Interface/Healt_Bar/portrait_3.png" id="41_vfut1"]
 [ext_resource type="Texture2D" uid="uid://cbtbohoak4gcq" path="res://Interface/Healt_Bar/bar_under.png" id="42_ll21l"]
 [ext_resource type="Texture2D" uid="uid://cljehnxfugmw6" path="res://Interface/Healt_Bar/progress_bar.png" id="43_6yi51"]
-[ext_resource type="Script" uid="uid://cwkyllyodjga4" path="res://Hud/air_buff.gd" id="44_legcx"]
-[ext_resource type="Texture2D" uid="uid://badnwx43ud68l" path="res://Hud/fire.png" id="44_wxm5k"]
-[ext_resource type="Script" uid="uid://cj01grb1f4s7r" path="res://Hud/fire_buff.gd" id="45_k3kan"]
-[ext_resource type="Texture2D" uid="uid://11niotdcwhpk" path="res://Hud/air.png" id="47_dd24r"]
 [ext_resource type="Texture2D" uid="uid://b4cce4aifqhnv" path="res://Items/CheckBox/empty.png" id="48_ogbjv"]
 [ext_resource type="Texture2D" uid="uid://co4ty4kifftog" path="res://Hud/Modules/Textures/web_dirt_big.png" id="61_ll21l"]
 [ext_resource type="Texture2D" uid="uid://pb64ly4es3xl" path="res://Interface/gamePad/arrow.png" id="62_jcaq3"]
@@ -843,9 +836,8 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_26inf")
 
 [node name="Spear" type="TouchScreenButton" parent="Gamepad" unique_id=2046174989]
-position = Vector2(1678.6666, 807.3333)
-rotation = 6.2831855
-scale = Vector2(1.1, 1.1)
+position = Vector2(790, 329)
+scale = Vector2(4, 4)
 texture_normal = ExtResource("12_s8lhr")
 texture_pressed = ExtResource("13_lwpkd")
 action = "shoot"
@@ -1189,20 +1181,16 @@ texture = ExtResource("40_1uhjb")
 position = Vector2(6.0908756, 0.5909146)
 texture = ExtResource("41_vfut1")
 
-[node name="BarSlot" type="VBoxContainer" parent="." unique_id=1375780569]
-visible = false
+[node name="BreathBar" type="Control" parent="." unique_id=1242778458]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 97.0
 offset_top = 172.0
 offset_right = 397.0
-offset_bottom = 372.0
-theme_override_constants/separation = 40
-script = ExtResource("36_k3kan")
-
-[node name="BreathBar" type="Control" parent="BarSlot" unique_id=1242778458]
-layout_mode = 2
+offset_bottom = 172.0
 script = ExtResource("39_63x2m")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BreathBar" unique_id=991367002]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BreathBar" unique_id=991367002]
 modulate = Color(0.03529412, 0.18431373, 1, 1)
 layout_mode = 0
 offset_left = 61.0
@@ -1214,92 +1202,17 @@ value = 2000.0
 nine_patch_stretch = true
 texture_progress = ExtResource("37_rg2xt")
 
-[node name="TextureBubbleAir" type="Node2D" parent="BarSlot/BreathBar" unique_id=415013607]
+[node name="TextureBubbleAir" type="Node2D" parent="BreathBar" unique_id=415013607]
 position = Vector2(21, 93.99999)
 scale = Vector2(0.08, 0.08)
 
-[node name="TextureRect" type="TextureRect" parent="BarSlot/BreathBar/TextureBubbleAir" unique_id=1713703809]
+[node name="TextureRect" type="TextureRect" parent="BreathBar/TextureBubbleAir" unique_id=1713703809]
 offset_left = -250.0
 offset_top = -1125.0
 offset_right = 1286.0
 offset_bottom = -101.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("37_eqcma")
-
-[node name="AirBuff" type="Control" parent="BarSlot" unique_id=1981313556]
-layout_mode = 2
-script = ExtResource("44_legcx")
-
-[node name="TextureRect" type="TextureRect" parent="BarSlot/AirBuff" unique_id=1519570993]
-layout_mode = 0
-offset_left = -13.0
-offset_top = -17.0
-offset_right = 1011.0
-offset_bottom = 1007.0
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("47_dd24r")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/AirBuff" unique_id=1654771645]
-modulate = Color(0.19215687, 1, 1, 1)
-layout_mode = 0
-offset_left = 58.999992
-offset_top = -5.9999924
-offset_right = 309.0
-offset_bottom = 54.000008
-value = 100.0
-nine_patch_stretch = true
-texture_progress = ExtResource("37_rg2xt")
-
-[node name="FireBuff" type="Control" parent="BarSlot" unique_id=937312727]
-layout_mode = 2
-script = ExtResource("45_k3kan")
-
-[node name="TextureRect" type="TextureRect" parent="BarSlot/FireBuff" unique_id=1626433841]
-layout_mode = 0
-offset_left = 6.0000005
-offset_right = 1030.0
-offset_bottom = 1024.0
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("44_wxm5k")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/FireBuff" unique_id=1113580750]
-modulate = Color(1, 1, 0.15294118, 1)
-layout_mode = 0
-offset_left = 62.999992
-offset_top = -5.9999924
-offset_right = 313.0
-offset_bottom = 54.000008
-value = 100.0
-nine_patch_stretch = true
-texture_progress = ExtResource("37_rg2xt")
-
-[node name="SpeedBar" type="Control" parent="BarSlot" unique_id=159593055]
-layout_mode = 2
-script = ExtResource("27_wb1yk")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/SpeedBar" unique_id=224861362]
-modulate = Color(0.94509804, 0.24705882, 0.27058825, 1)
-layout_mode = 0
-offset_left = 62.999992
-offset_top = -4.9999924
-offset_right = 313.0
-offset_bottom = 55.0
-max_value = 2000.0
-value = 2000.0
-nine_patch_stretch = true
-texture_progress = ExtResource("37_rg2xt")
-
-[node name="TextureSprint" type="Node2D" parent="BarSlot/SpeedBar" unique_id=563686409]
-position = Vector2(44, 95)
-scale = Vector2(0.08, 0.08)
-
-[node name="TextureRect" type="TextureRect" parent="BarSlot/SpeedBar/TextureSprint" unique_id=58784419]
-offset_left = -562.5
-offset_top = -1287.5
-offset_right = 461.5
-offset_bottom = -263.49976
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("22_f2ifn")
 
 [node name="TimerChrono" parent="." unique_id=524898143 instance=ExtResource("22_hny2p")]
 offset_left = 7.0
