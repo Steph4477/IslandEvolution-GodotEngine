@@ -90,7 +90,7 @@ rotation = -0.008726646
 scale = Vector2(0.6, 0.6)
 
 [node name="Index10" type="Sprite2D" parent="ExitTempleTrunk" unique_id=1060731683]
-z_index = 10
+z_index = 20
 position = Vector2(4503, -288)
 rotation = 0.08726646
 scale = Vector2(0.5, 0.5)
@@ -142,7 +142,6 @@ z_index = 50
 position = Vector2(3616, -324.00003)
 rotation = 1.5707964
 scale = Vector2(1.8, 2)
-next_scene_path = "res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn"
 
 [node name="Tarantula" parent="." unique_id=1228259155 instance=ExtResource("11_6sncs")]
 position = Vector2(1726, 180)

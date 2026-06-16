@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqebrbik1lcj7" path="res://ItemsDecors/Exit/exit.tscn" id="9_jo6m1"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="16_irelo"]
 [ext_resource type="PackedScene" uid="uid://0nnxjschrg38" path="res://Levels/Lvl2/Lvl_2b/paralaxe_sky.tscn" id="17_18q4f"]
-[ext_resource type="PackedScene" path="res://Loot/Life/life_loot.tscn" id="18_8psaq"]
+[ext_resource type="PackedScene" uid="uid://dhisslomg4xu1" path="res://Loot/Life/life_loot.tscn" id="18_8psaq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uikls"]
 size = Vector2(134, 3527)
@@ -201,3 +201,4 @@ scale = Vector2(0.2, 0.2)
 [node name="Exit" parent="." unique_id=538880673 instance=ExtResource("9_jo6m1")]
 position = Vector2(147, 2141)
 scale = Vector2(5.4, 5.4)
+next_scene_path = "res://Levels/Lvl3/lvl_3.tscn"

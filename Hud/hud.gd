@@ -38,9 +38,6 @@ extends CanvasLayer
 @onready var bar_slot = $BarSlot
 @onready var breath_bar = $BarSlot/BreathBar
 @onready var breath_progress = $BarSlot/BreathBar/TextureProgressBar
-@onready var speed_bar = $BarSlot/SpeedBar
-@onready var fire_buff = $BarSlot/FireBuff
-@onready var air_buff = $BarSlot/AirBuff
 
 @onready var banane_cooldown = $Gamepad/Health/coolDownCircle
 @onready var honey_cooldown = $Gamepad/Honey/coolDownCircle
@@ -162,10 +159,6 @@ func _ready():
 		lvl1_checklist.visible = false
 
 	hide_breathbar()
-	_hide_all_buffs()
-
-	if speed_bar and speed_bar.has_method("hide_bar"):
-		speed_bar.hide_bar()
 
 	set_button_enabled(ramp_button, false)
 	set_button_enabled(sprint_button, false)
@@ -348,54 +341,6 @@ func _show_air():
 	air_button.visible = true
 	update_air_display()
 
-# -----------------------------
-#        BUFF HUD
-# -----------------------------
-func _hide_all_buffs():
-	if fire_buff and fire_buff.has_method("hide_buff"):
-		fire_buff.hide_buff()
-
-	if bar_slot and bar_slot.has_method("hide_buffs"):
-		bar_slot.hide_buffs()
-
-# --- Fire ---
-func show_fire_buff(duration):
-	if fire_buff and fire_buff.has_method("show_buff"):
-		fire_buff.show_buff(duration)
-
-	if bar_slot and bar_slot.has_method("show_buffs"):
-		bar_slot.show_buffs()
-
-func hide_fire_buff():
-	if fire_buff and fire_buff.has_method("hide_buff"):
-		fire_buff.hide_buff()
-
-	if bar_slot and bar_slot.has_method("hide_buffs"):
-		bar_slot.hide_buffs()
-
-func update_fire_buff_timer(time_left, duration):
-	if fire_buff and fire_buff.has_method("update_timer"):
-		fire_buff.update_timer(time_left, duration)
-
-# --- Air ---
-func show_air_buff(duration):
-	if air_buff and air_buff.has_method("show_buff"):
-		air_buff.show_buff(duration)
-
-	if bar_slot and bar_slot.has_method("show_buffs"):
-		bar_slot.show_buffs()
-
-func hide_air_buff():
-	if air_buff and air_buff.has_method("hide_buff"):
-		air_buff.hide_buff()
-
-	if bar_slot and bar_slot.has_method("hide_buffs"):
-		bar_slot.hide_buffs()
-
-func update_air_buff_timer(time_left, duration):
-	if air_buff and air_buff.has_method("update_timer"):
-		air_buff.update_timer(time_left, duration)
-
 
 # -----------------------------
 #        UPDATE HUD
@@ -405,7 +350,6 @@ func update_lives_display(lives):
 	portrait_2_lives.visible = lives == 2
 	portrait_1_life.visible = lives <= 1
 	portrait_0_life.visible = lives <= 0
-	
 
 
 func set_button_enabled(button, enabled):
@@ -676,7 +620,9 @@ func start_sprint_cooldown(duration):
 	sprint_cooldown.value = sprint_cooldown.max_value
 
 
-# --- Respiration sous l'eau ---
+# ------------------------------------------------------------------------------
+#                            RESPIRATION SOUS L'EAU
+# ------------------------------------------------------------------------------
 func show_breathbar():
 	if breath_bar and breath_bar.has_method("show_bar"):
 		breath_bar.show_bar()
@@ -705,9 +651,9 @@ func stop_breath():
 	hide_breathbar()
 
 
-# ============================================================================
-#        SALISSURE HUD
-# ============================================================================
+# ----------------------------------------------------------------------------
+#                                 SALISSURE HUD
+# ----------------------------------------------------------------------------
 func spawn_hud_dirt(texture = null):
 
 	# 1. Choix de la texture
@@ -764,9 +710,9 @@ func spawn_hud_dirt(texture = null):
 	dirt.start()
 
 
-# ============================================================================
+# ------------------------------------------------------------------------------
 #                   APPEAR / ANIM_TO
-# ============================================================================
+# ------------------------------------------------------------------------------
 func appear_coco():
 	_show_coco()
 	update_coco_display()
@@ -920,10 +866,7 @@ func reset_hud():
 	update_seed_display(0, 0)
 
 	hide_breathbar()
-	_hide_all_buffs()
 
-	if speed_bar and speed_bar.has_method("hide_bar"):
-		speed_bar.hide_bar()
 #---------------------------------------
 #            BUTTONS
 # --------------------------------------

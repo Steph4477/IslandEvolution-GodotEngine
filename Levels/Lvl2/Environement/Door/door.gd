@@ -72,6 +72,11 @@ func change_scene():
 
 	await get_tree().create_timer(5.0).timeout
 
+	if gs.fire_buff_unlocked:
+		next_scene_path = "res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn"
+	else:
+		next_scene_path = "res://Levels/Lvl2/lvl_2a/lvl_2a.tscn"
+
 	gs.unlocked_level_path = next_scene_path
 	gs.save_game()
 	gs.load_level(next_scene_path)

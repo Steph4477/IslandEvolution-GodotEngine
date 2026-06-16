@@ -190,7 +190,7 @@ func update_jump(delta):
 		p.is_jumping = false
 
 	p.max_jump_count = 1
-	if p.game_state and p.game_state.double_jump_unlocked:
+	if p.double_jump_unlocked:
 		p.max_jump_count = 2
 
 	var jump_pressed = Input.is_action_just_pressed(p.INPUT["jump"])

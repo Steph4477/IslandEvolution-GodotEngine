@@ -77,11 +77,9 @@ var boss_fight_hud_scene = preload("res://Hud/BossHud/HudFightBoss/hud_fight_bos
 var boss_fight_hud = null
 
 var health_bar = null
-var speed_bar = null
+
 var breath_bar = null
-var fire_buff_bar = null
 var fire_buff_unlocked = false
-var air_buff_bar = null
 var air_buff_unlocked = false
 
 var fade_scene = preload("res://Effects/Fade/fade.tscn")
@@ -203,12 +201,12 @@ func _ready():
 	print("KING UNLOCKED : ", king_unlocked)
 	
 	#await load_level("res://Levels/Test/test_scene.tscn")
-	#await load_level("res://Levels/Loader/loader.tscn")
+	await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 	#await load_level("res://Levels/Lvl2/lvl_2.tscn")
-	await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
+	#await load_level("res://Levels/Lvl2/lvl_2a/lvl_2a.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2b/lvl_2b.tscn")
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
@@ -252,17 +250,17 @@ func restart_game():
 
 # Continuer
 func continue_game():
-	var loaded = await load_game()
+	load_global_progress()
 
-	if loaded:
-		has_pending_load = false
-		pending_player_pos = Vector2.ZERO
-		print("CONTINUE -> ", unlocked_level_path)
-		print("CONTINUE SPRINT -> ", sprint_unlocked)
-		print("CONTINUE LANCE -> ", lance_count)
-		await load_level(unlocked_level_path)
-	else:
-		await load_level("res://Levels/Lvl1/lvl_1.tscn")
+	has_pending_load = false
+	pending_player_pos = Vector2.ZERO
+
+	print("CONTINUE -> ", unlocked_level_path)
+	print("CONTINUE SPRINT -> ", sprint_unlocked)
+	print("CONTINUE DOUBLE JUMP -> ", double_jump_unlocked)
+	print("CONTINUE LANCE -> ", lance_count)
+
+	await load_level(unlocked_level_path)
 
 
 # Load
@@ -556,23 +554,17 @@ func load_level(scene_path):
 			hud.visible = false
 		if health_bar:
 			health_bar.visible = false
-		if speed_bar:
-			speed_bar.visible = false
 	else:
 		if hud == null:
 			hud = hud_scene.instantiate()
 			add_child(hud)
 			hud.process_mode = Node.PROCESS_MODE_ALWAYS
 			health_bar = hud.get_node("HealthBar")
-			speed_bar = hud.get_node("BarSlot/SpeedBar")
 
 		hud.visible = true
 
 		if health_bar:
 			health_bar.visible = true
-
-		if speed_bar:
-			speed_bar.visible = sprint_unlocked
 
 	if not is_menu:
 		current_level_path = scene_path
@@ -633,6 +625,7 @@ func load_level(scene_path):
 		p.can_fire_bone = can_fire_bone
 		p.can_fire_lance = can_fire_lance
 		p.can_sprint = sprint_unlocked
+		p.double_jump_unlocked = double_jump_unlocked
 
 		p.heal_potions.clear()
 		for i in range(banane_count):
@@ -669,12 +662,6 @@ func load_level(scene_path):
 			hud.update_coco_display()
 			hud.update_bone_display()
 			hud.update_camouflage_display()
-
-		# Sprint
-		if sprint_unlocked and speed_bar:
-			sprint_stamina = sprint_stamina_max
-			speed_bar.visible = true
-			speed_bar.update_speed_bar_current(sprint_stamina)
 
 	await fade.fade_in()
 
@@ -994,10 +981,6 @@ func lose_life():
 			hud.update_lives_display(lives)
 
 		reset_after_death()
-
-		sprint_stamina = sprint_stamina_max
-		if speed_bar:
-			speed_bar.update_speed_bar_current(sprint_stamina)
 
 		request_reload_after_delay(0.5)
 

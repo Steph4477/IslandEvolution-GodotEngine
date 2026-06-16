@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://dqebrbik1lcj7"]
 
+[ext_resource type="Script" uid="uid://dr8sixbgcxqtu" path="res://ItemsDecors/Exit/exit.gd" id="1_uasxl"]
+
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(863.7501, 18.500015)
 
 [node name="Exit" type="Area2D" unique_id=538880673]
 scale = Vector2(0.8, 0.8)
 collision_layer = 256
+script = ExtResource("1_uasxl")
+next_scene_path = "res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1026262495]
 position = Vector2(428.1249, 144.24991)

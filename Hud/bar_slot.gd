@@ -1,18 +1,12 @@
 extends VBoxContainer
 
 @onready var breath_bar = $BreathBar
-@onready var air_buff = $AirBuff
-@onready var fire_buff = $FireBuff
-@onready var speed_bar = $SpeedBar
 
 func _ready():
 	alignment = BoxContainer.ALIGNMENT_BEGIN
 	add_theme_constant_override("separation", 40)
 
 	_config_bar_node(breath_bar)
-	_config_bar_node(air_buff)
-	_config_bar_node(fire_buff)
-	_config_bar_node(speed_bar)
 
 	refresh_layout()
 
@@ -33,34 +27,4 @@ func show_breath():
 
 func hide_breath():
 	breath_bar.visible = false
-	refresh_layout()
-
-
-func show_air_buff():
-	air_buff.visible = true
-	refresh_layout()
-
-
-func hide_air_buff():
-	air_buff.visible = false
-	refresh_layout()
-
-
-func show_fire_buff():
-	fire_buff.visible = true
-	refresh_layout()
-
-
-func hide_fire_buff():
-	fire_buff.visible = false
-	refresh_layout()
-
-
-func show_speed():
-	speed_bar.visible = true
-	refresh_layout()
-
-
-func hide_speed():
-	speed_bar.visible = false
 	refresh_layout()

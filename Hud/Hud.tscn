@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" path="res://Interface/Timer_Chrono/timer_chrono.tscn" id="22_hny2p"]
 [ext_resource type="Texture2D" uid="uid://4eeskkiqb3uk" path="res://Hud/break.png" id="28_m6ehm"]
 [ext_resource type="Texture2D" uid="uid://d4g8nxb3vayf0" path="res://Interface/gamePad/save.png" id="35_uk4ib"]
+[ext_resource type="Script" uid="uid://bf67m6j36omgj" path="res://Hud/bar_slot.gd" id="36_k3kan"]
 [ext_resource type="Texture2D" uid="uid://c1ocobukg1phj" path="res://Interface/gamePad/Pressed/save.png" id="36_xl0m0"]
 [ext_resource type="Texture2D" uid="uid://c3waywbrqy860" path="res://Effects/Aquatic_breathing/Air_bubble/air_bubble.png" id="37_eqcma"]
 [ext_resource type="Texture2D" uid="uid://b5niu77ancmy6" path="res://Interface/Breath_Bar/progress_bar.png" id="37_rg2xt"]
@@ -1003,6 +1004,7 @@ texture_progress = ExtResource("16_b0qj5")
 
 [node name="Air" type="TouchScreenButton" parent="Gamepad" unique_id=1695551520]
 position = Vector2(1558, 799.3334)
+rotation = 6.2831855
 scale = Vector2(0.125, 0.125)
 texture_normal = ExtResource("21_63qk1")
 texture_pressed = ExtResource("22_dd24r")
@@ -1181,16 +1183,19 @@ texture = ExtResource("40_1uhjb")
 position = Vector2(6.0908756, 0.5909146)
 texture = ExtResource("41_vfut1")
 
-[node name="BreathBar" type="Control" parent="." unique_id=1242778458]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 97.0
-offset_top = 172.0
-offset_right = 397.0
-offset_bottom = 172.0
+[node name="BarSlot" type="VBoxContainer" parent="." unique_id=1375780569]
+offset_left = 648.0
+offset_top = 57.0
+offset_right = 948.0
+offset_bottom = 116.0
+theme_override_constants/separation = 40
+script = ExtResource("36_k3kan")
+
+[node name="BreathBar" type="Control" parent="BarSlot" unique_id=1242778458]
+layout_mode = 2
 script = ExtResource("39_63x2m")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BreathBar" unique_id=991367002]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BarSlot/BreathBar" unique_id=991367002]
 modulate = Color(0.03529412, 0.18431373, 1, 1)
 layout_mode = 0
 offset_left = 61.0
@@ -1202,11 +1207,11 @@ value = 2000.0
 nine_patch_stretch = true
 texture_progress = ExtResource("37_rg2xt")
 
-[node name="TextureBubbleAir" type="Node2D" parent="BreathBar" unique_id=415013607]
+[node name="TextureBubbleAir" type="Node2D" parent="BarSlot/BreathBar" unique_id=415013607]
 position = Vector2(21, 93.99999)
 scale = Vector2(0.08, 0.08)
 
-[node name="TextureRect" type="TextureRect" parent="BreathBar/TextureBubbleAir" unique_id=1713703809]
+[node name="TextureRect" type="TextureRect" parent="BarSlot/BreathBar/TextureBubbleAir" unique_id=1713703809]
 offset_left = -250.0
 offset_top = -1125.0
 offset_right = 1286.0
@@ -1399,6 +1404,7 @@ offset_right = 1337.0001
 offset_bottom = 624.0009
 rotation = -6.2831855
 scale = Vector2(2, 2)
+theme_override_constants/separation = 8
 
 [node name="SeedRow" type="HBoxContainer" parent="Lvl1Checklist" unique_id=1985937639]
 layout_mode = 2

@@ -33,7 +33,11 @@ func collect_camouflage(amount = 1):
 
 
 func collect_double_jump():
+	p.double_jump_unlocked = true
+
 	p.game_state.double_jump_unlocked = true
+	p.game_state.save_progress()
+
 	p.popups_mod.show_info("🦘 Double saut débloqué !")
 
 

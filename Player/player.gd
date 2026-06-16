@@ -147,6 +147,7 @@ var did_double_jump = false
 var jump_count = 0
 var max_jump_count = 1
 var gravity_factor = 1.0
+var double_jump_unlocked = false
 
 # --- collecte ---
 var coco_count = 0

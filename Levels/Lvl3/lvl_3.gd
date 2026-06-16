@@ -31,6 +31,10 @@ func _ready():
 	cam.limit_right = 25000
 	cam.limit_bottom = 1400
 
+	#if gs.air_buff_unlocked:
+		#_spawn_after_toucan_challenge()
+		#return
+
 	# Position initiale ou finale de l’anim “fall”
 	if anim.has_animation("fall"):
 		if gs.toucan_fall_done:
@@ -44,6 +48,23 @@ func _ready():
 
 	if gs.toucan_froggle_spawned and not gs.toucan_challenge_done:
 		_spawn_froggle()
+
+func _spawn_after_toucan_challenge():
+	gs.toucan_challenge_done = true
+	gs.toucan_fall_done = true
+	gs.toucan_froggle_spawned = false
+	gs.focus_cam_frog = false
+
+	if anim.has_animation("fall"):
+		anim.play("fall")
+		anim.seek(2.9, true)
+		anim.pause()
+
+	var spawn2 = find_child("SpawnPoint2", true, false)
+	if spawn2 and gs.player:
+		gs.player.global_position = spawn2.global_position
+		gs.player.velocity = Vector2.ZERO
+		gs.player.anim.play("idle")
 
 # --- Signals ---
 func _on_chrono_zone_challenge_win():

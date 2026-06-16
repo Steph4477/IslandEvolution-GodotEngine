@@ -27,6 +27,11 @@ func _ready():
 	await get_tree().process_frame
 
 	var gs = get_node("/root/GameState")
+
+	if not gs.air_buff_unlocked:
+		gs.air_craft_revealed = false
+		if gs.hud:
+			gs.hud.update_air_craft_checklist()
 	
 	gs.unlocked_level_path = "res://Levels/Lvl3/Lvl_3a/lvl_3a.tscn"
 	gs.save_progress()

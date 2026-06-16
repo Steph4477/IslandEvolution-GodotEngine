@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dwnbcbj2h3dfe" path="res://ItemsDecors/Box_Platform/box_platform.tscn" id="13_ifea3"]
 [ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="14_utbl0"]
 [ext_resource type="PackedScene" uid="uid://bffag14gtl54m" path="res://Levels/Lvl2/Environement/Background/Tiles/TilesPlatforms/tileMapPlatform.tscn" id="15_3p2tf"]
-[ext_resource type="PackedScene" path="res://ItemsDecors/Moving_Platform/Rock/rock.tscn" id="15_a6f7x"]
+[ext_resource type="PackedScene" uid="uid://cp42gjlp5xqmt" path="res://ItemsDecors/Moving_Platform/Rock/rock.tscn" id="15_a6f7x"]
 [ext_resource type="PackedScene" uid="uid://bosgcqxhm1lmu" path="res://Enemies/Rat/rat.tscn" id="16_sdx3j"]
 [ext_resource type="Texture2D" uid="uid://berthi4xbc0vx" path="res://ItemsDecors/Symbol/Turn_off/bowl.png" id="17_kxq3y"]
 [ext_resource type="PackedScene" uid="uid://nqrb063x5buh" path="res://Loot/Seed/seed.tscn" id="17_mnvun"]
