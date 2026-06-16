@@ -409,11 +409,13 @@ func unlock_next_difficulty():
 	if difficulty == "explorer":
 		survivor_unlocked = true
 		difficulty = "survivor"
+		unlocked_level_path = "res://Levels/Lvl1/lvl_1.tscn"
 		print("SURVIVANT DEBLOQUE")
 
 	elif difficulty == "survivor":
 		king_unlocked = true
 		difficulty = "king"
+		unlocked_level_path = "res://Levels/Lvl1/lvl_1.tscn"
 		print("ROI DE L'ILE DEBLOQUE")
 
 	save_progress()
