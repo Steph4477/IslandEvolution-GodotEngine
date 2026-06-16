@@ -1,7 +1,5 @@
 extends Node2D
 
-signal key_collected
-
 @onready var anim = $AnimationPlayer
 
 func _ready():

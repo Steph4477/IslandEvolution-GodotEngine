@@ -24,9 +24,6 @@ func _process(delta):
 	if fire_buff_time_left < 0.0:
 		fire_buff_time_left = 0.0
 
-	if p.game_state and p.game_state.hud:
-		p.game_state.hud.update_fire_buff_timer(fire_buff_time_left, p.fire_buff_duration)
-
 func activate_fire_buff():
 	p.fire_buff_active = true
 	fire_buff_time_left = p.fire_buff_duration
@@ -38,8 +35,7 @@ func activate_fire_buff():
 	set_process(true)
 
 	if p.game_state and p.game_state.hud:
-		p.game_state.hud.show_fire_buff(p.fire_buff_duration)
-		p.game_state.hud.update_fire_buff_timer(fire_buff_time_left, p.fire_buff_duration)
+		p.game_state.hud.start_fire_cooldown(p.fire_buff_duration)
 
 func disable_fire_buff():
 	p.fire_buff_active = false
@@ -47,9 +43,6 @@ func disable_fire_buff():
 	timer.stop()
 
 	set_process(false)
-
-	if p.game_state and p.game_state.hud:
-		p.game_state.hud.hide_fire_buff()
 
 func is_fire_buff_active():
 	return p.fire_buff_active

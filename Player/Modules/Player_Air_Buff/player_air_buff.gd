@@ -24,9 +24,6 @@ func _process(delta):
 	if air_buff_time_left < 0.0:
 		air_buff_time_left = 0.0
 
-	if p.game_state and p.game_state.hud:
-		p.game_state.hud.update_air_buff_timer(air_buff_time_left, p.air_buff_duration)
-
 func activate_air_buff():
 	p.air_buff_active = true
 	air_buff_time_left = p.air_buff_duration
@@ -38,8 +35,7 @@ func activate_air_buff():
 	set_process(true)
 
 	if p.game_state and p.game_state.hud:
-		p.game_state.hud.show_air_buff(p.air_buff_duration)
-		p.game_state.hud.update_air_buff_timer(air_buff_time_left, p.air_buff_duration)
+		p.game_state.hud.start_air_cooldown(p.air_buff_duration)
 
 func disable_air_buff():
 	p.air_buff_active = false
@@ -47,9 +43,6 @@ func disable_air_buff():
 	timer.stop()
 
 	set_process(false)
-
-	if p.game_state and p.game_state.hud:
-		p.game_state.hud.hide_air_buff()
 
 func is_air_buff_active():
 	return p.air_buff_active
@@ -64,7 +57,7 @@ func unlock_air_skill():
 	p.game_state.air_buff_unlocked = true
 
 	if p.popups_mod:
-		p.popups_mod.show_info("🔥 Skill feu débloqué")
+		p.popups_mod.show_info("💨 Skill air débloqué")
 	
 	if p.game_state and p.game_state.hud:
 		p.game_state.hud.disappear_air_craft_quest()
