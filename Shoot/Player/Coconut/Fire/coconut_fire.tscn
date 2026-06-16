@@ -11,12 +11,9 @@ radius = 0.0
 
 [node name="Coconut_fire" type="RigidBody2D" unique_id=830297305]
 z_index = 5
-collision_mask = 10
+collision_mask = 266
 contact_monitor = true
 script = ExtResource("1_va8yu")
-speed = null
-life_time = null
-damage = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245178653]
 scale = Vector2(1, 0.99999994)

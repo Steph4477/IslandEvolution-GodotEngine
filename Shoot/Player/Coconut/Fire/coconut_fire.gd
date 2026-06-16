@@ -54,3 +54,6 @@ func _on_area_2d_body_entered(body):
 	impact.play_impact()
 
 	queue_free()
+	
+	if body.is_in_group("platform") or body.is_in_groupe("Border"):
+		queue_free()
