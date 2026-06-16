@@ -98,7 +98,7 @@ const ENEMY_HP = {
 	"swim_croco": 600,
 	"croco": 200,
 	"cannibal": 120,
-	"boss_cannibal": 300,
+	"boss_cannibal": 400,
 	"boss_tarantula": 600,
 	"add_tarantula": 1
 	
@@ -133,7 +133,7 @@ const ENEMY_SPEED = {
 	"swim_croco": 500,
 	"croco": 400,
 	"cannibal": 500,
-	"boss_cannibal": 500,
+	"boss_cannibal": 300,
 	"boss_tarantula": 600,
 	"add_tarantula":500
 }

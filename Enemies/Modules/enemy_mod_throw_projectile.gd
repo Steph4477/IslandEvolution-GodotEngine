@@ -78,7 +78,7 @@ func throw_projectile():
 		return
 
 	var projectile = enemy.projectile_scene.instantiate()
-	enemy.get_tree().current_scene.add_child(projectile)
+	enemy.get_parent().add_child(projectile)
 
 	var target_pos = enemy.target.global_position
 

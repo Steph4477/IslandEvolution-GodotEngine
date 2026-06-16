@@ -11,11 +11,16 @@ radius = 33.37664
 
 [node name="ThrowableLoot" type="Node2D" unique_id=642776830]
 script = ExtResource("1_iiiel")
+throw_velocity = Vector2(900, -800)
+random_x = 40
+random_rotation = 4
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=2128738648]
+collision_layer = 8
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_a8bgd")
 gravity_scale = 2.5
+continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 4
 linear_damp = 0.5
@@ -23,5 +28,3 @@ angular_damp = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=369939213]
 shape = SubResource("CircleShape2D_is8tt")
-
-[node name="LootContainer" type="Node2D" parent="RigidBody2D" unique_id=1262283212]

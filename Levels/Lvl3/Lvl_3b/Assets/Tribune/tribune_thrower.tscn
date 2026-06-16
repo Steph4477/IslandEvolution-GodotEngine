@@ -3,11 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cfg03qmsi357m" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune.png" id="1_5fkn7"]
 [ext_resource type="Script" uid="uid://bvjratmtiqon8" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune_thrower.gd" id="1_yjgo7"]
 [ext_resource type="PackedScene" uid="uid://cvc3ewgmf6jm5" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/throwable_loot.tscn" id="3_bl65k"]
-[ext_resource type="PackedScene" uid="uid://qx5rwduvnvd7" path="res://Player/Skills/Fire/fire.tscn" id="4_vptw4"]
-[ext_resource type="PackedScene" uid="uid://8ui0q0lf31sc" path="res://Loot/Coconut/coco_loot_lvl3.tscn" id="4_yjgo7"]
-[ext_resource type="PackedScene" path="res://Loot/Banana/banana.tscn" id="6_bl65k"]
-[ext_resource type="PackedScene" path="res://Shoot/Player/Bone/bone.tscn" id="7_lnqyy"]
-[ext_resource type="PackedScene" uid="uid://cq23droww56jw" path="res://Levels/Lvl3/Lvl_3b/ThrowableAoe/throwable_aoe.tscn" id="8_yjgo7"]
+[ext_resource type="PackedScene" uid="uid://co1jlymmduwe6" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/Loot/banana_loot.tscn" id="4_g08e1"]
+[ext_resource type="PackedScene" uid="uid://b10dgqjkfnm6h" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/Loot/bone_loot.tscn" id="5_r8a74"]
+[ext_resource type="PackedScene" uid="uid://cwcqedo82lips" path="res://Levels/Lvl3/Lvl_3b/ThrowableLoot/Loot/coco_loot.tscn" id="6_gvsah"]
+[ext_resource type="PackedScene" path="res://Loot/Honey/honey.tscn" id="8_yjgo7"]
 
 [node name="TribuneThrower" type="Node2D" unique_id=1977538466]
 script = ExtResource("1_yjgo7")
@@ -21,514 +20,152 @@ texture = ExtResource("1_5fkn7")
 
 [node name="ThrowableLoot" parent="WaveIntroLoots" unique_id=642776830 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(-313, 270)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(-1492, 112)
+loot_scene = ExtResource("4_g08e1")
 
 [node name="ThrowableLoot2" parent="WaveIntroLoots" unique_id=704887011 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(185, 18)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(503, -210)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot3" parent="WaveIntroLoots" unique_id=1949831152 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(322, 191)
-loot_scene = ExtResource("4_vptw4")
+position = Vector2(-133, -169)
+loot_scene = ExtResource("6_gvsah")
 
 [node name="ThrowableLoot4" parent="WaveIntroLoots" unique_id=311259039 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(346, 12)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(504, -4)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot5" parent="WaveIntroLoots" unique_id=1705867837 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(13, 261)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(246, 135)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot6" parent="WaveIntroLoots" unique_id=1607881760 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(226, -64)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(182, -190)
+loot_scene = ExtResource("6_gvsah")
 
 [node name="ThrowableLoot7" parent="WaveIntroLoots" unique_id=1278849400 instance=ExtResource("3_bl65k")]
 z_index = 15
 position = Vector2(-616, 94)
-loot_scene = ExtResource("4_yjgo7")
+loot_scene = ExtResource("6_gvsah")
 
 [node name="ThrowableLoot8" parent="WaveIntroLoots" unique_id=422211293 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(13, 261)
-loot_scene = ExtResource("6_bl65k")
+position = Vector2(1082, -241)
+loot_scene = ExtResource("6_gvsah")
 
 [node name="WaveSnakeLoots" type="Node2D" parent="." unique_id=901711997]
 
 [node name="ThrowableLoot" parent="WaveSnakeLoots" unique_id=2146103300 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(-313, 270)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(-959, -42)
+loot_scene = ExtResource("4_g08e1")
 
 [node name="ThrowableLoot2" parent="WaveSnakeLoots" unique_id=415662143 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(185, 18)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(85, 132)
+loot_scene = ExtResource("6_gvsah")
 
 [node name="ThrowableLoot3" parent="WaveSnakeLoots" unique_id=580571498 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(322, 191)
-loot_scene = ExtResource("4_vptw4")
+position = Vector2(-334, 132)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot4" parent="WaveSnakeLoots" unique_id=1121623270 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(-745, -139)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(-641, -195)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot5" parent="WaveSnakeLoots" unique_id=1449318363 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(13, 261)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(787, -214)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot6" parent="WaveSnakeLoots" unique_id=401063246 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(226, -64)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(805, 120)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot7" parent="WaveSnakeLoots" unique_id=1951388550 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(-673, 218)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(-899, 123)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot8" parent="WaveSnakeLoots" unique_id=40770257 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(459, 24)
-loot_scene = ExtResource("6_bl65k")
+position = Vector2(771, -20)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="WaveCrocoLoots" type="Node2D" parent="." unique_id=1014166646]
 
 [node name="ThrowableLoot" parent="WaveCrocoLoots" unique_id=5383561 instance=ExtResource("3_bl65k")]
 z_index = 18
-position = Vector2(-241, 34)
-loot_scene = ExtResource("7_lnqyy")
+position = Vector2(-278, -25)
+loot_scene = ExtResource("4_g08e1")
 
 [node name="ThrowableLoot2" parent="WaveCrocoLoots" unique_id=1690361475 instance=ExtResource("3_bl65k")]
 z_index = 18
-position = Vector2(-456, 374)
-loot_scene = ExtResource("7_lnqyy")
+position = Vector2(-1469, -87)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot3" parent="WaveCrocoLoots" unique_id=740741821 instance=ExtResource("3_bl65k")]
 z_index = 18
-position = Vector2(-1052, -221)
-loot_scene = ExtResource("7_lnqyy")
+position = Vector2(-934, -202)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot4" parent="WaveCrocoLoots" unique_id=710853586 instance=ExtResource("3_bl65k")]
 z_index = 18
-position = Vector2(-342, -12)
-loot_scene = ExtResource("7_lnqyy")
+position = Vector2(-325, -174)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot5" parent="WaveCrocoLoots" unique_id=86445934 instance=ExtResource("3_bl65k")]
 z_index = 18
-position = Vector2(-1037, -39)
-loot_scene = ExtResource("7_lnqyy")
+position = Vector2(-78, 129)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="WaveCannibalLoots" type="Node2D" parent="." unique_id=134157622]
 position = Vector2(-125, 6)
 
 [node name="ThrowableLoot" parent="WaveCannibalLoots" unique_id=990632700 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(-313, 270)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(-1047, 116)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot2" parent="WaveCannibalLoots" unique_id=173035947 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(185, 18)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(272, -35)
+loot_scene = ExtResource("8_yjgo7")
 
 [node name="ThrowableLoot3" parent="WaveCannibalLoots" unique_id=1337265687 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(-366, -29)
-loot_scene = ExtResource("4_vptw4")
+position = Vector2(-432, -38)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot4" parent="WaveCannibalLoots" unique_id=484548684 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(346, 12)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(610, 143)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot5" parent="WaveCannibalLoots" unique_id=1008576519 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(13, 261)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(-1353, -277)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot6" parent="WaveCannibalLoots" unique_id=169895885 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(226, -64)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(-1076, -226)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot7" parent="WaveCannibalLoots" unique_id=1228689723 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(-1068, 222)
-loot_scene = ExtResource("4_yjgo7")
+position = Vector2(-1035, -64)
+loot_scene = ExtResource("5_r8a74")
 
 [node name="ThrowableLoot8" parent="WaveCannibalLoots" unique_id=63686987 instance=ExtResource("3_bl65k")]
 z_index = 15
-position = Vector2(13, 261)
-loot_scene = ExtResource("6_bl65k")
-
-[node name="WaveBoneAoe" type="Node2D" parent="." unique_id=888194183]
-
-[node name="ThrowableAoe" parent="WaveBoneAoe" unique_id=992477865 instance=ExtResource("8_yjgo7")]
-position = Vector2(-28, 8)
-
-[node name="ThrowableAoe2" parent="WaveBoneAoe" unique_id=1059467745 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1008, 138)
-
-[node name="ThrowableAoe3" parent="WaveBoneAoe" unique_id=582895650 instance=ExtResource("8_yjgo7")]
-position = Vector2(-808, 307)
-
-[node name="ThrowableAoe4" parent="WaveBoneAoe" unique_id=1401077510 instance=ExtResource("8_yjgo7")]
-position = Vector2(-678, 27)
-
-[node name="ThrowableAoe5" parent="WaveBoneAoe" unique_id=872390940 instance=ExtResource("8_yjgo7")]
-position = Vector2(-409, -123)
-
-[node name="ThrowableAoe6" parent="WaveBoneAoe" unique_id=914141575 instance=ExtResource("8_yjgo7")]
-position = Vector2(159, 19)
-
-[node name="ThrowableAoe7" parent="WaveBoneAoe" unique_id=1291388681 instance=ExtResource("8_yjgo7")]
-position = Vector2(-808, 36)
-
-[node name="ThrowableAoe8" parent="WaveBoneAoe" unique_id=1894891071 instance=ExtResource("8_yjgo7")]
-position = Vector2(113, -110)
-
-[node name="ThrowableAoe9" parent="WaveBoneAoe" unique_id=404217150 instance=ExtResource("8_yjgo7")]
-position = Vector2(683, -127)
-
-[node name="ThrowableAoe10" parent="WaveBoneAoe" unique_id=1543858818 instance=ExtResource("8_yjgo7")]
-position = Vector2(-319, 173)
-
-[node name="ThrowableAoe11" parent="WaveBoneAoe" unique_id=24912396 instance=ExtResource("8_yjgo7")]
-position = Vector2(53, 11)
-
-[node name="ThrowableAoe12" parent="WaveBoneAoe" unique_id=254127415 instance=ExtResource("8_yjgo7")]
-position = Vector2(-97, 24)
-
-[node name="ThrowableAoe13" parent="WaveBoneAoe" unique_id=2101115172 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1098, 320)
-
-[node name="ThrowableAoe14" parent="WaveBoneAoe" unique_id=1601934484 instance=ExtResource("8_yjgo7")]
-position = Vector2(-699, 317)
-
-[node name="ThrowableAoe15" parent="WaveBoneAoe" unique_id=970540377 instance=ExtResource("8_yjgo7")]
-position = Vector2(-108, -103)
-
-[node name="ThrowableAoe16" parent="WaveBoneAoe" unique_id=863666570 instance=ExtResource("8_yjgo7")]
-position = Vector2(240, 22)
-
-[node name="ThrowableAoe17" parent="WaveBoneAoe" unique_id=1214452693 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1331, -185)
-
-[node name="ThrowableAoe18" parent="WaveBoneAoe" unique_id=389123085 instance=ExtResource("8_yjgo7")]
-position = Vector2(417, -114)
-
-[node name="ThrowableAoe19" parent="WaveBoneAoe" unique_id=1229795855 instance=ExtResource("8_yjgo7")]
-position = Vector2(921, -141)
-
-[node name="ThrowableAoe20" parent="WaveBoneAoe" unique_id=1776106432 instance=ExtResource("8_yjgo7")]
-position = Vector2(-238, 176)
-
-[node name="ThrowableAoe21" parent="WaveBoneAoe" unique_id=201915363 instance=ExtResource("8_yjgo7")]
-position = Vector2(136, 487)
-
-[node name="ThrowableAoe22" parent="WaveBoneAoe" unique_id=1464933257 instance=ExtResource("8_yjgo7")]
-position = Vector2(-964, 310)
-
-[node name="ThrowableAoe23" parent="WaveBoneAoe" unique_id=1226457130 instance=ExtResource("8_yjgo7")]
-position = Vector2(-568, 311)
-
-[node name="ThrowableAoe24" parent="WaveBoneAoe" unique_id=787837787 instance=ExtResource("8_yjgo7")]
-position = Vector2(-939, -148)
-
-[node name="ThrowableAoe25" parent="WaveBoneAoe" unique_id=1399180854 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1250, 16)
-
-[node name="ThrowableAoe26" parent="WaveBoneAoe" unique_id=6410876 instance=ExtResource("8_yjgo7")]
-position = Vector2(66, 28)
-
-[node name="ThrowableAoe27" parent="WaveBoneAoe" unique_id=2126055292 instance=ExtResource("8_yjgo7")]
-position = Vector2(821, 206)
-
-[node name="ThrowableAoe28" parent="WaveBoneAoe" unique_id=577486256 instance=ExtResource("8_yjgo7")]
-position = Vector2(709, 12)
-
-[node name="ThrowableAoe29" parent="WaveBoneAoe" unique_id=1924362931 instance=ExtResource("8_yjgo7")]
-position = Vector2(7, -92)
-
-[node name="ThrowableAoe30" parent="WaveBoneAoe" unique_id=66215059 instance=ExtResource("8_yjgo7")]
-position = Vector2(-412, 182)
-
-[node name="ThrowableAoe31" parent="WaveBoneAoe" unique_id=2083030909 instance=ExtResource("8_yjgo7")]
-position = Vector2(37, 97)
-
-[node name="ThrowableAoe32" parent="WaveBoneAoe" unique_id=491260516 instance=ExtResource("8_yjgo7")]
-position = Vector2(-113, 110)
-
-[node name="ThrowableAoe33" parent="WaveBoneAoe" unique_id=211601293 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1228, 580)
-
-[node name="ThrowableAoe34" parent="WaveBoneAoe" unique_id=294236752 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1285, 312)
-
-[node name="ThrowableAoe35" parent="WaveBoneAoe" unique_id=983405920 instance=ExtResource("8_yjgo7")]
-position = Vector2(-676, -140)
-
-[node name="ThrowableAoe36" parent="WaveBoneAoe" unique_id=1233551984 instance=ExtResource("8_yjgo7")]
-position = Vector2(-148, -172)
-
-[node name="ThrowableAoe37" parent="WaveBoneAoe" unique_id=1370400195 instance=ExtResource("8_yjgo7")]
-position = Vector2(548, -93)
-
-[node name="ThrowableAoe38" parent="WaveBoneAoe" unique_id=1808782105 instance=ExtResource("8_yjgo7")]
-position = Vector2(533, 89)
-
-[node name="ThrowableAoe39" parent="WaveBoneAoe" unique_id=1024281323 instance=ExtResource("8_yjgo7")]
-position = Vector2(673, 84)
-
-[node name="ThrowableAoe40" parent="WaveBoneAoe" unique_id=2143538772 instance=ExtResource("8_yjgo7")]
-position = Vector2(-254, 262)
-
-[node name="ThrowableAoe41" parent="WaveBoneAoe" unique_id=277493696 instance=ExtResource("8_yjgo7")]
-position = Vector2(118, 100)
-
-[node name="ThrowableAoe42" parent="WaveBoneAoe" unique_id=1216738866 instance=ExtResource("8_yjgo7")]
-position = Vector2(-32, 113)
-
-[node name="ThrowableAoe43" parent="WaveBoneAoe" unique_id=263590959 instance=ExtResource("8_yjgo7")]
-position = Vector2(-194, 111)
-
-[node name="ThrowableAoe44" parent="WaveBoneAoe" unique_id=1315381449 instance=ExtResource("8_yjgo7")]
-position = Vector2(-111, 514)
-
-[node name="ThrowableAoe45" parent="WaveBoneAoe" unique_id=686187488 instance=ExtResource("8_yjgo7")]
-position = Vector2(-418, 45)
-
-[node name="ThrowableAoe46" parent="WaveBoneAoe" unique_id=722521836 instance=ExtResource("8_yjgo7")]
-position = Vector2(336, -172)
-
-[node name="ThrowableAoe47" parent="WaveBoneAoe" unique_id=1987621855 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1224, -165)
-
-[node name="ThrowableAoe48" parent="WaveBoneAoe" unique_id=538834995 instance=ExtResource("8_yjgo7")]
-position = Vector2(614, 92)
-
-[node name="ThrowableAoe49" parent="WaveBoneAoe" unique_id=1636997877 instance=ExtResource("8_yjgo7")]
-position = Vector2(900, 22)
-
-[node name="ThrowableAoe50" parent="WaveBoneAoe" unique_id=166882867 instance=ExtResource("8_yjgo7")]
-position = Vector2(-173, 265)
-
-[node name="ThrowableAoe51" parent="WaveBoneAoe" unique_id=1490707909 instance=ExtResource("8_yjgo7")]
-position = Vector2(-56, 106)
-
-[node name="ThrowableAoe52" parent="WaveBoneAoe" unique_id=1482864575 instance=ExtResource("8_yjgo7")]
-position = Vector2(-247, 527)
-
-[node name="ThrowableAoe53" parent="WaveBoneAoe" unique_id=1380077196 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1267, 403)
-
-[node name="ThrowableAoe54" parent="WaveBoneAoe" unique_id=2141494352 instance=ExtResource("8_yjgo7")]
-position = Vector2(421, 534)
-
-[node name="ThrowableAoe55" parent="WaveBoneAoe" unique_id=2034781840 instance=ExtResource("8_yjgo7")]
-position = Vector2(-924, 212)
-
-[node name="ThrowableAoe56" parent="WaveBoneAoe" unique_id=351907964 instance=ExtResource("8_yjgo7")]
-position = Vector2(-495, -171)
-
-[node name="ThrowableAoe57" parent="WaveBoneAoe" unique_id=857665340 instance=ExtResource("8_yjgo7")]
-position = Vector2(610, 21)
-
-[node name="ThrowableAoe58" parent="WaveBoneAoe" unique_id=686848112 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1133, 23)
-
-[node name="ThrowableAoe59" parent="WaveBoneAoe" unique_id=1836105834 instance=ExtResource("8_yjgo7")]
-position = Vector2(580, 93)
-
-[node name="ThrowableAoe60" parent="WaveBoneAoe" unique_id=9771058 instance=ExtResource("8_yjgo7")]
-position = Vector2(-347, 271)
-
-[node name="ThrowableAoe61" parent="WaveBoneAoe" unique_id=1818155777 instance=ExtResource("8_yjgo7")]
-position = Vector2(-11, 171)
-
-[node name="ThrowableAoe62" parent="WaveBoneAoe" unique_id=1748121624 instance=ExtResource("8_yjgo7")]
-position = Vector2(-161, 184)
-
-[node name="ThrowableAoe63" parent="WaveBoneAoe" unique_id=1767729888 instance=ExtResource("8_yjgo7")]
-position = Vector2(-323, 182)
-
-[node name="ThrowableAoe64" parent="WaveBoneAoe" unique_id=1345691496 instance=ExtResource("8_yjgo7")]
-position = Vector2(-458, 170)
-
-[node name="ThrowableAoe65" parent="WaveBoneAoe" unique_id=999846465 instance=ExtResource("8_yjgo7")]
-position = Vector2(-604, 539)
-
-[node name="ThrowableAoe66" parent="WaveBoneAoe" unique_id=31378889 instance=ExtResource("8_yjgo7")]
-position = Vector2(-136, 369)
-
-[node name="ThrowableAoe67" parent="WaveBoneAoe" unique_id=1990069906 instance=ExtResource("8_yjgo7")]
-position = Vector2(346, 170)
-
-[node name="ThrowableAoe68" parent="WaveBoneAoe" unique_id=1041280941 instance=ExtResource("8_yjgo7")]
-position = Vector2(485, 163)
-
-[node name="ThrowableAoe69" parent="WaveBoneAoe" unique_id=140957505 instance=ExtResource("8_yjgo7")]
-position = Vector2(625, 158)
-
-[node name="ThrowableAoe70" parent="WaveBoneAoe" unique_id=1836022207 instance=ExtResource("8_yjgo7")]
-position = Vector2(-302, 336)
-
-[node name="ThrowableAoe71" parent="WaveBoneAoe" unique_id=1189306649 instance=ExtResource("8_yjgo7")]
-position = Vector2(70, 174)
-
-[node name="ThrowableAoe72" parent="WaveBoneAoe" unique_id=461892736 instance=ExtResource("8_yjgo7")]
-position = Vector2(-80, 187)
-
-[node name="ThrowableAoe73" parent="WaveBoneAoe" unique_id=1852840523 instance=ExtResource("8_yjgo7")]
-position = Vector2(-242, 185)
-
-[node name="ThrowableAoe74" parent="WaveBoneAoe" unique_id=721176981 instance=ExtResource("8_yjgo7")]
-position = Vector2(-377, 173)
-
-[node name="ThrowableAoe75" parent="WaveBoneAoe" unique_id=2027254331 instance=ExtResource("8_yjgo7")]
-position = Vector2(-511, 164)
-
-[node name="ThrowableAoe76" parent="WaveBoneAoe" unique_id=426269922 instance=ExtResource("8_yjgo7")]
-position = Vector2(257, 185)
-
-[node name="ThrowableAoe77" parent="WaveBoneAoe" unique_id=1609590821 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1315, 146)
-
-[node name="ThrowableAoe78" parent="WaveBoneAoe" unique_id=1867324523 instance=ExtResource("8_yjgo7")]
-position = Vector2(566, 166)
-
-[node name="ThrowableAoe79" parent="WaveBoneAoe" unique_id=1473343225 instance=ExtResource("8_yjgo7")]
-position = Vector2(706, 161)
-
-[node name="ThrowableAoe80" parent="WaveBoneAoe" unique_id=1786299599 instance=ExtResource("8_yjgo7")]
-position = Vector2(-221, 339)
-
-[node name="ThrowableAoe81" parent="WaveBoneAoe" unique_id=803035697 instance=ExtResource("8_yjgo7")]
-position = Vector2(-104, 180)
-
-[node name="ThrowableAoe82" parent="WaveBoneAoe" unique_id=190618441 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1046, 557)
-
-[node name="ThrowableAoe83" parent="WaveBoneAoe" unique_id=1868439028 instance=ExtResource("8_yjgo7")]
-position = Vector2(-416, 191)
-
-[node name="ThrowableAoe84" parent="WaveBoneAoe" unique_id=718678199 instance=ExtResource("8_yjgo7")]
-position = Vector2(-844, 556)
-
-[node name="ThrowableAoe85" parent="WaveBoneAoe" unique_id=989140805 instance=ExtResource("8_yjgo7")]
-position = Vector2(-929, 29)
-
-[node name="ThrowableAoe86" parent="WaveBoneAoe" unique_id=162502100 instance=ExtResource("8_yjgo7")]
-position = Vector2(-752, -209)
-
-[node name="ThrowableAoe87" parent="WaveBoneAoe" unique_id=1984663473 instance=ExtResource("8_yjgo7")]
-position = Vector2(253, 179)
-
-[node name="ThrowableAoe88" parent="WaveBoneAoe" unique_id=274819731 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1151, 139)
-
-[node name="ThrowableAoe89" parent="WaveBoneAoe" unique_id=1246882416 instance=ExtResource("8_yjgo7")]
-position = Vector2(-854, 143)
-
-[node name="ThrowableAoe90" parent="WaveBoneAoe" unique_id=887552422 instance=ExtResource("8_yjgo7")]
-position = Vector2(-971, 405)
-
-[node name="ThrowableAoe91" parent="WaveBoneAoe" unique_id=623557150 instance=ExtResource("8_yjgo7")]
-position = Vector2(620, 516)
-
-[node name="ThrowableAoe92" parent="WaveBoneAoe" unique_id=1186199179 instance=ExtResource("8_yjgo7")]
-position = Vector2(370, 378)
-
-[node name="ThrowableAoe93" parent="WaveBoneAoe" unique_id=990121234 instance=ExtResource("8_yjgo7")]
-position = Vector2(-258, 271)
-
-[node name="ThrowableAoe94" parent="WaveBoneAoe" unique_id=818639772 instance=ExtResource("8_yjgo7")]
-position = Vector2(11, 528)
-
-[node name="ThrowableAoe95" parent="WaveBoneAoe" unique_id=1801806390 instance=ExtResource("8_yjgo7")]
-position = Vector2(-823, 402)
-
-[node name="ThrowableAoe96" parent="WaveBoneAoe" unique_id=1948230634 instance=ExtResource("8_yjgo7")]
-position = Vector2(241, 271)
-
-[node name="ThrowableAoe97" parent="WaveBoneAoe" unique_id=1024326469 instance=ExtResource("8_yjgo7")]
-position = Vector2(411, 259)
-
-[node name="ThrowableAoe98" parent="WaveBoneAoe" unique_id=2007368478 instance=ExtResource("8_yjgo7")]
-position = Vector2(550, 252)
-
-[node name="ThrowableAoe99" parent="WaveBoneAoe" unique_id=1396461293 instance=ExtResource("8_yjgo7")]
-position = Vector2(690, 247)
-
-[node name="ThrowableAoe100" parent="WaveBoneAoe" unique_id=1752591809 instance=ExtResource("8_yjgo7")]
-position = Vector2(99, 391)
-
-[node name="ThrowableAoe101" parent="WaveBoneAoe" unique_id=779219587 instance=ExtResource("8_yjgo7")]
-position = Vector2(135, 263)
-
-[node name="ThrowableAoe102" parent="WaveBoneAoe" unique_id=735466818 instance=ExtResource("8_yjgo7")]
-position = Vector2(287, 508)
-
-[node name="ThrowableAoe103" parent="WaveBoneAoe" unique_id=1220005357 instance=ExtResource("8_yjgo7")]
-position = Vector2(-177, 274)
-
-[node name="ThrowableAoe104" parent="WaveBoneAoe" unique_id=1698622498 instance=ExtResource("8_yjgo7")]
-position = Vector2(-312, 262)
-
-[node name="ThrowableAoe105" parent="WaveBoneAoe" unique_id=29567050 instance=ExtResource("8_yjgo7")]
-position = Vector2(-366, 520)
-
-[node name="ThrowableAoe106" parent="WaveBoneAoe" unique_id=1381060280 instance=ExtResource("8_yjgo7")]
-position = Vector2(322, 274)
-
-[node name="ThrowableAoe107" parent="WaveBoneAoe" unique_id=986104001 instance=ExtResource("8_yjgo7")]
-position = Vector2(492, 262)
-
-[node name="ThrowableAoe108" parent="WaveBoneAoe" unique_id=654756494 instance=ExtResource("8_yjgo7")]
-position = Vector2(631, 255)
-
-[node name="ThrowableAoe109" parent="WaveBoneAoe" unique_id=1644982710 instance=ExtResource("8_yjgo7")]
-position = Vector2(906, 178)
-
-[node name="ThrowableAoe110" parent="WaveBoneAoe" unique_id=866606057 instance=ExtResource("8_yjgo7")]
-position = Vector2(-30, 396)
-
-[node name="ThrowableAoe111" parent="WaveBoneAoe" unique_id=9262843 instance=ExtResource("8_yjgo7")]
-position = Vector2(846, 528)
-
-[node name="ThrowableAoe112" parent="WaveBoneAoe" unique_id=1427368237 instance=ExtResource("8_yjgo7")]
-position = Vector2(-189, 282)
-
-[node name="ThrowableAoe113" parent="WaveBoneAoe" unique_id=1161019120 instance=ExtResource("8_yjgo7")]
-position = Vector2(-351, 280)
-
-[node name="ThrowableAoe114" parent="WaveBoneAoe" unique_id=1495392002 instance=ExtResource("8_yjgo7")]
-position = Vector2(-625, 382)
-
-[node name="ThrowableAoe115" parent="WaveBoneAoe" unique_id=2118727844 instance=ExtResource("8_yjgo7")]
-position = Vector2(-1158, 407)
-
-[node name="ThrowableAoe116" parent="WaveBoneAoe" unique_id=362675564 instance=ExtResource("8_yjgo7")]
-position = Vector2(148, 280)
-
-[node name="ThrowableAoe117" parent="WaveBoneAoe" unique_id=128416936 instance=ExtResource("8_yjgo7")]
-position = Vector2(623, 378)
-
-[node name="ThrowableAoe118" parent="WaveBoneAoe" unique_id=520948363 instance=ExtResource("8_yjgo7")]
-position = Vector2(457, 261)
-
-[node name="ThrowableAoe119" parent="WaveBoneAoe" unique_id=1680315684 instance=ExtResource("8_yjgo7")]
-position = Vector2(916, 388)
-
-[node name="ThrowableAoe120" parent="WaveBoneAoe" unique_id=1963358480 instance=ExtResource("8_yjgo7")]
-position = Vector2(-330, 434)
+position = Vector2(28, -38)
+loot_scene = ExtResource("5_r8a74")

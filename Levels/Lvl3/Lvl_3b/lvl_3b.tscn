@@ -415,10 +415,10 @@ tracks/0/path = NodePath("../Camera2D:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.56666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.6, 0.6)]
+"values": [Vector2(0.365, 0.365), Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -427,10 +427,10 @@ tracks/1/path = NodePath("../Camera2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.56666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4169.9995, -4140), Vector2(4599.9995, -2836.6667)]
+"values": [Vector2(4103.333, -3063.3335), Vector2(4580, -1426.6666)]
 }
 
 [sub_resource type="Animation" id="Animation_q85in"]
@@ -457,7 +457,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4169.9995, -4140), Vector2(4629.9995, -2346.6667)]
+"values": [Vector2(4169.9995, -4140), Vector2(4616.666, -1749.9999)]
 }
 
 [sub_resource type="Animation" id="Animation_m3dsj"]
@@ -470,10 +470,10 @@ tracks/0/path = NodePath("../Camera2D:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.43333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(0.4, 0.4)]
+"values": [Vector2(0.6, 0.6), Vector2(0.365, 0.365)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -482,10 +482,10 @@ tracks/1/path = NodePath("../Camera2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.43333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4329.9995, -1630), Vector2(4169.9995, -4140)]
+"values": [Vector2(4580, -1426.6666), Vector2(4103.333, -3063.3335)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbv6"]
@@ -511,7 +511,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.01, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.2, 0.2), Vector2(0.2018868, 0.2018868), Vector2(1, 1)]
+"values": [Vector2(0.2, 0.2), Vector2(0.2018868, 0.2018868), Vector2(0.8, 0.8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -559,13 +559,13 @@ _data = {
 size = Vector2(3186, 447.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u71ib"]
-size = Vector2(88.875, 1138.125)
+size = Vector2(78.4375, 2317.0625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc7ln"]
 size = Vector2(2960, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6auop"]
-size = Vector2(101, 1187)
+size = Vector2(101, 2353.5)
 
 [node name="lvl_3b" type="Node2D" unique_id=36208587]
 script = ExtResource("1_flxhq")
@@ -973,8 +973,8 @@ scale = Vector2(2, 2)
 [node name="BossCannibal" parent="World/Arena/Visual/WavesEnemies/WaveBoss" unique_id=1493117163 instance=ExtResource("17_bhj3v")]
 visible = false
 z_index = 15
-position = Vector2(718.5, -227)
-scale = Vector2(-0.9, 0.9)
+position = Vector2(726, -232)
+scale = Vector2(-0.8, 0.8)
 speed = 200
 
 [node name="ToothSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1064526504]
@@ -1076,15 +1076,18 @@ position = Vector2(2255, 1376.75)
 shape = SubResource("RectangleShape2D_flxhq")
 
 [node name="Border2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1228470624]
-position = Vector2(712, 573)
+position = Vector2(717.21875, -16.46875)
 shape = SubResource("RectangleShape2D_u71ib")
 
 [node name="Border3" type="CollisionShape2D" parent="StaticBody2D" unique_id=365477280]
-position = Vector2(2132, -26.5)
+position = Vector2(2240, -1172)
 shape = SubResource("RectangleShape2D_gc7ln")
 
 [node name="Border4" type="CollisionShape2D" parent="StaticBody2D" unique_id=380903725]
-position = Vector2(3770, 561)
+position = Vector2(3770, -22.25)
 shape = SubResource("RectangleShape2D_6auop")
+
+[node name="LootTarget" type="Marker2D" parent="." unique_id=668643627 groups=["LootTarget"]]
+position = Vector2(2208, 1122)
 
 [connection signal="animation_finished" from="World/IntroCinematic/CameraCinematic/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

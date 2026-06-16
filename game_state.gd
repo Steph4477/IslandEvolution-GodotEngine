@@ -793,6 +793,8 @@ func save_game():
 	file.store_string(JSON.stringify(data))
 	file.close()
 
+	save_progress()
+
 	if player and player.popups_mod:
 		player.popups_mod.show_info("💾 Partie sauvegardée")
 
@@ -814,6 +816,7 @@ func load_game():
 
 	var data = json.data
 	await apply_save_data(data)
+	load_global_progress()
 	return true
 
 

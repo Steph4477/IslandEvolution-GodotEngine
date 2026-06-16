@@ -26,6 +26,7 @@ extends Node2D
 @onready var reveal_anim = $World/Arena/Visual/AnimationPlayer
 @onready var reveal_boss_anim = $World/RevealBoss/AnimationPlayer
 @onready var fake_boss = $World/RevealBoss/FakeBoss
+@onready var boss = $World/Arena/Visual/WavesEnemies/WaveBoss/BossCannibal
 
 @export var speech_snake_wave = [
 	"Tu n'aurais jamais dû entrer ici...",
@@ -50,10 +51,15 @@ extends Node2D
 @export var pause_between_lines = 2.0   # Pause entre les lignes (s)
 
 var intro_finished = false
+var player
+var cam
 
 
 func _ready():
 	var gs = get_node("/root/GameState")
+
+	boss_spawn.set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibale.png"))
+	boss_spawn.set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibaleName.png"))
 
 	gs.killed_enemy_ids.clear()
 	gs.collected_loot_ids.clear()
@@ -91,7 +97,7 @@ func _ready():
 	await anim.animation_finished
 
 	end_intro()
-#
+
 	# --- Spawn vague de serpents ---
 	await start_speech(speech_snake_wave)
 
@@ -179,34 +185,42 @@ func _ready():
 	
 	await get_tree().create_timer(0.5).timeout
 	tribune_thrower.throw_cannibal_wave = true
-
+#
 	await get_tree().create_timer(1.0).timeout
 	stop_public_anim()
-
-	# --- Discours combat boss ---
+#
+	## --- Discours combat boss ---
 	await start_speech(speech_combat_boss)
-
+#
 	await get_tree().create_timer(1.0).timeout
 	start_public_anim()
 
-	# --- Cinematique de l'aparition du boss ---
+	# --- Cinematique de l'apparition du boss ---
 	anim.play("zoom_boss")
 	await anim.animation_finished
+
 	reveal_anim.play("open_door")
 	await reveal_anim.animation_finished
 
-	fake_boss.visible = true
+	if fake_boss:
+		fake_boss.visible = true
 
-	reveal_boss_anim.play("reveal_boss")
-	await reveal_boss_anim.animation_finished
-	
+	if reveal_boss_anim:
+		reveal_boss_anim.play("reveal_boss")
+		await reveal_boss_anim.animation_finished
+
+	# --- HUD BOSS APRÈS L'ANIM APPEAR ---
+	gs.show_boss_fight_hud(boss_spawn)
+
 	reveal_anim.play("close_door")
 	await reveal_anim.animation_finished
 
-	fake_boss.visible = false
+	if fake_boss:
+		fake_boss.visible = false
 
 	anim.play("zoom")
 	await anim.animation_finished
+
 	start_boss_wave()
 
 # ============================================================================
@@ -249,6 +263,11 @@ func end_intro():
 
 	var gs = get_node("/root/GameState")
 	var player = gs.player
+
+	if player == null:
+		print("❌ ERREUR end_intro : aucun player trouvé")
+		return
+
 
 	await get_tree().create_timer(0.5).timeout
 
