@@ -252,6 +252,8 @@ func restart_game():
 func continue_game():
 	load_global_progress()
 
+	reset_lives()
+
 	has_pending_load = false
 	pending_player_pos = Vector2.ZERO
 

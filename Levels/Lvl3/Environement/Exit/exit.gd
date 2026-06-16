@@ -17,4 +17,6 @@ func change_scene():
 
 	await get_tree().create_timer(5.0).timeout
 
+	gs.unlocked_level_path = next_scene_path
+	gs.save_progress()
 	gs.load_level(next_scene_path)

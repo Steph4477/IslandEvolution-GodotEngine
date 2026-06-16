@@ -78,5 +78,5 @@ func change_scene():
 		next_scene_path = "res://Levels/Lvl2/lvl_2a/lvl_2a.tscn"
 
 	gs.unlocked_level_path = next_scene_path
-	gs.save_game()
+	gs.save_progress()
 	gs.load_level(next_scene_path)
