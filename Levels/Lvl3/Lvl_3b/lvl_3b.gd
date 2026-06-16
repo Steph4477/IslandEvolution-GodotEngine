@@ -28,6 +28,10 @@ extends Node2D
 @onready var fake_boss = $World/RevealBoss/FakeBoss
 @onready var boss = $World/Arena/Visual/WavesEnemies/WaveBoss/BossCannibal
 
+# -- Yeux du crane ---
+@onready var eye_skull = $World/Arena/EyeSkull
+
+
 @export var speech_snake_wave = [
 	"Tu n'aurais jamais dû entrer ici...",
 	"Tuez-le ! 😡"
@@ -56,7 +60,10 @@ var cam
 
 
 func _ready():
+	await get_tree().process_frame
+
 	var gs = get_node("/root/GameState")
+	player = gs.player
 
 	boss_spawn.set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibale.png"))
 	boss_spawn.set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibaleName.png"))
@@ -76,6 +83,9 @@ func _ready():
 	disable_enemy(cannibal_spawn_2)
 
 	disable_enemy(boss_spawn)
+
+	eye_skull.visible= false
+
 	start_intro()
 	
 	# --- anim des grilles ---
@@ -114,8 +124,12 @@ func _ready():
 
 	reveal_anim.play("close_grid_right")
 	await reveal_anim.animation_finished
-	
+
+	eye_skull.visible = true
+
 	await wait_finish_snake_wave()
+
+	eye_skull.visible = false
 
 	# --- Loot fin vague serpents ---
 	anim.play("zoom_out")
@@ -145,8 +159,11 @@ func _ready():
 	reveal_anim.play("close_grid_left")
 	await reveal_anim.animation_finished
 
+	eye_skull.visible = true
 
 	await wait_finish_croco_wave()
+
+	eye_skull.visible = false
 
 	# --- Loot fin vague crocos ---
 	anim.play("zoom_out")
@@ -175,8 +192,12 @@ func _ready():
 
 	reveal_anim.play("close_grid_right")
 	await reveal_anim.animation_finished
-	
+
+	eye_skull.visible = true
+
 	await wait_finish_cannibal_wave()
+
+	eye_skull.visible = false
 
 	# --- Loot fin vague cannibales ---
 	anim.play("zoom_out")
@@ -198,6 +219,8 @@ func _ready():
 	# --- Cinematique de l'apparition du boss ---
 	anim.play("zoom_boss")
 	await anim.animation_finished
+
+	eye_skull.visible = true
 
 	reveal_anim.play("open_door")
 	await reveal_anim.animation_finished
@@ -223,6 +246,8 @@ func _ready():
 
 	start_boss_wave()
 
+	
+
 # ============================================================================
 #                          MAITRISE DU PUBLIQUE
 # ============================================================================
@@ -237,11 +262,7 @@ func stop_public_anim():
 #                           CINEMATIQUE D'INTRODUCTION
 # ============================================================================
 func start_intro():
-	var gs = get_node("/root/GameState")
-
 	await get_tree().process_frame
-
-	var player = gs.player
 
 	player.visible = false
 	player.process_mode = Node.PROCESS_MODE_DISABLED
@@ -260,9 +281,6 @@ func start_intro():
 
 func end_intro():
 	intro_finished = true
-
-	var gs = get_node("/root/GameState")
-	var player = gs.player
 
 	if player == null:
 		print("❌ ERREUR end_intro : aucun player trouvé")

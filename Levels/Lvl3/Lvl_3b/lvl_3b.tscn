@@ -1,12 +1,15 @@
-[gd_scene format=4 uid="uid://dr677cjk0xf3u"]
+[gd_scene format=3 uid="uid://dr677cjk0xf3u"]
 
 [ext_resource type="Script" uid="uid://btk64wslk3k6e" path="res://Levels/Lvl3/Lvl_3b/lvl_3b.gd" id="1_flxhq"]
 [ext_resource type="PackedScene" uid="uid://b2vyrpdh74p53" path="res://Levels/Lvl3/Lvl_3b/Assets/Public/public_cannibal.tscn" id="2_6do33"]
+[ext_resource type="Script" uid="uid://b2wash03n1xr2" path="res://Levels/Lvl1/Environement/Paralaxe/parallax.gd" id="2_mx2ic"]
+[ext_resource type="Texture2D" uid="uid://dt5bo5pdqyoa7" path="res://Levels/Lvl3/Environement/TileMap/sky.png" id="3_4xu44"]
 [ext_resource type="Texture2D" uid="uid://nxpdacl8ouvv" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena.png" id="3_80yr0"]
 [ext_resource type="Texture2D" uid="uid://ig5udo1t1xpe" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/tooth.png" id="4_k30wa"]
+[ext_resource type="Texture2D" uid="uid://cm1u6sfq8s7lb" path="res://Levels/Lvl3/Environement/TileMap/back.png" id="4_oj4hj"]
+[ext_resource type="Texture2D" uid="uid://dmp5y3f7xpava" path="res://ItemsDecors/Torch/light_halo_circle.png" id="4_w1o2t"]
 [ext_resource type="Texture2D" uid="uid://dtns0bb03echc" path="res://Levels/Lvl3/Lvl_3b/Assets/Floor.png" id="5_80yr0"]
-[ext_resource type="Texture2D" uid="uid://ce4kuy3r13fwn" path="res://Levels/Lvl3/Environement/sky.png" id="6_k30wa"]
-[ext_resource type="TileSet" uid="uid://7u7ot5b4g7n6" path="res://Levels/Lvl3/Environement/tiles_platforms/deco.tres" id="7_k30wa"]
+[ext_resource type="Texture2D" uid="uid://durgu4jxm45s1" path="res://Levels/Lvl3/Environement/TileMap/forest.png" id="5_w1o2t"]
 [ext_resource type="PackedScene" uid="uid://b8dpjjqkydppr" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune_thrower.tscn" id="7_sap2p"]
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/Swim_Zone/water.gdshader" id="8_cp7mx"]
 [ext_resource type="Texture2D" uid="uid://co21ubc6x2ibo" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/grid.png" id="9_bhj3v"]
@@ -38,12 +41,14 @@
 [ext_resource type="Texture2D" uid="uid://g32ykaciwlfe" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/2.png" id="29_w5ign"]
 [ext_resource type="Texture2D" uid="uid://c6fdqpia4hnpx" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/3.png" id="30_dm2a1"]
 [ext_resource type="Texture2D" uid="uid://bagqowo7orq5i" path="res://Enemies/Cannibal/Boss/Sprites/Aggro/4.png" id="31_tldeq"]
+[ext_resource type="PackedScene" uid="uid://bcleaa6gwlx7s" path="res://Items/Altar/Fire/fire.tscn" id="41_4xu44"]
+[ext_resource type="Texture2D" uid="uid://b8wb2j80ea76j" path="res://Effects/Fire/glow.png" id="42_oj4hj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_flxhq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yw1m"]
 shader = ExtResource("8_cp7mx")
 shader_parameter/speed = 0.050000002375
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_u71ib"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_1dlp6"]
 diffuse_texture = ExtResource("9_bq7xw")
 texture_repeat = 2
 
@@ -570,28 +575,78 @@ size = Vector2(101, 2353.5)
 [node name="lvl_3b" type="Node2D" unique_id=36208587]
 script = ExtResource("1_flxhq")
 
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1266304344]
+z_index = -100
+position = Vector2(4706, -408.00003)
+scale = Vector2(20.035, 20.035)
+color = Color(0.96453565, 0.4485975, 0.32686296, 1)
+energy = 5.12
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.9490196)
+texture = ExtResource("4_w1o2t")
+texture_scale = 1.5
+height = 334.0
+
+[node name="Parallax" type="Node2D" parent="." unique_id=81065079]
+z_index = 20
+position = Vector2(60, -358)
+script = ExtResource("2_mx2ic")
+tree_speed = 0.0
+sky_speed = 0.0
+plant_speed = 0.0
+level_width = 4000.0
+
+[node name="SkyLayer" type="Node2D" parent="Parallax" unique_id=43799497]
+z_index = -40
+position = Vector2(-2746, -764)
+scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/SkyLayer" unique_id=913331114]
+modulate = Color(0.69135684, 0.6913568, 0.69135684, 1)
+position = Vector2(-153, 204)
+texture = ExtResource("3_4xu44")
+
+[node name="TreeLayer" type="Node2D" parent="Parallax" unique_id=1143458291]
+modulate = Color(0.90881085, 0.908811, 0.90881073, 1)
+z_index = -20
+position = Vector2(-1770, 98)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/TreeLayer" unique_id=1212456470]
+modulate = Color(0.6484881, 0.6484881, 0.6484881, 1)
+position = Vector2(-21, 0)
+texture = ExtResource("4_oj4hj")
+
+[node name="PlantLayer" type="Node2D" parent="Parallax" unique_id=71043631]
+modulate = Color(0.89492244, 0.89492244, 0.8949224, 1)
+z_index = 5
+position = Vector2(-4880, -1793)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/PlantLayer" unique_id=355558468]
+modulate = Color(0.4911912, 0.4911909, 0.49119067, 1)
+z_index = -20
+texture = ExtResource("5_w1o2t")
+
+[node name="WaterSprite" type="Sprite2D" parent="Parallax" unique_id=912194161]
+modulate = Color(0.42595553, 0.42595553, 0.4259555, 1)
+z_index = -40
+texture_repeat = 3
+material = SubResource("ShaderMaterial_7yw1m")
+position = Vector2(2011.5, 786)
+scale = Vector2(3.37286, 1.6104419)
+texture = SubResource("CanvasTexture_1dlp6")
+
+[node name="FloorSprite" type="Sprite2D" parent="." unique_id=1942316824]
+modulate = Color(0.8329021, 0.83290213, 0.83290213, 1)
+position = Vector2(2858, 1348)
+scale = Vector2(2, 3.914)
+texture = ExtResource("5_80yr0")
+
 [node name="World" type="Node2D" parent="." unique_id=1794883641]
+modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
 z_index = 15
 position = Vector2(0, 486)
-
-[node name="SkySprite" type="Sprite2D" parent="World" unique_id=1704801586]
-position = Vector2(2076.5, -421.49994)
-scale = Vector2(10.427733, 5.1699224)
-texture = ExtResource("6_k30wa")
-
-[node name="WaterSprite" type="Sprite2D" parent="World" unique_id=144233068]
-texture_repeat = 3
-material = SubResource("ShaderMaterial_flxhq")
-position = Vector2(2086.5, 926.2501)
-scale = Vector2(3.4109068, 3.0993981)
-texture = SubResource("CanvasTexture_u71ib")
-
-[node name="TileMapLayer3" type="TileMapLayer" parent="World" unique_id=284671844]
-modulate = Color(1, 0.9906667, 0.99, 1)
-position = Vector2(-789.00006, -1043.0001)
-scale = Vector2(1.2, 1.2)
-tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAkADoAAgAGAAEAAAByADoAAgAGAAEAAACKADkAAgAGAAEAAAB+ADoAAgAHAAEAAABRADoAAgAHAAEAABA9ADkAAgAGAAAAAABfADkAAgAHAAAAAABpADoAAgAEAAQAAADMADkAAgAHAAAAAACwADoAAgAHAAAAAABsADkAAgAHAAAAAADUADoAAgAGAAEAAADtADkAAgAGAAAAAAABAToAAgAHAAEAABAPATkAAgAHAAAAAAAyADkAAgAHAAAAAABNADkAAgAHAAAAAACZADkAAgAGAAEAABDhADkAAgAGAAEAABA=")
-tile_set = ExtResource("7_k30wa")
 
 [node name="Toucan" parent="World" unique_id=1404903487 instance=ExtResource("10_bq7xw")]
 position = Vector2(798.00006, -123)
@@ -887,13 +942,6 @@ texture = ExtResource("27_7yw1m")
 
 [node name="Visual" type="Node2D" parent="World/Arena" unique_id=1605570121]
 
-[node name="FloorSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1942316824]
-modulate = Color(1, 1, 0, 1)
-z_index = 5
-position = Vector2(2018, 546)
-scale = Vector2(2, 3.914)
-texture = ExtResource("5_80yr0")
-
 [node name="BoneSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=909731591]
 visible = false
 z_index = 2
@@ -1029,6 +1077,22 @@ scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/Arena/Boss_Speech" unique_id=204024588]
 libraries/ = SubResource("AnimationLibrary_viq1m")
+
+[node name="EyeSkull" type="Node2D" parent="World/Arena" unique_id=742730589]
+z_index = 400
+position = Vector2(1543, -952)
+scale = Vector2(2.5, 2.5)
+
+[node name="Fire2" parent="World/Arena/EyeSkull" unique_id=1652364663 instance=ExtResource("41_4xu44")]
+z_index = 400
+position = Vector2(4.3999996, -1.9999999)
+radius = 5
+glow_texture = ExtResource("42_oj4hj")
+
+[node name="Fire3" parent="World/Arena/EyeSkull" unique_id=2107376780 instance=ExtResource("41_4xu44")]
+position = Vector2(-67.20003, -3.1999984)
+radius = 5
+glow_texture = ExtResource("42_oj4hj")
 
 [node name="IntroCinematic" type="Node2D" parent="World" unique_id=573419137]
 position = Vector2(818, 894)
