@@ -40,33 +40,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
 size = Vector2(87, 137)
 
-[sub_resource type="Animation" id="Animation_b43wt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5, 4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../HealthBar:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(79, -71)]
-}
-
 [sub_resource type="Animation" id="Animation_4xyrk"]
 resource_name = "aggro"
 length = 0.8
@@ -312,7 +285,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1pcfp"]
 _data = {
-&"RESET": SubResource("Animation_b43wt"),
 &"aggro": SubResource("Animation_4xyrk"),
 &"attack": SubResource("Animation_60gw1"),
 &"cac": SubResource("Animation_4ah2e"),
@@ -357,7 +329,7 @@ position = Vector2(-151, 56)
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=802653703]
 position = Vector2(5, 4)
 scale = Vector2(-0.5, 0.5)
-texture = ExtResource("26_b43wt")
+texture = ExtResource("3_nfy1s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=1463877392]
 libraries/ = SubResource("AnimationLibrary_1pcfp")
