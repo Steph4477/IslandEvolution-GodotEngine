@@ -203,7 +203,7 @@ func _ready():
 	print("KING UNLOCKED : ", king_unlocked)
 	
 	#await load_level("res://Levels/Test/test_scene.tscn")
-	await load_level("res://Levels/Loader/loader.tscn")
+	#await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
@@ -213,7 +213,7 @@ func _ready():
 	#await load_level("res://Levels/Lvl2/Lvl_2c/lvl_2c.tscn")
 	#await load_level("res://Levels/Lvl3/lvl_3.tscn")
 	#await load_level("res://Levels/Lvl3/Lvl_3a/lvl_3a.tscn")
-	#await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
+	await load_level("res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn")
 	#await load_level("res://Levels/Lvl4/lvl_4.tscn")
 	await get_tree().process_frame
 
@@ -453,16 +453,16 @@ func reset_progression():
 	pending_player_pos = Vector2.ZERO
 
 	var dir = DirAccess.open("user://")
-	if dir and dir.file_exists("savegame.json"):
-		dir.remove("savegame.json")
+	if dir and dir.file_exists("progress.json"):
+		dir.remove("progress.json")
 
 	print("RESET PROGRESSION")
 
 func load_global_progress():
-	if not FileAccess.file_exists(SAVE_PATH):
+	if not FileAccess.file_exists(PROGRESS_PATH):
 		return false
 
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var file = FileAccess.open(PROGRESS_PATH, FileAccess.READ)
 	var content = file.get_as_text()
 	file.close()
 
@@ -494,7 +494,11 @@ func load_global_progress():
 
 	has_lance = data.get("has_lance", false)
 	can_fire_lance = data.get("can_fire_lance", false)
-
+	
+	print("LOAD GLOBAL PROGRESS")
+	print("DIFFICULTY LOADED : ", difficulty)
+	print("SURVIVOR LOADED : ", survivor_unlocked)
+	print("KING LOADED : ", king_unlocked)
 	if has_lance:
 		can_fire_lance = true
 
@@ -784,7 +788,7 @@ func save_game():
 	data["toucan_challenge_intro_seen"] = toucan_challenge_intro_seen
 
 	data["difficulty"] = difficulty
-	data["explorer_unlocked"] = explorer_unlocked
+	#data["explorer_unlocked"] = explorer_unlocked
 	data["survivor_unlocked"] = survivor_unlocked
 	data["king_unlocked"] = king_unlocked
 
