@@ -55,5 +55,5 @@ func _on_area_2d_body_entered(body):
 
 	queue_free()
 	
-	if body.is_in_group("platform") or body.is_in_groupe("Border"):
+	if body.is_in_group("platform") or body.is_in_group("Border"):
 		queue_free()
