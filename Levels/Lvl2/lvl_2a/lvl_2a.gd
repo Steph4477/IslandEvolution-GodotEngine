@@ -3,12 +3,24 @@ extends Node2D
 @onready var marker = $IntroToucanSpawn
 
 func _ready():
+	await get_tree().process_frame
+
+	var gs = get_node("/root/GameState")
+
+	gs.unlocked_level_path = "res://Levels/Lvl2/lvl_2a/lvl_2a.tscn"
+	gs.save_progress()
+
+	if gs.player:
+		gs.player.visible = false
+		gs.player.set_physics_process(false)
+		gs.player.set_process(false)
+		gs.player.velocity = Vector2.ZERO
+		
 	$Node2D/Sound/lvl2.play()
 	await get_tree().process_frame
 
 	start_cinematic()
-	
-	var gs = get_node("/root/GameState")
+
 	
 	# Caméra + assombrissement Moko
 	if gs.player:

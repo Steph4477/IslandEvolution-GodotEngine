@@ -53,6 +53,12 @@ var intro_finished = false
 
 
 func _ready():
+	var gs = get_node("/root/GameState")
+
+	gs.killed_enemy_ids.clear()
+	gs.collected_loot_ids.clear()
+	gs.loot_level_path = "res://Levels/Lvl3/Lvl_3b/lvl_3b.tscn"
+
 	disable_enemy(snake_spawn_1)
 	disable_enemy(snake_spawn_2)
 	disable_enemy(snake_spawn_3)

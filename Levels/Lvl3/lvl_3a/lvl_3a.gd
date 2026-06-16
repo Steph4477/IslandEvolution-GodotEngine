@@ -27,6 +27,9 @@ func _ready():
 	await get_tree().process_frame
 
 	var gs = get_node("/root/GameState")
+	
+	gs.unlocked_level_path = "res://Levels/Lvl3/Lvl_3a/lvl_3a.tscn"
+	gs.save_progress()
 
 	if gs.player:
 		gs.player.visible = false
