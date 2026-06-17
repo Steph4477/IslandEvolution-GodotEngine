@@ -189,8 +189,11 @@ rotation = 3.14159
 scale = Vector2(1, -1.00374)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=2133574649]
+autostart = true
 
 [node name="ProjectileTimer" type="Timer" parent="." unique_id=1862551901]
+wait_time = 0.3
+autostart = true
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1669548067]
 position = Vector2(-57, -6)

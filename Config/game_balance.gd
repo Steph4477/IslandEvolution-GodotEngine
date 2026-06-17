@@ -90,14 +90,14 @@ const PLAYER_SPRINT_DURATION = 3.0
 # ============================================================================
 
 const ENEMY_HP = {
-	"bee": 10,
-	"mosquito": 10,
+	"bee": 20,
+	"mosquito": 20,
 	"rat": 60,
-	"snake": 80,
-	"pyg": 100,
+	"snake": 90,
+	"pyg": 120,
 	"swim_croco": 600,
 	"croco": 200,
-	"cannibal": 120,
+	"cannibal": 160,
 	"boss_cannibal": 400,
 	"boss_tarantula": 600,
 	"add_tarantula": 1

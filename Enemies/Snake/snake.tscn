@@ -179,7 +179,6 @@ shape = SubResource("CapsuleShape2D_pioq7")
 position = Vector2(-50.000004, -86)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1036608915]
-wait_time = 0.5
 autostart = true
 
 [node name="ProjectileTimer" type="Timer" parent="." unique_id=1167754634]

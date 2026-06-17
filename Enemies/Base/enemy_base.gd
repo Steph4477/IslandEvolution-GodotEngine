@@ -7,7 +7,7 @@ class_name EnemyBase
 @export var attack_anim_name = "attack"
 @export var count_in_score = true
 @export var enemy_id = ""
-
+@export var melee_attack_cooldown = 1.0
 @export var drop_loot_enabled = false
 @export_file("*.tscn") var loot_scene_path = ""
 
@@ -20,6 +20,7 @@ var is_attacking = false
 var is_shooting = false
 var hit_locked = false
 var in_melee = false
+var can_melee_attack = true
 
 var hb = null
 var health_bar = null
@@ -107,7 +108,6 @@ func refresh_player():
 ##########################################################################
 #                             ATTAQUE                                    #
 ########################################################################## 
-					
 func can_attack_player():
 	if player == null:
 		refresh_player()
@@ -122,6 +122,9 @@ func can_attack_player():
 		return false
 
 	if is_attacking:
+		return false
+
+	if not can_melee_attack:
 		return false
 
 	return true
@@ -164,13 +167,13 @@ func start_hit_lock():
 
 func do_attack_damage():
 	player.damage_mod.on_hit(damage)
-	start_hit_lock()
 
 func attack():
 	if not can_attack_player():
 		return
 
 	is_attacking = true
+	can_melee_attack = false
 	velocity.x = 0
 
 	if anim.current_animation != attack_anim_name:
@@ -181,6 +184,10 @@ func attack():
 	await get_tree().create_timer(anim.get_animation(attack_anim_name).length).timeout
 
 	is_attacking = false
+
+	await get_tree().create_timer(melee_attack_cooldown).timeout
+
+	can_melee_attack = true
 
 
 # --- Popup dégâts ---
@@ -212,6 +219,7 @@ func die():
 	is_shooting = false
 	hit_locked = false
 	in_melee = false
+	can_melee_attack = false
 	velocity = Vector2.ZERO
 
 	if attack_timer:
