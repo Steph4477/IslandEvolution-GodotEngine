@@ -84,13 +84,6 @@ func collect_sprint():
 	p.game_state.sprint_stamina = p.game_state.sprint_stamina_max
 	p.can_sprint = true
 
-	if p.game_state.speed_bar:
-		p.game_state.speed_bar.show_bar()
-		p.game_state.speed_bar.update_speed_bar_current(p.game_state.sprint_stamina)
-
-	if p.game_state.hud and p.game_state.hud.bar_slot:
-		p.game_state.hud.bar_slot.show_speed()
-
 	var hud = p.game_state.hud
 	if hud and first:
 		hud.appear_sprint()
@@ -118,7 +111,6 @@ func collect_air():
 	var first = not p.game_state.air_buff_unlocked
 
 	p.game_state.air_buff_unlocked = true
-	#await p.play_anim("air_buff")
 
 	if first:
 		p.popups_mod.show_info(" 🌀Tu peux maintenant utiliser le buff air !")
