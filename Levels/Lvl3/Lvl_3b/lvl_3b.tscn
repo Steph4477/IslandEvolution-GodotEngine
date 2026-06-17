@@ -291,10 +291,10 @@ tracks/1/path = NodePath("../../Arena/Visual/BoneSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.60999924, 0.65999943, 0.73999935, 0.7999998, 0.85333294, 0.93333334, 1.0333331, 1.0999997, 4.9333334, 5.0133333, 5.0633335, 5.1433334, 5.2, 5.293333, 5.3433332, 5.423333, 5.4666667, 5.543333, 5.5833335, 5.673333, 6.4100003, 6.51, 6.56, 6.65, 6.71, 6.8, 6.85, 6.9100003, 6.9433336, 7.01, 7.08, 7.1600003, 7.21, 7.28, 7.33, 8.046667, 8.090001),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.60999924, 0.65999943, 0.73999935, 0.7999998, 0.85333294, 0.93333334, 1.0333331, 1.0999997),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1600, -421.682), Vector2(1000, -438.815), Vector2(1800, -466.228), Vector2(1150, -486.787), Vector2(1400, -522.315), Vector2(1270, -746), Vector2(1388, -1302), Vector2(1495, -1293), Vector2(1300.366, 139.644), Vector2(1100, 112.838), Vector2(1600, 96.084), Vector2(1800, 69.278), Vector2(1500, 50.29), Vector2(800, 25.308), Vector2(1060, 11.925), Vector2(1500, -9.488), Vector2(1250, -21.086), Vector2(1100, -40.597), Vector2(1550.063, -50.777), Vector2(1800, -73.681), Vector2(1480, -88.951), Vector2(800, -119.572), Vector2(1050, -134.883), Vector2(1500, -162.443), Vector2(1220, -180.816), Vector2(1000, -203.521), Vector2(1600, -216.135), Vector2(1000, -231.272), Vector2(1450, -239.681), Vector2(800, -262.525), Vector2(1000, -286.511), Vector2(1600, -313.924), Vector2(1200, -331.057), Vector2(1000, -350.363), Vector2(1600, -364.153), Vector2(1000, -383.459), Vector2(1450, -395.411)]
+"values": [Vector2(1600, -421.682), Vector2(1000, -438.815), Vector2(1800, -466.228), Vector2(1150, -486.787), Vector2(1400, -522.315), Vector2(1270, -746), Vector2(1388, -1302), Vector2(1495, -1293)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -981,6 +981,7 @@ z_index = 80
 position = Vector2(-136, -754)
 
 [node name="Box" type="Panel" parent="World/Arena/Boss_Speech" unique_id=614944357]
+z_index = 50
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -999,8 +1000,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sap2p")
 layout_mode = 0
 offset_left = -28.0
 offset_top = -69.0
-offset_right = 1144.0
-offset_bottom = 54.0
+offset_right = 2472.0
+offset_bottom = 181.0
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
@@ -1011,9 +1012,9 @@ layout_mode = 2
 theme_override_colors/default_color = Color(1, 0.07058824, 0.1254902, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/normal_font_size = 50
-theme_override_font_sizes/bold_font_size = 50
-theme_override_font_sizes/italics_font_size = 35
+theme_override_font_sizes/normal_font_size = 70
+theme_override_font_sizes/bold_font_size = 70
+theme_override_font_sizes/italics_font_size = 70
 bbcode_enabled = true
 scroll_active = false
 
