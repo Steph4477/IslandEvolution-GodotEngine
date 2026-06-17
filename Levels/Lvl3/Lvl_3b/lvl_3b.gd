@@ -64,7 +64,7 @@ func _ready():
 
 	var gs = get_node("/root/GameState")
 	player = gs.player
-
+	
 	boss_spawn.set_meta("boss_portrait", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibale.png"))
 	boss_spawn.set_meta("boss_name", preload("res://Hud/BossHud/HudFightBoss/HudBoss/Cannibale/cannibaleName.png"))
 
@@ -93,7 +93,7 @@ func _ready():
 	reveal_anim.play("close_door")
 
 	# --- vague de loots intro ---
-	await get_tree().create_timer(3.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	start_public_anim()
 
 	await get_tree().create_timer(0.5).timeout

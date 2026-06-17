@@ -1,15 +1,13 @@
-[gd_scene format=3 uid="uid://dr677cjk0xf3u"]
+[gd_scene format=4 uid="uid://dr677cjk0xf3u"]
 
 [ext_resource type="Script" uid="uid://btk64wslk3k6e" path="res://Levels/Lvl3/Lvl_3b/lvl_3b.gd" id="1_flxhq"]
 [ext_resource type="PackedScene" uid="uid://b2vyrpdh74p53" path="res://Levels/Lvl3/Lvl_3b/Assets/Public/public_cannibal.tscn" id="2_6do33"]
-[ext_resource type="Script" uid="uid://b2wash03n1xr2" path="res://Levels/Lvl1/Environement/Paralaxe/parallax.gd" id="2_mx2ic"]
 [ext_resource type="Texture2D" uid="uid://dt5bo5pdqyoa7" path="res://Levels/Lvl3/Environement/TileMap/sky.png" id="3_4xu44"]
 [ext_resource type="Texture2D" uid="uid://nxpdacl8ouvv" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/arena.png" id="3_80yr0"]
 [ext_resource type="Texture2D" uid="uid://ig5udo1t1xpe" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/tooth.png" id="4_k30wa"]
 [ext_resource type="Texture2D" uid="uid://cm1u6sfq8s7lb" path="res://Levels/Lvl3/Environement/TileMap/back.png" id="4_oj4hj"]
-[ext_resource type="Texture2D" uid="uid://dmp5y3f7xpava" path="res://ItemsDecors/Torch/light_halo_circle.png" id="4_w1o2t"]
 [ext_resource type="Texture2D" uid="uid://dtns0bb03echc" path="res://Levels/Lvl3/Lvl_3b/Assets/Floor.png" id="5_80yr0"]
-[ext_resource type="Texture2D" uid="uid://durgu4jxm45s1" path="res://Levels/Lvl3/Environement/TileMap/forest.png" id="5_w1o2t"]
+[ext_resource type="Texture2D" uid="uid://upr22g4d1vl4" path="res://Levels/Lvl3/Environement/TileMap/hutt.png" id="6_4xu44"]
 [ext_resource type="PackedScene" uid="uid://b8dpjjqkydppr" path="res://Levels/Lvl3/Lvl_3b/Assets/Tribune/tribune_thrower.tscn" id="7_sap2p"]
 [ext_resource type="Shader" uid="uid://g3bxrjs23usx" path="res://Levels/Lvl3/Environement/Swim_Zone/water.gdshader" id="8_cp7mx"]
 [ext_resource type="Texture2D" uid="uid://co21ubc6x2ibo" path="res://Levels/Lvl3/Lvl_3b/Assets/Arena/Grid/grid.png" id="9_bhj3v"]
@@ -51,6 +49,21 @@ shader_parameter/speed = 0.050000002375
 [sub_resource type="CanvasTexture" id="CanvasTexture_1dlp6"]
 diffuse_texture = ExtResource("9_bq7xw")
 texture_repeat = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oj4hj"]
+texture = ExtResource("6_4xu44")
+texture_region_size = Vector2i(500, 500)
+0:1/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_w1o2t"]
+sources/0 = SubResource("TileSetAtlasSource_oj4hj")
 
 [sub_resource type="Animation" id="Animation_dm2a1"]
 resource_name = "RESET"
@@ -256,60 +269,9 @@ _data = {
 &"speech_out": SubResource("Animation_0rsi1")
 }
 
-[sub_resource type="Animation" id="Animation_bhj3v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Camera2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3893.3335, -580)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Arena/Visual/ToothSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1406, -18)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../FakeMoko:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3940, -1156.6666)]
-}
-
 [sub_resource type="Animation" id="Animation_sap2p"]
 resource_name = "close"
-length = 2.8333333
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -317,7 +279,7 @@ tracks/0/path = NodePath("../../Arena/Visual/BoneSprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8666667),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -329,10 +291,10 @@ tracks/1/path = NodePath("../../Arena/Visual/BoneSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.36666667, 0.4466666, 0.4966668, 0.5766667, 0.6333333, 0.72666657, 0.77666676, 0.8566667, 0.9, 0.97666657, 1.0166668, 1.1066667, 1.1666669, 1.2666668, 1.3166667, 1.4066666, 1.4666666, 1.5566667, 1.6066664, 1.6666669, 1.7000002, 1.7666668, 1.8366665, 1.9166669, 1.9666666, 2.0366669, 2.0866666, 2.1566668, 2.2000003, 2.2766666, 2.3266668, 2.4066668, 2.4666667, 2.5866666, 2.666667, 2.7666667, 2.8333333),
+"times": PackedFloat32Array(0.60999924, 0.65999943, 0.73999935, 0.7999998, 0.85333294, 0.93333334, 1.0333331, 1.0999997, 4.9333334, 5.0133333, 5.0633335, 5.1433334, 5.2, 5.293333, 5.3433332, 5.423333, 5.4666667, 5.543333, 5.5833335, 5.673333, 6.4100003, 6.51, 6.56, 6.65, 6.71, 6.8, 6.85, 6.9100003, 6.9433336, 7.01, 7.08, 7.1600003, 7.21, 7.28, 7.33, 8.046667, 8.090001),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1300.366, 139.644), Vector2(1100, 112.838), Vector2(1600, 96.084), Vector2(1800, 69.278), Vector2(1500, 50.29), Vector2(800, 25.308), Vector2(1060, 11.925), Vector2(1500, -9.488), Vector2(1250, -21.086), Vector2(1100, -40.597), Vector2(1550.063, -50.777), Vector2(1800, -73.681), Vector2(1480, -88.951), Vector2(800, -119.572), Vector2(1050, -134.883), Vector2(1500, -162.443), Vector2(1220, -180.816), Vector2(1000, -203.521), Vector2(1600, -216.135), Vector2(1000, -231.272), Vector2(1450, -239.681), Vector2(800, -262.525), Vector2(1000, -286.511), Vector2(1600, -313.924), Vector2(1200, -331.057), Vector2(1000, -350.363), Vector2(1600, -364.153), Vector2(1000, -383.459), Vector2(1450, -395.411), Vector2(1600, -421.682), Vector2(1000, -438.815), Vector2(1800, -466.228), Vector2(1150, -486.787), Vector2(1400, -522.315), Vector2(1270, -746), Vector2(1388, -1302), Vector2(1495, -1293)]
+"values": [Vector2(1600, -421.682), Vector2(1000, -438.815), Vector2(1800, -466.228), Vector2(1150, -486.787), Vector2(1400, -522.315), Vector2(1270, -746), Vector2(1388, -1302), Vector2(1495, -1293), Vector2(1300.366, 139.644), Vector2(1100, 112.838), Vector2(1600, 96.084), Vector2(1800, 69.278), Vector2(1500, 50.29), Vector2(800, 25.308), Vector2(1060, 11.925), Vector2(1500, -9.488), Vector2(1250, -21.086), Vector2(1100, -40.597), Vector2(1550.063, -50.777), Vector2(1800, -73.681), Vector2(1480, -88.951), Vector2(800, -119.572), Vector2(1050, -134.883), Vector2(1500, -162.443), Vector2(1220, -180.816), Vector2(1000, -203.521), Vector2(1600, -216.135), Vector2(1000, -231.272), Vector2(1450, -239.681), Vector2(800, -262.525), Vector2(1000, -286.511), Vector2(1600, -313.924), Vector2(1200, -331.057), Vector2(1000, -350.363), Vector2(1600, -364.153), Vector2(1000, -383.459), Vector2(1450, -395.411)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -341,7 +303,7 @@ tracks/2/path = NodePath("../../Arena/Visual/ToothSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.7666667),
+"times": PackedFloat32Array(0, 1.1333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1406, -18), Vector2(1379, -1322)]
@@ -495,7 +457,6 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbv6"]
 _data = {
-&"RESET": SubResource("Animation_bhj3v"),
 &"close": SubResource("Animation_sap2p"),
 &"intro": SubResource("Animation_ds7ig"),
 &"zoom": SubResource("Animation_nh78j"),
@@ -575,27 +536,9 @@ size = Vector2(101, 2353.5)
 [node name="lvl_3b" type="Node2D" unique_id=36208587]
 script = ExtResource("1_flxhq")
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1266304344]
-z_index = -100
-position = Vector2(4706, -408.00003)
-scale = Vector2(20.035, 20.035)
-color = Color(0.96453565, 0.4485975, 0.32686296, 1)
-energy = 5.12
-blend_mode = 2
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0.9490196)
-texture = ExtResource("4_w1o2t")
-texture_scale = 1.5
-height = 334.0
-
 [node name="Parallax" type="Node2D" parent="." unique_id=81065079]
 z_index = 20
 position = Vector2(60, -358)
-script = ExtResource("2_mx2ic")
-tree_speed = 0.0
-sky_speed = 0.0
-plant_speed = 0.0
-level_width = 4000.0
 
 [node name="SkyLayer" type="Node2D" parent="Parallax" unique_id=43799497]
 z_index = -40
@@ -604,7 +547,8 @@ scale = Vector2(1.2, 1.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/SkyLayer" unique_id=913331114]
 modulate = Color(0.69135684, 0.6913568, 0.69135684, 1)
-position = Vector2(-153, 204)
+position = Vector2(3939.9993, 78.3333)
+scale = Vector2(3, 3.874)
 texture = ExtResource("3_4xu44")
 
 [node name="TreeLayer" type="Node2D" parent="Parallax" unique_id=1143458291]
@@ -614,19 +558,9 @@ position = Vector2(-1770, 98)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/TreeLayer" unique_id=1212456470]
 modulate = Color(0.6484881, 0.6484881, 0.6484881, 1)
-position = Vector2(-21, 0)
+position = Vector2(3768, 221)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_oj4hj")
-
-[node name="PlantLayer" type="Node2D" parent="Parallax" unique_id=71043631]
-modulate = Color(0.89492244, 0.89492244, 0.8949224, 1)
-z_index = 5
-position = Vector2(-4880, -1793)
-scale = Vector2(2, 2)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax/PlantLayer" unique_id=355558468]
-modulate = Color(0.4911912, 0.4911909, 0.49119067, 1)
-z_index = -20
-texture = ExtResource("5_w1o2t")
 
 [node name="WaterSprite" type="Sprite2D" parent="Parallax" unique_id=912194161]
 modulate = Color(0.42595553, 0.42595553, 0.4259555, 1)
@@ -636,12 +570,6 @@ material = SubResource("ShaderMaterial_7yw1m")
 position = Vector2(2011.5, 786)
 scale = Vector2(3.37286, 1.6104419)
 texture = SubResource("CanvasTexture_1dlp6")
-
-[node name="FloorSprite" type="Sprite2D" parent="." unique_id=1942316824]
-modulate = Color(0.8329021, 0.83290213, 0.83290213, 1)
-position = Vector2(2858, 1348)
-scale = Vector2(2, 3.914)
-texture = ExtResource("5_80yr0")
 
 [node name="World" type="Node2D" parent="." unique_id=1794883641]
 modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
@@ -945,7 +873,7 @@ texture = ExtResource("27_7yw1m")
 [node name="BoneSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=909731591]
 visible = false
 z_index = 2
-position = Vector2(1300.366, 139.644)
+position = Vector2(1600, -421.682)
 scale = Vector2(2, 2)
 texture = ExtResource("11_6auop")
 
@@ -959,6 +887,20 @@ z_index = 8
 position = Vector2(1388, -1304)
 scale = Vector2(2, 2)
 texture = ExtResource("3_80yr0")
+
+[node name="FloorSprite" type="Sprite2D" parent="World/Arena/Visual" unique_id=1942316824]
+modulate = Color(0.8329021, 0.83290213, 0.83290213, 1)
+position = Vector2(2127, 31)
+scale = Vector2(2, 3.914)
+texture = ExtResource("5_80yr0")
+
+[node name="TileMapVillage" type="TileMapLayer" parent="World/Arena/Visual" unique_id=1681650870]
+modulate = Color(0.573792, 0.573792, 0.5737917, 1)
+position = Vector2(12307, -1372)
+rotation = -3.1415925
+scale = Vector2(1.5, -1.5)
+tile_map_data = PackedByteArray("AADCAR8AAAAAAAEAAACRAR0AAAACAAAAAACwAR0AAAADAAAAAAB2ARgAAAADAAEAAACAARwAAAACAAAAAABqAR4AAAACAAAAABACAh0AAAAAAAEAAAAWAhUAAAACAAEAABA1AhUAAAABAAEAABA=")
+tile_set = SubResource("TileSet_w1o2t")
 
 [node name="WavesEnemies" type="Node2D" parent="World/Arena/Visual" unique_id=1098877637]
 z_index = 10
