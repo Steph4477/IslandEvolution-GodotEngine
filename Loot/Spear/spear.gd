@@ -1,7 +1,11 @@
 extends Node2D
 
 @export var loot_id = ""
+@export var lance_value = 1
+@export var activate_shooting = false
+
 @onready var anim = $AnimationPlayer
+@onready var collision = $Area2D/CollisionShape2D
 
 var gs
 var collected = false
@@ -12,11 +16,19 @@ func _ready():
 	if loot_id == "":
 		loot_id = name
 
+	call_deferred("check_collected")
+
+
+func check_collected():
 	if gs.collected_loot_ids.has(loot_id):
 		queue_free()
 		return
 
+	collision.disabled = true
 	anim.play("appear")
+	await anim.animation_finished
+	collision.disabled = false
+
 
 func _on_area_2d_body_entered(body):
 	if collected:
@@ -24,6 +36,6 @@ func _on_area_2d_body_entered(body):
 
 	if body.is_in_group("Player"):
 		collected = true
-		body.collect_items.collect_lance(3)
+		body.collect_items.collect_lance(3, true)
 		gs.add_loot_collected(loot_id)
 		queue_free()

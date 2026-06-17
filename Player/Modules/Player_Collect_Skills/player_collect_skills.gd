@@ -64,17 +64,20 @@ func collect_oxygen(amount):
 
 func collect_ramp():
 	var first = not p.game_state.ramp_unlocked
+
 	p.game_state.ramp_unlocked = true
 	p.can_ramp = true
 
 	p.popups_mod.show_info("🤸 Tu peux maintenant ramper avec ctrl !")
 
 	var hud = p.game_state.hud
-	if hud and first:
-		hud.appear_ramp()
+	if hud:
+		if first:
+			hud.appear_ramp()
+		else:
+			hud._show_ramp()
 
-	p.hud_mod.refresh_hud_buttons()
-
+		hud.update_ramp_display()
 
 func collect_sprint():
 	var first = not p.game_state.sprint_unlocked

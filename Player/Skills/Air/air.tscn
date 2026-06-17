@@ -7,33 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bjqdccxleyi6e" path="res://Player/Skills/Air/3.png" id="4_7y25p"]
 [ext_resource type="Texture2D" uid="uid://bapg8xjfc2lab" path="res://Player/Skills/Air/4.png" id="5_ij8bf"]
 
-[sub_resource type="Animation" id="Animation_xju6l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skill:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skill/Tornado:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_tny2b")]
-}
-
 [sub_resource type="Animation" id="Animation_rk3tx"]
 resource_name = "appear_skill_fire"
 tracks/0/type = "value"
@@ -68,7 +41,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8puik"]
 _data = {
-&"RESET": SubResource("Animation_xju6l"),
 &"appear_skill_fire": SubResource("Animation_rk3tx"),
 &"tornado_spin": SubResource("Animation_suvur")
 }
@@ -85,7 +57,6 @@ libraries/ = SubResource("AnimationLibrary_8puik")
 autoplay = &"appear_skill_fire"
 
 [node name="Skill" type="Node2D" parent="." unique_id=1326740350]
-modulate = Color(1, 1, 1, 0)
 rotation = 2.9137337
 
 [node name="Ball" type="Sprite2D" parent="Skill" unique_id=1091408877]

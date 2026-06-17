@@ -25,7 +25,6 @@ var can_fire_lance = false
 var can_fire_bone = false
 var can_camouflage = false
 var has_key = false
-var has_lance = false
 var has_flower = false
 var toucan_challenge_retry = false
 var focus_cam_frog = false
@@ -200,8 +199,8 @@ func _ready():
 	print("SURVIVOR UNLOCKED : ", survivor_unlocked)
 	print("KING UNLOCKED : ", king_unlocked)
 	
-	#await load_level("res://Levels/Test/test_scene.tscn")
-	await load_level("res://Levels/Loader/loader.tscn")
+	await load_level("res://Levels/Test/test_scene.tscn")
+	#await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
 	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
@@ -493,18 +492,25 @@ func load_global_progress():
 	fire_buff_unlocked = data.get("fire_buff_unlocked", false)
 	air_buff_unlocked = data.get("air_buff_unlocked", false)
 	camouflage_unlocked = data.get("camouflage_unlocked", false)
+	camouflage_count = int(data.get("camouflage_count", 0))
+	can_camouflage = data.get("can_camouflage", false)
 
-	has_lance = data.get("has_lance", false)
-	can_fire_lance = data.get("can_fire_lance", false)
+	banane_count = int(data.get("banane_count", 0))
+	honey_count = int(data.get("honey_count", 0))
 	
+	coco_count = int(data.get("coco_count", 0))
+	can_fire_coco = data.get("can_fire_coco", false)
+	
+	bone_count = int(data.get("bone_count", 0))
+	can_fire_bone = data.get("can_fire_bone", false)
+
+	lance_count = int(data.get("lance_count", 0))
+	can_fire_lance = data.get("can_fire_lance", false)
+
 	print("LOAD GLOBAL PROGRESS")
 	print("DIFFICULTY LOADED : ", difficulty)
 	print("SURVIVOR LOADED : ", survivor_unlocked)
 	print("KING LOADED : ", king_unlocked)
-	if has_lance:
-		can_fire_lance = true
-
-	return true
 
 func load_level(scene_path):
 	resume_game()
@@ -628,7 +634,12 @@ func load_level(scene_path):
 		p.can_fire_coco = can_fire_coco
 		p.can_fire_bone = can_fire_bone
 		p.can_fire_lance = can_fire_lance
+		
+		lance_count = p.lance_count
+		
+		p.can_camouflage = can_camouflage
 		p.can_sprint = sprint_unlocked
+		p.can_ramp = ramp_unlocked
 		p.double_jump_unlocked = double_jump_unlocked
 
 		p.heal_potions.clear()
@@ -638,34 +649,43 @@ func load_level(scene_path):
 		p.honey_potions.clear()
 		for i in range(honey_count):
 			p.honey_potions.append("honey")
-		if lance_count > 0:
-			has_lance = true
-			can_fire_lance = true
-			p.can_fire_lance = true
-			p.lance_count = lance_count
+
 		if hud:
 			hud.update_lives_display(lives)
 			hud.update_seed_display(collected_seeds, total_seeds_in_level)
 
-			if lance_count > 0:
-				hud.lance_button.visible = true
-				hud.set_button_enabled(hud.lance_button, true)
-				hud.update_lance_display()
-			else:
-				hud.lance_button.visible = false
-				hud.set_button_enabled(hud.lance_button, false)
-				hud.update_lance_display()
-
 			if sprint_unlocked:
-				hud.sprint_button.visible = true
-				hud.set_button_enabled(hud.sprint_button, true)
+				hud._show_sprint()
+
+			if ramp_unlocked:
+				hud._show_ramp()
+
+			if camouflage_unlocked:
+				hud._show_camouflage()
+
+			if fire_buff_unlocked:
+				hud._show_fire()
+
+			if air_buff_unlocked:
+				hud._show_air()
+
+			if bone_count > 0 or can_fire_bone:
+				hud._show_bone()
+
+			if lance_count > 0 or can_fire_lance:
+				hud._show_spear()
 
 			hud.update_lance_display()
 			hud.update_banane_display()
 			hud.update_honey_display()
 			hud.update_coco_display()
 			hud.update_bone_display()
+			hud.update_lance_display()
 			hud.update_camouflage_display()
+			hud.update_ramp_display()
+			hud.update_sprint_display()
+			hud.update_fire_display()
+			hud.update_air_display()
 
 	await fade.fade_in()
 
@@ -758,7 +778,6 @@ func save_game():
 	data["loot_level_path"] = loot_level_path
 
 	data["has_key"] = has_key
-	data["has_lance"] = has_lance
 	data["has_flower"] = has_flower
 	
 	data["wood_collected"] = wood_collected
@@ -843,10 +862,6 @@ func apply_save_data(data):
 	can_fire_coco = data.get("can_fire_coco", false)
 
 	can_fire_lance = data.get("can_fire_lance", false)
-	has_lance = data.get("has_lance", false)
-
-	if has_lance:
-		can_fire_lance = true
 
 	can_fire_bone = data.get("can_fire_bone", false)
 
@@ -1008,6 +1023,10 @@ func reset_after_death():
 		hud.update_coco_display()
 		hud.update_bone_display()
 		hud.update_camouflage_display()
+		hud.update_ramp_display()
+		hud.update_sprint_display()
+		hud.update_fire_display()
+		hud.update_air_display()
 
 func request_reload_after_delay(delay = 0.5):
 	await get_tree().create_timer(delay).timeout
@@ -1104,8 +1123,12 @@ func reinitialise():
 	seed_level_path = ""
 	collected_seeds = 0
 	lance_count = 0
-	camouflage_count = 0
 
+	camouflage_unlocked = false
+	camouflage_count = 0
+	can_camouflage = false
+	is_camouflaged = false
+	
 	killed_enemy_ids.clear()
 	collected_loot_ids.clear()
 	loot_level_path = ""
@@ -1118,7 +1141,6 @@ func reinitialise():
 	air_buff_unlocked = false
 
 	has_key = false
-	has_lance = false
 	has_flower = false
 
 	sprint_unlocked = false

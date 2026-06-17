@@ -351,21 +351,6 @@ _data = {
 &"appear_camouflage": SubResource("Animation_legcx")
 }
 
-[sub_resource type="Animation" id="Animation_o1dn3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1556, 925)]
-}
-
 [sub_resource type="Animation" id="Animation_eqavf"]
 resource_name = "appear_ramp"
 tracks/0/type = "value"
@@ -407,7 +392,6 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ll21l"]
 _data = {
-&"RESET": SubResource("Animation_o1dn3"),
 &"appear_ramp": SubResource("Animation_eqavf")
 }
 
@@ -837,8 +821,9 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_26inf")
 
 [node name="Spear" type="TouchScreenButton" parent="Gamepad" unique_id=2046174989]
-position = Vector2(790, 329)
-scale = Vector2(4, 4)
+position = Vector2(1678.6666, 807.3333)
+rotation = 6.2831855
+scale = Vector2(1.1, 1.1)
 texture_normal = ExtResource("12_s8lhr")
 texture_pressed = ExtResource("13_lwpkd")
 action = "shoot"

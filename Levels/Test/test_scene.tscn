@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
-[ext_resource type="PackedScene" path="res://Loot/Spear/spear.tscn" id="3_qvx8w"]
-[ext_resource type="PackedScene" uid="uid://bws7kkotjh64q" path="res://Enemies/Pygmy/pygmy.tscn" id="3_urigi"]
+[ext_resource type="PackedScene" uid="uid://qv3wtrx38rww" path="res://Loot/Spear/spear.tscn" id="3_qvx8w"]
+[ext_resource type="PackedScene" uid="uid://bg35ldgp1vmti" path="res://Player/Skills/Air/air.tscn" id="3_t726j"]
+[ext_resource type="PackedScene" uid="uid://c7vh70a2fcrkf" path="res://Enemies/Chameleon/chameleon.tscn" id="5_ey73w"]
+[ext_resource type="PackedScene" uid="uid://b1al56a08eu3u" path="res://Player/Skills/Ramp/ramp.tscn" id="6_vefbu"]
+[ext_resource type="PackedScene" uid="uid://cggxcitfp164h" path="res://Player/Skills/Sprint/sprint.tscn" id="7_4khab"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
+[ext_resource type="PackedScene" uid="uid://qx5rwduvnvd7" path="res://Player/Skills/Fire/fire.tscn" id="8_3k6jo"]
+[ext_resource type="PackedScene" path="res://Player/Skills/DoubleJump/double_jump.tscn" id="8_ml6qy"]
+[ext_resource type="PackedScene" uid="uid://cbf6yslv1hayf" path="res://Loot/Bone/bone_loot.tscn" id="9_ey73w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(313.271, 30.1528)
@@ -18,7 +24,7 @@ size = Vector2(312.20395, 53.526)
 [node name="Node2D" type="Node2D" parent="." unique_id=1402871080]
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=157147786]
-position = Vector2(1211, 640)
+position = Vector2(912, 457)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=582993913]
 
@@ -57,19 +63,32 @@ position = Vector2(1435, 1461)
 position = Vector2(1435, 1461)
 
 [node name="Lance" parent="." unique_id=1176398183 instance=ExtResource("3_qvx8w")]
-position = Vector2(1474, 1214)
+position = Vector2(1590, 1469)
 
-[node name="Lance2" parent="." unique_id=897770903 instance=ExtResource("3_qvx8w")]
-position = Vector2(1474, 1214)
+[node name="Node2D2" type="Node2D" parent="." unique_id=863706039]
+z_index = 20
+position = Vector2(2451, 1432)
 
-[node name="Lance3" parent="." unique_id=1855133208 instance=ExtResource("3_qvx8w")]
-position = Vector2(1474, 1214)
+[node name="Air" parent="Node2D2" unique_id=24103310 instance=ExtResource("3_t726j")]
+position = Vector2(-292, 9)
 
-[node name="Lance4" parent="." unique_id=1869253383 instance=ExtResource("3_qvx8w")]
-position = Vector2(1474, 1214)
+[node name="Chameleon" parent="Node2D2" unique_id=1185185535 instance=ExtResource("5_ey73w")]
+position = Vector2(164, 55)
 
-[node name="Lance5" parent="." unique_id=489397827 instance=ExtResource("3_qvx8w")]
-position = Vector2(1474, 1214)
+[node name="Ramp" parent="Node2D2" unique_id=1086615813 instance=ExtResource("6_vefbu")]
+position = Vector2(-1173, -7)
 
-[node name="Pygmy" parent="." unique_id=1783296698 instance=ExtResource("3_urigi")]
-position = Vector2(3152, 1355)
+[node name="Sprint" parent="Node2D2" unique_id=69020274 instance=ExtResource("7_4khab")]
+position = Vector2(-153, 7)
+
+[node name="Lance" parent="Node2D2" unique_id=208886441 instance=ExtResource("3_qvx8w")]
+position = Vector2(157, 25)
+
+[node name="DoubleJump" parent="Node2D2" unique_id=1942226673 instance=ExtResource("8_ml6qy")]
+position = Vector2(-10, 13)
+
+[node name="Fire" parent="Node2D2" unique_id=1696628184 instance=ExtResource("8_3k6jo")]
+position = Vector2(-542, 13)
+
+[node name="BoneLoot" parent="Node2D2" unique_id=332645160 instance=ExtResource("9_ey73w")]
+position = Vector2(-761, 25)

@@ -178,6 +178,8 @@ func _ready():
 	update_honey_display()
 	update_coco_display()
 	update_camouflage_display()
+	update_ramp_display()
+	update_sprint_display()
 	update_fire_display()
 	update_air_display()
 	update_seed_display(gs.collected_seeds, gs.total_seeds_in_level)
@@ -200,15 +202,18 @@ func _ready():
 
 	if gs.camouflage_unlocked:
 		_show_camouflage()
-		update_camouflage_display()
+
+	if gs.sprint_unlocked:
+		_show_sprint()
+
+	if gs.ramp_unlocked:
+		_show_ramp()
 
 	if gs.fire_buff_unlocked:
 		_show_fire()
-		update_fire_display()
 
 	if gs.air_buff_unlocked:
 		_show_air()
-		update_air_display()
 	
 	if gs.bone_count > 0 or gs.can_fire_bone:
 		_show_bone()
@@ -333,6 +338,14 @@ func _show_camouflage():
 	camouflage_button.visible = true
 	update_camouflage_display()
 
+func _show_sprint():
+	sprint_button.visible = true
+	update_sprint_display()
+
+func _show_ramp():
+	ramp_button.visible = true
+	update_ramp_display()
+
 func _show_fire():
 	fire_button.visible = true
 	update_fire_display()
@@ -362,7 +375,7 @@ func set_button_enabled(button, enabled):
 	else:
 		button.modulate = Color(1, 1, 1, 0.4)
 
-func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_sprint, can_camouflage, can_fire):
+func update_hud_buttons(can_fire_coco, can_heal, can_ramp, can_sprint, can_camouflage, can_fire):
 	if coco_button.visible:
 		set_button_enabled(coco_button, can_fire_coco)
 
@@ -370,7 +383,7 @@ func update_hud_buttons(can_fire_coco, can_fire_lance, can_heal, can_ramp, can_s
 		set_button_enabled(bone_button, gs.bone_count > 0)
 
 	if lance_button.visible:
-		set_button_enabled(lance_button, can_fire_lance)
+		set_button_enabled(lance_button, gs.lance_count > 0)
 
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, can_camouflage)
@@ -434,6 +447,22 @@ func update_camouflage_display():
 
 	if camouflage_button.visible:
 		set_button_enabled(camouflage_button, gs.camouflage_count > 0)
+
+func update_sprint_display():
+	if not gs.sprint_unlocked:
+		set_button_enabled(sprint_button, false)
+		return
+
+	sprint_button.visible = true
+	set_button_enabled(sprint_button, true)
+
+func update_ramp_display():
+	if not gs.ramp_unlocked:
+		set_button_enabled(ramp_button, false)
+		return
+
+	ramp_button.visible = true
+	set_button_enabled(ramp_button, true)
 
 func update_fire_display():
 	if not gs.fire_buff_unlocked:
@@ -770,36 +799,31 @@ func appear_honey():
 		anim_honey.play("appear_honey")
 
 func appear_ramp():
-	ramp_button.visible = true
-	set_button_enabled(ramp_button, true)
+	_show_ramp()
 	if anim_ramp:
 		anim_ramp.stop()
 		anim_ramp.play("appear_ramp")
 
 func appear_sprint():
-	sprint_button.visible = true
-	set_button_enabled(sprint_button, true)
+	_show_sprint()
 	if anim_sprint:
 		anim_sprint.stop()
 		anim_sprint.play("appear_sprint")
 
 func appear_camouflage():
 	_show_camouflage()
-	update_camouflage_display()
 	if anim_camouflage:
 		anim_camouflage.stop()
 		anim_camouflage.play("appear_camouflage")
 
 func appear_fire():
 	_show_fire()
-	update_fire_display()
 	if anim_fire:
 		anim_fire.stop()
 		anim_fire.play("appear_fire")
 
 func appear_air():
 	_show_air()
-	update_air_display()
 	if anim_air:
 		anim_air.stop()
 		anim_air.play("appear_air")
@@ -812,6 +836,9 @@ func anim_to_honey_mode():
 
 func unlock_camouflage_hud():
 	appear_camouflage()
+
+func unlock_sprint_hud():
+	appear_sprint()
 
 # ---------------------------------------------------------------------------------
 #                                       RESET HUD (nouvelle partie)
@@ -861,6 +888,8 @@ func reset_hud():
 	update_honey_display()
 	update_coco_display()
 	update_camouflage_display()
+	update_ramp_display()
+	update_sprint_display()
 	update_fire_display()
 	update_air_display()
 	update_seed_display(0, 0)

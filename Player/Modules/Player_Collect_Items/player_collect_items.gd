@@ -97,26 +97,45 @@ func collect_bone(amount = 1, enable_shooting = false):
 	else:
 		p.popups_mod.show_info(str(amount) + " os récupérés !")
 
-
-func collect_lance(amount = 1):
-	var first = p.game_state.lance_count == 0
+func collect_lance(amount = 1, enable_shooting = false):
+	var first_loot = p.game_state.lance_count == 0
 
 	p.lance_count += amount
-
-	# loot lance = tir autorisé
 	p.can_fire_lance = true
-	p.game_state.can_fire_lance = true
 
 	p.game_state.lance_count = p.lance_count
+	p.game_state.can_fire_lance = true
 
 	var hud = p.game_state.hud
 
-	if first:
-		hud.appear_spear()
-	else:
+	if hud:
+		hud._show_spear()
 		hud.update_lance_display()
 
-	p.hud_mod.refresh_hud_buttons()
+	if amount == 1:
+		p.popups_mod.show_info("Une lance récupérée !")
+	else:
+		p.popups_mod.show_info(str(amount) + " lances récupérées !")
+		
+#func collect_lance(amount = 1):
+	#var first = p.game_state.lance_count == 0
+#
+	#p.lance_count += amount
+#
+	## loot lance = tir autorisé
+	#p.can_fire_lance = true
+	#p.game_state.can_fire_lance = true
+#
+	#p.game_state.lance_count = p.lance_count
+#
+	#var hud = p.game_state.hud
+#
+	#if first:
+		#hud.appear_spear()
+	#else:
+		#hud.update_lance_display()
+#
+	#p.hud_mod.refresh_hud_buttons()
 
 
 func collect_seed(seed_id, amount = 1):

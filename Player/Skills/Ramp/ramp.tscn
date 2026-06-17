@@ -1,23 +1,8 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://b1al56a08eu3u"]
 
-[ext_resource type="Script" path="res://Player/Skills/Ramp/ramp.gd" id="1_mu85d"]
-[ext_resource type="Texture2D" path="res://Player/Skills/Ramp/1.png" id="2_v811h"]
-[ext_resource type="Texture2D" path="res://Player/Skills/Ramp/2.png" id="3_q702e"]
-
-[sub_resource type="Animation" id="Animation_sjx6a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_v811h")]
-}
+[ext_resource type="Script" uid="uid://blulirpwsxbc5" path="res://Player/Skills/Ramp/ramp.gd" id="1_mu85d"]
+[ext_resource type="Texture2D" uid="uid://cotd88qnci1jf" path="res://Player/Skills/Ramp/1.png" id="2_v811h"]
+[ext_resource type="Texture2D" uid="uid://c21plmywhu8e0" path="res://Player/Skills/Ramp/2.png" id="3_q702e"]
 
 [sub_resource type="Animation" id="Animation_wylr0"]
 resource_name = "turn"
@@ -38,7 +23,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ep6el"]
 _data = {
-&"RESET": SubResource("Animation_sjx6a"),
 &"turn": SubResource("Animation_wylr0")
 }
 
@@ -46,23 +30,22 @@ _data = {
 radius = 14.0
 height = 34.0
 
-[node name="Ramp" type="Node2D"]
+[node name="Ramp" type="Node2D" unique_id=1580692072]
+z_index = 20
 script = ExtResource("1_mu85d")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1809994218]
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=214311965]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_v811h")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D" unique_id=1114210531]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_ep6el")
-}
-autoplay = "turn"
+libraries/ = SubResource("AnimationLibrary_ep6el")
+autoplay = &"turn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=95847207]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_5j80i")
 
