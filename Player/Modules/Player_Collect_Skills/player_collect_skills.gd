@@ -29,8 +29,6 @@ func collect_camouflage(amount = 1):
 			hud.unlock_camouflage_hud()
 		hud.update_camouflage_display()
 
-	p.hud_mod.refresh_hud_buttons()
-
 
 func collect_double_jump():
 	p.double_jump_unlocked = true

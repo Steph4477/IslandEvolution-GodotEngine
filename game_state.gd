@@ -256,11 +256,6 @@ func continue_game():
 	has_pending_load = false
 	pending_player_pos = Vector2.ZERO
 
-	print("CONTINUE -> ", unlocked_level_path)
-	print("CONTINUE SPRINT -> ", sprint_unlocked)
-	print("CONTINUE DOUBLE JUMP -> ", double_jump_unlocked)
-	print("CONTINUE LANCE -> ", lance_count)
-
 	await load_level(unlocked_level_path)
 
 
@@ -909,9 +904,6 @@ func apply_save_data(data):
 	moko_hp_bonus_percent = int(data.get("moko_hp_bonus_percent", 0))
 	moko_evolution_percent = int(data.get("moko_evolution_percent", 0))
 	enemy_evolution_percent = int(data.get("enemy_evolution_percent", 0))
-	print("SPRINT :", sprint_unlocked)
-	print("LANCES :", lance_count)
-	print("CAN_FIRE_LANCE :", can_fire_lance)
 
 
 # ===================================================================
