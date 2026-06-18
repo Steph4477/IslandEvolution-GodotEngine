@@ -81,7 +81,7 @@ shape = SubResource("RectangleShape2D_w1c1k")
 
 [node name="lvl2" type="AudioStreamPlayer" parent="Node2D/Sound" unique_id=1819337241]
 stream = ExtResource("3_v5rf0")
-volume_db = 8.0
+volume_db = -24.0
 
 [node name="ExitTempleTrunk" type="Node2D" parent="." unique_id=1851394753]
 z_index = 3

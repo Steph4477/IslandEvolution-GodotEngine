@@ -365,7 +365,7 @@ func wait_finish_cannibal_wave():
 func start_boss_wave():
 	spawn_boss(boss_spawn)
 
-func spawn_boss(boss):
+func spawn_boss(_boss):
 	enable_enemy(boss)
 	boss.add_to_group("boss")
 

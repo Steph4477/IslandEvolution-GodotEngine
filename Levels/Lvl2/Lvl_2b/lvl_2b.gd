@@ -25,6 +25,7 @@ func _ready():
 		
 	player.get_node("Node2D/Sprite").modulate = Color(0.4, 0.4, 0.4)
 
+	await get_tree().process_frame
 	await_sound_cinematic()
 
 func on_tarantula_dead(_boss_position):
@@ -32,5 +33,5 @@ func on_tarantula_dead(_boss_position):
 
 
 func await_sound_cinematic():
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(7.0).timeout
 	$Node2D/Sound/lvl2.play()
