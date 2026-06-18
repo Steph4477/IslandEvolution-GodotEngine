@@ -14,6 +14,183 @@
 [ext_resource type="Texture2D" uid="uid://bx25e01x1t04y" path="res://Hud/BossHud/HudFightBoss/HudBoss/Tarantula/tarantulaName.png" id="11_ko504"]
 [ext_resource type="AudioStream" uid="uid://baj65gwf53d0l" path="res://Hud/BossHud/HudFightBoss/Sounds/portrait.wav" id="13_ijn1v"]
 [ext_resource type="AudioStream" uid="uid://bx0d3n2gojmwq" path="res://Hud/BossHud/HudFightBoss/Sounds/versus.wav" id="14_ijn1v"]
+[ext_resource type="Texture2D" uid="uid://c2i6r3d2nvaqe" path="res://Interface/gamePad/menu.png" id="15_ddt4y"]
+[ext_resource type="Texture2D" uid="uid://cch0cj05dilxt" path="res://Interface/gamePad/Pressed/menu.png" id="16_hrft7"]
+[ext_resource type="Texture2D" uid="uid://g105usenq00p" path="res://Interface/gamePad/break.png" id="17_o66nx"]
+[ext_resource type="Texture2D" uid="uid://t8rigotc1j62" path="res://Interface/gamePad/Pressed/break.png" id="18_ko504"]
+[ext_resource type="Texture2D" uid="uid://d4g8nxb3vayf0" path="res://Interface/gamePad/save.png" id="19_o66nx"]
+[ext_resource type="Texture2D" uid="uid://c1ocobukg1phj" path="res://Interface/gamePad/Pressed/save.png" id="20_ko504"]
+
+[sub_resource type="Animation" id="Animation_u1je4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HudBoss/HpBossLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HudBoss/BossName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HudBoss/BossName:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HudBoss/BossPortrait:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HudBoss/BossPortrait:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HudBoss/HpBossShape:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HudBoss/HpBossBar:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Versus:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Versus:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(484, -70)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Versus:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 6)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HudBoss/HpBossEmpty:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Gamepad:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("HudBoss/HpBossLabel:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("HudMoko/HpMokoLabel:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ga0r3"]
 resource_name = "intro"
@@ -21,255 +198,304 @@ length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Versus:position")
+tracks/0/path = NodePath("HudMoko/MokoName:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-8423.001, -931), Vector2(-8423.001, -931), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HudMoko/HpMokoEmpty:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.99, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HudMoko/HpMokoBar:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.99, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1), Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HudMoko/HpMokoShape:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.99, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1), Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HudMoko/MokoPortrait:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(3, 3), Vector2(3, 3), Vector2(1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HudMoko/MokoName:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(2, 2), Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("HudMoko/MokoPortrait:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-905, 92), Vector2(-243, 92), Vector2(-243, 92), Vector2(0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("HudMoko/MokoName:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.5, 1, 1.5, 2),
+"times": PackedFloat32Array(0.5, 1.5, 3, 4.9666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-924, 364), Vector2(-88, 364), Vector2(-88, 364), Vector2(0, 0)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Versus:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HudMoko/MokoPortrait:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(10, 10), Vector2(10, 10), Vector2(1, 1)]
+"values": [Vector2(-905, 92), Vector2(-243, 92), Vector2(-243, 92), Vector2(0, 0)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("HudBoss/HpBossEmpty:scale")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(1.99, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("HudBoss/HpBossBar:scale")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(1.99, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("HudBoss/HpBossShape:scale")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(1.99, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("HudBoss/BossPortrait:scale")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1.75, 2.5), Vector2(1.75, 2.5), Vector2(0.7, 1)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("HudBoss/BossName:scale")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(1, 1.5, 2),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HudMoko/MokoName:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 3, 4.9666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(2, 2), Vector2(2, 2), Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HudMoko/MokoPortrait:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2.9666667, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3, 3), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HudMoko/HpMokoShape:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.99, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HudMoko/HpMokoBar:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.99, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HudMoko/HpMokoEmpty:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.99, 5.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sounds/soundBossPortrait")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 5.3,
+"start_offset": 0.0,
+"stream": ExtResource("13_ijn1v")
+}],
+"times": PackedFloat32Array(2.5)
+}
+tracks/7/use_blend = true
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sounds/soundMokoPortrait")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 5.3,
+"start_offset": 0.0,
+"stream": ExtResource("13_ijn1v")
+}],
+"times": PackedFloat32Array(1.5)
+}
+tracks/8/use_blend = true
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sounds/soundVersus")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 2.9500012,
+"start_offset": 0.79,
+"stream": ExtResource("14_ijn1v")
+}],
+"times": PackedFloat32Array(2.9)
+}
+tracks/9/use_blend = true
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HudBoss/HpBossLabel:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(5, 5.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HudBoss/BossName:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(2, 2.4666667, 3.0333333, 4.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(246, 312), Vector2(-362, 554), Vector2(-362, 554), Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("HudBoss/BossName:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.4666667, 3.0333333, 4.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.2, 2.2), Vector2(2.2, 2.2), Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("HudBoss/BossPortrait:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2, 2.5, 3, 4.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(18, 284), Vector2(-820, 308), Vector2(-820, 308), Vector2(0, 0)]
+}
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("HudBoss/BossPortrait:position")
+tracks/14/path = NodePath("HudBoss/BossPortrait:scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(2.5, 3, 4.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-657, 141), Vector2(-1398, 141), Vector2(-1398, 141), Vector2(-1398, 141), Vector2(583, -18)]
+"values": [Vector2(2.2, 2.2), Vector2(2.2, 2.2), Vector2(1, 1)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("HudBoss/BossName:position")
+tracks/15/path = NodePath("HudBoss/HpBossShape:scale")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.4666667, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(4.956667, 4.9666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-819, 391), Vector2(-1623, 391), Vector2(-1623, 391), Vector2(-1623, 391), Vector2(0, 0)]
+"values": [Vector2(0, 1), Vector2(1, 1)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Versus:visible")
+tracks/16/path = NodePath("HudBoss/HpBossBar:scale")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(4.99, 5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
 }
-tracks/17/type = "audio"
+tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Sounds/soundBossPortrait")
+tracks/17/path = NodePath("Versus:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"clips": [{
-"end_offset": 5.3,
-"start_offset": 0.0,
-"stream": ExtResource("13_ijn1v")
-}],
-"times": PackedFloat32Array(0.4)
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
 }
-tracks/17/use_blend = true
-tracks/18/type = "audio"
+tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Sounds/soundMokoPortrait")
+tracks/18/path = NodePath("Versus:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"clips": [{
-"end_offset": 5.3,
-"start_offset": 0.0,
-"stream": ExtResource("13_ijn1v")
-}],
-"times": PackedFloat32Array(1.0333333)
+"times": PackedFloat32Array(1, 1.5, 3, 4.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-80, -705), Vector2(444, -137.00005), Vector2(444, -137.00005), Vector2(834, 82)]
 }
-tracks/18/use_blend = true
-tracks/19/type = "audio"
+tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Sounds/soundVersus")
+tracks/19/path = NodePath("Versus:scale")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"clips": [{
-"end_offset": 2.3500013,
-"start_offset": 0.79,
-"stream": ExtResource("14_ijn1v")
-}],
-"times": PackedFloat32Array(1.3666667)
+"times": PackedFloat32Array(1, 1.5, 3, 4.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(12, 12), Vector2(6.72, 6.72), Vector2(6.72, 6.72), Vector2(1, 1)]
 }
-tracks/19/use_blend = true
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("HudBoss/HpBossEmpty:scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(4.9666667, 4.9766665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Gamepad:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(5.0333333, 5.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("HudBoss/HpBossLabel:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(4.99, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("HudMoko/HpMokoLabel:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(5.0233335, 5.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gl2h4"]
 _data = {
+&"RESET": SubResource("Animation_u1je4"),
 &"intro": SubResource("Animation_ga0r3")
 }
 
@@ -292,12 +518,31 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="MokoPortrait" type="TextureRect" parent="Control/HudMoko" unique_id=650404574]
+layout_mode = 0
+offset_left = -905.0
+offset_top = 92.0
+offset_right = 1015.0
+offset_bottom = 1172.0
+scale = Vector2(3, 3)
+texture = ExtResource("4_ijn1v")
+
+[node name="MokoName" type="TextureRect" parent="Control/HudMoko" unique_id=1127836028]
+layout_mode = 0
+offset_left = -924.0
+offset_top = 364.0
+offset_right = 996.0
+offset_bottom = 1444.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_aqhy2")
+
 [node name="HpMokoEmpty" type="TextureRect" parent="Control/HudMoko" unique_id=116401849]
 layout_mode = 0
 offset_left = 249.0
 offset_top = 172.0
 offset_right = 713.0
 offset_bottom = 212.0
+scale = Vector2(1e-05, 1)
 texture = ExtResource("1_o432s")
 
 [node name="HpMokoBar" type="TextureProgressBar" parent="Control/HudMoko" unique_id=710599107]
@@ -306,6 +551,7 @@ offset_left = 257.0
 offset_top = 177.0
 offset_right = 712.0
 offset_bottom = 203.0
+scale = Vector2(1e-05, 1)
 value = 100.0
 texture_progress = ExtResource("3_gl2h4")
 
@@ -315,19 +561,8 @@ offset_left = 239.0
 offset_top = 125.0
 offset_right = 746.0
 offset_bottom = 228.0
+scale = Vector2(1e-05, 1)
 texture = ExtResource("2_ga0r3")
-
-[node name="MokoPortrait" type="TextureRect" parent="Control/HudMoko" unique_id=650404574]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("4_ijn1v")
-
-[node name="MokoName" type="TextureRect" parent="Control/HudMoko" unique_id=1127836028]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("5_aqhy2")
 
 [node name="HpMokoLabel" type="Label" parent="Control/HudMoko" unique_id=844248523]
 layout_mode = 0
@@ -339,15 +574,18 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0000/0000"
 
 [node name="Versus" type="TextureRect" parent="Control" unique_id=34461187]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -960.0
-offset_right = 960.0117
-offset_bottom = 1080.0
+offset_left = -476.0
+offset_top = -70.0
+offset_right = -288.0
+offset_bottom = 128.0
 grow_horizontal = 2
+scale = Vector2(6, 6)
 texture = ExtResource("6_7r678")
 
 [node name="HudBoss" type="Control" parent="Control" unique_id=666907787]
@@ -355,58 +593,53 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1988.0
-offset_right = -1948.0
-offset_bottom = 40.0
+offset_left = -826.0
+offset_top = 61.0
+offset_right = -826.0
+offset_bottom = 61.0
 grow_horizontal = 0
+
+[node name="BossPortrait" type="TextureRect" parent="Control/HudBoss" unique_id=1775807721]
+layout_mode = 0
+offset_right = 760.0
+offset_bottom = 183.00165
+texture = ExtResource("10_o66nx")
+
+[node name="BossName" type="TextureRect" parent="Control/HudBoss" unique_id=343690904]
+layout_mode = 0
+offset_right = 760.0
+offset_bottom = 183.00348
+texture = ExtResource("11_ko504")
 
 [node name="HpBossEmpty" type="TextureRect" parent="Control/HudBoss" unique_id=2092338181]
 layout_mode = 0
-offset_left = 1237.0
-offset_top = 178.0
-offset_right = 1713.0
-offset_bottom = 218.0
+offset_right = 760.0
+offset_bottom = 183.0
 texture = ExtResource("8_ddt4y")
 
 [node name="HpBossBar" type="TextureProgressBar" parent="Control/HudBoss" unique_id=898214780]
 layout_mode = 0
-offset_left = 1245.0
-offset_top = 184.0
-offset_right = 3165.0
-offset_bottom = 1264.0
+offset_left = 5.0
+offset_top = -1.0
+offset_right = 765.0
+offset_bottom = 182.0
 value = 100.0
 fill_mode = 1
 texture_progress = ExtResource("9_hrft7")
 
 [node name="HpBossShape" type="TextureRect" parent="Control/HudBoss" unique_id=997630099]
 layout_mode = 0
-offset_left = 1209.0
-offset_top = 140.0
-offset_right = 1724.0
-offset_bottom = 242.0
+offset_left = 3.0
+offset_right = 763.0
+offset_bottom = 183.0
 texture = ExtResource("7_ld06g")
-
-[node name="BossPortrait" type="TextureRect" parent="Control/HudBoss" unique_id=1775807721]
-layout_mode = 0
-offset_left = 583.0
-offset_top = -18.0
-offset_right = 2503.0
-offset_bottom = 1062.0
-scale = Vector2(0.7, 1)
-texture = ExtResource("10_o66nx")
-
-[node name="BossName" type="TextureRect" parent="Control/HudBoss" unique_id=343690904]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("11_ko504")
 
 [node name="HpBossLabel" type="Label" parent="Control/HudBoss" unique_id=781175065]
 layout_mode = 0
-offset_left = 1434.0
-offset_top = 184.0
-offset_right = 1514.0
-offset_bottom = 207.0
+offset_left = 205.0
+offset_top = 118.0
+offset_right = 285.0
+offset_bottom = 141.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0000/0000"
 
@@ -420,7 +653,36 @@ position = Vector2(232, -2)
 volume_db = 24.0
 
 [node name="soundMokoPortrait" type="AudioStreamPlayer2D" parent="Control/Sounds" unique_id=839986612]
-volume_db = 16.0
+volume_db = 24.0
 
 [node name="soundVersus" type="AudioStreamPlayer2D" parent="Control/Sounds" unique_id=941748016]
-volume_db = 20.0
+volume_db = 24.0
+
+[node name="Gamepad" type="Control" parent="." unique_id=320843987]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -566.0
+offset_top = -344.0
+offset_right = -566.0
+offset_bottom = -344.0
+
+[node name="Menu" type="TouchScreenButton" parent="Gamepad" unique_id=1014111397]
+position = Vector2(1542.6665, 356.6667)
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("15_ddt4y")
+texture_pressed = ExtResource("16_hrft7")
+action = "ui_cancel"
+
+[node name="Break" type="TouchScreenButton" parent="Gamepad" unique_id=2101590567]
+position = Vector2(1440, 356)
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("17_o66nx")
+texture_pressed = ExtResource("18_ko504")
+action = "ui_cancel"
+
+[node name="Save" type="TouchScreenButton" parent="Gamepad" unique_id=1858380359]
+position = Vector2(1334, 354.6667)
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("19_o66nx")
+texture_pressed = ExtResource("20_ko504")
+action = "ui_cancel"
