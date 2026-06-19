@@ -11,8 +11,10 @@ extends Node2D
 
 var froggle_spawned = false
 var focus_cam_frog = false # préparation du focus de la caméra si challenge_win
+
 var cam
 var gs
+var player
 
 # --- Réglages du tremblement caméra et dégâts ---
 @export var intensity = 50.0   # Intensité du shake de caméra
@@ -25,6 +27,7 @@ func _ready():
 	# --- Limite caméra & assombrissement ---
 	await get_tree().process_frame
 	gs = get_node("/root/GameState")
+
 	aquatic_zone.visible = false
 	swim_zone.visible = true
 
@@ -32,13 +35,17 @@ func _ready():
 	cam.enabled = true
 	cam.make_current()
 
-	cam.limit_top = 500
+	cam.limit_top = -1500
 	cam.limit_right = 25000
-	cam.limit_bottom = 5500
+	cam.limit_bottom = 1650
 
-	#if gs.air_buff_unlocked:
-		#_spawn_after_toucan_challenge()
-		#return
+	player = gs.player
+	cam = player.get_node("Camera2D")
+	cam.zoom = Vector2(0.9, 0.9)
+
+	if gs.air_buff_unlocked:
+		_spawn_after_toucan_challenge()
+		return
 
 	# Position initiale ou finale de l’anim “fall”
 	if anim.has_animation("fall"):
@@ -187,6 +194,7 @@ func _on_area_2d_body_entered(body):
 	cam.limit_bottom = 3250
 
 	if gs.hud:
+		gs.hud.anim_headbutt.play("appear_headbutt")
 		gs.hud.anim_dive.play("appear_dive")
 
 func _on_area_2d_body_exited(body):
@@ -202,5 +210,6 @@ func _on_area_2d_body_exited(body):
 	cam.limit_bottom = 5500
 
 	if gs.hud:
-		gs.hud.anim_dive.play("desappear_dive")
+		gs.hud.anim_headbutt.play("disappear_headbutt")
+		gs.hud.anim_dive.play("disappear_dive")
 		

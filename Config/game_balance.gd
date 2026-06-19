@@ -97,12 +97,11 @@ const ENEMY_HP = {
 	"pyg": 120,
 	"swim_croco": 600,
 	"croco": 200,
-	"pyranha": 80,
+	"pyranha": 50,
 	"cannibal": 160,
 	"boss_cannibal": 400,
 	"boss_tarantula": 600,
 	"add_tarantula": 1
-	
 }
 
 const ENEMY_DAMAGE = {
@@ -112,7 +111,7 @@ const ENEMY_DAMAGE = {
 	"snake": 12,
 	"pyg": 20,
 	"croco": 18,
-	"pyranha": 20,
+	"pyranha": 10,
 	"cannibal": 22,
 	"boss": 30,
 	"add_tarantula":10

@@ -33,8 +33,11 @@
 [ext_resource type="PackedScene" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
 [ext_resource type="PackedScene" uid="uid://c7vh70a2fcrkf" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
 [ext_resource type="PackedScene" uid="uid://bqp01rii57bt0" path="res://Levels/Lvl3/Environement/Exit/exit.tscn" id="26_twwc1"]
+[ext_resource type="Texture2D" uid="uid://cssrd0nkc17on" path="res://Levels/Lvl3/Environement/UnderSwimZone/water_back.png" id="27_eg4xw"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="27_twwc1"]
+[ext_resource type="Texture2D" uid="uid://yd2dfujjksuv" path="res://Levels/Lvl3/Environement/UnderSwimZone/background.png" id="28_mg0vw"]
 [ext_resource type="PackedScene" uid="uid://2akkjxxylblh" path="res://Items/Leaf/leaf_item.tscn" id="29_h3eyb"]
+[ext_resource type="Texture2D" uid="uid://jm4ppn1aueop" path="res://Levels/Lvl3/Environement/UnderSwimZone/water.png" id="29_v8g36"]
 [ext_resource type="PackedScene" uid="uid://cmelrut05scrr" path="res://Items/Idole_Air/idole_air_item.tscn" id="30_g17ky"]
 [ext_resource type="PackedScene" uid="uid://u7kbwv2cd8dt" path="res://Enemies/Pyranha/pyranha.tscn" id="31_e0vvl"]
 [ext_resource type="PackedScene" uid="uid://bv3clh3sf8uoe" path="res://Items/Altar/Air/craft_altar_air.tscn" id="31_qskf4"]
@@ -343,15 +346,6 @@ _data = {
 shader = ExtResource("5_xni6f")
 shader_parameter/speed = 0.10000000475
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xusep"]
-load_path = "res://.godot/imported/water_back.png-00ed612f727c62bfb64e756f9c20b400.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ve5k5"]
-load_path = "res://.godot/imported/background.png-ef1e3d0d07edb7aee8e74c6652dbd9a3.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eg4xw"]
-load_path = "res://.godot/imported/water.png-66358cb7240c118e58333bd18602c194.ctex"
-
 [sub_resource type="GDScript" id="GDScript_mg0vw"]
 script/source = "extends Node2D
 
@@ -488,7 +482,7 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(10934, 664)
+position = Vector2(526, 787)
 
 [node name="SpawnPoint2" type="Marker2D" parent="Node2D" unique_id=1192111431]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
@@ -547,7 +541,7 @@ z_index = 50
 position = Vector2(7481, 803)
 rotation = 3.1415927
 scale = Vector2(1, -1)
-tile_map_data = PackedByteArray("AAAtACMAAgAHAAEAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAABxACMAAgADAAUAAAAPABsAAgAAAAIAAACxACAAAgAAAAIAAADHACMAAgAAAAIAAADQAB0AAgABAAIAAAByACsAAgAAAAEAAACzACAAAgAAAAEAAAD5ACgAAgAAAAEAAADwACYAAgAAAAMAAAD9ACUAAgADAAQAAAABAScAAgAAAAMAAAAHARsAAgAAAAIAAAAcASYAAgAAAAMAAAAlASMAAgAHAAEAAAAvAR8AAgAFAAIAAAA+ASIAAgAAAAMAAABIASMAAgAEAAIAAABYASYAAgAFAAIAAABpASMAAgADAAUAAABqASsAAgAAAAEAAAByAScAAgAAAAMAAACLASUAAgACAAIAAACMASUAAgACAAIAAACjAScAAgAHAAMAAACpASAAAgAAAAIAAACrASAAAgAAAAEAAAC0ASIAAgAEAAIAAAC/ASMAAgAAAAIAAADIAR0AAgABAAIAAADMASUAAgAHAAMAAADcASEAAgADAAQAAADcASIAAgADAAQAAADiASMAAgAEAAIAAADxASgAAgAAAAEAAABX/yUAAgAAAAIAAABg/x8AAgABAAIAAABk/ycAAgAHAAMAAAB0/yMAAgADAAQAAAB0/yQAAgADAAQAAAB6/yUAAgAEAAIAAACJ/yoAAgAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAAC8ACIAAgAEAAIAAADkACEAAgADAAQAAADkACIAAgADAAQAAAAPABsAAgAAAAIAAACxACAAAgAAAAIAAADQAB0AAgABAAIAAACzACAAAgAAAAEAAAAHARsAAgAAAAIAAAAvAR8AAgAFAAIAAAA+ASIAAgAAAAMAAABX/yUAAgAAAAIAAABg/x8AAgABAAIAAABk/ycAAgAHAAMAAAB0/yMAAgADAAQAAAB0/yQAAgADAAQAAAB6/yUAAgAEAAIAAACJ/yoAAgAAAAEAAADt/y8AAgAAAAMAAAD6/y4AAgADAAQAAAD+/zAAAgAAAAMAAAAZAC8AAgAAAAMAAAAiACwAAgAHAAEAAAA7ACsAAgAAAAMAAABFACwAAgAEAAIAAABVAC8AAgAFAAIAAABmACwAAgADAAUAAABnADQAAgAAAAEAAABvADAAAgAAAAMAAACIAC4AAgACAAIAAACJAC4AAgACAAIAAACgADAAAgAHAAMAAACxACsAAgAEAAIAAAC8ACwAAgAAAAIAAADJAC4AAgAHAAMAAADZACsAAgADAAQAAADfACwAAgAEAAIAAADlAC8AAgAAAAMAAADuADEAAgAAAAEAAADyAC4AAgADAAQAAAD2ADAAAgAAAAMAAAARAS8AAgAAAAMAAAAaASwAAgAHAAEAAAAzASsAAgAAAAMAAAA9ASwAAgAEAAIAAABNAS8AAgAFAAIAAABeASwAAgADAAUAAABfATQAAgAAAAEAAABnATAAAgAAAAMAAACYATAAAgAHAAMAAACpASsAAgAEAAIAAAC0ASwAAgAAAAIAAADBAS4AAgAHAAMAAADRASsAAgADAAQAAADXASwAAgAEAAIAAADmATEAAgAAAAEAAAA=")
 tile_set = ExtResource("5_yixkb")
 
 [node name="TileMapBack" type="TileMapLayer" parent="Node2D/TileMap" unique_id=1718019010]
@@ -861,21 +855,21 @@ texture_repeat = 3
 material = SubResource("ShaderMaterial_qprr6")
 position = Vector2(-160.50008, 9.083313)
 scale = Vector2(1.2933108, 0.97951883)
-texture = SubResource("CompressedTexture2D_xusep")
+texture = ExtResource("27_eg4xw")
 
 [node name="RuinSpite" type="Sprite2D" parent="Node2D/AquaticZone/World/Environement" unique_id=236283150]
 position = Vector2(-164.75885, 149.70235)
 scale = Vector2(-1.2972023, 1.2466754)
-texture = SubResource("CompressedTexture2D_ve5k5")
+texture = ExtResource("28_mg0vw")
 
 [node name="WaterFrontSprite2" type="Sprite2D" parent="Node2D/AquaticZone/World/Environement" unique_id=411057803]
 modulate = Color(1, 1, 1, 0.49019608)
-z_index = 30
+z_index = 50
 texture_repeat = 3
 material = SubResource("ShaderMaterial_qprr6")
 position = Vector2(-184.33339, 72.50005)
 scale = Vector2(1.54115, 1.2773393)
-texture = SubResource("CompressedTexture2D_eg4xw")
+texture = ExtResource("29_v8g36")
 
 [node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/AquaticZone/World" unique_id=1970663211]
 
