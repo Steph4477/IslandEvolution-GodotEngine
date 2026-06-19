@@ -186,6 +186,8 @@ func _on_area_2d_body_entered(body):
 	cam.limit_right = 17800
 	cam.limit_bottom = 3250
 
+	if gs.hud:
+		gs.hud.anim_dive.play("appear_dive")
 
 func _on_area_2d_body_exited(body):
 	if body.name != "Player":
@@ -198,3 +200,7 @@ func _on_area_2d_body_exited(body):
 	cam.limit_left = 0
 	cam.limit_right = 25000
 	cam.limit_bottom = 5500
+
+	if gs.hud:
+		gs.hud.anim_dive.play("desappear_dive")
+		
