@@ -5,6 +5,9 @@ extends Node2D
 @export var froggle_spawn_path = NodePath("Node2D/FroggleSpawn")
 
 @onready var anim = $Node2D/World/ChronoChallenge/AnimationPlayer
+@onready var swim_zone = $Node2D/World/SwimZone
+@onready var under_swim_zone = $Node2D/AquaticZone/World/UnderSwimZone
+@onready var aquatic_zone = $Node2D/AquaticZone
 
 var froggle_spawned = false
 var focus_cam_frog = false # préparation du focus de la caméra si challenge_win
@@ -22,14 +25,16 @@ func _ready():
 	# --- Limite caméra & assombrissement ---
 	await get_tree().process_frame
 	gs = get_node("/root/GameState")
+	aquatic_zone.visible = false
+	swim_zone.visible = true
 
 	cam = gs.player.get_node("Camera2D")
 	cam.enabled = true
 	cam.make_current()
 
-	cam.limit_top = -1500
+	cam.limit_top = 500
 	cam.limit_right = 25000
-	cam.limit_bottom = 1400
+	cam.limit_bottom = 5500
 
 	#if gs.air_buff_unlocked:
 		#_spawn_after_toucan_challenge()
@@ -168,3 +173,28 @@ func camera_shake(_intensity, _duration):
 		var offset = Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
 		t.tween_property(cam, "offset", offset, 0.05)
 	t.tween_property(cam, "offset", Vector2.ZERO, 0.1)
+
+func _on_area_2d_body_entered(body):
+	if body.name != "Player":
+		return
+
+	swim_zone.visible = false
+	aquatic_zone.visible = true
+
+	cam.limit_top = 1280
+	cam.limit_left = 11000
+	cam.limit_right = 17800
+	cam.limit_bottom = 3250
+
+
+func _on_area_2d_body_exited(body):
+	if body.name != "Player":
+		return
+
+	swim_zone.visible = true
+	aquatic_zone.visible = false
+
+	cam.limit_top = -1500
+	cam.limit_left = 0
+	cam.limit_right = 25000
+	cam.limit_bottom = 5500

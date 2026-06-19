@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://drfmqvnrhcum1"]
 
-[ext_resource type="Texture2D" path="res://Effects/Aquatic_breathing/Plants/plant.png" id="1_n3yvq"]
+[ext_resource type="Texture2D" uid="uid://8rqkyv0sdng6" path="res://Effects/Aquatic_breathing/Plants/plant.png" id="1_n3yvq"]
 [ext_resource type="PackedScene" path="res://Effects/Aquatic_breathing/Air_bubbler/air_bubbler.tscn" id="2_khfsa"]
 
 [sub_resource type="Animation" id="Animation_i7hbb"]
@@ -41,23 +41,20 @@ _data = {
 &"wind": SubResource("Animation_it4j1")
 }
 
-[node name="PlantAqua" type="Node2D"]
-position = Vector2(0, -1)
+[node name="PlantAqua" type="Node2D" unique_id=941421179]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1391542052]
 position = Vector2(14.201622, -31.911102)
 rotation = 0.0244346
 scale = Vector2(0.3, 0.369)
 texture = ExtResource("1_n3yvq")
 
-[node name="PivotBase" type="Marker2D" parent="."]
+[node name="PivotBase" type="Marker2D" parent="." unique_id=1081456623]
 position = Vector2(-0.99993896, -8)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0slvd")
-}
-autoplay = "wind"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1225600528]
+libraries/ = SubResource("AnimationLibrary_0slvd")
+autoplay = &"wind"
 
-[node name="AirBubbler" parent="." instance=ExtResource("2_khfsa")]
+[node name="AirBubbler" parent="." unique_id=709084520 instance=ExtResource("2_khfsa")]
 position = Vector2(2.198759, -189.98991)

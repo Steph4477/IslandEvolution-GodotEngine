@@ -102,7 +102,7 @@ _data = {
 
 [node name="Mosquito" type="CharacterBody2D" unique_id=55077267 groups=["Enemies"]]
 collision_layer = 8
-collision_mask = 256
+collision_mask = 33024
 script = ExtResource("1_r0nwy")
 
 [node name="Timer" type="Timer" parent="." unique_id=390658406]

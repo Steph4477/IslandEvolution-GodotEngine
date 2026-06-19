@@ -747,7 +747,7 @@ position = Vector2(-1197, -187)
 z_index = 5
 position = Vector2(1798, 160)
 scale = Vector2(0.8, 0.8)
-collision_mask = 1280
+collision_mask = 17664
 speed = 600
 
 [node name="Snake2" parent="World/Creatures" unique_id=1961381336 instance=ExtResource("12_d0a2k")]

@@ -7,6 +7,18 @@ class_name Pyranha
 var is_onhit_playing = false
 
 func _ready():
+	max_hp = GameBalance.ENEMY_HP["pyranha"]
+	hp = max_hp
+	damage = GameBalance.ENEMY_DAMAGE["pyranha"]
+	swim_speed = GameBalance.ENEMY_SPEED["pyranha"]
+	chase_speed = GameBalance.ENEMY_SPEED["pyranha"]
+	detection_range = GameBalance.ENEMY_RANGE["pyranha"]
+	attack_interval = GameBalance.ENEMY_COOLDOWN["pyranha"]
+
+	hit_time = 1.6
+	min_change_time = 1.5
+	max_change_time = 3.5
+
 	super._ready()
 
 	if attack_timer:

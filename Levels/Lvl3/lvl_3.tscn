@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://jo6ij73tafq8" path="res://Levels/Lvl3/Environement/tiles_platforms/exit.png" id="20_8uqfc"]
 [ext_resource type="PackedScene" path="res://Levels/Lvl3/Environement/Spear_rack/spear_rack.tscn" id="20_xni6f"]
 [ext_resource type="PackedScene" uid="uid://8ui0q0lf31sc" path="res://Loot/Coconut/coco_loot_lvl3.tscn" id="21_hw1l3"]
-[ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="21_odqky"]
 [ext_resource type="PackedScene" uid="uid://dhisslomg4xu1" path="res://Loot/Life/life_loot.tscn" id="22_qskf4"]
 [ext_resource type="PackedScene" path="res://Loot/BeeHive/bee_hive.tscn" id="24_vaysu"]
 [ext_resource type="PackedScene" uid="uid://c7vh70a2fcrkf" path="res://Enemies/Chameleon/chameleon.tscn" id="26_nqfku"]
@@ -37,7 +36,12 @@
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="27_twwc1"]
 [ext_resource type="PackedScene" uid="uid://2akkjxxylblh" path="res://Items/Leaf/leaf_item.tscn" id="29_h3eyb"]
 [ext_resource type="PackedScene" uid="uid://cmelrut05scrr" path="res://Items/Idole_Air/idole_air_item.tscn" id="30_g17ky"]
+[ext_resource type="PackedScene" uid="uid://u7kbwv2cd8dt" path="res://Enemies/Pyranha/pyranha.tscn" id="31_e0vvl"]
 [ext_resource type="PackedScene" uid="uid://bv3clh3sf8uoe" path="res://Items/Altar/Air/craft_altar_air.tscn" id="31_qskf4"]
+[ext_resource type="PackedScene" uid="uid://drfmqvnrhcum1" path="res://Effects/Aquatic_breathing/Plants/plant_aqua.tscn" id="32_dc7vr"]
+[ext_resource type="PackedScene" path="res://Enemies/Turtle/turtule.tscn" id="33_gu7x3"]
+[ext_resource type="PackedScene" uid="uid://bygq5su8mgrtq" path="res://Enemies/Fish/fish.tscn" id="34_ykpc1"]
+[ext_resource type="PackedScene" uid="uid://ynjg42020xbh" path="res://Effects/Aquatic_breathing/Seashell/seashell.tscn" id="35_v8g36"]
 [ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="39_hw1l3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odqky"]
@@ -89,7 +93,7 @@ size = Vector2(152.5, 2876)
 size = Vector2(143, 2820.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lpgc"]
-size = Vector2(26091.5, 167.5)
+size = Vector2(11735.5, 167.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsvun"]
 size = Vector2(25876, 317)
@@ -98,16 +102,10 @@ size = Vector2(25876, 317)
 size = Vector2(290, 572.8906)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c4og"]
-size = Vector2(3222, 270)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_32yx8"]
-size = Vector2(3476.577, 261.6916)
+size = Vector2(6592, 360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrd0c"]
-size = Vector2(8532, 154)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8bpj"]
-size = Vector2(3206, 254)
+size = Vector2(6195, 73)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw1l3"]
 size = Vector2(47.25, 276)
@@ -123,9 +121,6 @@ size = Vector2(2214, 637)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06aic"]
 size = Vector2(1004, 348)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3eyb"]
-size = Vector2(2370, 290)
 
 [sub_resource type="Animation" id="Animation_hw1l3"]
 length = 0.001
@@ -344,6 +339,145 @@ _data = {
 &"fall": SubResource("Animation_4esaq")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qprr6"]
+shader = ExtResource("5_xni6f")
+shader_parameter/speed = 0.10000000475
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xusep"]
+load_path = "res://.godot/imported/water_back.png-00ed612f727c62bfb64e756f9c20b400.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ve5k5"]
+load_path = "res://.godot/imported/background.png-ef1e3d0d07edb7aee8e74c6652dbd9a3.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eg4xw"]
+load_path = "res://.godot/imported/water.png-66358cb7240c118e58333bd18602c194.ctex"
+
+[sub_resource type="GDScript" id="GDScript_mg0vw"]
+script/source = "extends Node2D
+
+@onready var area = $Area2D
+@onready var breath_timer = $Area2D/BreathDelayTimer
+
+@export var water_line_y = 600
+@export var current = Vector2(-120, 0)
+
+var gs
+var player_in_water = false
+
+func _ready():
+	gs = get_node(\"/root/GameState\")
+	breath_timer.one_shot = true
+	breath_timer.wait_time = 1.0
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group(\"Player\"):
+		player_in_water = true
+
+		# IMPORTANT: on force le hide au moment de l'entrée
+		if gs.hud:
+			gs.hud.hide_breathbar()
+
+		body.breath_mod.start_underwater_breath()
+		body.is_swimming_under_water = true
+		body.water_current = current
+
+		breath_timer.stop()
+		breath_timer.start()
+
+	if body.is_in_group(\"EnemiesSwim\"):
+		body.is_swim_croco = true
+		body.water_current = current
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group(\"Player\"):
+		player_in_water = false
+
+		breath_timer.stop()
+		if gs.hud:
+			gs.hud.hide_breathbar()
+
+		body.breath_mod.stop_underwater_breath(true)
+		body.is_swimming_under_water = false
+		body.water_current = Vector2.ZERO
+
+		# FIX: autorise un saut immédiat en sortie d'eau
+		body.jump_count = 0
+		body.did_double_jump = false
+
+	if body.is_in_group(\"EnemiesSwim\"):
+		body.is_swim_croco = false
+		body.water_current = Vector2.ZERO
+
+func _on_breath_delay_timer_timeout():
+	if not player_in_water:
+		return
+	if gs.hud:
+		gs.hud.show_breathbar()
+
+func _on_area_2d_area_exited(bubble):
+	if bubble.is_in_group(\"air_bubbles\"):
+		var bubble_root = bubble.get_parent()  # AirBubble (Node2D)
+		bubble_root.queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amax7"]
+size = Vector2(3362.5, 975.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj8rq"]
+size = Vector2(162, 1026)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym1pw"]
+size = Vector2(143, 1128.8672)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpwvn"]
+size = Vector2(3422.5, 145)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yybw4"]
+size = Vector2(3266.5, 18)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mg0vw"]
+texture = ExtResource("7_2c4og")
+texture_region_size = Vector2i(240, 240)
+1:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:0/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o5chd"]
+sources/4 = SubResource("TileSetAtlasSource_mg0vw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8g36"]
+size = Vector2(1869, 727)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uob8x"]
+size = Vector2(238, 455.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc1it"]
+size = Vector2(1172.5, 110.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oscy"]
+size = Vector2(252.25, 469.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0vvl"]
+size = Vector2(245.25, 413.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc7vr"]
+size = Vector2(306.5, 1140.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu7x3"]
+size = Vector2(3542, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykpc1"]
+size = Vector2(340.5, 991.5)
+
 [node name="lvl3" type="Node2D" unique_id=287583743]
 script = ExtResource("1_73pra")
 chrono_zone_path = NodePath("Node2D/World/ChronoChallenge/ChronoZone")
@@ -354,7 +488,7 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(544, 857)
+position = Vector2(11627, 645)
 
 [node name="SpawnPoint2" type="Marker2D" parent="Node2D" unique_id=1192111431]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
@@ -391,7 +525,7 @@ texture = ExtResource("9_32yx8")
 
 [node name="PlantLayer" type="Node2D" parent="Node2D/TileMap/Parallax" unique_id=1399525275]
 modulate = Color(0.89492244, 0.89492244, 0.8949224, 1)
-position = Vector2(-198, 169.99998)
+position = Vector2(-999.99994, 206.00002)
 scale = Vector2(0.8, 0.8)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/TileMap/Parallax/PlantLayer" unique_id=197148609]
@@ -413,7 +547,7 @@ z_index = 50
 position = Vector2(7481, 803)
 rotation = 3.1415927
 scale = Vector2(1, -1)
-tile_map_data = PackedByteArray("AAAtACMAAgAHAAEAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAABxACMAAgADAAUAAAAPABsAAgAAAAIAAACxACAAAgAAAAIAAADHACMAAgAAAAIAAADQAB0AAgABAAIAAAByACsAAgAAAAEAAACzACAAAgAAAAEAAAD5ACgAAgAAAAEAAADwACYAAgAAAAMAAAD9ACUAAgADAAQAAAABAScAAgAAAAMAAAAHARsAAgAAAAIAAAAcASYAAgAAAAMAAAAlASMAAgAHAAEAAAAvAR8AAgAFAAIAAAA+ASIAAgAAAAMAAABIASMAAgAEAAIAAABYASYAAgAFAAIAAABpASMAAgADAAUAAABqASsAAgAAAAEAAAByAScAAgAAAAMAAACLASUAAgACAAIAAACMASUAAgACAAIAAACjAScAAgAHAAMAAACpASAAAgAAAAIAAACrASAAAgAAAAEAAAC0ASIAAgAEAAIAAAC/ASMAAgAAAAIAAADIAR0AAgABAAIAAADMASUAAgAHAAMAAADcASEAAgADAAQAAADcASIAAgADAAQAAADiASMAAgAEAAIAAADxASgAAgAAAAEAAACQ/SgAAgAAAAMAAACd/ScAAgADAAQAAACh/SkAAgAAAAMAAACn/R0AAgAAAAIAAAC8/SgAAgAAAAMAAADF/SUAAgAHAAEAAADP/SEAAgAFAAIAAADe/SQAAgAAAAMAAADo/SUAAgAEAAIAAAD4/SgAAgAFAAIAAAAJ/iUAAgADAAUAAAAK/i0AAgAAAAEAAAAS/ikAAgAAAAMAAAAr/icAAgACAAIAAAAs/icAAgACAAIAAABD/ikAAgAHAAMAAABJ/iIAAgAAAAIAAABL/iIAAgAAAAEAAABU/iQAAgAEAAIAAABf/iUAAgAAAAIAAABo/h8AAgABAAIAAABs/icAAgAHAAMAAAB8/iMAAgADAAQAAAB8/iQAAgADAAQAAACC/iUAAgAEAAIAAACI/igAAgAAAAMAAACR/ioAAgAAAAEAAACV/icAAgADAAQAAACZ/ikAAgAAAAMAAACf/h0AAgAAAAIAAAC0/igAAgAAAAMAAAC9/iUAAgAHAAEAAADH/iEAAgAFAAIAAADW/iQAAgAAAAMAAADg/iUAAgAEAAIAAADw/igAAgAFAAIAAAAB/yUAAgADAAUAAAAC/y0AAgAAAAEAAAAK/ykAAgAAAAMAAAAj/ycAAgACAAIAAAAk/ycAAgACAAIAAAA7/ykAAgAHAAMAAABB/yIAAgAAAAIAAABD/yIAAgAAAAEAAABM/yQAAgAEAAIAAABX/yUAAgAAAAIAAABg/x8AAgABAAIAAABk/ycAAgAHAAMAAAB0/yMAAgADAAQAAAB0/yQAAgADAAQAAAB6/yUAAgAEAAIAAACJ/yoAAgAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAtACMAAgAHAAEAAAD4/yYAAgAAAAMAAAAFACUAAgADAAQAAAAJACcAAgAAAAMAAAAkACYAAgAAAAMAAAA3AB8AAgAFAAIAAABGACIAAgAAAAMAAABQACMAAgAEAAIAAABgACYAAgAFAAIAAAB6ACcAAgAAAAMAAACTACUAAgACAAIAAACUACUAAgACAAIAAACrACcAAgAHAAMAAAC8ACIAAgAEAAIAAADUACUAAgAHAAMAAADkACEAAgADAAQAAADkACIAAgADAAQAAADqACMAAgAEAAIAAABxACMAAgADAAUAAAAPABsAAgAAAAIAAACxACAAAgAAAAIAAADHACMAAgAAAAIAAADQAB0AAgABAAIAAAByACsAAgAAAAEAAACzACAAAgAAAAEAAAD5ACgAAgAAAAEAAADwACYAAgAAAAMAAAD9ACUAAgADAAQAAAABAScAAgAAAAMAAAAHARsAAgAAAAIAAAAcASYAAgAAAAMAAAAlASMAAgAHAAEAAAAvAR8AAgAFAAIAAAA+ASIAAgAAAAMAAABIASMAAgAEAAIAAABYASYAAgAFAAIAAABpASMAAgADAAUAAABqASsAAgAAAAEAAAByAScAAgAAAAMAAACLASUAAgACAAIAAACMASUAAgACAAIAAACjAScAAgAHAAMAAACpASAAAgAAAAIAAACrASAAAgAAAAEAAAC0ASIAAgAEAAIAAAC/ASMAAgAAAAIAAADIAR0AAgABAAIAAADMASUAAgAHAAMAAADcASEAAgADAAQAAADcASIAAgADAAQAAADiASMAAgAEAAIAAADxASgAAgAAAAEAAABX/yUAAgAAAAIAAABg/x8AAgABAAIAAABk/ycAAgAHAAMAAAB0/yMAAgADAAQAAAB0/yQAAgADAAQAAAB6/yUAAgAEAAIAAACJ/yoAAgAAAAEAAAA=")
 tile_set = ExtResource("5_yixkb")
 
 [node name="TileMapBack" type="TileMapLayer" parent="Node2D/TileMap" unique_id=1718019010]
@@ -422,25 +556,24 @@ z_index = 4
 position = Vector2(12643, 460)
 rotation = 3.1415927
 scale = Vector2(0.3, -0.3)
-tile_map_data = PackedByteArray("AAAHAI4AAAACAAUAAAAZAFkAAgAAAAIAAAAiAFQAAgAAAAIAAACSAFMAAgABAAIAAACaAE0AAgABAAIAAADVAFwAAgAAAAMAAADMAFUAAgAAAAMAAADDAGAAAgAAAAMAAAA/AFwAAgAGAAIAAABkAFQAAgAGAAIAAABGAFkAAgACAAIAAAA0AVEAAgAEAAAAAADRAGUAAgAHAAIAAAApAVMAAgAHAAIAAABaAVIAAgAHAAIAAABhAV4AAgAHAAIAAACDAVIAAgAHAAIAAACeAVcAAgAHAAIAAAC2AU4AAgAHAAIAAADjAVQAAgAHAAIAAADPAU4AAgAHAAIAAAD5AVQAAgAHAAIAAAAhAk8AAgAHAAIAAABdAk8AAgAHAAIAAAAKAlMAAgAHAAIAAAB2AlIAAgAHAAIAAAB3AlIAAgAHAAIAAACwAlEAAgAHAAIAAACxAlEAAgAHAAIAAADRAlMAAgAHAAIAAADrAlEAAgAHAAIAAADsAlAAAgAHAAIAAAASA1gAAgAHAAIAAAARA1gAAgAHAAIAAAAgA1gAAgAHAAIAAAAhA1gAAgAHAAIAAAAhA1cAAgAHAAIAAAAiA1cAAgAHAAIAAABlA1EAAgAHAAIAAACGA1YAAgAHAAIAAACvA1IAAgAHAAIAAACwA1IAAgAHAAIAAACwA1EAAgAHAAIAAADlA1gAAgAHAAIAAADmA1cAAgAHAAIAAABKA2AAAgAFAAEAAABEA1UAAgAFAAEAAAAtA10AAgAFAAEAAABiA00AAgAFAAIAAABxA0wAAgAFAAIAAABrA1AAAgAFAAIAAACZA1wAAgACAAIAAACaA1wAAgACAAIAAADlAEwAAgAGAAIAAADuAE8AAgAGAAIAAADzAEwAAgAGAAIAAADoAFIAAgAGAAIAAAD1AFUAAgAGAAIAAAArAE0AAgABAAIAAAAfAE8AAgABAAIAAAAjAEoAAgABAAIAAAAoAFUAAgABAAIAAABTAFUAAgAFAAEAAABbAFcAAgAFAAEAAABtAFYAAgAFAAEAAAB1AFcAAgAFAAEAAACAAFEAAgAFAAEAAAA/AFEAAgAFAAEAAABJAFMAAgAFAAEAAAAIAU4AAgAAAAMAAAANAVUAAgAAAAMAAAASAVEAAgAAAAMAAAAZAVUAAgAAAAMAAAAfAU4AAgAAAAMAAAAgAVwAAgAAAAMAAAATAVsAAgAAAAMAAAAcAWAAAgABAAMAAABtAU8AAgAAAAIAAAB0AVQAAgAAAAIAAACsAE8AAgAAAAIAAACzAFcAAgAAAAIAAACzAFYAAgAAAAIAAAC2AE8AAgAAAAIAAACHAGUAAgAAAAIAAABLAGoAAgAAAAIAAACbAU0AAgAFAAIAAACSAUkAAgAFAAIAAACgAUgAAgAFAAIAAADMAE0AAgAFAAIAAADXAEsAAgAFAAIAAADkAEsAAgAFAAIAAACmAEoAAgAEAAIAAACJAEoAAgAEAAIAAACXAksAAgAEAAIAAABpAk4AAgAEAAIAAABSAk4AAgAEAAIAAACYA0gAAgAEAAIAAACKA0oAAgAEAAIAAAA=")
+tile_map_data = PackedByteArray("AABaAVIAAgAHAAIAAABhAV4AAgAHAAIAAACDAVIAAgAHAAIAAACeAVcAAgAHAAIAAAC2AU4AAgAHAAIAAADjAVQAAgAHAAIAAADPAU4AAgAHAAIAAAD5AVQAAgAHAAIAAAAhAk8AAgAHAAIAAABdAk8AAgAHAAIAAAAKAlMAAgAHAAIAAAB2AlIAAgAHAAIAAAB3AlIAAgAHAAIAAACwAlEAAgAHAAIAAACxAlEAAgAHAAIAAADRAlMAAgAHAAIAAADrAlEAAgAHAAIAAADsAlAAAgAHAAIAAAASA1gAAgAHAAIAAAARA1gAAgAHAAIAAAAgA1gAAgAHAAIAAAAhA1gAAgAHAAIAAAAhA1cAAgAHAAIAAAAiA1cAAgAHAAIAAABlA1EAAgAHAAIAAACGA1YAAgAHAAIAAACvA1IAAgAHAAIAAACwA1IAAgAHAAIAAACwA1EAAgAHAAIAAADlA1gAAgAHAAIAAADmA1cAAgAHAAIAAABKA2AAAgAFAAEAAABEA1UAAgAFAAEAAAAtA10AAgAFAAEAAABiA00AAgAFAAIAAABxA0wAAgAFAAIAAABrA1AAAgAFAAIAAACZA1wAAgACAAIAAACaA1wAAgACAAIAAABtAU8AAgAAAAIAAAB0AVQAAgAAAAIAAACbAU0AAgAFAAIAAACSAUkAAgAFAAIAAACgAUgAAgAFAAIAAACXAksAAgAEAAIAAABpAk4AAgAEAAIAAABSAk4AAgAEAAIAAACYA0gAAgAEAAIAAACKA0oAAgAEAAIAAAA=")
 tile_set = ExtResource("5_yixkb")
 
 [node name="TileMapGround" type="TileMapLayer" parent="Node2D/TileMap" unique_id=1926704823]
 modulate = Color(0.5227245, 0.52272415, 0.5227242, 1)
-z_index = 5
-position = Vector2(42885, -917)
+position = Vector2(42861, -918)
 rotation = 3.1415927
 scale = Vector2(2, -2)
-tile_map_data = PackedByteArray("AAClBDgAAAAAAAAAABCWBDgAAAABAAAAABCHBDgAAAACAAAAABClBEcAAAAAAAEAABCWBEcAAAABAAEAABCHBEcAAAACAAEAABB4BDgAAAADAAAAABB4BEcAAAADAAEAABBpBEcAAAADAAEAAABaBEcAAAADAAEAABBLBEcAAAAEAAEAABBLBDgAAAAEAAAAABA8BEcAAAAEAAEAAAA8BDgAAAAEAAAAAAAtBDgAAAADAAAAAAAtBEcAAAADAAEAAAAeBEcAAAADAAEAABAeBDgAAAADAAAAABBpBDgAAAADAAAAAABaBDgAAAADAAAAABAPBDgAAAADAAAAAAAABDgAAAADAAAAABDxAzgAAAAEAAAAABDiAzgAAAAFAAAAABDiA0cAAAAFAAEAABDxA0cAAAAEAAEAABDcAjkAAAACAAAAABDcAkgAAAACAAEAABDrAjkAAAACAAAAAADrAkgAAAACAAEAAAD6AjkAAAADAAAAAAD6AkgAAAADAAEAAAAJAzkAAAADAAAAABAJA0gAAAADAAEAABAYAzkAAAADAAAAAAAYA0gAAAADAAEAAAAnAzkAAAAEAAAAAAAnA0gAAAAEAAEAAAA2AzkAAAAEAAAAABA2A0gAAAAEAAEAABBFAzkAAAADAAAAABBFA0gAAAADAAEAABBUAzkAAAADAAAAAABUA0gAAAADAAEAAABjAzkAAAADAAAAABBjA0gAAAADAAEAABByAzkAAAACAAAAABByA0gAAAACAAEAABCBAzkAAAABAAAAABCBA0gAAAABAAEAABCQAzkAAAAAAAAAABCQA0gAAAAAAAEAABDNAjkAAAADAAAAABDNAkgAAAADAAEAABC+AjkAAAADAAAAAAC+AkgAAAADAAEAAACvAjkAAAADAAAAABCvAkgAAAADAAEAABCgAjkAAAADAAAAAACgAkgAAAADAAEAAACRAjkAAAADAAAAABCRAkgAAAADAAEAABCCAjkAAAADAAAAAACCAkgAAAADAAEAAABzAjkAAAADAAAAABBzAkgAAAADAAEAABBkAjkAAAADAAAAAABkAkgAAAADAAEAAABVAkgAAAADAAEAABBVAjkAAAADAAAAABBGAjkAAAAEAAAAABBGAkgAAAAEAAEAABA3AjkAAAAFAAAAABA3AkgAAAAFAAEAABAABEcAAAADAAEAABAPBEcAAAADAAEAAAA=")
+tile_map_data = PackedByteArray("AAClBDgAAAAAAAAAABCWBDgAAAABAAAAABCHBDgAAAACAAAAABClBEcAAAAAAAEAABCWBEcAAAABAAEAABCHBEcAAAACAAEAABB4BDgAAAADAAAAABB4BEcAAAADAAEAABBpBEcAAAADAAEAAABaBEcAAAADAAEAABBLBEcAAAAEAAEAABBLBDgAAAAEAAAAABA8BEcAAAAEAAEAAAA8BDgAAAAEAAAAAAAtBDgAAAADAAAAAAAtBEcAAAADAAEAAAAeBEcAAAADAAEAABAeBDgAAAADAAAAABBpBDgAAAADAAAAAABaBDgAAAADAAAAABAPBDgAAAADAAAAAAAABDgAAAADAAAAABDxAzgAAAAEAAAAABDiAzgAAAAFAAAAABAABEcAAAADAAEAABAPBEcAAAADAAEAAAACAzgAAAADAAAAAAD/AjgAAAABAAAAABAOAzgAAAAAAAAAABDwAjgAAAACAAAAABDwAkcAAAACAAEAABDhAkcAAAACAAEAAADSAkcAAAACAAEAABDDAkcAAAACAAEAAAC0AkcAAAACAAEAABClAkcAAAACAAEAAADhAjgAAAACAAAAAADVAjgAAAACAAAAABDGAjgAAAACAAAAAAC7AjgAAAACAAAAABCvAjgAAAACAAAAAACgAjgAAAACAAAAABCRAjgAAAACAAAAAACWAkcAAAACAAEAABCHAkcAAAADAAEAABB4AkcAAAADAAEAAABpAkcAAAADAAEAABBaAkcAAAADAAEAAABLAkcAAAADAAEAABA8AkcAAAADAAEAAAAtAkcAAAADAAEAABAeAkcAAAADAAEAAACCAjgAAAACAAAAABBzAjgAAAADAAAAABBkAjgAAAADAAAAAABVAjgAAAADAAAAABDiA0cAAAAFAAEAABDxA0cAAAAEAAEAABAOA0cAAAAAAAEAABD/AkcAAAABAAEAABA=")
 tile_set = SubResource("TileSet_r8bpj")
 
 [node name="TileMapVillage" type="TileMapLayer" parent="Node2D/TileMap" unique_id=973033880]
 modulate = Color(0.573792, 0.573792, 0.5737917, 1)
 z_index = 5
-position = Vector2(19302, 209)
+position = Vector2(19299, 209)
 rotation = 3.1415927
 scale = Vector2(1.5, -1.5)
-tile_map_data = PackedByteArray("AAAmAh0AAAAAAAAAAAABAh0AAAABAAAAAADCAR8AAAAAAAEAAACRAR0AAAACAAAAAACwAR0AAAADAAAAAAB2ARgAAAADAAEAAAA9ABkAAAABAAEAABAeABkAAAACAAEAABCEABoAAAADAAEAAADb/x8AAAACAAAAABC8/x8AAAADAAAAABCt/x8AAAABAAAAAACN/xgAAAABAAEAABBu/xgAAAACAAEAABBR/yAAAAAAAAEAAAAy/x4AAAAAAAAAAABnACAAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAmAh0AAAAAAAAAAAABAh0AAAABAAAAAADCAR8AAAAAAAEAAACRAR0AAAACAAAAAACwAR0AAAADAAAAAAB2ARgAAAADAAEAAAA=")
 tile_set = SubResource("TileSet_6qdkx")
 
 [node name="platform" type="StaticBody2D" parent="Node2D" unique_id=2109720575]
@@ -454,11 +587,11 @@ position = Vector2(-258, 399)
 shape = SubResource("RectangleShape2D_ekrdk")
 
 [node name="Border2" type="CollisionShape2D" parent="Node2D/platform" unique_id=1166325203]
-position = Vector2(25528, 284)
+position = Vector2(24824, 360)
 shape = SubResource("RectangleShape2D_djaxt")
 
 [node name="Border3" type="CollisionShape2D" parent="Node2D/platform" unique_id=1593811148]
-position = Vector2(12518.25, 1426)
+position = Vector2(5340.25, 1426)
 shape = SubResource("RectangleShape2D_1lpgc")
 
 [node name="Border4" type="CollisionShape2D" parent="Node2D/platform" unique_id=78992822]
@@ -479,14 +612,8 @@ shape = SubResource("RectangleShape2D_hag10")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Node2D/platform" unique_id=603818646]
 z_index = 15
-position = Vector2(6222, 1312)
+position = Vector2(7907, 1267)
 shape = SubResource("RectangleShape2D_2c4og")
-
-[node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Node2D/platform" unique_id=1752362063]
-z_index = 15
-position = Vector2(15109.976, 1307)
-scale = Vector2(0.904927, 1.0011786)
-shape = SubResource("RectangleShape2D_32yx8")
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Node2D/platform" unique_id=361860858]
 position = Vector2(5579.6, 671.57666)
@@ -496,13 +623,8 @@ polygon = PackedVector2Array(-174.3457, -46.342773, -424.93555, -17.143555, -676
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/platform" unique_id=406604896]
 z_index = 15
-position = Vector2(21203, 1253)
+position = Vector2(20856.5, 1178.5)
 shape = SubResource("RectangleShape2D_wrd0c")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/platform" unique_id=1212728006]
-z_index = 15
-position = Vector2(9690, 1304)
-shape = SubResource("RectangleShape2D_r8bpj")
 
 [node name="CollSwimEnemies" type="StaticBody2D" parent="Node2D" unique_id=1427173601]
 z_index = 10
@@ -519,7 +641,7 @@ position = Vector2(11213, 1028)
 shape = SubResource("RectangleShape2D_hw1l3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/CollSwimEnemies" unique_id=822502620]
-position = Vector2(13612, 1055)
+position = Vector2(17804, 1009)
 shape = SubResource("RectangleShape2D_hw1l3")
 
 [node name="World" type="Node2D" parent="Node2D" unique_id=277901197]
@@ -528,46 +650,41 @@ position = Vector2(-21, -23)
 [node name="SwimZone" type="Node2D" parent="Node2D/World" unique_id=530466928]
 script = ExtResource("10_4tc27")
 
-[node name="Area2D" type="Area2D" parent="Node2D/World/SwimZone" unique_id=1266717649]
+[node name="SwimArea" type="Area2D" parent="Node2D/World/SwimZone" unique_id=1266717649]
 collision_layer = 32
 collision_mask = 134217737
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=517564053]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/World/SwimZone/SwimArea" unique_id=517564053]
 position = Vector2(131.5, 1522.625)
 shape = SubResource("RectangleShape2D_n7unt")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=1122335787]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/World/SwimZone/SwimArea" unique_id=1122335787]
 position = Vector2(858.5, 1523.625)
 shape = SubResource("RectangleShape2D_4tc27")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=1910255597]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/World/SwimZone/SwimArea" unique_id=1910255597]
 position = Vector2(2395, 1524.5)
 shape = SubResource("RectangleShape2D_sdlip")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=746719110]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/World/SwimZone/SwimArea" unique_id=746719110]
 z_index = 20
 position = Vector2(4202, 1355)
 shape = SubResource("RectangleShape2D_06aic")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/World/SwimZone/Area2D" unique_id=1639978179]
-z_index = 20
-position = Vector2(12419, 1284)
-shape = SubResource("RectangleShape2D_h3eyb")
-
 [node name="Trees" type="Node2D" parent="Node2D/World" unique_id=544940475]
 
 [node name="TreePerch" type="Node2D" parent="Node2D/World/Trees" unique_id=2039167469]
-position = Vector2(2440, -16)
+position = Vector2(8809, 118)
 
 [node name="LifeLoot" parent="Node2D/World/Trees/TreePerch" unique_id=2060428949 instance=ExtResource("22_qskf4")]
 z_index = 15
-position = Vector2(16309, 534.00024)
+position = Vector2(11271, 413.00024)
 rotation = -2.815216
 scale = Vector2(0.14999998, -0.14999998)
 
 [node name="Tree_perch" parent="Node2D/World/Trees/TreePerch" unique_id=9919485 instance=ExtResource("19_8n178")]
 z_index = 4
-position = Vector2(16720, 573.00006)
+position = Vector2(11672, 508)
 scale = Vector2(1.4, 1.4)
 
 [node name="BeeHive" parent="Node2D/World/Trees/TreePerch/Tree_perch" unique_id=2050925712 instance=ExtResource("24_vaysu")]
@@ -648,21 +765,6 @@ position = Vector2(2788.7502, 2172)
 rotation = 5.017822
 scale = Vector2(1.5, 1.5)
 
-[node name="Liana7" parent="Node2D/World" unique_id=545184550 instance=ExtResource("11_sdlip")]
-z_index = 15
-position = Vector2(11518, 127)
-scale = Vector2(0.4, 1)
-
-[node name="Liana8" parent="Node2D/World" unique_id=411276915 instance=ExtResource("11_sdlip")]
-z_index = 15
-position = Vector2(13260, 162)
-scale = Vector2(0.4, 1)
-
-[node name="Liana9" parent="Node2D/World" unique_id=1044953259 instance=ExtResource("11_sdlip")]
-z_index = 15
-position = Vector2(12358, 154)
-scale = Vector2(0.4, 1)
-
 [node name="Liana5" parent="Node2D/World" unique_id=210638943 instance=ExtResource("11_sdlip")]
 z_index = 15
 position = Vector2(4002, 253)
@@ -671,6 +773,11 @@ scale = Vector2(0.4, 1)
 [node name="Liana6" parent="Node2D/World" unique_id=1341740517 instance=ExtResource("11_sdlip")]
 z_index = 5
 position = Vector2(756, 241)
+scale = Vector2(0.4, 1)
+
+[node name="Liana7" parent="Node2D/World" unique_id=411276915 instance=ExtResource("11_sdlip")]
+z_index = 5
+position = Vector2(11677, -224)
 scale = Vector2(0.4, 1)
 
 [node name="Nenuphars" type="Node2D" parent="Node2D/World" unique_id=1596580178]
@@ -704,41 +811,350 @@ vframes = 6
 frame = 18
 
 [node name="Exit" type="Node2D" parent="Node2D" unique_id=1499998343]
-position = Vector2(5369, 223)
+position = Vector2(10433, 172)
 
 [node name="ArenaBack" type="Sprite2D" parent="Node2D/Exit" unique_id=1644781606]
 z_index = 5
-position = Vector2(20082, 444)
+position = Vector2(14800, 444)
 scale = Vector2(2.5, 2)
 texture = ExtResource("19_1jb2y")
 
 [node name="Arena" type="Sprite2D" parent="Node2D/Exit" unique_id=1883374509]
 z_index = 50
-position = Vector2(19776, 464)
+position = Vector2(14494, 464)
 scale = Vector2(2, 2)
 texture = ExtResource("20_8uqfc")
 
 [node name="Exit" parent="Node2D/Exit" unique_id=961748312 instance=ExtResource("26_twwc1")]
 z_index = 50
-position = Vector2(19066, -873)
+position = Vector2(13784, -873)
 scale = Vector2(0.25, 8)
 next_scene_path = "res://Levels/Lvl3/Lvl_3a/lvl_3a.tscn"
+
+[node name="AquaticZone" type="Node2D" parent="Node2D" unique_id=1014830083]
+z_index = -5
+position = Vector2(12354, 55)
+scale = Vector2(2, 2)
+
+[node name="Seashell" parent="Node2D/AquaticZone" unique_id=941421179 instance=ExtResource("35_v8g36")]
+modulate = Color(0.5006195, 0.5006196, 0.5006196, 1)
+z_index = 5
+position = Vector2(1327.5, 1509.5)
+
+[node name="PlantAqua" parent="Node2D/AquaticZone" unique_id=1648588192 instance=ExtResource("32_dc7vr")]
+modulate = Color(0.54816455, 0.5481646, 0.5481646, 1)
+z_index = 5
+position = Vector2(-510.5, 1495.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="World" type="Node2D" parent="Node2D/AquaticZone" unique_id=1431831458]
+position = Vector2(184, 2000)
+
+[node name="Environement" type="Node2D" parent="Node2D/AquaticZone/World" unique_id=1511048049]
+z_index = -20
+position = Vector2(1131, -1166)
+scale = Vector2(1.5, 1.5)
+
+[node name="WaterBackSprite" type="Sprite2D" parent="Node2D/AquaticZone/World/Environement" unique_id=1766805751]
+modulate = Color(1, 1, 1, 0.49019608)
+texture_repeat = 3
+material = SubResource("ShaderMaterial_qprr6")
+position = Vector2(-160.50008, 9.083313)
+scale = Vector2(1.2933108, 0.97951883)
+texture = SubResource("CompressedTexture2D_xusep")
+
+[node name="RuinSpite" type="Sprite2D" parent="Node2D/AquaticZone/World/Environement" unique_id=236283150]
+position = Vector2(-164.75885, 149.70235)
+scale = Vector2(-1.2972023, 1.2466754)
+texture = SubResource("CompressedTexture2D_ve5k5")
+
+[node name="WaterFrontSprite2" type="Sprite2D" parent="Node2D/AquaticZone/World/Environement" unique_id=411057803]
+modulate = Color(1, 1, 1, 0.49019608)
+z_index = 30
+texture_repeat = 3
+material = SubResource("ShaderMaterial_qprr6")
+position = Vector2(-184.33339, 72.50005)
+scale = Vector2(1.54115, 1.2773393)
+texture = SubResource("CompressedTexture2D_eg4xw")
+
+[node name="WorldParallaxe" type="ParallaxBackground" parent="Node2D/AquaticZone/World" unique_id=1970663211]
+
+[node name="SkyLayer" type="ParallaxLayer" parent="Node2D/AquaticZone/World/WorldParallaxe" unique_id=367897675]
+z_index = -100
+position = Vector2(3225, 682)
+
+[node name="SkySprite" type="Sprite2D" parent="Node2D/AquaticZone/World/WorldParallaxe/SkyLayer" unique_id=146974602]
+z_index = -100
+position = Vector2(-3377, -920.00006)
+scale = Vector2(1.7470098, 1.843235)
+texture = ExtResource("7_hw1l3")
+centered = false
+
+[node name="UnderSwimZone" type="Node2D" parent="Node2D/AquaticZone/World" unique_id=1196042333]
+position = Vector2(-91, 423)
+script = SubResource("GDScript_mg0vw")
+
+[node name="Area2D" type="Area2D" parent="Node2D/AquaticZone/World/UnderSwimZone" unique_id=1454481675]
+collision_layer = 32
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AquaticZone/World/UnderSwimZone/Area2D" unique_id=1396042500]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(944.25, -1336.75)
+shape = SubResource("RectangleShape2D_amax7")
+
+[node name="BreathDelayTimer" type="Timer" parent="Node2D/AquaticZone/World/UnderSwimZone/Area2D" unique_id=1508863245]
+one_shot = true
+
+[node name="Ennemies" type="Node2D" parent="Node2D/AquaticZone/World" unique_id=387562821]
+z_index = 5
+position = Vector2(-1843, 9)
+
+[node name="Pyranha" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1783296698 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(3461, -636.5)
+scale = Vector2(0.2, 0.2)
+chase_speed = 660.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha2" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1052582077 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(3539.5, -602.5)
+scale = Vector2(0.2, 0.2)
+chase_speed = 460.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha3" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1038009309 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(3373, -597.5)
+scale = Vector2(0.2, 0.2)
+chase_speed = 660.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha4" parent="Node2D/AquaticZone/World/Ennemies" unique_id=373042270 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(3397.5, -702.5)
+scale = Vector2(0.2, 0.2)
+chase_speed = 660.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha5" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1034390578 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(3490.5, -707.5)
+scale = Vector2(0.2, 0.2)
+chase_speed = 660.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha6" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1643300143 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(1738.0001, -882)
+scale = Vector2(0.2, 0.2)
+chase_speed = 660.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha7" parent="Node2D/AquaticZone/World/Ennemies" unique_id=937695386 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(1816.5001, -848)
+scale = Vector2(0.2, 0.2)
+chase_speed = 460.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha8" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1432714927 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(1650.0001, -843)
+scale = Vector2(0.2, 0.2)
+chase_speed = 660.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha9" parent="Node2D/AquaticZone/World/Ennemies" unique_id=827473783 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(1674.5001, -948)
+scale = Vector2(0.2, 0.2)
+chase_speed = 660.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="Pyranha10" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1139088626 instance=ExtResource("31_e0vvl")]
+modulate = Color(0.77168405, 0.77168405, 0.7716839, 1)
+z_index = 15
+position = Vector2(1767.5001, -953)
+scale = Vector2(0.2, 0.2)
+chase_speed = 660.0
+max_hp = 1000
+damage = 1
+hit_lock_time = 3.0
+
+[node name="platform" type="StaticBody2D" parent="Node2D/AquaticZone" unique_id=57295545]
+visible = false
+z_index = 5
+position = Vector2(-4, 34)
+collision_layer = 2
+
+[node name="Border" type="CollisionShape2D" parent="Node2D/AquaticZone/platform" unique_id=1267401658]
+position = Vector2(-702, 1058)
+shape = SubResource("RectangleShape2D_jj8rq")
+
+[node name="Border2" type="CollisionShape2D" parent="Node2D/AquaticZone/platform" unique_id=1248410704]
+position = Vector2(2728, 1069.9336)
+shape = SubResource("RectangleShape2D_ym1pw")
+
+[node name="Border3" type="CollisionShape2D" parent="Node2D/AquaticZone/platform" unique_id=1991083479]
+position = Vector2(1070.75, 1503)
+shape = SubResource("RectangleShape2D_tpwvn")
+
+[node name="Sound" type="Node2D" parent="Node2D/AquaticZone" unique_id=1368592872]
+
+[node name="WaterSound" type="AudioStreamPlayer" parent="Node2D/AquaticZone/Sound" unique_id=737363271]
+stream = ExtResource("3_06aic")
+volume_db = -4.062
+autoplay = true
+bus = &"Water"
+
+[node name="BirdsSound" type="AudioStreamPlayer" parent="Node2D/AquaticZone/Sound" unique_id=398486016]
+stream = ExtResource("4_06aic")
+volume_db = 4.65
+autoplay = true
+bus = &"Birds"
+
+[node name="CollisionEnemies" type="StaticBody2D" parent="Node2D/AquaticZone" unique_id=1646916127]
+collision_layer = 32768
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AquaticZone/CollisionEnemies" unique_id=1533891115]
+position = Vector2(1020.75, 598.5)
+shape = SubResource("RectangleShape2D_yybw4")
+debug_color = Color(0.8689669, 0.17659128, 0.74910676, 0.41960785)
+
+[node name="Turtule" parent="Node2D/AquaticZone" unique_id=633660690 instance=ExtResource("33_gu7x3")]
+modulate = Color(0.5823756, 0.5823756, 0.5823756, 1)
+z_index = 15
+position = Vector2(723.5, 1346.5)
+scale = Vector2(0.3, 0.3)
+speed = 120.0
+angle_range_deg = 60.0
+use_bubbles = false
+
+[node name="TileMapLayer0" type="TileMapLayer" parent="Node2D/AquaticZone" unique_id=691700598]
+modulate = Color(0.19315353, 0.19315353, 0.19315347, 1)
+z_index = 40
+position = Vector2(-11, 1406)
+scale = Vector2(0.2, 0.2)
+tile_map_data = PackedByteArray("AAC/ASMAAgAAAAIAAADIAR0AAgABAAIAAADMASUAAgAHAAMAAADcASEAAgADAAQAAADcASIAAgADAAQAAADiASMAAgAEAAIAAADxASgAAgAAAAEAAAABAiMAAgAAAAMAAAAKAiAAAgAHAAEAAAAUAhwAAgAFAAIAAAAjAh8AAgAAAAMAAAAtAiAAAgAEAAIAAAA9AiMAAgAFAAIAAABOAiAAAgADAAUAAABPAigAAgAAAAEAAABXAiQAAgAAAAMAAABwAiIAAgACAAIAAABxAiIAAgACAAIAAACIAiQAAgAHAAMAAACOAh0AAgAAAAIAAACQAh0AAgAAAAEAAACZAh8AAgAEAAIAAACkAiAAAgAAAAIAAACtAhoAAgABAAIAAACxAiIAAgAHAAMAAADBAh4AAgADAAQAAADBAh8AAgADAAQAAADHAiAAAgAEAAIAAADNAiMAAgAAAAMAAADWAiUAAgAAAAEAAADaAiIAAgADAAQAAADeAiQAAgAAAAMAAADkAhgAAgAAAAIAAAD5AiMAAgAAAAMAAAACAyAAAgAHAAEAAAAMAxwAAgAFAAIAAAAbAx8AAgAAAAMAAAAlAyAAAgAEAAIAAAA1AyMAAgAFAAIAAABGAyAAAgADAAUAAABHAygAAgAAAAEAAACjAScAAgAHAAMAAAC0ASIAAgAEAAIAAABe/ycAAgAHAAMAAABv/yIAAgAEAAIAAAB6/yMAAgAAAAIAAACD/x0AAgABAAIAAACH/yUAAgAHAAMAAACX/yEAAgADAAQAAACX/yIAAgADAAQAAACd/yMAAgAEAAIAAACs/ygAAgAAAAEAAAC8/yMAAgAAAAMAAADF/yAAAgAHAAEAAADP/xwAAgAFAAIAAADe/x8AAgAAAAMAAADo/yAAAgAEAAIAAAD4/yMAAgAFAAIAAAAJACAAAgADAAUAAAAKACgAAgAAAAEAAAA=")
+tile_set = ExtResource("5_yixkb")
+
+[node name="Fish" parent="Node2D/AquaticZone" unique_id=641008821 instance=ExtResource("34_ykpc1")]
+z_index = 10
+position = Vector2(-266, 810.5)
+fish_color = Color(0.641934, 0.641934, 0.641934, 1)
+
+[node name="Fish2" parent="Node2D/AquaticZone" unique_id=581015648 instance=ExtResource("34_ykpc1")]
+z_index = 10
+position = Vector2(344, 982)
+speed = 120.0
+fish_color = Color(6.8345666e-06, 0.59537166, 0.5968351, 1)
+
+[node name="Fish3" parent="Node2D/AquaticZone" unique_id=1660724951 instance=ExtResource("34_ykpc1")]
+z_index = 10
+position = Vector2(1113.5, 852)
+speed = 150.0
+fish_color = Color(0.66947573, 0.00034509748, 0.671363, 1)
+
+[node name="Fish4" parent="Node2D/AquaticZone" unique_id=730462971 instance=ExtResource("34_ykpc1")]
+z_index = 10
+position = Vector2(1608, 1316.5)
+speed = 60.0
+fish_color = Color(0.75257474, 0.1580748, 2.8878452e-07, 1)
+
+[node name="Fish5" parent="Node2D/AquaticZone" unique_id=383833383 instance=ExtResource("34_ykpc1")]
+z_index = 10
+position = Vector2(2431, 816)
+speed = 180.0
+fish_color = Color(0.45158178, 0.61692053, 1.1551381e-06, 1)
+
+[node name="Fish6" parent="Node2D/AquaticZone" unique_id=1833453733 instance=ExtResource("34_ykpc1")]
+z_index = 10
+position = Vector2(-248, 1328.5)
+fish_color = Color(0.1483959, 0.58409864, 0, 1)
+
+[node name="IdoleAirItem" parent="Node2D/AquaticZone" unique_id=1848008734 instance=ExtResource("30_g17ky")]
+modulate = Color(0.5802277, 0.58022773, 0.58022773, 1)
+z_index = 15
+position = Vector2(2254.5, 1423)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Node2D/AquaticZone" unique_id=1228449204]
+modulate = Color(0.49433076, 0.49433076, 0.4943307, 1)
+z_index = -2
+position = Vector2(-61.5, 64.5)
+scale = Vector2(0.7, 0.7)
+tile_map_data = PackedByteArray("AACkAA4AAAAAAAoAAAAJAE0AAgAAAAUAADAJAFMAAgAAAAUAADAOAHoABAAAAAAAAAAdAHoABAAAAAAAABAkAHoABAAAAAAAAAAzAHoABAAAAAAAABA6AHoABAAAAAAAAABdAHsABAAAAAAAABBhAHoABAAAAAAAAABwAHoABAAAAAAAABBhAHEABAAAAAAAAABhAGkABAAAAAAAAABhAGIABAAAAAAAAABhAFsABAAAAAAAAABgAFMABAAAAAAAAACGAD0ABAAAAAAAACCHAEcABAAAAAAAACCIAFIABAAAAAAAACCJAF0ABAAAAAAAACCVAD0ABAAAAAAAADCWAEcABAAAAAAAADCXAFIABAAAAAAAADCYAF0ABAAAAAAAADByADIABAAAAAAAABB4ADEABAAAAAAAAACHADEABAAAAAAAABCQADAABAAAAAAAAACfADAABAAAAAAAABCmADAABAAAAAAAAAC1ADAABAAAAAAAABC9ADAABAAAAAAAAADMADAABAAAAAAAABBjADIABAAAAAAAAABgADMABAAAAAAAABBRADIABAAAAAAAABBRADMABAAAAAAAAAAtADQABAAAAAAAAAAuAEUABAAAAAAAACAuAE0ABAAAAAAAACAuAFMABAAAAAAAACAuAFkABAAAAAAAACA8ADQABAAAAAAAABA9AEUABAAAAAAAADA9AE0ABAAAAAAAADA9AFMABAAAAAAAADA9AFkABAAAAAAAADBCADIABAAAAAAAAABJAHoABAAAAAAAABBOAHsABAAAAAAAAABwAHEABAAAAAAAABBwAGkABAAAAAAAABBwAGIABAAAAAAAABBwAFsABAAAAAAAABBvAFMABAAAAAAAABAuACsABAAAAAAAAAA9ACsABAAAAAAAABBDACkABAAAAAAAAABSACkABAAAAAAAABBSACoABAAAAAAAAABhACoABAAAAAAAABBkACkABAAAAAAAAABzACkABAAAAAAAABB5ACgABAAAAAAAAACIACgABAAAAAAAABCRACcABAAAAAAAAACgACcABAAAAAAAABCnACcABAAAAAAAAAC2ACcABAAAAAAAABC+ACcABAAAAAAAAADNACcABAAAAAAAABAuACMABAAAAAAAAAA9ACMABAAAAAAAABBDACEABAAAAAAAAABSACEABAAAAAAAABBSACIABAAAAAAAAABhACIABAAAAAAAABBkACEABAAAAAAAAABzACEABAAAAAAAABB5ACAABAAAAAAAAACIACAABAAAAAAAABCRAB8ABAAAAAAAAACgAB8ABAAAAAAAABCnAB8ABAAAAAAAAAC2AB8ABAAAAAAAABC+AB8ABAAAAAAAAADNAB8ABAAAAAAAABAvAB8ABAAAAAAAAAA+AB8ABAAAAAAAABBEAB0ABAAAAAAAAABTAB0ABAAAAAAAABBTAB4ABAAAAAAAAABiAB4ABAAAAAAAABBlAB0ABAAAAAAAAAB0AB0ABAAAAAAAABB6ABwABAAAAAAAAACJABwABAAAAAAAABCSABsABAAAAAAAAAChABsABAAAAAAAABCoABsABAAAAAAAAAC3ABsABAAAAAAAABC/ABsABAAAAAAAAADOABsABAAAAAAAABAvABcABAAAAAAAAAA+ABcABAAAAAAAABBEABUABAAAAAAAAABTABUABAAAAAAAABBTABYABAAAAAAAAABiABYABAAAAAAAABBlABUABAAAAAAAAAB0ABUABAAAAAAAABB6ABQABAAAAAAAAACJABQABAAAAAAAABCSABMABAAAAAAAAAChABMABAAAAAAAABCoABMABAAAAAAAAAC3ABMABAAAAAAAABC/ABMABAAAAAAAAADOABMABAAAAAAAABAuAAwABAAAAAAAAAA9AAwABAAAAAAAABBDAAoABAAAAAAAAABSAAoABAAAAAAAABBSAAsABAAAAAAAAABhAAsABAAAAAAAABBkAAoABAAAAAAAAABzAAoABAAAAAAAABB5AAkABAAAAAAAAACIAAkABAAAAAAAABCRAAgABAAAAAAAAACgAAgABAAAAAAAABCnAAgABAAAAAAAAAC2AAgABAAAAAAAABC+AAgABAAAAAAAAADNAAgABAAAAAAAABAvAAEABAAAAAAAAAA+AAEABAAAAAAAABBEAP//BAAAAAAAAABTAP//BAAAAAAAABBTAAAABAAAAAAAAABiAAAABAAAAAAAABBlAP//BAAAAAAAAAB0AP//BAAAAAAAABB6AP7/BAAAAAAAAACJAP7/BAAAAAAAABCSAP3/BAAAAAAAAAChAP3/BAAAAAAAABCoAP3/BAAAAAAAAAC3AP3/BAAAAAAAABC/AP3/BAAAAAAAAADOAP3/BAAAAAAAABDN/zcABAAAAAAAADDN/z4ABAAAAAAAADDN/0UABAAAAAAAADDN/0wABAAAAAAAADDN/1MABAAAAAAAADDN/1oABAAAAAAAADDN/2EABAAAAAAAADDN/2YABAAAAAAAABDN/20ABAAAAAAAABDN/3QABAAAAAAAABDN/3oABAAAAAAAABDN/3sABAAAAAAAABA=")
+tile_set = SubResource("TileSet_o5chd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/AquaticZone" unique_id=1622941541]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AquaticZone/StaticBody2D" unique_id=591962014]
+position = Vector2(1360.5, 353.5)
+shape = SubResource("RectangleShape2D_v8g36")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/AquaticZone/StaticBody2D" unique_id=1032187649]
+position = Vector2(544.5, 843.875)
+shape = SubResource("RectangleShape2D_uob8x")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/AquaticZone/StaticBody2D" unique_id=1976058617]
+position = Vector2(664.25, 1452)
+shape = SubResource("RectangleShape2D_kc1it")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/AquaticZone/StaticBody2D" unique_id=1417841116]
+position = Vector2(1112.125, 1218.25)
+shape = SubResource("RectangleShape2D_3oscy")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/AquaticZone/StaticBody2D" unique_id=947125839]
+position = Vector2(1553.375, 913.75)
+shape = SubResource("RectangleShape2D_e0vvl")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D/AquaticZone/StaticBody2D" unique_id=1463359953]
+position = Vector2(2851.5, 1132.25)
+shape = SubResource("RectangleShape2D_dc7vr")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node2D/AquaticZone/StaticBody2D" unique_id=1622052339]
+position = Vector2(976.5, 1528)
+shape = SubResource("RectangleShape2D_gu7x3")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node2D/AquaticZone/StaticBody2D" unique_id=908824433]
+position = Vector2(-784, 1087.75)
+shape = SubResource("RectangleShape2D_ykpc1")
 
 [node name="Spear_rack" parent="." unique_id=438431408 instance=ExtResource("20_xni6f")]
 modulate = Color(0.54816455, 0.5481646, 0.5481646, 1)
 z_index = 5
 position = Vector2(8642, 998.00006)
 scale = Vector2(0.15, 0.15)
-
-[node name="HiddenTrap" parent="." unique_id=2101416875 instance=ExtResource("21_odqky")]
-modulate = Color(0.49747366, 0.49747366, 0.49747366, 1)
-z_index = 10
-position = Vector2(7990, 1225)
-
-[node name="HiddenTrap2" parent="." unique_id=454844292 instance=ExtResource("21_odqky")]
-modulate = Color(0.49747366, 0.49747366, 0.49747366, 1)
-z_index = 10
-position = Vector2(16840, 1224)
 
 [node name="BagLoot" parent="." unique_id=1156845004 instance=ExtResource("27_twwc1")]
 modulate = Color(0.6028433, 0.60284287, 0.602843, 1)
@@ -753,20 +1169,21 @@ modulate = Color(0.52906674, 0.5290667, 0.5290667, 1)
 position = Vector2(9667, 1052)
 
 [node name="BagLoot4" parent="." unique_id=189804655 instance=ExtResource("27_twwc1")]
-position = Vector2(13977, 1153)
+z_index = 10
+position = Vector2(18907, 1136)
 
 [node name="LeafItem" parent="." unique_id=78160736 instance=ExtResource("29_h3eyb")]
 z_index = 60
 position = Vector2(5493, 1165)
 
-[node name="IdoleAirItem" parent="." unique_id=1848008734 instance=ExtResource("30_g17ky")]
+[node name="IdoleAirItem" parent="." unique_id=1394774533 instance=ExtResource("30_g17ky")]
 z_index = 10
 position = Vector2(8391, 1071)
 scale = Vector2(0.8, 0.8)
 
 [node name="CraftAltarAir" parent="." unique_id=989838508 instance=ExtResource("31_qskf4")]
 z_index = 5
-position = Vector2(14127.999, 350.00003)
+position = Vector2(18510, 343.99997)
 rotation = -0.012217305
 
 [node name="SwimCrocodile" parent="." unique_id=922786221 instance=ExtResource("12_12vmq")]
@@ -779,7 +1196,7 @@ z_index = 20
 position = Vector2(-1871, 9)
 
 [node name="AmphibiousCroco" parent="Creatures" unique_id=939733752 instance=ExtResource("17_2nymq")]
-position = Vector2(13788, 1008)
+position = Vector2(10788, 1101)
 collision_mask = 290
 
 [node name="Cannibal" parent="Creatures" unique_id=708931693 instance=ExtResource("16_qaw7r")]
@@ -789,19 +1206,19 @@ position = Vector2(9370, 1104)
 position = Vector2(8468, 1062)
 
 [node name="Cannibal2" parent="Creatures" unique_id=1776202316 instance=ExtResource("16_qaw7r")]
-position = Vector2(17982, 1128)
+position = Vector2(23401, 974)
 attack_range = 500
 
 [node name="Cannibal3" parent="Creatures" unique_id=1130625183 instance=ExtResource("16_qaw7r")]
-position = Vector2(23468, 1097)
+position = Vector2(23581, 979)
 attack_range = 1000
 
 [node name="Cannibal4" parent="Creatures" unique_id=881252677 instance=ExtResource("16_qaw7r")]
-position = Vector2(25316, 1104)
+position = Vector2(23932, 986)
 attack_range = 1500
 
 [node name="Cannibal5" parent="Creatures" unique_id=77513344 instance=ExtResource("16_qaw7r")]
-position = Vector2(20058, 1059)
+position = Vector2(23189, 1001)
 attack_range = 1500
 
 [node name="Mosquito" parent="Creatures" unique_id=55077267 instance=ExtResource("18_8uqfc")]
@@ -814,7 +1231,7 @@ position = Vector2(8548, 733)
 
 [node name="Mosquito3" parent="Creatures" unique_id=1312555607 instance=ExtResource("18_8uqfc")]
 z_index = 15
-position = Vector2(16770, 867)
+position = Vector2(24478, 725)
 
 [node name="Mosquito4" parent="Creatures" unique_id=1226800460 instance=ExtResource("18_8uqfc")]
 z_index = 15
@@ -854,7 +1271,13 @@ position = Vector2(5605.0005, 736.0001)
 rotation = -2.815216
 scale = Vector2(0.24999993, -0.24999993)
 
-[connection signal="body_entered" from="Node2D/World/SwimZone/Area2D" to="Node2D/World/SwimZone" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Node2D/World/SwimZone/Area2D" to="Node2D/World/SwimZone" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Node2D/World/SwimZone/SwimArea" to="Node2D/World/SwimZone" method="_on_swim_area_body_entered"]
+[connection signal="body_exited" from="Node2D/World/SwimZone/SwimArea" to="Node2D/World/SwimZone" method="_on_swim_area_body_exited"]
 [connection signal="challenge_win" from="Node2D/World/ChronoChallenge/ChronoZone" to="." method="_on_chrono_zone_challenge_win"]
 [connection signal="challenge_win" from="Node2D/World/ChronoChallenge/ChronoZone" to="Node2D/World/ChronoChallenge/TreeBranch" method="_on_chrono_zone_challenge_win"]
+[connection signal="area_exited" from="Node2D/AquaticZone/World/UnderSwimZone/Area2D" to="Node2D/AquaticZone/World/UnderSwimZone" method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Node2D/AquaticZone/World/UnderSwimZone/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Node2D/AquaticZone/World/UnderSwimZone/Area2D" to="Node2D/AquaticZone/World/UnderSwimZone" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Node2D/AquaticZone/World/UnderSwimZone/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Node2D/AquaticZone/World/UnderSwimZone/Area2D" to="Node2D/AquaticZone/World/UnderSwimZone" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Node2D/AquaticZone/World/UnderSwimZone/Area2D/BreathDelayTimer" to="Node2D/AquaticZone/World/UnderSwimZone" method="_on_breath_delay_timer_timeout"]

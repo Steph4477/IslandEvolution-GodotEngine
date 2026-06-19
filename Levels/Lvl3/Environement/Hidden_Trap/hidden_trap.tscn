@@ -31,7 +31,7 @@ scale = Vector2(0.5, 0.277)
 [node name="CollEnemies" type="StaticBody2D" parent="." unique_id=333889187]
 z_index = 10
 position = Vector2(3, 36)
-collision_layer = 1024
+collision_layer = 16384
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollEnemies" unique_id=1744801929]
