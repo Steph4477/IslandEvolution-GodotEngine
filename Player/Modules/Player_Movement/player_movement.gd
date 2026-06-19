@@ -252,13 +252,14 @@ func process_swim(delta):
 			else:
 				p.sprite.flip_h = true
 
+
 func process_swim_under_water(delta):
 	if p.is_swimming_under_water:
 		p.swim_timer += delta
 		var h = Input.get_action_strength(p.INPUT["right"]) - Input.get_action_strength(p.INPUT["left"])
 		var v = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
-		p.velocity.x = h * p.speed * 0.5 + p.water_current.x
+		p.velocity.x = h * p.speed * 0.8 + p.water_current.x
 		p.velocity.y = v * p.speed * 0.35
 
 		if h != 0:
@@ -268,6 +269,12 @@ func process_swim_under_water(delta):
 				p.sprite.flip_h = false
 			else:
 				p.sprite.flip_h = true
+
+		if p.game_state and p.game_state.hud:
+			p.game_state.hud.set_underwater_gamepad(true)
+	else:
+		if p.game_state and p.game_state.hud:
+			p.game_state.hud.set_underwater_gamepad(false)
 
 # ============================================================================
 #                           FALL DAMAGE

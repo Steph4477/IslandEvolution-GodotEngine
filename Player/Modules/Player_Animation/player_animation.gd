@@ -38,6 +38,9 @@ func process():
 
 	if p.animation_locked:
 		return
+	
+	if p.is_hit_locked:
+		return
 
 	if p.is_swimming_under_water:
 		if p.anim.current_animation != "swim_under_water":

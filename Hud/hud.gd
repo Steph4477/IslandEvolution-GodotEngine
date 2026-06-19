@@ -366,6 +366,9 @@ func update_lives_display(lives):
 
 
 func set_button_enabled(button, enabled):
+	if button == null:
+		return
+
 	var shape = button.get_node_or_null("CollisionShape2D")
 	if shape:
 		shape.disabled = not enabled
@@ -678,8 +681,40 @@ func update_breath(current, max_value):
 
 func stop_breath():
 	hide_breathbar()
+# ----------------------------------------------------------------------------
+#                                 MAJ HUD SOUS L'EAU
+# ----------------------------------------------------------------------------
+func set_underwater_gamepad(active):
+	if active:
+		set_button_enabled(ramp_button, false)
+		set_button_enabled(sprint_button, false)
+		set_button_enabled(coco_button, false)
+		set_button_enabled(lance_button, false)
+		set_button_enabled(health_button, false)
+		set_button_enabled(honey_button, false)
+		set_button_enabled(bone_button, false)
+		set_button_enabled(camouflage_button, false)
+		set_button_enabled(fire_button, false)
+		set_button_enabled(air_button, false)
+		set_button_enabled($Gamepad/kick, false)
+		set_button_enabled($Gamepad/Jump, false)
+		set_button_enabled($Gamepad/Hand, true)
+		return
 
-
+	set_button_enabled(ramp_button, gs.ramp_unlocked)
+	set_button_enabled(sprint_button, gs.sprint_unlocked)
+	set_button_enabled(coco_button, gs.coco_count > 0)
+	set_button_enabled(lance_button, gs.lance_count > 0)
+	set_button_enabled(health_button, gs.banane_count > 0)
+	set_button_enabled(honey_button, gs.honey_count > 0)
+	set_button_enabled(bone_button, gs.bone_count > 0)
+	set_button_enabled(camouflage_button, gs.camouflage_unlocked and gs.camouflage_count > 0)
+	set_button_enabled(fire_button, gs.fire_buff_unlocked)
+	set_button_enabled(air_button, gs.air_buff_unlocked)
+	set_button_enabled($Gamepad/kick, true)
+	set_button_enabled($Gamepad/Jump, true)
+	set_button_enabled($Gamepad/Hand, true)
+	
 # ----------------------------------------------------------------------------
 #                                 SALISSURE HUD
 # ----------------------------------------------------------------------------
@@ -903,7 +938,7 @@ func _on_menu_pressed():
 	gs.load_level("res://Levels/Lvl0/lvl_0.tscn")
 
 func _on_hand_pressed():
-	gs.player.combat_mod.attack()
+	gs.player.combat_mod.clac()
 
 func _on_coco_pressed():
 	gs.player.combat_mod.shoot_coco()

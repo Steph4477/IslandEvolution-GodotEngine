@@ -61,7 +61,7 @@ const PLAYER_MOUTH_SHOW_TIME = 0.2
 # ============================================================================
 #                        PLAYER - NAGE
 # ============================================================================
-const PLAYER_SWIM_SPEED_X = 150
+const PLAYER_SWIM_SPEED_X = 450
 const PLAYER_SWIM_SPEED_Y = 110
 
 
@@ -97,6 +97,7 @@ const ENEMY_HP = {
 	"pyg": 120,
 	"swim_croco": 600,
 	"croco": 200,
+	"pyranha": 80,
 	"cannibal": 160,
 	"boss_cannibal": 400,
 	"boss_tarantula": 600,
@@ -111,6 +112,7 @@ const ENEMY_DAMAGE = {
 	"snake": 12,
 	"pyg": 20,
 	"croco": 18,
+	"pyranha": 20,
 	"cannibal": 22,
 	"boss": 30,
 	"add_tarantula":10
@@ -131,8 +133,9 @@ const ENEMY_SPEED = {
 	"snake": 450,
 	"pyg": 300,
 	"swim_croco": 500,
+	"cannibal": 300,
 	"croco": 400,
-	"cannibal": 500,
+	"pyranha": 300,
 	"boss_cannibal": 300,
 	"boss_tarantula": 600,
 	"add_tarantula":500
@@ -144,6 +147,7 @@ const ENEMY_RANGE = {
 	"rat": 600,
 	"swim_croco": 1000,
 	"croco": 500,
+	"pyranha": 1000,
 	"snake": 1000,
 	"pyg": 1000,
 	"cannibal": 1000,
@@ -185,6 +189,7 @@ const ENEMY_COOLDOWN = {
 	"snake": 2.0,
 	"pyg": 1.5,
 	"croco": 1.5,
+	"pyranha": 1.0,
 	"cannibal": 2.0,
 	"boss_cannibal": 2.0,
 	"boss_tarantula": 2.0,

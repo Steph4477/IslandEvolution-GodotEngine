@@ -15,6 +15,11 @@ func process():
 	if p == null:
 		return
 
+	if p.is_swimming_under_water:
+		if Input.is_action_just_pressed(p.INPUT["clac"]):
+			clac()
+		return
+
 	if p.is_hit_locked:
 		p.is_attacking = false
 		p.is_kicking = false
@@ -25,7 +30,10 @@ func process():
 		return
 
 	shoot()
-	clac()
+
+	if Input.is_action_just_pressed(p.INPUT["clac"]):
+		clac()
+
 	kick_input()
 
 # ============================================================================
@@ -255,10 +263,7 @@ func lance():
 #                           CLAC / HEADBUTT / KICK
 # ============================================================================
 func clac():
-	if p.is_hit_locked:
-		return
-
-	if not Input.is_action_just_pressed(p.INPUT["clac"]):
+	if p.is_hit_locked and not p.is_swimming_under_water:
 		return
 
 	if p.is_swimming_under_water:
@@ -280,16 +285,13 @@ func kick_input():
 	await kick()
 
 func headbutt():
-	if p.is_hit_locked:
-		return
-
 	if not p.is_swimming_under_water:
 		return
 
 	if p.is_dead:
 		return
 
-	if p.is_attacking or p.is_headbutting:
+	if p.is_headbutting:
 		return
 
 	if not p.can_headbutt:
@@ -314,6 +316,9 @@ func headbutt():
 			p.velocity.y = 0
 			p.is_headbutting = false
 			p.is_attacking = false
+
+			await p.get_tree().create_timer(p.headbutt_cooldown).timeout
+			p.can_headbutt = true
 			return
 
 		p.velocity.x = dir * p.headbutt_speed

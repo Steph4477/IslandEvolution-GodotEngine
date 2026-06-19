@@ -491,6 +491,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_lhliw"]
 resource_name = "onhit_under_swim"
+length = 0.36666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -498,7 +499,7 @@ tracks/0/path = NodePath("Node2D/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("41_fatyj"), ExtResource("42_32uw3"), ExtResource("43_ac8n6"), ExtResource("44_3bga3")]
@@ -793,7 +794,7 @@ texture = ExtResource("2_8hx1r")
 [node name="Sprite" type="Sprite2D" parent="Node2D" unique_id=1543697993]
 position = Vector2(142.49998, 70)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("21_bj58r")
+texture = ExtResource("41_fatyj")
 
 [node name="Anim" type="AnimationPlayer" parent="Node2D" unique_id=2016811510]
 root_node = NodePath("../..")

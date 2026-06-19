@@ -344,7 +344,8 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	if is_headbutting:
+	if is_hit_locked and (is_swimming or is_swimming_under_water):
+		velocity.x = 0
 		velocity.y = 0
 		move_and_slide()
 		return

@@ -38,20 +38,26 @@ func on_hit(damage):
 		p.popups_mod.show_damage(damage)
 
 	p.update_can_heal()
-	p.hud_mod.refresh_hud_buttons()
 
-	var hud = null
-	if p.game_state and p.game_state.health_bar:
-		hud = p.game_state.health_bar.get_parent()
+	if p.is_swimming_under_water:
+		if p.game_state and p.game_state.hud:
+			p.game_state.hud.set_underwater_gamepad(true)
+	else:
+		p.hud_mod.refresh_hud_buttons()
 
-	if hud and hud.has_method("set_button_enabled"):
-		var can_heal_btn = (p.pv < p.max_pv and p.heal_potions.size() > 0 and not p.in_cooldown)
-		if hud.has_node("Gamepad/Health"):
-			hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal_btn)
+	if not p.is_swimming_under_water:
+		var hud = null
+		if p.game_state and p.game_state.health_bar:
+			hud = p.game_state.health_bar.get_parent()
 
-		var can_honey_btn = (p.pv < p.max_pv and p.honey_potions.size() > 0 and not p.in_cooldown)
-		if hud.has_node("Gamepad/Honey"):
-			hud.set_button_enabled(hud.get_node("Gamepad/Honey"), can_honey_btn)
+		if hud and hud.has_method("set_button_enabled"):
+			var can_heal_btn = (p.pv < p.max_pv and p.heal_potions.size() > 0 and not p.in_cooldown)
+			if hud.has_node("Gamepad/Health"):
+				hud.set_button_enabled(hud.get_node("Gamepad/Health"), can_heal_btn)
+
+			var can_honey_btn = (p.pv < p.max_pv and p.honey_potions.size() > 0 and not p.in_cooldown)
+			if hud.has_node("Gamepad/Honey"):
+				hud.set_button_enabled(hud.get_node("Gamepad/Honey"), can_honey_btn)
 
 	if p.pv <= 0:
 		p.is_hit_locked = false
@@ -61,12 +67,13 @@ func on_hit(damage):
 
 	if p.is_swimming_under_water:
 		p.anim.play("onhit_under_swim")
+		await p.anim.animation_finished
 	elif p.is_swimming:
 		p.anim.play("onhit_swim")
+		await p.anim.animation_finished
 	else:
 		p.anim.play("onhit")
-
-	await p.get_tree().create_timer(p.hit_lock_time).timeout
+		await p.get_tree().create_timer(p.hit_lock_time).timeout
 
 	if p.is_swimming or p.is_swimming_under_water:
 		p.global_position.y = hit_swim_y
