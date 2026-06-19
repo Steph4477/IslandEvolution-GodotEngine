@@ -20,7 +20,8 @@ extends CanvasLayer
 @onready var camouflage_button = $Gamepad/Camouflage
 @onready var fire_button = $Gamepad/Fire
 @onready var air_button = $Gamepad/Air
-@onready var dive_button = $DirectionalArrow/Dive
+@onready var headbutt_button = $Gamepad/Headbutt
+@onready var dive_button = $Gamepad/Dive
 
 @onready var save_button = $Gamepad/Save
 @onready var pause_button = $Gamepad/Break
@@ -57,7 +58,8 @@ extends CanvasLayer
 @onready var anim_air = get_node_or_null("Gamepad/Air/AnimAir")
 @onready var anim_ramp = get_node_or_null("Gamepad/Ramp/AnimRamp")
 @onready var anim_sprint = get_node_or_null("Gamepad/Sprint/AnimSprint")
-@onready var anim_dive = get_node_or_null("DirectionalArrow/Dive/AnimDive")
+@onready var anim_headbutt = get_node_or_null("Gamepad/Headbutt/AnimHeadbutt")
+@onready var anim_dive = get_node_or_null("Gamepad/Dive/AnimDive")
 
 
 # --- Craft fire_skill ---
@@ -145,7 +147,7 @@ func _ready():
 	fire_button.visible = false
 	air_button.visible = false
 	sprint_button.visible = false
-	dive_button.visible = false
+	headbutt_button.visible = false
 
 	if banane_hbox:
 		banane_hbox.visible = false
@@ -702,7 +704,9 @@ func set_underwater_gamepad(active):
 		set_button_enabled($Gamepad/Ramp, false)
 		set_button_enabled($Gamepad/kick, false)
 		set_button_enabled($Gamepad/Jump, false)
-		set_button_enabled($Gamepad/Hand, true)
+		set_button_enabled($Gamepad/Dive, true)
+		set_button_enabled($Gamepad/Hand, false)
+		set_button_enabled($Gamepad/Headbutt, true)
 		return
 
 	set_button_enabled(ramp_button, gs.ramp_unlocked)
@@ -718,7 +722,9 @@ func set_underwater_gamepad(active):
 	set_button_enabled($Gamepad/Ramp, true)
 	set_button_enabled($Gamepad/kick, true)
 	set_button_enabled($Gamepad/Jump, true)
+	set_button_enabled($Gamepad/Dive, false)
 	set_button_enabled($Gamepad/Hand, true)
+	set_button_enabled($Gamepad/Headbutt, false)
 	
 # ----------------------------------------------------------------------------
 #                                 SALISSURE HUD
