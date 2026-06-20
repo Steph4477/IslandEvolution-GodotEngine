@@ -51,7 +51,9 @@ func _physics_process(delta):
 	target = player
 	flip()
 
-	if distance < min_shoot_distance:
+	if is_shooting:
+		velocity.x = 0
+	elif distance < min_shoot_distance:
 		move_away_from_target()
 	elif distance <= max_shoot_distance:
 		velocity.x = 0
