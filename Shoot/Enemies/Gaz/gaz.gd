@@ -75,7 +75,7 @@ func _on_area_2d_body_entered(body):
 	if body.damage_mod:
 		body.damage_mod.on_hit(damage)
 
-	#if body.effects_mod:
-		#body.effects_mod.apply_gaz()
+	if body.effects_mod:
+		body.effects_mod.apply_gaz()
 
 	queue_free()
