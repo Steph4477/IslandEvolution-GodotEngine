@@ -214,6 +214,9 @@ frame = 1
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=50650749]
 position = Vector2(4, -78)
 
+[node name="SmokeSpawn" type="Marker2D" parent="Rotator" unique_id=1011784566]
+position = Vector2(6, -4)
+
 [node name="PatrolTimer" type="Timer" parent="." unique_id=1412260468]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
