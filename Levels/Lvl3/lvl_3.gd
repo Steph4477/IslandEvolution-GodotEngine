@@ -83,8 +83,7 @@ func _on_chrono_zone_challenge_win():
 	if not gs.focus_cam_frog:
 		return
 		
-	# Bloque Moko pendant tout le focus 
-	var player = gs.player
+	# Bloque Moko pendant tout le focus dddddd
 	var prev_can_move = true
 	prev_can_move = player.can_move
 	player.can_move = false
@@ -193,6 +192,8 @@ func _on_area_2d_body_entered(body):
 	cam.limit_right = 17800
 	cam.limit_bottom = 3250
 
+	cam.zoom = Vector2(1.4, 1.4)
+
 	if gs.hud:
 		gs.hud.anim_headbutt.play("appear_headbutt")
 		gs.hud.anim_dive.play("appear_dive")
@@ -204,10 +205,12 @@ func _on_area_2d_body_exited(body):
 	swim_zone.visible = true
 	aquatic_zone.visible = false
 
-	cam.limit_top = -1500
 	cam.limit_left = 0
+	cam.limit_top = -1500
 	cam.limit_right = 25000
-	cam.limit_bottom = 5500
+	cam.limit_bottom = 1650
+
+	cam.zoom = Vector2(0.9, 0.9)
 
 	if gs.hud:
 		gs.hud.anim_headbutt.play("disappear_headbutt")

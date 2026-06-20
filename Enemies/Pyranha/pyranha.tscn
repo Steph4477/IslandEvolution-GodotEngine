@@ -3,63 +3,35 @@
 [ext_resource type="Script" uid="uid://b4j130lgtb0pv" path="res://Enemies/Pyranha/pyranha.gd" id="1_e17d3"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_6hidg"]
 [ext_resource type="Texture2D" uid="uid://qowdi0svfyn3" path="res://Enemies/Pyranha/Swim/1.png" id="3_nqen0"]
-[ext_resource type="Texture2D" uid="uid://coisptbpr045u" path="res://Enemies/Pyranha/Attack/1.png" id="4_7c78b"]
-[ext_resource type="Texture2D" uid="uid://dcgc40mb7yvxk" path="res://Enemies/Pyranha/Attack/2.png" id="5_1r7cx"]
-[ext_resource type="Texture2D" uid="uid://cbqd4piy2i631" path="res://Enemies/Pyranha/Attack/3.png" id="6_1ojsy"]
+[ext_resource type="Texture2D" uid="uid://de35wt7q4d7fp" path="res://Enemies/Pyranha/Attack/1.png" id="4_7c78b"]
+[ext_resource type="Texture2D" uid="uid://dn034dd4srkh2" path="res://Enemies/Pyranha/Attack/2.png" id="5_1r7cx"]
+[ext_resource type="Texture2D" uid="uid://c8n1y8i2e3q3" path="res://Enemies/Pyranha/Attack/3.png" id="6_1ojsy"]
 [ext_resource type="Texture2D" uid="uid://dh35jsprsh3ak" path="res://Enemies/Pyranha/Die/1.png" id="7_8re8j"]
-[ext_resource type="Texture2D" uid="uid://660mindn4itb" path="res://Enemies/Pyranha/Chase/1.png" id="7_q3516"]
-[ext_resource type="Texture2D" uid="uid://d4fwuq6ddj78k" path="res://Enemies/Pyranha/Chase/2.png" id="8_5l54k"]
+[ext_resource type="Texture2D" uid="uid://c1yyyopyhomcf" path="res://Enemies/Pyranha/Chase/1.png" id="7_q3516"]
+[ext_resource type="Texture2D" uid="uid://brn1qx2n6y8rw" path="res://Enemies/Pyranha/Chase/2.png" id="8_5l54k"]
 [ext_resource type="Texture2D" uid="uid://batqcdu03ape1" path="res://Enemies/Pyranha/Die/2.png" id="8_q3516"]
 [ext_resource type="Texture2D" uid="uid://dbu2mxt88anck" path="res://Enemies/Pyranha/Die/3.png" id="9_5l54k"]
-[ext_resource type="Texture2D" uid="uid://c0ukddj2t0u71" path="res://Enemies/Pyranha/Chase/3.png" id="9_b036o"]
+[ext_resource type="Texture2D" uid="uid://cmvvih3tm6x6d" path="res://Enemies/Pyranha/Chase/3.png" id="9_b036o"]
 [ext_resource type="Texture2D" uid="uid://dj86oy62ujb5a" path="res://Enemies/Pyranha/Onhit/1.png" id="10_b036o"]
-[ext_resource type="Texture2D" uid="uid://32r20tnt2yev" path="res://Enemies/Pyranha/Chase/4.png" id="10_jfr1c"]
+[ext_resource type="Texture2D" uid="uid://bht8t7jjvw31y" path="res://Enemies/Pyranha/Chase/4.png" id="10_jfr1c"]
 [ext_resource type="Texture2D" uid="uid://2a8qg67dwumf" path="res://Enemies/Pyranha/Onhit/2.png" id="11_jfr1c"]
 [ext_resource type="Texture2D" uid="uid://b7a15eh18tmfi" path="res://Enemies/Pyranha/Onhit/3.png" id="12_ump7f"]
 [ext_resource type="Texture2D" uid="uid://cdwboygt7ji11" path="res://Enemies/Pyranha/Swim/2.png" id="13_e17d3"]
 [ext_resource type="Texture2D" uid="uid://b2oxx6xfdj3u8" path="res://Enemies/Pyranha/Swim/3.png" id="14_6hidg"]
 [ext_resource type="Texture2D" uid="uid://bs0spsitvep52" path="res://Enemies/Pyranha/Swim/4.png" id="15_egmbs"]
-[ext_resource type="Texture2D" uid="uid://dutv80acbstpv" path="res://Enemies/Pygmy/Walk/1.png" id="26_gjl5o"]
-[ext_resource type="Texture2D" uid="uid://i4bp3xd5iyk4" path="res://Enemies/Pygmy/Walk/2.png" id="27_acyw5"]
-[ext_resource type="Texture2D" uid="uid://b77ilb2uhjn5" path="res://Enemies/Pygmy/Walk/3.png" id="28_jo1lo"]
-[ext_resource type="Texture2D" uid="uid://bhu878o2djw0s" path="res://Enemies/Pygmy/Walk/4.png" id="29_b102d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(97, 141)
+size = Vector2(35, 25)
 
-[sub_resource type="Animation" id="Animation_bxf4e"]
+[sub_resource type="Animation" id="Animation_nqen0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/path = NodePath("HealthBar:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_nqen0")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Rotator/Sprite2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-17, -22)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Rotator/Sprite2D:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -100,7 +72,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ejmr0"]
 resource_name = "die"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -116,23 +87,47 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Rotator/Sprite2D:position")
+tracks/1/path = NodePath("Rotator/Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.8),
+"times": PackedFloat32Array(0.6, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-17, -22), Vector2(4, -301)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Rotator/Sprite2D:modulate")
+tracks/2/path = NodePath("HealthBar:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 0.8),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-24, -31), Vector2(-22, -60)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rotator/Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-4, -5), Vector2(0, -33)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HealthBar:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -140,6 +135,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_qxyy8"]
 resource_name = "onhit"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -170,53 +166,33 @@ tracks/0/keys = {
 "values": [ExtResource("3_nqen0"), ExtResource("13_e17d3"), ExtResource("14_6hidg"), ExtResource("15_egmbs")]
 }
 
-[sub_resource type="Animation" id="Animation_j2nn7"]
-resource_name = "walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rotator/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("26_gjl5o"), ExtResource("27_acyw5"), ExtResource("28_jo1lo"), ExtResource("29_b102d")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
 _data = {
-&"RESET": SubResource("Animation_bxf4e"),
+&"RESET": SubResource("Animation_nqen0"),
 &"attack": SubResource("Animation_hk653"),
 &"chase": SubResource("Animation_ump7f"),
 &"die": SubResource("Animation_ejmr0"),
 &"onhit": SubResource("Animation_qxyy8"),
-&"swim": SubResource("Animation_yjj53"),
-&"walk": SubResource("Animation_j2nn7")
+&"swim": SubResource("Animation_yjj53")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8re8j"]
-radius = 17.029387
+radius = 11.045361
 
 [node name="Pyranha" type="CharacterBody2D" unique_id=1783296698 groups=["Enemies"]]
-scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 1034
 script = ExtResource("1_e17d3")
 detection_range = 550.0
 damage = 200
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935019652]
-position = Vector2(-1.5, -1.5)
-shape = SubResource("RectangleShape2D_x2fpe")
-
 [node name="HealthBar" parent="." unique_id=613024852 instance=ExtResource("2_6hidg")]
-position = Vector2(-52, -89.99999)
-rotation = 3.14159
-scale = Vector2(-1, -1.004)
+position = Vector2(-24, -31)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935019652]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1028431766]
 wait_time = 3.0
@@ -225,27 +201,24 @@ one_shot = true
 [node name="PatrolTimer" type="Timer" parent="." unique_id=821133057]
 
 [node name="Rotator" type="Node2D" parent="." unique_id=193147394]
-scale = Vector2(-1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=365612937]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_1lwxd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=880529227]
-position = Vector2(-17, -22)
-rotation = 3.14159
-scale = Vector2(-0.25, -0.25)
-texture = ExtResource("3_nqen0")
+position = Vector2(-4, -5)
+texture = ExtResource("7_8re8j")
 
 [node name="BubbleSpawn" type="Marker2D" parent="Rotator" unique_id=999428820]
-position = Vector2(-131, -8)
+position = Vector2(14, 4)
 
 [node name="AttackZone" type="Area2D" parent="Rotator" unique_id=1797538751]
-position = Vector2(-21, -1)
+position = Vector2(9, 4)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/AttackZone" unique_id=1781777010]
-position = Vector2(50, 1)
+position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_8re8j")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
