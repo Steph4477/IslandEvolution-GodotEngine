@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://bwwu1c4aja0ws"]
+
+[ext_resource type="Script" uid="uid://8w3sgtxrhdm3" path="res://Enemies/Cannibal/CannibalMelee/cannibal_melee.gd" id="1_xl3ut"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_f3r6x"]
+[ext_resource type="Texture2D" uid="uid://daijv7o6kndyn" path="res://Enemies/Cannibal/spritesheet.png" id="3_2o6nm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(32, 113)
+
+[sub_resource type="Animation" id="Animation_32703"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_cdxee"]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_xp156"]
+resource_name = "cac"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.43333337),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_v1ul3"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.76666665, 1.4333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_uofv0"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_eydga"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_8rla3"]
+resource_name = "onhit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_23rwj"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [21, 22]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_giy1g"]
+_data = {
+&"RESET": SubResource("Animation_32703"),
+&"attack": SubResource("Animation_cdxee"),
+&"cac": SubResource("Animation_xp156"),
+&"die": SubResource("Animation_v1ul3"),
+&"idle": SubResource("Animation_uofv0"),
+&"jump": SubResource("Animation_eydga"),
+&"onhit": SubResource("Animation_8rla3"),
+&"walk": SubResource("Animation_23rwj")
+}
+
+[node name="CannibalMelee" type="CharacterBody2D" unique_id=708931693 groups=["Enemies"]]
+scale = Vector2(-1, 1)
+collision_layer = 8
+collision_mask = 17666
+script = ExtResource("1_xl3ut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=545927351]
+position = Vector2(-1, -11.5)
+shape = SubResource("RectangleShape2D_x2fpe")
+
+[node name="HealthBar" parent="." unique_id=1317778126 instance=ExtResource("2_f3r6x")]
+position = Vector2(56, -100)
+rotation = 3.14159
+scale = Vector2(1, -1.00374)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=2133574649]
+autostart = true
+
+[node name="ProjectileTimer" type="Timer" parent="." unique_id=1862551901]
+wait_time = 0.3
+autostart = true
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1669548067]
+position = Vector2(-57, -6)
+
+[node name="Rotator" type="Node2D" parent="." unique_id=423549435]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=2126941425]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_giy1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=2125340867]
+position = Vector2(-36, -16)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_2o6nm")
+vframes = 23
+frame = 1
+
+[node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=50650749]
+position = Vector2(4, -78)
+
+[node name="SmokeSpawn" type="Marker2D" parent="Rotator" unique_id=1011784566]
+position = Vector2(6, -4)
+
+[node name="PatrolTimer" type="Timer" parent="." unique_id=1412260468]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

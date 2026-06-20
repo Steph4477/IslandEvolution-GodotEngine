@@ -1,42 +1,54 @@
 extends EnemyGroundBase
+class_name EnemyHeal
 
-@export var projectile_scene = preload("res://Enemies/Cannibal/heal_projectile/heal_projectile.tscn")
-@export var projectile_spawn_delay = 0.40
+@export var balance_id = "cannibal_heal"
 
 var melee_distance = 0
-var min_shoot_distance = 0
-var max_shoot_distance = 0
+var fire_interval = 3.0
+var projectile_spawn_delay = 0.40
+var projectile_scene = null
+var projectile_spawn = null
 
 var projectile_attack_animation = "attack"
 var jump_animation_name = "jump"
+var heal_animation_name = "attack"
+var animation_walk = "walk"
 
-var fire_interval = 3.0
 var jump_velocity = -600.0
 var target = null
+
+var heal_range = 400.0
+var heal_amount = 40
+var safe_distance = 350
+var follow_distance = 500
 
 var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()
 var jump_mod = EnemyModJumpSync.new()
 var heal_mod = EnemyModHealProjectile.new()
 
-var projectile_spawn = null
-
-var heal_range = 400.0
-var heal_amount = 40
-var heal_animation_name = "attack"
-
 
 func _ready():
-	max_hp = GameBalance.ENEMY_HP["cannibal"]
-	damage = GameBalance.ENEMY_DAMAGE["cannibal"]
-	speed = GameBalance.ENEMY_SPEED["cannibal"]
-	attack_range = GameBalance.ENEMY_RANGE["cannibal"]
-	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE["cannibal"]
-	fire_interval = 3.0
-	
-	attack_anim_name = "cac"
+	max_hp = GameBalance.ENEMY_HP[balance_id]
+	damage = GameBalance.ENEMY_DAMAGE[balance_id]
+	speed = GameBalance.ENEMY_SPEED[balance_id]
+	attack_range = GameBalance.ENEMY_RANGE[balance_id]
+	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE[balance_id]
+	fire_interval = GameBalance.ENEMY_FIRE_INTERVAL[balance_id]
+	projectile_scene = load(GameBalance.ENEMY_PROJECTILE_SCENE[balance_id])
+	projectile_attack_animation = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
+	heal_animation_name = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
+	animation_walk = GameBalance.ENEMY_ANIMATION_WALK[balance_id]
+
+	attack_anim_name = GameBalance.ENEMY_ANIMATION_ATTACK[balance_id]
 
 	super._ready()
+
+	hp = max_hp
+
+	if health_bar:
+		health_bar.max_value = max_hp
+		health_bar.value = hp
 
 	projectile_spawn = $Rotator/ProjectileSpawn
 	patrol_timer = $PatrolTimer
@@ -52,7 +64,7 @@ func _ready():
 		projectile_timer.start()
 
 	if attack_timer:
-		attack_timer.wait_time = 1.0
+		attack_timer.wait_time = GameBalance.ENEMY_COOLDOWN[balance_id]
 		attack_timer.stop()
 
 	if patrol_timer:
@@ -115,26 +127,26 @@ func _physics_process(delta):
 		stop_and_slide()
 		return
 
-	if distance < 350:
+	if distance < safe_distance:
 		if dx > 0:
 			velocity.x = -speed
 		else:
 			velocity.x = speed
 
-		if anim.current_animation != "walk":
-			anim.play("walk")
+		if anim.current_animation != animation_walk:
+			anim.play(animation_walk)
 
 		move_and_slide()
 		return
 
-	if distance > 500:
+	if distance > follow_distance:
 		if dx > 0:
 			velocity.x = speed
 		else:
 			velocity.x = -speed
 
-		if anim.current_animation != "walk":
-			anim.play("walk")
+		if anim.current_animation != animation_walk:
+			anim.play(animation_walk)
 
 		move_and_slide()
 		return
@@ -151,19 +163,20 @@ func update_patrol_zone():
 		patrol_timer.start()
 
 	patrol_mod.update_movement()
-	
+
 	if patrol_direction < 0:
 		$Rotator.scale.x = -base_scale_x
 	else:
 		$Rotator.scale.x = base_scale_x
-	
+
 	move_and_slide()
 
 	if abs(velocity.x) > 0:
-		if anim.current_animation != "walk":
-			anim.play("walk")
+		if anim.current_animation != animation_walk:
+			anim.play(animation_walk)
 	else:
 		play_idle()
+
 
 func try_priority_heal():
 	if is_shooting:
@@ -176,6 +189,7 @@ func try_priority_heal():
 		return true
 
 	return false
+
 
 func move_to_wounded_ally():
 	var ally = heal_mod.find_any_wounded_ally()
@@ -195,11 +209,12 @@ func move_to_wounded_ally():
 	else:
 		velocity.x = -speed
 
-	if anim.current_animation != "walk":
-		anim.play("walk")
+	if anim.current_animation != animation_walk:
+		anim.play(animation_walk)
 
 	move_and_slide()
 	return true
+
 
 func die():
 	in_melee = false

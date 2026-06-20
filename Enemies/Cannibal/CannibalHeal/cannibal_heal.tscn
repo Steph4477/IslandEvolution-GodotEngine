@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c32oj8ta6vfiv"]
 
-[ext_resource type="Script" uid="uid://b5ng57a5q1igq" path="res://Enemies/Cannibal/CannibalHealer/cannibal_healer.gd" id="1_alkup"]
+[ext_resource type="Script" uid="uid://u3g2w2ar7h0r" path="res://Enemies/Cannibal/CannibalHeal/cannibal_heal.gd" id="1_toni1"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_x4pvf"]
 [ext_resource type="Texture2D" uid="uid://daijv7o6kndyn" path="res://Enemies/Cannibal/spritesheet.png" id="3_6s0sv"]
 
@@ -143,11 +143,11 @@ _data = {
 &"walk": SubResource("Animation_23rwj")
 }
 
-[node name="CannibalHealer" type="CharacterBody2D" unique_id=708931693 groups=["Enemies"]]
+[node name="CannibalHeal" type="CharacterBody2D" unique_id=708931693 groups=["Enemies"]]
 scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 17666
-script = ExtResource("1_alkup")
+script = ExtResource("1_toni1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=545927351]
 position = Vector2(-1, -11.5)

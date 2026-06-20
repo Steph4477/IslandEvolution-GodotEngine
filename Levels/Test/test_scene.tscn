@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
 [ext_resource type="PackedScene" uid="uid://qv3wtrx38rww" path="res://Loot/Spear/spear.tscn" id="3_qvx8w"]
-[ext_resource type="PackedScene" uid="uid://cy3bsh6oopd0n" path="res://Enemies/Cannibal/Boss/BossCannibal.tscn" id="4_urigi"]
-[ext_resource type="PackedScene" uid="uid://b1al56a08eu3u" path="res://Player/Skills/Ramp/ramp.tscn" id="6_vefbu"]
+[ext_resource type="PackedScene" uid="uid://24hl1bjly3ym" path="res://Enemies/Cannibal/CannibalDistance/cannibal_distance.tscn" id="4_sdklp"]
+[ext_resource type="PackedScene" uid="uid://c32oj8ta6vfiv" path="res://Enemies/Cannibal/CannibalHeal/cannibal_heal.tscn" id="4_urigi"]
+[ext_resource type="PackedScene" uid="uid://bwwu1c4aja0ws" path="res://Enemies/Cannibal/CannibalMelee/cannibal_melee.tscn" id="5_sdklp"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
@@ -64,8 +65,14 @@ position = Vector2(1590, 1469)
 z_index = 20
 position = Vector2(2451, 1432)
 
-[node name="Ramp" parent="Node2D2" unique_id=1086615813 instance=ExtResource("6_vefbu")]
-position = Vector2(-1173, -7)
+[node name="CannibalDistance" parent="Node2D2" unique_id=708931693 instance=ExtResource("4_sdklp")]
+position = Vector2(-247, -9)
+balance_id = "cannibal_distance"
 
-[node name="BossCannibal" parent="Node2D2" unique_id=708931693 instance=ExtResource("4_urigi")]
-position = Vector2(12, -103)
+[node name="CannibalHeal" parent="Node2D2" unique_id=287517048 instance=ExtResource("4_urigi")]
+
+[node name="CannibalMelee" parent="Node2D2" unique_id=489085551 instance=ExtResource("5_sdklp")]
+modulate = Color(1, 0.2627451, 0.07058824, 1)
+position = Vector2(-369, 7)
+rotation = 3.1415927
+scale = Vector2(1, -1)
