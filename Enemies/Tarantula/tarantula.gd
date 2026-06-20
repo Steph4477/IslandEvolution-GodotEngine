@@ -62,7 +62,7 @@ var ground_position = Vector2.ZERO
 func _ready():
 	count_in_score = false
 	max_hp = GameBalance.ENEMY_HP["boss_tarantula"]
-	damage = GameBalance.ENEMY_DAMAGE["boss"]
+	damage = GameBalance.ENEMY_DAMAGE["boss_tarantula"]
 	projectile_damage = GameBalance.ENEMY_PROJECTILE["web"]
 
 	speed = GameBalance.ENEMY_SPEED["boss_tarantula"]
