@@ -64,7 +64,6 @@ const PLAYER_MOUTH_SHOW_TIME = 0.2
 const PLAYER_SWIM_SPEED_X = 450
 const PLAYER_SWIM_SPEED_Y = 110
 
-
 # ============================================================================
 #                       PLAYER - HEADBUTT
 # ============================================================================
@@ -85,20 +84,26 @@ const PLAYER_FIRE_BUFF_DURATION = 8.0
 const PLAYER_AIR_BUFF_DURATION = 8.0
 const PLAYER_CAMOUFLAGE_DURATION = 5.0
 const PLAYER_SPRINT_DURATION = 3.0
+
 # ============================================================================
 #                              ENEMIES
 # ============================================================================
-
 const ENEMY_HP = {
 	"bee": 20,
 	"mosquito": 20,
 	"rat": 60,
 	"snake": 90,
+	"snake_melee": 90,
+	"snake_distance": 90,
 	"pyg": 120,
+	"pyg_melee": 120,
+	"pyg_distance": 120,
 	"swim_croco": 600,
 	"croco": 200,
 	"pyranha": 50,
 	"cannibal": 160,
+	"cannibal_melee": 160,
+	"cannibal_distance": 160,
 	"boss_cannibal": 400,
 	"boss_tarantula": 600,
 	"add_tarantula": 1
@@ -109,12 +114,19 @@ const ENEMY_DAMAGE = {
 	"mosquito": 20,
 	"rat": 10,
 	"snake": 12,
+	"snake_melee": 12,
+	"snake_distance": 12,
 	"pyg": 20,
+	"pyg_melee": 20,
+	"pyg_distance": 20,
 	"croco": 18,
 	"pyranha": 10,
 	"cannibal": 22,
+	"boss_cannibal": 30,
+	"cannibal_melee": 22,
+	"cannibal_distance": 22,
 	"boss": 30,
-	"add_tarantula":10
+	"add_tarantula": 10
 }
 
 const ENEMY_PROJECTILE = {
@@ -127,17 +139,23 @@ const ENEMY_PROJECTILE = {
 
 const ENEMY_SPEED = {
 	"bee": 300,
-	"mosquito" : 400,
+	"mosquito": 400,
 	"rat": 500,
 	"snake": 450,
+	"snake_melee": 450,
+	"snake_distance": 450,
 	"pyg": 300,
+	"pyg_melee": 300,
+	"pyg_distance": 300,
 	"swim_croco": 500,
 	"cannibal": 300,
+	"cannibal_melee": 300,
+	"cannibal_distance": 300,
 	"croco": 400,
 	"pyranha": 300,
 	"boss_cannibal": 300,
 	"boss_tarantula": 600,
-	"add_tarantula":500
+	"add_tarantula": 500
 }
 
 const ENEMY_RANGE = {
@@ -148,8 +166,14 @@ const ENEMY_RANGE = {
 	"croco": 500,
 	"pyranha": 1000,
 	"snake": 1000,
+	"snake_melee": 1000,
+	"snake_distance": 1000,
 	"pyg": 1000,
+	"pyg_melee": 1000,
+	"pyg_distance": 1000,
 	"cannibal": 1000,
+	"cannibal_melee": 1000,
+	"cannibal_distance": 1000,
 	"boss_cannibal": 2500,
 	"boss_tarantula": 5000,
 	"add_tarantula": 5000
@@ -158,9 +182,15 @@ const ENEMY_RANGE = {
 const ENEMY_MELEE_DISTANCE = {
 	"rat": 50,
 	"snake": 100,
+	"snake_melee": 100,
+	"snake_distance": 100,
 	"pyg": 70,
+	"pyg_melee": 70,
+	"pyg_distance": 70,
 	"croco": 100,
 	"cannibal": 100,
+	"cannibal_melee": 100,
+	"cannibal_distance": 100,
 	"boss_cannibal": 120,
 	"boss_tarantula": 80,
 	"add_tarantula": 40
@@ -168,29 +198,81 @@ const ENEMY_MELEE_DISTANCE = {
 
 const ENEMY_MIN_SHOOT_DISTANCE = {
 	"snake": 80,
+	"snake_distance": 80,
 	"pyg": 200,
+	"pyg_distance": 200,
 	"cannibal": 200,
+	"cannibal_distance": 200,
 	"boss_cannibal": 200,
 	"boss_tarantula": 100
 }
 
 const ENEMY_MAX_SHOOT_DISTANCE = {
 	"snake": 360,
+	"snake_distance": 360,
 	"pyg": 1000,
+	"pyg_distance": 1000,
 	"cannibal": 1000,
+	"cannibal_distance": 1000,
 	"boss_cannibal": 1000,
-	"boss_tarantula": 1000,
+	"boss_tarantula": 1000
 }
+
 const ENEMY_COOLDOWN = {
 	"bee": 0.5,
 	"mosquito": 0.6,
 	"rat": 1.0,
 	"snake": 2.0,
+	"snake_melee": 1.0,
+	"snake_distance": 2.0,
 	"pyg": 1.5,
+	"pyg_melee": 1.3,
+	"pyg_distance": 1.5,
 	"croco": 1.5,
 	"pyranha": 1.0,
 	"cannibal": 2.0,
+	"cannibal_melee": 1.4,
+	"cannibal_distance": 2.0,
 	"boss_cannibal": 2.0,
 	"boss_tarantula": 2.0,
 	"add_tarantula": 0.6
+}
+
+const ENEMY_ANIMATION_ATTACK = {
+	"snake_melee": "attack",
+	"pyg_melee": "attack",
+	"cannibal_melee": "attack"
+}
+
+const ENEMY_ANIMATION_WALK = {
+	"snake_melee": "walk",
+	"pyg_melee": "walk",
+	"cannibal_melee": "walk",
+	"snake_distance": "walk",
+	"pyg_distance": "walk",
+	"cannibal_distance": "walk"
+}
+
+const ENEMY_PROJECTILE_DAMAGE = {
+	"snake_distance": 20,
+	"pyg_distance": 70,
+	"cannibal_distance": 90
+}
+
+const ENEMY_FIRE_INTERVAL = {
+	"snake_distance": 2.0,
+	"pyg_distance": 1.5,
+	"cannibal_distance": 2.0
+}
+
+const ENEMY_PROJECTILE_SCENE = {
+	"snake_distance": "res://Shoot/Enemies/Gaz/gaz.tscn",
+	"pyg_distance": "res://Shoot/Enemies/Spear/spear.tscn",
+	"cannibal_distance": "res://Shoot/Enemies/Bone/bone.tscn"
+}
+
+const ENEMY_ANIMATION_SHOOT = {
+	"snake_distance": "attack",
+	"pyg_distance": "attack",
+	"cannibal_distance": "attack"
 }
