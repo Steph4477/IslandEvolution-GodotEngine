@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
 [ext_resource type="PackedScene" uid="uid://qv3wtrx38rww" path="res://Loot/Spear/spear.tscn" id="3_qvx8w"]
-[ext_resource type="PackedScene" uid="uid://if780e1e68vg" path="res://Enemies/Packs/SnakePack/snake_pack.tscn" id="3_urigi"]
+[ext_resource type="PackedScene" uid="uid://c2y56choelu5x" path="res://Enemies/Packs/PygmyPack/pygmy_pack.tscn" id="3_urigi"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
@@ -63,4 +63,4 @@ position = Vector2(1590, 1469)
 z_index = 20
 position = Vector2(2451, 1432)
 
-[node name="SnakePack" parent="Node2D2" unique_id=1488428405 instance=ExtResource("3_urigi")]
+[node name="PygmyPack" parent="Node2D2" unique_id=1488428405 instance=ExtResource("3_urigi")]

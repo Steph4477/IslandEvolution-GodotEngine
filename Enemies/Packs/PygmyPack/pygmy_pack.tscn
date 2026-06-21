@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c2y56choelu5x"]
+
+[ext_resource type="Script" uid="uid://ifx1q43vv4l2" path="res://Enemies/Packs/PygmyPack/pygmy_pack.gd" id="1_h1tku"]
+
+[node name="PygmyPack" type="Node2D" unique_id=1488428405]
+script = ExtResource("1_h1tku")
+
+[node name="Spawn1" type="Marker2D" parent="." unique_id=1445665048]
+position = Vector2(55, -1)
+
+[node name="Spawn2" type="Marker2D" parent="." unique_id=1705649272]
+position = Vector2(-61, -1)
+
+[node name="Spawn3" type="Marker2D" parent="." unique_id=1113767115]
