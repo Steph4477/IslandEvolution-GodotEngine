@@ -16,6 +16,7 @@ var animation_walk = "walk"
 
 var jump_velocity = -600.0
 var target = null
+var can_jump = true
 
 var heal_range = 400.0
 var heal_amount = 40
@@ -39,6 +40,7 @@ func _ready():
 	projectile_attack_animation = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
 	heal_animation_name = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
 	animation_walk = GameBalance.ENEMY_ANIMATION_WALK[balance_id]
+	can_jump = GameBalance.ENEMY_CAN_JUMP[balance_id]
 
 	attack_anim_name = GameBalance.ENEMY_ANIMATION_ATTACK[balance_id]
 
@@ -55,7 +57,10 @@ func _ready():
 
 	target_mod.setup(self)
 	melee_mod.setup(self)
-	jump_mod.setup(self)
+
+	if can_jump:
+		jump_mod.setup(self)
+
 	patrol_mod.setup(self)
 	heal_mod.setup(self)
 
@@ -82,7 +87,10 @@ func _physics_process(delta):
 	target_mod.update()
 
 	flip()
-	jump_mod.update()
+
+	if can_jump:
+		jump_mod.update()
+
 	melee_mod.update_state()
 
 	if hit_locked:
@@ -90,7 +98,7 @@ func _physics_process(delta):
 		return
 
 	if not is_on_floor():
-		if not is_shooting and not is_attacking:
+		if can_jump and not is_shooting and not is_attacking:
 			if anim.current_animation != jump_animation_name:
 				anim.play(jump_animation_name)
 

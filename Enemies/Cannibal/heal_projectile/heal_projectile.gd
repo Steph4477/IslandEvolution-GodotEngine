@@ -26,7 +26,7 @@ func setup_target(target):
 	heal_target = target
 
 
-func start(pos, direction, amount):
+func start(pos, _direction, amount):
 	global_position = pos
 	heal_amount = amount
 

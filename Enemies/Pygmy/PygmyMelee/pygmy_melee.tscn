@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://cejotjby8j2ca"]
+
+[ext_resource type="Script" uid="uid://bgetco7ag10n2" path="res://Enemies/Pygmy/PygmyMelee/pygmy_melee.gd" id="1_f0jvg"]
+[ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_bq0wi"]
+[ext_resource type="Texture2D" uid="uid://b7x71ega25kgj" path="res://Enemies/Pygmy/Jump/1.png" id="3_olh67"]
+[ext_resource type="Texture2D" uid="uid://c2qq35av75rox" path="res://Enemies/Pygmy/Attack/1.png" id="4_m45fu"]
+[ext_resource type="Texture2D" uid="uid://bsayeb3cieg34" path="res://Enemies/Pygmy/Attack/2.png" id="5_8yh3p"]
+[ext_resource type="Texture2D" uid="uid://dwrl2e8y0l63u" path="res://Enemies/Pygmy/Attack/3.png" id="6_88j2q"]
+[ext_resource type="Texture2D" uid="uid://8wvasjaq24cn" path="res://Enemies/Pygmy/Attack/4.png" id="7_pj228"]
+[ext_resource type="Texture2D" uid="uid://dp5w51b1soct" path="res://Enemies/Pygmy/Cac/1.png" id="8_oiok1"]
+[ext_resource type="Texture2D" uid="uid://u4uudlw4phvj" path="res://Enemies/Pygmy/Cac/2.png" id="9_24nqh"]
+[ext_resource type="Texture2D" uid="uid://bx57bdc8njhg4" path="res://Enemies/Pygmy/Cac/3.png" id="10_24u7j"]
+[ext_resource type="Texture2D" uid="uid://f8xf5loaqigk" path="res://Enemies/Pygmy/Cac/4.png" id="11_qgphu"]
+[ext_resource type="Texture2D" uid="uid://cpkngngmi6ill" path="res://Enemies/Pygmy/Die/1.png" id="12_av2o4"]
+[ext_resource type="Texture2D" uid="uid://dwg127mtx3mde" path="res://Enemies/Pygmy/Die/2.png" id="13_oau8v"]
+[ext_resource type="Texture2D" uid="uid://ca0seewja0lmk" path="res://Enemies/Pygmy/Die/3.png" id="14_bu6lf"]
+[ext_resource type="Texture2D" uid="uid://cg7skyukdjoxh" path="res://Enemies/Pygmy/Die/4.png" id="15_q57oa"]
+[ext_resource type="Texture2D" uid="uid://dkmu5fcmrxmjs" path="res://Enemies/Pygmy/Idle/1.png" id="16_7vhsh"]
+[ext_resource type="Texture2D" uid="uid://ben5xh5g7mgys" path="res://Enemies/Pygmy/Idle/2.png" id="17_m2qug"]
+[ext_resource type="Texture2D" uid="uid://dvupxdbwf28qu" path="res://Enemies/Pygmy/Idle/3.png" id="18_prgsl"]
+[ext_resource type="Texture2D" uid="uid://cxqdupml26n6s" path="res://Enemies/Pygmy/Idle/4.png" id="19_dq20a"]
+[ext_resource type="Texture2D" uid="uid://bjwrqem2yw8pl" path="res://Enemies/Pygmy/Jump/2.png" id="20_8k8hw"]
+[ext_resource type="Texture2D" uid="uid://v1d2l44bejd3" path="res://Enemies/Pygmy/Jump/3.png" id="21_sl51e"]
+[ext_resource type="Texture2D" uid="uid://kphdces2jxrr" path="res://Enemies/Pygmy/Jump/4.png" id="22_gyo2u"]
+[ext_resource type="Texture2D" uid="uid://dudcuxirqavhp" path="res://Enemies/Pygmy/OnHit/1.png" id="23_fgk7j"]
+[ext_resource type="Texture2D" uid="uid://bf0e7pt6p0351" path="res://Enemies/Pygmy/OnHit/2.png" id="24_kbkln"]
+[ext_resource type="Texture2D" uid="uid://crnnuh1tuminw" path="res://Enemies/Pygmy/OnHit/3.png" id="25_ofhic"]
+[ext_resource type="Texture2D" uid="uid://dutv80acbstpv" path="res://Enemies/Pygmy/Walk/1.png" id="26_7j27g"]
+[ext_resource type="Texture2D" uid="uid://i4bp3xd5iyk4" path="res://Enemies/Pygmy/Walk/2.png" id="27_td6oc"]
+[ext_resource type="Texture2D" uid="uid://b77ilb2uhjn5" path="res://Enemies/Pygmy/Walk/3.png" id="28_k171f"]
+[ext_resource type="Texture2D" uid="uid://bhu878o2djw0s" path="res://Enemies/Pygmy/Walk/4.png" id="29_pnxwa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(97, 141)
+
+[sub_resource type="Animation" id="Animation_iayux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_olh67")]
+}
+
+[sub_resource type="Animation" id="Animation_hk653"]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_m45fu"), ExtResource("5_8yh3p"), ExtResource("6_88j2q"), ExtResource("7_pj228")]
+}
+
+[sub_resource type="Animation" id="Animation_k3u3t"]
+resource_name = "cac"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_oiok1"), ExtResource("9_24nqh"), ExtResource("10_24u7j"), ExtResource("11_qgphu"), ExtResource("10_24u7j"), ExtResource("9_24nqh"), ExtResource("8_oiok1")]
+}
+
+[sub_resource type="Animation" id="Animation_ejmr0"]
+resource_name = "die"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_av2o4"), ExtResource("13_oau8v"), ExtResource("14_bu6lf"), ExtResource("15_q57oa")]
+}
+
+[sub_resource type="Animation" id="Animation_4jlfj"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("16_7vhsh"), ExtResource("17_m2qug"), ExtResource("18_prgsl"), ExtResource("19_dq20a")]
+}
+
+[sub_resource type="Animation" id="Animation_a5xr7"]
+resource_name = "jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_olh67"), ExtResource("20_8k8hw"), ExtResource("21_sl51e"), ExtResource("22_gyo2u")]
+}
+
+[sub_resource type="Animation" id="Animation_qxyy8"]
+resource_name = "onhit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("23_fgk7j"), ExtResource("24_kbkln"), ExtResource("25_ofhic")]
+}
+
+[sub_resource type="Animation" id="Animation_j2nn7"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("26_7j27g"), ExtResource("27_td6oc"), ExtResource("28_k171f"), ExtResource("29_pnxwa")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lwxd"]
+_data = {
+&"RESET": SubResource("Animation_iayux"),
+&"attack": SubResource("Animation_hk653"),
+&"cac": SubResource("Animation_k3u3t"),
+&"die": SubResource("Animation_ejmr0"),
+&"idle": SubResource("Animation_4jlfj"),
+&"jump": SubResource("Animation_a5xr7"),
+&"onhit": SubResource("Animation_qxyy8"),
+&"walk": SubResource("Animation_j2nn7")
+}
+
+[node name="PygmyMelee" type="CharacterBody2D" unique_id=1783296698 groups=["Enemies"]]
+scale = Vector2(-1, 1)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_f0jvg")
+balance_id = "pyg_melee"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935019652]
+position = Vector2(-1.5, -1.5)
+shape = SubResource("RectangleShape2D_x2fpe")
+
+[node name="HealthBar" parent="." unique_id=613024852 instance=ExtResource("2_bq0wi")]
+position = Vector2(49, -87)
+rotation = 3.14159
+scale = Vector2(1, -1.00374)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1028431766]
+
+[node name="ProjectileTimer" type="Timer" parent="." unique_id=821133057]
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=116977825]
+position = Vector2(38, -30)
+
+[node name="Rotator" type="Node2D" parent="." unique_id=193147394]
+scale = Vector2(-1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=365612937]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_1lwxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=880529227]
+position = Vector2(26, -18)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("3_olh67")
+
+[node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=999428820]
+position = Vector2(-131, -8)
+
+[node name="PatrolTimer" type="Timer" parent="." unique_id=2009031001]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

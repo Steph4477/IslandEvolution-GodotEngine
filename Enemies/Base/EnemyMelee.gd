@@ -18,13 +18,21 @@ func _ready():
 	hp = max_hp
 	damage = GameBalance.ENEMY_DAMAGE[balance_id]
 	speed = GameBalance.ENEMY_SPEED[balance_id]
+	attack_range = GameBalance.ENEMY_RANGE[balance_id]
 	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE[balance_id]
 	attack_cooldown = GameBalance.ENEMY_COOLDOWN[balance_id]
 	animation_attack = GameBalance.ENEMY_ANIMATION_ATTACK[balance_id]
 	animation_walk = GameBalance.ENEMY_ANIMATION_WALK[balance_id]
 
 	attack_anim_name = animation_attack
-	attack_timer.wait_time = attack_cooldown
+
+	if health_bar:
+		health_bar.max_value = max_hp
+		health_bar.value = hp
+
+	if attack_timer:
+		attack_timer.wait_time = attack_cooldown
+		attack_timer.stop()
 
 	melee_mod.setup(self)
 

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
 [ext_resource type="PackedScene" uid="uid://qv3wtrx38rww" path="res://Loot/Spear/spear.tscn" id="3_qvx8w"]
-[ext_resource type="PackedScene" uid="uid://24hl1bjly3ym" path="res://Enemies/Cannibal/CannibalDistance/cannibal_distance.tscn" id="4_sdklp"]
-[ext_resource type="PackedScene" uid="uid://c32oj8ta6vfiv" path="res://Enemies/Cannibal/CannibalHeal/cannibal_heal.tscn" id="4_urigi"]
-[ext_resource type="PackedScene" uid="uid://bwwu1c4aja0ws" path="res://Enemies/Cannibal/CannibalMelee/cannibal_melee.tscn" id="5_sdklp"]
+[ext_resource type="PackedScene" uid="uid://cejotjby8j2ca" path="res://Enemies/Pygmy/PygmyMelee/pygmy_melee.tscn" id="3_sdklp"]
+[ext_resource type="PackedScene" uid="uid://clsue35nxoj3j" path="res://Enemies/Pygmy/PygmyDistance/pygmy_distance.tscn" id="4_uvrdr"]
+[ext_resource type="PackedScene" uid="uid://bowy8rs152mj4" path="res://Enemies/Pygmy/PygmyHeal/pygmy_heal.tscn" id="5_8wqyy"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="7_t726j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
@@ -65,14 +65,10 @@ position = Vector2(1590, 1469)
 z_index = 20
 position = Vector2(2451, 1432)
 
-[node name="CannibalDistance" parent="Node2D2" unique_id=708931693 instance=ExtResource("4_sdklp")]
-position = Vector2(-247, -9)
-balance_id = "cannibal_distance"
+[node name="PygmyMelee" parent="Node2D2" unique_id=1783296698 instance=ExtResource("3_sdklp")]
+modulate = Color(1, 0.08235294, 0.105882354, 1)
 
-[node name="CannibalHeal" parent="Node2D2" unique_id=287517048 instance=ExtResource("4_urigi")]
+[node name="PygmyDistance" parent="Node2D2" unique_id=1853393031 instance=ExtResource("4_uvrdr")]
 
-[node name="CannibalMelee" parent="Node2D2" unique_id=489085551 instance=ExtResource("5_sdklp")]
-modulate = Color(1, 0.2627451, 0.07058824, 1)
-position = Vector2(-369, 7)
-rotation = 3.1415927
-scale = Vector2(1, -1)
+[node name="PygmyHeal" parent="Node2D2" unique_id=1517777792 instance=ExtResource("5_8wqyy")]
+modulate = Color(0.16078432, 1, 0.105882354, 1)

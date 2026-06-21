@@ -13,7 +13,9 @@ var projectile_attack_animation = "attack"
 var animation_walk = "walk"
 var target = null
 var melee_distance = 0
+var attack_cooldown = 1.0
 
+var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
 
 
@@ -26,6 +28,19 @@ func _ready():
 	projectile_damage = GameBalance.ENEMY_PROJECTILE_DAMAGE[balance_id]
 	speed = GameBalance.ENEMY_SPEED[balance_id]
 	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE[balance_id]
+	attack_cooldown = GameBalance.ENEMY_COOLDOWN[balance_id]
+	attack_anim_name = GameBalance.ENEMY_ANIMATION_ATTACK[balance_id]
+
+	if health_bar:
+		health_bar.max_value = max_hp
+		health_bar.value = hp
+
+	if attack_timer:
+		attack_timer.wait_time = attack_cooldown
+		attack_timer.stop()
+
+	melee_mod.setup(self)
+
 	min_shoot_distance = GameBalance.ENEMY_MIN_SHOOT_DISTANCE[balance_id]
 	max_shoot_distance = GameBalance.ENEMY_MAX_SHOOT_DISTANCE[balance_id]
 	fire_interval = GameBalance.ENEMY_FIRE_INTERVAL[balance_id]
@@ -36,8 +51,10 @@ func _ready():
 	attack_range = max_shoot_distance
 
 	projectile_spawn = $Rotator/ProjectileSpawn
-	projectile_timer.wait_time = fire_interval
-	projectile_timer.start()
+
+	if projectile_timer:
+		projectile_timer.wait_time = fire_interval
+		projectile_timer.start()
 
 	throw_mod.setup(self)
 
@@ -50,6 +67,13 @@ func _physics_process(delta):
 	target_player()
 	target = player
 	flip()
+
+	melee_mod.update_state()
+
+	if in_melee:
+		velocity.x = 0
+		move_and_slide()
+		return
 
 	if is_shooting:
 		velocity.x = 0
@@ -98,6 +122,10 @@ func move_away_from_target():
 	else:
 		velocity.x = 0
 		play_idle()
+
+
+func _on_attack_timer_timeout():
+	melee_mod.on_timer_timeout()
 
 
 func _on_projectile_timer_timeout():

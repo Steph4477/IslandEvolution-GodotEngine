@@ -95,9 +95,11 @@ const ENEMY_HP = {
 	"snake": 90,
 	"snake_melee": 90,
 	"snake_distance": 90,
+	"snake_heal": 90,
 	"pyg": 120,
 	"pyg_melee": 120,
 	"pyg_distance": 120,
+	"pyg_heal": 120,
 	"swim_croco": 600,
 	"croco": 200,
 	"pyranha": 50,
@@ -117,11 +119,11 @@ const ENEMY_DAMAGE = {
 	"snake": 12,
 	"snake_melee": 12,
 	"snake_distance": 12,
+	"snake_heal": 12,
 	"pyg": 20,
 	"pyg_melee": 20,
 	"pyg_distance": 20,
-	"boss_tarantula": 30,
-	"add_tarantula": 10,
+	"pyg_heal": 20,
 	"croco": 18,
 	"pyranha": 10,
 	"cannibal": 22,
@@ -129,6 +131,7 @@ const ENEMY_DAMAGE = {
 	"cannibal_distance": 22,
 	"cannibal_heal": 22,
 	"boss_cannibal": 30,
+	"add_tarantula": 10
 }
 
 const ENEMY_PROJECTILE = {
@@ -146,9 +149,11 @@ const ENEMY_SPEED = {
 	"snake": 450,
 	"snake_melee": 450,
 	"snake_distance": 450,
+	"snake_heal": 450,
 	"pyg": 300,
 	"pyg_melee": 300,
 	"pyg_distance": 300,
+	"pyg_heal": 300,
 	"swim_croco": 500,
 	"cannibal": 300,
 	"cannibal_melee": 300,
@@ -171,9 +176,11 @@ const ENEMY_RANGE = {
 	"snake": 1000,
 	"snake_melee": 1000,
 	"snake_distance": 1000,
+	"snake_heal": 1000,
 	"pyg": 1000,
 	"pyg_melee": 1000,
 	"pyg_distance": 1000,
+	"pyg_heal": 1000,
 	"cannibal": 1000,
 	"cannibal_melee": 1000,
 	"cannibal_distance": 1000,
@@ -188,9 +195,11 @@ const ENEMY_MELEE_DISTANCE = {
 	"snake": 100,
 	"snake_melee": 100,
 	"snake_distance": 100,
+	"snake_heal": 100,
 	"pyg": 70,
 	"pyg_melee": 70,
 	"pyg_distance": 70,
+	"pyg_heal": 70,
 	"croco": 100,
 	"cannibal": 100,
 	"cannibal_melee": 100,
@@ -230,15 +239,17 @@ const ENEMY_COOLDOWN = {
 	"snake": 2.0,
 	"snake_melee": 1.0,
 	"snake_distance": 2.0,
+	"snake_heal": 1.0,
 	"pyg": 1.5,
-	"pyg_melee": 1.3,
+	"pyg_melee": 0.2,
 	"pyg_distance": 1.5,
+	"pyg_heal": 1.3,
 	"croco": 1.5,
 	"pyranha": 1.0,
 	"cannibal": 2.0,
 	"cannibal_melee": 1.4,
 	"cannibal_distance": 2.0,
-	"cannibal_heal": 100,
+	"cannibal_heal": 1.4,
 	"boss_cannibal": 2.0,
 	"boss_tarantula": 2.0,
 	"add_tarantula": 0.6
@@ -246,20 +257,26 @@ const ENEMY_COOLDOWN = {
 
 const ENEMY_ANIMATION_ATTACK = {
 	"snake_melee": "attack",
-	"pyg_melee": "attack",
+	"snake_distance": "attack",
+	"snake_heal": "attack",
+	"pyg_melee": "cac",
+	"pyg_distance": "attack",
+	"pyg_heal": "attack",
 	"cannibal_melee": "attack",
-	"cannibal_heal": "attack"
+	"cannibal_distance": "attack",
+	"cannibal_heal": "cac",
 }
 
 const ENEMY_ANIMATION_WALK = {
 	"snake_melee": "walk",
-	"pyg_melee": "walk",
 	"snake_distance": "walk",
+	"snake_heal": "walk",
+	"pyg_melee": "walk",
 	"pyg_distance": "walk",
+	"pyg_heal": "walk",
 	"cannibal_melee": "walk",
 	"cannibal_distance": "walk",
 	"cannibal_heal": "walk"
-	
 }
 
 const ENEMY_PROJECTILE_DAMAGE = {
@@ -270,21 +287,33 @@ const ENEMY_PROJECTILE_DAMAGE = {
 
 const ENEMY_FIRE_INTERVAL = {
 	"snake_distance": 2.0,
+	"snake_heal": 3.0,
 	"pyg_distance": 1.5,
+	"pyg_heal": 3.0,
 	"cannibal_distance": 2.0,
-	"cannibal_heal": 3.0,
+	"cannibal_heal": 3.0
 }
 
 const ENEMY_PROJECTILE_SCENE = {
 	"snake_distance": "res://Shoot/Enemies/Gaz/gaz.tscn",
+	"snake_heal": "res://Enemies/Cannibal/heal_projectile/heal_projectile.tscn",
 	"pyg_distance": "res://Shoot/Enemies/Spear/spear.tscn",
+	"pyg_heal": "res://Enemies/Cannibal/heal_projectile/heal_projectile.tscn",
 	"cannibal_distance": "res://Shoot/Enemies/Bone/bone.tscn",
-	"cannibal_heal": "res://Enemies/Cannibal/heal_projectile/heal_projectile.tscn",
+	"cannibal_heal": "res://Enemies/Cannibal/heal_projectile/heal_projectile.tscn"
 }
 
 const ENEMY_ANIMATION_SHOOT = {
 	"snake_distance": "attack",
+	"snake_heal": "attack",
 	"pyg_distance": "attack",
+	"pyg_heal": "attack",
 	"cannibal_distance": "attack",
 	"cannibal_heal": "attack"
+}
+
+const ENEMY_CAN_JUMP = {
+	"snake_heal": false,
+	"pyg_heal": true,
+	"cannibal_heal": true
 }
