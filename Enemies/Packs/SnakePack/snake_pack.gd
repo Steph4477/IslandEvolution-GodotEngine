@@ -19,13 +19,9 @@ func _ready():
 
 func spawn_pack():
 	if gs.difficulty == "explorer":
-		#spawn_enemy(snake_melee_scene, spawn_1)
-		#spawn_enemy(snake_melee_scene, spawn_2)
-		#spawn_enemy(snake_melee_scene, spawn_3)
-		spawn_enemy(snake_distance_scene, spawn_1)
+		spawn_enemy(snake_melee_scene, spawn_1)
 		spawn_enemy(snake_melee_scene, spawn_2)
-		spawn_enemy(snake_heal_scene, spawn_3)
-
+		spawn_enemy(snake_melee_scene, spawn_3)
 
 	elif gs.difficulty == "survivor":
 		spawn_enemy(snake_distance_scene, spawn_1)

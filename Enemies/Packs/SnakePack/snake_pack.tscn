@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://if780e1e68vg"]
 
-[ext_resource type="Script" uid="uid://bn3wvm06v6kat" path="res://Enemies/Packs/SnakePack/snake_pack.gd" id="1_ekuvw"]
+[ext_resource type="Script" uid="uid://btckbaqa7qgv" path="res://Enemies/Packs/SnakePack/snake_pack.gd" id="1_ekuvw"]
 
 [node name="SnakePack" type="Node2D" unique_id=1488428405]
 script = ExtResource("1_ekuvw")
 
 [node name="Spawn1" type="Marker2D" parent="." unique_id=1445665048]
-position = Vector2(55, -1)
+position = Vector2(-366, 0)
 
 [node name="Spawn2" type="Marker2D" parent="." unique_id=1705649272]
-position = Vector2(-61, -1)
+position = Vector2(334, -7)
 
 [node name="Spawn3" type="Marker2D" parent="." unique_id=1113767115]
+position = Vector2(725, 0)
