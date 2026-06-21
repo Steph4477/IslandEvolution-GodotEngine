@@ -176,6 +176,7 @@ scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 17666
 script = ExtResource("1_xl3ut")
+balance_id = "cannibal_melee"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=545927351]
 position = Vector2(-1, -11.5)

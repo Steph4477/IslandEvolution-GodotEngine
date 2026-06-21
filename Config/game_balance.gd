@@ -131,6 +131,7 @@ const ENEMY_DAMAGE = {
 	"cannibal_distance": 22,
 	"cannibal_heal": 22,
 	"boss_cannibal": 30,
+	"boss_tarantula": 30,
 	"add_tarantula": 10
 }
 
@@ -282,7 +283,7 @@ const ENEMY_ANIMATION_WALK = {
 const ENEMY_PROJECTILE_DAMAGE = {
 	"snake_distance": 20,
 	"pyg_distance": 70,
-	"cannibal_distance": 90
+	"cannibal_distance": 90,
 }
 
 const ENEMY_FIRE_INTERVAL = {
@@ -297,8 +298,8 @@ const ENEMY_FIRE_INTERVAL = {
 const ENEMY_PROJECTILE_SCENE = {
 	"snake_distance": "res://Shoot/Enemies/Gaz/gaz.tscn",
 	"snake_heal": "res://Enemies/Cannibal/heal_projectile/heal_projectile.tscn",
-	"pyg_distance": "res://Shoot/Enemies/Spear/spear.tscn",
 	"pyg_heal": "res://Enemies/Cannibal/heal_projectile/heal_projectile.tscn",
+	"pyg_distance": "res://Shoot/Enemies/Spear/spear.tscn",
 	"cannibal_distance": "res://Shoot/Enemies/Bone/bone.tscn",
 	"cannibal_heal": "res://Enemies/Cannibal/heal_projectile/heal_projectile.tscn"
 }
