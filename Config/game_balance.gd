@@ -175,7 +175,7 @@ const ENEMY_RANGE = {
 	"pyranha": 1000,
 	"snake": 1000,
 	"snake_melee": 1000,
-	"snake_distance": 1000,
+	"snake_distance": 1500,
 	"snake_heal": 1000,
 	"pyg": 1000,
 	"pyg_melee": 1000,
@@ -223,7 +223,7 @@ const ENEMY_MIN_SHOOT_DISTANCE = {
 
 const ENEMY_MAX_SHOOT_DISTANCE = {
 	"snake": 360,
-	"snake_distance": 360,
+	"snake_distance": 1000,
 	"pyg": 1000,
 	"pyg_distance": 1000,
 	"cannibal": 1000,
@@ -237,8 +237,8 @@ const ENEMY_COOLDOWN = {
 	"mosquito": 0.6,
 	"rat": 1.0,
 	"snake": 2.0,
-	"snake_melee": 1.0,
-	"snake_distance": 2.0,
+	"snake_melee": 0.5,
+	"snake_distance": 0.8,
 	"snake_heal": 1.0,
 	"pyg": 1.5,
 	"pyg_melee": 0.2,
