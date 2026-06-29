@@ -2,46 +2,19 @@
 
 [ext_resource type="Script" uid="uid://ci3an1bj642wk" path="res://Enemies/Snake/SnakeHeal/snake_heal.gd" id="1_65ebp"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_2s604"]
-[ext_resource type="Texture2D" uid="uid://dtmkmena11had" path="res://Enemies/Snake/die.png" id="3_x5w45"]
-[ext_resource type="Texture2D" uid="uid://cefb1garxxsla" path="res://Enemies/Snake/idle.png" id="4_rwnx6"]
-[ext_resource type="Texture2D" uid="uid://c2l8n5ngaqh1t" path="res://Enemies/Snake/attack.png" id="5_hr2n2"]
-[ext_resource type="Texture2D" uid="uid://df8asdwdbteap" path="res://Enemies/Snake/attack1.png" id="6_h0fhb"]
-[ext_resource type="Texture2D" uid="uid://fuabcaxrixa2" path="res://Enemies/Snake/patrol1.png" id="7_dukxy"]
-[ext_resource type="Texture2D" uid="uid://ylxy5mwulpwd" path="res://Enemies/Snake/patrol2.png" id="8_xcm67"]
-[ext_resource type="Texture2D" uid="uid://dm7307gteguv" path="res://Enemies/Snake/walk1.png" id="9_t6v52"]
-[ext_resource type="Texture2D" uid="uid://ds15yi5u5dcmf" path="res://Enemies/Snake/walk2.png" id="10_2kybi"]
-[ext_resource type="Texture2D" uid="uid://boypnitlvbsqb" path="res://Enemies/Snake/walk3.png" id="11_ujg6d"]
+[ext_resource type="Texture2D" uid="uid://cpeisiilwdfim" path="res://Enemies/Snake/SnakeHeal/idle.png" id="3_65ebp"]
+[ext_resource type="Texture2D" uid="uid://mme1bersjprd" path="res://Enemies/Snake/SnakeHeal/attack.png" id="4_2s604"]
+[ext_resource type="Texture2D" uid="uid://byown1rwpe85c" path="res://Enemies/Snake/SnakeHeal/attack1.png" id="5_x5w45"]
+[ext_resource type="Texture2D" uid="uid://bqr272ym1j41w" path="res://Enemies/Snake/SnakeHeal/die.png" id="6_rwnx6"]
+[ext_resource type="Texture2D" uid="uid://cjv1nj8pewits" path="res://Enemies/Snake/SnakeHeal/patrol1.png" id="7_hr2n2"]
+[ext_resource type="Texture2D" uid="uid://brthdfqk013w6" path="res://Enemies/Snake/SnakeHeal/patrol2.png" id="8_h0fhb"]
+[ext_resource type="Texture2D" uid="uid://n6a3abklj7n5" path="res://Enemies/Snake/SnakeHeal/walk1.png" id="9_65ebp"]
+[ext_resource type="Texture2D" uid="uid://bqh0fbnkc2hq0" path="res://Enemies/Snake/SnakeHeal/walk2.png" id="10_2s604"]
+[ext_resource type="Texture2D" uid="uid://bd1wjvkxhflu" path="res://Enemies/Snake/SnakeHeal/walk3.png" id="11_x5w45"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pioq7"]
 radius = 29.999998
 height = 173.3334
-
-[sub_resource type="Animation" id="Animation_6x27n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_x5w45")]
-}
 
 [sub_resource type="Animation" id="Animation_pioq7"]
 resource_name = "attack"
@@ -56,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_rwnx6"), ExtResource("5_hr2n2"), ExtResource("6_h0fhb")]
+"values": [ExtResource("3_65ebp"), ExtResource("4_2s604"), ExtResource("5_x5w45")]
 }
 
 [sub_resource type="Animation" id="Animation_feqrn"]
@@ -72,7 +45,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("3_x5w45"), ExtResource("3_x5w45")]
+"values": [ExtResource("6_rwnx6"), ExtResource("6_rwnx6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -100,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("4_rwnx6"), ExtResource("4_rwnx6")]
+"values": [ExtResource("3_65ebp"), ExtResource("3_65ebp")]
 }
 
 [sub_resource type="Animation" id="Animation_otsjt"]
@@ -113,10 +86,10 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_x5w45"), ExtResource("3_x5w45")]
+"values": [ExtResource("6_rwnx6")]
 }
 
 [sub_resource type="Animation" id="Animation_to62f"]
@@ -132,7 +105,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("7_dukxy"), ExtResource("8_xcm67"), ExtResource("8_xcm67")]
+"values": [ExtResource("7_hr2n2"), ExtResource("8_h0fhb"), ExtResource("7_hr2n2")]
 }
 
 [sub_resource type="Animation" id="Animation_ix0nr"]
@@ -149,12 +122,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("9_t6v52"), ExtResource("10_2kybi"), ExtResource("11_ujg6d")]
+"values": [ExtResource("9_65ebp"), ExtResource("10_2s604"), ExtResource("11_x5w45")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_feqrn"]
 _data = {
-&"RESET": SubResource("Animation_6x27n"),
 &"attack": SubResource("Animation_pioq7"),
 &"die": SubResource("Animation_feqrn"),
 &"idle": SubResource("Animation_m2mdo"),
@@ -164,11 +136,10 @@ _data = {
 }
 
 [node name="SnakeHeal" type="CharacterBody2D" unique_id=88320707 groups=["Enemies"]]
-modulate = Color(0.047058824, 1, 0.05882353, 1)
 z_index = 25
 scale = Vector2(0.6, 0.6)
 collision_layer = 8
-collision_mask = 2
+collision_mask = 258
 script = ExtResource("1_65ebp")
 balance_id = "snake_heal"
 
@@ -203,7 +174,7 @@ rotation = 0.78539795
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=1039368433]
 scale = Vector2(-0.12, 0.15)
-texture = ExtResource("3_x5w45")
+texture = ExtResource("3_65ebp")
 
 [node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]
 position = Vector2(91.66667, 16.666666)

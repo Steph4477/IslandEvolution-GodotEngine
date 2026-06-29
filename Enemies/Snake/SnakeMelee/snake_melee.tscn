@@ -3,14 +3,16 @@
 [ext_resource type="Script" uid="uid://curf5b364ug7p" path="res://Enemies/Snake/SnakeMelee/snake_melee.gd" id="1_f5mxk"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_sggbl"]
 [ext_resource type="Texture2D" uid="uid://dtmkmena11had" path="res://Enemies/Snake/die.png" id="3_jfnwu"]
-[ext_resource type="Texture2D" uid="uid://cefb1garxxsla" path="res://Enemies/Snake/idle.png" id="4_4b2pi"]
-[ext_resource type="Texture2D" uid="uid://c2l8n5ngaqh1t" path="res://Enemies/Snake/attack.png" id="5_ky74i"]
-[ext_resource type="Texture2D" uid="uid://df8asdwdbteap" path="res://Enemies/Snake/attack1.png" id="6_bwkvc"]
-[ext_resource type="Texture2D" uid="uid://fuabcaxrixa2" path="res://Enemies/Snake/patrol1.png" id="7_2i1ny"]
-[ext_resource type="Texture2D" uid="uid://ylxy5mwulpwd" path="res://Enemies/Snake/patrol2.png" id="8_llady"]
-[ext_resource type="Texture2D" uid="uid://dm7307gteguv" path="res://Enemies/Snake/walk1.png" id="9_sr2pl"]
-[ext_resource type="Texture2D" uid="uid://ds15yi5u5dcmf" path="res://Enemies/Snake/walk2.png" id="10_60fq8"]
-[ext_resource type="Texture2D" uid="uid://boypnitlvbsqb" path="res://Enemies/Snake/walk3.png" id="11_6jomf"]
+[ext_resource type="Texture2D" uid="uid://biaoe0j2g8fvo" path="res://Enemies/Snake/SnakeMelee/idle.png" id="4_jfnwu"]
+[ext_resource type="Texture2D" uid="uid://086sokejb64m" path="res://Enemies/Snake/SnakeMelee/attack.png" id="5_4b2pi"]
+[ext_resource type="Texture2D" uid="uid://co6gj02udrwjt" path="res://Enemies/Snake/SnakeMelee/attack1.png" id="6_ky74i"]
+[ext_resource type="Texture2D" uid="uid://bsqbhuitww4v7" path="res://Enemies/Snake/SnakeMelee/die.png" id="7_bwkvc"]
+[ext_resource type="Texture2D" uid="uid://b2rhvqsxe7yaq" path="res://Enemies/Snake/SnakeMelee/patrol1.png" id="8_2i1ny"]
+[ext_resource type="Texture2D" uid="uid://ci4g4jih6jq0" path="res://Enemies/Snake/SnakeMelee/patrol2.png" id="9_llady"]
+[ext_resource type="Texture2D" uid="uid://d3n351xelkkdr" path="res://Enemies/Snake/SnakeMelee/patrol3.png" id="10_sr2pl"]
+[ext_resource type="Texture2D" uid="uid://dt7j78fco7j85" path="res://Enemies/Snake/SnakeMelee/walk1.png" id="11_jfnwu"]
+[ext_resource type="Texture2D" uid="uid://de4adcgah3oix" path="res://Enemies/Snake/SnakeMelee/walk2.png" id="12_4b2pi"]
+[ext_resource type="Texture2D" uid="uid://cwua68yu7s7h3" path="res://Enemies/Snake/SnakeMelee/walk3.png" id="13_ky74i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pioq7"]
 radius = 29.999998
@@ -53,10 +55,10 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.1, 0.23333333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_4b2pi"), ExtResource("5_ky74i"), ExtResource("6_bwkvc")]
+"values": [ExtResource("4_jfnwu"), ExtResource("5_4b2pi"), ExtResource("6_ky74i")]
 }
 
 [sub_resource type="Animation" id="Animation_feqrn"]
@@ -69,10 +71,10 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_jfnwu"), ExtResource("3_jfnwu")]
+"values": [ExtResource("7_bwkvc")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -97,10 +99,10 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_4b2pi"), ExtResource("4_4b2pi")]
+"values": [ExtResource("4_jfnwu")]
 }
 
 [sub_resource type="Animation" id="Animation_otsjt"]
@@ -113,10 +115,10 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_jfnwu"), ExtResource("3_jfnwu")]
+"values": [ExtResource("7_bwkvc")]
 }
 
 [sub_resource type="Animation" id="Animation_to62f"]
@@ -132,7 +134,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("7_2i1ny"), ExtResource("8_llady"), ExtResource("8_llady")]
+"values": [ExtResource("8_2i1ny"), ExtResource("9_llady"), ExtResource("10_sr2pl")]
 }
 
 [sub_resource type="Animation" id="Animation_ix0nr"]
@@ -149,7 +151,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("9_sr2pl"), ExtResource("10_60fq8"), ExtResource("11_6jomf")]
+"values": [ExtResource("11_jfnwu"), ExtResource("12_4b2pi"), ExtResource("13_ky74i")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_feqrn"]
@@ -164,11 +166,10 @@ _data = {
 }
 
 [node name="SnakeMelee" type="CharacterBody2D" unique_id=88320707 groups=["Enemies"]]
-modulate = Color(0.41568628, 0.019607844, 0.02745098, 1)
 z_index = 25
-scale = Vector2(0.6, 0.6)
+scale = Vector2(1, 0.8)
 collision_layer = 8
-collision_mask = 2
+collision_mask = 258
 script = ExtResource("1_f5mxk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298740383]
