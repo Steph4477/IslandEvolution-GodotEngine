@@ -164,6 +164,8 @@ _data = {
 }
 
 [node name="SnakeHeal" type="CharacterBody2D" unique_id=88320707 groups=["Enemies"]]
+modulate = Color(0.047058824, 1, 0.05882353, 1)
+z_index = 25
 scale = Vector2(0.6, 0.6)
 collision_layer = 8
 collision_mask = 2

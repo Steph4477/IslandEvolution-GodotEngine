@@ -197,6 +197,7 @@ func _on_area_2d_body_entered(body):
 	if gs.hud:
 		gs.hud.anim_headbutt.play("appear_headbutt")
 		gs.hud.anim_dive.play("appear_dive")
+		gs.hud.anim_ui.play("appear_ui_up")
 
 func _on_area_2d_body_exited(body):
 	if body.name != "Player":
@@ -215,4 +216,5 @@ func _on_area_2d_body_exited(body):
 	if gs.hud:
 		gs.hud.anim_headbutt.play("disappear_headbutt")
 		gs.hud.anim_dive.play("disappear_dive")
+		gs.hud.anim_ui.play("disappear_ui_up")
 		

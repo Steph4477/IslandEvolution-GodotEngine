@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://cr1lum0yb4uny" path="res://Levels/Lvl2/Environement/torch.gd" id="4_3p2tf"]
 [ext_resource type="TileSet" uid="uid://cemt1gubeih8b" path="res://Levels/Lvl2/Environement/Background/background_tileset.tres" id="6_04g0o"]
 [ext_resource type="PackedScene" uid="uid://cwjigpn23f13r" path="res://ItemsDecors/Torch/torch.tscn" id="6_ochkp"]
+[ext_resource type="PackedScene" uid="uid://if780e1e68vg" path="res://Enemies/Packs/SnakePack/snake_pack.tscn" id="9_04g0o"]
 [ext_resource type="PackedScene" uid="uid://da0iejmapb6go" path="res://ItemsDecors/Bridge/bridge.tscn" id="9_5rcsp"]
 [ext_resource type="AudioStream" uid="uid://cecspxyks0hpp" path="res://sounds/lvl2.ogg" id="10_ochkp"]
+[ext_resource type="PackedScene" uid="uid://c2y56choelu5x" path="res://Enemies/Packs/PygmyPack/pygmy_pack.tscn" id="10_reql1"]
 [ext_resource type="PackedScene" uid="uid://bknqb0hd0lghx" path="res://ItemsDecors/KillZone/kill_zone.tscn" id="11_0vnxp"]
 [ext_resource type="PackedScene" path="res://Loot/Bag/bag.tscn" id="11_2ivwu"]
 [ext_resource type="Texture2D" uid="uid://bo8vcypul5n4v" path="res://ItemsDecors/Symbol/Turn_off/lion.png" id="12_ureso"]
@@ -49,7 +51,7 @@ size = Vector2(203.375, 2607)
 size = Vector2(5030, 171.188)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifea3"]
-size = Vector2(1252.5024, 77.5)
+size = Vector2(1369, 77.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6f7x"]
 size = Vector2(1766.5, 85)
@@ -67,7 +69,7 @@ size = Vector2(1671, 75)
 size = Vector2(1733.5, 83)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2552o"]
-size = Vector2(697, 84)
+size = Vector2(779, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwkd"]
 size = Vector2(1392, 85.5)
@@ -88,7 +90,7 @@ size = Vector2(734.5, 73)
 size = Vector2(1652.625, 93.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7vye"]
-size = Vector2(1030.25, 60.75)
+size = Vector2(1120.25, 60.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kq7q"]
 size = Vector2(1689, 83)
@@ -106,7 +108,7 @@ size = Vector2(74, 64)
 size = Vector2(76, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04g0o"]
-size = Vector2(70, 72)
+size = Vector2(141, 98)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rcsp"]
 size = Vector2(105, 133.79495)
@@ -188,7 +190,7 @@ position = Vector2(1915, 1554)
 shape = SubResource("RectangleShape2D_wsvun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=812855171]
-position = Vector2(3684.2512, 706.25)
+position = Vector2(3742.5, 706.25)
 shape = SubResource("RectangleShape2D_ifea3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=166709072]
@@ -212,7 +214,7 @@ position = Vector2(1248.25, 727.5)
 shape = SubResource("RectangleShape2D_sdx3j")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1749833477]
-position = Vector2(3346.5, 320)
+position = Vector2(3305.5, 320)
 shape = SubResource("RectangleShape2D_2552o")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=2082502073]
@@ -240,7 +242,7 @@ position = Vector2(9901.6875, 852.1875)
 shape = SubResource("RectangleShape2D_y8ogd")
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1284904136]
-position = Vector2(10273.875, 64)
+position = Vector2(10318.875, 64)
 shape = SubResource("RectangleShape2D_t7vye")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="Node2D/Platforms/platforms" unique_id=1328134084]
@@ -256,6 +258,7 @@ position = Vector2(5291.5, -997)
 shape = SubResource("RectangleShape2D_lc01g")
 
 [node name="FallPush" type="StaticBody2D" parent="Node2D/Platforms/platforms" unique_id=1541549221]
+modulate = Color(1, 0.15686275, 1, 1)
 collision_layer = 128
 collision_mask = 520
 
@@ -268,11 +271,11 @@ position = Vector2(2132, 279)
 shape = SubResource("RectangleShape2D_7462l")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=881189681]
-position = Vector2(2986, 269)
+position = Vector2(2846, 258)
 shape = SubResource("RectangleShape2D_04g0o")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=1880744413]
-position = Vector2(3731, 264)
+position = Vector2(3772, 257)
 shape = SubResource("RectangleShape2D_04g0o")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=1152424469]
@@ -300,11 +303,11 @@ position = Vector2(4481, 1460)
 shape = SubResource("RectangleShape2D_5rcsp")
 
 [node name="Border5" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=191044134]
-position = Vector2(4404, 967)
+position = Vector2(4492, 990)
 shape = SubResource("RectangleShape2D_5rcsp")
 
 [node name="Border6" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=893922548]
-position = Vector2(4246, 585)
+position = Vector2(4446, 603)
 shape = SubResource("RectangleShape2D_5rcsp")
 
 [node name="Border7" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=1773925792]
@@ -313,6 +316,87 @@ shape = SubResource("RectangleShape2D_5rcsp")
 
 [node name="Border8" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallPush" unique_id=699927678]
 position = Vector2(6812, 728)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="FallEnemies" type="StaticBody2D" parent="Node2D/Platforms/platforms" unique_id=2059165186]
+modulate = Color(0.08627451, 0.7607843, 0.40784314, 1)
+collision_layer = 1024
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=611556959]
+position = Vector2(313, -118)
+shape = SubResource("RectangleShape2D_esj3h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=20379676]
+position = Vector2(1459, -107)
+shape = SubResource("RectangleShape2D_7462l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=298373440]
+position = Vector2(351, 253)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=973376476]
+position = Vector2(2150, 251)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=977952490]
+position = Vector2(353, 630)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=1755102295]
+position = Vector2(2846, 238)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=2110743928]
+position = Vector2(2176, 631)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=512299183]
+position = Vector2(3761, 230)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=2105752564]
+position = Vector2(4490, 1419)
+shape = SubResource("RectangleShape2D_04g0o")
+
+[node name="Border4" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=1114694691]
+position = Vector2(4481, 1460)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border5" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=294627524]
+position = Vector2(6415, -81)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border6" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=2085797941]
+position = Vector2(7696, -64)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border7" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=410032481]
+position = Vector2(7548, 312)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border8" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=327514836]
+position = Vector2(8181, 310)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border9" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=844719391]
+position = Vector2(6825, 703)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border10" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=204176309]
+position = Vector2(8095, 692)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border11" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=148255460]
+position = Vector2(6728, 1514)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border12" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=229981535]
+position = Vector2(9718, -38)
+shape = SubResource("RectangleShape2D_5rcsp")
+
+[node name="Border13" type="CollisionShape2D" parent="Node2D/Platforms/platforms/FallEnemies" unique_id=1526845810]
+position = Vector2(10849, -52)
 shape = SubResource("RectangleShape2D_5rcsp")
 
 [node name="PushPlatforms" type="Node2D" parent="Node2D/Platforms/platforms" unique_id=99272779]
@@ -375,16 +459,8 @@ scale = Vector2(1, 1)
 [node name="Pygmys" type="Node2D" parent="Node2D/Creatures" unique_id=1995372841]
 position = Vector2(3828, -218.01)
 
-[node name="Pygmy2" parent="Node2D/Creatures/Pygmys" unique_id=1120375186 instance=ExtResource("13_04g0o")]
-position = Vector2(-1169.0001, 236.00323)
-scale = Vector2(1, 1)
-
 [node name="Pygmy3" parent="Node2D/Creatures/Pygmys" unique_id=1379821880 instance=ExtResource("13_04g0o")]
 position = Vector2(-4992.9976, 1162.013)
-scale = Vector2(1, 1)
-
-[node name="Pygmy" parent="Node2D/Creatures/Pygmys" unique_id=1783296698 instance=ExtResource("13_04g0o")]
-position = Vector2(1101.0002, 261.9975)
 scale = Vector2(1, 1)
 
 [node name="Snakes" type="Node2D" parent="Node2D/Creatures" unique_id=1130178387]
@@ -398,16 +474,24 @@ position = Vector2(-3425.0015, -598.99133)
 scale = Vector2(-0.6, 0.6)
 
 [node name="Snake3" parent="Node2D/Creatures/Snakes" unique_id=1924301690 instance=ExtResource("14_utbl0")]
-position = Vector2(3161.0022, 852.99194)
+position = Vector2(5901.998, -751.01495)
 scale = Vector2(-0.6, 0.6)
 
 [node name="Snake4" parent="Node2D/Creatures/Snakes" unique_id=1951045511 instance=ExtResource("14_utbl0")]
-position = Vector2(4519.0005, 93.988525)
+position = Vector2(4926, 67.987495)
 scale = Vector2(-0.6, 0.6)
 
 [node name="Snake5" parent="Node2D/Creatures/Snakes" unique_id=1164918728 instance=ExtResource("14_utbl0")]
 position = Vector2(5725.0015, 669.98584)
 scale = Vector2(-0.6, 0.6)
+
+[node name="SnakePack" parent="Node2D/Creatures" unique_id=1488428405 instance=ExtResource("9_04g0o")]
+position = Vector2(-2264.9976, 864.00574)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="PygmyPack" parent="Node2D/Creatures" unique_id=1369674852 instance=ExtResource("10_reql1")]
+position = Vector2(3991.0015, 656.9899)
 
 [node name="Items" type="Node2D" parent="Node2D" unique_id=1309033006]
 
@@ -2512,4 +2596,4 @@ volume_db = 8.0
 autoplay = true
 
 [node name="ParalaxeCiel" parent="Node2D" unique_id=634175650 instance=ExtResource("41_7462l")]
-position = Vector2(308, -332)
+position = Vector2(263, -323)

@@ -769,10 +769,10 @@ radius = 31.144823
 radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7odc"]
-size = Vector2(66.666664, 290.78015)
+size = Vector2(66.666664, 308.51065)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_beqdq"]
-size = Vector2(66.666664, 102.83688)
+size = Vector2(66.666664, 117.021286)
 
 [node name="Player" type="CharacterBody2D" unique_id=1482889488 groups=["Player"]]
 z_index = 22
@@ -794,7 +794,7 @@ texture = ExtResource("2_8hx1r")
 [node name="Sprite" type="Sprite2D" parent="Node2D" unique_id=1543697993]
 position = Vector2(142.49998, 70)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("41_fatyj")
+texture = ExtResource("6_tj6lq")
 
 [node name="Anim" type="AnimationPlayer" parent="Node2D" unique_id=2016811510]
 root_node = NodePath("../..")
@@ -810,7 +810,7 @@ position = Vector2(-26, 17.999992)
 rotation = 0.785398
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1847097831]
-position = Vector2(12, -23)
+position = Vector2(21, 1)
 rotation = 0.785398
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1435274399]
@@ -853,12 +853,12 @@ position = Vector2(159, 161)
 shape = SubResource("CircleShape2D_o5r0w")
 
 [node name="ColStand" type="CollisionShape2D" parent="." unique_id=1265538359 groups=["Player"]]
-position = Vector2(-26, 16.999998)
+position = Vector2(-26, 19.499998)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_p7odc")
 
 [node name="ColRamp" type="CollisionShape2D" parent="." unique_id=1451828545 groups=["Player"]]
-position = Vector2(-26, 43.5)
+position = Vector2(-26, 45.5)
 scale = Vector2(0.3, 0.282)
 shape = SubResource("RectangleShape2D_beqdq")
 

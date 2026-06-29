@@ -208,6 +208,7 @@ libraries/ = SubResource("AnimationLibrary_1lwxd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=880529227]
 position = Vector2(-4, -5)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("7_8re8j")
 
 [node name="BubbleSpawn" type="Marker2D" parent="Rotator" unique_id=999428820]

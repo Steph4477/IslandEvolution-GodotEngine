@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://s0vtyicveem5" path="res://Levels/Lvl1/Environement/TileMap/tileset_platform.png" id="14_f1okb"]
 [ext_resource type="PackedScene" path="res://Enemies/Toucan/toucan.tscn" id="14_li3ov"]
 [ext_resource type="PackedScene" path="res://Enemies/CarnivorousPlant/carnivorous.tscn" id="15_los52"]
-[ext_resource type="PackedScene" uid="uid://cbphsuuibdtbw" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
+[ext_resource type="PackedScene" path="res://Enemies/Butterfly/butterfly.tscn" id="16_xerpc"]
 [ext_resource type="Script" uid="uid://6soyf4e0ebx8" path="res://Loot/Seed/seed.gd" id="18_p8qu6"]
 [ext_resource type="PackedScene" uid="uid://nqrb063x5buh" path="res://Loot/Seed/seed.tscn" id="19_hs4kr"]
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="19_jsni3"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
 [ext_resource type="Texture2D" uid="uid://bi3poqdlmghsw" path="res://Levels/Lvl1/Environement/ElevatorLiana/liana_tree.png" id="23_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="24_2hs2i"]
+[ext_resource type="PackedScene" uid="uid://if780e1e68vg" path="res://Enemies/Packs/SnakePack/snake_pack.tscn" id="25_hpfpo"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
 [ext_resource type="Texture2D" uid="uid://bxfxudtujf5lj" path="res://ItemsDecors/Trees/liana_tree.png" id="26_qhqjp"]
 [ext_resource type="Texture2D" uid="uid://nbux7ymli8mw" path="res://Levels/Lvl1/Environement/Paralaxe/sky.png" id="29_6e3s7"]
@@ -743,18 +744,6 @@ position = Vector2(3742, -94)
 [node name="Mosquito" parent="World/Creatures" unique_id=915889274 instance=ExtResource("13_oiu73")]
 position = Vector2(-1197, -187)
 
-[node name="Snake" parent="World/Creatures" unique_id=88320707 instance=ExtResource("12_d0a2k")]
-z_index = 5
-position = Vector2(1798, 160)
-scale = Vector2(0.8, 0.8)
-collision_mask = 17664
-speed = 600
-
-[node name="Snake2" parent="World/Creatures" unique_id=1961381336 instance=ExtResource("12_d0a2k")]
-z_index = 5
-position = Vector2(3076, 210)
-collision_mask = 1280
-
 [node name="Snake4" parent="World/Creatures" unique_id=1775735785 instance=ExtResource("12_d0a2k")]
 z_index = 5
 position = Vector2(-1142.0001, 207)
@@ -768,6 +757,9 @@ position = Vector2(5357, 216)
 scale = Vector2(0.8, 0.8)
 collision_mask = 1280
 speed = 500
+
+[node name="SnakePack" parent="World/Creatures" unique_id=1488428405 instance=ExtResource("25_hpfpo")]
+position = Vector2(2415, -10)
 
 [node name="Items" type="Node2D" parent="World" unique_id=1086633539]
 z_index = 10

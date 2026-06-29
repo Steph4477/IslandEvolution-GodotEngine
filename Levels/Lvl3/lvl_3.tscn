@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://bygq5su8mgrtq" path="res://Enemies/Fish/fish.tscn" id="34_ykpc1"]
 [ext_resource type="PackedScene" uid="uid://ynjg42020xbh" path="res://Effects/Aquatic_breathing/Seashell/seashell.tscn" id="35_v8g36"]
 [ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="39_hw1l3"]
+[ext_resource type="PackedScene" uid="uid://dc1x0yp5rd1ub" path="res://Enemies/Packs/CannibalPack/cannibal_pack.tscn" id="45_mg0vw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odqky"]
 shader = ExtResource("5_xni6f")
@@ -108,7 +109,7 @@ size = Vector2(290, 572.8906)
 size = Vector2(6592, 360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrd0c"]
-size = Vector2(6195, 73)
+size = Vector2(7054, 73)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw1l3"]
 size = Vector2(47.25, 276)
@@ -482,7 +483,7 @@ position = Vector2(21, 23)
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=434093149]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
 z_index = 10
-position = Vector2(10918, 561)
+position = Vector2(11504, 748)
 
 [node name="SpawnPoint2" type="Marker2D" parent="Node2D" unique_id=1192111431]
 modulate = Color(0.51955754, 0.51955754, 0.51955754, 1)
@@ -617,7 +618,7 @@ polygon = PackedVector2Array(-174.3457, -46.342773, -424.93555, -17.143555, -676
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/platform" unique_id=406604896]
 z_index = 15
-position = Vector2(20856.5, 1178.5)
+position = Vector2(21286, 1178.5)
 shape = SubResource("RectangleShape2D_wrd0c")
 
 [node name="CollSwimEnemies" type="StaticBody2D" parent="Node2D" unique_id=1427173601]
@@ -671,13 +672,13 @@ shape = SubResource("RectangleShape2D_06aic")
 position = Vector2(8809, 118)
 
 [node name="LifeLoot" parent="Node2D/World/Trees/TreePerch" unique_id=2060428949 instance=ExtResource("22_qskf4")]
-z_index = 15
-position = Vector2(11271, 413.00024)
+z_index = 50
+position = Vector2(11352, 476.00024)
 rotation = -2.815216
 scale = Vector2(0.14999998, -0.14999998)
 
 [node name="Tree_perch" parent="Node2D/World/Trees/TreePerch" unique_id=9919485 instance=ExtResource("19_8n178")]
-z_index = 4
+z_index = 15
 position = Vector2(11672, 508)
 scale = Vector2(1.4, 1.4)
 
@@ -907,8 +908,22 @@ position = Vector2(-402.5, -689.5)
 [node name="Pyranha" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1783296698 instance=ExtResource("31_e0vvl")]
 position = Vector2(-21, -399.5)
 
+[node name="Pyranha2" parent="Node2D/AquaticZone/World/Ennemies" unique_id=352345940 instance=ExtResource("31_e0vvl")]
+position = Vector2(124, -393.5)
+
+[node name="Pyranha3" parent="Node2D/AquaticZone/World/Ennemies" unique_id=566654957 instance=ExtResource("31_e0vvl")]
+position = Vector2(54.5, -471)
+
+[node name="Pyranha5" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1591101744 instance=ExtResource("31_e0vvl")]
+position = Vector2(2585, -248.5)
+
+[node name="Pyranha6" parent="Node2D/AquaticZone/World/Ennemies" unique_id=1143817166 instance=ExtResource("31_e0vvl")]
+position = Vector2(2730, -242.5)
+
+[node name="Pyranha7" parent="Node2D/AquaticZone/World/Ennemies" unique_id=2125197723 instance=ExtResource("31_e0vvl")]
+position = Vector2(2660.5, -320)
+
 [node name="platform" type="StaticBody2D" parent="Node2D/AquaticZone" unique_id=57295545]
-visible = false
 z_index = 5
 position = Vector2(-4, 34)
 collision_layer = 2
@@ -1102,22 +1117,6 @@ position = Vector2(9370, 1104)
 [node name="Cannibal6" parent="Creatures" unique_id=1443868190 instance=ExtResource("16_qaw7r")]
 position = Vector2(8468, 1062)
 
-[node name="Cannibal2" parent="Creatures" unique_id=1776202316 instance=ExtResource("16_qaw7r")]
-position = Vector2(23401, 974)
-attack_range = 500
-
-[node name="Cannibal3" parent="Creatures" unique_id=1130625183 instance=ExtResource("16_qaw7r")]
-position = Vector2(23581, 979)
-attack_range = 1000
-
-[node name="Cannibal4" parent="Creatures" unique_id=881252677 instance=ExtResource("16_qaw7r")]
-position = Vector2(23932, 986)
-attack_range = 1500
-
-[node name="Cannibal5" parent="Creatures" unique_id=77513344 instance=ExtResource("16_qaw7r")]
-position = Vector2(23189, 1001)
-attack_range = 1500
-
 [node name="Mosquito" parent="Creatures" unique_id=55077267 instance=ExtResource("18_8uqfc")]
 z_index = 15
 position = Vector2(9047, 771.00006)
@@ -1141,6 +1140,9 @@ collision_mask = 1282
 attack_range = 1500
 stop_distance = 300
 max_hp = 250
+
+[node name="CannibalPack" parent="Creatures" unique_id=1488428405 instance=ExtResource("45_mg0vw")]
+position = Vector2(23855, 729)
 
 [node name="Sound" type="Node2D" parent="." unique_id=1740515804]
 position = Vector2(21, 23)

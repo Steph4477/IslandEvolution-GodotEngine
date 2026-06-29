@@ -6,10 +6,10 @@
 script = ExtResource("1_h1tku")
 
 [node name="Spawn1" type="Marker2D" parent="." unique_id=1445665048]
-position = Vector2(154, -1)
+position = Vector2(225, -1)
 
 [node name="Spawn2" type="Marker2D" parent="." unique_id=1705649272]
-position = Vector2(-189, -1)
+position = Vector2(-641, 24)
 
 [node name="Spawn3" type="Marker2D" parent="." unique_id=1113767115]
-position = Vector2(781, 0)
+position = Vector2(980, 2)

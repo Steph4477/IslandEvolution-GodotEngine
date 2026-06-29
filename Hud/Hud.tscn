@@ -238,6 +238,96 @@ _data = {
 &"disappear_dive": SubResource("Animation_jnynh")
 }
 
+[sub_resource type="Animation" id="Animation_ddd4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1905.3333, 703.3334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qxfqj"]
+resource_name = "appear_ui_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1916.6666, 692), Vector2(1773.9999, 696)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(7.450581e-09, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0jf11"]
+resource_name = "disappear_ui_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1776.6667, 696.6667), Vector2(1905.3333, 703.3334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32jna"]
+_data = {
+&"RESET": SubResource("Animation_ddd4q"),
+&"appear_ui_up": SubResource("Animation_qxfqj"),
+&"disappear_ui_up": SubResource("Animation_0jf11")
+}
+
 [sub_resource type="Animation" id="Animation_wxm5k"]
 resource_name = "appear_coco"
 tracks/0/type = "value"
@@ -1003,6 +1093,16 @@ action = "ui_down"
 
 [node name="AnimDive" type="AnimationPlayer" parent="Gamepad/Dive" unique_id=779354297]
 libraries/ = SubResource("AnimationLibrary_ddd4q")
+
+[node name="ui_up_under_swim_zone" type="TouchScreenButton" parent="Gamepad" unique_id=374812901]
+z_index = 50
+position = Vector2(1905.3333, 703.3334)
+texture_normal = ExtResource("62_jcaq3")
+texture_pressed = ExtResource("63_y20lb")
+action = "ui_up"
+
+[node name="AnimUi" type="AnimationPlayer" parent="Gamepad/ui_up_under_swim_zone" unique_id=1723813266]
+libraries/ = SubResource("AnimationLibrary_32jna")
 
 [node name="kick" type="TouchScreenButton" parent="Gamepad" unique_id=656840088]
 position = Vector2(1777.3334, 700.6667)

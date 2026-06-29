@@ -136,11 +136,11 @@ const ENEMY_DAMAGE = {
 }
 
 const ENEMY_PROJECTILE = {
-	"gaz": 20,
-	"lance": 70,
-	"bone": 90,
-	"web": 80,
-	"harpoon": 150
+	"gaz": 10,
+	"lance": 40,
+	"bone": 50,
+	"web": 60,
+	"harpoon": 80
 }
 
 const ENEMY_SPEED = {
@@ -176,7 +176,7 @@ const ENEMY_RANGE = {
 	"pyranha": 1000,
 	"snake": 1000,
 	"snake_melee": 1000,
-	"snake_distance": 1500,
+	"snake_distance": 1000,
 	"snake_heal": 1000,
 	"pyg": 1000,
 	"pyg_melee": 1000,

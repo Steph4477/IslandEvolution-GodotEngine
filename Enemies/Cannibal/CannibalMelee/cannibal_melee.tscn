@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://daijv7o6kndyn" path="res://Enemies/Cannibal/spritesheet.png" id="3_2o6nm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
-size = Vector2(32, 113)
+size = Vector2(32, 93)
 
 [sub_resource type="Animation" id="Animation_32703"]
 length = 0.001
@@ -172,6 +172,8 @@ _data = {
 }
 
 [node name="CannibalMelee" type="CharacterBody2D" unique_id=708931693 groups=["Enemies"]]
+modulate = Color(1, 0.047058824, 0.03529412, 1)
+z_index = 25
 scale = Vector2(-1, 1)
 collision_layer = 8
 collision_mask = 17666
@@ -179,7 +181,7 @@ script = ExtResource("1_xl3ut")
 balance_id = "cannibal_melee"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=545927351]
-position = Vector2(-1, -11.5)
+position = Vector2(-1, -21.5)
 shape = SubResource("RectangleShape2D_x2fpe")
 
 [node name="HealthBar" parent="." unique_id=1317778126 instance=ExtResource("2_f3r6x")]
