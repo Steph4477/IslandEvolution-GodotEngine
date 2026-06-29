@@ -6,10 +6,10 @@
 script = ExtResource("1_ekuvw")
 
 [node name="Spawn1" type="Marker2D" parent="." unique_id=1445665048]
-position = Vector2(-366, 0)
+position = Vector2(90, 0)
 
 [node name="Spawn2" type="Marker2D" parent="." unique_id=1705649272]
 position = Vector2(334, -7)
 
 [node name="Spawn3" type="Marker2D" parent="." unique_id=1113767115]
-position = Vector2(725, 0)
+position = Vector2(602, 2)

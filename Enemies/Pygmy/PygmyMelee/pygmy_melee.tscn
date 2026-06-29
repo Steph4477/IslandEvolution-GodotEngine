@@ -176,7 +176,7 @@ _data = {
 
 [node name="PygmyMelee" type="CharacterBody2D" unique_id=1783296698 groups=["Enemies"]]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 258
 script = ExtResource("1_f0jvg")
 balance_id = "pyg_melee"
 

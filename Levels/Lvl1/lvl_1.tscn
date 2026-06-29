@@ -289,7 +289,7 @@ position = Vector2(3816, 881)
 collision_mask = 256
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
-position = Vector2(364, 893)
+position = Vector2(5126, 822)
 
 [node name="Sound" type="Node2D" parent="." unique_id=1907351730]
 position = Vector2(14, -90)
@@ -758,9 +758,6 @@ scale = Vector2(0.8, 0.8)
 collision_mask = 1280
 speed = 500
 
-[node name="SnakePack" parent="World/Creatures" unique_id=1488428405 instance=ExtResource("25_hpfpo")]
-position = Vector2(2415, -10)
-
 [node name="Items" type="Node2D" parent="World" unique_id=1086633539]
 z_index = 10
 position = Vector2(-21, -70)
@@ -823,20 +820,6 @@ z_index = -5
 position = Vector2(-570, -1498)
 scale = Vector2(2, 2)
 
-[node name="GazShooter" parent="World/GazShooters" unique_id=2002798191 instance=ExtResource("29_ppy38")]
-position = Vector2(3086.5, 1233.5)
-projectile_spawn_delay = 0.8
-attack_range = 500
-gravity = 0
-stop_distance = 0
-hit_lock_time = 0.0
-
-[node name="GazShooter2" parent="World/GazShooters" unique_id=1235441363 instance=ExtResource("29_ppy38")]
-position = Vector2(2834.5, 1233.5)
-projectile_spawn_delay = 1.0
-gravity = 0
-stop_distance = 0
-
 [node name="GazShooter3" parent="World/GazShooters" unique_id=1593820904 instance=ExtResource("29_ppy38")]
 position = Vector2(1444.5, 1226.5)
 projectile_spawn_delay = 1.0
@@ -844,25 +827,13 @@ gravity = 0
 stop_distance = 0
 
 [node name="GazShooter4" parent="World/GazShooters" unique_id=605276124 instance=ExtResource("29_ppy38")]
-position = Vector2(3769.5, 1234.5)
+position = Vector2(3769.5002, 1219.5)
 projectile_spawn_delay = 1.0
 gravity = 0
 stop_distance = 0
 
 [node name="GazShooter5" parent="World/GazShooters" unique_id=1198386164 instance=ExtResource("29_ppy38")]
 position = Vector2(4360, 1228.5)
-projectile_spawn_delay = 1.0
-gravity = 0
-stop_distance = 0
-
-[node name="GazShooter6" parent="World/GazShooters" unique_id=1248359002 instance=ExtResource("29_ppy38")]
-position = Vector2(3549, 1237.5)
-projectile_spawn_delay = 1.0
-gravity = 0
-stop_distance = 0
-
-[node name="GazShooter7" parent="World/GazShooters" unique_id=630843415 instance=ExtResource("29_ppy38")]
-position = Vector2(8525, 1227)
 projectile_spawn_delay = 1.0
 gravity = 0
 stop_distance = 0
@@ -888,3 +859,7 @@ position = Vector2(3312, 287)
 modulate = Color(0.7146291, 0.71462905, 0.71462905, 1)
 z_index = 20
 position = Vector2(9129, 957)
+
+[node name="SnakePack" parent="." unique_id=1488428405 instance=ExtResource("25_hpfpo")]
+z_index = 25
+position = Vector2(6105, 571)
