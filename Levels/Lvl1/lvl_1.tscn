@@ -289,7 +289,7 @@ position = Vector2(3816, 881)
 collision_mask = 256
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
-position = Vector2(5126, 822)
+position = Vector2(134, 948)
 
 [node name="Sound" type="Node2D" parent="." unique_id=1907351730]
 position = Vector2(14, -90)
@@ -821,7 +821,7 @@ position = Vector2(-570, -1498)
 scale = Vector2(2, 2)
 
 [node name="GazShooter3" parent="World/GazShooters" unique_id=1593820904 instance=ExtResource("29_ppy38")]
-position = Vector2(1444.5, 1226.5)
+position = Vector2(1444.5, 1242)
 projectile_spawn_delay = 1.0
 gravity = 0
 stop_distance = 0
