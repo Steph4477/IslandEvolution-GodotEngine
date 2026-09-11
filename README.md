@@ -311,8 +311,8 @@ Godot Engine 4.5+
 ## Clone
 
 ```bash
-git clone https://github.com/Steph4477/video-game-with-godot-engine.git
-cd video-game-with-godot-engine
+git clone https://github.com/Steph4477/IslandEvolution-GodotEngine.git
+cd IslandEvolution-GodotEngine
 ```
 
 Open `project.godot` in Godot Editor.
