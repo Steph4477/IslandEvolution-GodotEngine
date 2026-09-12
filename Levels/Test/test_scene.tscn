@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
-[ext_resource type="PackedScene" uid="uid://lye37abt7fae" path="res://Enemies/Snake/SnakeDistance/snake_distance.tscn" id="1_yoe4u"]
+[ext_resource type="PackedScene" uid="uid://cv5xxqe4sgycb" path="res://Enemies/Snake/SnakeMelee/snake_melee.tscn" id="1_yoe4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
 size = Vector2(313.271, 30.1528)
@@ -48,5 +48,6 @@ position = Vector2(34756.457, 12353.302)
 scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
-[node name="SnakeDistance" parent="." unique_id=88320707 instance=ExtResource("1_yoe4u")]
-position = Vector2(1520, 1411)
+[node name="SnakeMelee" parent="." unique_id=88320707 instance=ExtResource("1_yoe4u")]
+position = Vector2(2509, 1411)
+scale = Vector2(0.6, 0.48000002)

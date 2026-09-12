@@ -22,6 +22,8 @@ const INPUT = {
 
 @export var total_seeds_in_level = 10
 @export_range(0.0, 400.0, 10.0) var kick_knockback_force = 210.0
+@export var kick_impact_fx: AnimatedSprite2D
+@export var kick_impact_sound: AudioStreamPlayer2D
 
 var speed = GameBalance.PLAYER_SPEED
 var jump_force = GameBalance.PLAYER_JUMP_FORCE
@@ -486,9 +488,17 @@ func _on_headbutt_area_body_entered(body):
 func _on_kick_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(kick_damage)
+		kick_impact_sound.play()
 
 		if body.has_method("apply_knockback"):
 			var direction = -1.0 if sprite.flip_h else 1.0
 			body.apply_knockback(direction, kick_knockback_force)
 
 		camera.get_node("ShakeAnimation").play("kick_shake")
+
+		kick_impact_fx.visible = true
+		kick_impact_fx.frame = 0
+		kick_impact_fx.play("impact")
+
+		await kick_impact_fx.animation_finished
+		kick_impact_fx.visible = false
