@@ -162,7 +162,7 @@ func attach_to_liana(liana):
 
 	p.velocity = Vector2.ZERO
 	hand_to_grip()
-	p.anim.play("climb")
+	p.anim.play("climb_liana")
 
 func detach_to_liana():
 	p.is_on_liana = false

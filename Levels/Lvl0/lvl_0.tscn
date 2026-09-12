@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Levels/Lvl0/lvl0.gd" id="1_rv0fi"]
 [ext_resource type="Texture2D" uid="uid://dfekwaj0ku65x" path="res://Levels/Lvl0/Assets/jungle.png" id="2_d3sq6"]
+[ext_resource type="Texture2D" uid="uid://cly20h3c73tvg" path="res://Player/Sprite/spriteSheet.png" id="4_0ncut"]
 [ext_resource type="AudioStream" uid="uid://24fwln65j5wm" path="res://sounds/dijee.ogg" id="4_1tkva"]
 [ext_resource type="Texture2D" uid="uid://b8asnptvv1ljh" path="res://Levels/Lvl0/Assets/box.png" id="4_15gx2"]
-[ext_resource type="Texture2D" uid="uid://cyvt124r833wr" path="res://Player/Sprite/idle/1.png" id="4_ia24y"]
-[ext_resource type="Texture2D" uid="uid://dtvm6b751qk7o" path="res://Player/Sprite/idle/2.png" id="6_4i3og"]
-[ext_resource type="Texture2D" uid="uid://coka4l72cwoqs" path="res://Player/Sprite/idle/3.png" id="7_5nckp"]
 [ext_resource type="Texture2D" uid="uid://b6afrl1mru2f3" path="res://Menu/Buttons/Pressed/restart.png" id="7_qfdsm"]
-[ext_resource type="Texture2D" uid="uid://cd447qx5fnim4" path="res://Player/Sprite/idle/4.png" id="8_eboxw"]
 [ext_resource type="Texture2D" uid="uid://cia8yk03fjvxb" path="res://Menu/Buttons/restart.png" id="9_7s5l6"]
 [ext_resource type="Texture2D" uid="uid://dgdg8vqghb0mu" path="res://Menu/Buttons/Pressed/load.png" id="9_plvp6"]
 [ext_resource type="Texture2D" uid="uid://d0ofi6bpni2c6" path="res://Menu/Buttons/load.png" id="9_qmtbe"]
@@ -52,36 +49,120 @@
 [ext_resource type="Texture2D" uid="uid://bi8p58lo3tmd2" path="res://Hud/Difficulty/Locked/survivor.png" id="50_vrp4g"]
 [ext_resource type="Texture2D" uid="uid://dao52p0bk57qw" path="res://Hud/Difficulty/Locked/king.png" id="51_4qyy0"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwvnj"]
+atlas = ExtResource("4_0ncut")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7kkj"]
+atlas = ExtResource("4_0ncut")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_417gj"]
+atlas = ExtResource("4_0ncut")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1sw5"]
+atlas = ExtResource("4_0ncut")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8usbj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwvnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7kkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_417gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1sw5")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_b47am"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Moko:texture")
+tracks/0/path = NodePath("Moko:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_ia24y")]
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moko:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moko:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27.999998, 452)]
 }
 
 [sub_resource type="Animation" id="Animation_347at"]
 resource_name = "idle_moko"
-length = 0.8
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Moko:texture")
+tracks/0/path = NodePath("Moko:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.029999971, 0.5, 0.95000005, 1.3800001, 1.8600001, 2.3999999, 2.83, 3.29),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_ia24y"), ExtResource("6_4i3og"), ExtResource("4_ia24y"), ExtResource("7_5nckp"), ExtResource("8_eboxw"), ExtResource("6_4i3og"), ExtResource("4_ia24y"), ExtResource("8_eboxw")]
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moko:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4000001, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0, 1, 2, 0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moko:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.9794022),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27.999998, 452)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kcm01"]
@@ -323,10 +404,11 @@ texture = ExtResource("2_d3sq6")
 position = Vector2(555, 289)
 texture = ExtResource("4_15gx2")
 
-[node name="Moko" type="Sprite2D" parent="Background" unique_id=401838200]
-position = Vector2(109, 475)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ia24y")
+[node name="Moko" type="AnimatedSprite2D" parent="Background" unique_id=2100801960]
+position = Vector2(-27.999998, 452)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_8usbj")
+animation = &"idle"
 
 [node name="Title" type="Sprite2D" parent="Background" unique_id=1297356091]
 position = Vector2(536, -54)
