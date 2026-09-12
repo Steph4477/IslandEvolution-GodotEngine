@@ -19,6 +19,7 @@ var is_dead = false
 var is_attacking = false
 var is_shooting = false
 var hit_locked = false
+var knockback_active = false
 var in_melee = false
 var can_melee_attack = true
 
@@ -159,6 +160,14 @@ func on_hit(amount):
 
 	await get_tree().create_timer(hit_lock_time).timeout
 	hit_locked = false
+
+func apply_knockback(direction: float, force: float):
+	knockback_active = true
+	velocity.x = direction * force
+
+	await get_tree().create_timer(hit_lock_time).timeout
+
+	knockback_active = false
 
 func start_hit_lock():
 	hit_locked = true

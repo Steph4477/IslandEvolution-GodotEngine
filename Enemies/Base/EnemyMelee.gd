@@ -41,6 +41,11 @@ func _physics_process(delta):
 	if is_dead:
 		return
 
+	if knockback_active:
+		apply_gravity(delta)
+		move_and_slide()
+		return
+
 	apply_gravity(delta)
 	target_player()
 	flip()

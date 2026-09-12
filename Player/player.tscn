@@ -1394,6 +1394,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(127.49998, 55)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("KickArea:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bpa77"]
 resource_name = "clac"
@@ -1425,7 +1437,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_kdg72"]
 resource_name = "climb"
-length = 0.39999999999999997
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1483,7 +1495,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_pisgm"]
 resource_name = "climb_liana"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1723,7 +1735,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_kse80"]
 resource_name = "hang"
-length = 0.39999999999999997
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2177,6 +2189,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"kick"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KickArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_6qokg"]
@@ -2830,6 +2854,43 @@ _data = {
 &"web_effect": SubResource("Animation_jaf6r")
 }
 
+[sub_resource type="Animation" id="Animation_4ntmi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_btcbx"]
+resource_name = "kick_shake"
+length = 0.11
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(12, -5), Vector2(-10, 4), Vector2(7, -3), Vector2(-4, 2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwnis"]
+_data = {
+&"RESET": SubResource("Animation_4ntmi"),
+&"kick_shake": SubResource("Animation_btcbx")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_c7st8"]
 radius = 25.019993
 
@@ -2893,6 +2954,10 @@ limit_top = 3
 limit_right = 7603
 limit_bottom = 1503
 position_smoothing_enabled = true
+
+[node name="ShakeAnimation" type="AnimationPlayer" parent="Camera2D" unique_id=1331672311]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_gwnis")
 
 [node name="ClacArea" type="Area2D" parent="." unique_id=1323133612]
 position = Vector2(-136, -126)

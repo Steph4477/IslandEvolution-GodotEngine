@@ -20,6 +20,9 @@ const INPUT = {
 	"air_buff": "air_buff"           # A (InputMap)
 }
 
+@export var total_seeds_in_level = 10
+@export_range(0.0, 400.0, 10.0) var kick_knockback_force = 210.0
+
 var speed = GameBalance.PLAYER_SPEED
 var jump_force = GameBalance.PLAYER_JUMP_FORCE
 var gravity = GameBalance.PLAYER_GRAVITY
@@ -29,7 +32,6 @@ var max_pv = GameBalance.PLAYER_MAX_PV
 var pv = max_pv
 var cooldown_potion = GameBalance.PLAYER_COOLDOWN_POTION
 var heal_amount = GameBalance.PLAYER_HEAL_AMOUNT
-@export var total_seeds_in_level = 10
 
 # --- Dégâts de chute ---
 var fall_damage_enabled = GameBalance.PLAYER_FALL_DAMAGE_ENABLED
@@ -484,3 +486,9 @@ func _on_headbutt_area_body_entered(body):
 func _on_kick_area_body_entered(body):
 	if body and body.has_method("on_hit"):
 		body.on_hit(kick_damage)
+
+		if body.has_method("apply_knockback"):
+			var direction = -1.0 if sprite.flip_h else 1.0
+			body.apply_knockback(direction, kick_knockback_force)
+
+		camera.get_node("ShakeAnimation").play("kick_shake")

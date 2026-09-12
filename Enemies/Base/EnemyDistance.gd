@@ -64,6 +64,11 @@ func _physics_process(delta):
 		return
 
 	apply_gravity(delta)
+
+	if knockback_active:
+		move_and_slide()
+		return
+
 	target_player()
 	target = player
 	flip()

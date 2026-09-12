@@ -406,19 +406,16 @@ func kick():
 	p.animation_locked = true
 	p.velocity.x = 0
 
-	p.get_node("KickArea").monitoring = true
 	p.anim.play("kick")
 
 	await p.anim.animation_finished
 
 	if p.is_hit_locked:
-		p.get_node("KickArea").monitoring = false
 		p.animation_locked = false
 		p.is_kicking = false
 		p.is_attacking = false
 		return
 
-	p.get_node("KickArea").monitoring = false
 	p.animation_locked = false
 	p.is_kicking = false
 	p.is_attacking = false
