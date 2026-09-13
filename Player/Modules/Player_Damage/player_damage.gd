@@ -24,7 +24,7 @@ func on_hit(damage):
 
 	if p.is_swimming or p.is_swimming_under_water:
 		p.velocity.y = 0
-
+	
 	p.pv -= damage
 	p.pv = clamp(p.pv, 0, p.max_pv)
 

@@ -176,7 +176,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pioq7")
 
 [node name="HealthBar" parent="." unique_id=531143628 instance=ExtResource("11_wxmfk")]
-position = Vector2(-50.000004, -86)
+position = Vector2(-46.666664, -53.333332)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1036608915]
 autostart = true
@@ -200,7 +200,7 @@ position = Vector2(-136.66667, -111.66666)
 rotation = 0.78539795
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=1039368433]
-scale = Vector2(-0.12, 0.15)
+scale = Vector2(-0.08, 0.1)
 texture = ExtResource("5_bepxj")
 
 [node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]

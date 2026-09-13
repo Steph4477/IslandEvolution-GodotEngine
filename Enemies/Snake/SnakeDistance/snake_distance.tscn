@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://boypnitlvbsqb" path="res://Enemies/Snake/walk3.png" id="11_taaqg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pioq7"]
-radius = 29.999998
-height = 173.3334
+radius = 36.66667
+height = 126.66667
 
 [sub_resource type="Animation" id="Animation_6x27n"]
 length = 0.001
@@ -181,14 +181,15 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 8
 collision_mask = 258
 script = ExtResource("1_2ox2c")
+attack_range = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298740383]
-position = Vector2(3.333333, 26.666664)
+position = Vector2(2.3841858e-07, 3.333334)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pioq7")
 
 [node name="HealthBar" parent="." unique_id=531143628 instance=ExtResource("2_udaon")]
-position = Vector2(-50.000004, -86)
+position = Vector2(-50, -66.666664)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1036608915]
 autostart = true
@@ -212,7 +213,7 @@ position = Vector2(-136.66667, -111.66666)
 rotation = 0.78539795
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=1039368433]
-scale = Vector2(-0.12, 0.15)
+scale = Vector2(-0.1, 0.1)
 texture = ExtResource("3_nrdtv")
 
 [node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]

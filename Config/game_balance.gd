@@ -224,7 +224,7 @@ const ENEMY_MIN_SHOOT_DISTANCE = {
 
 const ENEMY_MAX_SHOOT_DISTANCE = {
 	"snake": 360,
-	"snake_distance": 1000,
+	"snake_distance": 300,
 	"pyg": 1000,
 	"pyg_distance": 1000,
 	"cannibal": 1000,
@@ -237,7 +237,7 @@ const ENEMY_COOLDOWN = {
 	"bee": 0.5,
 	"mosquito": 0.6,
 	"rat": 1.0,
-	"snake": 2.0,
+	"snake": 3.0,
 	"snake_melee": 0.5,
 	"snake_distance": 0.8,
 	"snake_heal": 1.0,

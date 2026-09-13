@@ -20,7 +20,7 @@ var can_jump = true
 
 var heal_range = 400.0
 var heal_amount = 40
-var safe_distance = 350
+var safe_distance = 100
 var follow_distance = 500
 
 var target_mod = EnemyModTarget.new()
@@ -110,22 +110,7 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	if try_priority_heal():
-		return
-
-	if move_to_wounded_ally():
-		return
-
-	if target == null:
-		update_patrol_zone()
-		return
-
 	if is_attacking:
-		velocity.x = 0
-		stop_and_slide()
-		return
-
-	if is_shooting:
 		velocity.x = 0
 		stop_and_slide()
 		return
@@ -135,9 +120,24 @@ func _physics_process(delta):
 		stop_and_slide()
 		return
 
-	if distance < melee_distance:
+	if target != null and distance < melee_distance:
 		velocity.x = 0
 		stop_and_slide()
+		return
+
+	if is_shooting:
+		velocity.x = 0
+		stop_and_slide()
+		return
+
+	if try_priority_heal():
+		return
+
+	if move_to_wounded_ally():
+		return
+
+	if target == null:
+		update_patrol_zone()
 		return
 
 	if distance < safe_distance:

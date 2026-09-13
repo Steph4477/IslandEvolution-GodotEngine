@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bsmf1ddlq80k1" path="res://Levels/Lvl1/Environement/TileMap/tileset_plant_back.png" id="10_ysuxi"]
 [ext_resource type="PackedScene" uid="uid://d2he0802svh3m" path="res://Loot/Banana/banana.tscn" id="11_hkrhx"]
 [ext_resource type="PackedScene" uid="uid://dem6aecic7fr5" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.tscn" id="11_p5uxy"]
-[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="12_d0a2k"]
 [ext_resource type="Texture2D" uid="uid://b1hd2mhorqrne" path="res://Levels/Lvl1/Environement/TileMap/tileset_jungle_ground.png" id="12_f1okb"]
 [ext_resource type="PackedScene" uid="uid://d1xptwkykbjlu" path="res://Enemies/Mosquito/mosquito.tscn" id="13_oiu73"]
 [ext_resource type="Texture2D" uid="uid://s0vtyicveem5" path="res://Levels/Lvl1/Environement/TileMap/tileset_platform.png" id="14_f1okb"]
@@ -26,11 +25,11 @@
 [ext_resource type="PackedScene" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
 [ext_resource type="Texture2D" uid="uid://bi3poqdlmghsw" path="res://Levels/Lvl1/Environement/ElevatorLiana/liana_tree.png" id="23_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="24_2hs2i"]
+[ext_resource type="PackedScene" uid="uid://lye37abt7fae" path="res://Enemies/Snake/SnakeDistance/snake_distance.tscn" id="24_hpfpo"]
 [ext_resource type="PackedScene" uid="uid://if780e1e68vg" path="res://Enemies/Packs/SnakePack/snake_pack.tscn" id="25_hpfpo"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl3/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
 [ext_resource type="Texture2D" uid="uid://bxfxudtujf5lj" path="res://ItemsDecors/Trees/liana_tree.png" id="26_qhqjp"]
 [ext_resource type="Texture2D" uid="uid://nbux7ymli8mw" path="res://Levels/Lvl1/Environement/Paralaxe/sky.png" id="29_6e3s7"]
-[ext_resource type="PackedScene" uid="uid://dnpligc6alj5f" path="res://Enemies/GazShooter/gaz_shooter.tscn" id="29_ppy38"]
 [ext_resource type="Texture2D" uid="uid://cq7u7wuv2qqpi" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_back.png" id="29_yc75k"]
 [ext_resource type="Texture2D" uid="uid://crqo6elghv737" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_forest.png" id="30_yc75k"]
 [ext_resource type="Texture2D" uid="uid://cr0v4evp55iyk" path="res://Levels/Lvl1/Environement/Fx/fog.png" id="31_ppy38"]
@@ -537,8 +536,8 @@ tile_set = SubResource("TileSet_hpfpo")
 [node name="TileMapPlantFront" type="TileMapLayer" parent="World/TileMap" unique_id=1121306411]
 modulate = Color(0.10517929, 0.35072872, 0.14450002, 1)
 z_index = 50
-position = Vector2(-2426.9998, -76)
-scale = Vector2(0.6, 0.686)
+position = Vector2(-4135.0005, -117)
+scale = Vector2(0.3, 0.343)
 tile_map_data = PackedByteArray("AAAZ//T/AAABAAEAAAAv//P/AAABAAEAAABK//X/AAABAAEAAABi//T/AAAEAAAAAACF//X/AAAEAAAAAACb//X/AAAEAAAAAAAl//T/AAACAAEAAAA4//b/AAACAAEAAABY//b/AAACAAEAAACt//X/AAAEAAAAAAC5//X/AAAEAAAAAADL//n/AAAEAAAAAAAFAPP/AAADAAAAAAALAPf/AAACAAEAAAAUAPP/AAACAAEAAAAdAPb/AAACAAEAAAAmAPP/AAABAAEAAAAwAPb/AgAEAAEAAAA9APT/AAABAAEAAABJAPT/AAACAAEAAABTAPP/AAABAAEAAABuAPX/AAABAAEAAAAg/+z/AAABAAEAAAAp/+//AAACAAEAAAA7/+7/AAABAAEAAABJ/+//AAACAAEAAABT/+3/AAAEAAAAAAAb//P/AAACAAEAAAAl//L/AAABAAEAAAAu//X/AAACAAEAAABA//T/AAABAAEAAABO//X/AAACAAEAAABY//P/AgADAAAAAAB7//T/AAAEAAAAAACR//T/AAAEAAAAAACj//T/AAAEAAAAAACv//T/AAAEAAAAAADB//j/AAAEAAAAAAD3/u3/AgABAAEAAAAK/+z/AgABAAEAAACL/uv/AgACAAEAAAAP//T/AgACAAEAAAAP//P/AgACAAEAAACq/u3/AgACAAEAAAAH//b/AgABAAEAAAAT//H/AgABAAEAAACI/u3/AgADAAAAAAC6/uz/AgACAAEAAACb/u3/AgABAAAAAABp//j/AgADAAAAAACD//b/AgACAAEAAACN//X/AgADAAAAAACU//X/AgACAAEAAACV//X/AgACAAEAAACx//T/AgABAAEAAAC+//T/AgABAAEAAADP//T/AgABAAEAAADQ//f/AgADAAAAAADa//j/AgABAAEAAADb//j/AgABAAEAAADg//T/AgACAAEAAADw//f/AgAEAAEAAAD4//T/AgACAAEAAAD4//X/AgACAAEAAAD8//L/AgABAAEAAAA3APP/AgACAAEAAABCAO//AgADAAAAAABEAPT/AgACAAEAAABJAPH/AgABAAEAAABKAPH/AgABAAEAAABUAPf/AgACAAEAAABVAO//AgABAAAAAABeAPb/AgADAAAAAABkAO//AgACAAEAAABlAPb/AgACAAEAAABmAPP/AgABAAEAAABmAPb/AgAEAAEAAABsAPD/AgADAAAAAAByAPT/AgACAAEAAABzAPT/AgACAAEAAAB0AO7/AgACAAEAAAAF//f/AgADAAEAAAAV//f/AgAEAAEAAAAX//b/AAADAAEAAAAf//f/AgADAAEAAAAn//b/AAAEAAEAAAAv//f/AgAEAAEAAAAz//b/AAADAAEAAAA6//f/AgADAAEAAABD//b/AAAEAAEAAABK//f/AgAEAAEAAABP//b/AAADAAEAAABX//f/AgADAAEAAABf//b/AAAEAAEAAABn//f/AgAEAAEAAABq//b/AAADAAEAAABx//f/AgADAAEAAAB6//b/AAAEAAEAAACB//f/AgAEAAEAAACG//b/AAADAAEAAACN//f/AgADAAEAAACW//b/AAAEAAEAAACd//f/AgAEAAEAAACk//b/AAACAAAAAACq//f/AgADAAEAAACv//b/AAACAAAAAACx//b/AAADAAEAAAC3//f/AgADAAEAAAC6//f/AgAEAAEAAACz//b/AAAEAAEAAAC2//f/AgADAAEAAAC5//f/AgAEAAEAAAC///b/AAADAAEAAADG//f/AgADAAEAAADP//b/AAAEAAEAAADW//f/AgAEAAEAAADa//b/AAAEAAAAAADg//f/AgADAAEAAADl//b/AAACAAAAAADp//b/AgADAAEAAADv//b/AAABAAAAAAD5//b/AgAEAAEAAAAGAPb/AgADAAEAAAAJAPb/AAAEAAEAAAATAPb/AAADAAEAAAAWAPb/AgAEAAEAAAAgAPb/AgADAAEAAAAjAPb/AAAEAAEAAAAtAPb/AAADAAEAAABNAPb/AgAEAAEAAABXAPb/AgADAAEAAAApAPX/AAAEAAEAAAAsAPb/AgADAAEAAAAvAPb/AgAEAAEAAABFAPX/AAAEAAEAAABMAPb/AgAEAAEAAABQAPX/AAAEAAAAAABWAPb/AgADAAEAAABbAPX/AAACAAAAAABfAPX/AgADAAEAAABlAPX/AAABAAAAAABvAPX/AgAEAAEAAAA8APb/AgAEAAEAABB1/vn/AgACAAEAAAB8/v3/AgADAAAAAACD/gAAAgABAAEAAACN/vz/AgABAAEAAACQ/gAAAgABAAEAAACW/v//AgACAAEAAACX/vz/AgABAAEAAACf/v3/AgABAAEAAACh/gAAAgABAAEAAACq/vz/AgABAAEAAACr/v7/AgADAAAAAACy/vr/AgABAAEAAACy/gAAAgACAAEAAAC1/vz/AgABAAEAAACW/vP/AgABAAAAAACl/vP/AgACAAEAAACq//D/AgACAAEAAAD//+7/AgABAAEAAAAAAPD/AAAEAAAAAAABAOv/AgACAAEAAAAIAPH/AgACAAEAAAAJAO7/AgABAAEAAAARAO//AgABAAEAAAAcAO7/AgABAAEAAAAdAPD/AgADAAAAAAAkAOz/AgABAAEAAAAnAO7/AgABAAEAAAAxAO//AgABAAEAAAA3AOv/AgABAAEAAAAU//T/AgACAAEAAAAf//D/AgADAAAAAAAh//X/AgACAAEAAAAk//D/AAAEAAAAAAAm//L/AgABAAEAAAAn//L/AgABAAEAAAAy//D/AgABAAAAAAA6//D/AAAEAAAAAABB//D/AgACAAEAAABD//T/AgABAAEAAABJ//H/AgADAAAAAABM//D/AAAEAAAAAABP//X/AgACAAEAAABQ//X/AgACAAEAAABR/+//AgACAAEAAABY//D/AAAEAAAAAABe//D/AgACAAEAAADC/vf/AgAEAAEAAADE/vj/AgADAAAAAADF/vb/AAADAAEAAADM/vf/AgADAAEAAACk/vf/AgAEAAEAAADY/v3/AgACAAEAAADQ/vv/AgACAAEAAADP/vv/AgACAAEAAADG/v3/AgACAAEAAADF/v3/AgACAAEAAADF/v7/AgACAAEAAADE/v7/AgACAAEAAADB/gIAAgACAAEAAADm/v7/AgACAAEAAAAQ//7/AgACAAEAAAAR//7/AgACAAEAAAAS//7/AgACAAEAAAAL//v/AgACAAEAAAAK//v/AgACAAEAAAAK//z/AgACAAEAAAAJ//z/AgACAAEAAAAI//z/AgACAAEAAAAH//z/AgACAAEAAAAH//v/AgACAAEAAAD6/vr/AgACAAEAAAD5/vr/AgACAAEAAAD4/vr/AgACAAEAAADs/vv/AgACAAEAAADr/vv/AgACAAEAAADq/vz/AgACAAEAAADi/vz/AgACAAEAAADi/v3/AgACAAEAAAAB//D/AgACAAEAAAAK/+//AgACAAEAAADc/vf/AgAEAAEAAADo/vf/AgADAAEAAAD4/vf/AgAEAAEAAADM/u//AgADAAAAAADp/u7/AgADAAAAABDb/vL/AgACAAAAAADF//D/AQACAAAAAADq/+7/AQABAAAAAADZ/+//AQABAAAAAAD5/gEAAQABAAAAAACBAPT/AAACAAEAAACCAPb/AgAEAAEAAACGAPX/AAADAAEAAACLAPX/AAACAAEAAACNAPb/AgADAAEAAACTAPP/AAABAAEAAACWAPP/AgABAAEAAACWAPX/AAAEAAEAAACdAPT/AAABAAEAAACdAPb/AgAEAAEAAAChAPT/AAACAAEAAACiAPT/AgACAAEAAACiAPX/AAADAAEAAACjAPT/AgACAAEAAACqAPb/AgADAAEAAACrAPX/AAACAAEAAACyAPX/AAAEAAEAAAC1APP/AAAEAAAAAAC6APb/AgAEAAEAAAC8APf/AgADAAAAAAC9APX/AAADAAEAAADEAPb/AgADAAEAAADNAPX/AAAEAAEAAADOAPP/AAAEAAAAAADUAPb/AgAEAAEAAADWAPX/AgACAAEAAADYAPT/AAAEAAAAAADZAPX/AAADAAEAAADgAPT/AgADAAAAAADgAPb/AgADAAEAAADkAPP/AAAEAAAAAADnAPT/AgACAAEAAADoAPT/AgACAAEAAADpAPX/AAAEAAEAAADuAPT/AAAEAAAAAADwAPb/AgAEAAEAAAD2APP/AAAEAAAAAAD3APX/AAACAAAAAAD9APb/AgADAAEAAAAAAfT/AAAEAAAAAAACAfP/AAAEAAAAAAACAfX/AAACAAAAAAAEAfP/AgABAAEAAAAEAfX/AAADAAEAAAAGAfX/AAAEAAEAAAAJAfb/AgADAAEAAAAKAfb/AgADAAEAAAAMAfT/AAAEAAAAAAAMAfb/AgAEAAEAAAANAfb/AgAEAAEAAAARAfP/AgABAAEAAAASAfX/AAADAAEAAAByAPb/AgADAAEAAAARAfb/AgADAAEAAAAhAfb/AgAEAAEAAABkAfX/AgADAAEAAAB0AfX/AgAEAAEAAACBAfX/AgADAAEAAACQAfX/AgAEAAEAAABzAfP/AgAEAAAAAACGAfz/AgAEAAAAAACGAfL/AgAEAAAAAACtAf//AgAEAAAAAADJAfn/AgAEAAAAAABvAf//AgAEAAAAAACWAfT/AgACAAAAAACeAfz/AgACAAAAAAC9Afv/AgACAAAAAAB4Afn/AgACAAEAAACFAQAAAgACAAEAAACTAfj/AgACAAEAAACXAf//AgACAAEAAACoAfj/AgACAAEAAAA=")
 tile_set = SubResource("TileSet_jr3jl")
 
@@ -743,19 +742,13 @@ position = Vector2(3742, -94)
 [node name="Mosquito" parent="World/Creatures" unique_id=915889274 instance=ExtResource("13_oiu73")]
 position = Vector2(-1197, -187)
 
-[node name="Snake4" parent="World/Creatures" unique_id=1775735785 instance=ExtResource("12_d0a2k")]
-z_index = 20
-position = Vector2(-1142.0001, 207)
+[node name="SnakeDistance" parent="World/Creatures" unique_id=88320707 instance=ExtResource("24_hpfpo")]
+position = Vector2(-1069, 234)
 scale = Vector2(0.8, 0.8)
-collision_mask = 1280
-max_hp = 1000
 
-[node name="Snake3" parent="World/Creatures" unique_id=985537058 instance=ExtResource("12_d0a2k")]
-z_index = 20
+[node name="SnakeDistance2" parent="World/Creatures" unique_id=2351558 instance=ExtResource("24_hpfpo")]
 position = Vector2(5357, 216)
 scale = Vector2(0.8, 0.8)
-collision_mask = 1280
-speed = 500
 
 [node name="SnakePack" parent="World/Creatures" unique_id=1488428405 instance=ExtResource("25_hpfpo")]
 z_index = 20
@@ -818,29 +811,6 @@ position = Vector2(-1661.7932, 70.614975)
 rotation = -3.14158
 scale = Vector2(0.397965, -1.02986)
 skew = -1.0848e-05
-
-[node name="GazShooters" type="Node2D" parent="World" unique_id=190973603]
-z_index = -5
-position = Vector2(-570, -1498)
-scale = Vector2(2, 2)
-
-[node name="GazShooter3" parent="World/GazShooters" unique_id=1593820904 instance=ExtResource("29_ppy38")]
-position = Vector2(1444.5, 1242)
-projectile_spawn_delay = 1.0
-gravity = 0
-stop_distance = 0
-
-[node name="GazShooter4" parent="World/GazShooters" unique_id=605276124 instance=ExtResource("29_ppy38")]
-position = Vector2(3769.5002, 1219.5)
-projectile_spawn_delay = 1.0
-gravity = 0
-stop_distance = 0
-
-[node name="GazShooter5" parent="World/GazShooters" unique_id=1198386164 instance=ExtResource("29_ppy38")]
-position = Vector2(4360, 1228.5)
-projectile_spawn_delay = 1.0
-gravity = 0
-stop_distance = 0
 
 [node name="GroundFog" type="Node2D" parent="." unique_id=176729669]
 position = Vector2(-15, -75)

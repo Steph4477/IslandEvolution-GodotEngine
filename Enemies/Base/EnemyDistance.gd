@@ -14,6 +14,7 @@ var animation_walk = "walk"
 var target = null
 var melee_distance = 0
 var attack_cooldown = 1.0
+var detection_range = 700.0
 
 var melee_mod = EnemyModMelee.new()
 var throw_mod = EnemyModThrowProjectile.new()
@@ -48,7 +49,7 @@ func _ready():
 	projectile_attack_animation = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
 	animation_walk = GameBalance.ENEMY_ANIMATION_WALK[balance_id]
 
-	attack_range = max_shoot_distance
+	attack_range = melee_distance
 
 	projectile_spawn = $Rotator/ProjectileSpawn
 
@@ -72,6 +73,18 @@ func _physics_process(delta):
 	target_player()
 	target = player
 	flip()
+	
+	if target == null:
+		velocity.x = 0
+		play_idle()
+		move_and_slide()
+		return
+
+	if distance > detection_range:
+		velocity.x = 0
+		play_idle()
+		move_and_slide()
+		return
 
 	melee_mod.update_state()
 

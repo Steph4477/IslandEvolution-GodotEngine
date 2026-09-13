@@ -1,7 +1,8 @@
 extends Node
 
 var p
-
+var fall_damage_consumed = false
+var fall_landed_confirmed = false
 
 func setup(player):
 	p = player
@@ -283,20 +284,48 @@ func track_fall_speed(was_on_floor):
 	if not p.fall_damage_enabled:
 		return
 
-	if p.is_swimming or p.is_swimming_under_water or p.is_on_liana or p.climbing_anim != "" or p.is_hanging or p.is_camouflaged:
-		p.fall_speed_track = 0
+	if p.is_hit_locked:
 		return
 
-	if not was_on_floor:
+	if p.is_swimming or p.is_swimming_under_water or p.is_on_liana or p.climbing_anim != "" or p.is_hanging or p.is_camouflaged:
+		p.fall_speed_track = 0
+		fall_damage_consumed = false
+		fall_landed_confirmed = false
+		return
+
+	# Après un impact consommé, on attend d'abord
+	# d'avoir confirmé que Moko est réellement posé au sol.
+	if fall_damage_consumed:
+		if p.is_on_floor():
+			fall_landed_confirmed = true
+
+		# Nouveau vrai départ du sol.
+		if fall_landed_confirmed and was_on_floor and not p.is_on_floor():
+			fall_damage_consumed = false
+			fall_landed_confirmed = false
+			p.fall_speed_track = 0
+
+		return
+
+	# Chute normale
+	if not p.is_on_floor():
 		if p.velocity.y > p.fall_speed_track:
 			p.fall_speed_track = p.velocity.y
 	else:
 		p.fall_speed_track = 0
 
+
 func apply_fall_damage(was_on_floor):
 	if not p.fall_damage_enabled:
 		return
+
 	if p.is_dead:
+		return
+
+	if p.is_hit_locked:
+		return
+
+	if fall_damage_consumed:
 		return
 
 	if not was_on_floor and p.is_on_floor():
@@ -316,10 +345,14 @@ func apply_fall_damage(was_on_floor):
 			dmg += (p.fall_damage_max - p.fall_damage_min) * over_speed / range_speed
 
 		dmg = int(dmg)
+
 		if dmg <= 0:
 			return
 
-		# Applique les dégâts + anim onhit
+		# Cet atterrissage est maintenant consommé.
+		fall_damage_consumed = true
+		fall_landed_confirmed = true
+
 		p.damage_mod.on_hit(dmg)
 
 # ============================================================================
